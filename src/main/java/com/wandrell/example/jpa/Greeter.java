@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2015 the original author or authors.
+ * Copyright (c) 2016 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,41 +22,34 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa_example.testing.test.unit;
-
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
-import com.wandrell.example.jpa_example.Greeter;
+package com.wandrell.example.jpa;
 
 /**
- * Unit tests for {@link Greeter}.
+ * Greeter class.
  * <p>
- * Checks the following cases:
- * <ol>
- * <li>The {@code Greeter} returns a greeting.</li>
- * </ol>
+ * This is just a placeholder class which may be safely removed.
  * <p>
- * This is just a placeholder test for the unit tests suite.
+ * Pay attention to the fact that this is used on the placeholder tests too
  * 
  * @author Bernardo Martínez Garrido
- *
  */
-public final class TestGreeter {
+
+public final class Greeter {
 
     /**
-     * Constructs the tests.
+     * Constructs a {@code Greeter}.
      */
-    public TestGreeter() {
+    public Greeter() {
         super();
     }
 
     /**
-     * Tests that the {@code Greeter} returns a greeting.
+     * Returns a greeting.
+     * 
+     * @return a greeting
      */
-    @Test
-    public final void sayHello() {
-        Assert.assertEquals("Hello World!", new Greeter().sayHello());
+    public String sayHello() {
+        return "Hello World!";
     }
 
 }

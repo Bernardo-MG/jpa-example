@@ -2,7 +2,7 @@
 <Configuration status="WARN">
 
 	<Properties>
-		<Property name="filename">jpa-example_test.log</Property>
+		<Property name="filename">jpa_example_test.log</Property>
 	</Properties>
 
 	<Appenders>

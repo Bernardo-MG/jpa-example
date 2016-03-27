@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2015 the original author or authors.
+ * Copyright (c) 2016 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,35 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package com.wandrell.example.jpa_example;
-
 /**
- * Greeter class.
- * <p>
- * This is just a placeholder class which may be safely removed.
- * <p>
- * Pay attention to the fact that this is used on the placeholder tests too
- * 
- * @author Bernardo Martínez Garrido
+ * Provides placeholder classes.
  */
+package com.wandrell.example.jpa;
 
-public final class Greeter {
-
-    /**
-     * Constructs a {@code Greeter}.
-     */
-    public Greeter() {
-        super();
-    }
-
-    /**
-     * Returns a greeting.
-     * 
-     * @return a greeting
-     */
-    public String sayHello() {
-        return "Hello World!";
-    }
-
-}
