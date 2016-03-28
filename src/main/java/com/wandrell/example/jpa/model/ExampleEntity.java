@@ -22,34 +22,48 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa;
+package com.wandrell.example.jpa.model;
+
+import java.io.Serializable;
 
 /**
- * Greeter class.
- * <p>
- * This is just a placeholder class which may be safely removed.
- * <p>
- * Pay attention to the fact that this is used on the placeholder tests too
- * 
+ * Interface representing an entity to be used by the example.
+ *
  * @author Bernardo Martínez Garrido
  */
-
-public final class Greeter {
-
-    /**
-     * Constructs a {@code Greeter}.
-     */
-    public Greeter() {
-        super();
-    }
+public interface ExampleEntity extends Serializable {
 
     /**
-     * Returns a greeting.
-     * 
-     * @return a greeting
+     * Returns the ID assigned to this entity.
+     * <p>
+     * If no ID has been assigned yet, then the value will be {@code null} or
+     * lower than zero.
+     *
+     * @return the entity's ID
      */
-    public String sayHello() {
-        return "Hello World!";
-    }
+    public Integer getId();
+
+    /**
+     * Returns the name of the entity.
+     *
+     * @return the entity's name
+     */
+    public String getName();
+
+    /**
+     * Sets the ID assigned to this entity.
+     *
+     * @param identifier
+     *            the ID for the entity
+     */
+    public void setId(final Integer identifier);
+
+    /**
+     * Changes the name of the entity.
+     *
+     * @param name
+     *            the name to set on the entity
+     */
+    public void setName(final String name);
 
 }

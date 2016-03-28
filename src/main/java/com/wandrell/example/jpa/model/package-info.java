@@ -22,7 +22,14 @@
  * SOFTWARE.
  */
 /**
- * Provides placeholder classes.
+ * The model for the application.
+ * <p>
+ * This consists just on a very simple entity, containing an id and a name.
+ * <p>
+ * The {@link com.wandrell.example.swss.model.ExampleEntity ExampleEntity}
+ * interface and a JPA implementation of it, the
+ * {@link com.wandrell.example.swss.model.DefaultExampleEntity
+ * DefaultExampleEntity}, represent it.
  */
-package com.wandrell.example.jpa;
 
+package com.wandrell.example.jpa.model;
