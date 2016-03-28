@@ -2,9 +2,6 @@
 
 An example showing how to set up and test JPA classes.
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.wandrell.example/jpa-example.svg)][maven-repo]
-[![Bintray](https://api.bintray.com/packages/bernardo-mg/maven/jpa-example/images/download.svg)][bintray-repo]
-
 [![Release docs](https://img.shields.io/badge/docs-release-blue.svg)][site-release]
 [![Development docs](https://img.shields.io/badge/docs-develop-blue.svg)][site-develop]
 
