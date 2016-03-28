@@ -36,12 +36,7 @@ public class TestPropertiesConfig {
     /**
      * Properties file for the test entity.
      */
-    public static final String ENTITY     = "classpath:config/entity/test-entity.properties";
-
-    /**
-     * Properties file for the test JPA entity.
-     */
-    public static final String ENTITY_JPA = "classpath:config/entity/test-entity-jpa.properties";
+    public static final String ENTITY = "classpath:config/entity/test-entity-jpa.properties";
 
     /**
      * Private constructor to avoid initialization.
