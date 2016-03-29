@@ -104,6 +104,9 @@ public abstract class AbstractITModify
         // Checks that the id has not been assigned
         Assert.assertNull(newEntity.getId());
 
+        // Sets the name
+        newEntity.setName("name");
+
         // Adds the entity
         getRepository().save(newEntity);
 

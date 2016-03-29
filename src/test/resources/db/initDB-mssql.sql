@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS test_entities;
+DROP TABLE IF EXISTS example_entities;
 
-CREATE TABLE test_entities (
+CREATE TABLE example_entities (
 	id		INTEGER IDENTITY PRIMARY KEY,
 	name	VARCHAR(30) DEFAULT '' NOT NULL
 );
