@@ -30,8 +30,10 @@ import org.springframework.test.context.TestPropertySource;
 import com.wandrell.example.jpa.test.util.config.context.PersistenceContextConfig;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.DatabaseScriptsPropertiesConfig;
-import com.wandrell.example.jpa.test.util.config.properties.JPAPropertiesConfig;
+import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
+import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
+import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.UserPropertiesConfig;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITQuery;
@@ -53,9 +55,11 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITQuery;
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
                 UserPropertiesConfig.DEFAULT,
                 DatabaseScriptsPropertiesConfig.PLAIN,
-                JPAPropertiesConfig.SQLITE },
+                JpaPropertiesConfig.SQLITE, JdbcPropertiesPaths.SQLITE,
+                QueryPropertiesPaths.JPA_QUERY },
         properties = {
-                "jdbc.url=jdbc:sqlite:target/sqlite_test_spring_jdbc.db" })
+                "jpa.persistenceUnitName=test_model_jpa_eclipselink_sqlite",
+                "jdbc.url=jdbc:sqlite:target/sqlite_test_jpa_eclipselink.db" })
 public final class ITQuerySqlite extends AbstractITQuery {
 
     /**

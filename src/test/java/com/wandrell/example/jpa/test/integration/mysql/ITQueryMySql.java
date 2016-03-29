@@ -30,8 +30,10 @@ import org.springframework.test.context.TestPropertySource;
 import com.wandrell.example.jpa.test.util.config.context.PersistenceContextConfig;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.DatabaseScriptsPropertiesConfig;
-import com.wandrell.example.jpa.test.util.config.properties.JPAPropertiesConfig;
+import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
+import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
+import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.UserPropertiesConfig;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITQuery;
@@ -53,9 +55,11 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITQuery;
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
                 UserPropertiesConfig.MYSQL,
                 DatabaseScriptsPropertiesConfig.MYSQL,
-                JPAPropertiesConfig.MYSQL },
+                JpaPropertiesConfig.MYSQL, JdbcPropertiesPaths.MYSQL,
+                QueryPropertiesPaths.JPA_QUERY },
         properties = {
-                "jdbc.url=jdbc:mysql://localhost:3306/test_spring_jdbc" })
+                "jpa.persistenceUnitName=test_model_jpa_eclipselink_mysql",
+                "jdbc.url=jdbc:mysql://localhost:3306/test_jpa_eclipselink" })
 public final class ITQueryMySql extends AbstractITQuery {
 
     /**

@@ -30,8 +30,10 @@ import org.springframework.test.context.TestPropertySource;
 import com.wandrell.example.jpa.test.util.config.context.PersistenceContextConfig;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.DatabaseScriptsPropertiesConfig;
-import com.wandrell.example.jpa.test.util.config.properties.JPAPropertiesConfig;
+import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
+import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
+import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.UserPropertiesConfig;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITModify;
@@ -54,8 +56,11 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITModify;
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
                 UserPropertiesConfig.DEFAULT,
                 DatabaseScriptsPropertiesConfig.MSSQL,
-                JPAPropertiesConfig.HSQLDB },
-        properties = { "jdbc.url=jdbc:hsqldb:mem:test_spring_jdbc" })
+                JpaPropertiesConfig.HSQLDB, JdbcPropertiesPaths.HSQLDB,
+                QueryPropertiesPaths.JPA_QUERY },
+        properties = {
+                "jpa.persistenceUnitName=test_model_jpa_eclipselink_hsqldb",
+                "jdbc.url=jdbc:hsqldb:mem:test_jpa_eclipselink" })
 public final class ITModifyHsqldb extends AbstractITModify {
 
     /**

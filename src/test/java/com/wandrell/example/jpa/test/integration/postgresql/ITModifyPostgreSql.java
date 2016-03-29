@@ -30,8 +30,10 @@ import org.springframework.test.context.TestPropertySource;
 import com.wandrell.example.jpa.test.util.config.context.PersistenceContextConfig;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.DatabaseScriptsPropertiesConfig;
-import com.wandrell.example.jpa.test.util.config.properties.JPAPropertiesConfig;
+import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
+import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
+import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.UserPropertiesConfig;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITModify;
@@ -54,9 +56,11 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITModify;
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
                 UserPropertiesConfig.POSTGRES,
                 DatabaseScriptsPropertiesConfig.POSTGRESQL,
-                JPAPropertiesConfig.POSTGRESQL },
+                JpaPropertiesConfig.POSTGRESQL, JdbcPropertiesPaths.POSTGRESQL,
+                QueryPropertiesPaths.JPA_QUERY },
         properties = {
-                "jdbc.url=jdbc:postgresql://localhost:5432/test_spring_jdbc_modify" })
+                "jpa.persistenceUnitName=test_model_jpa_eclipselink_postgresql_modify",
+                "jdbc.url=jdbc:postgresql://localhost:5432/test_jpa_eclipselink_modify" })
 public final class ITModifyPostgreSql extends AbstractITModify {
 
     /**
