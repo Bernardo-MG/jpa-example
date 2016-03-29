@@ -26,10 +26,10 @@
  * <p>
  * This consists just on a very simple entity, containing an id and a name.
  * <p>
- * The {@link com.wandrell.example.SimpleEntity.model.ExampleEntity ExampleEntity}
+ * The {@link com.wandrell.example.SimpleEntity.model.SimpleEntity SimpleEntity}
  * interface and a JPA implementation of it, the
- * {@link com.wandrell.example.DefaultSimpleEntity.model.DefaultExampleEntity
- * DefaultExampleEntity}, represent it.
+ * {@link com.wandrell.example.DefaultSimpleEntity.model.DefaultSimpleEntity
+ * DefaultSimpleEntity}, represent it.
  */
 
 package com.wandrell.example.jpa.model;

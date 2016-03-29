@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS example_entities;
+DROP TABLE IF EXISTS simple_entities;
 
-CREATE TABLE example_entities (
+CREATE TABLE simple_entities (
 	id		SERIAL PRIMARY KEY,
 	name	TEXT DEFAULT '' NOT NULL
 );

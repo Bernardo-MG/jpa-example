@@ -24,9 +24,12 @@
 
 package com.wandrell.example.jpa.test.util.test.integration;
 
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -59,13 +62,25 @@ public abstract class AbstractITQuery
      * Initial number of entities in the repository.
      */
     @Value("${entities.total}")
-    private Integer                                      entitiesCount;
+    private Integer       entitiesCount;
 
     /**
-     * The repository being tested.
+     * The JPA entity manager.
      */
     @Autowired
-    private JpaRepository<DefaultSimpleEntity, Integer> repository;
+    private EntityManager entityManager;
+
+    /**
+     * The query to acquire an entity by the id.
+     */
+    @Value("${query.byId}")
+    private String        queryById;
+
+    /**
+     * The query to acquire all the entities.
+     */
+    @Value("${query.findAll}")
+    private String        queryFindAll;
 
     /**
      * Default constructor.
@@ -79,7 +94,8 @@ public abstract class AbstractITQuery
      */
     @Test
     public final void testGetAll() {
-        Assert.assertEquals((Integer) getRepository().findAll().size(),
+        Assert.assertEquals((Integer) getEntityManager()
+                .createQuery(queryFindAll).getResultList().size(),
                 entitiesCount);
     }
 
@@ -88,14 +104,19 @@ public abstract class AbstractITQuery
      */
     @Test
     public final void testGetEntity_Existing_Entity() {
-        final Integer id;                     // Entity ID
+        final Integer id;                    // Entity ID
         final DefaultSimpleEntity entity;    // Tested entity
+        final Query query;                   // Query for the entity
 
         // Entity's id
         id = 1;
 
+        // Builds the query
+        query = getEntityManager().createQuery(queryById);
+        query.setParameter("id", id);
+
         // Acquires the entity
-        entity = getRepository().findOne(id);
+        entity = (DefaultSimpleEntity) query.getSingleResult();
 
         // The entity's id is the correct one
         Assert.assertEquals(entity.getId(), id);
@@ -104,29 +125,33 @@ public abstract class AbstractITQuery
     /**
      * Tests that retrieving a not existing entity returns null.
      */
-    @Test
+    @Test(expectedExceptions = { NoResultException.class })
     public final void testGetEntity_NotExisting_Null() {
         final Integer id;                     // Invalid entity ID
         final DefaultSimpleEntity entity;    // Tested entity
+        final Query query;                   // Query for the entity
 
         // Invalid entity id
         id = 123;
 
+        // Builds the query
+        query = getEntityManager().createQuery(queryById);
+        query.setParameter("id", id);
+
         // Tries to acquire the entity
-        entity = getRepository().findOne(id);
+        entity = (DefaultSimpleEntity) query.getSingleResult();
 
         // The entity is null
         Assert.assertEquals(entity, null);
     }
 
     /**
-     * Returns the repository being tested.
+     * Returns the JPA entity manager.
      *
-     * @return the repository being tested.
+     * @return the JPA entity manager
      */
-    protected final JpaRepository<DefaultSimpleEntity, Integer>
-            getRepository() {
-        return repository;
+    protected final EntityManager getEntityManager() {
+        return entityManager;
     }
 
 }

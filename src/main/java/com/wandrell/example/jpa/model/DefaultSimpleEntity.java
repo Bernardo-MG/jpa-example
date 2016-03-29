@@ -43,8 +43,8 @@ import com.google.common.base.MoreObjects;
  *
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "ExampleEntity")
-@Table(name = "example_entities")
+@Entity(name = "SimpleEntity")
+@Table(name = "simple_entities")
 public final class DefaultSimpleEntity implements SimpleEntity {
 
     /**
@@ -59,7 +59,7 @@ public final class DefaultSimpleEntity implements SimpleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer           entityId;
+    private Integer           id               = null;
 
     /**
      * Name of the entity.
@@ -68,7 +68,7 @@ public final class DefaultSimpleEntity implements SimpleEntity {
      * tests.
      */
     @Column(name = "name", nullable = false)
-    private String            entityName;
+    private String            name             = "";
 
     /**
      * Constructs an example entity.
@@ -92,39 +92,37 @@ public final class DefaultSimpleEntity implements SimpleEntity {
         }
 
         final DefaultSimpleEntity other = (DefaultSimpleEntity) obj;
-        return Objects.equals(entityId, other.entityId);
+        return Objects.equals(id, other.id);
     }
 
     @Override
     public final Integer getId() {
-        return entityId;
+        return id;
     }
 
     @Override
     public final String getName() {
-        return entityName;
+        return name;
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hash(entityId);
+        return Objects.hash(id);
     }
 
     @Override
     public final void setId(final Integer identifier) {
-        entityId = checkNotNull(identifier,
-                "Received a null pointer as identifier");
+        id = checkNotNull(identifier, "Received a null pointer as identifier");
     }
 
     @Override
     public final void setName(final String name) {
-        entityName = checkNotNull(name, "Received a null pointer as name");
+        this.name = checkNotNull(name, "Received a null pointer as name");
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("entityId", entityId)
-                .toString();
+        return MoreObjects.toStringHelper(this).add("entityId", id).toString();
     }
 
 }

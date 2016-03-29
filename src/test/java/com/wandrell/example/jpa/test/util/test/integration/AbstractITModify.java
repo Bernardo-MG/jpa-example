@@ -61,13 +61,13 @@ public abstract class AbstractITModify
      * The entity manager for the test context.
      */
     @Autowired(required = false)
-    private EntityManager                                emanager;
+    private EntityManager                               emanager;
 
     /**
      * Initial number of entities in the repository.
      */
     @Value("${entities.total}")
-    private Integer                                      entitiesCount;
+    private Integer                                     entitiesCount;
 
     /**
      * Entity for the addition test.
@@ -86,7 +86,7 @@ public abstract class AbstractITModify
      * Query for acquiring an entity by it's id.
      */
     @Value("${query.byId}")
-    private String                                       selectByIdQuery;
+    private String                                      selectByIdQuery;
 
     /**
      * Default constructor.
