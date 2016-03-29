@@ -39,13 +39,13 @@ import javax.persistence.Transient;
 import com.google.common.base.MoreObjects;
 
 /**
- * JPA annotated implementation of {@link ExampleEntity}.
+ * JPA annotated implementation of {@link SimpleEntity}.
  *
  * @author Bernardo Martínez Garrido
  */
 @Entity(name = "ExampleEntity")
 @Table(name = "example_entities")
-public final class DefaultExampleEntity implements ExampleEntity {
+public final class DefaultSimpleEntity implements SimpleEntity {
 
     /**
      * Serialization ID.
@@ -73,7 +73,7 @@ public final class DefaultExampleEntity implements ExampleEntity {
     /**
      * Constructs an example entity.
      */
-    public DefaultExampleEntity() {
+    public DefaultSimpleEntity() {
         super();
     }
 
@@ -91,7 +91,7 @@ public final class DefaultExampleEntity implements ExampleEntity {
             return false;
         }
 
-        final DefaultExampleEntity other = (DefaultExampleEntity) obj;
+        final DefaultSimpleEntity other = (DefaultSimpleEntity) obj;
         return Objects.equals(entityId, other.entityId);
     }
 

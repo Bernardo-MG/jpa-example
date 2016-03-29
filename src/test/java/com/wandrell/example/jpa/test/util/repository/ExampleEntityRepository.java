@@ -26,10 +26,10 @@ package com.wandrell.example.jpa.test.util.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.wandrell.example.jpa.model.DefaultExampleEntity;
+import com.wandrell.example.jpa.model.DefaultSimpleEntity;
 
 /**
- * Spring-JPA repository for {@link DefaultExampleEntity}.
+ * Spring-JPA repository for {@link DefaultSimpleEntity}.
  * <p>
  * This is a simple repository meant just to allow acquiring the entities
  * returned by the endpoint.
@@ -37,6 +37,6 @@ import com.wandrell.example.jpa.model.DefaultExampleEntity;
  * @author Bernardo Martínez Garrido
  */
 public interface ExampleEntityRepository
-        extends JpaRepository<DefaultExampleEntity, Integer> {
+        extends JpaRepository<DefaultSimpleEntity, Integer> {
 
 }

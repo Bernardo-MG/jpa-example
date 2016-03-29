@@ -35,7 +35,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.model.DefaultExampleEntity;
+import com.wandrell.example.jpa.model.DefaultSimpleEntity;
 
 /**
  * Abstract integration tests for a {@link FilteredRepository} testing modifier
@@ -74,13 +74,13 @@ public abstract class AbstractITModify
      */
     @Autowired
     @Qualifier("newEntity")
-    private DefaultExampleEntity                         newEntity;
+    private DefaultSimpleEntity                         newEntity;
 
     /**
      * The repository being tested.
      */
     @Autowired
-    private JpaRepository<DefaultExampleEntity, Integer> repository;
+    private JpaRepository<DefaultSimpleEntity, Integer> repository;
 
     /**
      * Query for acquiring an entity by it's id.
@@ -130,7 +130,7 @@ public abstract class AbstractITModify
     @Test
     @Transactional
     public final void testRemove() {
-        final DefaultExampleEntity entity;    // Entity being tested
+        final DefaultSimpleEntity entity;    // Entity being tested
 
         // Acquires the entity
         entity = getRepository().findOne(1);
@@ -153,7 +153,7 @@ public abstract class AbstractITModify
     @Test
     public final void testUpdate() {
         final String nameChange;              // Name set on the entity
-        DefaultExampleEntity entity;          // The entity being tested
+        DefaultSimpleEntity entity;          // The entity being tested
 
         // Acquires the entity
         entity = getRepository().findOne(1);
@@ -175,7 +175,7 @@ public abstract class AbstractITModify
      *
      * @return the repository being tested.
      */
-    protected final JpaRepository<DefaultExampleEntity, Integer>
+    protected final JpaRepository<DefaultSimpleEntity, Integer>
             getRepository() {
         return repository;
     }

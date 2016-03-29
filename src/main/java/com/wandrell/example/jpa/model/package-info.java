@@ -26,9 +26,9 @@
  * <p>
  * This consists just on a very simple entity, containing an id and a name.
  * <p>
- * The {@link com.wandrell.example.swss.model.ExampleEntity ExampleEntity}
+ * The {@link com.wandrell.example.SimpleEntity.model.ExampleEntity ExampleEntity}
  * interface and a JPA implementation of it, the
- * {@link com.wandrell.example.swss.model.DefaultExampleEntity
+ * {@link com.wandrell.example.DefaultSimpleEntity.model.DefaultExampleEntity
  * DefaultExampleEntity}, represent it.
  */
 

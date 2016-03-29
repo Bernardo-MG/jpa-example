@@ -31,7 +31,7 @@ import org.springframework.test.context.testng.AbstractTransactionalTestNGSpring
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.model.DefaultExampleEntity;
+import com.wandrell.example.jpa.model.DefaultSimpleEntity;
 
 /**
  * Abstract integration tests for a {@link FilteredRepository} testing query
@@ -65,7 +65,7 @@ public abstract class AbstractITQuery
      * The repository being tested.
      */
     @Autowired
-    private JpaRepository<DefaultExampleEntity, Integer> repository;
+    private JpaRepository<DefaultSimpleEntity, Integer> repository;
 
     /**
      * Default constructor.
@@ -89,7 +89,7 @@ public abstract class AbstractITQuery
     @Test
     public final void testGetEntity_Existing_Entity() {
         final Integer id;                     // Entity ID
-        final DefaultExampleEntity entity;    // Tested entity
+        final DefaultSimpleEntity entity;    // Tested entity
 
         // Entity's id
         id = 1;
@@ -107,7 +107,7 @@ public abstract class AbstractITQuery
     @Test
     public final void testGetEntity_NotExisting_Null() {
         final Integer id;                     // Invalid entity ID
-        final DefaultExampleEntity entity;    // Tested entity
+        final DefaultSimpleEntity entity;    // Tested entity
 
         // Invalid entity id
         id = 123;
@@ -124,7 +124,7 @@ public abstract class AbstractITQuery
      *
      * @return the repository being tested.
      */
-    protected final JpaRepository<DefaultExampleEntity, Integer>
+    protected final JpaRepository<DefaultSimpleEntity, Integer>
             getRepository() {
         return repository;
     }

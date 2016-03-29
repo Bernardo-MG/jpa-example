@@ -31,7 +31,7 @@ import java.io.Serializable;
  *
  * @author Bernardo Martínez Garrido
  */
-public interface ExampleEntity extends Serializable {
+public interface SimpleEntity extends Serializable {
 
     /**
      * Returns the ID assigned to this entity.
