@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.h2;
+package com.wandrell.example.jpa.test.integration.eclipselink.hsqldb;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -54,16 +54,18 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITQuery;
         locations = { TestPropertiesConfig.ENTITY,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
                 UserPropertiesConfig.DEFAULT,
-                DatabaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
-                JdbcPropertiesPaths.H2, QueryPropertiesPaths.JPA_QUERY },
-        properties = { "jpa.persistenceUnitName=test_model_jpa_eclipselink_h2",
-                "jdbc.url=jdbc:h2:mem:test_jpa_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
-public final class ITQueryH2 extends AbstractITQuery {
+                DatabaseScriptsPropertiesConfig.MSSQL,
+                JpaPropertiesConfig.HSQLDB, JdbcPropertiesPaths.HSQLDB,
+                QueryPropertiesPaths.JPA_QUERY },
+        properties = {
+                "jpa.persistenceUnitName=test_model_jpa_eclipselink_hsqldb",
+                "jdbc.url=jdbc:hsqldb:mem:test_jpa_eclipselink" })
+public final class ITQueryEclipseLinkHsqldb extends AbstractITQuery {
 
     /**
      * Default constructor.
      */
-    public ITQueryH2() {
+    public ITQueryEclipseLinkHsqldb() {
         super();
     }
 

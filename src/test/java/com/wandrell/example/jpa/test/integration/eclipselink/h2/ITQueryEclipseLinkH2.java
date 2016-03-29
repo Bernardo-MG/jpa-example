@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.postgresql;
+package com.wandrell.example.jpa.test.integration.eclipselink.h2;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -41,8 +41,8 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITQuery;
 /**
  * Integration tests for
  * {@link com.wandrell.pattern.repository.spring.SpringJDBCRepository
- * SpringJDBCRepository} implementing {@code AbstractITQuery}, using a
- * PostgreSQL in-memory database and Spring JDBC.
+ * SpringJDBCRepository} implementing {@code AbstractITQuery}, using an H2
+ * in-memory database and Spring JDBC.
  *
  * @author Bernardo Martínez Garrido
  * @see com.wandrell.pattern.repository.spring.SpringJDBCRepository
@@ -53,19 +53,17 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITQuery;
 @TestPropertySource(
         locations = { TestPropertiesConfig.ENTITY,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                UserPropertiesConfig.POSTGRES,
-                DatabaseScriptsPropertiesConfig.POSTGRESQL,
-                JpaPropertiesConfig.POSTGRESQL, JdbcPropertiesPaths.POSTGRESQL,
-                QueryPropertiesPaths.JPA_QUERY },
-        properties = {
-                "jpa.persistenceUnitName=test_model_jpa_eclipselink_postgresql",
-                "jdbc.url=jdbc:postgresql://localhost:5432/test_jpa_eclipselink" })
-public final class ITQueryPostgreSql extends AbstractITQuery {
+                UserPropertiesConfig.DEFAULT,
+                DatabaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
+                JdbcPropertiesPaths.H2, QueryPropertiesPaths.JPA_QUERY },
+        properties = { "jpa.persistenceUnitName=test_model_jpa_eclipselink_h2",
+                "jdbc.url=jdbc:h2:mem:test_jpa_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
+public final class ITQueryEclipseLinkH2 extends AbstractITQuery {
 
     /**
      * Default constructor.
      */
-    public ITQueryPostgreSql() {
+    public ITQueryEclipseLinkH2() {
         super();
     }
 

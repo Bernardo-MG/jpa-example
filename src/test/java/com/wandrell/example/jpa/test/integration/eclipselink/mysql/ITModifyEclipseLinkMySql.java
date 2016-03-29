@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.postgresql;
+package com.wandrell.example.jpa.test.integration.eclipselink.mysql;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -41,8 +41,8 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITModify;
 /**
  * Integration tests for
  * {@link com.wandrell.pattern.repository.spring.SpringJDBCRepository
- * SpringJDBCRepository} implementing {@code AbstractITModify}, using a
- * PostgreSQL in-memory database and Spring JDBC.
+ * SpringJDBCRepository} implementing {@code AbstractITModify}, using a MySQL
+ * in-memory database and Spring JDBC.
  *
  * @author Bernardo Martínez Garrido
  * @see com.wandrell.pattern.repository.spring.SpringJDBCRepository
@@ -54,19 +54,19 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITModify;
 @TestPropertySource(
         locations = { TestPropertiesConfig.ENTITY,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                UserPropertiesConfig.POSTGRES,
-                DatabaseScriptsPropertiesConfig.POSTGRESQL,
-                JpaPropertiesConfig.POSTGRESQL, JdbcPropertiesPaths.POSTGRESQL,
+                UserPropertiesConfig.MYSQL,
+                DatabaseScriptsPropertiesConfig.MYSQL,
+                JpaPropertiesConfig.MYSQL, JdbcPropertiesPaths.MYSQL,
                 QueryPropertiesPaths.JPA_QUERY },
         properties = {
-                "jpa.persistenceUnitName=test_model_jpa_eclipselink_postgresql_modify",
-                "jdbc.url=jdbc:postgresql://localhost:5432/test_jpa_eclipselink_modify" })
-public final class ITModifyPostgreSql extends AbstractITModify {
+                "jpa.persistenceUnitName=test_model_jpa_eclipselink_mysql_modify",
+                "jdbc.url=jdbc:mysql://localhost:3306/test_jpa_eclipselink_modify" })
+public final class ITModifyEclipseLinkMySql extends AbstractITModify {
 
     /**
      * Default constructor.
      */
-    public ITModifyPostgreSql() {
+    public ITModifyEclipseLinkMySql() {
         super();
     }
 

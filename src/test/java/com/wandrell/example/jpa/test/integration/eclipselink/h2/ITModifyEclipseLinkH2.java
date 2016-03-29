@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.mysql;
+package com.wandrell.example.jpa.test.integration.eclipselink.h2;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -41,7 +41,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITModify;
 /**
  * Integration tests for
  * {@link com.wandrell.pattern.repository.spring.SpringJDBCRepository
- * SpringJDBCRepository} implementing {@code AbstractITModify}, using a MySQL
+ * SpringJDBCRepository} implementing {@code AbstractITModify}, using an H2
  * in-memory database and Spring JDBC.
  *
  * @author Bernardo Martínez Garrido
@@ -54,19 +54,18 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITModify;
 @TestPropertySource(
         locations = { TestPropertiesConfig.ENTITY,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                UserPropertiesConfig.MYSQL,
-                DatabaseScriptsPropertiesConfig.MYSQL,
-                JpaPropertiesConfig.MYSQL, JdbcPropertiesPaths.MYSQL,
-                QueryPropertiesPaths.JPA_QUERY },
+                UserPropertiesConfig.DEFAULT,
+                DatabaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
+                JdbcPropertiesPaths.H2, QueryPropertiesPaths.JPA_QUERY },
         properties = {
-                "jpa.persistenceUnitName=test_model_jpa_eclipselink_mysql_modify",
-                "jdbc.url=jdbc:mysql://localhost:3306/test_jpa_eclipselink_modify" })
-public final class ITModifyMySql extends AbstractITModify {
+                "jpa.persistenceUnitName=test_model_jpa_eclipselink_h2_modify",
+                "jdbc.url=jdbc:h2:mem:test_jpa_eclipselink_modify;DB_CLOSE_ON_EXIT=FALSE" })
+public final class ITModifyEclipseLinkH2 extends AbstractITModify {
 
     /**
      * Default constructor.
      */
-    public ITModifyMySql() {
+    public ITModifyEclipseLinkH2() {
         super();
     }
 

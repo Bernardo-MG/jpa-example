@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.mysql;
+package com.wandrell.example.jpa.test.integration.eclipselink.postgresql;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -36,36 +36,37 @@ import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderP
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.UserPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractITQuery;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITModify;
 
 /**
  * Integration tests for
  * {@link com.wandrell.pattern.repository.spring.SpringJDBCRepository
- * SpringJDBCRepository} implementing {@code AbstractITQuery}, using a MySQL
- * in-memory database and Spring JDBC.
+ * SpringJDBCRepository} implementing {@code AbstractITModify}, using a
+ * PostgreSQL in-memory database and Spring JDBC.
  *
  * @author Bernardo Martínez Garrido
  * @see com.wandrell.pattern.repository.spring.SpringJDBCRepository
  *      SpringJDBCRepository
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
+        TestContextConfig.ENTITY_MODIFIABLE,
         PersistenceContextConfig.ECLIPSELINK })
 @TestPropertySource(
         locations = { TestPropertiesConfig.ENTITY,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                UserPropertiesConfig.MYSQL,
-                DatabaseScriptsPropertiesConfig.MYSQL,
-                JpaPropertiesConfig.MYSQL, JdbcPropertiesPaths.MYSQL,
+                UserPropertiesConfig.POSTGRES,
+                DatabaseScriptsPropertiesConfig.POSTGRESQL,
+                JpaPropertiesConfig.POSTGRESQL, JdbcPropertiesPaths.POSTGRESQL,
                 QueryPropertiesPaths.JPA_QUERY },
         properties = {
-                "jpa.persistenceUnitName=test_model_jpa_eclipselink_mysql",
-                "jdbc.url=jdbc:mysql://localhost:3306/test_jpa_eclipselink" })
-public final class ITQueryMySql extends AbstractITQuery {
+                "jpa.persistenceUnitName=test_model_jpa_eclipselink_postgresql_modify",
+                "jdbc.url=jdbc:postgresql://localhost:5432/test_jpa_eclipselink_modify" })
+public final class ITModifyEclipseLinkPostgreSql extends AbstractITModify {
 
     /**
      * Default constructor.
      */
-    public ITQueryMySql() {
+    public ITModifyEclipseLinkPostgreSql() {
         super();
     }
 

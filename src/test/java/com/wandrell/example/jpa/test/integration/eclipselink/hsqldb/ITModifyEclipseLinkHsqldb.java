@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.hsqldb;
+package com.wandrell.example.jpa.test.integration.eclipselink.hsqldb;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -61,12 +61,12 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITModify;
         properties = {
                 "jpa.persistenceUnitName=test_model_jpa_eclipselink_hsqldb",
                 "jdbc.url=jdbc:hsqldb:mem:test_jpa_eclipselink" })
-public final class ITModifyHsqldb extends AbstractITModify {
+public final class ITModifyEclipseLinkHsqldb extends AbstractITModify {
 
     /**
      * Default constructor.
      */
-    public ITModifyHsqldb() {
+    public ITModifyEclipseLinkHsqldb() {
         super();
     }
 
