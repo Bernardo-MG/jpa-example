@@ -12,9 +12,6 @@
         JPA Hibernate persistence layer.
     </description>
 
-    <!-- Scans for repositories -->
-    <jpa:repositories base-package="com.wandrell.example.jpa.test.util.repository" />
-
     <!-- JPA EntityManagerFactory -->
     <bean id="entityManagerFactory" class="${jpa.entityManagerFactory.class}">
         <property name="jpaVendorAdapter" ref="jpaAdapter" />

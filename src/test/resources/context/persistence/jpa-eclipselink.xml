@@ -12,9 +12,6 @@
         JPA Eclipselink persistence layer.
     </description>
 
-    <!-- Scans for repositories -->
-    <jpa:repositories base-package="com.wandrell.example.jpa.test.util.repository" />
-
     <!-- Entity manager -->
     <bean id="entityManager" class="${jpa.entityManager.class}">
         <property name="entityManagerFactory" ref="entityManagerFactory" />

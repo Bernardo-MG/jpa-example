@@ -25,11 +25,12 @@
 package com.wandrell.example.jpa.test.util.test.integration;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.springframework.transaction.annotation.Transactional;
 import org.testng.Assert;
@@ -61,32 +62,44 @@ public abstract class AbstractITModify
      * The entity manager for the test context.
      */
     @Autowired(required = false)
-    private EntityManager                               emanager;
+    private EntityManager       emanager;
 
     /**
      * Initial number of entities in the repository.
      */
     @Value("${entities.total}")
-    private Integer                                     entitiesCount;
+    private Integer             entitiesCount;
 
     /**
      * Entity for the addition test.
      */
     @Autowired
     @Qualifier("newEntity")
-    private DefaultSimpleEntity                         newEntity;
+    private DefaultSimpleEntity newEntity;
 
     /**
-     * The repository being tested.
+     * The JPA entity manager.
      */
     @Autowired
-    private JpaRepository<DefaultSimpleEntity, Integer> repository;
+    private EntityManager       entityManager;
 
     /**
      * Query for acquiring an entity by it's id.
      */
     @Value("${query.byId}")
-    private String                                      selectByIdQuery;
+    private String              selectByIdQuery;
+
+    /**
+     * The query to acquire all the entities.
+     */
+    @Value("${query.findAll}")
+    private String              queryFindAll;
+
+    /**
+     * The query to acquire an entity by the id.
+     */
+    @Value("${query.byId}")
+    private String              queryById;
 
     /**
      * Default constructor.
@@ -108,7 +121,7 @@ public abstract class AbstractITModify
         newEntity.setName("name");
 
         // Adds the entity
-        getRepository().save(newEntity);
+        getEntityManager().persist(newEntity);
 
         if (emanager != null) {
             // Flushed to force updating ids
@@ -116,8 +129,8 @@ public abstract class AbstractITModify
         }
 
         // Checks the entity has been added
-        Assert.assertEquals(getRepository().findAll().size(),
-                entitiesCount + 1);
+        Assert.assertEquals(getEntityManager().createQuery(queryFindAll)
+                .getResultList().size(), entitiesCount + 1);
 
         // Checks that the id has been assigned
         Assert.assertNotNull(newEntity.getId());
@@ -130,21 +143,33 @@ public abstract class AbstractITModify
     @Test
     @Transactional
     public final void testRemove() {
-        final DefaultSimpleEntity entity;    // Entity being tested
+        final DefaultSimpleEntity entity; // Entity being tested
+        final Query query;                // Query for the entity
+        Boolean caught;                   // Flag for the exception being caught
+
+        // Builds the query
+        query = getEntityManager().createQuery(queryById);
+        query.setParameter("id", 1);
 
         // Acquires the entity
-        entity = getRepository().findOne(1);
+        entity = (DefaultSimpleEntity) query.getSingleResult();
 
         // Removes the entity
-        getRepository().delete(entity);
+        getEntityManager().remove(entity);
 
         // Checks that the number of entities has decreased
-        Assert.assertEquals(getRepository().findAll().size(),
-                entitiesCount - 1);
+        Assert.assertEquals(getEntityManager().createQuery(queryFindAll)
+                .getResultList().size(), entitiesCount - 1);
 
         // Tries to retrieve the removed entity
-        // The entity is now null
-        Assert.assertNull(getRepository().findOne(1));
+        // The entity no longer exists
+        caught = false;
+        try {
+            query.getSingleResult();
+        } catch (final NoResultException e) {
+            caught = true;
+        }
+        Assert.assertTrue(caught);
     }
 
     /**
@@ -152,32 +177,36 @@ public abstract class AbstractITModify
      */
     @Test
     public final void testUpdate() {
-        final String nameChange;              // Name set on the entity
+        final String nameChange;             // Name set on the entity
         DefaultSimpleEntity entity;          // The entity being tested
+        final Query query;                   // Query for the entity
+
+        // Builds the query
+        query = getEntityManager().createQuery(queryById);
+        query.setParameter("id", 1);
 
         // Acquires the entity
-        entity = getRepository().findOne(1);
+        entity = (DefaultSimpleEntity) query.getSingleResult();
 
         // Changes the entity name
         nameChange = "The new name";
         entity.setName(nameChange);
-        getRepository().save(entity);
+        getEntityManager().persist(entity);
 
         // Retrieves the entity again
-        entity = getRepository().findOne(1);
+        entity = (DefaultSimpleEntity) query.getSingleResult();
 
         // Checks the entity's name
         Assert.assertEquals(entity.getName(), nameChange);
     }
 
     /**
-     * Returns the repository being tested.
+     * Returns the JPA entity manager.
      *
-     * @return the repository being tested.
+     * @return the JPA entity manager
      */
-    protected final JpaRepository<DefaultSimpleEntity, Integer>
-            getRepository() {
-        return repository;
+    protected final EntityManager getEntityManager() {
+        return entityManager;
     }
 
 }

@@ -127,7 +127,7 @@ public abstract class AbstractITQuery
      */
     @Test(expectedExceptions = { NoResultException.class })
     public final void testGetEntity_NotExisting_Null() {
-        final Integer id;                     // Invalid entity ID
+        final Integer id;                    // Invalid entity ID
         final DefaultSimpleEntity entity;    // Tested entity
         final Query query;                   // Query for the entity
 
