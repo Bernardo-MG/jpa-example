@@ -37,15 +37,16 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.DefaultSimpleEntity;
+import com.wandrell.example.jpa.model.SimpleEntity;
 
 /**
- * Abstract integration tests for a {@link FilteredRepository} testing modifier
- * methods.
+ * Abstract integration tests for a {@link SimpleEntity} testing it can be
+ * modified.
  * <p>
  * Checks the following cases:
  * <ol>
- * <li>Adding an entity changes the contents of the repository.</li>
- * <li>Removing an entity changes the contents of the repository.</li>
+ * <li>Persisting an entity adds that entity to the persistence context.</li>
+ * <li>Removing an entity removes that entity from the persistence context.</li>
  * <li>Updating an entity changes it.</li>
  * </ol>
  * <p>
@@ -53,7 +54,7 @@ import com.wandrell.example.jpa.model.DefaultSimpleEntity;
  * repository and all of it's requirements.
  *
  * @author Bernardo Martínez Garrido
- * @see FilteredRepository
+ * @see SimpleEntity
  */
 public abstract class AbstractITModify
         extends AbstractTransactionalTestNGSpringContextTests {
@@ -65,10 +66,28 @@ public abstract class AbstractITModify
     private EntityManager       emanager;
 
     /**
-     * Initial number of entities in the repository.
+     * Initial number of entities in the persistence context.
      */
     @Value("${entities.total}")
     private Integer             entitiesCount;
+
+    /**
+     * The JPA entity manager.
+     */
+    @Autowired
+    private EntityManager       entityManager;
+
+    /**
+     * The query to acquire all the entities.
+     */
+    @Value("${query.findAll}")
+    private String              findAll;
+
+    /**
+     * The query to acquire an entity by the id.
+     */
+    @Value("${query.byId}")
+    private String              findById;
 
     /**
      * Entity for the addition test.
@@ -78,30 +97,6 @@ public abstract class AbstractITModify
     private DefaultSimpleEntity newEntity;
 
     /**
-     * The JPA entity manager.
-     */
-    @Autowired
-    private EntityManager       entityManager;
-
-    /**
-     * Query for acquiring an entity by it's id.
-     */
-    @Value("${query.byId}")
-    private String              selectByIdQuery;
-
-    /**
-     * The query to acquire all the entities.
-     */
-    @Value("${query.findAll}")
-    private String              queryFindAll;
-
-    /**
-     * The query to acquire an entity by the id.
-     */
-    @Value("${query.byId}")
-    private String              queryById;
-
-    /**
      * Default constructor.
      */
     public AbstractITModify() {
@@ -109,7 +104,8 @@ public abstract class AbstractITModify
     }
 
     /**
-     * Tests that adding an entity changes the contents of the repository.
+     * Tests that persisting an entity adds that entity to the persistence
+     * context.
      */
     @Test
     @Transactional
@@ -129,8 +125,9 @@ public abstract class AbstractITModify
         }
 
         // Checks the entity has been added
-        Assert.assertEquals(getEntityManager().createQuery(queryFindAll)
-                .getResultList().size(), entitiesCount + 1);
+        Assert.assertEquals(
+                getEntityManager().createQuery(findAll).getResultList().size(),
+                entitiesCount + 1);
 
         // Checks that the id has been assigned
         Assert.assertNotNull(newEntity.getId());
@@ -138,7 +135,8 @@ public abstract class AbstractITModify
     }
 
     /**
-     * Tests that removing an entity changes the contents of the repository.
+     * Tests that removing an entity removes that entity from the persistence
+     * context.
      */
     @Test
     @Transactional
@@ -148,7 +146,7 @@ public abstract class AbstractITModify
         Boolean caught;                   // Flag for the exception being caught
 
         // Builds the query
-        query = getEntityManager().createQuery(queryById);
+        query = getEntityManager().createQuery(findById);
         query.setParameter("id", 1);
 
         // Acquires the entity
@@ -158,8 +156,9 @@ public abstract class AbstractITModify
         getEntityManager().remove(entity);
 
         // Checks that the number of entities has decreased
-        Assert.assertEquals(getEntityManager().createQuery(queryFindAll)
-                .getResultList().size(), entitiesCount - 1);
+        Assert.assertEquals(
+                getEntityManager().createQuery(findAll).getResultList().size(),
+                entitiesCount - 1);
 
         // Tries to retrieve the removed entity
         // The entity no longer exists
@@ -177,12 +176,12 @@ public abstract class AbstractITModify
      */
     @Test
     public final void testUpdate() {
-        final String nameChange;             // Name set on the entity
-        DefaultSimpleEntity entity;          // The entity being tested
-        final Query query;                   // Query for the entity
+        final String nameChange;    // Name set on the entity
+        DefaultSimpleEntity entity; // The entity being tested
+        final Query query;          // Query for the entity
 
         // Builds the query
-        query = getEntityManager().createQuery(queryById);
+        query = getEntityManager().createQuery(findById);
         query.setParameter("id", 1);
 
         // Acquires the entity

@@ -34,32 +34,30 @@ import org.springframework.test.context.testng.AbstractTransactionalTestNGSpring
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.model.DefaultSimpleEntity;
+import com.wandrell.example.jpa.model.SimpleEntity;
 
 /**
- * Abstract integration tests for a {@link FilteredRepository} testing query
- * methods.
+ * Abstract integration tests for a {@link SimpleEntity} testing it can be
+ * queried correctly.
  * <p>
  * Checks the following cases:
  * <ol>
  * <li>Retrieving all the entities gives the correct number of them.</li>
  * <li>Retrieving an existing entity returns it.</li>
- * <li>Retrieving a not existing entity returns null.</li>
- * <li>Retrieving an existing collection returns it.</li>
- * <li>Retrieving a not existing collection returns an empty collection.</li>
+ * <li>Retrieving a not existing entity throws an exception.</li>
  * </ol>
  * <p>
  * This is meant to be used along a Spring context, which will set up the
  * repository and all of it's requirements.
  *
  * @author Bernardo Martínez Garrido
- * @see FilteredRepository
+ * @see SimpleEntity
  */
 public abstract class AbstractITQuery
         extends AbstractTransactionalTestNGSpringContextTests {
 
     /**
-     * Initial number of entities in the repository.
+     * Initial number of entities in the persistence context.
      */
     @Value("${entities.total}")
     private Integer       entitiesCount;
@@ -71,16 +69,16 @@ public abstract class AbstractITQuery
     private EntityManager entityManager;
 
     /**
-     * The query to acquire an entity by the id.
-     */
-    @Value("${query.byId}")
-    private String        queryById;
-
-    /**
      * The query to acquire all the entities.
      */
     @Value("${query.findAll}")
-    private String        queryFindAll;
+    private String        findAll;
+
+    /**
+     * The query to acquire an entity by the id.
+     */
+    @Value("${query.byId}")
+    private String        findById;
 
     /**
      * Default constructor.
@@ -94,9 +92,8 @@ public abstract class AbstractITQuery
      */
     @Test
     public final void testGetAll() {
-        Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(queryFindAll).getResultList().size(),
-                entitiesCount);
+        Assert.assertEquals((Integer) getEntityManager().createQuery(findAll)
+                .getResultList().size(), entitiesCount);
     }
 
     /**
@@ -104,42 +101,42 @@ public abstract class AbstractITQuery
      */
     @Test
     public final void testGetEntity_Existing_Entity() {
-        final Integer id;                    // Entity ID
-        final DefaultSimpleEntity entity;    // Tested entity
-        final Query query;                   // Query for the entity
+        final Integer id;          // Entity ID
+        final SimpleEntity entity; // Tested entity
+        final Query query;         // Query for the entity
 
         // Entity's id
         id = 1;
 
         // Builds the query
-        query = getEntityManager().createQuery(queryById);
+        query = getEntityManager().createQuery(findById);
         query.setParameter("id", id);
 
         // Acquires the entity
-        entity = (DefaultSimpleEntity) query.getSingleResult();
+        entity = (SimpleEntity) query.getSingleResult();
 
         // The entity's id is the correct one
         Assert.assertEquals(entity.getId(), id);
     }
 
     /**
-     * Tests that retrieving a not existing entity returns null.
+     * Tests that retrieving a not existing entity throws an exception.
      */
     @Test(expectedExceptions = { NoResultException.class })
     public final void testGetEntity_NotExisting_Null() {
-        final Integer id;                    // Invalid entity ID
-        final DefaultSimpleEntity entity;    // Tested entity
-        final Query query;                   // Query for the entity
+        final Integer id;          // Invalid entity ID
+        final SimpleEntity entity; // Tested entity
+        final Query query;         // Query for the entity
 
         // Invalid entity id
         id = 123;
 
         // Builds the query
-        query = getEntityManager().createQuery(queryById);
+        query = getEntityManager().createQuery(findById);
         query.setParameter("id", id);
 
         // Tries to acquire the entity
-        entity = (DefaultSimpleEntity) query.getSingleResult();
+        entity = (SimpleEntity) query.getSingleResult();
 
         // The entity is null
         Assert.assertEquals(entity, null);
