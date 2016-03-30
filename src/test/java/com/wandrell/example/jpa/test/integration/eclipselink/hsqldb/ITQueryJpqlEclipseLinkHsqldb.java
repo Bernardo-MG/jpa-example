@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.eclipselink.h2;
+package com.wandrell.example.jpa.test.integration.eclipselink.hsqldb;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -36,7 +36,7 @@ import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderP
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.UserPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractITQuery;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITQueryJpql;
 
 /**
  * Integration tests for
@@ -54,16 +54,18 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITQuery;
         locations = { TestPropertiesConfig.ENTITY,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
                 UserPropertiesConfig.DEFAULT,
-                DatabaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
-                JdbcPropertiesPaths.H2, QueryPropertiesPaths.JPA_QUERY },
-        properties = { "jpa.persistenceUnitName=test_model_jpa_eclipselink_h2",
-                "jdbc.url=jdbc:h2:mem:test_jpa_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
-public final class ITQueryEclipseLinkH2 extends AbstractITQuery {
+                DatabaseScriptsPropertiesConfig.MSSQL,
+                JpaPropertiesConfig.HSQLDB, JdbcPropertiesPaths.HSQLDB,
+                QueryPropertiesPaths.JPA_QUERY },
+        properties = {
+                "jpa.persistenceUnitName=test_model_jpa_eclipselink_hsqldb",
+                "jdbc.url=jdbc:hsqldb:mem:test_jpa_eclipselink" })
+public final class ITQueryJpqlEclipseLinkHsqldb extends AbstractITQueryJpql {
 
     /**
      * Default constructor.
      */
-    public ITQueryEclipseLinkH2() {
+    public ITQueryJpqlEclipseLinkHsqldb() {
         super();
     }
 

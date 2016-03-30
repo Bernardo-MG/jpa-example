@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.eclipselink.mysql;
+package com.wandrell.example.jpa.test.integration.eclipselink.hsqldb;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -36,12 +36,12 @@ import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderP
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.UserPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractITQuery;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITQueryCriteriaApi;
 
 /**
  * Integration tests for
  * {@link com.wandrell.pattern.repository.spring.SpringJDBCRepository
- * SpringJDBCRepository} implementing {@code AbstractITQuery}, using a MySQL
+ * SpringJDBCRepository} implementing {@code AbstractITQuery}, using an H2
  * in-memory database and Spring JDBC.
  *
  * @author Bernardo Martínez Garrido
@@ -53,19 +53,20 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITQuery;
 @TestPropertySource(
         locations = { TestPropertiesConfig.ENTITY,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                UserPropertiesConfig.MYSQL,
-                DatabaseScriptsPropertiesConfig.MYSQL,
-                JpaPropertiesConfig.MYSQL, JdbcPropertiesPaths.MYSQL,
+                UserPropertiesConfig.DEFAULT,
+                DatabaseScriptsPropertiesConfig.MSSQL,
+                JpaPropertiesConfig.HSQLDB, JdbcPropertiesPaths.HSQLDB,
                 QueryPropertiesPaths.JPA_QUERY },
         properties = {
-                "jpa.persistenceUnitName=test_model_jpa_eclipselink_mysql",
-                "jdbc.url=jdbc:mysql://localhost:3306/test_jpa_eclipselink" })
-public final class ITQueryEclipseLinkMySql extends AbstractITQuery {
+                "jpa.persistenceUnitName=test_model_jpa_eclipselink_hsqldb",
+                "jdbc.url=jdbc:hsqldb:mem:test_jpa_eclipselink" })
+public final class ITQueryCriteriaApiEclipseLinkHsqldb
+        extends AbstractITQueryCriteriaApi {
 
     /**
      * Default constructor.
      */
-    public ITQueryEclipseLinkMySql() {
+    public ITQueryCriteriaApiEclipseLinkHsqldb() {
         super();
     }
 

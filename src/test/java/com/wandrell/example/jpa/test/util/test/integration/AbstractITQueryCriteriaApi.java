@@ -27,6 +27,9 @@ package com.wandrell.example.jpa.test.util.test.integration;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,11 +37,13 @@ import org.springframework.test.context.testng.AbstractTransactionalTestNGSpring
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.wandrell.example.jpa.model.DefaultSimpleEntity;
+import com.wandrell.example.jpa.model.DefaultSimpleEntity_;
 import com.wandrell.example.jpa.model.SimpleEntity;
 
 /**
  * Abstract integration tests for a {@link SimpleEntity} testing it can be
- * queried correctly.
+ * queried correctly by using criteria API queries.
  * <p>
  * Checks the following cases:
  * <ol>
@@ -53,7 +58,7 @@ import com.wandrell.example.jpa.model.SimpleEntity;
  * @author Bernardo Martínez Garrido
  * @see SimpleEntity
  */
-public abstract class AbstractITQuery
+public abstract class AbstractITQueryCriteriaApi
         extends AbstractTransactionalTestNGSpringContextTests {
 
     /**
@@ -69,21 +74,9 @@ public abstract class AbstractITQuery
     private EntityManager entityManager;
 
     /**
-     * The query to acquire all the entities.
-     */
-    @Value("${query.findAll}")
-    private String        findAll;
-
-    /**
-     * The query to acquire an entity by the id.
-     */
-    @Value("${query.byId}")
-    private String        findById;
-
-    /**
      * Default constructor.
      */
-    public AbstractITQuery() {
+    public AbstractITQueryCriteriaApi() {
         super();
     }
 
@@ -92,8 +85,9 @@ public abstract class AbstractITQuery
      */
     @Test
     public final void testGetAll() {
-        Assert.assertEquals((Integer) getEntityManager().createQuery(findAll)
-                .getResultList().size(), entitiesCount);
+        Assert.assertEquals((Integer) getEntityManager()
+                .createQuery(getFindAll()).getResultList().size(),
+                entitiesCount);
     }
 
     /**
@@ -109,8 +103,7 @@ public abstract class AbstractITQuery
         id = 1;
 
         // Builds the query
-        query = getEntityManager().createQuery(findById);
-        query.setParameter("id", id);
+        query = getEntityManager().createQuery(getFindById(id));
 
         // Acquires the entity
         entity = (SimpleEntity) query.getSingleResult();
@@ -132,14 +125,64 @@ public abstract class AbstractITQuery
         id = 123;
 
         // Builds the query
-        query = getEntityManager().createQuery(findById);
-        query.setParameter("id", id);
+        query = getEntityManager().createQuery(getFindById(id));
 
         // Tries to acquire the entity
         entity = (SimpleEntity) query.getSingleResult();
 
         // The entity is null
         Assert.assertEquals(entity, null);
+    }
+
+    /**
+     * Generates the query to find all the entities by using the Criteria API.
+     *
+     * @return the query to find all the entities
+     */
+    private final CriteriaQuery<DefaultSimpleEntity> getFindAll() {
+        final CriteriaBuilder builder;                  // Builder
+        final CriteriaQuery<DefaultSimpleEntity> query; // Query
+        Root<DefaultSimpleEntity> entity;               // Root entity
+
+        builder = getEntityManager().getCriteriaBuilder();
+        query = builder.createQuery(DefaultSimpleEntity.class);
+        entity = query.from(DefaultSimpleEntity.class);
+
+        // Generates a select query
+        query.select(entity);
+
+        // Orders by the id
+        query.orderBy(builder.asc(entity.get(DefaultSimpleEntity_.id)));
+
+        return query;
+    }
+
+    /**
+     * Generates the query to find an the entity by the id by using the Criteria
+     * API.
+     *
+     * @return the query to find an the entity by the id
+     */
+    private final CriteriaQuery<DefaultSimpleEntity>
+            getFindById(final Integer id) {
+        final CriteriaBuilder builder;                  // Builder
+        final CriteriaQuery<DefaultSimpleEntity> query; // Query
+        Root<DefaultSimpleEntity> entity;               // Root entity
+
+        builder = getEntityManager().getCriteriaBuilder();
+        query = builder.createQuery(DefaultSimpleEntity.class);
+        entity = query.from(DefaultSimpleEntity.class);
+
+        // Generates a select query
+        query.select(entity);
+
+        // Queries the entities with the specified id
+        query.where(builder.equal(entity.get(DefaultSimpleEntity_.id), id));
+
+        // Orders by the id
+        query.orderBy(builder.asc(entity.get(DefaultSimpleEntity_.id)));
+
+        return query;
     }
 
     /**
