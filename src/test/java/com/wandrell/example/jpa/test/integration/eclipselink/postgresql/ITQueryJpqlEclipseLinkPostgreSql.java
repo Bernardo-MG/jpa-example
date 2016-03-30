@@ -51,16 +51,17 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITQueryJpql;
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         PersistenceContextConfig.ECLIPSELINK })
 @TestPropertySource(
-        locations = { TestPropertiesConfig.ENTITY,
+        locations = { TestPropertiesConfig.SIMPLE_ENTITY,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
                 UserPropertiesConfig.POSTGRES,
                 DatabaseScriptsPropertiesConfig.POSTGRESQL,
                 JpaPropertiesConfig.POSTGRESQL, JdbcPropertiesPaths.POSTGRESQL,
-                QueryPropertiesPaths.JPA_QUERY },
+                QueryPropertiesPaths.JPA_QUERY, TestPropertiesConfig.GENERAL },
         properties = {
                 "jpa.persistenceUnitName=test_model_jpa_eclipselink_postgresql",
                 "jdbc.url=jdbc:postgresql://localhost:5432/test_jpa_eclipselink" })
-public final class ITQueryJpqlEclipseLinkPostgreSql extends AbstractITQueryJpql {
+public final class ITQueryJpqlEclipseLinkPostgreSql
+        extends AbstractITQueryJpql {
 
     /**
      * Default constructor.

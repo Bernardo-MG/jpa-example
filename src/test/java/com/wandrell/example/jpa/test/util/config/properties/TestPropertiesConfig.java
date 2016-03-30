@@ -34,9 +34,14 @@ package com.wandrell.example.jpa.test.util.config.properties;
 public class TestPropertiesConfig {
 
     /**
-     * Properties file for the test entity.
+     * General configuration for the tests.
      */
-    public static final String ENTITY = "classpath:config/entity/test-entity-jpa.properties";
+    public static final String GENERAL       = "classpath:config/test-general.properties";
+
+    /**
+     * Test entity.
+     */
+    public static final String SIMPLE_ENTITY = "classpath:config/entity/test-simple-entity.properties";
 
     /**
      * Private constructor to avoid initialization.

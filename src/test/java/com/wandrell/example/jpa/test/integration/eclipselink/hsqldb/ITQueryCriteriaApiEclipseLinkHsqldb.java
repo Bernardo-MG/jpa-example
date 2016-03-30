@@ -33,7 +33,6 @@ import com.wandrell.example.jpa.test.util.config.properties.DatabaseScriptsPrope
 import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
-import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.UserPropertiesConfig;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITQueryCriteriaApi;
@@ -51,12 +50,12 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITQueryCriter
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         PersistenceContextConfig.ECLIPSELINK })
 @TestPropertySource(
-        locations = { TestPropertiesConfig.ENTITY,
+        locations = { TestPropertiesConfig.SIMPLE_ENTITY,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
                 UserPropertiesConfig.DEFAULT,
                 DatabaseScriptsPropertiesConfig.MSSQL,
                 JpaPropertiesConfig.HSQLDB, JdbcPropertiesPaths.HSQLDB,
-                QueryPropertiesPaths.JPA_QUERY },
+                TestPropertiesConfig.GENERAL },
         properties = {
                 "jpa.persistenceUnitName=test_model_jpa_eclipselink_hsqldb",
                 "jdbc.url=jdbc:hsqldb:mem:test_jpa_eclipselink" })

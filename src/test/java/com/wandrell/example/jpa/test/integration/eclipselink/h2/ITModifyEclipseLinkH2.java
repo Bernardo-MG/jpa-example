@@ -52,11 +52,12 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITModify;
         TestContextConfig.ENTITY_MODIFIABLE,
         PersistenceContextConfig.ECLIPSELINK })
 @TestPropertySource(
-        locations = { TestPropertiesConfig.ENTITY,
+        locations = { TestPropertiesConfig.SIMPLE_ENTITY,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
                 UserPropertiesConfig.DEFAULT,
                 DatabaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
-                JdbcPropertiesPaths.H2, QueryPropertiesPaths.JPA_QUERY },
+                JdbcPropertiesPaths.H2, QueryPropertiesPaths.JPA_QUERY,
+                TestPropertiesConfig.GENERAL },
         properties = {
                 "jpa.persistenceUnitName=test_model_jpa_eclipselink_h2_modify",
                 "jdbc.url=jdbc:h2:mem:test_jpa_eclipselink_modify;DB_CLOSE_ON_EXIT=FALSE" })
