@@ -22,14 +22,7 @@
  * SOFTWARE.
  */
 /**
- * The model for the application.
- * <p>
- * This consists just on a very simple entity, containing an id and a name.
- * <p>
- * The {@link com.wandrell.example.SimpleEntity.model.SimpleEntity SimpleEntity}
- * interface and a JPA implementation of it, the
- * {@link com.wandrell.example.DefaultSimpleEntity.model.DefaultSimpleEntity
- * DefaultSimpleEntity}, represent it.
+ * A simple JPA entity.
  */
 
-package com.wandrell.example.jpa.model;
+package com.wandrell.example.jpa.model.simple;

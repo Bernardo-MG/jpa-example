@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.model;
+package com.wandrell.example.jpa.model.simple;
 
 import java.io.Serializable;
 

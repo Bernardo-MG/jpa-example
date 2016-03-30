@@ -36,8 +36,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.model.DefaultSimpleEntity;
-import com.wandrell.example.jpa.model.SimpleEntity;
+import com.wandrell.example.jpa.model.simple.DefaultSimpleEntity;
+import com.wandrell.example.jpa.model.simple.SimpleEntity;
 
 /**
  * Abstract integration tests for a {@link SimpleEntity} testing it can be
