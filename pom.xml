@@ -211,16 +211,14 @@
       <guava.version>19.0</guava.version>
       <h2.version>1.4.191</h2.version>
       <hibernate.version>5.1.0.Final</hibernate.version>
-      <hikari.version>2.3.12</hikari.version>
+      <hikari.version>2.3.13</hikari.version>
       <hsqldb.version>2.3.3</hsqldb.version>
       <javaee.api.version>7.0</javaee.api.version>
       <log4j.version>2.5</log4j.version>
       <mysql.version>5.1.38</mysql.version>
       <postgresql.version>9.4.1208.jre7</postgresql.version>
-      <slf4j.version>1.7.18</slf4j.version>
-      <spring.data.version>1.9.2.RELEASE</spring.data.version>
+      <slf4j.version>1.7.20</slf4j.version>
       <spring.version>4.2.5.RELEASE</spring.version>
-      <sqlite.version>3.8.11.2</sqlite.version>
       <testng.version>6.9.10</testng.version>
       <!-- Plugins versions -->
       <plugin.changes.version>2.11</plugin.changes.version>
@@ -358,13 +356,6 @@
          <scope>test</scope>
       </dependency>
       <dependency>
-         <!-- Spring Data JPA -->
-         <groupId>org.springframework.data</groupId>
-         <artifactId>spring-data-jpa</artifactId>
-         <version>${spring.data.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
          <!-- Spring Framework Context -->
          <groupId>org.springframework</groupId>
          <artifactId>spring-context</artifactId>
@@ -390,13 +381,6 @@
          <groupId>org.springframework</groupId>
          <artifactId>spring-tx</artifactId>
          <version>${spring.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- SQLite JDBC -->
-         <groupId>org.xerial</groupId>
-         <artifactId>sqlite-jdbc</artifactId>
-         <version>${sqlite.version}</version>
          <scope>test</scope>
       </dependency>
       <dependency>
