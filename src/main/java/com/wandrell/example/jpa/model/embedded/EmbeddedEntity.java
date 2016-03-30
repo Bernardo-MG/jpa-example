@@ -22,36 +22,32 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.model.simple;
+package com.wandrell.example.jpa.model.embedded;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.Objects;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import com.google.common.base.MoreObjects;
 
-/**
- * JPA annotated implementation of {@link SimpleEntity}.
- *
- * @author Bernardo Martínez Garrido
- */
-@Entity(name = "SimpleEntity")
-@Table(name = "simple_entities")
-public final class DefaultSimpleEntity implements SimpleEntity {
+@Entity(name = "EmbeddedEntity")
+@Table(name = "embedded_entities")
+public class EmbeddedEntity {
 
-    /**
-     * Serialization ID.
-     */
-    @Transient
-    private static final long serialVersionUID = 1328776989450853491L;
+    @Embedded
+    @AttributeOverrides({ @AttributeOverride(name = "desc",
+            column = @Column(name = "description", nullable = false) ), })
+    private EmbeddableData data;
 
     /**
      * Entity's ID.
@@ -59,21 +55,9 @@ public final class DefaultSimpleEntity implements SimpleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer           id               = null;
+    private Integer        id = null;
 
-    /**
-     * Name of the entity.
-     * <p>
-     * This is to have additional data apart from the id, to be used on the
-     * tests.
-     */
-    @Column(name = "name", nullable = false)
-    private String            name             = "";
-
-    /**
-     * Constructs an example entity.
-     */
-    public DefaultSimpleEntity() {
+    public EmbeddedEntity() {
         super();
     }
 
@@ -91,18 +75,12 @@ public final class DefaultSimpleEntity implements SimpleEntity {
             return false;
         }
 
-        final DefaultSimpleEntity other = (DefaultSimpleEntity) obj;
+        final EmbeddedEntity other = (EmbeddedEntity) obj;
         return Objects.equals(id, other.id);
     }
 
-    @Override
     public final Integer getId() {
         return id;
-    }
-
-    @Override
-    public final String getName() {
-        return name;
     }
 
     @Override
@@ -110,14 +88,8 @@ public final class DefaultSimpleEntity implements SimpleEntity {
         return Objects.hash(id);
     }
 
-    @Override
     public final void setId(final Integer identifier) {
         id = checkNotNull(identifier, "Received a null pointer as identifier");
-    }
-
-    @Override
-    public final void setName(final String name) {
-        this.name = checkNotNull(name, "Received a null pointer as name");
     }
 
     @Override

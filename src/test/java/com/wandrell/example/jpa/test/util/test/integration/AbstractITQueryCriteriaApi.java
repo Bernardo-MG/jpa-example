@@ -37,8 +37,8 @@ import org.springframework.test.context.testng.AbstractTransactionalTestNGSpring
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.model.DefaultSimpleEntity_;
 import com.wandrell.example.jpa.model.simple.DefaultSimpleEntity;
+import com.wandrell.example.jpa.model.simple.DefaultSimpleEntity_;
 import com.wandrell.example.jpa.model.simple.SimpleEntity;
 
 /**

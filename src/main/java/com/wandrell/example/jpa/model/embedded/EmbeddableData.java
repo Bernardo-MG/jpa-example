@@ -22,58 +22,34 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.model.simple;
-
-import static com.google.common.base.Preconditions.checkNotNull;
+package com.wandrell.example.jpa.model.embedded;
 
 import java.util.Objects;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.Embeddable;
 
 import com.google.common.base.MoreObjects;
 
-/**
- * JPA annotated implementation of {@link SimpleEntity}.
- *
- * @author Bernardo Martínez Garrido
- */
-@Entity(name = "SimpleEntity")
-@Table(name = "simple_entities")
-public final class DefaultSimpleEntity implements SimpleEntity {
+@Embeddable
+public final class EmbeddableData {
 
     /**
-     * Serialization ID.
+     * Description of the entity.
      */
-    @Transient
-    private static final long serialVersionUID = 1328776989450853491L;
-
-    /**
-     * Entity's ID.
-     */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
-    private Integer           id               = null;
+    @Column(name = "desc", nullable = false)
+    private String description = "";
 
     /**
      * Name of the entity.
-     * <p>
-     * This is to have additional data apart from the id, to be used on the
-     * tests.
      */
     @Column(name = "name", nullable = false)
-    private String            name             = "";
+    private String name        = "";
 
     /**
-     * Constructs an example entity.
+     * Constructs an embeddable class.
      */
-    public DefaultSimpleEntity() {
+    public EmbeddableData() {
         super();
     }
 
@@ -91,38 +67,36 @@ public final class DefaultSimpleEntity implements SimpleEntity {
             return false;
         }
 
-        final DefaultSimpleEntity other = (DefaultSimpleEntity) obj;
-        return Objects.equals(id, other.id);
+        final EmbeddableData other = (EmbeddableData) obj;
+        return Objects.equals(name, other.name)
+                && Objects.equals(description, other.description);
     }
 
-    @Override
-    public final Integer getId() {
-        return id;
+    public final String getDescription() {
+        return description;
     }
 
-    @Override
     public final String getName() {
         return name;
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(name, description);
     }
 
-    @Override
-    public final void setId(final Integer identifier) {
-        id = checkNotNull(identifier, "Received a null pointer as identifier");
+    public final void setDescription(String description) {
+        this.description = description;
     }
 
-    @Override
-    public final void setName(final String name) {
-        this.name = checkNotNull(name, "Received a null pointer as name");
+    public final void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("id", id).toString();
+        return MoreObjects.toStringHelper(this).add("name", name)
+                .add("description", description).toString();
     }
 
 }
