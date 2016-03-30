@@ -38,7 +38,7 @@ public final class EmbeddableData {
      * Description of the entity.
      */
     @Column(name = "desc", nullable = false)
-    private String description = "";
+    private String desc = "";
 
     /**
      * Name of the entity.
@@ -69,11 +69,11 @@ public final class EmbeddableData {
 
         final EmbeddableData other = (EmbeddableData) obj;
         return Objects.equals(name, other.name)
-                && Objects.equals(description, other.description);
+                && Objects.equals(desc, other.desc);
     }
 
     public final String getDescription() {
-        return description;
+        return desc;
     }
 
     public final String getName() {
@@ -82,11 +82,11 @@ public final class EmbeddableData {
 
     @Override
     public final int hashCode() {
-        return Objects.hash(name, description);
+        return Objects.hash(name, desc);
     }
 
     public final void setDescription(String description) {
-        this.description = description;
+        this.desc = description;
     }
 
     public final void setName(String name) {
@@ -96,7 +96,7 @@ public final class EmbeddableData {
     @Override
     public final String toString() {
         return MoreObjects.toStringHelper(this).add("name", name)
-                .add("description", description).toString();
+                .add("description", desc).toString();
     }
 
 }

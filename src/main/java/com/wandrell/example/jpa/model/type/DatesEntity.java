@@ -1,10 +1,10 @@
 
 package com.wandrell.example.jpa.model.type;
 
-import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -27,7 +27,7 @@ public final class DatesEntity {
     private Calendar      calendarDate;
 
     @Temporal(TemporalType.TIME)
-    @Column(name = "calendar_date", nullable = false)
+    @Column(name = "calendar_time", nullable = false)
     private Calendar      calendarTime;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -47,7 +47,7 @@ public final class DatesEntity {
     private Date          javaDate;
 
     @Temporal(TemporalType.TIME)
-    @Column(name = "java_date", nullable = false)
+    @Column(name = "java_time", nullable = false)
     private Date          javaTime;
 
     @Temporal(TemporalType.TIMESTAMP)

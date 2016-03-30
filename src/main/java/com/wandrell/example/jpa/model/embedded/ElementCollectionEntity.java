@@ -17,8 +17,8 @@ import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
 
-@Entity(name = "MultiValueEntity")
-@Table(name = "multivalue_entities")
+@Entity(name = "ElementCollectionEntity")
+@Table(name = "element_collection_entities")
 public class ElementCollectionEntity {
 
     @ElementCollection
