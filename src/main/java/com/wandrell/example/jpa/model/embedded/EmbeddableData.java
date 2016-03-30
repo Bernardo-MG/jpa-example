@@ -44,7 +44,7 @@ public final class EmbeddableData {
      * Name of the entity.
      */
     @Column(name = "name", nullable = false)
-    private String name        = "";
+    private String name = "";
 
     /**
      * Constructs an embeddable class.
