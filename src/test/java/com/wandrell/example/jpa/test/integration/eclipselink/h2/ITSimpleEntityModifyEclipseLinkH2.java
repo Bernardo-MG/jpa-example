@@ -33,14 +33,15 @@ import com.wandrell.example.jpa.test.util.config.properties.DatabaseScriptsPrope
 import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
+import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.UserPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractITQueryCriteriaApi;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITSimpleEntityModify;
 
 /**
  * Integration tests for
  * {@link com.wandrell.pattern.repository.spring.SpringJDBCRepository
- * SpringJDBCRepository} implementing {@code AbstractITQuery}, using an H2
+ * SpringJDBCRepository} implementing {@code AbstractITModify}, using an H2
  * in-memory database and Spring JDBC.
  *
  * @author Bernardo Martínez Garrido
@@ -48,22 +49,24 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITQueryCriter
  *      SpringJDBCRepository
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
+        TestContextConfig.ENTITY_MODIFIABLE,
         PersistenceContextConfig.ECLIPSELINK })
 @TestPropertySource(
         locations = { TestPropertiesConfig.SIMPLE_ENTITY,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
                 UserPropertiesConfig.DEFAULT,
                 DatabaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
-                JdbcPropertiesPaths.H2, TestPropertiesConfig.GENERAL },
-        properties = { "jpa.persistenceUnitName=test_model_jpa_eclipselink_h2",
-                "jdbc.url=jdbc:h2:mem:test_jpa_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
-public final class ITQueryCriteriaApiEclipseLinkH2
-        extends AbstractITQueryCriteriaApi {
+                JdbcPropertiesPaths.H2, QueryPropertiesPaths.JPA_QUERY,
+                TestPropertiesConfig.GENERAL },
+        properties = {
+                "jpa.persistenceUnitName=test_model_jpa_eclipselink_h2_modify",
+                "jdbc.url=jdbc:h2:mem:test_jpa_eclipselink_modify;DB_CLOSE_ON_EXIT=FALSE" })
+public final class ITSimpleEntityModifyEclipseLinkH2 extends AbstractITSimpleEntityModify {
 
     /**
      * Default constructor.
      */
-    public ITQueryCriteriaApiEclipseLinkH2() {
+    public ITSimpleEntityModifyEclipseLinkH2() {
         super();
     }
 

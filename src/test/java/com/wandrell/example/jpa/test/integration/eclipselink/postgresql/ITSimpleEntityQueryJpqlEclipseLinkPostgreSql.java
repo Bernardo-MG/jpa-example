@@ -36,12 +36,12 @@ import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderP
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.UserPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractITModify;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITSimpleEntityQueryJpql;
 
 /**
  * Integration tests for
  * {@link com.wandrell.pattern.repository.spring.SpringJDBCRepository
- * SpringJDBCRepository} implementing {@code AbstractITModify}, using a
+ * SpringJDBCRepository} implementing {@code AbstractITQuery}, using a
  * PostgreSQL in-memory database and Spring JDBC.
  *
  * @author Bernardo Martínez Garrido
@@ -49,7 +49,6 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITModify;
  *      SpringJDBCRepository
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        TestContextConfig.ENTITY_MODIFIABLE,
         PersistenceContextConfig.ECLIPSELINK })
 @TestPropertySource(
         locations = { TestPropertiesConfig.SIMPLE_ENTITY,
@@ -59,14 +58,15 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITModify;
                 JpaPropertiesConfig.POSTGRESQL, JdbcPropertiesPaths.POSTGRESQL,
                 QueryPropertiesPaths.JPA_QUERY, TestPropertiesConfig.GENERAL },
         properties = {
-                "jpa.persistenceUnitName=test_model_jpa_eclipselink_postgresql_modify",
-                "jdbc.url=jdbc:postgresql://localhost:5432/test_jpa_eclipselink_modify" })
-public final class ITModifyEclipseLinkPostgreSql extends AbstractITModify {
+                "jpa.persistenceUnitName=test_model_jpa_eclipselink_postgresql",
+                "jdbc.url=jdbc:postgresql://localhost:5432/test_jpa_eclipselink" })
+public final class ITSimpleEntityQueryJpqlEclipseLinkPostgreSql
+        extends AbstractITSimpleEntityQueryJpql {
 
     /**
      * Default constructor.
      */
-    public ITModifyEclipseLinkPostgreSql() {
+    public ITSimpleEntityQueryJpqlEclipseLinkPostgreSql() {
         super();
     }
 

@@ -56,7 +56,7 @@ import com.wandrell.example.jpa.model.simple.SimpleEntity;
  * @author Bernardo Martínez Garrido
  * @see SimpleEntity
  */
-public abstract class AbstractITModify
+public abstract class AbstractITSimpleEntityModify
         extends AbstractTransactionalTestNGSpringContextTests {
 
     /**
@@ -99,7 +99,7 @@ public abstract class AbstractITModify
     /**
      * Default constructor.
      */
-    public AbstractITModify() {
+    public AbstractITSimpleEntityModify() {
         super();
     }
 

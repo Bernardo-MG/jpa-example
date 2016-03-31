@@ -33,14 +33,15 @@ import com.wandrell.example.jpa.test.util.config.properties.DatabaseScriptsPrope
 import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
+import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.UserPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractITQueryCriteriaApi;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITSimpleEntityModify;
 
 /**
  * Integration tests for
  * {@link com.wandrell.pattern.repository.spring.SpringJDBCRepository
- * SpringJDBCRepository} implementing {@code AbstractITQuery}, using an H2
+ * SpringJDBCRepository} implementing {@code AbstractITModify}, using an HSQLDB
  * in-memory database and Spring JDBC.
  *
  * @author Bernardo Martínez Garrido
@@ -48,6 +49,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITQueryCriter
  *      SpringJDBCRepository
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
+        TestContextConfig.ENTITY_MODIFIABLE,
         PersistenceContextConfig.ECLIPSELINK })
 @TestPropertySource(
         locations = { TestPropertiesConfig.SIMPLE_ENTITY,
@@ -55,17 +57,16 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITQueryCriter
                 UserPropertiesConfig.DEFAULT,
                 DatabaseScriptsPropertiesConfig.MSSQL,
                 JpaPropertiesConfig.HSQLDB, JdbcPropertiesPaths.HSQLDB,
-                TestPropertiesConfig.GENERAL },
+                QueryPropertiesPaths.JPA_QUERY, TestPropertiesConfig.GENERAL },
         properties = {
                 "jpa.persistenceUnitName=test_model_jpa_eclipselink_hsqldb",
                 "jdbc.url=jdbc:hsqldb:mem:test_jpa_eclipselink" })
-public final class ITQueryCriteriaApiEclipseLinkHsqldb
-        extends AbstractITQueryCriteriaApi {
+public final class ITSimpleEntityModifyEclipseLinkHsqldb extends AbstractITSimpleEntityModify {
 
     /**
      * Default constructor.
      */
-    public ITQueryCriteriaApiEclipseLinkHsqldb() {
+    public ITSimpleEntityModifyEclipseLinkHsqldb() {
         super();
     }
 
