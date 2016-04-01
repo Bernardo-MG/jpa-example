@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import com.google.common.base.MoreObjects;
 
 @Embeddable
-public class EmbeddableKey {
+public class EmbeddableCompositeKey {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,7 @@ public class EmbeddableKey {
     @Column(name = "id2", nullable = false, unique = true)
     long id2;
 
-    public EmbeddableKey() {
+    public EmbeddableCompositeKey() {
         super();
     }
 
@@ -42,7 +42,7 @@ public class EmbeddableKey {
             return false;
         }
 
-        final EmbeddableKey other = (EmbeddableKey) obj;
+        final EmbeddableCompositeKey other = (EmbeddableCompositeKey) obj;
         return Objects.equals(id1, other.id1) && Objects.equals(id2, other.id2);
     }
 

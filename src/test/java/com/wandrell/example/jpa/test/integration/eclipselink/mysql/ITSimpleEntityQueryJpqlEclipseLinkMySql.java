@@ -60,7 +60,8 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITSimpleEntit
         properties = {
                 "jpa.persistenceUnitName=test_model_jpa_eclipselink_mysql",
                 "jdbc.url=jdbc:mysql://localhost:3306/test_jpa_eclipselink" })
-public final class ITSimpleEntityQueryJpqlEclipseLinkMySql extends AbstractITSimpleEntityQueryJpql {
+public final class ITSimpleEntityQueryJpqlEclipseLinkMySql
+        extends AbstractITSimpleEntityQueryJpql {
 
     /**
      * Default constructor.

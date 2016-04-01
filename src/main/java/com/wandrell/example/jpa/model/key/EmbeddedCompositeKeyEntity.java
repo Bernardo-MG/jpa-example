@@ -12,15 +12,15 @@ import com.google.common.base.MoreObjects;
 
 @Entity(name = "EmbeddedKeyEntity")
 @Table(name = "embedded_key_entities")
-public class EmbeddedKeyEntity {
+public class EmbeddedCompositeKeyEntity {
 
     @EmbeddedId
-    private EmbeddableKey key;
+    private EmbeddableCompositeKey key;
 
     @Column(name = "name", nullable = false)
-    private String        name = "";
+    private String                 name = "";
 
-    public EmbeddedKeyEntity() {
+    public EmbeddedCompositeKeyEntity() {
         super();
     }
 
@@ -38,7 +38,7 @@ public class EmbeddedKeyEntity {
             return false;
         }
 
-        final EmbeddedKeyEntity other = (EmbeddedKeyEntity) obj;
+        final EmbeddedCompositeKeyEntity other = (EmbeddedCompositeKeyEntity) obj;
         return Objects.equals(key, other.key);
     }
 
