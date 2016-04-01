@@ -1,5 +1,5 @@
 
-package com.wandrell.example.jpa.model.key;
+package com.wandrell.example.jpa.model.key.classid;
 
 import java.util.Objects;
 

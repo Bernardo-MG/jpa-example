@@ -1,31 +1,25 @@
 
-package com.wandrell.example.jpa.model.key;
+package com.wandrell.example.jpa.model.key.classid;
 
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 import com.google.common.base.MoreObjects;
 
-@Embeddable
-public class EmbeddableCompositeKey {
+public class CompositeKeyClass {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id1", nullable = false, unique = true)
     int  id1;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id2", nullable = false, unique = true)
     long id2;
 
-    public EmbeddableCompositeKey() {
+    public CompositeKeyClass() {
         super();
+    }
+
+    public CompositeKeyClass(final int id1, final long id2) {
+        super();
+
+        this.id1 = id1;
+        this.id2 = id2;
     }
 
     @Override
@@ -42,7 +36,7 @@ public class EmbeddableCompositeKey {
             return false;
         }
 
-        final EmbeddableCompositeKey other = (EmbeddableCompositeKey) obj;
+        final CompositeKeyClass other = (CompositeKeyClass) obj;
         return Objects.equals(id1, other.id1) && Objects.equals(id2, other.id2);
     }
 

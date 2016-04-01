@@ -1,35 +1,30 @@
 
-package com.wandrell.example.jpa.model.key;
+package com.wandrell.example.jpa.model.key.embedded;
 
 import java.util.Objects;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.Embeddable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
 
-@Entity(name = "CompositeKeyEntity")
-@Table(name = "composite_key_entities")
-public class CompositeKeyEntity {
+@Embeddable
+public class EmbeddableCompositeKey {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id1", nullable = false, unique = true)
-    private Integer id1;
+    int  id1;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id2", nullable = false, unique = true)
-    private Long    id2;
+    long id2;
 
-    @Column(name = "name", nullable = false)
-    private String  name = "";
-
-    public CompositeKeyEntity() {
+    public EmbeddableCompositeKey() {
         super();
     }
 
@@ -47,7 +42,7 @@ public class CompositeKeyEntity {
             return false;
         }
 
-        final CompositeKeyEntity other = (CompositeKeyEntity) obj;
+        final EmbeddableCompositeKey other = (EmbeddableCompositeKey) obj;
         return Objects.equals(id1, other.id1) && Objects.equals(id2, other.id2);
     }
 
@@ -57,10 +52,6 @@ public class CompositeKeyEntity {
 
     public final Long getId2() {
         return id2;
-    }
-
-    public final String getName() {
-        return name;
     }
 
     @Override
@@ -76,14 +67,9 @@ public class CompositeKeyEntity {
         this.id2 = id2;
     }
 
-    public final void setName(final String name) {
-        this.name = name;
-    }
-
     @Override
     public final String toString() {
         return MoreObjects.toStringHelper(this).add("id1", id1).add("id2", id2)
                 .toString();
     }
-
 }
