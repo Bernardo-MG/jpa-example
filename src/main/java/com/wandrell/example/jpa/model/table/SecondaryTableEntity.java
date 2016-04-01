@@ -51,6 +51,12 @@ public final class SecondaryTableEntity {
     @Transient
     private static final long serialVersionUID = 1328776989450853491L;
 
+    @Column(name = "field1", nullable = false, table = "two_tables_entities_a")
+    private String            field1           = "";
+
+    @Column(name = "field2", nullable = false, table = "two_tables_entities_b")
+    private String            field2           = "";
+
     /**
      * Entity's ID.
      */
@@ -58,12 +64,6 @@ public final class SecondaryTableEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
     private Integer           id               = null;
-
-    @Column(name = "field1", nullable = false, table = "two_tables_entities_a")
-    private String            field1           = "";
-
-    @Column(name = "field2", nullable = false, table = "two_tables_entities_b")
-    private String            field2           = "";
 
     /**
      * Constructs an example entity.
@@ -90,9 +90,33 @@ public final class SecondaryTableEntity {
         return Objects.equals(id, other.id);
     }
 
+    public final String getField1() {
+        return field1;
+    }
+
+    public final String getField2() {
+        return field2;
+    }
+
+    public final Integer getId() {
+        return id;
+    }
+
     @Override
     public final int hashCode() {
         return Objects.hash(id);
+    }
+
+    public final void setField1(final String field1) {
+        this.field1 = field1;
+    }
+
+    public final void setField2(final String field2) {
+        this.field2 = field2;
+    }
+
+    public final void setId(final Integer id) {
+        this.id = id;
     }
 
     @Override
