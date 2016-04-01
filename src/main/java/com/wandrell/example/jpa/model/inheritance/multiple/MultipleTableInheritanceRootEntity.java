@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.model.inheritance.single;
+package com.wandrell.example.jpa.model.inheritance.multiple;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -40,11 +40,11 @@ import javax.persistence.Transient;
 
 import com.google.common.base.MoreObjects;
 
-@Entity(name = "SingleTableInheritanceRootEntity")
+@Entity(name = "MultipleTableInheritanceRootEntity")
 @Inheritance
 @DiscriminatorColumn(name = "discriminator")
-@Table(name = "single_table_inherit_entities")
-public abstract class SingleTableInheritanceRootEntity {
+@Table(name = "multiple_table_inherit_root_entities")
+public abstract class MultipleTableInheritanceRootEntity {
 
     /**
      * Serialization ID.
@@ -63,7 +63,7 @@ public abstract class SingleTableInheritanceRootEntity {
     /**
      * Constructs an example entity.
      */
-    public SingleTableInheritanceRootEntity() {
+    public MultipleTableInheritanceRootEntity() {
         super();
     }
 
@@ -81,7 +81,7 @@ public abstract class SingleTableInheritanceRootEntity {
             return false;
         }
 
-        final SingleTableInheritanceRootEntity other = (SingleTableInheritanceRootEntity) obj;
+        final MultipleTableInheritanceRootEntity other = (MultipleTableInheritanceRootEntity) obj;
         return Objects.equals(id, other.id);
     }
 
