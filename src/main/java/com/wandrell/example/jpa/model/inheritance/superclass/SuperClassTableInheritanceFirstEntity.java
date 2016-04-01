@@ -1,19 +1,21 @@
 
-package com.wandrell.example.jpa.model.inheritance.perclass;
+package com.wandrell.example.jpa.model.inheritance.superclass;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity(name = "PerClassTableInheritanceFirstEntity")
 @Table(name = "per_class_table_inherit_first_entities")
-public class PerClassTableInheritanceFirstEntity
-        extends PerClassTableInheritanceRootEntity {
+@AttributeOverride(name = "id", column = @Column(name = "id_entity") )
+public class SuperClassTableInheritanceFirstEntity
+        extends SuperClassTableInheritanceRootEntity {
 
     @Column(name = "field_a")
     private String field_a = "";
 
-    public PerClassTableInheritanceFirstEntity() {
+    public SuperClassTableInheritanceFirstEntity() {
         super();
     }
 

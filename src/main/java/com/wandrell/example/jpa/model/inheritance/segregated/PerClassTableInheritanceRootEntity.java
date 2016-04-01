@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.model.inheritance.perclass;
+package com.wandrell.example.jpa.model.inheritance.segregated;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

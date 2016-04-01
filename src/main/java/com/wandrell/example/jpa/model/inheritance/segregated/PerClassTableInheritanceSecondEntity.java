@@ -1,5 +1,5 @@
 
-package com.wandrell.example.jpa.model.inheritance.perclass;
+package com.wandrell.example.jpa.model.inheritance.segregated;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
