@@ -22,30 +22,26 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.model.inheritance.multiple;
+package com.wandrell.example.jpa.model.inheritance.perclass;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.Objects;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.google.common.base.MoreObjects;
 
-@Entity(name = "MultipleTableInheritanceRootEntity")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "discriminator")
-@Table(name = "multiple_table_inherit_root_entities")
-public abstract class MultipleTableInheritanceRootEntity {
+@Entity(name = "PerClassTableInheritanceRootEntity")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class PerClassTableInheritanceRootEntity {
 
     /**
      * Serialization ID.
@@ -64,7 +60,7 @@ public abstract class MultipleTableInheritanceRootEntity {
     /**
      * Constructs an example entity.
      */
-    public MultipleTableInheritanceRootEntity() {
+    public PerClassTableInheritanceRootEntity() {
         super();
     }
 
@@ -82,7 +78,7 @@ public abstract class MultipleTableInheritanceRootEntity {
             return false;
         }
 
-        final MultipleTableInheritanceRootEntity other = (MultipleTableInheritanceRootEntity) obj;
+        final PerClassTableInheritanceRootEntity other = (PerClassTableInheritanceRootEntity) obj;
         return Objects.equals(id, other.id);
     }
 
