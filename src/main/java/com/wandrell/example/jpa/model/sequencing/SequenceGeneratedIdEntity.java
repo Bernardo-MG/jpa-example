@@ -1,5 +1,5 @@
 
-package com.wandrell.example.jpa.model.generated;
+package com.wandrell.example.jpa.model.sequencing;
 
 import java.util.Objects;
 
@@ -8,23 +8,25 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
 
-@Entity(name = "IdentityGeneratedIdEntity")
-@Table(name = "identity_id_entities")
-public final class IdentityGeneratedIdEntity {
+@Entity(name = "SequenceGeneratedIdEntity")
+@Table(name = "sequence_id_entities")
+@SequenceGenerator(name = "seq", initialValue = 1, allocationSize = 100)
+public final class SequenceGeneratedIdEntity {
 
     /**
      * Entity's ID.
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
     @Column(name = "id", nullable = false, unique = true)
     private Integer id = null;
 
-    public IdentityGeneratedIdEntity() {
+    public SequenceGeneratedIdEntity() {
         super();
     }
 
@@ -42,7 +44,7 @@ public final class IdentityGeneratedIdEntity {
             return false;
         }
 
-        final IdentityGeneratedIdEntity other = (IdentityGeneratedIdEntity) obj;
+        final SequenceGeneratedIdEntity other = (SequenceGeneratedIdEntity) obj;
         return Objects.equals(id, other.id);
     }
 

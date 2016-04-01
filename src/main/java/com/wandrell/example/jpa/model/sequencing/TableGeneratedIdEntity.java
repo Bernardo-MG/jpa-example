@@ -1,5 +1,5 @@
 
-package com.wandrell.example.jpa.model.generated;
+package com.wandrell.example.jpa.model.sequencing;
 
 import java.util.Objects;
 
