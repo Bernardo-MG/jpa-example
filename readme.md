@@ -45,15 +45,11 @@ The project has been tested on the following Java versions:
 
 All other dependencies are handled through Maven, and noted in the included POM file.
 
-### Installing
+### Missing JPA metadata
 
-The recommended way to install the project is by setting up your preferred dependencies manager. To get the configuration information for this check the [Bintray repository][bintray-repo], or the [Maven Central Repository][maven-repo].
+Currently there are some problems when generating the JPA metadata classes automatically. Mainly that they are not generated when trying to refresh the Maven project on Eclipse.
 
-If for some reason manual installation is necessary, just use the following Maven command:
-
-```
-$ mvn install
-```
+To fix this just package the project.
 
 ## Collaborate
 
