@@ -49,7 +49,11 @@ All other dependencies are handled through Maven, and noted in the included POM 
 
 Currently there are some problems when generating the JPA metadata classes automatically. Mainly that they are not generated when trying to refresh the Maven project on Eclipse.
 
-To fix this just package the project.
+To fix this just package the project with the usual Maven command:
+
+```
+$ mvn package
+```
 
 ## Collaborate
 
