@@ -74,8 +74,6 @@ If you wish to fork or modify the code, visit the [GitHub project page][scm], wh
 
 The project has been released under the [MIT License][license].
 
-[bintray-repo]: https://bintray.com/bernardo-mg/maven/jpa-example/view
-[maven-repo]: http://mvnrepository.com/artifact/com.wandrell.example/jpa-example
 [issues]: https://github.com/bernardo-mg/jpa-example/issues
 [javadoc-develop]: http://docs.wandrell.com/maven/jpa-example/apidocs
 [javadoc-release]: http://docs.wandrell.com/development/maven/jpa-example/apidocs
