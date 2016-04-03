@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 /**
- * Entities making use of field value converters.
+ * Entities making use of attribute converters.
  */
 
 package com.wandrell.example.jpa.model.converter;

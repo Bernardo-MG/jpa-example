@@ -55,7 +55,7 @@ public final class BooleanConverterEntity {
     @Transient
     private static final long serialVersionUID = 1328776989450853491L;
 
-    @Convert(converter = BooleanTFConverter.class)
+    @Convert(converter = BooleanToStringConverter.class)
     @Column(name = "flag", nullable = false)
     private Boolean           flag;
 
