@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.model.type;
+package com.wandrell.example.jpa.model.large;
 
 import java.util.Objects;
 

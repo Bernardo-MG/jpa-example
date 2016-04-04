@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.model.type;
+package com.wandrell.example.jpa.model.date;
 
 import java.sql.Time;
 import java.sql.Timestamp;

@@ -46,7 +46,7 @@ public class EmbeddedEntity {
 
     @Embedded
     @AttributeOverrides({ @AttributeOverride(name = "desc",
-            column = @Column(name = "description", nullable = false)), })
+            column = @Column(name = "description", nullable = false) ), })
     private EmbeddableData data;
 
     /**

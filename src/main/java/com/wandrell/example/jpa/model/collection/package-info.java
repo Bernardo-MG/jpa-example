@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 /**
- * Various data types.
+ * Entities with collections.
  */
 
-package com.wandrell.example.jpa.model.type;
+package com.wandrell.example.jpa.model.collection;

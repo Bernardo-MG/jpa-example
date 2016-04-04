@@ -21,11 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+/**
+ * Entities with large values.
+ */
 
-package com.wandrell.example.jpa.model.type;
-
-public enum TestEnum {
-
-    FIRST, SECOND, THIRD
-
-}
+package com.wandrell.example.jpa.model.large;

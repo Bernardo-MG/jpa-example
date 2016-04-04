@@ -42,7 +42,7 @@ import com.google.common.base.MoreObjects;
 @Table(name = "two_tables_entities_a")
 @SecondaryTable(name = "two_tables_entities_b",
         pkJoinColumns = @PrimaryKeyJoinColumn(name = "entity_id",
-                referencedColumnName = "id"))
+                referencedColumnName = "id") )
 public final class SecondaryTableEntity {
 
     /**

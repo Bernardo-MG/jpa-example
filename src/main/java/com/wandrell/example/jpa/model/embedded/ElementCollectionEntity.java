@@ -45,7 +45,7 @@ import com.google.common.base.MoreObjects;
 public class ElementCollectionEntity {
 
     @ElementCollection
-    @CollectionTable(name = "data", joinColumns = @JoinColumn(name = "id"))
+    @CollectionTable(name = "data", joinColumns = @JoinColumn(name = "id") )
     private Collection<EmbeddableData> data = new LinkedList<EmbeddableData>();
 
     /**
