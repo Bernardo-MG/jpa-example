@@ -26,36 +26,23 @@ package com.wandrell.example.jpa.model.key.classid;
 
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
-
 import com.google.common.base.MoreObjects;
 
-@Entity(name = "CompositeKeyEntity")
-@Table(name = "composite_key_entities")
-@IdClass(CompositeKeyClass.class)
-public class CompositeKeyClassEntity {
+public class CompositeKey {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id1", nullable = false, unique = true)
-    private Integer id1;
+    int  id1;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id2", nullable = false, unique = true)
-    private Long    id2;
+    long id2;
 
-    @Column(name = "name", nullable = false)
-    private String  name = "";
-
-    public CompositeKeyClassEntity() {
+    public CompositeKey() {
         super();
+    }
+
+    public CompositeKey(final int id1, final long id2) {
+        super();
+
+        this.id1 = id1;
+        this.id2 = id2;
     }
 
     @Override
@@ -72,7 +59,7 @@ public class CompositeKeyClassEntity {
             return false;
         }
 
-        final CompositeKeyClassEntity other = (CompositeKeyClassEntity) obj;
+        final CompositeKey other = (CompositeKey) obj;
         return Objects.equals(id1, other.id1) && Objects.equals(id2, other.id2);
     }
 
@@ -82,10 +69,6 @@ public class CompositeKeyClassEntity {
 
     public final Long getId2() {
         return id2;
-    }
-
-    public final String getName() {
-        return name;
     }
 
     @Override
@@ -101,14 +84,9 @@ public class CompositeKeyClassEntity {
         this.id2 = id2;
     }
 
-    public final void setName(final String name) {
-        this.name = name;
-    }
-
     @Override
     public final String toString() {
         return MoreObjects.toStringHelper(this).add("id1", id1).add("id2", id2)
                 .toString();
     }
-
 }

@@ -18,8 +18,8 @@ import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
 
-@Entity(name = "ManyToOneEntity")
-@Table(name = "many_to_one_entities")
+@Entity(name = "ManyToManyOwnerEntity")
+@Table(name = "many_to_many_owner_entities")
 public class ManyToManyOwnerEntity {
 
     /**

@@ -28,8 +28,6 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -40,12 +38,10 @@ import com.google.common.base.MoreObjects;
 public class CompositeKeyEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id1", nullable = false, unique = true)
     private Integer id1;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id2", nullable = false, unique = true)
     private Long    id2;
 

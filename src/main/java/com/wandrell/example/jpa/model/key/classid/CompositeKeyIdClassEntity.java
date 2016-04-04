@@ -26,23 +26,32 @@ package com.wandrell.example.jpa.model.key.classid;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.Table;
+
 import com.google.common.base.MoreObjects;
 
-public class CompositeKeyClass {
+@Entity(name = "CompositeKeyIdClassEntity")
+@Table(name = "composite_key_idclass_entities")
+@IdClass(CompositeKey.class)
+public class CompositeKeyIdClassEntity {
 
-    int  id1;
+    @Id
+    @Column(name = "id1", nullable = false, unique = true)
+    private Integer id1;
 
-    long id2;
+    @Id
+    @Column(name = "id2", nullable = false, unique = true)
+    private Long    id2;
 
-    public CompositeKeyClass() {
+    @Column(name = "name", nullable = false)
+    private String  name = "";
+
+    public CompositeKeyIdClassEntity() {
         super();
-    }
-
-    public CompositeKeyClass(final int id1, final long id2) {
-        super();
-
-        this.id1 = id1;
-        this.id2 = id2;
     }
 
     @Override
@@ -59,7 +68,7 @@ public class CompositeKeyClass {
             return false;
         }
 
-        final CompositeKeyClass other = (CompositeKeyClass) obj;
+        final CompositeKeyIdClassEntity other = (CompositeKeyIdClassEntity) obj;
         return Objects.equals(id1, other.id1) && Objects.equals(id2, other.id2);
     }
 
@@ -69,6 +78,10 @@ public class CompositeKeyClass {
 
     public final Long getId2() {
         return id2;
+    }
+
+    public final String getName() {
+        return name;
     }
 
     @Override
@@ -84,9 +97,14 @@ public class CompositeKeyClass {
         this.id2 = id2;
     }
 
+    public final void setName(final String name) {
+        this.name = name;
+    }
+
     @Override
     public final String toString() {
         return MoreObjects.toStringHelper(this).add("id1", id1).add("id2", id2)
                 .toString();
     }
+
 }

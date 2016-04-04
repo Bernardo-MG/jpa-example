@@ -28,8 +28,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity(name = "PerClassTableInheritanceSecondEntity")
-@Table(name = "per_class_table_inherit_second_entities")
+@Entity(name = "SuperClassTableInheritanceSecondEntity")
+@Table(name = "super_class_table_inherit_second_entities")
 public class SuperClassTableInheritanceSecondEntity
         extends SuperClassTableInheritanceRootEntity {
 

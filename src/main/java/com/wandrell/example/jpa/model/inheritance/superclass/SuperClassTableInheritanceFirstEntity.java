@@ -29,8 +29,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity(name = "PerClassTableInheritanceFirstEntity")
-@Table(name = "per_class_table_inherit_first_entities")
+@Entity(name = "SuperClassTableInheritanceFirstEntity")
+@Table(name = "super_class_table_inherit_first_entities")
 @AttributeOverride(name = "id", column = @Column(name = "id_entity") )
 public class SuperClassTableInheritanceFirstEntity
         extends SuperClassTableInheritanceRootEntity {

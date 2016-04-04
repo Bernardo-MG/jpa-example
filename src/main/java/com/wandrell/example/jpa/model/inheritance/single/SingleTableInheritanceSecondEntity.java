@@ -28,7 +28,7 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-@Entity(name = "SingleTableInheritanceFirstEntity")
+@Entity(name = "SingleTableInheritanceSecondEntity")
 @DiscriminatorValue("B")
 public class SingleTableInheritanceSecondEntity
         extends SingleTableInheritanceRootEntity {

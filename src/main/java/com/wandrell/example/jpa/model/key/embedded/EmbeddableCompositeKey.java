@@ -28,22 +28,15 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 import com.google.common.base.MoreObjects;
 
 @Embeddable
 public class EmbeddableCompositeKey {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id1", nullable = false, unique = true)
     int  id1;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id2", nullable = false, unique = true)
     long id2;
 

@@ -16,8 +16,8 @@ import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
 
-@Entity(name = "OneToManyEntity")
-@Table(name = "one_to_many_entities")
+@Entity(name = "ManyToManyMappedEntity")
+@Table(name = "many_to_many_mapped_entities")
 public class ManyToManyMappedEntity {
 
     /**
