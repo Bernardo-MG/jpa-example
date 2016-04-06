@@ -25,18 +25,19 @@
 package com.wandrell.example.jpa.test.util.config.properties;
 
 /**
- * Paths to the query properties files.
+ * Paths to the queries properties files.
  * <p>
- * These files contain the queries used to get data from each data access API.
+ * These files contain the JPQL queries used to get data from the persistence
+ * context, but also some related data, such as the total number of entities.
  *
  * @author Bernardo Martínez Garrido
  */
 public class QueryPropertiesPaths {
 
     /**
-     * JPA queries.
+     * Simple entity queries.
      */
-    public static final String JPA_QUERY = "classpath:config/persistence/test-jpa-query.properties";
+    public static final String SIMPLE_ENTITY_QUERY = "classpath:config/persistence/query/test-simple-entity-query.properties";
 
     /**
      * Private constructor to avoid initialization.

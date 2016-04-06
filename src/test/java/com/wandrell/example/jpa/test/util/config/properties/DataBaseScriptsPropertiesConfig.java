@@ -25,31 +25,36 @@
 package com.wandrell.example.jpa.test.util.config.properties;
 
 /**
- * Configuration class for the test username and password properties files.
+ * Configuration class for the test database scripts properties files.
  *
  * @author Bernardo Martínez Garrido
  */
-public class UserPropertiesConfig {
+public class DataBaseScriptsPropertiesConfig {
 
     /**
-     * Properties file for the default test username and password.
+     * Properties file for the MSSQL test database scripts.
      */
-    public static final String DEFAULT  = "classpath:config/db/user/test-user-default.properties";
+    public static final String MSSQL      = "classpath:config/db/script/test-script-mssql.properties";
 
     /**
-     * Properties file for the MySQL test username and password.
+     * Properties file for the MYSQL test database scripts.
      */
-    public static final String MYSQL    = "classpath:config/db/user/test-user-mysql.properties";
+    public static final String MYSQL      = "classpath:config/db/script/test-script-mysql.properties";
 
     /**
-     * Properties file for the Postgres test username and password.
+     * Properties file for the plain SQL test database scripts.
      */
-    public static final String POSTGRES = "classpath:config/db/user/test-user-postgres.properties";
+    public static final String PLAIN      = "classpath:config/db/script/test-script-plain.properties";
+
+    /**
+     * Properties file for the PostgreSQL test database scripts.
+     */
+    public static final String POSTGRESQL = "classpath:config/db/script/test-script-postgresql.properties";
 
     /**
      * Private constructor to avoid initialization.
      */
-    private UserPropertiesConfig() {
+    private DataBaseScriptsPropertiesConfig() {
         super();
     }
 

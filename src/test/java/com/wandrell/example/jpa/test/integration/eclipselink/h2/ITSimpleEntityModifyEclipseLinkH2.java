@@ -29,13 +29,13 @@ import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.jpa.test.util.config.context.PersistenceContextConfig;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.DatabaseScriptsPropertiesConfig;
+import com.wandrell.example.jpa.test.util.config.properties.DataBaseScriptsPropertiesConfig;
+import com.wandrell.example.jpa.test.util.config.properties.DataBaseUserPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.config.properties.UserPropertiesConfig;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITSimpleEntityModify;
 
 /**
@@ -54,10 +54,10 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITSimpleEntit
 @TestPropertySource(
         locations = { TestPropertiesConfig.SIMPLE_ENTITY,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                UserPropertiesConfig.DEFAULT,
-                DatabaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
-                JdbcPropertiesPaths.H2, QueryPropertiesPaths.JPA_QUERY,
-                TestPropertiesConfig.GENERAL },
+                DataBaseUserPropertiesConfig.DEFAULT,
+                DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
+                JdbcPropertiesPaths.H2,
+                QueryPropertiesPaths.SIMPLE_ENTITY_QUERY },
         properties = {
                 "jpa.persistenceUnitName=test_model_jpa_eclipselink_h2_modify",
                 "jdbc.url=jdbc:h2:mem:test_jpa_eclipselink_modify;DB_CLOSE_ON_EXIT=FALSE" })

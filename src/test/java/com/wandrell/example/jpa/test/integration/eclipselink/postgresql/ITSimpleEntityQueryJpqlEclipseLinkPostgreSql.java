@@ -29,13 +29,13 @@ import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.jpa.test.util.config.context.PersistenceContextConfig;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.DatabaseScriptsPropertiesConfig;
+import com.wandrell.example.jpa.test.util.config.properties.DataBaseScriptsPropertiesConfig;
+import com.wandrell.example.jpa.test.util.config.properties.DataBaseUserPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.config.properties.UserPropertiesConfig;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITSimpleEntityQueryJpql;
 
 /**
@@ -53,10 +53,10 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITSimpleEntit
 @TestPropertySource(
         locations = { TestPropertiesConfig.SIMPLE_ENTITY,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                UserPropertiesConfig.POSTGRES,
-                DatabaseScriptsPropertiesConfig.POSTGRESQL,
+                DataBaseUserPropertiesConfig.POSTGRES,
+                DataBaseScriptsPropertiesConfig.POSTGRESQL,
                 JpaPropertiesConfig.POSTGRESQL, JdbcPropertiesPaths.POSTGRESQL,
-                QueryPropertiesPaths.JPA_QUERY, TestPropertiesConfig.GENERAL },
+                QueryPropertiesPaths.SIMPLE_ENTITY_QUERY },
         properties = {
                 "jpa.persistenceUnitName=test_model_jpa_eclipselink_postgresql",
                 "jdbc.url=jdbc:postgresql://localhost:5432/test_jpa_eclipselink" })
