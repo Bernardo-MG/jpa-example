@@ -35,6 +35,7 @@ import com.wandrell.example.jpa.test.util.config.properties.HibernateDialectProp
 import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
+import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimpleEntityQueryCriteriaApi;
 
@@ -55,7 +56,8 @@ import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimp
                 PersistenceProviderPropertiesConfig.HIBERNATE,
                 DataBaseUserPropertiesConfig.DEFAULT,
                 DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
-                JdbcPropertiesPaths.H2, HibernateDialectPropertiesConfig.H2 },
+                JdbcPropertiesPaths.H2, HibernateDialectPropertiesConfig.H2,
+                QueryPropertiesPaths.SIMPLE_ENTITY_QUERY },
         properties = { "jpa.persistenceUnitName=test_model_jpa_hibernate_h2",
                 "jdbc.url=jdbc:h2:mem:test_jpa_hibernate;DB_CLOSE_ON_EXIT=FALSE" })
 public final class ITSimpleEntityQueryCriteriaApiHibernateH2
