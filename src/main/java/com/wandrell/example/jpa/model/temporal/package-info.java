@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 /**
- * Entities with dates.
+ * Entities with time values.
  */
 
-package com.wandrell.example.jpa.model.date;
+package com.wandrell.example.jpa.model.temporal;

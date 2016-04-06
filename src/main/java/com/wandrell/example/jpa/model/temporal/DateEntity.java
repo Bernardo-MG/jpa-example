@@ -22,10 +22,8 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.model.date;
+package com.wandrell.example.jpa.model.temporal;
 
-import java.sql.Time;
-import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
@@ -41,21 +39,13 @@ import javax.persistence.TemporalType;
 
 import com.google.common.base.MoreObjects;
 
-@Entity(name = "DatesEntity")
-@Table(name = "dates_entities")
-public final class DatesEntity {
+@Entity(name = "DateEntity")
+@Table(name = "date_entities")
+public final class DateEntity {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "calendar_date", nullable = false)
     private Calendar      calendarDate;
-
-    @Temporal(TemporalType.TIME)
-    @Column(name = "calendar_time", nullable = false)
-    private Calendar      calendarTime;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "calendar_timestamp", nullable = false)
-    private Calendar      calendarTimestamp;
 
     /**
      * Entity's ID.
@@ -69,24 +59,10 @@ public final class DatesEntity {
     @Column(name = "java_date", nullable = false)
     private Date          javaDate;
 
-    @Temporal(TemporalType.TIME)
-    @Column(name = "java_time", nullable = false)
-    private Date          javaTime;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "java_timestamp", nullable = false)
-    private Date          javaTimestamp;
-
     @Column(name = "sql_date", nullable = false)
     private java.sql.Date sqlDate;
 
-    @Column(name = "sql_time", nullable = false)
-    private Time          sqlTime;
-
-    @Column(name = "sql_timestamp", nullable = false)
-    private Timestamp     sqlTimestamp;
-
-    public DatesEntity() {
+    public DateEntity() {
         super();
     }
 
@@ -104,20 +80,12 @@ public final class DatesEntity {
             return false;
         }
 
-        final DatesEntity other = (DatesEntity) obj;
+        final DateEntity other = (DateEntity) obj;
         return Objects.equals(id, other.id);
     }
 
     public final Calendar getCalendarDate() {
         return calendarDate;
-    }
-
-    public final Calendar getCalendarTime() {
-        return calendarTime;
-    }
-
-    public final Calendar getCalendarTimestamp() {
-        return calendarTimestamp;
     }
 
     public final Integer getId() {
@@ -128,24 +96,8 @@ public final class DatesEntity {
         return javaDate;
     }
 
-    public final Date getJavaTime() {
-        return javaTime;
-    }
-
-    public final Date getJavaTimestamp() {
-        return javaTimestamp;
-    }
-
     public final java.sql.Date getSqlDate() {
         return sqlDate;
-    }
-
-    public final Time getSqlTime() {
-        return sqlTime;
-    }
-
-    public final Timestamp getSqlTimestamp() {
-        return sqlTimestamp;
     }
 
     @Override
@@ -157,14 +109,6 @@ public final class DatesEntity {
         this.calendarDate = calendarDate;
     }
 
-    public final void setCalendarTime(final Calendar calendarTime) {
-        this.calendarTime = calendarTime;
-    }
-
-    public final void setCalendarTimestamp(final Calendar calendarTimestamp) {
-        this.calendarTimestamp = calendarTimestamp;
-    }
-
     public final void setId(final Integer id) {
         this.id = id;
     }
@@ -173,24 +117,8 @@ public final class DatesEntity {
         this.javaDate = javaDate;
     }
 
-    public final void setJavaTime(final Date javaTime) {
-        this.javaTime = javaTime;
-    }
-
-    public final void setJavaTimestamp(final Date javaTimestamp) {
-        this.javaTimestamp = javaTimestamp;
-    }
-
     public final void setSqlDate(final java.sql.Date sqlDate) {
         this.sqlDate = sqlDate;
-    }
-
-    public final void setSqlTime(final Time sqlTime) {
-        this.sqlTime = sqlTime;
-    }
-
-    public final void setSqlTimestamp(final Timestamp sqlTimestamp) {
-        this.sqlTimestamp = sqlTimestamp;
     }
 
     @Override
