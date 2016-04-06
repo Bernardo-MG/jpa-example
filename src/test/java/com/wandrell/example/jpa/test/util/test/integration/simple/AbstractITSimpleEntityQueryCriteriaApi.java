@@ -105,8 +105,8 @@ public abstract class AbstractITSimpleEntityQueryCriteriaApi
         id = 1;
 
         // Builds the query
-        query = getEntityManager().createQuery(SimpleEntityCriteriaFactory
-                .findById(getEntityManager(), id));
+        query = getEntityManager().createQuery(
+                SimpleEntityCriteriaFactory.findById(getEntityManager(), id));
 
         // Acquires the entity
         entity = (SimpleEntity) query.getSingleResult();
@@ -125,11 +125,11 @@ public abstract class AbstractITSimpleEntityQueryCriteriaApi
         final Query query;         // Query for the entity
 
         // Invalid entity id
-        id = 123;
+        id = entitiesCount + 100;
 
         // Builds the query
-        query = getEntityManager().createQuery(SimpleEntityCriteriaFactory
-                .findById(getEntityManager(), id));
+        query = getEntityManager().createQuery(
+                SimpleEntityCriteriaFactory.findById(getEntityManager(), id));
 
         // Tries to acquire the entity
         entity = (SimpleEntity) query.getSingleResult();
