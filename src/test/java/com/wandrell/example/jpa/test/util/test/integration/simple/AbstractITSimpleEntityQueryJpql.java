@@ -40,6 +40,9 @@ import com.wandrell.example.jpa.model.simple.SimpleEntity;
  * Abstract integration tests for a {@link SimpleEntity} testing it can be
  * queried correctly by using JPQL queries.
  * <p>
+ * The tests cases just show how to do query operations with a JPA entity by
+ * using JPQL queries.
+ * <p>
  * Checks the following cases:
  * <ol>
  * <li>Retrieving all the entities gives the correct number of them.</li>

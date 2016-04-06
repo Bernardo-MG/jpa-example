@@ -43,6 +43,9 @@ import com.wandrell.example.jpa.model.simple.SimpleEntity;
  * Abstract integration tests for a {@link SimpleEntity} testing it can be
  * modified.
  * <p>
+ * The tests cases just show how to do create, remove and update operations with
+ * a JPA entity.
+ * <p>
  * Checks the following cases:
  * <ol>
  * <li>Persisting an entity adds that entity to the persistence context.</li>
@@ -109,7 +112,7 @@ public abstract class AbstractITSimpleEntityModify
      */
     @Test
     @Transactional
-    public final void testAdd() {
+    public final void testCreate() {
         // Checks that the id has not been assigned
         Assert.assertNull(newEntity.getId());
 
