@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.eclipselink.h2;
+package com.wandrell.example.jpa.test.integration.eclipselink.simple.hsqldb;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -36,7 +36,7 @@ import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractITSimpleEntityQueryCriteriaApi;
+import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimpleEntityQueryJpql;
 
 /**
  * Integration tests for
@@ -54,18 +54,19 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITSimpleEntit
         locations = { TestPropertiesConfig.SIMPLE_ENTITY,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
                 DataBaseUserPropertiesConfig.DEFAULT,
-                DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
-                JdbcPropertiesPaths.H2,
+                DataBaseScriptsPropertiesConfig.MSSQL,
+                JpaPropertiesConfig.HSQLDB, JdbcPropertiesPaths.HSQLDB,
                 QueryPropertiesPaths.SIMPLE_ENTITY_QUERY },
-        properties = { "jpa.persistenceUnitName=test_model_jpa_eclipselink_h2",
-                "jdbc.url=jdbc:h2:mem:test_jpa_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
-public final class ITSimpleEntityQueryCriteriaApiEclipseLinkH2
-        extends AbstractITSimpleEntityQueryCriteriaApi {
+        properties = {
+                "jpa.persistenceUnitName=test_model_jpa_eclipselink_hsqldb",
+                "jdbc.url=jdbc:hsqldb:mem:test_jpa_eclipselink" })
+public final class ITSimpleEntityQueryJpqlEclipseLinkHsqldb
+        extends AbstractITSimpleEntityQueryJpql {
 
     /**
      * Default constructor.
      */
-    public ITSimpleEntityQueryCriteriaApiEclipseLinkH2() {
+    public ITSimpleEntityQueryJpqlEclipseLinkHsqldb() {
         super();
     }
 

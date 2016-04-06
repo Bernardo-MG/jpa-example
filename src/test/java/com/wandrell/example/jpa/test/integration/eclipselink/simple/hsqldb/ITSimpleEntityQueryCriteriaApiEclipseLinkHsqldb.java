@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.eclipselink.postgresql;
+package com.wandrell.example.jpa.test.integration.eclipselink.simple.hsqldb;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -36,13 +36,13 @@ import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractITSimpleEntityQueryCriteriaApi;
+import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimpleEntityQueryCriteriaApi;
 
 /**
  * Integration tests for
  * {@link com.wandrell.pattern.repository.spring.SpringJDBCRepository
- * SpringJDBCRepository} implementing {@code AbstractITQuery}, using a
- * PostgreSQL in-memory database and Spring JDBC.
+ * SpringJDBCRepository} implementing {@code AbstractITQuery}, using an H2
+ * in-memory database and Spring JDBC.
  *
  * @author Bernardo Martínez Garrido
  * @see com.wandrell.pattern.repository.spring.SpringJDBCRepository
@@ -53,20 +53,20 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITSimpleEntit
 @TestPropertySource(
         locations = { TestPropertiesConfig.SIMPLE_ENTITY,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                DataBaseUserPropertiesConfig.POSTGRES,
-                DataBaseScriptsPropertiesConfig.POSTGRESQL,
-                JpaPropertiesConfig.POSTGRESQL, JdbcPropertiesPaths.POSTGRESQL,
+                DataBaseUserPropertiesConfig.DEFAULT,
+                DataBaseScriptsPropertiesConfig.MSSQL,
+                JpaPropertiesConfig.HSQLDB, JdbcPropertiesPaths.HSQLDB,
                 QueryPropertiesPaths.SIMPLE_ENTITY_QUERY },
         properties = {
-                "jpa.persistenceUnitName=test_model_jpa_eclipselink_postgresql",
-                "jdbc.url=jdbc:postgresql://localhost:5432/test_jpa_eclipselink" })
-public final class ITSimpleEntityQueryCriteriaApiEclipseLinkPostgreSql
+                "jpa.persistenceUnitName=test_model_jpa_eclipselink_hsqldb",
+                "jdbc.url=jdbc:hsqldb:mem:test_jpa_eclipselink" })
+public final class ITSimpleEntityQueryCriteriaApiEclipseLinkHsqldb
         extends AbstractITSimpleEntityQueryCriteriaApi {
 
     /**
      * Default constructor.
      */
-    public ITSimpleEntityQueryCriteriaApiEclipseLinkPostgreSql() {
+    public ITSimpleEntityQueryCriteriaApiEclipseLinkHsqldb() {
         super();
     }
 

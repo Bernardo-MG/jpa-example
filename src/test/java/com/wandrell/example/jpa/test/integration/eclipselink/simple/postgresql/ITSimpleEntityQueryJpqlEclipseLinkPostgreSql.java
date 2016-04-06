@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.hibernate.h2;
+package com.wandrell.example.jpa.test.integration.eclipselink.simple.postgresql;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -31,40 +31,42 @@ import com.wandrell.example.jpa.test.util.config.context.PersistenceContextConfi
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.DataBaseScriptsPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.DataBaseUserPropertiesConfig;
-import com.wandrell.example.jpa.test.util.config.properties.HibernateDialectPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
+import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractITSimpleEntityQueryCriteriaApi;
+import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimpleEntityQueryJpql;
 
 /**
  * Integration tests for
  * {@link com.wandrell.pattern.repository.spring.SpringJDBCRepository
- * SpringJDBCRepository} implementing {@code AbstractITQuery}, using an H2
- * in-memory database and Spring JDBC.
+ * SpringJDBCRepository} implementing {@code AbstractITQuery}, using a
+ * PostgreSQL in-memory database and Spring JDBC.
  *
  * @author Bernardo Martínez Garrido
  * @see com.wandrell.pattern.repository.spring.SpringJDBCRepository
  *      SpringJDBCRepository
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        PersistenceContextConfig.HIBERNATE })
+        PersistenceContextConfig.ECLIPSELINK })
 @TestPropertySource(
         locations = { TestPropertiesConfig.SIMPLE_ENTITY,
-                PersistenceProviderPropertiesConfig.HIBERNATE,
-                DataBaseUserPropertiesConfig.DEFAULT,
-                DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
-                JdbcPropertiesPaths.H2, HibernateDialectPropertiesConfig.H2 },
-        properties = { "jpa.persistenceUnitName=test_model_jpa_hibernate_h2",
-                "jdbc.url=jdbc:h2:mem:test_jpa_hibernate;DB_CLOSE_ON_EXIT=FALSE" })
-public final class ITSimpleEntityQueryCriteriaApiHibernateH2
-        extends AbstractITSimpleEntityQueryCriteriaApi {
+                PersistenceProviderPropertiesConfig.ECLIPSELINK,
+                DataBaseUserPropertiesConfig.POSTGRES,
+                DataBaseScriptsPropertiesConfig.POSTGRESQL,
+                JpaPropertiesConfig.POSTGRESQL, JdbcPropertiesPaths.POSTGRESQL,
+                QueryPropertiesPaths.SIMPLE_ENTITY_QUERY },
+        properties = {
+                "jpa.persistenceUnitName=test_model_jpa_eclipselink_postgresql",
+                "jdbc.url=jdbc:postgresql://localhost:5432/test_jpa_eclipselink" })
+public final class ITSimpleEntityQueryJpqlEclipseLinkPostgreSql
+        extends AbstractITSimpleEntityQueryJpql {
 
     /**
      * Default constructor.
      */
-    public ITSimpleEntityQueryCriteriaApiHibernateH2() {
+    public ITSimpleEntityQueryJpqlEclipseLinkPostgreSql() {
         super();
     }
 

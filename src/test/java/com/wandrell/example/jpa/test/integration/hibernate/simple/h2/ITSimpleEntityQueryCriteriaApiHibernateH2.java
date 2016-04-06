@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.eclipselink.hsqldb;
+package com.wandrell.example.jpa.test.integration.hibernate.simple.h2;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -31,12 +31,12 @@ import com.wandrell.example.jpa.test.util.config.context.PersistenceContextConfi
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.DataBaseScriptsPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.DataBaseUserPropertiesConfig;
+import com.wandrell.example.jpa.test.util.config.properties.HibernateDialectPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
-import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractITSimpleEntityQueryJpql;
+import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimpleEntityQueryCriteriaApi;
 
 /**
  * Integration tests for
@@ -49,24 +49,22 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITSimpleEntit
  *      SpringJDBCRepository
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        PersistenceContextConfig.ECLIPSELINK })
+        PersistenceContextConfig.HIBERNATE })
 @TestPropertySource(
         locations = { TestPropertiesConfig.SIMPLE_ENTITY,
-                PersistenceProviderPropertiesConfig.ECLIPSELINK,
+                PersistenceProviderPropertiesConfig.HIBERNATE,
                 DataBaseUserPropertiesConfig.DEFAULT,
-                DataBaseScriptsPropertiesConfig.MSSQL,
-                JpaPropertiesConfig.HSQLDB, JdbcPropertiesPaths.HSQLDB,
-                QueryPropertiesPaths.SIMPLE_ENTITY_QUERY },
-        properties = {
-                "jpa.persistenceUnitName=test_model_jpa_eclipselink_hsqldb",
-                "jdbc.url=jdbc:hsqldb:mem:test_jpa_eclipselink" })
-public final class ITSimpleEntityQueryJpqlEclipseLinkHsqldb
-        extends AbstractITSimpleEntityQueryJpql {
+                DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
+                JdbcPropertiesPaths.H2, HibernateDialectPropertiesConfig.H2 },
+        properties = { "jpa.persistenceUnitName=test_model_jpa_hibernate_h2",
+                "jdbc.url=jdbc:h2:mem:test_jpa_hibernate;DB_CLOSE_ON_EXIT=FALSE" })
+public final class ITSimpleEntityQueryCriteriaApiHibernateH2
+        extends AbstractITSimpleEntityQueryCriteriaApi {
 
     /**
      * Default constructor.
      */
-    public ITSimpleEntityQueryJpqlEclipseLinkHsqldb() {
+    public ITSimpleEntityQueryCriteriaApiHibernateH2() {
         super();
     }
 

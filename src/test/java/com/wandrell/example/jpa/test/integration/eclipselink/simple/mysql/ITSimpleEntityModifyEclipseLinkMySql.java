@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.eclipselink.h2;
+package com.wandrell.example.jpa.test.integration.eclipselink.simple.mysql;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -36,12 +36,12 @@ import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractITSimpleEntityModify;
+import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimpleEntityModify;
 
 /**
  * Integration tests for
  * {@link com.wandrell.pattern.repository.spring.SpringJDBCRepository
- * SpringJDBCRepository} implementing {@code AbstractITModify}, using an H2
+ * SpringJDBCRepository} implementing {@code AbstractITModify}, using a MySQL
  * in-memory database and Spring JDBC.
  *
  * @author Bernardo Martínez Garrido
@@ -54,20 +54,20 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITSimpleEntit
 @TestPropertySource(
         locations = { TestPropertiesConfig.SIMPLE_ENTITY,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                DataBaseUserPropertiesConfig.DEFAULT,
-                DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
-                JdbcPropertiesPaths.H2,
+                DataBaseUserPropertiesConfig.MYSQL,
+                DataBaseScriptsPropertiesConfig.MYSQL,
+                JpaPropertiesConfig.MYSQL, JdbcPropertiesPaths.MYSQL,
                 QueryPropertiesPaths.SIMPLE_ENTITY_QUERY },
         properties = {
-                "jpa.persistenceUnitName=test_model_jpa_eclipselink_h2_modify",
-                "jdbc.url=jdbc:h2:mem:test_jpa_eclipselink_modify;DB_CLOSE_ON_EXIT=FALSE" })
-public final class ITSimpleEntityModifyEclipseLinkH2
+                "jpa.persistenceUnitName=test_model_jpa_eclipselink_mysql_modify",
+                "jdbc.url=jdbc:mysql://localhost:3306/test_jpa_eclipselink_modify" })
+public final class ITSimpleEntityModifyEclipseLinkMySql
         extends AbstractITSimpleEntityModify {
 
     /**
      * Default constructor.
      */
-    public ITSimpleEntityModifyEclipseLinkH2() {
+    public ITSimpleEntityModifyEclipseLinkMySql() {
         super();
     }
 

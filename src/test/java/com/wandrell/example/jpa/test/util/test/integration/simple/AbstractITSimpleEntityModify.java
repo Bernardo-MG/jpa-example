@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.test.integration;
+package com.wandrell.example.jpa.test.util.test.integration.simple;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
