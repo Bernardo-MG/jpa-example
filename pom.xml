@@ -228,7 +228,7 @@
 
     <properties>
         <!-- Manifest data -->
-        <manifest.name>com/wandrell/example/jpa_example</manifest.name>
+        <manifest.name>com/wandrell/example/jpa</manifest.name>
         <!-- Dependencies versions -->
         <eclipselink.version>2.6.2</eclipselink.version>
         <guava.version>19.0</guava.version>
