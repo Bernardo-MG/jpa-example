@@ -55,7 +55,8 @@ import com.wandrell.example.jpa.test.util.test.integration.converter.AbstractITB
                 DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
                 JdbcPropertiesPaths.H2,
                 QueryPropertiesPaths.BOOLEAN_CONVERTER_QUERY },
-        properties = { "jpa.persistenceUnitName=entities_eclipselink_h2",
+        properties = {
+                "jpa.persistenceUnitName=boolean_converter_eclipselink_h2",
                 "jdbc.url=jdbc:h2:mem:test_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
 public final class ITBooleanConverterEntityQueryJpqlEclipseLinkH2
         extends AbstractITBooleanConverterEntityQueryJpql {
