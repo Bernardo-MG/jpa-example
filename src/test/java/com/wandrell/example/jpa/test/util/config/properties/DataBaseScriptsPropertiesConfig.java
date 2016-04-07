@@ -42,11 +42,6 @@ public class DataBaseScriptsPropertiesConfig {
     public static final String MYSQL      = "classpath:config/db/script/test-script-mysql.properties";
 
     /**
-     * Properties file for the plain SQL test database scripts.
-     */
-    public static final String PLAIN      = "classpath:config/db/script/test-script-plain.properties";
-
-    /**
      * Properties file for the PostgreSQL test database scripts.
      */
     public static final String POSTGRESQL = "classpath:config/db/script/test-script-postgresql.properties";
