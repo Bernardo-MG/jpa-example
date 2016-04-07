@@ -7,6 +7,6 @@ CREATE TABLE simple_entities (
 );
 
 CREATE TABLE boolean_converter_entities (
-	id		INTEGER IDENTITY PRIMARY KEY,
+	id		INTEGER PRIMARY KEY AUTO_INCREMENT,
 	flag	VARCHAR(1) DEFAULT 'F' NOT NULL
 );
