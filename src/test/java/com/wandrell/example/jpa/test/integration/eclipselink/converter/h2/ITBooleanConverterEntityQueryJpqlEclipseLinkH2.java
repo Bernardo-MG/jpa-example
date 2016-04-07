@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.hibernate.simple.h2;
+package com.wandrell.example.jpa.test.integration.eclipselink.converter.h2;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -31,13 +31,12 @@ import com.wandrell.example.jpa.test.util.config.context.PersistenceContextConfi
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.DataBaseScriptsPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.DataBaseUserPropertiesConfig;
-import com.wandrell.example.jpa.test.util.config.properties.HibernateDialectPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimpleEntityQueryCriteriaApi;
+import com.wandrell.example.jpa.test.util.test.integration.converter.AbstractITBooleanConverterEntityQueryJpql;
 
 /**
  * Integration tests for
@@ -48,23 +47,23 @@ import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimp
  * @author Bernardo Martínez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        PersistenceContextConfig.HIBERNATE })
+        PersistenceContextConfig.ECLIPSELINK })
 @TestPropertySource(
-        locations = { TestPropertiesConfig.SIMPLE_ENTITY,
-                PersistenceProviderPropertiesConfig.HIBERNATE,
+        locations = { TestPropertiesConfig.BOOLEAN_CONVERTER,
+                PersistenceProviderPropertiesConfig.ECLIPSELINK,
                 DataBaseUserPropertiesConfig.DEFAULT,
                 DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
-                JdbcPropertiesPaths.H2, HibernateDialectPropertiesConfig.H2,
-                QueryPropertiesPaths.SIMPLE_ENTITY_QUERY },
-        properties = { "jpa.persistenceUnitName=test_model_jpa_hibernate_h2",
-                "jdbc.url=jdbc:h2:mem:test_jpa_hibernate;DB_CLOSE_ON_EXIT=FALSE" })
-public final class ITSimpleEntityQueryCriteriaApiHibernateH2
-        extends AbstractITSimpleEntityQueryCriteriaApi {
+                JdbcPropertiesPaths.H2,
+                QueryPropertiesPaths.BOOLEAN_CONVERTER_QUERY },
+        properties = { "jpa.persistenceUnitName=test_model_jpa_eclipselink_h2",
+                "jdbc.url=jdbc:h2:mem:test_jpa_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
+public final class ITBooleanConverterEntityQueryJpqlEclipseLinkH2
+        extends AbstractITBooleanConverterEntityQueryJpql {
 
     /**
      * Default constructor.
      */
-    public ITSimpleEntityQueryCriteriaApiHibernateH2() {
+    public ITBooleanConverterEntityQueryJpqlEclipseLinkH2() {
         super();
     }
 

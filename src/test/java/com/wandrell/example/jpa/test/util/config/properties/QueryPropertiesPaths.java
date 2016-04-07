@@ -37,7 +37,12 @@ public class QueryPropertiesPaths {
     /**
      * Simple entity queries.
      */
-    public static final String SIMPLE_ENTITY_QUERY = "classpath:config/persistence/query/test-simple-entity-query.properties";
+    public static final String SIMPLE_ENTITY_QUERY     = "classpath:config/persistence/query/test-simple-entity-query.properties";
+
+    /**
+     * Boolean converter entity queries.
+     */
+    public static final String BOOLEAN_CONVERTER_QUERY = "classpath:config/persistence/query/test-boolean-converter-entity-query.properties";
 
     /**
      * Private constructor to avoid initialization.

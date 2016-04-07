@@ -46,8 +46,6 @@ import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimp
  * in-memory database and Spring JDBC.
  *
  * @author Bernardo Martínez Garrido
- * @see com.wandrell.pattern.repository.spring.SpringJDBCRepository
- *      SpringJDBCRepository
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         PersistenceContextConfig.HIBERNATE })

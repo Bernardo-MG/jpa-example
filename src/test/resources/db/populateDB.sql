@@ -28,3 +28,7 @@ INSERT INTO simple_entities (id, name) VALUES (27, 'entity_27');
 INSERT INTO simple_entities (id, name) VALUES (28, 'entity_28');
 INSERT INTO simple_entities (id, name) VALUES (29, 'entity_29');
 INSERT INTO simple_entities (id, name) VALUES (30, 'entity_30');
+
+INSERT INTO boolean_converter_entities (id, flag) VALUES (1, 'T');
+INSERT INTO boolean_converter_entities (id, flag) VALUES (2, 'F');
+INSERT INTO boolean_converter_entities (id, flag) VALUES (3, 'B');

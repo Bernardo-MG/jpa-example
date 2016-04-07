@@ -34,9 +34,14 @@ package com.wandrell.example.jpa.test.util.config.properties;
 public class TestPropertiesConfig {
 
     /**
-     * Test entity.
+     * Boolean converter entity.
      */
-    public static final String SIMPLE_ENTITY = "classpath:config/entity/test-simple-entity.properties";
+    public static final String BOOLEAN_CONVERTER = "classpath:config/entity/test-boolean-converter-entity.properties";
+
+    /**
+     * Simple entity.
+     */
+    public static final String SIMPLE_ENTITY     = "classpath:config/entity/test-simple-entity.properties";
 
     /**
      * Private constructor to avoid initialization.

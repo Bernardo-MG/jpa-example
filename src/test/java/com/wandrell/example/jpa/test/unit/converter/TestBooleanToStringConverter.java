@@ -66,7 +66,7 @@ public final class TestBooleanToStringConverter {
         converter = new BooleanToStringConverter();
 
         Assert.assertEquals(converter.convertToEntityAttribute("F"),
-                new Boolean(false));
+                Boolean.FALSE);
     }
 
     /**
@@ -79,7 +79,7 @@ public final class TestBooleanToStringConverter {
         converter = new BooleanToStringConverter();
 
         Assert.assertEquals(converter.convertToEntityAttribute("ABCDE"),
-                new Boolean(false));
+                Boolean.FALSE);
     }
 
     /**
@@ -93,7 +93,7 @@ public final class TestBooleanToStringConverter {
         converter = new BooleanToStringConverter();
 
         Assert.assertEquals(converter.convertToEntityAttribute("T"),
-                new Boolean(true));
+                Boolean.TRUE);
     }
 
     /**
