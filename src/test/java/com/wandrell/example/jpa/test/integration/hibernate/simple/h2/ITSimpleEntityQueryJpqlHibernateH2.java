@@ -57,8 +57,8 @@ import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimp
                 JdbcPropertiesPaths.H2,
                 QueryPropertiesPaths.SIMPLE_ENTITY_QUERY,
                 HibernateDialectPropertiesConfig.H2 },
-        properties = { "jpa.persistenceUnitName=test_model_jpa_hibernate_h2",
-                "jdbc.url=jdbc:h2:mem:test_jpa_hibernate;DB_CLOSE_ON_EXIT=FALSE" })
+        properties = { "jpa.persistenceUnitName=simple_entity_hibernate_h2",
+                "jdbc.url=jdbc:h2:mem:test_hibernate;DB_CLOSE_ON_EXIT=FALSE" })
 public final class ITSimpleEntityQueryJpqlHibernateH2
         extends AbstractITSimpleEntityQueryJpql {
 
