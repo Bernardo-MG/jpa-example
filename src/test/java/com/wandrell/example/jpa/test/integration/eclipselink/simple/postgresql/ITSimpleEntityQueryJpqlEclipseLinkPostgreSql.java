@@ -57,7 +57,7 @@ import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimp
                 QueryPropertiesPaths.SIMPLE_ENTITY_QUERY },
         properties = {
                 "jpa.persistenceUnitName=test_model_jpa_eclipselink_postgresql",
-                "jdbc.url=jdbc:postgresql://localhost:5432/test_jpa_eclipselink" })
+                "jdbc.url=jdbc:postgresql://localhost:5432/test_eclipselink" })
 public final class ITSimpleEntityQueryJpqlEclipseLinkPostgreSql
         extends AbstractITSimpleEntityQueryJpql {
 

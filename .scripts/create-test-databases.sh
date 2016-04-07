@@ -11,13 +11,13 @@ set -e
 # MySQL tables
 mysql -e "create database IF NOT EXISTS test_jpa_hibernate;" -uroot
 mysql -e "create database IF NOT EXISTS test_jpa_hibernate_modify;" -uroot
-mysql -e "create database IF NOT EXISTS test_jpa_eclipselink;" -uroot
-mysql -e "create database IF NOT EXISTS test_jpa_eclipselink_modify;" -uroot
+mysql -e "create database IF NOT EXISTS test_eclipselink;" -uroot
+mysql -e "create database IF NOT EXISTS test_eclipselink_modify;" -uroot
 
 # PostgreSQL tables
 psql -c 'create database test_jpa_hibernate;' -U postgres
 psql -c 'create database test_jpa_hibernate_modify;' -U postgres
-psql -c 'create database test_jpa_eclipselink;' -U postgres
-psql -c 'create database test_jpa_eclipselink_modify;' -U postgres
+psql -c 'create database test_eclipselink;' -U postgres
+psql -c 'create database test_eclipselink_modify;' -U postgres
 
 exit 0

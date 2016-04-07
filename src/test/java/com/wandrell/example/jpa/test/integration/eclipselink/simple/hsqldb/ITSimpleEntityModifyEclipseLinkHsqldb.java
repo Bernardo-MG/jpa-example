@@ -58,7 +58,7 @@ import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimp
                 QueryPropertiesPaths.SIMPLE_ENTITY_QUERY },
         properties = {
                 "jpa.persistenceUnitName=test_model_jpa_eclipselink_hsqldb",
-                "jdbc.url=jdbc:hsqldb:mem:test_jpa_eclipselink" })
+                "jdbc.url=jdbc:hsqldb:mem:test_eclipselink" })
 public final class ITSimpleEntityModifyEclipseLinkHsqldb
         extends AbstractITSimpleEntityModify {
 
