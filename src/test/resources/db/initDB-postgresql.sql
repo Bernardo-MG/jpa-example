@@ -8,5 +8,5 @@ CREATE TABLE simple_entities (
 
 CREATE TABLE boolean_converter_entities (
 	id		INTEGER IDENTITY PRIMARY KEY,
-	flag	TEXT NOT NULL
+	flag	TEXT DEFAULT 'F' NOT NULL
 );
