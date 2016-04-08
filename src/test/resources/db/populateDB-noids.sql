@@ -38,3 +38,8 @@ INSERT INTO boolean_converter_entities (flag) VALUES ('T');
 INSERT INTO boolean_converter_entities (flag) VALUES ('B');
 INSERT INTO boolean_converter_entities (flag) VALUES ('B');
 INSERT INTO boolean_converter_entities (flag) VALUES ('B');
+
+INSERT INTO enum_entities (enum_string, enum_ordinal) VALUES ('TWO', 2);
+INSERT INTO enum_entities (enum_string, enum_ordinal) VALUES ('ONE', 1);
+INSERT INTO enum_entities (enum_string, enum_ordinal) VALUES ('THREE', 3);
+INSERT INTO enum_entities (enum_string, enum_ordinal) VALUES ('TWO', 2);

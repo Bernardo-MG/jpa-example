@@ -24,8 +24,8 @@
 
 package com.wandrell.example.jpa.model.enumeration;
 
-public enum TestEnum {
+public enum NumbersEnum {
 
-    FIRST, SECOND, THIRD
+    ONE, TWO, THREE
 
 }

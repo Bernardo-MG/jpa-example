@@ -43,11 +43,11 @@ public final class EnumEntity {
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "enum_ordinal", nullable = false)
-    private TestEnum enumOrdinal;
+    private NumbersEnum enumOrdinal;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "enum_string", nullable = false)
-    private TestEnum enumString;
+    private NumbersEnum enumString;
 
     /**
      * Entity's ID.
@@ -79,11 +79,11 @@ public final class EnumEntity {
         return Objects.equals(id, other.id);
     }
 
-    public final TestEnum getEnumOrdinal() {
+    public final NumbersEnum getEnumOrdinal() {
         return enumOrdinal;
     }
 
-    public final TestEnum getEnumString() {
+    public final NumbersEnum getEnumString() {
         return enumString;
     }
 
@@ -96,11 +96,11 @@ public final class EnumEntity {
         return Objects.hash(id);
     }
 
-    public final void setEnumOrdinal(final TestEnum enumOrdinal) {
+    public final void setEnumOrdinal(final NumbersEnum enumOrdinal) {
         this.enumOrdinal = enumOrdinal;
     }
 
-    public final void setEnumString(final TestEnum enumString) {
+    public final void setEnumString(final NumbersEnum enumString) {
         this.enumString = enumString;
     }
 

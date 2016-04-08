@@ -10,3 +10,9 @@ CREATE TABLE boolean_converter_entities (
 	id		INTEGER IDENTITY PRIMARY KEY,
 	flag	VARCHAR(1) DEFAULT 'F' NOT NULL
 );
+
+CREATE TABLE enum_entities (
+	id				INTEGER IDENTITY PRIMARY KEY,
+	enum_ordinal	INTEGER DEFAULT 0 NOT NULL,
+	enum_string		VARCHAR(20) DEFAULT '' NOT NULL
+);
