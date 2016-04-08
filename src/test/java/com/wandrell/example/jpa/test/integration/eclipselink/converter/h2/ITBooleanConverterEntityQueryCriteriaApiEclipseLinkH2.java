@@ -36,7 +36,7 @@ import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.converter.AbstractITBooleanConverterEntityQueryJpql;
+import com.wandrell.example.jpa.test.util.test.integration.converter.AbstractITBooleanConverterEntityQueryCriteriaApi;
 
 /**
  * Integration tests for
@@ -58,13 +58,13 @@ import com.wandrell.example.jpa.test.util.test.integration.converter.AbstractITB
         properties = {
                 "jpa.persistenceUnitName=boolean_converter_eclipselink_h2",
                 "jdbc.url=jdbc:h2:mem:test_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
-public final class ITBooleanConverterEntityQueryJpqlEclipseLinkH2
-        extends AbstractITBooleanConverterEntityQueryJpql {
+public final class ITBooleanConverterEntityQueryCriteriaApiEclipseLinkH2
+        extends AbstractITBooleanConverterEntityQueryCriteriaApi {
 
     /**
      * Default constructor.
      */
-    public ITBooleanConverterEntityQueryJpqlEclipseLinkH2() {
+    public ITBooleanConverterEntityQueryCriteriaApiEclipseLinkH2() {
         super();
     }
 

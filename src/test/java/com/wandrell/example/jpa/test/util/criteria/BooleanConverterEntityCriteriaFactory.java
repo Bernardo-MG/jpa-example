@@ -41,12 +41,13 @@ import com.wandrell.example.jpa.model.converter.BooleanConverterEntity_;
 public class BooleanConverterEntityCriteriaFactory {
 
     /**
-     * Generates a query to find all the entities.
+     * Generates a query to find all the entities with a value of {@code true}
+     * in the flag.
      *
-     * @return the query to find all the entities
+     * @return the query to find all the entities with a value of {@code true}
      */
     public static final CriteriaQuery<BooleanConverterEntity>
-            findAll(final EntityManager entityManager) {
+            findAllTrue(final EntityManager entityManager) {
         final CriteriaBuilder builder;                  // Builder
         final CriteriaQuery<BooleanConverterEntity> query; // Query
         Root<BooleanConverterEntity> entity;               // Root entity
@@ -58,34 +59,8 @@ public class BooleanConverterEntityCriteriaFactory {
 
         // Generates a select query
         query.select(entity);
-
-        // Orders by the id
-        query.orderBy(builder.asc(entity.get(BooleanConverterEntity_.id)));
-
-        return query;
-    }
-
-    /**
-     * Generates the query to find a single entity by the id.
-     *
-     * @return the query to find an the entity by the id
-     */
-    public static final CriteriaQuery<BooleanConverterEntity>
-            findById(final EntityManager entityManager, final Integer id) {
-        final CriteriaBuilder builder;                  // Builder
-        final CriteriaQuery<BooleanConverterEntity> query; // Query
-        Root<BooleanConverterEntity> entity;               // Root entity
-
-        // Prepares the criteria API classes
-        builder = entityManager.getCriteriaBuilder();
-        query = builder.createQuery(BooleanConverterEntity.class);
-        entity = query.from(BooleanConverterEntity.class);
-
-        // Generates a select query
-        query.select(entity);
-
-        // Queries the entities with the specified id
-        query.where(builder.equal(entity.get(BooleanConverterEntity_.id), id));
+        query.where(builder.equal(entity.get(BooleanConverterEntity_.flag),
+                Boolean.TRUE));
 
         // Orders by the id
         query.orderBy(builder.asc(entity.get(BooleanConverterEntity_.id)));
