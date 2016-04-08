@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS simple_entities;
 DROP TABLE IF EXISTS boolean_converter_entities;
+DROP TABLE IF EXISTS enum_entities;
 
 CREATE TABLE simple_entities (
 	id		INTEGER IDENTITY PRIMARY KEY,
