@@ -41,13 +41,16 @@ import com.wandrell.example.jpa.model.converter.BooleanConverterEntity_;
 public class BooleanConverterEntityCriteriaFactory {
 
     /**
-     * Generates a query to find all the entities with a value of {@code true}
-     * in the flag.
+     * Generates a query to find all the entities where the value of the flag is
+     * the same as the received one.
      *
-     * @return the query to find all the entities with a value of {@code true}
+     * @param flag
+     *            the value of the flag to query
+     * @return the query to find all the entities with a flag having the
+     *         received value
      */
     public static final CriteriaQuery<BooleanConverterEntity>
-            findAllTrue(final EntityManager entityManager) {
+            findAll(final EntityManager entityManager, final Boolean flag) {
         final CriteriaBuilder builder;                  // Builder
         final CriteriaQuery<BooleanConverterEntity> query; // Query
         Root<BooleanConverterEntity> entity;               // Root entity
@@ -59,8 +62,8 @@ public class BooleanConverterEntityCriteriaFactory {
 
         // Generates a select query
         query.select(entity);
-        query.where(builder.equal(entity.get(BooleanConverterEntity_.flag),
-                Boolean.TRUE));
+        query.where(
+                builder.equal(entity.get(BooleanConverterEntity_.flag), flag));
 
         // Orders by the id
         query.orderBy(builder.asc(entity.get(BooleanConverterEntity_.id)));

@@ -30,5 +30,11 @@ INSERT INTO simple_entities (name) VALUES ('entity_29');
 INSERT INTO simple_entities (name) VALUES ('entity_30');
 
 INSERT INTO boolean_converter_entities (flag) VALUES ('T');
+INSERT INTO boolean_converter_entities (flag) VALUES ('B');
 INSERT INTO boolean_converter_entities (flag) VALUES ('F');
+INSERT INTO boolean_converter_entities (flag) VALUES ('F');
+INSERT INTO boolean_converter_entities (flag) VALUES ('T');
+INSERT INTO boolean_converter_entities (flag) VALUES ('T');
+INSERT INTO boolean_converter_entities (flag) VALUES ('B');
+INSERT INTO boolean_converter_entities (flag) VALUES ('B');
 INSERT INTO boolean_converter_entities (flag) VALUES ('B');

@@ -41,9 +41,10 @@ import com.wandrell.example.jpa.model.converter.BooleanConverterEntity;
  * <p>
  * Checks the following cases:
  * <ol>
- * <li>A value equivalent to {@code true} is loaded correctly.</li>
- * <li>A value equivalent to {@code false} is loaded correctly.</li>
- * <li>A random value is loaded as {@code false}.</li>
+ * <li>Retrieving all the entities with a {@code true} flag gives the correct
+ * number of them.</li>
+ * <li>Retrieving all the entities with a {@code false} flag gives the correct
+ * number of them.</li>
  * </ol>
  * <p>
  * This is meant to be used along a Spring context, which will set up the
@@ -62,16 +63,10 @@ public abstract class AbstractITBooleanConverterEntityQueryJpql
     private EntityManager entityManager;
 
     /**
-     * The query to acquire all the entities.
+     * The query to acquire all the entities by the flag.
      */
-    @Value("${query.findAll}")
-    private String        findAll;
-
-    /**
-     * The query to acquire an entity by the id.
-     */
-    @Value("${query.byId}")
-    private String        findById;
+    @Value("${query.findAllByFlag}")
+    private String        findAllByFlag;
 
     /**
      * Default constructor.
@@ -81,81 +76,35 @@ public abstract class AbstractITBooleanConverterEntityQueryJpql
     }
 
     /**
-     * Tests that a value equivalent to {@code false} is loaded correctly.
+     * Tests that retrieving all the entities with a {@code false} flag gives
+     * the correct number of them
      */
     @Test
-    public final void testGetEntity_FlagFalse() {
-        final Integer id;                    // Entity ID
-        final BooleanConverterEntity entity; // Tested entity
-        final Query query;                   // Query for the entity
-
-        // Entity's id
-        id = 2;
+    public final void testGetEntity_AllFalse() {
+        final Query query; // Query for the entity
 
         // Builds the query
-        query = getEntityManager().createQuery(findById);
-        query.setParameter("id", id);
+        query = getEntityManager().createQuery(findAllByFlag);
+        query.setParameter("flag", false);
 
-        // Acquires the entity
-        entity = (BooleanConverterEntity) query.getSingleResult();
-
-        // The entity's id is the correct one
-        Assert.assertEquals(entity.getId(), id);
-
-        // The entity's flag is the expected
-        Assert.assertEquals(entity.getFlag(), Boolean.FALSE);
+        // The number of results is the expected one
+        Assert.assertEquals(query.getResultList().size(), 2);
     }
 
     /**
-     * Tests that a random value is loaded as {@code false}.
+     * Tests that retrieving all the entities with a {@code true} flag gives the
+     * correct number of them
      */
     @Test
-    public final void testGetEntity_FlagOther() {
-        final Integer id;                    // Entity ID
-        final BooleanConverterEntity entity; // Tested entity
-        final Query query;                   // Query for the entity
-
-        // Entity's id
-        id = 3;
+    public final void testGetEntity_AllTrue() {
+        final Query query; // Query for the entity
 
         // Builds the query
-        query = getEntityManager().createQuery(findById);
-        query.setParameter("id", id);
+        query = getEntityManager().createQuery(findAllByFlag);
+        query.setParameter("flag", true);
 
-        // Acquires the entity
-        entity = (BooleanConverterEntity) query.getSingleResult();
-
-        // The entity's id is the correct one
-        Assert.assertEquals(entity.getId(), id);
-
-        // The entity's flag is the expected
-        Assert.assertEquals(entity.getFlag(), Boolean.FALSE);
-    }
-
-    /**
-     * Tests that a value equivalent to {@code true} is loaded correctly.
-     */
-    @Test
-    public final void testGetEntity_FlagTrue() {
-        final Integer id;                    // Entity ID
-        final BooleanConverterEntity entity; // Tested entity
-        final Query query;                   // Query for the entity
-
-        // Entity's id
-        id = 1;
-
-        // Builds the query
-        query = getEntityManager().createQuery(findById);
-        query.setParameter("id", id);
-
-        // Acquires the entity
-        entity = (BooleanConverterEntity) query.getSingleResult();
-
-        // The entity's id is the correct one
-        Assert.assertEquals(entity.getId(), id);
-
-        // The entity's flag is the expected
-        Assert.assertEquals(entity.getFlag(), Boolean.TRUE);
+        // The number of results is the expected one
+        Assert.assertEquals(query.getResultList().size(), 3);
     }
 
     /**

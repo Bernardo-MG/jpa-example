@@ -28,7 +28,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -43,6 +42,8 @@ import com.wandrell.example.jpa.test.util.criteria.BooleanConverterEntityCriteri
  * Checks the following cases:
  * <ol>
  * <li>Retrieving all the entities with a {@code true} flag gives the correct
+ * number of them.</li>
+ * <li>Retrieving all the entities with a {@code false} flag gives the correct
  * number of them.</li>
  * </ol>
  * <p>
@@ -62,22 +63,27 @@ public abstract class AbstractITBooleanConverterEntityQueryCriteriaApi
     private EntityManager entityManager;
 
     /**
-     * The query to acquire all the entities.
-     */
-    @Value("${query.findAll}")
-    private String        findAll;
-
-    /**
-     * The query to acquire an entity by the id.
-     */
-    @Value("${query.byId}")
-    private String        findById;
-
-    /**
      * Default constructor.
      */
     public AbstractITBooleanConverterEntityQueryCriteriaApi() {
         super();
+    }
+
+    /**
+     * Tests that retrieving all the entities with a {@code false} flag gives
+     * the correct number of them.
+     */
+    @Test
+    public final void testGetEntity_AllFalse() {
+        final Query query; // Query for the entity
+
+        // Builds the query
+        query = getEntityManager()
+                .createQuery(BooleanConverterEntityCriteriaFactory
+                        .findAll(entityManager, false));
+
+        // The number of results is the expected one
+        Assert.assertEquals(query.getResultList().size(), 2);
     }
 
     /**
@@ -91,10 +97,10 @@ public abstract class AbstractITBooleanConverterEntityQueryCriteriaApi
         // Builds the query
         query = getEntityManager()
                 .createQuery(BooleanConverterEntityCriteriaFactory
-                        .findAllTrue(entityManager));
+                        .findAll(entityManager, true));
 
         // The number of results is the expected one
-        Assert.assertEquals(query.getResultList().size(), 1);
+        Assert.assertEquals(query.getResultList().size(), 3);
     }
 
     /**
