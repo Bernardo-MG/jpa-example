@@ -25,7 +25,6 @@
 package com.wandrell.example.jpa.test.util.test.integration.converter;
 
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -156,44 +155,6 @@ public abstract class AbstractITBooleanConverterEntityModify
         // Checks that the queried entity keeps all the data
         Assert.assertEquals(queried.getId(), newEntity.getId());
         Assert.assertEquals(queried.getFlag(), newEntity.getFlag());
-    }
-
-    /**
-     * Tests that removing an entity removes that entity from the persistence
-     * context.
-     */
-    @Test
-    @Transactional
-    public final void testRemove() {
-        final BooleanConverterEntity entity; // Entity being tested
-        final Query query;                   // Query for the entity
-        Boolean caught;                      // Flag for the exception being
-                                             // caught
-
-        // Builds the query
-        query = getEntityManager().createQuery(findById);
-        query.setParameter("id", 1);
-
-        // Acquires the entity
-        entity = (BooleanConverterEntity) query.getSingleResult();
-
-        // Removes the entity
-        getEntityManager().remove(entity);
-
-        // Checks that the number of entities has decreased
-        Assert.assertEquals(
-                getEntityManager().createQuery(findAll).getResultList().size(),
-                entitiesCount - 1);
-
-        // Tries to retrieve the removed entity
-        // The entity no longer exists
-        caught = false;
-        try {
-            query.getSingleResult();
-        } catch (final NoResultException e) {
-            caught = true;
-        }
-        Assert.assertTrue(caught);
     }
 
     /**
