@@ -29,38 +29,38 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import com.wandrell.example.jpa.model.simple.DefaultSimpleEntity;
-import com.wandrell.example.jpa.model.simple.DefaultSimpleEntity_;
-import com.wandrell.example.jpa.model.simple.SimpleEntity;
+import com.wandrell.example.jpa.model.converter.BooleanConverterEntity;
+import com.wandrell.example.jpa.model.converter.BooleanConverterEntity_;
 
 /**
- * Factory for creating criteria API classes for the {@link SimpleEntity}.
+ * Factory for creating criteria API classes for the
+ * {@code BooleanConverterEntity}.
  *
  * @author Bernardo Martínez Garrido
  */
-public class SimpleEntityCriteriaFactory {
+public class BooleanConverterEntityCriteriaFactory {
 
     /**
      * Generates a query to find all the entities.
      *
      * @return the query to find all the entities
      */
-    public static final CriteriaQuery<DefaultSimpleEntity>
+    public static final CriteriaQuery<BooleanConverterEntity>
             findAll(final EntityManager entityManager) {
         final CriteriaBuilder builder;                  // Builder
-        final CriteriaQuery<DefaultSimpleEntity> query; // Query
-        Root<DefaultSimpleEntity> entity;               // Root entity
+        final CriteriaQuery<BooleanConverterEntity> query; // Query
+        Root<BooleanConverterEntity> entity;               // Root entity
 
         // Prepares the criteria API classes
         builder = entityManager.getCriteriaBuilder();
-        query = builder.createQuery(DefaultSimpleEntity.class);
-        entity = query.from(DefaultSimpleEntity.class);
+        query = builder.createQuery(BooleanConverterEntity.class);
+        entity = query.from(BooleanConverterEntity.class);
 
         // Generates a select query
         query.select(entity);
 
         // Orders by the id
-        query.orderBy(builder.asc(entity.get(DefaultSimpleEntity_.id)));
+        query.orderBy(builder.asc(entity.get(BooleanConverterEntity_.id)));
 
         return query;
     }
@@ -70,25 +70,25 @@ public class SimpleEntityCriteriaFactory {
      *
      * @return the query to find an the entity by the id
      */
-    public static final CriteriaQuery<DefaultSimpleEntity>
+    public static final CriteriaQuery<BooleanConverterEntity>
             findById(final EntityManager entityManager, final Integer id) {
         final CriteriaBuilder builder;                  // Builder
-        final CriteriaQuery<DefaultSimpleEntity> query; // Query
-        Root<DefaultSimpleEntity> entity;               // Root entity
+        final CriteriaQuery<BooleanConverterEntity> query; // Query
+        Root<BooleanConverterEntity> entity;               // Root entity
 
         // Prepares the criteria API classes
         builder = entityManager.getCriteriaBuilder();
-        query = builder.createQuery(DefaultSimpleEntity.class);
-        entity = query.from(DefaultSimpleEntity.class);
+        query = builder.createQuery(BooleanConverterEntity.class);
+        entity = query.from(BooleanConverterEntity.class);
 
         // Generates a select query
         query.select(entity);
 
         // Queries the entities with the specified id
-        query.where(builder.equal(entity.get(DefaultSimpleEntity_.id), id));
+        query.where(builder.equal(entity.get(BooleanConverterEntity_.id), id));
 
         // Orders by the id
-        query.orderBy(builder.asc(entity.get(DefaultSimpleEntity_.id)));
+        query.orderBy(builder.asc(entity.get(BooleanConverterEntity_.id)));
 
         return query;
     }
@@ -96,7 +96,7 @@ public class SimpleEntityCriteriaFactory {
     /**
      * Private constructor to avoid initialization.
      */
-    private SimpleEntityCriteriaFactory() {
+    private BooleanConverterEntityCriteriaFactory() {
         super();
     }
 
