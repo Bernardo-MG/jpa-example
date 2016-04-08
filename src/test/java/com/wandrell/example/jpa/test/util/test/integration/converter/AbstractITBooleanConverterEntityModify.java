@@ -89,7 +89,7 @@ public abstract class AbstractITBooleanConverterEntityModify
     /**
      * The query to acquire an entity by the id.
      */
-    @Value("${query.byId}")
+    @Value("${query.findById}")
     private String                 findById;
 
     /**
