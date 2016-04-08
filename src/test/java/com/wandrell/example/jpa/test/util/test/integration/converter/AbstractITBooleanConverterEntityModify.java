@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.test.integration.simple;
+package com.wandrell.example.jpa.test.util.test.integration.converter;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -36,7 +36,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.model.simple.DefaultSimpleEntity;
+import com.wandrell.example.jpa.model.converter.BooleanConverterEntity;
 import com.wandrell.example.jpa.model.simple.SimpleEntity;
 
 /**
@@ -59,50 +59,50 @@ import com.wandrell.example.jpa.model.simple.SimpleEntity;
  * @author Bernardo Martínez Garrido
  * @see SimpleEntity
  */
-public abstract class AbstractITSimpleEntityModify
+public abstract class AbstractITBooleanConverterEntityModify
         extends AbstractTransactionalTestNGSpringContextTests {
 
     /**
      * The entity manager for the test context.
      */
     @Autowired(required = false)
-    private EntityManager       emanager;
+    private EntityManager          emanager;
 
     /**
      * Initial number of entities in the persistence context.
      */
     @Value("${entities.total}")
-    private Integer             entitiesCount;
+    private Integer                entitiesCount;
 
     /**
      * The JPA entity manager.
      */
     @Autowired
-    private EntityManager       entityManager;
+    private EntityManager          entityManager;
 
     /**
      * The query to acquire all the entities.
      */
     @Value("${query.findAll}")
-    private String              findAll;
+    private String                 findAll;
 
     /**
      * The query to acquire an entity by the id.
      */
     @Value("${query.byId}")
-    private String              findById;
+    private String                 findById;
 
     /**
      * Entity for the addition test.
      */
     @Autowired
     @Qualifier("newEntity")
-    private DefaultSimpleEntity newEntity;
+    private BooleanConverterEntity newEntity;
 
     /**
      * Default constructor.
      */
-    public AbstractITSimpleEntityModify() {
+    public AbstractITBooleanConverterEntityModify() {
         super();
     }
 
@@ -113,16 +113,16 @@ public abstract class AbstractITSimpleEntityModify
     @Test
     @Transactional
     public final void testCreate() {
-        final String name;                 // Name for the entity
-        final DefaultSimpleEntity queried; // Queried back entity
-        final Query query;                 // Query to recover the entity
+        final Boolean flag;                   // Flag for the created entity
+        final BooleanConverterEntity queried; // Queried back entity
+        final Query query;                    // Query to recover the entity
 
         // Checks that the id has not been assigned
         Assert.assertNull(newEntity.getId());
 
-        // Sets the name
-        name = "name";
-        newEntity.setName(name);
+        // Sets the flag
+        flag = true;
+        newEntity.setFlag(flag);
 
         // Adds the entity
         getEntityManager().persist(newEntity);
@@ -142,7 +142,7 @@ public abstract class AbstractITSimpleEntityModify
         Assert.assertTrue(newEntity.getId() >= 0);
 
         // Checks that the name is the same
-        Assert.assertEquals(newEntity.getName(), name);
+        Assert.assertEquals(newEntity.getFlag(), flag);
 
         // Queries the created entity from the DB
 
@@ -151,11 +151,11 @@ public abstract class AbstractITSimpleEntityModify
         query.setParameter("id", newEntity.getId());
 
         // Acquires the entity
-        queried = (DefaultSimpleEntity) query.getSingleResult();
+        queried = (BooleanConverterEntity) query.getSingleResult();
 
         // Checks that the queried entity keeps all the data
         Assert.assertEquals(queried.getId(), newEntity.getId());
-        Assert.assertEquals(queried.getName(), newEntity.getName());
+        Assert.assertEquals(queried.getFlag(), newEntity.getFlag());
     }
 
     /**
@@ -165,16 +165,17 @@ public abstract class AbstractITSimpleEntityModify
     @Test
     @Transactional
     public final void testRemove() {
-        final DefaultSimpleEntity entity; // Entity being tested
-        final Query query;                // Query for the entity
-        Boolean caught;                   // Flag for the exception being caught
+        final BooleanConverterEntity entity; // Entity being tested
+        final Query query;                   // Query for the entity
+        Boolean caught;                      // Flag for the exception being
+                                             // caught
 
         // Builds the query
         query = getEntityManager().createQuery(findById);
         query.setParameter("id", 1);
 
         // Acquires the entity
-        entity = (DefaultSimpleEntity) query.getSingleResult();
+        entity = (BooleanConverterEntity) query.getSingleResult();
 
         // Removes the entity
         getEntityManager().remove(entity);
@@ -200,27 +201,27 @@ public abstract class AbstractITSimpleEntityModify
      */
     @Test
     public final void testUpdate() {
-        final String newChange;     // Name set on the entity
-        DefaultSimpleEntity entity; // The entity being tested
-        final Query query;          // Query for the entity
+        final Boolean newFlag;         // Name set on the entity
+        BooleanConverterEntity entity; // The entity being tested
+        final Query query;             // Query for the entity
 
         // Builds the query
         query = getEntityManager().createQuery(findById);
         query.setParameter("id", 1);
 
         // Acquires the entity
-        entity = (DefaultSimpleEntity) query.getSingleResult();
+        entity = (BooleanConverterEntity) query.getSingleResult();
 
         // Changes the entity name
-        newChange = "The new name";
-        entity.setName(newChange);
+        newFlag = true;
+        entity.setFlag(newFlag);
         getEntityManager().persist(entity);
 
         // Retrieves the entity again
-        entity = (DefaultSimpleEntity) query.getSingleResult();
+        entity = (BooleanConverterEntity) query.getSingleResult();
 
         // Checks the entity's name
-        Assert.assertEquals(entity.getName(), newChange);
+        Assert.assertEquals(entity.getFlag(), newFlag);
     }
 
     /**
