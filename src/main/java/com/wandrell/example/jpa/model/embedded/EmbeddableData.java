@@ -103,21 +103,21 @@ public final class EmbeddableData {
     /**
      * Sets the description of the entity.
      * 
-     * @param description
+     * @param value
      *            the description to set in the entity
      */
-    public final void setDescription(final String description) {
-        this.desc = description;
+    public final void setDescription(final String value) {
+        this.desc = value;
     }
 
     /**
      * Sets the name of the entity.
      * 
-     * @param name
+     * @param value
      *            the name to set in the entity
      */
-    public final void setName(final String name) {
-        this.name = name;
+    public final void setName(final String value) {
+        this.name = value;
     }
 
     @Override

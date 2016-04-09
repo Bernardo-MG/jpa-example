@@ -55,7 +55,7 @@ public class ElementCollectionEntity {
      */
     @ElementCollection
     @CollectionTable(name = "data", joinColumns = @JoinColumn(name = "id"))
-    private Collection<EmbeddableData> data = new LinkedList<EmbeddableData>();
+    private Collection<EmbeddableData> values = new LinkedList<EmbeddableData>();
 
     /**
      * Entity's ID.
@@ -63,7 +63,7 @@ public class ElementCollectionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer                    id   = null;
+    private Integer                    id     = null;
 
     /**
      * Default constructor.
@@ -95,8 +95,8 @@ public class ElementCollectionEntity {
      * 
      * @return the embeddable objects
      */
-    public final Collection<EmbeddableData> getData() {
-        return data;
+    public final Collection<EmbeddableData> getValues() {
+        return values;
     }
 
     /**
@@ -116,11 +116,11 @@ public class ElementCollectionEntity {
     /**
      * Sets the embeddable objects.
      * 
-     * @param data
+     * @param value
      *            embeddable objects to set in the entity
      */
-    public final void setData(final Collection<EmbeddableData> data) {
-        this.data = data;
+    public final void setValues(final Collection<EmbeddableData> value) {
+        this.values = value;
     }
 
     /**
@@ -129,8 +129,8 @@ public class ElementCollectionEntity {
      * @param identifier
      *            the id to set in the entity
      */
-    public final void setId(final Integer id) {
-        this.id = id;
+    public final void setId(final Integer identifier) {
+        id = identifier;
     }
 
     @Override

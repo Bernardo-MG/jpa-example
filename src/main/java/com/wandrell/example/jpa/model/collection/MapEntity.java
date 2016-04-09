@@ -58,7 +58,7 @@ public class MapEntity {
      * Mapper integer values.
      */
     @Column(name = "integersMap", nullable = false)
-    private Map<String, Integer> integers = new LinkedHashMap<String, Integer>();
+    private Map<String, Integer> values = new LinkedHashMap<String, Integer>();
 
     /**
      * Default constructor.
@@ -90,8 +90,8 @@ public class MapEntity {
      * 
      * @return the mapped integer values
      */
-    public final Map<String, Integer> getIntegers() {
-        return integers;
+    public final Map<String, Integer> getValues() {
+        return values;
     }
 
     @Override
@@ -102,11 +102,11 @@ public class MapEntity {
     /**
      * Sets the mapped integer values.
      * 
-     * @param integers
+     * @param value
      *            the mapped integer values to set in the entity
      */
-    public final void setIntegers(final Map<String, Integer> integers) {
-        this.integers = integers;
+    public final void setValues(final Map<String, Integer> value) {
+        values = value;
     }
 
     @Override

@@ -50,6 +50,9 @@ import com.google.common.base.MoreObjects;
 @Table(name = "embedded_entities")
 public class EmbeddedEntity {
 
+    /**
+     * Embedded data.
+     */
     @Embedded
     @AttributeOverrides({ @AttributeOverride(name = "desc",
             column = @Column(name = "description", nullable = false)), })

@@ -145,21 +145,21 @@ public final class DateEntity {
     /**
      * Sets the entity's date stored in a {@code Calendar}.
      * 
-     * @param date
+     * @param value
      *            the date to set in the entity
      */
-    public final void setCalendar(final Calendar date) {
-        this.calendar = date;
+    public final void setCalendar(final Calendar value) {
+        calendar = value;
     }
 
     /**
      * Sets the entity's date stored in a {@code Date}.
      * 
-     * @param date
+     * @param value
      *            the date to set in the entity
      */
-    public final void setDate(final Date date) {
-        this.date = date;
+    public final void setDate(final Date value) {
+        date = value;
     }
 
     /**
@@ -168,18 +168,18 @@ public final class DateEntity {
      * @param identifier
      *            the ID for the entity
      */
-    public final void setId(final Integer id) {
-        this.id = id;
+    public final void setId(final Integer identifier) {
+        id = identifier;
     }
 
     /**
      * Sets the entity's date stored in a SQL {@code Date}.
      * 
-     * @param date
+     * @param value
      *            the date to set in the entity
      */
-    public final void setSqlDate(final java.sql.Date date) {
-        this.sqlDate = date;
+    public final void setSqlDate(final java.sql.Date value) {
+        sqlDate = value;
     }
 
     @Override

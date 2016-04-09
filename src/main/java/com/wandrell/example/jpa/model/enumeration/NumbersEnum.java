@@ -33,6 +33,17 @@ package com.wandrell.example.jpa.model.enumeration;
  */
 public enum NumbersEnum {
 
-    ONE, THREE, TWO
+    /**
+     * First enum value.
+     */
+    ONE,
+    /**
+     * Second enum value.
+     */
+    TWO,
+    /**
+     * Third enum value.
+     */
+    THREE
 
 }

@@ -146,21 +146,21 @@ public final class TimeEntity {
     /**
      * Sets the entity's time stored in a {@code Calendar}.
      * 
-     * @param time
+     * @param value
      *            the time to set in the entity
      */
-    public final void setCalendar(final Calendar time) {
-        this.calendar = time;
+    public final void setCalendar(final Calendar value) {
+        calendar = value;
     }
 
     /**
      * Sets the entity's time stored in a {@code Date}.
      * 
-     * @param time
+     * @param value
      *            the time to set in the entity
      */
-    public final void setDate(final Date time) {
-        this.date = time;
+    public final void setDate(final Date value) {
+        date = value;
     }
 
     /**
@@ -169,18 +169,18 @@ public final class TimeEntity {
      * @param identifier
      *            the ID for the entity
      */
-    public final void setId(final Integer id) {
-        this.id = id;
+    public final void setId(final Integer identifier) {
+        id = identifier;
     }
 
     /**
      * Sets the entity's time stored in a SQL {@code Time}.
      * 
-     * @param time
+     * @param value
      *            the time to set in the entity
      */
-    public final void setSqlTime(final Time time) {
-        this.sqlTime = time;
+    public final void setSqlTime(final Time value) {
+        sqlTime = value;
     }
 
     @Override

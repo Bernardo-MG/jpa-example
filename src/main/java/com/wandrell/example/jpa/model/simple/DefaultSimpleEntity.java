@@ -116,8 +116,8 @@ public final class DefaultSimpleEntity implements SimpleEntity {
     }
 
     @Override
-    public final void setName(final String name) {
-        this.name = checkNotNull(name, "Received a null pointer as name");
+    public final void setName(final String value) {
+        this.name = checkNotNull(value, "Received a null pointer as name");
     }
 
     @Override

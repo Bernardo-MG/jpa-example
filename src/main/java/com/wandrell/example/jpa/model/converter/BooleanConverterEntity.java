@@ -134,11 +134,11 @@ public final class BooleanConverterEntity {
     /**
      * Sets the boolean flag.
      * 
-     * @param flag
+     * @param value
      *            the flag to set on the entity
      */
-    public final void setFlag(final Boolean flag) {
-        this.flag = flag;
+    public final void setFlag(final Boolean value) {
+        flag = value;
     }
 
     /**

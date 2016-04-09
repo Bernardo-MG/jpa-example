@@ -58,7 +58,7 @@ public class CollectionEntity {
      * Integer values.
      */
     @Column(name = "integersCol", nullable = false)
-    private Collection<Integer> integers = new LinkedList<Integer>();
+    private Collection<Integer> values = new LinkedList<Integer>();
 
     /**
      * Default constructor.
@@ -90,8 +90,8 @@ public class CollectionEntity {
      * 
      * @return the integer values
      */
-    public final Collection<Integer> getIntegers() {
-        return integers;
+    public final Collection<Integer> getValues() {
+        return values;
     }
 
     @Override
@@ -102,11 +102,11 @@ public class CollectionEntity {
     /**
      * Sets the integer values.
      * 
-     * @param integers
+     * @param value
      *            the integer values to set in the entity
      */
-    public final void setIntegers(final Collection<Integer> integers) {
-        this.integers = integers;
+    public final void setValues(final Collection<Integer> value) {
+        values = value;
     }
 
     @Override

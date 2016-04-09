@@ -146,21 +146,21 @@ public final class TimestampEntity {
     /**
      * Sets the entity's timestamp stored in a {@code Calendar}.
      * 
-     * @param timestamp
+     * @param value
      *            the timestamp to set in the entity
      */
-    public final void setCalendar(final Calendar timestamp) {
-        this.calendar = timestamp;
+    public final void setCalendar(final Calendar value) {
+        calendar = value;
     }
 
     /**
      * Sets the entity's timestamp stored in a {@code Date}.
      * 
-     * @param time
+     * @param value
      *            the timestamp to set in the entity
      */
-    public final void setDate(final Date timestamp) {
-        this.date = timestamp;
+    public final void setDate(final Date value) {
+        date = value;
     }
 
     /**
@@ -169,18 +169,18 @@ public final class TimestampEntity {
      * @param identifier
      *            the ID for the entity
      */
-    public final void setId(final Integer id) {
-        this.id = id;
+    public final void setId(final Integer identifier) {
+        id = identifier;
     }
 
     /**
      * Sets the entity's timestamp stored in a SQL {@code Time}.
      * 
-     * @param timestamp
+     * @param value
      *            the time to set in the entity
      */
-    public final void setSqlTimestamp(final Timestamp timestamp) {
-        this.sqlTimestamp = timestamp;
+    public final void setSqlTimestamp(final Timestamp value) {
+        sqlTimestamp = value;
     }
 
     @Override

@@ -129,21 +129,21 @@ public final class EnumEntity {
     /**
      * Sets the enumeration value to be stored as an ordinal in the table.
      * 
-     * @param enumOrdinal
+     * @param value
      *            the enumeration value to be stored as an ordinal in the table
      */
-    public final void setEnumOrdinal(final NumbersEnum enumOrdinal) {
-        this.enumOrdinal = enumOrdinal;
+    public final void setEnumOrdinal(final NumbersEnum value) {
+        enumOrdinal = value;
     }
 
     /**
      * Sets the enumeration value to be stored as a string in the table.
      * 
-     * @param enumOrdinal
+     * @param value
      *            the enumeration value to be stored as a string in the table
      */
-    public final void setEnumString(final NumbersEnum enumString) {
-        this.enumString = enumString;
+    public final void setEnumString(final NumbersEnum value) {
+        enumString = value;
     }
 
     /**
