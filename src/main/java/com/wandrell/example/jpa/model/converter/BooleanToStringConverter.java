@@ -24,6 +24,8 @@
 
 package com.wandrell.example.jpa.model.converter;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
@@ -58,6 +60,8 @@ public final class BooleanToStringConverter
     public final String convertToDatabaseColumn(final Boolean value) {
         final String result;
 
+        checkNotNull(value, "Received a null pointer as value");
+
         if (Boolean.TRUE.equals(value)) {
             result = "T";
         } else {
@@ -77,6 +81,8 @@ public final class BooleanToStringConverter
      */
     @Override
     public final Boolean convertToEntityAttribute(final String value) {
+        checkNotNull(value, "Received a null pointer as value");
+
         return "T".equals(value);
     }
 

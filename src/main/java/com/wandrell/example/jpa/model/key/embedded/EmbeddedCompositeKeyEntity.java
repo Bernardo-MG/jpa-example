@@ -24,6 +24,8 @@
 
 package com.wandrell.example.jpa.model.key.embedded;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -75,7 +77,7 @@ public class EmbeddedCompositeKeyEntity {
     }
 
     public final void setName(final String name) {
-        this.name = name;
+        this.name = checkNotNull(name, "Received a null pointer as name");
     }
 
     @Override

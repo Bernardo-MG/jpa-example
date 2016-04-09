@@ -24,6 +24,8 @@
 
 package com.wandrell.example.jpa.model.embedded;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -107,7 +109,8 @@ public final class EmbeddableData {
      *            the description to set in the entity
      */
     public final void setDescription(final String value) {
-        this.desc = value;
+        this.desc = checkNotNull(value,
+                "Received a null pointer as description");
     }
 
     /**
@@ -117,7 +120,7 @@ public final class EmbeddableData {
      *            the name to set in the entity
      */
     public final void setName(final String value) {
-        this.name = value;
+        this.name = checkNotNull(value, "Received a null pointer as name");
     }
 
     @Override

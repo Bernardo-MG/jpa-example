@@ -24,6 +24,8 @@
 
 package com.wandrell.example.jpa.model.table;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -108,15 +110,18 @@ public final class SecondaryTableEntity {
     }
 
     public final void setField1(final String field1) {
-        this.field1 = field1;
+        this.field1 = checkNotNull(field1,
+                "Received a null pointer as field 1");
     }
 
     public final void setField2(final String field2) {
-        this.field2 = field2;
+        this.field2 = checkNotNull(field2,
+                "Received a null pointer as field 2");
     }
 
-    public final void setId(final Integer id) {
-        this.id = id;
+    public final void setId(final Integer identifier) {
+        this.id = checkNotNull(identifier,
+                "Received a null pointer as identifier");
     }
 
     @Override

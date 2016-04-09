@@ -88,7 +88,7 @@ public class OneToOneInverseEntity {
     }
 
     public final void setSource(final OneToOneSourceEntity source) {
-        this.source = source;
+        this.source = checkNotNull(source, "Received a null pointer as source");
     }
 
     @Override

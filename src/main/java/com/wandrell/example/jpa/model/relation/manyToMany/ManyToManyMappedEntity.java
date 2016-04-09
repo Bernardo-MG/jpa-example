@@ -88,7 +88,7 @@ public class ManyToManyMappedEntity {
     }
 
     public final void setOwners(final List<ManyToManyOwnerEntity> owners) {
-        this.owners = owners;
+        this.owners = checkNotNull(owners, "Received a null pointer as owners");
     }
 
     @Override

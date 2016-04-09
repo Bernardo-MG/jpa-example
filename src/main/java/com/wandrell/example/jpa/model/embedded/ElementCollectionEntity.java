@@ -24,6 +24,8 @@
 
 package com.wandrell.example.jpa.model.embedded;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Objects;
@@ -120,7 +122,7 @@ public class ElementCollectionEntity {
      *            embeddable objects to set in the entity
      */
     public final void setValues(final Collection<EmbeddableData> value) {
-        this.values = value;
+        this.values = checkNotNull(value, "Received a null pointer as values");
     }
 
     /**
@@ -130,7 +132,7 @@ public class ElementCollectionEntity {
      *            the id to set in the entity
      */
     public final void setId(final Integer identifier) {
-        id = identifier;
+        id = checkNotNull(identifier, "Received a null pointer as identifier");
     }
 
     @Override

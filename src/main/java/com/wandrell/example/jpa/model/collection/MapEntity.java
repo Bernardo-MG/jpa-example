@@ -24,6 +24,8 @@
 
 package com.wandrell.example.jpa.model.collection;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -52,7 +54,7 @@ public class MapEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer              id       = null;
+    private Integer              id     = null;
 
     /**
      * Mapper integer values.
@@ -94,6 +96,25 @@ public class MapEntity {
         return values;
     }
 
+    /**
+     * Returns the entity's id.
+     * 
+     * @return the entity's id
+     */
+    public final Integer getId() {
+        return id;
+    }
+
+    /**
+     * Sets the entity's id.
+     * 
+     * @param identifier
+     *            the ID for the entity
+     */
+    public final void setId(final Integer identifier) {
+        id = checkNotNull(identifier, "Received a null pointer as identifier");
+    }
+
     @Override
     public final int hashCode() {
         return Objects.hash(id);
@@ -106,7 +127,7 @@ public class MapEntity {
      *            the mapped integer values to set in the entity
      */
     public final void setValues(final Map<String, Integer> value) {
-        values = value;
+        values = checkNotNull(value, "Received a null pointer as identifier");
     }
 
     @Override

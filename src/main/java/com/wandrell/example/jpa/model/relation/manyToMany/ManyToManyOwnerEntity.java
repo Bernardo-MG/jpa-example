@@ -91,7 +91,7 @@ public class ManyToManyOwnerEntity {
     }
 
     public final void setMapped(Collection<ManyToManyMappedEntity> mapped) {
-        this.mapped = mapped;
+        this.mapped = checkNotNull(mapped, "Received a null pointer as mapped");
     }
 
     public final void setName(final String name) {

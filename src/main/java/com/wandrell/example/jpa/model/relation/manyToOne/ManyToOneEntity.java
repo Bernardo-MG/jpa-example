@@ -90,7 +90,8 @@ public class ManyToOneEntity {
     }
 
     public final void setOneToMany(final OneToManyEntity oneToMany) {
-        this.oneToMany = oneToMany;
+        this.oneToMany = checkNotNull(oneToMany,
+                "Received a null pointer as oneToMany");
     }
 
     @Override

@@ -24,6 +24,8 @@
 
 package com.wandrell.example.jpa.model.inheritance.superclass;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -47,7 +49,8 @@ public class SuperClassTableInheritanceFirstEntity
     }
 
     public final void setField_a(final String field_a) {
-        this.field_a = field_a;
+        this.field_a = checkNotNull(field_a,
+                "Received a null pointer as field_a");
     }
 
 }

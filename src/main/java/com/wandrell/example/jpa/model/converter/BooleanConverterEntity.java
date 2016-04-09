@@ -138,7 +138,7 @@ public final class BooleanConverterEntity {
      *            the flag to set on the entity
      */
     public final void setFlag(final Boolean value) {
-        flag = value;
+        flag = checkNotNull(value, "Received a null pointer as flag");
     }
 
     /**

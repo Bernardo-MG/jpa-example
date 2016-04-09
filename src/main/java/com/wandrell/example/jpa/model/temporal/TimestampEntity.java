@@ -24,6 +24,8 @@
 
 package com.wandrell.example.jpa.model.temporal;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
@@ -150,7 +152,7 @@ public final class TimestampEntity {
      *            the timestamp to set in the entity
      */
     public final void setCalendar(final Calendar value) {
-        calendar = value;
+        calendar = checkNotNull(value, "Received a null pointer as timestamp");
     }
 
     /**
@@ -160,7 +162,7 @@ public final class TimestampEntity {
      *            the timestamp to set in the entity
      */
     public final void setDate(final Date value) {
-        date = value;
+        date = checkNotNull(value, "Received a null pointer as timestamp");
     }
 
     /**
@@ -170,7 +172,7 @@ public final class TimestampEntity {
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        id = identifier;
+        id = checkNotNull(identifier, "Received a null pointer as identifier");
     }
 
     /**
@@ -180,7 +182,8 @@ public final class TimestampEntity {
      *            the time to set in the entity
      */
     public final void setSqlTimestamp(final Timestamp value) {
-        sqlTimestamp = value;
+        sqlTimestamp = checkNotNull(value,
+                "Received a null pointer as timestamp");
     }
 
     @Override

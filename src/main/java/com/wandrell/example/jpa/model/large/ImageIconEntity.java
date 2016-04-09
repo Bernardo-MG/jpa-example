@@ -24,6 +24,8 @@
 
 package com.wandrell.example.jpa.model.large;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -88,12 +90,14 @@ public class ImageIconEntity {
         return Objects.hash(id);
     }
 
-    public final void setId(final Integer id) {
-        this.id = id;
+    public final void setId(final Integer identifier) {
+        this.id = checkNotNull(identifier,
+                "Received a null pointer as identifier");
     }
 
     public final void setPicture(final ImageIcon picture) {
-        this.picture = picture;
+        this.picture = checkNotNull(picture,
+                "Received a null pointer as picture");
     }
 
     @Override

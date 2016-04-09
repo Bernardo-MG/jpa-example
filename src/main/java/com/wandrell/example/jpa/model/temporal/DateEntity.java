@@ -24,6 +24,8 @@
 
 package com.wandrell.example.jpa.model.temporal;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
@@ -149,7 +151,7 @@ public final class DateEntity {
      *            the date to set in the entity
      */
     public final void setCalendar(final Calendar value) {
-        calendar = value;
+        calendar = checkNotNull(value, "Received a null pointer as date");
     }
 
     /**
@@ -159,7 +161,7 @@ public final class DateEntity {
      *            the date to set in the entity
      */
     public final void setDate(final Date value) {
-        date = value;
+        date = checkNotNull(value, "Received a null pointer as date");
     }
 
     /**
@@ -169,7 +171,7 @@ public final class DateEntity {
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        id = identifier;
+        id = checkNotNull(identifier, "Received a null pointer as identifier");
     }
 
     /**
@@ -179,7 +181,7 @@ public final class DateEntity {
      *            the date to set in the entity
      */
     public final void setSqlDate(final java.sql.Date value) {
-        sqlDate = value;
+        sqlDate = checkNotNull(value, "Received a null pointer as date");
     }
 
     @Override

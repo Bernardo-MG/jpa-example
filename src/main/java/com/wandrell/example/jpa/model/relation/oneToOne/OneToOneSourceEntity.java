@@ -86,7 +86,8 @@ public class OneToOneSourceEntity {
     }
 
     public final void setInverse(final OneToOneInverseEntity inverse) {
-        this.inverse = inverse;
+        this.inverse = checkNotNull(inverse,
+                "Received a null pointer as inverse");
     }
 
     public final void setName(final String name) {

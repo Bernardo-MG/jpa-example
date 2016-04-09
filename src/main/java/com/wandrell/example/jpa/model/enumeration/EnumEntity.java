@@ -24,6 +24,8 @@
 
 package com.wandrell.example.jpa.model.enumeration;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -133,7 +135,7 @@ public final class EnumEntity {
      *            the enumeration value to be stored as an ordinal in the table
      */
     public final void setEnumOrdinal(final NumbersEnum value) {
-        enumOrdinal = value;
+        enumOrdinal = checkNotNull(value, "Received a null pointer as enum");
     }
 
     /**
@@ -143,7 +145,7 @@ public final class EnumEntity {
      *            the enumeration value to be stored as a string in the table
      */
     public final void setEnumString(final NumbersEnum value) {
-        enumString = value;
+        enumString = checkNotNull(value, "Received a null pointer as enum");
     }
 
     /**
@@ -153,7 +155,7 @@ public final class EnumEntity {
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        id = identifier;
+        id = checkNotNull(identifier, "Received a null pointer as identifier");
     }
 
     @Override

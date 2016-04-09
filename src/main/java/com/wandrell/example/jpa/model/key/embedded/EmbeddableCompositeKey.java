@@ -24,6 +24,8 @@
 
 package com.wandrell.example.jpa.model.key.embedded;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -76,11 +78,11 @@ public class EmbeddableCompositeKey {
     }
 
     public final void setId1(final Integer id1) {
-        this.id1 = id1;
+        this.id1 = checkNotNull(id1, "Received a null pointer as id 1");
     }
 
     public final void setId2(final Long id2) {
-        this.id2 = id2;
+        this.id2 = checkNotNull(id2, "Received a null pointer as id 2");
     }
 
     @Override

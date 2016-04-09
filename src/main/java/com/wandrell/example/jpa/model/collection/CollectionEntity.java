@@ -24,6 +24,8 @@
 
 package com.wandrell.example.jpa.model.collection;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Objects;
@@ -52,7 +54,7 @@ public class CollectionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer             id       = null;
+    private Integer             id     = null;
 
     /**
      * Integer values.
@@ -106,7 +108,26 @@ public class CollectionEntity {
      *            the integer values to set in the entity
      */
     public final void setValues(final Collection<Integer> value) {
-        values = value;
+        values = checkNotNull(value, "Received a null pointer as value");
+    }
+
+    /**
+     * Returns the entity's id.
+     * 
+     * @return the entity's id
+     */
+    public final Integer getId() {
+        return id;
+    }
+
+    /**
+     * Sets the entity's id.
+     * 
+     * @param identifier
+     *            the ID for the entity
+     */
+    public final void setId(final Integer identifier) {
+        id = checkNotNull(identifier, "Received a null pointer as identifier");
     }
 
     @Override

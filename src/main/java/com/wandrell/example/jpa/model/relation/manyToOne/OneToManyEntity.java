@@ -84,7 +84,8 @@ public class OneToManyEntity {
     }
 
     public final void setManyToOne(final List<ManyToOneEntity> manyToOne) {
-        this.manyToOne = manyToOne;
+        this.manyToOne = checkNotNull(manyToOne,
+                "Received a null pointer as manyToOne");
     }
 
     public final void setName(final String name) {

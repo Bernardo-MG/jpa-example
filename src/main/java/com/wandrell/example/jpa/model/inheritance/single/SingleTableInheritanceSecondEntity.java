@@ -24,6 +24,8 @@
 
 package com.wandrell.example.jpa.model.inheritance.single;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -45,7 +47,8 @@ public class SingleTableInheritanceSecondEntity
     }
 
     public final void setField_b(final Long field_b) {
-        this.field_b = field_b;
+        this.field_b = checkNotNull(field_b,
+                "Received a null pointer as field_b");
     }
 
 }
