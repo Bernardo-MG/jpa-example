@@ -40,10 +40,19 @@ import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * Entity using a collection of embeddable objects.
+ * 
+ * @author Bernardo Martínez Garrido
+ * @see EmbeddableData
+ */
 @Entity(name = "ElementCollectionEntity")
 @Table(name = "element_collection_entities")
 public class ElementCollectionEntity {
 
+    /**
+     * Embeddable objects.
+     */
     @ElementCollection
     @CollectionTable(name = "data", joinColumns = @JoinColumn(name = "id"))
     private Collection<EmbeddableData> data = new LinkedList<EmbeddableData>();
@@ -56,6 +65,9 @@ public class ElementCollectionEntity {
     @Column(name = "id", nullable = false, unique = true)
     private Integer                    id   = null;
 
+    /**
+     * Default constructor.
+     */
     public ElementCollectionEntity() {
         super();
     }
@@ -78,10 +90,20 @@ public class ElementCollectionEntity {
         return Objects.equals(id, other.id);
     }
 
+    /**
+     * Returns the embeddable objects.
+     * 
+     * @return the embeddable objects
+     */
     public final Collection<EmbeddableData> getData() {
         return data;
     }
 
+    /**
+     * Returns the entity's id.
+     * 
+     * @return the entity's id
+     */
     public final Integer getId() {
         return id;
     }
@@ -91,10 +113,22 @@ public class ElementCollectionEntity {
         return Objects.hash(id);
     }
 
+    /**
+     * Sets the embeddable objects.
+     * 
+     * @param data
+     *            embeddable objects to set in the entity
+     */
     public final void setData(final Collection<EmbeddableData> data) {
         this.data = data;
     }
 
+    /**
+     * Sets the entity's id.
+     * 
+     * @param identifier
+     *            the id to set in the entity
+     */
     public final void setId(final Integer id) {
         this.id = id;
     }

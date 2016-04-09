@@ -37,6 +37,11 @@ import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * JPA entity with a map of simple types.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "MultiValueEntity")
 @Table(name = "multivalue_entities")
 public class MapEntity {
@@ -47,11 +52,17 @@ public class MapEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer              id          = null;
+    private Integer              id       = null;
 
+    /**
+     * Mapper integer values.
+     */
     @Column(name = "integersMap", nullable = false)
-    private Map<String, Integer> integersMap = new LinkedHashMap<String, Integer>();
+    private Map<String, Integer> integers = new LinkedHashMap<String, Integer>();
 
+    /**
+     * Default constructor.
+     */
     public MapEntity() {
         super();
     }
@@ -74,8 +85,13 @@ public class MapEntity {
         return Objects.equals(id, other.id);
     }
 
-    public final Map<String, Integer> getIntegersMap() {
-        return integersMap;
+    /**
+     * Returns the mapped integer values.
+     * 
+     * @return the mapped integer values
+     */
+    public final Map<String, Integer> getIntegers() {
+        return integers;
     }
 
     @Override
@@ -83,8 +99,14 @@ public class MapEntity {
         return Objects.hash(id);
     }
 
-    public final void setIntegersMap(final Map<String, Integer> integersMap) {
-        this.integersMap = integersMap;
+    /**
+     * Sets the mapped integer values.
+     * 
+     * @param integers
+     *            the mapped integer values to set in the entity
+     */
+    public final void setIntegers(final Map<String, Integer> integers) {
+        this.integers = integers;
     }
 
     @Override

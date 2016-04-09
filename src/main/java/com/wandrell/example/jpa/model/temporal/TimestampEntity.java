@@ -40,13 +40,28 @@ import javax.persistence.TemporalType;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * JPA entity storing timestamp.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "TimestampEntity")
 @Table(name = "timestamp_entities")
 public final class TimestampEntity {
 
+    /**
+     * Timestamp stored in a calendar.
+     */
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "calendar_timestamp", nullable = false)
-    private Calendar  calendarTimestamp;
+    private Calendar  calendar;
+
+    /**
+     * Timestamp stored in a date.
+     */
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "java_timestamp", nullable = false)
+    private Date      date;
 
     /**
      * Entity's ID.
@@ -56,13 +71,15 @@ public final class TimestampEntity {
     @Column(name = "id", nullable = false, unique = true)
     private Integer   id = null;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "java_timestamp", nullable = false)
-    private Date      javaTimestamp;
-
+    /**
+     * Time stored in a SQL timestamp.
+     */
     @Column(name = "sql_timestamp", nullable = false)
     private Timestamp sqlTimestamp;
 
+    /**
+     * Default constructor.
+     */
     public TimestampEntity() {
         super();
     }
@@ -85,18 +102,38 @@ public final class TimestampEntity {
         return Objects.equals(id, other.id);
     }
 
-    public final Calendar getCalendarTimestamp() {
-        return calendarTimestamp;
+    /**
+     * Returns the timestamp stored in a {@code Calendar}.
+     * 
+     * @return the timestamp stored in a {@code Calendar}
+     */
+    public final Calendar getCalendar() {
+        return calendar;
     }
 
+    /**
+     * Returns the timestamp stored in a {@code Date}.
+     * 
+     * @return the timestamp stored in a {@code Date}
+     */
+    public final Date getDate() {
+        return date;
+    }
+
+    /**
+     * Returns the entity's id.
+     * 
+     * @return the entity's id
+     */
     public final Integer getId() {
         return id;
     }
 
-    public final Date getJavaTimestamp() {
-        return javaTimestamp;
-    }
-
+    /**
+     * Returns the timestamp stored in a SQL {@code Timestamp}.
+     * 
+     * @return the timestamp stored in a SQL {@code Timestamp}
+     */
     public final Timestamp getSqlTimestamp() {
         return sqlTimestamp;
     }
@@ -106,20 +143,44 @@ public final class TimestampEntity {
         return Objects.hash(id);
     }
 
-    public final void setCalendarTimestamp(final Calendar calendarTimestamp) {
-        this.calendarTimestamp = calendarTimestamp;
+    /**
+     * Sets the entity's timestamp stored in a {@code Calendar}.
+     * 
+     * @param timestamp
+     *            the timestamp to set in the entity
+     */
+    public final void setCalendar(final Calendar timestamp) {
+        this.calendar = timestamp;
     }
 
+    /**
+     * Sets the entity's timestamp stored in a {@code Date}.
+     * 
+     * @param time
+     *            the timestamp to set in the entity
+     */
+    public final void setDate(final Date timestamp) {
+        this.date = timestamp;
+    }
+
+    /**
+     * Sets the entity's id.
+     * 
+     * @param identifier
+     *            the ID for the entity
+     */
     public final void setId(final Integer id) {
         this.id = id;
     }
 
-    public final void setJavaTimestamp(final Date javaTimestamp) {
-        this.javaTimestamp = javaTimestamp;
-    }
-
-    public final void setSqlTimestamp(final Timestamp sqlTimestamp) {
-        this.sqlTimestamp = sqlTimestamp;
+    /**
+     * Sets the entity's timestamp stored in a SQL {@code Time}.
+     * 
+     * @param timestamp
+     *            the time to set in the entity
+     */
+    public final void setSqlTimestamp(final Timestamp timestamp) {
+        this.sqlTimestamp = timestamp;
     }
 
     @Override

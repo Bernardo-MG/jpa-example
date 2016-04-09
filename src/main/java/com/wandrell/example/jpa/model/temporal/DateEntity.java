@@ -39,13 +39,28 @@ import javax.persistence.TemporalType;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * JPA entity storing full dates.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "DateEntity")
 @Table(name = "date_entities")
 public final class DateEntity {
 
+    /**
+     * Date stored in a calendar.
+     */
     @Temporal(TemporalType.DATE)
     @Column(name = "calendar_date", nullable = false)
-    private Calendar      calendarDate;
+    private Calendar      calendar;
+
+    /**
+     * Date stored in a date.
+     */
+    @Temporal(TemporalType.DATE)
+    @Column(name = "java_date", nullable = false)
+    private Date          date;
 
     /**
      * Entity's ID.
@@ -55,13 +70,15 @@ public final class DateEntity {
     @Column(name = "id", nullable = false, unique = true)
     private Integer       id = null;
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "java_date", nullable = false)
-    private Date          javaDate;
-
+    /**
+     * Date stored in a SQL date.
+     */
     @Column(name = "sql_date", nullable = false)
     private java.sql.Date sqlDate;
 
+    /**
+     * Default constructor.
+     */
     public DateEntity() {
         super();
     }
@@ -84,18 +101,38 @@ public final class DateEntity {
         return Objects.equals(id, other.id);
     }
 
-    public final Calendar getCalendarDate() {
-        return calendarDate;
+    /**
+     * Returns the date stored in a {@code Calendar}.
+     * 
+     * @return the date stored in a {@code Calendar}
+     */
+    public final Calendar getCalendar() {
+        return calendar;
     }
 
+    /**
+     * Returns the date stored in a {@code Date}.
+     * 
+     * @return the date stored in a {@code Date}
+     */
+    public final Date getDate() {
+        return date;
+    }
+
+    /**
+     * Returns the entity's id.
+     * 
+     * @return the entity's id
+     */
     public final Integer getId() {
         return id;
     }
 
-    public final Date getJavaDate() {
-        return javaDate;
-    }
-
+    /**
+     * Returns the date stored in a SQL {@code Date}.
+     * 
+     * @return the date stored in a SQL {@code Date}
+     */
     public final java.sql.Date getSqlDate() {
         return sqlDate;
     }
@@ -105,20 +142,44 @@ public final class DateEntity {
         return Objects.hash(id);
     }
 
-    public final void setCalendarDate(final Calendar calendarDate) {
-        this.calendarDate = calendarDate;
+    /**
+     * Sets the entity's date stored in a {@code Calendar}.
+     * 
+     * @param date
+     *            the date to set in the entity
+     */
+    public final void setCalendar(final Calendar date) {
+        this.calendar = date;
     }
 
+    /**
+     * Sets the entity's date stored in a {@code Date}.
+     * 
+     * @param date
+     *            the date to set in the entity
+     */
+    public final void setDate(final Date date) {
+        this.date = date;
+    }
+
+    /**
+     * Sets the entity's id.
+     * 
+     * @param identifier
+     *            the ID for the entity
+     */
     public final void setId(final Integer id) {
         this.id = id;
     }
 
-    public final void setJavaDate(final Date javaDate) {
-        this.javaDate = javaDate;
-    }
-
-    public final void setSqlDate(final java.sql.Date sqlDate) {
-        this.sqlDate = sqlDate;
+    /**
+     * Sets the entity's date stored in a SQL {@code Date}.
+     * 
+     * @param date
+     *            the date to set in the entity
+     */
+    public final void setSqlDate(final java.sql.Date date) {
+        this.sqlDate = date;
     }
 
     @Override

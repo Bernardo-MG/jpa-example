@@ -36,6 +36,11 @@ import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * JPA entity using an sequence-generated id.
+ *
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "SequenceGeneratedIdEntity")
 @Table(name = "sequence_id_entities")
 @SequenceGenerator(name = "seq", initialValue = 1, allocationSize = 100)
@@ -49,6 +54,9 @@ public final class SequenceGeneratedIdEntity {
     @Column(name = "id", nullable = false, unique = true)
     private Integer id = null;
 
+    /**
+     * Default constructor.
+     */
     public SequenceGeneratedIdEntity() {
         super();
     }

@@ -40,13 +40,28 @@ import javax.persistence.TemporalType;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * JPA entity storing time.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "TimeEntity")
 @Table(name = "time_entities")
 public final class TimeEntity {
 
+    /**
+     * Time stored in a calendar.
+     */
     @Temporal(TemporalType.TIME)
     @Column(name = "calendar_time", nullable = false)
-    private Calendar calendarTime;
+    private Calendar calendar;
+
+    /**
+     * Time stored in a date.
+     */
+    @Temporal(TemporalType.TIME)
+    @Column(name = "java_time", nullable = false)
+    private Date     date;
 
     /**
      * Entity's ID.
@@ -56,13 +71,15 @@ public final class TimeEntity {
     @Column(name = "id", nullable = false, unique = true)
     private Integer  id = null;
 
-    @Temporal(TemporalType.TIME)
-    @Column(name = "java_time", nullable = false)
-    private Date     javaTime;
-
+    /**
+     * Time stored in a SQL date.
+     */
     @Column(name = "sql_time", nullable = false)
     private Time     sqlTime;
 
+    /**
+     * Default constructor.
+     */
     public TimeEntity() {
         super();
     }
@@ -85,18 +102,38 @@ public final class TimeEntity {
         return Objects.equals(id, other.id);
     }
 
-    public final Calendar getCalendarTime() {
-        return calendarTime;
+    /**
+     * Returns the time stored in a {@code Calendar}.
+     * 
+     * @return the time stored in a {@code Calendar}
+     */
+    public final Calendar getCalendar() {
+        return calendar;
     }
 
+    /**
+     * Returns the time stored in a {@code Date}.
+     * 
+     * @return the time stored in a {@code Date}
+     */
+    public final Date getDate() {
+        return date;
+    }
+
+    /**
+     * Returns the entity's id.
+     * 
+     * @return the entity's id
+     */
     public final Integer getId() {
         return id;
     }
 
-    public final Date getJavaTime() {
-        return javaTime;
-    }
-
+    /**
+     * Returns the time stored in a SQL {@code Time}.
+     * 
+     * @return the time stored in a SQL {@code Time}
+     */
     public final Time getSqlTime() {
         return sqlTime;
     }
@@ -106,20 +143,44 @@ public final class TimeEntity {
         return Objects.hash(id);
     }
 
-    public final void setCalendarTime(final Calendar calendarTime) {
-        this.calendarTime = calendarTime;
+    /**
+     * Sets the entity's time stored in a {@code Calendar}.
+     * 
+     * @param time
+     *            the time to set in the entity
+     */
+    public final void setCalendar(final Calendar time) {
+        this.calendar = time;
     }
 
+    /**
+     * Sets the entity's time stored in a {@code Date}.
+     * 
+     * @param time
+     *            the time to set in the entity
+     */
+    public final void setDate(final Date time) {
+        this.date = time;
+    }
+
+    /**
+     * Sets the entity's id.
+     * 
+     * @param identifier
+     *            the ID for the entity
+     */
     public final void setId(final Integer id) {
         this.id = id;
     }
 
-    public final void setJavaTime(final Date javaTime) {
-        this.javaTime = javaTime;
-    }
-
-    public final void setSqlTime(final Time sqlTime) {
-        this.sqlTime = sqlTime;
+    /**
+     * Sets the entity's time stored in a SQL {@code Time}.
+     * 
+     * @param time
+     *            the time to set in the entity
+     */
+    public final void setSqlTime(final Time time) {
+        this.sqlTime = time;
     }
 
     @Override

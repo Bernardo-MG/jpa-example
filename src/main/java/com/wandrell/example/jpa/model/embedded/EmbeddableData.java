@@ -31,6 +31,11 @@ import javax.persistence.Embeddable;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * Embeddabble entity to be added into a JPA entity.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Embeddable
 public final class EmbeddableData {
 
@@ -47,7 +52,7 @@ public final class EmbeddableData {
     private String name = "";
 
     /**
-     * Constructs an embeddable class.
+     * Default constructor.
      */
     public EmbeddableData() {
         super();
@@ -72,10 +77,20 @@ public final class EmbeddableData {
                 && Objects.equals(desc, other.desc);
     }
 
+    /**
+     * Returns the description of the entity.
+     * 
+     * @return the description of the entity
+     */
     public final String getDescription() {
         return desc;
     }
 
+    /**
+     * Returns the name of the entity.
+     * 
+     * @return the name of the entity
+     */
     public final String getName() {
         return name;
     }
@@ -85,11 +100,23 @@ public final class EmbeddableData {
         return Objects.hash(name, desc);
     }
 
-    public final void setDescription(String description) {
+    /**
+     * Sets the description of the entity.
+     * 
+     * @param description
+     *            the description to set in the entity
+     */
+    public final void setDescription(final String description) {
         this.desc = description;
     }
 
-    public final void setName(String name) {
+    /**
+     * Sets the name of the entity.
+     * 
+     * @param name
+     *            the name to set in the entity
+     */
+    public final void setName(final String name) {
         this.name = name;
     }
 

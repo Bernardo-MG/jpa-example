@@ -59,7 +59,7 @@ public interface SimpleEntity extends Serializable {
     public void setId(final Integer identifier);
 
     /**
-     * Changes the name of the entity.
+     * Sets the name of the entity.
      *
      * @param name
      *            the name to set on the entity

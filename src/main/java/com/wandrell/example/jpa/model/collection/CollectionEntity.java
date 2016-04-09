@@ -37,6 +37,11 @@ import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * JPA entity with a collection of simple types.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "MultiValueEntity")
 @Table(name = "multivalue_entities")
 public class CollectionEntity {
@@ -47,11 +52,17 @@ public class CollectionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer              id          = null;
+    private Integer             id       = null;
 
+    /**
+     * Integer values.
+     */
     @Column(name = "integersCol", nullable = false)
-    private Collection<Integer>  integersCol = new LinkedList<Integer>();
+    private Collection<Integer> integers = new LinkedList<Integer>();
 
+    /**
+     * Default constructor.
+     */
     public CollectionEntity() {
         super();
     }
@@ -74,8 +85,13 @@ public class CollectionEntity {
         return Objects.equals(id, other.id);
     }
 
-    public final Collection<Integer> getIntegersCol() {
-        return integersCol;
+    /**
+     * Returns the integer values.
+     * 
+     * @return the integer values
+     */
+    public final Collection<Integer> getIntegers() {
+        return integers;
     }
 
     @Override
@@ -83,8 +99,14 @@ public class CollectionEntity {
         return Objects.hash(id);
     }
 
-    public final void setIntegersCol(final Collection<Integer> integersCol) {
-        this.integersCol = integersCol;
+    /**
+     * Sets the integer values.
+     * 
+     * @param integers
+     *            the integer values to set in the entity
+     */
+    public final void setIntegers(final Collection<Integer> integers) {
+        this.integers = integers;
     }
 
     @Override

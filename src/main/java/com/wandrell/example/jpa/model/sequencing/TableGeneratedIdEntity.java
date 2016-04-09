@@ -36,6 +36,11 @@ import javax.persistence.TableGenerator;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * JPA entity using an table-generated id.
+ *
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "TableGeneratedIdEntity")
 @Table(name = "table_id_entities")
 @TableGenerator(name = "tab", initialValue = 0, allocationSize = 50)
@@ -49,6 +54,9 @@ public final class TableGeneratedIdEntity {
     @Column(name = "id", nullable = false, unique = true)
     private Integer id = null;
 
+    /**
+     * Default constructor.
+     */
     public TableGeneratedIdEntity() {
         super();
     }

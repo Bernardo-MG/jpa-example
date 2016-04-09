@@ -40,6 +40,12 @@ import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * JPA entity using an embeddable class.
+ * 
+ * @author Bernardo Martínez Garrido
+ * @see EmbeddableData
+ */
 @Entity(name = "EmbeddedEntity")
 @Table(name = "embedded_entities")
 public class EmbeddedEntity {
@@ -57,6 +63,9 @@ public class EmbeddedEntity {
     @Column(name = "id", nullable = false, unique = true)
     private Integer        id = null;
 
+    /**
+     * Default constructor.
+     */
     public EmbeddedEntity() {
         super();
     }
@@ -79,6 +88,11 @@ public class EmbeddedEntity {
         return Objects.equals(id, other.id);
     }
 
+    /**
+     * Returns the entity's id.
+     * 
+     * @return the entity's id
+     */
     public final Integer getId() {
         return id;
     }
@@ -88,6 +102,12 @@ public class EmbeddedEntity {
         return Objects.hash(id);
     }
 
+    /**
+     * Sets the entity's id.
+     * 
+     * @param identifier
+     *            the id to set in the entity
+     */
     public final void setId(final Integer identifier) {
         id = checkNotNull(identifier, "Received a null pointer as identifier");
     }
