@@ -37,14 +37,26 @@ import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * JPA entity with an enum field.
+ * 
+ * @author Bernardo Martínez Garrido
+ * @see NumbersEnum
+ */
 @Entity(name = "EnumEntity")
 @Table(name = "enum_entities")
 public final class EnumEntity {
 
+    /**
+     * Enumeration value to be stored as an ordinal in the table.
+     */
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "enum_ordinal", nullable = false)
     private NumbersEnum enumOrdinal;
 
+    /**
+     * Enumeration value to be stored as a string in the table.
+     */
     @Enumerated(EnumType.STRING)
     @Column(name = "enum_string", nullable = false)
     private NumbersEnum enumString;
@@ -55,8 +67,11 @@ public final class EnumEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer  id = null;
+    private Integer     id = null;
 
+    /**
+     * Default constructor.
+     */
     public EnumEntity() {
         super();
     }
@@ -79,14 +94,29 @@ public final class EnumEntity {
         return Objects.equals(id, other.id);
     }
 
+    /**
+     * Returns the enumeration value to be stored as an ordinal in the table.
+     * 
+     * @return the enumeration value to be stored as an ordinal in the table
+     */
     public final NumbersEnum getEnumOrdinal() {
         return enumOrdinal;
     }
 
+    /**
+     * Returns the enumeration value to be stored as a string in the table.
+     * 
+     * @return the enumeration value to be stored as a string in the table
+     */
     public final NumbersEnum getEnumString() {
         return enumString;
     }
 
+    /**
+     * Returns the entity's id.
+     * 
+     * @return the entity's id
+     */
     public final Integer getId() {
         return id;
     }
@@ -96,16 +126,34 @@ public final class EnumEntity {
         return Objects.hash(id);
     }
 
+    /**
+     * Sets the enumeration value to be stored as an ordinal in the table.
+     * 
+     * @param enumOrdinal
+     *            the enumeration value to be stored as an ordinal in the table
+     */
     public final void setEnumOrdinal(final NumbersEnum enumOrdinal) {
         this.enumOrdinal = enumOrdinal;
     }
 
+    /**
+     * Sets the enumeration value to be stored as a string in the table.
+     * 
+     * @param enumOrdinal
+     *            the enumeration value to be stored as a string in the table
+     */
     public final void setEnumString(final NumbersEnum enumString) {
         this.enumString = enumString;
     }
 
-    public final void setId(final Integer id) {
-        this.id = id;
+    /**
+     * Sets the entity's id.
+     * 
+     * @param identifier
+     *            the ID for the entity
+     */
+    public final void setId(final Integer identifier) {
+        id = identifier;
     }
 
     @Override

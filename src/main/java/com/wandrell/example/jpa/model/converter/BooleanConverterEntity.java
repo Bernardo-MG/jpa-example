@@ -38,12 +38,22 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.google.common.base.MoreObjects;
-import com.wandrell.example.jpa.model.simple.SimpleEntity;
 
 /**
- * JPA annotated implementation of {@link SimpleEntity}.
+ * JPA entity making use of the {@link BooleanToStringConverter}.
+ * <p>
+ * It contains a boolean flag field, which will be stored as a string in the
+ * database's table.
+ * <p>
+ * The conversion is simple. The {@code true} value is transformed into the
+ * {@code T} string, and the {@code false} value will be transformed into the
+ * {@code F} string.
+ * <p>
+ * This transformation is done in both directions, so the entity will always
+ * keep a boolean, while the table will always keep a string.
  *
  * @author Bernardo Martínez Garrido
+ * @see BooleanToStringConverter
  */
 @Entity(name = "BooleanConverterEntity")
 @Table(name = "boolean_converter_entities")
@@ -55,8 +65,14 @@ public final class BooleanConverterEntity {
     @Transient
     private static final long serialVersionUID = 1328776989450853491L;
 
+    /**
+     * Boolean flag.
+     * <p>
+     * It is a boolen in the entity, but will be stored as a string in the
+     * database.
+     */
     @Convert(converter = BooleanToStringConverter.class)
-    @Column(name = "flag", nullable = false)
+    @Column(name = "flag", nullable = false, length = 1)
     private Boolean           flag;
 
     /**
@@ -68,7 +84,7 @@ public final class BooleanConverterEntity {
     private Integer           id               = null;
 
     /**
-     * Constructs an example entity.
+     * Default constructor.
      */
     public BooleanConverterEntity() {
         super();
@@ -92,10 +108,20 @@ public final class BooleanConverterEntity {
         return Objects.equals(id, other.id);
     }
 
+    /**
+     * Returns the boolean flag.
+     * 
+     * @return the boolean flag
+     */
     public final Boolean getFlag() {
         return flag;
     }
 
+    /**
+     * Returns the entity's id.
+     * 
+     * @return the entity's id
+     */
     public final Integer getId() {
         return id;
     }
@@ -105,10 +131,22 @@ public final class BooleanConverterEntity {
         return Objects.hash(id);
     }
 
+    /**
+     * Sets the boolean flag.
+     * 
+     * @param flag
+     *            the flag to set on the entity
+     */
     public final void setFlag(final Boolean flag) {
         this.flag = flag;
     }
 
+    /**
+     * Sets the entity's id.
+     * 
+     * @param identifier
+     *            the ID for the entity
+     */
     public final void setId(final Integer identifier) {
         id = checkNotNull(identifier, "Received a null pointer as identifier");
     }

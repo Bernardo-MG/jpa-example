@@ -27,23 +27,54 @@ package com.wandrell.example.jpa.model.converter;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
+/**
+ * Converter mapping boolean values to string values.
+ * <p>
+ * It will convert a {@code true} value to a {@code T} string, and a
+ * {@code false} value to a {@code F} string. It also performs the reverse
+ * operation, from the strings to boolean values.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Converter
 public final class BooleanToStringConverter
         implements AttributeConverter<Boolean, String> {
 
+    /**
+     * Default constructor.
+     */
     public BooleanToStringConverter() {
         super();
     }
 
+    /**
+     * Converts the value stored in the entity attribute into the data
+     * representation to be stored in the database.
+     * <p>
+     * In this case, it means converting a {@code true} value to a {@code T}
+     * string, and a {@code false} value to a {@code F} string.
+     */
     @Override
     public final String convertToDatabaseColumn(final Boolean value) {
+        final String result;
+
         if (Boolean.TRUE.equals(value)) {
-            return "T";
+            result = "T";
         } else {
-            return "F";
+            result = "F";
         }
+
+        return result;
     }
 
+    /**
+     * Converts the data stored in the database column into the value to be
+     * stored in the entity attribute.
+     * <p>
+     * <p>
+     * In this case, it means converting a {@code T} string to a {@code true}
+     * value, and any other string to a {@code false} value.
+     */
     @Override
     public final Boolean convertToEntityAttribute(final String value) {
         return "T".equals(value);

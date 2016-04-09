@@ -24,8 +24,15 @@
 
 package com.wandrell.example.jpa.model.enumeration;
 
+/**
+ * A simple enumeration for the {@code EnumEntity}.
+ * <p>
+ * It is just to be used for showing how to store an enumeration in a table.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public enum NumbersEnum {
 
-    ONE, TWO, THREE
+    ONE, THREE, TWO
 
 }
