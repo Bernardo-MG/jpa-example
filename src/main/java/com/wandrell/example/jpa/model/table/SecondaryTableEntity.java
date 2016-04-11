@@ -41,6 +41,11 @@ import javax.persistence.Transient;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * JPA entity divided into a secondary table.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "SecondaryTableEntity")
 @Table(name = "two_tables_entities_a")
 @SecondaryTable(name = "two_tables_entities_b",
@@ -54,9 +59,15 @@ public final class SecondaryTableEntity implements Serializable {
     @Transient
     private static final long serialVersionUID = 1328776989450853491L;
 
+    /**
+     * First field.
+     */
     @Column(name = "field1", nullable = false, table = "two_tables_entities_a")
     private String            field1           = "";
 
+    /**
+     * Second field.
+     */
     @Column(name = "field2", nullable = false, table = "two_tables_entities_b")
     private String            field2           = "";
 
@@ -69,7 +80,7 @@ public final class SecondaryTableEntity implements Serializable {
     private Integer           id               = null;
 
     /**
-     * Constructs an example entity.
+     * Default constructor.
      */
     public SecondaryTableEntity() {
         super();
@@ -93,14 +104,29 @@ public final class SecondaryTableEntity implements Serializable {
         return Objects.equals(id, other.id);
     }
 
+    /**
+     * Returns the first field.
+     * 
+     * @return the first field
+     */
     public final String getField1() {
         return field1;
     }
 
+    /**
+     * Returns the second field.
+     * 
+     * @return the second field
+     */
     public final String getField2() {
         return field2;
     }
 
+    /**
+     * Returns the ID assigned to this entity.
+     * 
+     * @return the entity's ID
+     */
     public final Integer getId() {
         return id;
     }
@@ -110,16 +136,34 @@ public final class SecondaryTableEntity implements Serializable {
         return Objects.hash(id);
     }
 
+    /**
+     * Sets the first field.
+     * 
+     * @param field1
+     *            the field to set in the entity
+     */
     public final void setField1(final String field1) {
         this.field1 = checkNotNull(field1,
                 "Received a null pointer as field 1");
     }
 
+    /**
+     * Sets the second field.
+     * 
+     * @param field2
+     *            the field to set in the entity
+     */
     public final void setField2(final String field2) {
         this.field2 = checkNotNull(field2,
                 "Received a null pointer as field 2");
     }
 
+    /**
+     * Sets the ID assigned to this entity.
+     *
+     * @param identifier
+     *            the ID for the entity
+     */
     public final void setId(final Integer identifier) {
         this.id = checkNotNull(identifier,
                 "Received a null pointer as identifier");

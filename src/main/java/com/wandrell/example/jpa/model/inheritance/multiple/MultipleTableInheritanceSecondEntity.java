@@ -31,6 +31,11 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+/**
+ * Entity for multiple inheritance entities.
+ *
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "MultipleTableInheritanceSecondEntity")
 @DiscriminatorValue("B")
 @Table(name = "multiple_table_inherit_second_entities")
@@ -45,6 +50,9 @@ public class MultipleTableInheritanceSecondEntity
     @Column(name = "field_b")
     private Long              field_b;
 
+    /**
+     * Default constructor.
+     */
     public MultipleTableInheritanceSecondEntity() {
         super();
     }

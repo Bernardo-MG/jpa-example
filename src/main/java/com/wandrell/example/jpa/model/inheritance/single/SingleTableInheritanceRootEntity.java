@@ -41,6 +41,11 @@ import javax.persistence.Transient;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * Root entity for single table inheritance entities.
+ *
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "SingleTableInheritanceRootEntity")
 @Inheritance
 @DiscriminatorColumn(name = "discriminator")
@@ -62,7 +67,7 @@ public abstract class SingleTableInheritanceRootEntity implements Serializable {
     private Integer           id               = null;
 
     /**
-     * Constructs an example entity.
+     * Default constructor.
      */
     public SingleTableInheritanceRootEntity() {
         super();

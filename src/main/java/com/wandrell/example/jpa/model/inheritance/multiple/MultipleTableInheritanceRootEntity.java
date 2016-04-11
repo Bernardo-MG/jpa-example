@@ -42,6 +42,11 @@ import javax.persistence.Transient;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * Root entity for multiple inheritance entities.
+ *
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "MultipleTableInheritanceRootEntity")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "discriminator")
@@ -64,7 +69,7 @@ public abstract class MultipleTableInheritanceRootEntity
     private Integer           id               = null;
 
     /**
-     * Constructs an example entity.
+     * Default constructor.
      */
     public MultipleTableInheritanceRootEntity() {
         super();
@@ -88,6 +93,11 @@ public abstract class MultipleTableInheritanceRootEntity
         return Objects.equals(id, other.id);
     }
 
+    /**
+     * Returns the ID assigned to this entity.
+     *
+     * @return the entity's ID
+     */
     public final Integer getId() {
         return id;
     }
@@ -97,6 +107,12 @@ public abstract class MultipleTableInheritanceRootEntity
         return Objects.hash(id);
     }
 
+    /**
+     * Sets the ID assigned to this entity.
+     *
+     * @param identifier
+     *            the ID for the entity
+     */
     public final void setId(final Integer identifier) {
         id = checkNotNull(identifier, "Received a null pointer as identifier");
     }

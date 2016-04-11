@@ -38,6 +38,11 @@ import javax.persistence.Transient;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * Root entity for super class inheritance entities.
+ *
+ * @author Bernardo Martínez Garrido
+ */
 @MappedSuperclass
 public abstract class SuperClassTableInheritanceRootEntity
         implements Serializable {
@@ -57,7 +62,7 @@ public abstract class SuperClassTableInheritanceRootEntity
     private Integer           id               = null;
 
     /**
-     * Constructs an example entity.
+     * Default constructor.
      */
     public SuperClassTableInheritanceRootEntity() {
         super();

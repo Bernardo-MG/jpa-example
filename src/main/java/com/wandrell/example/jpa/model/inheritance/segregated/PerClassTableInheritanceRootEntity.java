@@ -40,6 +40,11 @@ import javax.persistence.Transient;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * Root entity for per-class inheritance entities.
+ *
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "PerClassTableInheritanceRootEntity")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class PerClassTableInheritanceRootEntity
@@ -60,7 +65,7 @@ public abstract class PerClassTableInheritanceRootEntity
     private Integer           id               = null;
 
     /**
-     * Constructs an example entity.
+     * Default constructor.
      */
     public PerClassTableInheritanceRootEntity() {
         super();

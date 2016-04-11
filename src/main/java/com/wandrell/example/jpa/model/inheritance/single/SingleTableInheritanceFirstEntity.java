@@ -30,6 +30,11 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
+/**
+ * Entity for single table inheritance entities.
+ *
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "SingleTableInheritanceFirstEntity")
 @DiscriminatorValue("A")
 public class SingleTableInheritanceFirstEntity
@@ -43,6 +48,9 @@ public class SingleTableInheritanceFirstEntity
     @Column(name = "field_a")
     private String            field_a          = "";
 
+    /**
+     * Default constructor.
+     */
     public SingleTableInheritanceFirstEntity() {
         super();
     }

@@ -31,6 +31,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+/**
+ * Entity for super class inheritance entities.
+ *
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "SuperClassTableInheritanceFirstEntity")
 @Table(name = "super_class_table_inherit_first_entities")
 @AttributeOverride(name = "id", column = @Column(name = "id_entity") )
@@ -45,6 +50,9 @@ public class SuperClassTableInheritanceFirstEntity
     @Column(name = "field_a")
     private String            field_a          = "";
 
+    /**
+     * Default constructor.
+     */
     public SuperClassTableInheritanceFirstEntity() {
         super();
     }

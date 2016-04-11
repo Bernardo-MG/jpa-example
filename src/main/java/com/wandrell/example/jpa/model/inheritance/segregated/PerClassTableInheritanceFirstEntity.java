@@ -30,6 +30,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+/**
+ * Entity for per-class inheritance entities.
+ *
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "PerClassTableInheritanceFirstEntity")
 @Table(name = "per_class_table_inherit_first_entities")
 public class PerClassTableInheritanceFirstEntity
@@ -43,6 +48,9 @@ public class PerClassTableInheritanceFirstEntity
     @Column(name = "field_a")
     private String            field_a          = "";
 
+    /**
+     * Default constructor.
+     */
     public PerClassTableInheritanceFirstEntity() {
         super();
     }

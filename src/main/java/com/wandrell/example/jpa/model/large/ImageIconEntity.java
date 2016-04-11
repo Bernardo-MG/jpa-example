@@ -40,6 +40,11 @@ import javax.swing.ImageIcon;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * JPA entity keeping a large object.
+ *
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "ImageIconEntity")
 @Table(name = "image_icon_entities")
 public class ImageIconEntity implements Serializable {
@@ -57,10 +62,16 @@ public class ImageIconEntity implements Serializable {
     @Column(name = "id", nullable = false, unique = true)
     private Integer           id               = null;
 
+    /**
+     * Image icon.
+     */
     @Column(name = "picture", nullable = false)
     @Lob
-    private ImageIcon         picture;
+    private ImageIcon         image;
 
+    /**
+     * Default constructor.
+     */
     public ImageIconEntity() {
         super();
     }
@@ -83,12 +94,22 @@ public class ImageIconEntity implements Serializable {
         return Objects.equals(id, other.id);
     }
 
+    /**
+     * Returns the ID assigned to this entity.
+     *
+     * @return the entity's ID
+     */
     public final Integer getId() {
         return id;
     }
 
-    public final ImageIcon getPicture() {
-        return picture;
+    /**
+     * Returns the image icon.
+     *
+     * @return the image icon
+     */
+    public final ImageIcon getImageIcon() {
+        return image;
     }
 
     @Override
@@ -96,14 +117,26 @@ public class ImageIconEntity implements Serializable {
         return Objects.hash(id);
     }
 
+    /**
+     * Sets the ID assigned to this entity.
+     *
+     * @param identifier
+     *            the ID for the entity
+     */
     public final void setId(final Integer identifier) {
         this.id = checkNotNull(identifier,
                 "Received a null pointer as identifier");
     }
 
-    public final void setPicture(final ImageIcon picture) {
-        this.picture = checkNotNull(picture,
-                "Received a null pointer as picture");
+    /**
+     * Sets the image icon.
+     * 
+     * @param image
+     *            the image icon to set in the entity
+     */
+    public final void setImageIcon(final ImageIcon image) {
+        this.image = checkNotNull(image,
+                "Received a null pointer as image icon");
     }
 
     @Override
