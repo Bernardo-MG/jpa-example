@@ -88,6 +88,15 @@ public class MapEntity {
     }
 
     /**
+     * Returns the entity's id.
+     * 
+     * @return the entity's id
+     */
+    public final Integer getId() {
+        return id;
+    }
+
+    /**
      * Returns the mapped integer values.
      * 
      * @return the mapped integer values
@@ -96,13 +105,9 @@ public class MapEntity {
         return values;
     }
 
-    /**
-     * Returns the entity's id.
-     * 
-     * @return the entity's id
-     */
-    public final Integer getId() {
-        return id;
+    @Override
+    public final int hashCode() {
+        return Objects.hash(id);
     }
 
     /**
@@ -113,11 +118,6 @@ public class MapEntity {
      */
     public final void setId(final Integer identifier) {
         id = checkNotNull(identifier, "Received a null pointer as identifier");
-    }
-
-    @Override
-    public final int hashCode() {
-        return Objects.hash(id);
     }
 
     /**

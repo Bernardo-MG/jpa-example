@@ -53,19 +53,19 @@ import com.google.common.base.MoreObjects;
 public class ElementCollectionEntity {
 
     /**
-     * Embeddable objects.
-     */
-    @ElementCollection
-    @CollectionTable(name = "data", joinColumns = @JoinColumn(name = "id"))
-    private Collection<EmbeddableData> values = new LinkedList<EmbeddableData>();
-
-    /**
      * Entity's ID.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
     private Integer                    id     = null;
+
+    /**
+     * Embeddable objects.
+     */
+    @ElementCollection
+    @CollectionTable(name = "data", joinColumns = @JoinColumn(name = "id"))
+    private Collection<EmbeddableData> values = new LinkedList<EmbeddableData>();
 
     /**
      * Default constructor.
@@ -93,15 +93,6 @@ public class ElementCollectionEntity {
     }
 
     /**
-     * Returns the embeddable objects.
-     * 
-     * @return the embeddable objects
-     */
-    public final Collection<EmbeddableData> getValues() {
-        return values;
-    }
-
-    /**
      * Returns the entity's id.
      * 
      * @return the entity's id
@@ -110,19 +101,18 @@ public class ElementCollectionEntity {
         return id;
     }
 
+    /**
+     * Returns the embeddable objects.
+     * 
+     * @return the embeddable objects
+     */
+    public final Collection<EmbeddableData> getValues() {
+        return values;
+    }
+
     @Override
     public final int hashCode() {
         return Objects.hash(id);
-    }
-
-    /**
-     * Sets the embeddable objects.
-     * 
-     * @param value
-     *            embeddable objects to set in the entity
-     */
-    public final void setValues(final Collection<EmbeddableData> value) {
-        this.values = checkNotNull(value, "Received a null pointer as values");
     }
 
     /**
@@ -133,6 +123,16 @@ public class ElementCollectionEntity {
      */
     public final void setId(final Integer identifier) {
         id = checkNotNull(identifier, "Received a null pointer as identifier");
+    }
+
+    /**
+     * Sets the embeddable objects.
+     * 
+     * @param value
+     *            embeddable objects to set in the entity
+     */
+    public final void setValues(final Collection<EmbeddableData> value) {
+        this.values = checkNotNull(value, "Received a null pointer as values");
     }
 
     @Override

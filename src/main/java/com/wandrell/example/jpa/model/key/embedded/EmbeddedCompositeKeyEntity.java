@@ -35,16 +35,33 @@ import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * Entity with a composite embedded id.
+ * <p>
+ * The {@link EmbeddableCompositeKey} is used as the embedded id.
+ *
+ * @author Bernardo Martínez Garrido
+ * @see EmbeddableCompositeKey
+ */
 @Entity(name = "EmbeddedKeyEntity")
 @Table(name = "embedded_key_entities")
 public class EmbeddedCompositeKeyEntity {
 
+    /**
+     * Embedded id.
+     */
     @EmbeddedId
     private EmbeddableCompositeKey key;
 
+    /**
+     * Name of the entity.
+     */
     @Column(name = "name", nullable = false)
     private String                 name = "";
 
+    /**
+     * Default constructor.
+     */
     public EmbeddedCompositeKeyEntity() {
         super();
     }
@@ -67,6 +84,20 @@ public class EmbeddedCompositeKeyEntity {
         return Objects.equals(key, other.key);
     }
 
+    /**
+     * Returns the embedded id.
+     * 
+     * @return the embedded id
+     */
+    public final EmbeddableCompositeKey getKey() {
+        return key;
+    }
+
+    /**
+     * Returns the name of the entity.
+     *
+     * @return the entity's name
+     */
     public final String getName() {
         return name;
     }
@@ -76,6 +107,22 @@ public class EmbeddedCompositeKeyEntity {
         return Objects.hash(key);
     }
 
+    /**
+     * Sets the embedded id.
+     * 
+     * @param key
+     *            the id to set in the entity
+     */
+    public final void setKey(final EmbeddableCompositeKey key) {
+        this.key = key;
+    }
+
+    /**
+     * Sets the name of the entity.
+     *
+     * @param name
+     *            the name to set on the entity
+     */
     public final void setName(final String name) {
         this.name = checkNotNull(name, "Received a null pointer as name");
     }

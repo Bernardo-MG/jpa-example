@@ -88,6 +88,15 @@ public class CollectionEntity {
     }
 
     /**
+     * Returns the entity's id.
+     * 
+     * @return the entity's id
+     */
+    public final Integer getId() {
+        return id;
+    }
+
+    /**
      * Returns the integer values.
      * 
      * @return the integer values
@@ -102,25 +111,6 @@ public class CollectionEntity {
     }
 
     /**
-     * Sets the integer values.
-     * 
-     * @param value
-     *            the integer values to set in the entity
-     */
-    public final void setValues(final Collection<Integer> value) {
-        values = checkNotNull(value, "Received a null pointer as value");
-    }
-
-    /**
-     * Returns the entity's id.
-     * 
-     * @return the entity's id
-     */
-    public final Integer getId() {
-        return id;
-    }
-
-    /**
      * Sets the entity's id.
      * 
      * @param identifier
@@ -128,6 +118,16 @@ public class CollectionEntity {
      */
     public final void setId(final Integer identifier) {
         id = checkNotNull(identifier, "Received a null pointer as identifier");
+    }
+
+    /**
+     * Sets the integer values.
+     * 
+     * @param value
+     *            the integer values to set in the entity
+     */
+    public final void setValues(final Collection<Integer> value) {
+        values = checkNotNull(value, "Received a null pointer as value");
     }
 
     @Override

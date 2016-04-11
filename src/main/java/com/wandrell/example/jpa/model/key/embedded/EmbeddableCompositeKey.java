@@ -33,15 +33,30 @@ import javax.persistence.Embeddable;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * Embeddable composite key.
+ *
+ * @author Bernardo Martínez Garrido
+ * @see EmbeddedCompositeKeyEntity
+ */
 @Embeddable
 public class EmbeddableCompositeKey {
 
+    /**
+     * First id;
+     */
     @Column(name = "id1", nullable = false, unique = true)
     int  id1;
 
+    /**
+     * Second id.
+     */
     @Column(name = "id2", nullable = false, unique = true)
     long id2;
 
+    /**
+     * Default constructor.
+     */
     public EmbeddableCompositeKey() {
         super();
     }
@@ -64,10 +79,20 @@ public class EmbeddableCompositeKey {
         return Objects.equals(id1, other.id1) && Objects.equals(id2, other.id2);
     }
 
+    /**
+     * Returns the first id.
+     *
+     * @return the first id
+     */
     public final Integer getId1() {
         return id1;
     }
 
+    /**
+     * Returns the second id.
+     *
+     * @return the second id
+     */
     public final Long getId2() {
         return id2;
     }
@@ -77,10 +102,22 @@ public class EmbeddableCompositeKey {
         return Objects.hash(id1, id2);
     }
 
+    /**
+     * Sets the first id.
+     *
+     * @param id1
+     *            the first id for the entity
+     */
     public final void setId1(final Integer id1) {
         this.id1 = checkNotNull(id1, "Received a null pointer as id 1");
     }
 
+    /**
+     * Sets the second id.
+     *
+     * @param id2
+     *            the second id for the entity
+     */
     public final void setId2(final Long id2) {
         this.id2 = checkNotNull(id2, "Received a null pointer as id 2");
     }
@@ -90,4 +127,5 @@ public class EmbeddableCompositeKey {
         return MoreObjects.toStringHelper(this).add("id1", id1).add("id2", id2)
                 .toString();
     }
+
 }

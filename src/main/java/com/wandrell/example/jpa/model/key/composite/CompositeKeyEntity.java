@@ -35,21 +35,38 @@ import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * Entity with a composite id.
+ *
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "CompositeKeyEntity")
 @Table(name = "composite_key_entities")
 public class CompositeKeyEntity {
 
+    /**
+     * First id.
+     */
     @Id
     @Column(name = "id1", nullable = false, unique = true)
     private Integer id1;
 
+    /**
+     * Second id.
+     */
     @Id
     @Column(name = "id2", nullable = false, unique = true)
     private Long    id2;
 
+    /**
+     * Name of the entity.
+     */
     @Column(name = "name", nullable = false)
     private String  name = "";
 
+    /**
+     * Default constructor.
+     */
     public CompositeKeyEntity() {
         super();
     }
@@ -72,14 +89,29 @@ public class CompositeKeyEntity {
         return Objects.equals(id1, other.id1) && Objects.equals(id2, other.id2);
     }
 
+    /**
+     * Returns the first id.
+     *
+     * @return the first id
+     */
     public final Integer getId1() {
         return id1;
     }
 
+    /**
+     * Returns the second id.
+     *
+     * @return the second id
+     */
     public final Long getId2() {
         return id2;
     }
 
+    /**
+     * Returns the name of the entity.
+     *
+     * @return the entity's name
+     */
     public final String getName() {
         return name;
     }
@@ -89,14 +121,32 @@ public class CompositeKeyEntity {
         return Objects.hash(id1, id2);
     }
 
+    /**
+     * Sets the first id.
+     *
+     * @param id1
+     *            the first id for the entity
+     */
     public final void setId1(final Integer id1) {
         this.id1 = checkNotNull(id1, "Received a null pointer as id 1");
     }
 
+    /**
+     * Sets the second id.
+     *
+     * @param id2
+     *            the second id for the entity
+     */
     public final void setId2(final Long id2) {
         this.id2 = checkNotNull(id2, "Received a null pointer as id 2");
     }
 
+    /**
+     * Sets the name of the entity.
+     *
+     * @param name
+     *            the name to set on the entity
+     */
     public final void setName(final String name) {
         this.name = checkNotNull(name, "Received a null pointer as name");
     }

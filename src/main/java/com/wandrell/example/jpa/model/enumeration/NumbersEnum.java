@@ -38,12 +38,12 @@ public enum NumbersEnum {
      */
     ONE,
     /**
-     * Second enum value.
-     */
-    TWO,
-    /**
      * Third enum value.
      */
-    THREE
+    THREE,
+    /**
+     * Second enum value.
+     */
+    TWO
 
 }
