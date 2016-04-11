@@ -26,6 +26,7 @@ package com.wandrell.example.jpa.model.enumeration;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -41,27 +42,32 @@ import com.google.common.base.MoreObjects;
 
 /**
  * JPA entity with an enum field.
- * 
+ *
  * @author Bernardo Martínez Garrido
  * @see NumbersEnum
  */
 @Entity(name = "EnumEntity")
 @Table(name = "enum_entities")
-public final class EnumEntity {
+public final class EnumEntity implements Serializable {
+
+    /**
+     * Serialization ID.
+     */
+    private static final long serialVersionUID = -3464036501932820671L;
 
     /**
      * Enumeration value to be stored as an ordinal in the table.
      */
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "enum_ordinal", nullable = false)
-    private NumbersEnum enumOrdinal;
+    private NumbersEnum       enumOrdinal;
 
     /**
      * Enumeration value to be stored as a string in the table.
      */
     @Enumerated(EnumType.STRING)
     @Column(name = "enum_string", nullable = false)
-    private NumbersEnum enumString;
+    private NumbersEnum       enumString;
 
     /**
      * Entity's ID.
@@ -69,7 +75,7 @@ public final class EnumEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer     id = null;
+    private Integer           id               = null;
 
     /**
      * Default constructor.
@@ -98,7 +104,7 @@ public final class EnumEntity {
 
     /**
      * Returns the enumeration value to be stored as an ordinal in the table.
-     * 
+     *
      * @return the enumeration value to be stored as an ordinal in the table
      */
     public final NumbersEnum getEnumOrdinal() {
@@ -107,7 +113,7 @@ public final class EnumEntity {
 
     /**
      * Returns the enumeration value to be stored as a string in the table.
-     * 
+     *
      * @return the enumeration value to be stored as a string in the table
      */
     public final NumbersEnum getEnumString() {
@@ -116,7 +122,7 @@ public final class EnumEntity {
 
     /**
      * Returns the entity's id.
-     * 
+     *
      * @return the entity's id
      */
     public final Integer getId() {
@@ -130,7 +136,7 @@ public final class EnumEntity {
 
     /**
      * Sets the enumeration value to be stored as an ordinal in the table.
-     * 
+     *
      * @param value
      *            the enumeration value to be stored as an ordinal in the table
      */
@@ -140,7 +146,7 @@ public final class EnumEntity {
 
     /**
      * Sets the enumeration value to be stored as a string in the table.
-     * 
+     *
      * @param value
      *            the enumeration value to be stored as a string in the table
      */
@@ -150,7 +156,7 @@ public final class EnumEntity {
 
     /**
      * Sets the entity's id.
-     * 
+     *
      * @param identifier
      *            the ID for the entity
      */

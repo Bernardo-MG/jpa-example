@@ -26,6 +26,7 @@ package com.wandrell.example.jpa.model.key.classid;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
@@ -36,17 +37,22 @@ import com.google.common.base.MoreObjects;
  * @author Bernardo Martínez Garrido
  * @see CompositeKeyIdClassEntity
  */
-public class CompositeKey {
+public class CompositeKey implements Serializable {
+
+    /**
+     * Serialization ID.
+     */
+    private static final long serialVersionUID = -7233957066746780621L;
 
     /**
      * First id;
      */
-    int  id1;
+    int                       id1;
 
     /**
      * Second id.
      */
-    long id2;
+    long                      id2;
 
     /**
      * Default constructor.

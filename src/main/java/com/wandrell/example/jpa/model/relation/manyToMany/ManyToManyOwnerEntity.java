@@ -3,6 +3,7 @@ package com.wandrell.example.jpa.model.relation.manyToMany;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -20,7 +21,12 @@ import com.google.common.base.MoreObjects;
 
 @Entity(name = "ManyToManyOwnerEntity")
 @Table(name = "many_to_many_owner_entities")
-public class ManyToManyOwnerEntity {
+public class ManyToManyOwnerEntity implements Serializable {
+
+    /**
+     * Serialization ID.
+     */
+    private static final long                  serialVersionUID = 7907869801056876634L;
 
     /**
      * Entity's ID.
@@ -28,14 +34,14 @@ public class ManyToManyOwnerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer                            id   = null;
+    private Integer                            id               = null;
 
     @ManyToMany
     @JoinTable(name = "many_to_many_joined",
             joinColumns = @JoinColumn(name = "owner_id",
-                    referencedColumnName = "id"),
+                    referencedColumnName = "id") ,
             inverseJoinColumns = @JoinColumn(name = "mapped_id",
-                    referencedColumnName = "id"))
+                    referencedColumnName = "id") )
     private Collection<ManyToManyMappedEntity> mapped;
 
     /**
@@ -45,7 +51,7 @@ public class ManyToManyOwnerEntity {
      * tests.
      */
     @Column(name = "name", nullable = false)
-    private String                             name = "";
+    private String                             name             = "";
 
     public ManyToManyOwnerEntity() {
         super();

@@ -26,6 +26,7 @@ package com.wandrell.example.jpa.model.inheritance.single;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -44,7 +45,7 @@ import com.google.common.base.MoreObjects;
 @Inheritance
 @DiscriminatorColumn(name = "discriminator")
 @Table(name = "single_table_inherit_entities")
-public abstract class SingleTableInheritanceRootEntity {
+public abstract class SingleTableInheritanceRootEntity implements Serializable {
 
     /**
      * Serialization ID.

@@ -26,6 +26,7 @@ package com.wandrell.example.jpa.model.temporal;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
@@ -44,26 +45,31 @@ import com.google.common.base.MoreObjects;
 
 /**
  * JPA entity storing timestamp.
- * 
+ *
  * @author Bernardo Martínez Garrido
  */
 @Entity(name = "TimestampEntity")
 @Table(name = "timestamp_entities")
-public final class TimestampEntity {
+public final class TimestampEntity implements Serializable {
+
+    /**
+     * Serialization ID.
+     */
+    private static final long serialVersionUID = 6542083220180639970L;
 
     /**
      * Timestamp stored in a calendar.
      */
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "calendar_timestamp", nullable = false)
-    private Calendar  calendar;
+    private Calendar          calendar;
 
     /**
      * Timestamp stored in a date.
      */
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "java_timestamp", nullable = false)
-    private Date      date;
+    private Date              date;
 
     /**
      * Entity's ID.
@@ -71,13 +77,13 @@ public final class TimestampEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer   id = null;
+    private Integer           id               = null;
 
     /**
      * Time stored in a SQL timestamp.
      */
     @Column(name = "sql_timestamp", nullable = false)
-    private Timestamp sqlTimestamp;
+    private Timestamp         sqlTimestamp;
 
     /**
      * Default constructor.
@@ -106,7 +112,7 @@ public final class TimestampEntity {
 
     /**
      * Returns the timestamp stored in a {@code Calendar}.
-     * 
+     *
      * @return the timestamp stored in a {@code Calendar}
      */
     public final Calendar getCalendar() {
@@ -115,7 +121,7 @@ public final class TimestampEntity {
 
     /**
      * Returns the timestamp stored in a {@code Date}.
-     * 
+     *
      * @return the timestamp stored in a {@code Date}
      */
     public final Date getDate() {
@@ -124,7 +130,7 @@ public final class TimestampEntity {
 
     /**
      * Returns the entity's id.
-     * 
+     *
      * @return the entity's id
      */
     public final Integer getId() {
@@ -133,7 +139,7 @@ public final class TimestampEntity {
 
     /**
      * Returns the timestamp stored in a SQL {@code Timestamp}.
-     * 
+     *
      * @return the timestamp stored in a SQL {@code Timestamp}
      */
     public final Timestamp getSqlTimestamp() {
@@ -147,7 +153,7 @@ public final class TimestampEntity {
 
     /**
      * Sets the entity's timestamp stored in a {@code Calendar}.
-     * 
+     *
      * @param value
      *            the timestamp to set in the entity
      */
@@ -157,7 +163,7 @@ public final class TimestampEntity {
 
     /**
      * Sets the entity's timestamp stored in a {@code Date}.
-     * 
+     *
      * @param value
      *            the timestamp to set in the entity
      */
@@ -167,7 +173,7 @@ public final class TimestampEntity {
 
     /**
      * Sets the entity's id.
-     * 
+     *
      * @param identifier
      *            the ID for the entity
      */
@@ -177,7 +183,7 @@ public final class TimestampEntity {
 
     /**
      * Sets the entity's timestamp stored in a SQL {@code Time}.
-     * 
+     *
      * @param value
      *            the time to set in the entity
      */

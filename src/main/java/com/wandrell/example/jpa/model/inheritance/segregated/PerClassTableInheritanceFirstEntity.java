@@ -35,8 +35,13 @@ import javax.persistence.Table;
 public class PerClassTableInheritanceFirstEntity
         extends PerClassTableInheritanceRootEntity {
 
+    /**
+     * Serialization ID.
+     */
+    private static final long serialVersionUID = 957845193222735207L;
+
     @Column(name = "field_a")
-    private String field_a = "";
+    private String            field_a          = "";
 
     public PerClassTableInheritanceFirstEntity() {
         super();

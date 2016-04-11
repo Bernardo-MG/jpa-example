@@ -26,6 +26,7 @@ package com.wandrell.example.jpa.model.collection;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Objects;
@@ -41,12 +42,17 @@ import com.google.common.base.MoreObjects;
 
 /**
  * JPA entity with a collection of simple types.
- * 
+ *
  * @author Bernardo Martínez Garrido
  */
 @Entity(name = "MultiValueEntity")
 @Table(name = "multivalue_entities")
-public class CollectionEntity {
+public class CollectionEntity implements Serializable {
+
+    /**
+     * Serialization ID.
+     */
+    private static final long   serialVersionUID = 8442165169570019395L;
 
     /**
      * Entity's ID.
@@ -54,13 +60,13 @@ public class CollectionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer             id     = null;
+    private Integer             id               = null;
 
     /**
      * Integer values.
      */
     @Column(name = "integersCol", nullable = false)
-    private Collection<Integer> values = new LinkedList<Integer>();
+    private Collection<Integer> values           = new LinkedList<Integer>();
 
     /**
      * Default constructor.
@@ -89,7 +95,7 @@ public class CollectionEntity {
 
     /**
      * Returns the entity's id.
-     * 
+     *
      * @return the entity's id
      */
     public final Integer getId() {
@@ -98,7 +104,7 @@ public class CollectionEntity {
 
     /**
      * Returns the integer values.
-     * 
+     *
      * @return the integer values
      */
     public final Collection<Integer> getValues() {
@@ -112,7 +118,7 @@ public class CollectionEntity {
 
     /**
      * Sets the entity's id.
-     * 
+     *
      * @param identifier
      *            the ID for the entity
      */
@@ -122,7 +128,7 @@ public class CollectionEntity {
 
     /**
      * Sets the integer values.
-     * 
+     *
      * @param value
      *            the integer values to set in the entity
      */

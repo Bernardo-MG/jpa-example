@@ -26,6 +26,7 @@ package com.wandrell.example.jpa.model.embedded;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Objects;
@@ -44,13 +45,18 @@ import com.google.common.base.MoreObjects;
 
 /**
  * Entity using a collection of embeddable objects.
- * 
+ *
  * @author Bernardo Martínez Garrido
  * @see EmbeddableData
  */
 @Entity(name = "ElementCollectionEntity")
 @Table(name = "element_collection_entities")
-public class ElementCollectionEntity {
+public class ElementCollectionEntity implements Serializable {
+
+    /**
+     * Serialization ID.
+     */
+    private static final long          serialVersionUID = 2888164164144934845L;
 
     /**
      * Entity's ID.
@@ -58,14 +64,14 @@ public class ElementCollectionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer                    id     = null;
+    private Integer                    id               = null;
 
     /**
      * Embeddable objects.
      */
     @ElementCollection
-    @CollectionTable(name = "data", joinColumns = @JoinColumn(name = "id"))
-    private Collection<EmbeddableData> values = new LinkedList<EmbeddableData>();
+    @CollectionTable(name = "data", joinColumns = @JoinColumn(name = "id") )
+    private Collection<EmbeddableData> values           = new LinkedList<EmbeddableData>();
 
     /**
      * Default constructor.
@@ -94,7 +100,7 @@ public class ElementCollectionEntity {
 
     /**
      * Returns the entity's id.
-     * 
+     *
      * @return the entity's id
      */
     public final Integer getId() {
@@ -103,7 +109,7 @@ public class ElementCollectionEntity {
 
     /**
      * Returns the embeddable objects.
-     * 
+     *
      * @return the embeddable objects
      */
     public final Collection<EmbeddableData> getValues() {
@@ -117,7 +123,7 @@ public class ElementCollectionEntity {
 
     /**
      * Sets the entity's id.
-     * 
+     *
      * @param identifier
      *            the id to set in the entity
      */
@@ -127,7 +133,7 @@ public class ElementCollectionEntity {
 
     /**
      * Sets the embeddable objects.
-     * 
+     *
      * @param value
      *            embeddable objects to set in the entity
      */

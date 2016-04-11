@@ -3,6 +3,7 @@ package com.wandrell.example.jpa.model.relation.manyToMany;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,7 +19,12 @@ import com.google.common.base.MoreObjects;
 
 @Entity(name = "ManyToManyMappedEntity")
 @Table(name = "many_to_many_mapped_entities")
-public class ManyToManyMappedEntity {
+public class ManyToManyMappedEntity implements Serializable {
+
+    /**
+     * Serialization ID.
+     */
+    private static final long           serialVersionUID = 7721405709935727048L;
 
     /**
      * Entity's ID.
@@ -26,7 +32,7 @@ public class ManyToManyMappedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer                     id   = null;
+    private Integer                     id               = null;
 
     /**
      * Name of the entity.
@@ -35,7 +41,7 @@ public class ManyToManyMappedEntity {
      * tests.
      */
     @Column(name = "name", nullable = false)
-    private String                      name = "";
+    private String                      name             = "";
 
     @ManyToMany(mappedBy = "mapped")
     private List<ManyToManyOwnerEntity> owners;

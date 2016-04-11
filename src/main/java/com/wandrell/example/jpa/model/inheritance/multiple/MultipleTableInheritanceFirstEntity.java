@@ -37,8 +37,13 @@ import javax.persistence.Table;
 public class MultipleTableInheritanceFirstEntity
         extends MultipleTableInheritanceRootEntity {
 
+    /**
+     * Serialization ID.
+     */
+    private static final long serialVersionUID = 1743658290478708606L;
+
     @Column(name = "field_a")
-    private String field_a = "";
+    private String            field_a          = "";
 
     public MultipleTableInheritanceFirstEntity() {
         super();

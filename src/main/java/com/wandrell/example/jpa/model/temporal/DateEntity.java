@@ -26,6 +26,7 @@ package com.wandrell.example.jpa.model.temporal;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
@@ -43,26 +44,31 @@ import com.google.common.base.MoreObjects;
 
 /**
  * JPA entity storing full dates.
- * 
+ *
  * @author Bernardo Martínez Garrido
  */
 @Entity(name = "DateEntity")
 @Table(name = "date_entities")
-public final class DateEntity {
+public final class DateEntity implements Serializable {
+
+    /**
+     * Serialization ID.
+     */
+    private static final long serialVersionUID = -2916327167109215126L;
 
     /**
      * Date stored in a calendar.
      */
     @Temporal(TemporalType.DATE)
     @Column(name = "calendar_date", nullable = false)
-    private Calendar      calendar;
+    private Calendar          calendar;
 
     /**
      * Date stored in a date.
      */
     @Temporal(TemporalType.DATE)
     @Column(name = "java_date", nullable = false)
-    private Date          date;
+    private Date              date;
 
     /**
      * Entity's ID.
@@ -70,13 +76,13 @@ public final class DateEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer       id = null;
+    private Integer           id               = null;
 
     /**
      * Date stored in a SQL date.
      */
     @Column(name = "sql_date", nullable = false)
-    private java.sql.Date sqlDate;
+    private java.sql.Date     sqlDate;
 
     /**
      * Default constructor.
@@ -105,7 +111,7 @@ public final class DateEntity {
 
     /**
      * Returns the date stored in a {@code Calendar}.
-     * 
+     *
      * @return the date stored in a {@code Calendar}
      */
     public final Calendar getCalendar() {
@@ -114,7 +120,7 @@ public final class DateEntity {
 
     /**
      * Returns the date stored in a {@code Date}.
-     * 
+     *
      * @return the date stored in a {@code Date}
      */
     public final Date getDate() {
@@ -123,7 +129,7 @@ public final class DateEntity {
 
     /**
      * Returns the entity's id.
-     * 
+     *
      * @return the entity's id
      */
     public final Integer getId() {
@@ -132,7 +138,7 @@ public final class DateEntity {
 
     /**
      * Returns the date stored in a SQL {@code Date}.
-     * 
+     *
      * @return the date stored in a SQL {@code Date}
      */
     public final java.sql.Date getSqlDate() {
@@ -146,7 +152,7 @@ public final class DateEntity {
 
     /**
      * Sets the entity's date stored in a {@code Calendar}.
-     * 
+     *
      * @param value
      *            the date to set in the entity
      */
@@ -156,7 +162,7 @@ public final class DateEntity {
 
     /**
      * Sets the entity's date stored in a {@code Date}.
-     * 
+     *
      * @param value
      *            the date to set in the entity
      */
@@ -166,7 +172,7 @@ public final class DateEntity {
 
     /**
      * Sets the entity's id.
-     * 
+     *
      * @param identifier
      *            the ID for the entity
      */
@@ -176,7 +182,7 @@ public final class DateEntity {
 
     /**
      * Sets the entity's date stored in a SQL {@code Date}.
-     * 
+     *
      * @param value
      *            the date to set in the entity
      */

@@ -35,8 +35,13 @@ import javax.persistence.Entity;
 public class SingleTableInheritanceSecondEntity
         extends SingleTableInheritanceRootEntity {
 
+    /**
+     * Serialization ID.
+     */
+    private static final long serialVersionUID = 1092384185678829280L;
+
     @Column(name = "field_b")
-    private Long field_b;
+    private Long              field_b;
 
     public SingleTableInheritanceSecondEntity() {
         super();

@@ -26,6 +26,7 @@ package com.wandrell.example.jpa.model.temporal;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.util.Calendar;
 import java.util.Date;
@@ -44,26 +45,31 @@ import com.google.common.base.MoreObjects;
 
 /**
  * JPA entity storing time.
- * 
+ *
  * @author Bernardo Martínez Garrido
  */
 @Entity(name = "TimeEntity")
 @Table(name = "time_entities")
-public final class TimeEntity {
+public final class TimeEntity implements Serializable {
+
+    /**
+     * Serialization ID.
+     */
+    private static final long serialVersionUID = -8607637410853778685L;
 
     /**
      * Time stored in a calendar.
      */
     @Temporal(TemporalType.TIME)
     @Column(name = "calendar_time", nullable = false)
-    private Calendar calendar;
+    private Calendar          calendar;
 
     /**
      * Time stored in a date.
      */
     @Temporal(TemporalType.TIME)
     @Column(name = "java_time", nullable = false)
-    private Date     date;
+    private Date              date;
 
     /**
      * Entity's ID.
@@ -71,13 +77,13 @@ public final class TimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer  id = null;
+    private Integer           id               = null;
 
     /**
      * Time stored in a SQL date.
      */
     @Column(name = "sql_time", nullable = false)
-    private Time     sqlTime;
+    private Time              sqlTime;
 
     /**
      * Default constructor.
@@ -106,7 +112,7 @@ public final class TimeEntity {
 
     /**
      * Returns the time stored in a {@code Calendar}.
-     * 
+     *
      * @return the time stored in a {@code Calendar}
      */
     public final Calendar getCalendar() {
@@ -115,7 +121,7 @@ public final class TimeEntity {
 
     /**
      * Returns the time stored in a {@code Date}.
-     * 
+     *
      * @return the time stored in a {@code Date}
      */
     public final Date getDate() {
@@ -124,7 +130,7 @@ public final class TimeEntity {
 
     /**
      * Returns the entity's id.
-     * 
+     *
      * @return the entity's id
      */
     public final Integer getId() {
@@ -133,7 +139,7 @@ public final class TimeEntity {
 
     /**
      * Returns the time stored in a SQL {@code Time}.
-     * 
+     *
      * @return the time stored in a SQL {@code Time}
      */
     public final Time getSqlTime() {
@@ -147,7 +153,7 @@ public final class TimeEntity {
 
     /**
      * Sets the entity's time stored in a {@code Calendar}.
-     * 
+     *
      * @param value
      *            the time to set in the entity
      */
@@ -157,7 +163,7 @@ public final class TimeEntity {
 
     /**
      * Sets the entity's time stored in a {@code Date}.
-     * 
+     *
      * @param value
      *            the time to set in the entity
      */
@@ -167,7 +173,7 @@ public final class TimeEntity {
 
     /**
      * Sets the entity's id.
-     * 
+     *
      * @param identifier
      *            the ID for the entity
      */
@@ -177,7 +183,7 @@ public final class TimeEntity {
 
     /**
      * Sets the entity's time stored in a SQL {@code Time}.
-     * 
+     *
      * @param value
      *            the time to set in the entity
      */

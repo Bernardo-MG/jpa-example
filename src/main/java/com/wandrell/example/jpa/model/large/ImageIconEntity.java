@@ -26,6 +26,7 @@ package com.wandrell.example.jpa.model.large;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -41,7 +42,12 @@ import com.google.common.base.MoreObjects;
 
 @Entity(name = "ImageIconEntity")
 @Table(name = "image_icon_entities")
-public class ImageIconEntity {
+public class ImageIconEntity implements Serializable {
+
+    /**
+     * Serialization ID.
+     */
+    private static final long serialVersionUID = -2656640729216001462L;
 
     /**
      * Entity's ID.
@@ -49,11 +55,11 @@ public class ImageIconEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer   id = null;
+    private Integer           id               = null;
 
     @Column(name = "picture", nullable = false)
     @Lob
-    private ImageIcon picture;
+    private ImageIcon         picture;
 
     public ImageIconEntity() {
         super();

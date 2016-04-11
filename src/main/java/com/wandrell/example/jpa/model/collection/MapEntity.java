@@ -26,6 +26,7 @@ package com.wandrell.example.jpa.model.collection;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -41,12 +42,17 @@ import com.google.common.base.MoreObjects;
 
 /**
  * JPA entity with a map of simple types.
- * 
+ *
  * @author Bernardo Martínez Garrido
  */
 @Entity(name = "MultiValueEntity")
 @Table(name = "multivalue_entities")
-public class MapEntity {
+public class MapEntity implements Serializable {
+
+    /**
+     * Serialization ID.
+     */
+    private static final long    serialVersionUID = 5033725460720096537L;
 
     /**
      * Entity's ID.
@@ -54,13 +60,13 @@ public class MapEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer              id     = null;
+    private Integer              id               = null;
 
     /**
      * Mapper integer values.
      */
     @Column(name = "integersMap", nullable = false)
-    private Map<String, Integer> values = new LinkedHashMap<String, Integer>();
+    private Map<String, Integer> values           = new LinkedHashMap<String, Integer>();
 
     /**
      * Default constructor.
@@ -89,7 +95,7 @@ public class MapEntity {
 
     /**
      * Returns the entity's id.
-     * 
+     *
      * @return the entity's id
      */
     public final Integer getId() {
@@ -98,7 +104,7 @@ public class MapEntity {
 
     /**
      * Returns the mapped integer values.
-     * 
+     *
      * @return the mapped integer values
      */
     public final Map<String, Integer> getValues() {
@@ -112,7 +118,7 @@ public class MapEntity {
 
     /**
      * Sets the entity's id.
-     * 
+     *
      * @param identifier
      *            the ID for the entity
      */
@@ -122,7 +128,7 @@ public class MapEntity {
 
     /**
      * Sets the mapped integer values.
-     * 
+     *
      * @param value
      *            the mapped integer values to set in the entity
      */

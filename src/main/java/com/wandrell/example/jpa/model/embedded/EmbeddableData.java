@@ -26,6 +26,7 @@ package com.wandrell.example.jpa.model.embedded;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -35,23 +36,28 @@ import com.google.common.base.MoreObjects;
 
 /**
  * Embeddabble entity to be added into a JPA entity.
- * 
+ *
  * @author Bernardo Martínez Garrido
  */
 @Embeddable
-public final class EmbeddableData {
+public final class EmbeddableData implements Serializable {
+
+    /**
+     * Serialization ID.
+     */
+    private static final long serialVersionUID = 8309421350684881450L;
 
     /**
      * Description of the entity.
      */
     @Column(name = "desc", nullable = false)
-    private String desc = "";
+    private String            desc             = "";
 
     /**
      * Name of the entity.
      */
     @Column(name = "name", nullable = false)
-    private String name = "";
+    private String            name             = "";
 
     /**
      * Default constructor.
@@ -81,7 +87,7 @@ public final class EmbeddableData {
 
     /**
      * Returns the description of the entity.
-     * 
+     *
      * @return the description of the entity
      */
     public final String getDescription() {
@@ -90,7 +96,7 @@ public final class EmbeddableData {
 
     /**
      * Returns the name of the entity.
-     * 
+     *
      * @return the name of the entity
      */
     public final String getName() {
@@ -104,7 +110,7 @@ public final class EmbeddableData {
 
     /**
      * Sets the description of the entity.
-     * 
+     *
      * @param value
      *            the description to set in the entity
      */
@@ -115,7 +121,7 @@ public final class EmbeddableData {
 
     /**
      * Sets the name of the entity.
-     * 
+     *
      * @param value
      *            the name to set in the entity
      */

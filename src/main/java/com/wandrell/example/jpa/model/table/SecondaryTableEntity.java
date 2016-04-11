@@ -26,6 +26,7 @@ package com.wandrell.example.jpa.model.table;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -44,8 +45,8 @@ import com.google.common.base.MoreObjects;
 @Table(name = "two_tables_entities_a")
 @SecondaryTable(name = "two_tables_entities_b",
         pkJoinColumns = @PrimaryKeyJoinColumn(name = "entity_id",
-                referencedColumnName = "id"))
-public final class SecondaryTableEntity {
+                referencedColumnName = "id") )
+public final class SecondaryTableEntity implements Serializable {
 
     /**
      * Serialization ID.

@@ -3,6 +3,7 @@ package com.wandrell.example.jpa.model.relation.manyToOne;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,7 +19,12 @@ import com.google.common.base.MoreObjects;
 
 @Entity(name = "OneToManyEntity")
 @Table(name = "one_to_many_entities")
-public class OneToManyEntity {
+public class OneToManyEntity implements Serializable {
+
+    /**
+     * Serialization ID.
+     */
+    private static final long     serialVersionUID = -2230997873462793335L;
 
     /**
      * Entity's ID.
@@ -26,7 +32,7 @@ public class OneToManyEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer               id   = null;
+    private Integer               id               = null;
 
     @OneToMany(mappedBy = "oneToMany")
     private List<ManyToOneEntity> manyToOne;
@@ -38,7 +44,7 @@ public class OneToManyEntity {
      * tests.
      */
     @Column(name = "name", nullable = false)
-    private String                name = "";
+    private String                name             = "";
 
     public OneToManyEntity() {
         super();

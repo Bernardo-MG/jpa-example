@@ -26,6 +26,7 @@ package com.wandrell.example.jpa.model.embedded;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.AttributeOverride;
@@ -42,21 +43,26 @@ import com.google.common.base.MoreObjects;
 
 /**
  * JPA entity using an embeddable class.
- * 
+ *
  * @author Bernardo Martínez Garrido
  * @see EmbeddableData
  */
 @Entity(name = "EmbeddedEntity")
 @Table(name = "embedded_entities")
-public class EmbeddedEntity {
+public class EmbeddedEntity implements Serializable {
+
+    /**
+     * Serialization ID.
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Embedded data.
      */
     @Embedded
     @AttributeOverrides({ @AttributeOverride(name = "desc",
-            column = @Column(name = "description", nullable = false)), })
-    private EmbeddableData data;
+            column = @Column(name = "description", nullable = false) ), })
+    private EmbeddableData    data;
 
     /**
      * Entity's ID.
@@ -64,7 +70,7 @@ public class EmbeddedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer        id = null;
+    private Integer           id               = null;
 
     /**
      * Default constructor.
@@ -93,7 +99,7 @@ public class EmbeddedEntity {
 
     /**
      * Returns the entity's id.
-     * 
+     *
      * @return the entity's id
      */
     public final Integer getId() {
@@ -107,7 +113,7 @@ public class EmbeddedEntity {
 
     /**
      * Sets the entity's id.
-     * 
+     *
      * @param identifier
      *            the id to set in the entity
      */

@@ -3,6 +3,7 @@ package com.wandrell.example.jpa.model.relation.oneToOne;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -19,7 +20,12 @@ import com.google.common.base.MoreObjects;
 
 @Entity(name = "OneToOneSourceEntity")
 @Table(name = "one_to_one_source_entities")
-public class OneToOneSourceEntity {
+public class OneToOneSourceEntity implements Serializable {
+
+    /**
+     * Serialization ID.
+     */
+    private static final long     serialVersionUID = -1542505296838977668L;
 
     /**
      * Entity's ID.
@@ -27,7 +33,7 @@ public class OneToOneSourceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer               id   = null;
+    private Integer               id               = null;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "inverse_id")
@@ -40,7 +46,7 @@ public class OneToOneSourceEntity {
      * tests.
      */
     @Column(name = "name", nullable = false)
-    private String                name = "";
+    private String                name             = "";
 
     public OneToOneSourceEntity() {
         super();

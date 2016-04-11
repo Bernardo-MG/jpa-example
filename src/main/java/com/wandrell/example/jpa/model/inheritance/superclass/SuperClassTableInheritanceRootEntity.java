@@ -26,6 +26,7 @@ package com.wandrell.example.jpa.model.inheritance.superclass;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -38,7 +39,8 @@ import javax.persistence.Transient;
 import com.google.common.base.MoreObjects;
 
 @MappedSuperclass
-public abstract class SuperClassTableInheritanceRootEntity {
+public abstract class SuperClassTableInheritanceRootEntity
+        implements Serializable {
 
     /**
      * Serialization ID.

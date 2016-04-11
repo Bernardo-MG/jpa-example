@@ -35,8 +35,13 @@ import javax.persistence.Table;
 public class SuperClassTableInheritanceSecondEntity
         extends SuperClassTableInheritanceRootEntity {
 
+    /**
+     * Serialization ID.
+     */
+    private static final long serialVersionUID = -3759215625417078291L;
+
     @Column(name = "field_b")
-    private Long field_b;
+    private Long              field_b;
 
     public SuperClassTableInheritanceSecondEntity() {
         super();

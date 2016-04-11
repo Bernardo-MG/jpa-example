@@ -26,6 +26,7 @@ package com.wandrell.example.jpa.model.inheritance.multiple;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -45,7 +46,8 @@ import com.google.common.base.MoreObjects;
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "discriminator")
 @Table(name = "multiple_table_inherit_root_entities")
-public abstract class MultipleTableInheritanceRootEntity {
+public abstract class MultipleTableInheritanceRootEntity
+        implements Serializable {
 
     /**
      * Serialization ID.

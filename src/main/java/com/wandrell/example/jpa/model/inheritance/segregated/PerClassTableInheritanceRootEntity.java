@@ -26,6 +26,7 @@ package com.wandrell.example.jpa.model.inheritance.segregated;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -41,7 +42,8 @@ import com.google.common.base.MoreObjects;
 
 @Entity(name = "PerClassTableInheritanceRootEntity")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class PerClassTableInheritanceRootEntity {
+public abstract class PerClassTableInheritanceRootEntity
+        implements Serializable {
 
     /**
      * Serialization ID.

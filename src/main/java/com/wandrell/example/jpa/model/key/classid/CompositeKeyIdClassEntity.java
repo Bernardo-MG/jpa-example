@@ -26,6 +26,7 @@ package com.wandrell.example.jpa.model.key.classid;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -47,27 +48,32 @@ import com.google.common.base.MoreObjects;
 @Entity(name = "CompositeKeyIdClassEntity")
 @Table(name = "composite_key_idclass_entities")
 @IdClass(CompositeKey.class)
-public class CompositeKeyIdClassEntity {
+public class CompositeKeyIdClassEntity implements Serializable {
+
+    /**
+     * Serialization ID.
+     */
+    private static final long serialVersionUID = -4338241927428303803L;
 
     /**
      * First id.
      */
     @Id
     @Column(name = "id1", nullable = false, unique = true)
-    private Integer id1;
+    private Integer           id1;
 
     /**
      * Second id.
      */
     @Id
     @Column(name = "id2", nullable = false, unique = true)
-    private Long    id2;
+    private Long              id2;
 
     /**
      * Name of the entity.
      */
     @Column(name = "name", nullable = false)
-    private String  name = "";
+    private String            name             = "";
 
     /**
      * Default constructor.

@@ -24,6 +24,7 @@
 
 package com.wandrell.example.jpa.model.sequencing;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -44,7 +45,12 @@ import com.google.common.base.MoreObjects;
 @Entity(name = "TableGeneratedIdEntity")
 @Table(name = "table_id_entities")
 @TableGenerator(name = "tab", initialValue = 0, allocationSize = 50)
-public final class TableGeneratedIdEntity {
+public final class TableGeneratedIdEntity implements Serializable {
+
+    /**
+     * Serialization ID.
+     */
+    private static final long serialVersionUID = 5324556222584901497L;
 
     /**
      * Entity's ID.
@@ -52,7 +58,7 @@ public final class TableGeneratedIdEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "tab")
     @Column(name = "id", nullable = false, unique = true)
-    private Integer id = null;
+    private Integer           id               = null;
 
     /**
      * Default constructor.

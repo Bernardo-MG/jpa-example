@@ -26,6 +26,7 @@ package com.wandrell.example.jpa.model.converter;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -57,7 +58,7 @@ import com.google.common.base.MoreObjects;
  */
 @Entity(name = "BooleanConverterEntity")
 @Table(name = "boolean_converter_entities")
-public final class BooleanConverterEntity {
+public final class BooleanConverterEntity implements Serializable {
 
     /**
      * Serialization ID.
@@ -110,7 +111,7 @@ public final class BooleanConverterEntity {
 
     /**
      * Returns the boolean flag.
-     * 
+     *
      * @return the boolean flag
      */
     public final Boolean getFlag() {
@@ -119,7 +120,7 @@ public final class BooleanConverterEntity {
 
     /**
      * Returns the entity's id.
-     * 
+     *
      * @return the entity's id
      */
     public final Integer getId() {
@@ -133,7 +134,7 @@ public final class BooleanConverterEntity {
 
     /**
      * Sets the boolean flag.
-     * 
+     *
      * @param value
      *            the flag to set on the entity
      */
@@ -143,7 +144,7 @@ public final class BooleanConverterEntity {
 
     /**
      * Sets the entity's id.
-     * 
+     *
      * @param identifier
      *            the ID for the entity
      */

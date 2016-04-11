@@ -26,6 +26,8 @@ package com.wandrell.example.jpa.model.converter;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
+
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
@@ -35,12 +37,17 @@ import javax.persistence.Converter;
  * It will convert a {@code true} value to a {@code T} string, and a
  * {@code false} value to a {@code F} string. It also performs the reverse
  * operation, from the strings to boolean values.
- * 
+ *
  * @author Bernardo Martínez Garrido
  */
 @Converter
 public final class BooleanToStringConverter
-        implements AttributeConverter<Boolean, String> {
+        implements AttributeConverter<Boolean, String>, Serializable {
+
+    /**
+     * Serialization ID.
+     */
+    private static final long serialVersionUID = -5072734197181618754L;
 
     /**
      * Default constructor.

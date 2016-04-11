@@ -26,6 +26,7 @@ package com.wandrell.example.jpa.model.key.embedded;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -40,19 +41,24 @@ import com.google.common.base.MoreObjects;
  * @see EmbeddedCompositeKeyEntity
  */
 @Embeddable
-public class EmbeddableCompositeKey {
+public class EmbeddableCompositeKey implements Serializable {
+
+    /**
+     * Serialization ID.
+     */
+    private static final long serialVersionUID = 7216971993025321859L;
 
     /**
      * First id;
      */
     @Column(name = "id1", nullable = false, unique = true)
-    int  id1;
+    int                       id1;
 
     /**
      * Second id.
      */
     @Column(name = "id2", nullable = false, unique = true)
-    long id2;
+    long                      id2;
 
     /**
      * Default constructor.
