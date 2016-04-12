@@ -111,21 +111,23 @@ public class EmbeddableCompositeKey implements Serializable {
     /**
      * Sets the first id.
      *
-     * @param id1
+     * @param identifier
      *            the first id for the entity
      */
-    public final void setId1(final Integer id1) {
-        this.id1 = checkNotNull(id1, "Received a null pointer as id 1");
+    public final void setId1(final Integer identifier) {
+        this.id1 = checkNotNull(identifier,
+                "Received a null pointer as the identifier");
     }
 
     /**
      * Sets the second id.
      *
-     * @param id2
+     * @param identifier
      *            the second id for the entity
      */
-    public final void setId2(final Long id2) {
-        this.id2 = checkNotNull(id2, "Received a null pointer as id 2");
+    public final void setId2(final Long identifier) {
+        this.id2 = checkNotNull(identifier,
+                "Received a null pointer as the identifier");
     }
 
     @Override

@@ -130,12 +130,12 @@ public class ImageIconEntity implements Serializable {
 
     /**
      * Sets the image icon.
-     * 
-     * @param image
+     *
+     * @param icon
      *            the image icon to set in the entity
      */
-    public final void setImageIcon(final ImageIcon image) {
-        this.image = checkNotNull(image,
+    public final void setImageIcon(final ImageIcon icon) {
+        this.image = checkNotNull(icon,
                 "Received a null pointer as image icon");
     }
 

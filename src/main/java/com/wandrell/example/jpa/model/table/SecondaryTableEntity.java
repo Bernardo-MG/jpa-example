@@ -43,7 +43,7 @@ import com.google.common.base.MoreObjects;
 
 /**
  * JPA entity divided into a secondary table.
- * 
+ *
  * @author Bernardo Martínez Garrido
  */
 @Entity(name = "SecondaryTableEntity")
@@ -106,7 +106,7 @@ public final class SecondaryTableEntity implements Serializable {
 
     /**
      * Returns the first field.
-     * 
+     *
      * @return the first field
      */
     public final String getField1() {
@@ -115,7 +115,7 @@ public final class SecondaryTableEntity implements Serializable {
 
     /**
      * Returns the second field.
-     * 
+     *
      * @return the second field
      */
     public final String getField2() {
@@ -124,7 +124,7 @@ public final class SecondaryTableEntity implements Serializable {
 
     /**
      * Returns the ID assigned to this entity.
-     * 
+     *
      * @return the entity's ID
      */
     public final Integer getId() {
@@ -138,24 +138,22 @@ public final class SecondaryTableEntity implements Serializable {
 
     /**
      * Sets the first field.
-     * 
-     * @param field1
+     *
+     * @param field
      *            the field to set in the entity
      */
-    public final void setField1(final String field1) {
-        this.field1 = checkNotNull(field1,
-                "Received a null pointer as field 1");
+    public final void setField1(final String field) {
+        this.field1 = checkNotNull(field, "Received a null pointer as field 1");
     }
 
     /**
      * Sets the second field.
-     * 
-     * @param field2
+     *
+     * @param field
      *            the field to set in the entity
      */
-    public final void setField2(final String field2) {
-        this.field2 = checkNotNull(field2,
-                "Received a null pointer as field 2");
+    public final void setField2(final String field) {
+        this.field2 = checkNotNull(field, "Received a null pointer as field 2");
     }
 
     /**

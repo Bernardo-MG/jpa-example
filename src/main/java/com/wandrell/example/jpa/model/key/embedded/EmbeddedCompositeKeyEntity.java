@@ -116,11 +116,12 @@ public class EmbeddedCompositeKeyEntity implements Serializable {
     /**
      * Sets the embedded id.
      *
-     * @param key
+     * @param identifier
      *            the id to set in the entity
      */
-    public final void setKey(final EmbeddableCompositeKey key) {
-        this.key = key;
+    public final void setKey(final EmbeddableCompositeKey identifier) {
+        this.key = checkNotNull(identifier,
+                "Received a null pointer as the identifier");
     }
 
     /**
