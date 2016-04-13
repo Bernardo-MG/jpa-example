@@ -146,7 +146,7 @@ public class CompositeKeyIdClassEntity implements Serializable {
     /**
      * Sets the second id.
      *
-     * @param id2
+     * @param identifier
      *            the second id for the entity
      */
     public final void setId2(final Long identifier) {

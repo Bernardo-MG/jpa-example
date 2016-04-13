@@ -45,7 +45,7 @@ public class CompositeKey implements Serializable {
     private static final long serialVersionUID = -7233957066746780621L;
 
     /**
-     * First id;
+     * First id.
      */
     private Integer           id1;
 
