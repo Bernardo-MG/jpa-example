@@ -49,7 +49,7 @@ public class EmbeddableCompositeKey implements Serializable {
     private static final long serialVersionUID = 7216971993025321859L;
 
     /**
-     * First id;
+     * First id.
      */
     @Column(name = "id1", nullable = false, unique = true)
     private Integer           id1;

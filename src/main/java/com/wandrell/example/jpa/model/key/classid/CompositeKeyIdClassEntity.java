@@ -157,11 +157,11 @@ public class CompositeKeyIdClassEntity implements Serializable {
     /**
      * Sets the name of the entity.
      *
-     * @param name
+     * @param value
      *            the name to set on the entity
      */
-    public final void setName(final String name) {
-        this.name = checkNotNull(name, "Received a null pointer as name");
+    public final void setName(final String value) {
+        this.name = checkNotNull(value, "Received a null pointer as name");
     }
 
     @Override

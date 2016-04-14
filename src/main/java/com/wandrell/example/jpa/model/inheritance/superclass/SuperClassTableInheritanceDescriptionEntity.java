@@ -69,11 +69,11 @@ public class SuperClassTableInheritanceDescriptionEntity
 
     /**
      * Sets the description.
-     * 
+     *
      * @param value
      *            the description to set in the entity
      */
-    public final void setField_b(final String value) {
+    public final void setDescription(final String value) {
         this.description = checkNotNull(value,
                 "Received a null pointer as description");
     }

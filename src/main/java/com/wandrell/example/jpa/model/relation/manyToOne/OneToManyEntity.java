@@ -92,7 +92,7 @@ public class OneToManyEntity implements Serializable {
     /**
      * Returns the entities in the "many" side.
      *
-     * @return
+     * @return the entities in the "many" side
      */
     public final Collection<ManyToOneEntity> getManyToOne() {
         return manyToOne;
