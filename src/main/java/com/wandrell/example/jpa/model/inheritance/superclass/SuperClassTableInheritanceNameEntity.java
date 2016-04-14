@@ -22,48 +22,47 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.model.inheritance.multiple;
+package com.wandrell.example.jpa.model.inheritance.superclass;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Entity for multiple inheritance entities.
+ * Entity for super class inheritance entities.
  *
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "MultipleTableInheritanceSecondEntity")
-@DiscriminatorValue("B")
-@Table(name = "multiple_table_inherit_second_entities")
-public class MultipleTableInheritanceSecondEntity
-        extends MultipleTableInheritanceRootEntity {
+@Entity(name = "SuperClassTableInheritanceNameEntity")
+@Table(name = "super_class_table_inherit_name_entities")
+@AttributeOverride(name = "id", column = @Column(name = "id_entity") )
+public class SuperClassTableInheritanceNameEntity
+        extends SuperClassTableInheritanceRootEntity {
 
     /**
      * Serialization ID.
      */
-    private static final long serialVersionUID = -9208638219453280651L;
+    private static final long serialVersionUID = 448987499302198165L;
 
-    @Column(name = "field_b")
-    private Long              field_b;
+    @Column(name = "name")
+    private String            name             = "";
 
     /**
      * Default constructor.
      */
-    public MultipleTableInheritanceSecondEntity() {
+    public SuperClassTableInheritanceNameEntity() {
         super();
     }
 
-    public final Long getField_b() {
-        return field_b;
+    public final String getName() {
+        return name;
     }
 
-    public final void setField_b(final Long field_b) {
-        this.field_b = checkNotNull(field_b,
-                "Received a null pointer as field_b");
+    public final void setName(final String name) {
+        this.name = checkNotNull(name, "Received a null pointer as name");
     }
 
 }

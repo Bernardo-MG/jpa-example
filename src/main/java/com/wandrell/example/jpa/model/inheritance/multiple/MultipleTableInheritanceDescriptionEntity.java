@@ -22,48 +22,48 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.model.inheritance.superclass;
+package com.wandrell.example.jpa.model.inheritance.multiple;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Entity for super class inheritance entities.
+ * Entity for multiple inheritance entities.
  *
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "SuperClassTableInheritanceFirstEntity")
-@Table(name = "super_class_table_inherit_first_entities")
-@AttributeOverride(name = "id", column = @Column(name = "id_entity") )
-public class SuperClassTableInheritanceFirstEntity
-        extends SuperClassTableInheritanceRootEntity {
+@Entity(name = "MultipleTableInheritanceDescriptionEntity")
+@DiscriminatorValue("B")
+@Table(name = "multiple_table_inherit_description_entities")
+public class MultipleTableInheritanceDescriptionEntity
+        extends MultipleTableInheritanceRootEntity {
 
     /**
      * Serialization ID.
      */
-    private static final long serialVersionUID = 448987499302198165L;
+    private static final long serialVersionUID = -9208638219453280651L;
 
-    @Column(name = "field_a")
-    private String            field_a          = "";
+    @Column(name = "description")
+    private Long              description;
 
     /**
      * Default constructor.
      */
-    public SuperClassTableInheritanceFirstEntity() {
+    public MultipleTableInheritanceDescriptionEntity() {
         super();
     }
 
-    public final String getField_a() {
-        return field_a;
+    public final Long getDescription() {
+        return description;
     }
 
-    public final void setField_a(final String field_a) {
-        this.field_a = checkNotNull(field_a,
-                "Received a null pointer as field_a");
+    public final void setDescription(final Long description) {
+        this.description = checkNotNull(description,
+                "Received a null pointer as description");
     }
 
 }

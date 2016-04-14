@@ -35,9 +35,9 @@ import javax.persistence.Table;
  *
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "PerClassTableInheritanceSecondEntity")
-@Table(name = "per_class_table_inherit_second_entities")
-public class PerClassTableInheritanceSecondEntity
+@Entity(name = "PerClassTableInheritanceDescriptionEntity")
+@Table(name = "per_class_table_inherit_description_entities")
+public class PerClassTableInheritanceDescriptionEntity
         extends PerClassTableInheritanceRootEntity {
 
     /**
@@ -45,23 +45,23 @@ public class PerClassTableInheritanceSecondEntity
      */
     private static final long serialVersionUID = -5515811901270274916L;
 
-    @Column(name = "field_b")
-    private Long              field_b;
+    @Column(name = "description")
+    private Long              description;
 
     /**
      * Default constructor.
      */
-    public PerClassTableInheritanceSecondEntity() {
+    public PerClassTableInheritanceDescriptionEntity() {
         super();
     }
 
-    public final Long getField_b() {
-        return field_b;
+    public final Long getDescription() {
+        return description;
     }
 
-    public final void setField_b(final Long field_b) {
-        this.field_b = checkNotNull(field_b,
-                "Received a null pointer as field_b");
+    public final void setDescription(final Long description) {
+        this.description = checkNotNull(description,
+                "Received a null pointer as description");
     }
 
 }

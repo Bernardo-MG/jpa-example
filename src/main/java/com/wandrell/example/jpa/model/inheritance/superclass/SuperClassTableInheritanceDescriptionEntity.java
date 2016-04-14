@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.model.inheritance.segregated;
+package com.wandrell.example.jpa.model.inheritance.superclass;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -31,37 +31,37 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Entity for per-class inheritance entities.
+ * Entity for super class inheritance entities.
  *
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "PerClassTableInheritanceFirstEntity")
-@Table(name = "per_class_table_inherit_first_entities")
-public class PerClassTableInheritanceFirstEntity
-        extends PerClassTableInheritanceRootEntity {
+@Entity(name = "SuperClassTableInheritanceDescriptionEntity")
+@Table(name = "super_class_table_inherit_description_entities")
+public class SuperClassTableInheritanceDescriptionEntity
+        extends SuperClassTableInheritanceRootEntity {
 
     /**
      * Serialization ID.
      */
-    private static final long serialVersionUID = 957845193222735207L;
+    private static final long serialVersionUID = -3759215625417078291L;
 
-    @Column(name = "field_a")
-    private String            field_a          = "";
+    @Column(name = "description")
+    private Long              description;
 
     /**
      * Default constructor.
      */
-    public PerClassTableInheritanceFirstEntity() {
+    public SuperClassTableInheritanceDescriptionEntity() {
         super();
     }
 
-    public final String getField_a() {
-        return field_a;
+    public final Long getDescription() {
+        return description;
     }
 
-    public final void setField_a(final String field_a) {
-        this.field_a = checkNotNull(field_a,
-                "Received a null pointer as field_a");
+    public final void setField_b(final Long description) {
+        this.description = checkNotNull(description,
+                "Received a null pointer as description");
     }
 
 }

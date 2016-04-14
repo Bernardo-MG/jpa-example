@@ -22,46 +22,47 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.model.inheritance.single;
+package com.wandrell.example.jpa.model.inheritance.multiple;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
- * Entity for single table inheritance entities.
+ * Entity for multiple inheritance entities.
  *
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "SingleTableInheritanceFirstEntity")
+@Entity(name = "MultipleTableInheritanceNameEntity")
 @DiscriminatorValue("A")
-public class SingleTableInheritanceFirstEntity
-        extends SingleTableInheritanceRootEntity {
+@Table(name = "multiple_table_inherit_name_entities")
+public class MultipleTableInheritanceNameEntity
+        extends MultipleTableInheritanceRootEntity {
 
     /**
      * Serialization ID.
      */
-    private static final long serialVersionUID = 4353534670422583551L;
+    private static final long serialVersionUID = 1743658290478708606L;
 
-    @Column(name = "field_a")
-    private String            field_a          = "";
+    @Column(name = "name")
+    private String            name             = "";
 
     /**
      * Default constructor.
      */
-    public SingleTableInheritanceFirstEntity() {
+    public MultipleTableInheritanceNameEntity() {
         super();
     }
 
-    public final String getField_a() {
-        return field_a;
+    public final String getName() {
+        return name;
     }
 
-    public final void setField_a(final String field_a) {
-        this.field_a = checkNotNull(field_a,
-                "Received a null pointer as field_a");
+    public final void setName(final String name) {
+        this.name = checkNotNull(name, "Received a null pointer as name");
     }
 
 }
