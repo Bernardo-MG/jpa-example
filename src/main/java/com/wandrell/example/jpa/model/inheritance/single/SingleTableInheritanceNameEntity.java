@@ -45,6 +45,9 @@ public class SingleTableInheritanceNameEntity
      */
     private static final long serialVersionUID = 4353534670422583551L;
 
+    /**
+     * The name.
+     */
     @Column(name = "name")
     private String            name             = "";
 
@@ -55,10 +58,21 @@ public class SingleTableInheritanceNameEntity
         super();
     }
 
+    /**
+     * Returns the name.
+     *
+     * @return the name
+     */
     public final String getName() {
         return name;
     }
 
+    /**
+     * Sets the name.
+     * 
+     * @param name
+     *            the name to set in the entity
+     */
     public final void setName(final String name) {
         this.name = checkNotNull(name, "Received a null pointer as name");
     }

@@ -45,8 +45,11 @@ public class PerClassTableInheritanceDescriptionEntity
      */
     private static final long serialVersionUID = -5515811901270274916L;
 
+    /**
+     * Description.
+     */
     @Column(name = "description")
-    private Long              description;
+    private String            description;
 
     /**
      * Default constructor.
@@ -55,11 +58,22 @@ public class PerClassTableInheritanceDescriptionEntity
         super();
     }
 
-    public final Long getDescription() {
+    /**
+     * Returns the description.
+     *
+     * @return the description.
+     */
+    public final String getDescription() {
         return description;
     }
 
-    public final void setDescription(final Long description) {
+    /**
+     * Sets the description.
+     * 
+     * @param description
+     *            the description to set in the entity
+     */
+    public final void setDescription(final String description) {
         this.description = checkNotNull(description,
                 "Received a null pointer as description");
     }

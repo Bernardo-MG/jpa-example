@@ -47,6 +47,9 @@ public class MultipleTableInheritanceNameEntity
      */
     private static final long serialVersionUID = 1743658290478708606L;
 
+    /**
+     * The name.
+     */
     @Column(name = "name")
     private String            name             = "";
 
@@ -57,10 +60,21 @@ public class MultipleTableInheritanceNameEntity
         super();
     }
 
+    /**
+     * Returns the name.
+     *
+     * @return the name
+     */
     public final String getName() {
         return name;
     }
 
+    /**
+     * Sets the name.
+     * 
+     * @param name
+     *            the name to set in the entity
+     */
     public final void setName(final String name) {
         this.name = checkNotNull(name, "Received a null pointer as name");
     }
