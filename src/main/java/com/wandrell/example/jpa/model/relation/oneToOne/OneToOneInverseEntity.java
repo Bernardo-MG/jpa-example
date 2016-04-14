@@ -126,22 +126,22 @@ public class OneToOneInverseEntity implements Serializable {
     /**
      * Sets the name of the entity.
      *
-     * @param name
+     * @param value
      *            the name to set in the entity
      */
-    public final void setName(final String name) {
-        this.name = checkNotNull(name, "Received a null pointer as name");
+    public final void setName(final String value) {
+        this.name = checkNotNull(value, "Received a null pointer as name");
     }
 
     /**
      * Sets the one to one entity with the main declaration of the relationship.
      * 
-     * @param source
+     * @param value
      *            the one to one entity with the main declaration of the
      *            relationship
      */
-    public final void setSource(final OneToOneSourceEntity source) {
-        this.source = checkNotNull(source, "Received a null pointer as source");
+    public final void setSource(final OneToOneSourceEntity value) {
+        this.source = checkNotNull(value, "Received a null pointer as source");
     }
 
     @Override

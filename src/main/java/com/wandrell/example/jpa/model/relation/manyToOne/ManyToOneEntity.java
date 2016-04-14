@@ -126,21 +126,21 @@ public class ManyToOneEntity implements Serializable {
     /**
      * Sets the name of the entity.
      *
-     * @param name
+     * @param value
      *            the name to set in the entity
      */
-    public final void setName(final String name) {
-        this.name = checkNotNull(name, "Received a null pointer as name");
+    public final void setName(final String value) {
+        this.name = checkNotNull(value, "Received a null pointer as name");
     }
 
     /**
      * Sets the entity in the 'one' side.
      *
-     * @param oneToMany
+     * @param value
      *            the entity to set in the 'one' side.
      */
-    public final void setOneToMany(final OneToManyEntity oneToMany) {
-        this.oneToMany = checkNotNull(oneToMany,
+    public final void setOneToMany(final OneToManyEntity value) {
+        this.oneToMany = checkNotNull(value,
                 "Received a null pointer as oneToMany");
     }
 
