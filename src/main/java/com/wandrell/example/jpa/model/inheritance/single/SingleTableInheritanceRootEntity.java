@@ -91,6 +91,11 @@ public abstract class SingleTableInheritanceRootEntity implements Serializable {
         return Objects.equals(id, other.id);
     }
 
+    /**
+     * Returns the ID assigned to this entity.
+     *
+     * @return the entity's ID
+     */
     public final Integer getId() {
         return id;
     }
@@ -100,6 +105,12 @@ public abstract class SingleTableInheritanceRootEntity implements Serializable {
         return Objects.hash(id);
     }
 
+    /**
+     * Sets the ID assigned to this entity.
+     *
+     * @param identifier
+     *            the ID for the entity
+     */
     public final void setId(final Integer identifier) {
         id = checkNotNull(identifier, "Received a null pointer as identifier");
     }

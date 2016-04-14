@@ -133,11 +133,12 @@ public class ManyToManyOwnerEntity implements Serializable {
 
     /**
      * Sets the mapped entities.
-     * 
+     *
      * @param value
      *            the mapped entities to set in the entity
      */
-    public final void setMapped(Collection<ManyToManyMappedEntity> value) {
+    public final void
+            setMapped(final Collection<ManyToManyMappedEntity> value) {
         this.mapped = checkNotNull(value, "Received a null pointer as mapped");
     }
 

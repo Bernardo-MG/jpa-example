@@ -52,13 +52,13 @@ public class EmbeddableCompositeKey implements Serializable {
      * First id;
      */
     @Column(name = "id1", nullable = false, unique = true)
-    int                       id1;
+    private Integer           id1;
 
     /**
      * Second id.
      */
     @Column(name = "id2", nullable = false, unique = true)
-    long                      id2;
+    private Long              id2;
 
     /**
      * Default constructor.
