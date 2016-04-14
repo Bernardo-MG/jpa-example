@@ -17,6 +17,11 @@ import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * Entity with a one to one relationship mapped to another class.
+ *
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "OneToOneInverseEntity")
 @Table(name = "one_to_one_inverse_entities")
 public class OneToOneInverseEntity implements Serializable {
@@ -43,9 +48,15 @@ public class OneToOneInverseEntity implements Serializable {
     @Column(name = "name", nullable = false)
     private String               name             = "";
 
+    /**
+     * One to one entity with the main declaration of the relationship.
+     */
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "inverse")
     private OneToOneSourceEntity source;
 
+    /**
+     * Default constructor.
+     */
     public OneToOneInverseEntity() {
         super();
     }
@@ -68,14 +79,31 @@ public class OneToOneInverseEntity implements Serializable {
         return Objects.equals(id, other.id);
     }
 
+    /**
+     * Returns the ID assigned to this entity.
+     *
+     * @return the entity's ID
+     */
     public final Integer getId() {
         return id;
     }
 
+    /**
+     * Returns the name of the entity.
+     *
+     * @return the entity's name
+     */
     public final String getName() {
         return name;
     }
 
+    /**
+     * Returns the one to one entity with the main declaration of the
+     * relationship.
+     * 
+     * @return the one to one entity with the main declaration of the
+     *         relationship
+     */
     public final OneToOneSourceEntity getSource() {
         return source;
     }
@@ -85,14 +113,33 @@ public class OneToOneInverseEntity implements Serializable {
         return Objects.hash(id);
     }
 
+    /**
+     * Sets the ID assigned to this entity.
+     *
+     * @param identifier
+     *            the ID for the entity
+     */
     public final void setId(final Integer identifier) {
         id = checkNotNull(identifier, "Received a null pointer as identifier");
     }
 
+    /**
+     * Sets the name of the entity.
+     *
+     * @param name
+     *            the name to set in the entity
+     */
     public final void setName(final String name) {
         this.name = checkNotNull(name, "Received a null pointer as name");
     }
 
+    /**
+     * Sets the one to one entity with the main declaration of the relationship.
+     * 
+     * @param source
+     *            the one to one entity with the main declaration of the
+     *            relationship
+     */
     public final void setSource(final OneToOneSourceEntity source) {
         this.source = checkNotNull(source, "Received a null pointer as source");
     }

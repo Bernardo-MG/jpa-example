@@ -4,6 +4,7 @@ package com.wandrell.example.jpa.model.relation.manyToOne;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,6 +18,11 @@ import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * Entity with a one to many relationship.
+ *
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "OneToManyEntity")
 @Table(name = "one_to_many_entities")
 public class OneToManyEntity implements Serializable {
@@ -24,7 +30,7 @@ public class OneToManyEntity implements Serializable {
     /**
      * Serialization ID.
      */
-    private static final long     serialVersionUID = -2230997873462793335L;
+    private static final long           serialVersionUID = -2230997873462793335L;
 
     /**
      * Entity's ID.
@@ -32,10 +38,13 @@ public class OneToManyEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer               id               = null;
+    private Integer                     id               = null;
 
+    /**
+     * Entities in the "many" side.
+     */
     @OneToMany(mappedBy = "oneToMany")
-    private List<ManyToOneEntity> manyToOne;
+    private Collection<ManyToOneEntity> manyToOne;
 
     /**
      * Name of the entity.
@@ -44,8 +53,11 @@ public class OneToManyEntity implements Serializable {
      * tests.
      */
     @Column(name = "name", nullable = false)
-    private String                name             = "";
+    private String                      name             = "";
 
+    /**
+     * Default constructor.
+     */
     public OneToManyEntity() {
         super();
     }
@@ -68,14 +80,29 @@ public class OneToManyEntity implements Serializable {
         return Objects.equals(id, other.id);
     }
 
+    /**
+     * Returns the ID assigned to this entity.
+     *
+     * @return the entity's ID
+     */
     public final Integer getId() {
         return id;
     }
 
-    public final List<ManyToOneEntity> getManyToOne() {
+    /**
+     * Returns the entities in the "many" side.
+     *
+     * @return
+     */
+    public final Collection<ManyToOneEntity> getManyToOne() {
         return manyToOne;
     }
 
+    /**
+     * Returns the name of the entity.
+     *
+     * @return the entity's name
+     */
     public final String getName() {
         return name;
     }
@@ -85,15 +112,33 @@ public class OneToManyEntity implements Serializable {
         return Objects.hash(id);
     }
 
+    /**
+     * Sets the ID assigned to this entity.
+     *
+     * @param identifier
+     *            the ID for the entity
+     */
     public final void setId(final Integer identifier) {
         id = checkNotNull(identifier, "Received a null pointer as identifier");
     }
 
+    /**
+     * Sets the entities in the "many" side.
+     *
+     * @param manyToOne
+     *            the entities to set in the "many" side
+     */
     public final void setManyToOne(final List<ManyToOneEntity> manyToOne) {
         this.manyToOne = checkNotNull(manyToOne,
                 "Received a null pointer as manyToOne");
     }
 
+    /**
+     * Sets the name of the entity.
+     *
+     * @param name
+     *            the name to set in the entity
+     */
     public final void setName(final String name) {
         this.name = checkNotNull(name, "Received a null pointer as name");
     }

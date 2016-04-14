@@ -19,6 +19,14 @@ import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
 
+/**
+ * Entity with a many to many relationship and the main declaration for it.
+ * <p>
+ * It is the owner entity because it contains the actual definition of the
+ * relationship, while the other entity will just be mapped to it.
+ *
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "ManyToManyOwnerEntity")
 @Table(name = "many_to_many_owner_entities")
 public class ManyToManyOwnerEntity implements Serializable {
@@ -36,6 +44,9 @@ public class ManyToManyOwnerEntity implements Serializable {
     @Column(name = "id", nullable = false, unique = true)
     private Integer                            id               = null;
 
+    /**
+     * Mapped entities.
+     */
     @ManyToMany
     @JoinTable(name = "many_to_many_joined",
             joinColumns = @JoinColumn(name = "owner_id",
@@ -53,6 +64,9 @@ public class ManyToManyOwnerEntity implements Serializable {
     @Column(name = "name", nullable = false)
     private String                             name             = "";
 
+    /**
+     * Default constructor.
+     */
     public ManyToManyOwnerEntity() {
         super();
     }
@@ -75,14 +89,29 @@ public class ManyToManyOwnerEntity implements Serializable {
         return Objects.equals(id, other.id);
     }
 
+    /**
+     * Returns the ID assigned to this entity.
+     *
+     * @return the entity's ID
+     */
     public final Integer getId() {
         return id;
     }
 
+    /**
+     * Returns the mapped entities.
+     *
+     * @return the mapped entities.
+     */
     public final Collection<ManyToManyMappedEntity> getMapped() {
         return mapped;
     }
 
+    /**
+     * Returns the name of the entity.
+     *
+     * @return the entity's name
+     */
     public final String getName() {
         return name;
     }
@@ -92,14 +121,32 @@ public class ManyToManyOwnerEntity implements Serializable {
         return Objects.hash(id);
     }
 
+    /**
+     * Sets the ID assigned to this entity.
+     *
+     * @param identifier
+     *            the ID for the entity
+     */
     public final void setId(final Integer identifier) {
         id = checkNotNull(identifier, "Received a null pointer as identifier");
     }
 
+    /**
+     * Sets the mapped entities.
+     * 
+     * @param mapped
+     *            the mapped entities to set in the entity
+     */
     public final void setMapped(Collection<ManyToManyMappedEntity> mapped) {
         this.mapped = checkNotNull(mapped, "Received a null pointer as mapped");
     }
 
+    /**
+     * Sets the name of the entity.
+     *
+     * @param name
+     *            the name to set in the entity
+     */
     public final void setName(final String name) {
         this.name = checkNotNull(name, "Received a null pointer as name");
     }
