@@ -54,8 +54,7 @@ import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimp
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
                 DataBaseUserPropertiesConfig.DEFAULT,
                 DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
-                JdbcPropertiesPaths.H2,
-                QueryPropertiesPaths.SIMPLE_ENTITY_QUERY },
+                JdbcPropertiesPaths.H2, QueryPropertiesPaths.SIMPLE_ENTITY },
         properties = { "jpa.persistenceUnitName=entities_eclipselink_h2_modify",
                 "jdbc.url=jdbc:h2:mem:test_eclipselink_modify;DB_CLOSE_ON_EXIT=FALSE" })
 public final class ITSimpleEntityModifyEclipseLinkH2

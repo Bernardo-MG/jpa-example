@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.test.integration.converter;
+package com.wandrell.example.jpa.test.util.test.integration.enumeration;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -32,28 +32,29 @@ import org.springframework.test.context.testng.AbstractTransactionalTestNGSpring
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.model.converter.BooleanConverterEntity;
-import com.wandrell.example.jpa.test.util.criteria.BooleanConverterEntityCriteriaFactory;
+import com.wandrell.example.jpa.model.enumeration.EnumerationEntity;
+import com.wandrell.example.jpa.model.enumeration.NumbersEnum;
+import com.wandrell.example.jpa.test.util.criteria.EnumerationEntityCriteriaFactory;
 
 /**
- * Abstract integration tests for a {@link BooleanConverterEntity} testing it
- * loads values correctly by using the criteria API.
+ * Abstract integration tests for a {@link EnumerationEntity} testing it loads
+ * values correctly by using the criteria API.
  * <p>
  * Checks the following cases:
  * <ol>
- * <li>Retrieving all the entities with a {@code true} flag gives the correct
- * number of them.</li>
- * <li>Retrieving all the entities with a {@code false} flag gives the correct
- * number of them.</li>
+ * <li>Retrieving all the entities with a specific enum, through the ordinal
+ * value, gives the correct number of them.</li>
+ * <li>Retrieving all the entities with a specific enum, through the string
+ * value, gives the correct number of them.</li>
  * </ol>
  * <p>
  * This is meant to be used along a Spring context, which will set up the
  * repository and all of it's requirements.
  *
  * @author Bernardo Martínez Garrido
- * @see BooleanConverterEntity
+ * @see EnumerationEntity
  */
-public abstract class AbstractITBooleanConverterEntityQueryCriteriaApi
+public abstract class AbstractITEnumerationEntityQueryCriteriaApi
         extends AbstractTransactionalTestNGSpringContextTests {
 
     /**
@@ -65,7 +66,7 @@ public abstract class AbstractITBooleanConverterEntityQueryCriteriaApi
     /**
      * Default constructor.
      */
-    public AbstractITBooleanConverterEntityQueryCriteriaApi() {
+    public AbstractITEnumerationEntityQueryCriteriaApi() {
         super();
     }
 
@@ -74,13 +75,12 @@ public abstract class AbstractITBooleanConverterEntityQueryCriteriaApi
      * the correct number of them.
      */
     @Test
-    public final void testGetEntity_AllFalse() {
+    public final void testGetEntity_Ordinal() {
         final Query query; // Query for the entity
 
         // Builds the query
-        query = getEntityManager()
-                .createQuery(BooleanConverterEntityCriteriaFactory
-                        .findAllByFlag(entityManager, false));
+        query = getEntityManager().createQuery(EnumerationEntityCriteriaFactory
+                .findAllByOrdinal(entityManager, NumbersEnum.TWO));
 
         // The number of results is the expected one
         Assert.assertEquals(query.getResultList().size(), 2);
@@ -91,16 +91,15 @@ public abstract class AbstractITBooleanConverterEntityQueryCriteriaApi
      * correct number of them.
      */
     @Test
-    public final void testGetEntity_AllTrue() {
+    public final void testGetEntity_String() {
         final Query query; // Query for the entity
 
         // Builds the query
-        query = getEntityManager()
-                .createQuery(BooleanConverterEntityCriteriaFactory
-                        .findAllByFlag(entityManager, true));
+        query = getEntityManager().createQuery(EnumerationEntityCriteriaFactory
+                .findAllByString(entityManager, NumbersEnum.TWO));
 
         // The number of results is the expected one
-        Assert.assertEquals(query.getResultList().size(), 3);
+        Assert.assertEquals(query.getResultList().size(), 2);
     }
 
     /**

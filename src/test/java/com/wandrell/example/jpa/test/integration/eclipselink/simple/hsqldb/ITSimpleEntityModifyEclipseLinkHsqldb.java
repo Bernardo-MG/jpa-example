@@ -55,7 +55,7 @@ import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimp
                 DataBaseUserPropertiesConfig.DEFAULT,
                 DataBaseScriptsPropertiesConfig.MSSQL,
                 JpaPropertiesConfig.HSQLDB, JdbcPropertiesPaths.HSQLDB,
-                QueryPropertiesPaths.SIMPLE_ENTITY_QUERY },
+                QueryPropertiesPaths.SIMPLE_ENTITY },
         properties = {
                 "jpa.persistenceUnitName=simple_entity_eclipselink_hsqldb",
                 "jdbc.url=jdbc:hsqldb:mem:test_eclipselink" })

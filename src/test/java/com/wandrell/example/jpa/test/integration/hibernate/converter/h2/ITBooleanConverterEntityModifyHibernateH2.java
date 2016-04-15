@@ -55,8 +55,7 @@ import com.wandrell.example.jpa.test.util.test.integration.converter.AbstractITB
                 PersistenceProviderPropertiesConfig.HIBERNATE,
                 DataBaseUserPropertiesConfig.DEFAULT,
                 DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
-                JdbcPropertiesPaths.H2,
-                QueryPropertiesPaths.BOOLEAN_CONVERTER_QUERY,
+                JdbcPropertiesPaths.H2, QueryPropertiesPaths.BOOLEAN_CONVERTER,
                 HibernateDialectPropertiesConfig.H2 },
         properties = {
                 "jpa.persistenceUnitName=boolean_converter_hibernate_h2_modify",

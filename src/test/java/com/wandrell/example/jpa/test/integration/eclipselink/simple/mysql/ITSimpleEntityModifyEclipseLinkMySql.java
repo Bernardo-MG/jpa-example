@@ -55,7 +55,7 @@ import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimp
                 DataBaseUserPropertiesConfig.MYSQL,
                 DataBaseScriptsPropertiesConfig.MYSQL,
                 JpaPropertiesConfig.MYSQL, JdbcPropertiesPaths.MYSQL,
-                QueryPropertiesPaths.SIMPLE_ENTITY_QUERY },
+                QueryPropertiesPaths.SIMPLE_ENTITY },
         properties = {
                 "jpa.persistenceUnitName=simple_entity_eclipselink_mysql_modify",
                 "jdbc.url=jdbc:mysql://localhost:3306/test_eclipselink_modify" })

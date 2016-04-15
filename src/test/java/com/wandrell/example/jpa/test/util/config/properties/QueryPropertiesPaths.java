@@ -35,14 +35,19 @@ package com.wandrell.example.jpa.test.util.config.properties;
 public class QueryPropertiesPaths {
 
     /**
-     * Boolean converter entity queries.
+     * Boolean converter entity.
      */
-    public static final String BOOLEAN_CONVERTER_QUERY = "classpath:config/persistence/query/test-boolean-converter-entity-query.properties";
+    public static final String BOOLEAN_CONVERTER = "classpath:config/persistence/query/test-boolean-converter-entity-query.properties";
 
     /**
-     * Simple entity queries.
+     * Enumeration entity.
      */
-    public static final String SIMPLE_ENTITY_QUERY     = "classpath:config/persistence/query/test-simple-entity-query.properties";
+    public static final String ENUMERATION       = "classpath:config/persistence/query/test-enumeration-entity-query.properties";
+
+    /**
+     * Simple entity.
+     */
+    public static final String SIMPLE_ENTITY     = "classpath:config/persistence/query/test-simple-entity-query.properties";
 
     /**
      * Private constructor to avoid initialization.

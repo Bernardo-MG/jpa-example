@@ -49,8 +49,8 @@ public class BooleanConverterEntityCriteriaFactory {
      * @return the query to find all the entities with a flag having the
      *         received value
      */
-    public static final CriteriaQuery<BooleanConverterEntity>
-            findAll(final EntityManager entityManager, final Boolean flag) {
+    public static final CriteriaQuery<BooleanConverterEntity> findAllByFlag(
+            final EntityManager entityManager, final Boolean flag) {
         final CriteriaBuilder builder;                  // Builder
         final CriteriaQuery<BooleanConverterEntity> query; // Query
         Root<BooleanConverterEntity> entity;               // Root entity

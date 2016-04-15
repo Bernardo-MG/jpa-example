@@ -46,9 +46,9 @@ import com.google.common.base.MoreObjects;
  * @author Bernardo Martínez Garrido
  * @see NumbersEnum
  */
-@Entity(name = "EnumEntity")
+@Entity(name = "EnumerationEntity")
 @Table(name = "enum_entities")
-public final class EnumEntity implements Serializable {
+public final class EnumerationEntity implements Serializable {
 
     /**
      * Serialization ID.
@@ -80,7 +80,7 @@ public final class EnumEntity implements Serializable {
     /**
      * Default constructor.
      */
-    public EnumEntity() {
+    public EnumerationEntity() {
         super();
     }
 
@@ -98,7 +98,7 @@ public final class EnumEntity implements Serializable {
             return false;
         }
 
-        final EnumEntity other = (EnumEntity) obj;
+        final EnumerationEntity other = (EnumerationEntity) obj;
         return Objects.equals(id, other.id);
     }
 

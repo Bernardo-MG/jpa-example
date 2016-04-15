@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.hibernate.simple.h2;
+package com.wandrell.example.jpa.test.integration.eclipselink.enumeration.h2;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -31,42 +31,38 @@ import com.wandrell.example.jpa.test.util.config.context.PersistenceContextConfi
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.DataBaseScriptsPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.DataBaseUserPropertiesConfig;
-import com.wandrell.example.jpa.test.util.config.properties.HibernateDialectPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimpleEntityModify;
+import com.wandrell.example.jpa.test.util.test.integration.enumeration.AbstractITEnumerationEntityQueryCriteriaApi;
 
 /**
  * Integration tests for
  * {@link com.wandrell.pattern.repository.spring.SpringJDBCRepository
- * SpringJDBCRepository} implementing {@code AbstractITModify}, using an H2
+ * SpringJDBCRepository} implementing {@code AbstractITQuery}, using an H2
  * in-memory database and Spring JDBC.
  *
  * @author Bernardo Martínez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        TestContextConfig.ENTITY_MODIFIABLE,
-        PersistenceContextConfig.HIBERNATE })
+        PersistenceContextConfig.ECLIPSELINK })
 @TestPropertySource(
-        locations = { TestPropertiesConfig.SIMPLE_ENTITY,
-                PersistenceProviderPropertiesConfig.HIBERNATE,
+        locations = { TestPropertiesConfig.ENUMERATION,
+                PersistenceProviderPropertiesConfig.ECLIPSELINK,
                 DataBaseUserPropertiesConfig.DEFAULT,
                 DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
-                JdbcPropertiesPaths.H2, QueryPropertiesPaths.SIMPLE_ENTITY,
-                HibernateDialectPropertiesConfig.H2 },
-        properties = {
-                "jpa.persistenceUnitName=simple_entity_hibernate_h2_modify",
-                "jdbc.url=jdbc:h2:mem:test_hibernate_modify;DB_CLOSE_ON_EXIT=FALSE" })
-public final class ITSimpleEntityModifyHibernateH2
-        extends AbstractITSimpleEntityModify {
+                JdbcPropertiesPaths.H2, QueryPropertiesPaths.ENUMERATION },
+        properties = { "jpa.persistenceUnitName=enumeration_eclipselink_h2",
+                "jdbc.url=jdbc:h2:mem:test_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
+public final class ITEnumerationEntityQueryCriteriaApiEclipseLinkH2
+        extends AbstractITEnumerationEntityQueryCriteriaApi {
 
     /**
      * Default constructor.
      */
-    public ITSimpleEntityModifyHibernateH2() {
+    public ITEnumerationEntityQueryCriteriaApiEclipseLinkH2() {
         super();
     }
 

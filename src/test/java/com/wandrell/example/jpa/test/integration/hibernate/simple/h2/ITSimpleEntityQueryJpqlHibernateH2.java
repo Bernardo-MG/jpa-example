@@ -54,8 +54,7 @@ import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimp
                 PersistenceProviderPropertiesConfig.HIBERNATE,
                 DataBaseUserPropertiesConfig.DEFAULT,
                 DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
-                JdbcPropertiesPaths.H2,
-                QueryPropertiesPaths.SIMPLE_ENTITY_QUERY,
+                JdbcPropertiesPaths.H2, QueryPropertiesPaths.SIMPLE_ENTITY,
                 HibernateDialectPropertiesConfig.H2 },
         properties = { "jpa.persistenceUnitName=simple_entity_hibernate_h2",
                 "jdbc.url=jdbc:h2:mem:test_hibernate;DB_CLOSE_ON_EXIT=FALSE" })

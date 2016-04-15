@@ -39,6 +39,11 @@ public class TestPropertiesConfig {
     public static final String BOOLEAN_CONVERTER = "classpath:config/entity/test-boolean-converter-entity.properties";
 
     /**
+     * Enumeration entity.
+     */
+    public static final String ENUMERATION       = "classpath:config/entity/test-enumeration-entity.properties";
+
+    /**
      * Simple entity.
      */
     public static final String SIMPLE_ENTITY     = "classpath:config/entity/test-simple-entity.properties";
