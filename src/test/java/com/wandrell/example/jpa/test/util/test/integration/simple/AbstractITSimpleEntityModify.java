@@ -24,20 +24,10 @@
 
 package com.wandrell.example.jpa.test.util.test.integration.simple;
 
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.Query;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
-import org.springframework.transaction.annotation.Transactional;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.model.simple.DefaultSimpleEntity;
 import com.wandrell.example.jpa.model.simple.SimpleEntity;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
  * Abstract integration tests for a {@link SimpleEntity} testing it can be
@@ -60,44 +50,12 @@ import com.wandrell.example.jpa.model.simple.SimpleEntity;
  * @see SimpleEntity
  */
 public abstract class AbstractITSimpleEntityModify
-        extends AbstractTransactionalTestNGSpringContextTests {
+        extends AbstractITEntityModify<SimpleEntity> {
 
     /**
-     * The entity manager for the test context.
+     * Name for the tests.
      */
-    @Autowired(required = false)
-    private EntityManager       emanager;
-
-    /**
-     * Initial number of entities in the persistence context.
-     */
-    @Value("${entities.total}")
-    private Integer             entitiesCount;
-
-    /**
-     * The JPA entity manager.
-     */
-    @Autowired
-    private EntityManager       entityManager;
-
-    /**
-     * The query to acquire all the entities.
-     */
-    @Value("${query.findAll}")
-    private String              findAll;
-
-    /**
-     * The query to acquire an entity by the id.
-     */
-    @Value("${query.findById}")
-    private String              findById;
-
-    /**
-     * Entity for the addition test.
-     */
-    @Autowired
-    @Qualifier("newEntity")
-    private DefaultSimpleEntity newEntity;
+    private final String name = "The new name";
 
     /**
      * Default constructor.
@@ -106,130 +64,19 @@ public abstract class AbstractITSimpleEntityModify
         super();
     }
 
-    /**
-     * Tests that persisting an entity adds that entity to the persistence
-     * context.
-     */
-    @Test
-    @Transactional
-    public final void testCreate() {
-        final String name;                 // Name for the entity
-        final DefaultSimpleEntity queried; // Queried back entity
-        final Query query;                 // Query to recover the entity
-
-        // Checks that the id has not been assigned
-        Assert.assertNull(newEntity.getId());
-
-        // Sets the name
-        name = "name";
-        newEntity.setName(name);
-
-        // Adds the entity
-        getEntityManager().persist(newEntity);
-
-        if (emanager != null) {
-            // Flushed to force updating ids
-            emanager.flush();
-        }
-
-        // Checks the entity has been added
-        Assert.assertEquals(
-                getEntityManager().createQuery(findAll).getResultList().size(),
-                entitiesCount + 1);
-
-        // Checks that the id has been assigned
-        Assert.assertNotNull(newEntity.getId());
-        Assert.assertTrue(newEntity.getId() >= 0);
-
-        // Checks that the name is the same
-        Assert.assertEquals(newEntity.getName(), name);
-
-        // Queries the created entity from the DB
-
-        // Builds the query
-        query = getEntityManager().createQuery(findById);
-        query.setParameter("id", newEntity.getId());
-
-        // Acquires the entity
-        queried = (DefaultSimpleEntity) query.getSingleResult();
-
-        // Checks that the queried entity keeps all the data
-        Assert.assertEquals(queried.getId(), newEntity.getId());
-        Assert.assertEquals(queried.getName(), newEntity.getName());
+    @Override
+    protected final void assertEntityModified(final SimpleEntity entity) {
+        Assert.assertEquals(entity.getName(), name);
     }
 
-    /**
-     * Tests that removing an entity removes that entity from the persistence
-     * context.
-     */
-    @Test
-    @Transactional
-    public final void testRemove() {
-        final DefaultSimpleEntity entity; // Entity being tested
-        final Query query;                // Query for the entity
-        Boolean caught;                   // Flag for the exception being caught
-
-        // Builds the query
-        query = getEntityManager().createQuery(findById);
-        query.setParameter("id", 1);
-
-        // Acquires the entity
-        entity = (DefaultSimpleEntity) query.getSingleResult();
-
-        // Removes the entity
-        getEntityManager().remove(entity);
-
-        // Checks that the number of entities has decreased
-        Assert.assertEquals(
-                getEntityManager().createQuery(findAll).getResultList().size(),
-                entitiesCount - 1);
-
-        // Tries to retrieve the removed entity
-        // The entity no longer exists
-        caught = false;
-        try {
-            query.getSingleResult();
-        } catch (final NoResultException e) {
-            caught = true;
-        }
-        Assert.assertTrue(caught);
+    @Override
+    protected final Integer getId(final SimpleEntity entity) {
+        return entity.getId();
     }
 
-    /**
-     * Tests that updating an entity changes it.
-     */
-    @Test
-    public final void testUpdate() {
-        final String newChange;     // Name set on the entity
-        DefaultSimpleEntity entity; // The entity being tested
-        final Query query;          // Query for the entity
-
-        // Builds the query
-        query = getEntityManager().createQuery(findById);
-        query.setParameter("id", 1);
-
-        // Acquires the entity
-        entity = (DefaultSimpleEntity) query.getSingleResult();
-
-        // Changes the entity name
-        newChange = "The new name";
-        entity.setName(newChange);
-        getEntityManager().persist(entity);
-
-        // Retrieves the entity again
-        entity = (DefaultSimpleEntity) query.getSingleResult();
-
-        // Checks the entity's name
-        Assert.assertEquals(entity.getName(), newChange);
-    }
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
+    @Override
+    protected final void modifyEntity(final SimpleEntity entity) {
+        entity.setName(name);
     }
 
 }
