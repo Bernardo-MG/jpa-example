@@ -40,6 +40,6 @@ INSERT INTO boolean_converter_entities (id, flag) VALUES (8, 'B');
 INSERT INTO boolean_converter_entities (id, flag) VALUES (9, 'B');
 
 INSERT INTO enum_entities (id, enum_string, enum_ordinal) VALUES (1, 'TWO', 2);
-INSERT INTO enum_entities (id, enum_string, enum_ordinal) VALUES (2, 'ONE', 1);
-INSERT INTO enum_entities (id, enum_string, enum_ordinal) VALUES (3, 'THREE', 3);
+INSERT INTO enum_entities (id, enum_string, enum_ordinal) VALUES (2, 'ONE', 0);
+INSERT INTO enum_entities (id, enum_string, enum_ordinal) VALUES (3, 'THREE', 1);
 INSERT INTO enum_entities (id, enum_string, enum_ordinal) VALUES (4, 'TWO', 2);

@@ -22,10 +22,12 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.test.integration.simple;
+package com.wandrell.example.jpa.test.util.test.integration.enumeration;
 
 import org.testng.Assert;
 
+import com.wandrell.example.jpa.model.enumeration.EnumerationEntity;
+import com.wandrell.example.jpa.model.enumeration.NumbersEnum;
 import com.wandrell.example.jpa.model.simple.SimpleEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
@@ -36,34 +38,36 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  * @author Bernardo Martínez Garrido
  * @see SimpleEntity
  */
-public abstract class AbstractITSimpleEntityModify
-        extends AbstractITEntityModify<SimpleEntity> {
+public abstract class AbstractITEnumerationEntityModify
+        extends AbstractITEntityModify<EnumerationEntity> {
 
     /**
-     * Name for the tests.
+     * Flag for the tests,
      */
-    private final String name = "The new name";
+    private final NumbersEnum enumeration = NumbersEnum.THREE;
 
     /**
      * Default constructor.
      */
-    public AbstractITSimpleEntityModify() {
+    public AbstractITEnumerationEntityModify() {
         super();
     }
 
     @Override
-    protected final void assertEntityModified(final SimpleEntity entity) {
-        Assert.assertEquals(entity.getName(), name);
+    protected final void assertEntityModified(final EnumerationEntity entity) {
+        Assert.assertEquals(entity.getEnumOrdinal(), enumeration);
+        Assert.assertEquals(entity.getEnumString(), enumeration);
     }
 
     @Override
-    protected final Integer getId(final SimpleEntity entity) {
+    protected final Integer getId(final EnumerationEntity entity) {
         return entity.getId();
     }
 
     @Override
-    protected final void modifyEntity(final SimpleEntity entity) {
-        entity.setName(name);
+    protected final void modifyEntity(final EnumerationEntity entity) {
+        entity.setEnumOrdinal(enumeration);
+        entity.setEnumString(enumeration);
     }
 
 }

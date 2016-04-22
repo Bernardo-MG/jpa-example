@@ -33,19 +33,6 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
 /**
  * Abstract integration tests for a {@link SimpleEntity} testing it can be
  * modified.
- * <p>
- * The tests cases just show how to do create, remove and update operations with
- * a JPA entity.
- * <p>
- * Checks the following cases:
- * <ol>
- * <li>Persisting an entity adds that entity to the persistence context.</li>
- * <li>Removing an entity removes that entity from the persistence context.</li>
- * <li>Updating an entity changes it.</li>
- * </ol>
- * <p>
- * This is meant to be used along a Spring context, which will set up the
- * repository and all of it's requirements.
  *
  * @author Bernardo Martínez Garrido
  * @see SimpleEntity
