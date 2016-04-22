@@ -43,3 +43,18 @@ INSERT INTO enum_entities (id, enum_string, enum_ordinal) VALUES (1, 'TWO', 2);
 INSERT INTO enum_entities (id, enum_string, enum_ordinal) VALUES (2, 'ONE', 0);
 INSERT INTO enum_entities (id, enum_string, enum_ordinal) VALUES (3, 'THREE', 1);
 INSERT INTO enum_entities (id, enum_string, enum_ordinal) VALUES (4, 'TWO', 2);
+
+INSERT INTO date_entities (id, calendar_date, java_date, sql_date) VALUES (1, '1990-02-03', '1990-02-03', '1990-02-03');
+INSERT INTO date_entities (id, calendar_date, java_date, sql_date) VALUES (2, '1991-05-02', '1991-05-02', '1991-05-02');
+INSERT INTO date_entities (id, calendar_date, java_date, sql_date) VALUES (3, '1990-02-03', '1990-02-03', '1990-02-03');
+INSERT INTO date_entities (id, calendar_date, java_date, sql_date) VALUES (4, '1995-01-02', '1995-01-02', '1995-01-02');
+
+INSERT INTO time_entities (id, calendar_time, java_time, sql_time) VALUES (1, '11:22:33', '11:22:33', '11:22:33');
+INSERT INTO time_entities (id, calendar_time, java_time, sql_time) VALUES (2, '11:11:11', '11:11:11', '11:11:11');
+INSERT INTO time_entities (id, calendar_time, java_time, sql_time) VALUES (3, '11:22:33', '11:22:33', '11:22:33');
+INSERT INTO time_entities (id, calendar_time, java_time, sql_time) VALUES (4, '03:15:10', '03:15:10', '03:15:10');
+
+INSERT INTO timestamp_entities (id, calendar_timestamp, java_timestamp, sql_timestamp) VALUES (1, '1990-02-03 11:22:33', '1990-02-03 11:22:33', '1990-02-03 11:22:33');
+INSERT INTO timestamp_entities (id, calendar_timestamp, java_timestamp, sql_timestamp) VALUES (2, '1991-05-02 11:11:11', '1991-05-02 11:11:11', '1991-05-02 11:11:11');
+INSERT INTO timestamp_entities (id, calendar_timestamp, java_timestamp, sql_timestamp) VALUES (3, '1990-02-03 11:22:33', '1990-02-03 11:22:33', '1990-02-03 11:22:33');
+INSERT INTO timestamp_entities (id, calendar_timestamp, java_timestamp, sql_timestamp) VALUES (4, '1995-01-02 03:15:10', '1995-01-02 03:15:10', '1995-01-02 03:15:10');
