@@ -40,7 +40,7 @@ public abstract class AbstractITSimpleEntityModify
         extends AbstractITEntityModify<SimpleEntity> {
 
     /**
-     * Name for the tests.
+     * Value to set on the name for the tests.
      */
     private final String name = "The new name";
 

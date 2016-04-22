@@ -38,8 +38,7 @@ import org.testng.annotations.Test;
 import com.wandrell.example.jpa.model.simple.SimpleEntity;
 
 /**
- * Abstract integration tests for a {@link SimpleEntity} testing it can be
- * modified.
+ * Abstract integration tests for an entity testing it can be modified.
  * <p>
  * The tests cases just show how to do create, remove and update operations with
  * a JPA entity.

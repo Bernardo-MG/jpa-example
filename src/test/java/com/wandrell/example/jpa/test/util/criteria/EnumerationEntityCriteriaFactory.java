@@ -34,8 +34,7 @@ import com.wandrell.example.jpa.model.enumeration.EnumerationEntity_;
 import com.wandrell.example.jpa.model.enumeration.NumbersEnum;
 
 /**
- * Factory for creating criteria API
- * clasEnumerationEntityBooleanConverterEntity}.
+ * Factory for creating criteria API classes for the {@link EnumerationEntity}.
  *
  * @author Bernardo Martínez Garrido
  */

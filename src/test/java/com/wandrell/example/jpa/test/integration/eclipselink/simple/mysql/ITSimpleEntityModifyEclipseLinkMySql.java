@@ -39,10 +39,7 @@ import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig
 import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimpleEntityModify;
 
 /**
- * Integration tests for
- * {@link com.wandrell.pattern.repository.spring.SpringJDBCRepository
- * SpringJDBCRepository} implementing {@code AbstractITModify}, using a MySQL
- * in-memory database and Spring JDBC.
+ * Integration tests for a {@code SimpleEntity} testing it can be modified.
  *
  * @author Bernardo Martínez Garrido
  */

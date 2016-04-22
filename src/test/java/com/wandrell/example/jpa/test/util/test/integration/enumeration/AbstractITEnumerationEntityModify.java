@@ -28,21 +28,20 @@ import org.testng.Assert;
 
 import com.wandrell.example.jpa.model.enumeration.EnumerationEntity;
 import com.wandrell.example.jpa.model.enumeration.NumbersEnum;
-import com.wandrell.example.jpa.model.simple.SimpleEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
- * Abstract integration tests for a {@link SimpleEntity} testing it can be
+ * Abstract integration tests for a {@link EnumerationEntity} testing it can be
  * modified.
  *
  * @author Bernardo Martínez Garrido
- * @see SimpleEntity
+ * @see EnumerationEntity
  */
 public abstract class AbstractITEnumerationEntityModify
         extends AbstractITEntityModify<EnumerationEntity> {
 
     /**
-     * Flag for the tests,
+     * Value to set on the enumeration for the tests.
      */
     private final NumbersEnum enumeration = NumbersEnum.THREE;
 

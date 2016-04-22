@@ -39,10 +39,8 @@ import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig
 import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimpleEntityQueryCriteriaApi;
 
 /**
- * Integration tests for
- * {@link com.wandrell.pattern.repository.spring.SpringJDBCRepository
- * SpringJDBCRepository} implementing {@code AbstractITQuery}, using an H2
- * in-memory database and Spring JDBC.
+ * Integration tests for a {@code SimpleEntity} testing it can be queried
+ * correctly by using criteria API queries.
  *
  * @author Bernardo Martínez Garrido
  */

@@ -27,21 +27,20 @@ package com.wandrell.example.jpa.test.util.test.integration.converter;
 import org.testng.Assert;
 
 import com.wandrell.example.jpa.model.converter.BooleanConverterEntity;
-import com.wandrell.example.jpa.model.simple.SimpleEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
- * Abstract integration tests for a {@link SimpleEntity} testing it can be
- * modified.
+ * Abstract integration tests for a {@link BooleanConverterEntity} testing it
+ * can be modified.
  *
  * @author Bernardo Martínez Garrido
- * @see SimpleEntity
+ * @see BooleanConverterEntity
  */
 public abstract class AbstractITBooleanConverterEntityModify
         extends AbstractITEntityModify<BooleanConverterEntity> {
 
     /**
-     * Flag for the tests,
+     * Value to set on the flag for the tests.
      */
     private final Boolean flag = true;
 

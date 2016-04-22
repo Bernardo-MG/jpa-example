@@ -33,7 +33,6 @@ import org.springframework.test.context.testng.AbstractTransactionalTestNGSpring
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.model.converter.BooleanConverterEntity;
 import com.wandrell.example.jpa.model.enumeration.EnumerationEntity;
 import com.wandrell.example.jpa.model.enumeration.NumbersEnum;
 
@@ -53,7 +52,7 @@ import com.wandrell.example.jpa.model.enumeration.NumbersEnum;
  * repository and all of it's requirements.
  *
  * @author Bernardo Martínez Garrido
- * @see BooleanConverterEntity
+ * @see EnumerationEntity
  */
 public abstract class AbstractITEnumerationEntityQueryJpql
         extends AbstractTransactionalTestNGSpringContextTests {
