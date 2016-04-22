@@ -24,7 +24,8 @@ CREATE TABLE enum_entities (
 CREATE TABLE date_entities (
 	id				INTEGER IDENTITY PRIMARY KEY,
 	calendar_date	DATE NOT NULL,
-	java_date		DATE NOT NULL
+	java_date		DATE NOT NULL,
+	sql_date		DATE NOT NULL
 );
 
 CREATE TABLE time_entities (
