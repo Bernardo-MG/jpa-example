@@ -28,17 +28,18 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.wandrell.example.jpa.model.converter.BooleanConverterEntity;
 import com.wandrell.example.jpa.model.enumeration.EnumerationEntity;
 import com.wandrell.example.jpa.model.enumeration.NumbersEnum;
-import com.wandrell.example.jpa.test.util.criteria.EnumerationEntityCriteriaFactory;
 
 /**
  * Abstract integration tests for a {@link EnumerationEntity} testing it loads
- * values correctly by using the criteria API.
+ * values correctly by using JPQL queries.
  * <p>
  * Checks the following cases:
  * <ol>
@@ -52,9 +53,9 @@ import com.wandrell.example.jpa.test.util.criteria.EnumerationEntityCriteriaFact
  * repository and all of it's requirements.
  *
  * @author Bernardo Martínez Garrido
- * @see EnumerationEntity
+ * @see BooleanConverterEntity
  */
-public abstract class AbstractITEnumerationEntityQueryCriteriaApi
+public abstract class AbstractITEnumerationEntityQueryJpql
         extends AbstractTransactionalTestNGSpringContextTests {
 
     /**
@@ -64,9 +65,21 @@ public abstract class AbstractITEnumerationEntityQueryCriteriaApi
     private EntityManager entityManager;
 
     /**
+     * The query to acquire all the entities by the ordinal value.
+     */
+    @Value("${query.findAllByEnumOrdinal}")
+    private String        findAllByOrdinal;
+
+    /**
+     * The query to acquire all the entities by the string value.
+     */
+    @Value("${query.findAllByEnumString}")
+    private String        findAllByString;
+
+    /**
      * Default constructor.
      */
-    public AbstractITEnumerationEntityQueryCriteriaApi() {
+    public AbstractITEnumerationEntityQueryJpql() {
         super();
     }
 
@@ -79,8 +92,8 @@ public abstract class AbstractITEnumerationEntityQueryCriteriaApi
         final Query query; // Query for the entity
 
         // Builds the query
-        query = getEntityManager().createQuery(EnumerationEntityCriteriaFactory
-                .findAllByOrdinal(entityManager, NumbersEnum.TWO));
+        query = getEntityManager().createQuery(findAllByOrdinal);
+        query.setParameter("enum", NumbersEnum.TWO);
 
         // The number of results is the expected one
         Assert.assertEquals(query.getResultList().size(), 2);
@@ -95,8 +108,8 @@ public abstract class AbstractITEnumerationEntityQueryCriteriaApi
         final Query query; // Query for the entity
 
         // Builds the query
-        query = getEntityManager().createQuery(EnumerationEntityCriteriaFactory
-                .findAllByString(entityManager, NumbersEnum.TWO));
+        query = getEntityManager().createQuery(findAllByString);
+        query.setParameter("enum", NumbersEnum.TWO);
 
         // The number of results is the expected one
         Assert.assertEquals(query.getResultList().size(), 2);
