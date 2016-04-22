@@ -1,6 +1,9 @@
 DROP TABLE IF EXISTS simple_entities;
 DROP TABLE IF EXISTS boolean_converter_entities;
 DROP TABLE IF EXISTS enum_entities;
+DROP TABLE IF EXISTS date_entities;
+DROP TABLE IF EXISTS time_entities;
+DROP TABLE IF EXISTS timestamp_entities;
 
 CREATE TABLE simple_entities (
 	id		INTEGER PRIMARY KEY AUTO_INCREMENT,
