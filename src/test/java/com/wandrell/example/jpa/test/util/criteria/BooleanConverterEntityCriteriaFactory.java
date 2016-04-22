@@ -44,6 +44,8 @@ public class BooleanConverterEntityCriteriaFactory {
      * Generates a query to find all the entities where the value of the flag is
      * the same as the received one.
      *
+     * @param entityManager
+     *            the entity manager with the entity's data
      * @param flag
      *            the value of the flag to query
      * @return the query to find all the entities with a flag having the

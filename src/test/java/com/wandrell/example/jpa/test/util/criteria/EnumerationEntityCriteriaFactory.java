@@ -44,8 +44,10 @@ public class EnumerationEntityCriteriaFactory {
      * Generates a query to find all the entities where the ordinal of the enum
      * value is the same as the received one.
      *
+     * @param entityManager
+     *            the entity manager with the entity's data
      * @param value
-     *            the enum value toe search for
+     *            the enum value to search for
      * @return the query to find all the entities with an enum having the
      *         received ordinal
      */
@@ -75,8 +77,10 @@ public class EnumerationEntityCriteriaFactory {
      * Generates a query to find all the entities where the string value of the
      * enum value is the same as the received one.
      *
+     * @param entityManager
+     *            the entity manager with the entity's data
      * @param value
-     *            the enum value toe search for
+     *            the enum value to search for
      * @return the query to find all the entities with an enum having the
      *         received string value
      */

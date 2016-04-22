@@ -43,6 +43,8 @@ public class SimpleEntityCriteriaFactory {
     /**
      * Generates a query to find all the entities.
      *
+     * @param entityManager
+     *            the entity manager with the entity's data
      * @return the query to find all the entities
      */
     public static final CriteriaQuery<DefaultSimpleEntity>
@@ -68,6 +70,10 @@ public class SimpleEntityCriteriaFactory {
     /**
      * Generates the query to find a single entity by the id.
      *
+     * @param entityManager
+     *            the entity manager with the entity's data
+     * @param id
+     *            the id to search
      * @return the query to find an the entity by the id
      */
     public static final CriteriaQuery<DefaultSimpleEntity>
