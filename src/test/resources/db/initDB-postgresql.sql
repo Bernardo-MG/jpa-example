@@ -22,21 +22,21 @@ CREATE TABLE enum_entities (
 );
 
 CREATE TABLE date_entities (
-	id				INTEGER IDENTITY PRIMARY KEY,
+	id				SERIAL PRIMARY KEY,
 	calendar_date	DATE NOT NULL,
 	java_date		DATE NOT NULL,
 	sql_date		DATE NOT NULL
 );
 
 CREATE TABLE time_entities (
-	id				INTEGER IDENTITY PRIMARY KEY,
+	id				SERIAL PRIMARY KEY,
 	calendar_time	TIME NOT NULL,
 	java_time		TIME NOT NULL,
 	sql_time		TIME NOT NULL
 );
 
 CREATE TABLE timestamp_entities (
-	id					INTEGER IDENTITY PRIMARY KEY,
+	id					SERIAL PRIMARY KEY,
 	calendar_timestamp	TIMESTAMP NOT NULL,
 	java_timestamp		TIMESTAMP NOT NULL,
 	sql_timestamp		TIMESTAMP NOT NULL
