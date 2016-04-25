@@ -103,6 +103,11 @@ public abstract class AbstractITDateEntityQueryCriteriaApi
     private EntityManager entityManager;
 
     /**
+     * SQL date for the test ranges.
+     */
+    private java.sql.Date sqlDate;
+
+    /**
      * Default constructor.
      */
     public AbstractITDateEntityQueryCriteriaApi() {
@@ -124,6 +129,8 @@ public abstract class AbstractITDateEntityQueryCriteriaApi
         format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
         date = format.parse(dateString);
+
+        sqlDate = new java.sql.Date(date.getTime());
 
         calendar = Calendar.getInstance();
         calendar.setTime(date);
@@ -154,6 +161,30 @@ public abstract class AbstractITDateEntityQueryCriteriaApi
     }
 
     /**
+     * Tests that retrieving all the entities after a date gives the correct
+     * number of them when using a SQL {@code Date} for the date.
+     */
+    @Test
+    public final void testGetAfterDate_Sql() {
+        Assert.assertEquals((Integer) getEntityManager()
+                .createQuery(DateEntityCriteriaFactory
+                        .findAfterSqlDate(getEntityManager(), sqlDate))
+                .getResultList().size(), new Integer(3));
+    }
+
+    /**
+     * Tests that retrieving all the entities before a date gives the correct
+     * number of them when using a {@code Calendar} for the date.
+     */
+    @Test
+    public final void testGetBeforeDate_Calendar() {
+        Assert.assertEquals((Integer) getEntityManager()
+                .createQuery(DateEntityCriteriaFactory
+                        .findBeforeDate(getEntityManager(), calendar))
+                .getResultList().size(), new Integer(2));
+    }
+
+    /**
      * Tests that retrieving all the entities before a date gives the correct
      * number of them when using a Java {@code Date} for the date.
      */
@@ -167,13 +198,13 @@ public abstract class AbstractITDateEntityQueryCriteriaApi
 
     /**
      * Tests that retrieving all the entities before a date gives the correct
-     * number of them when using a {@code Calendar} for the date.
+     * number of them when using a SQL {@code Date} for the date.
      */
     @Test
-    public final void testGetBeforeDate_Java_Calendar() {
+    public final void testGetBeforeDate_Sql() {
         Assert.assertEquals((Integer) getEntityManager()
                 .createQuery(DateEntityCriteriaFactory
-                        .findBeforeDate(getEntityManager(), calendar))
+                        .findBeforeSqlDate(getEntityManager(), sqlDate))
                 .getResultList().size(), new Integer(2));
     }
 
@@ -198,6 +229,18 @@ public abstract class AbstractITDateEntityQueryCriteriaApi
         Assert.assertEquals((Integer) getEntityManager()
                 .createQuery(DateEntityCriteriaFactory
                         .findInDate(getEntityManager(), date))
+                .getResultList().size(), new Integer(1));
+    }
+
+    /**
+     * Tests that retrieving all the entities in a date gives the correct number
+     * of them when using a SQL {@code Date} for the date.
+     */
+    @Test
+    public final void testGetInDate_Sql() {
+        Assert.assertEquals((Integer) getEntityManager()
+                .createQuery(DateEntityCriteriaFactory
+                        .findInSqlDate(getEntityManager(), sqlDate))
                 .getResultList().size(), new Integer(1));
     }
 

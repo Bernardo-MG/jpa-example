@@ -112,7 +112,7 @@ public class DateEntityCriteriaFactory {
      *            the limit date for the query
      * @return all the entities with a date after the specified date
      */
-    public static final CriteriaQuery<DateEntity> findAfterDate(
+    public static final CriteriaQuery<DateEntity> findAfterSqlDate(
             final EntityManager entityManager, final java.sql.Date date) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<DateEntity> query; // Query
@@ -202,7 +202,7 @@ public class DateEntityCriteriaFactory {
      *            the limit date for the query
      * @return all the entities with a date before the specified date
      */
-    public static final CriteriaQuery<DateEntity> findBeforeDate(
+    public static final CriteriaQuery<DateEntity> findBeforeSqlDate(
             final EntityManager entityManager, final java.sql.Date date) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<DateEntity> query; // Query
@@ -292,7 +292,7 @@ public class DateEntityCriteriaFactory {
      *            the limit date for the query
      * @return all the entities with a date equal to the specified date
      */
-    public static final CriteriaQuery<DateEntity> findInDate(
+    public static final CriteriaQuery<DateEntity> findInSqlDate(
             final EntityManager entityManager, final java.sql.Date date) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<DateEntity> query; // Query
