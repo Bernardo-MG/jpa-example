@@ -48,6 +48,8 @@ INSERT INTO date_entities (id, calendar_date, java_date, sql_date) VALUES (1, '1
 INSERT INTO date_entities (id, calendar_date, java_date, sql_date) VALUES (2, '1991-05-02', '1991-05-02', '1991-05-02');
 INSERT INTO date_entities (id, calendar_date, java_date, sql_date) VALUES (3, '1990-02-03', '1990-02-03', '1990-02-03');
 INSERT INTO date_entities (id, calendar_date, java_date, sql_date) VALUES (4, '1995-01-02', '1995-01-02', '1995-01-02');
+INSERT INTO date_entities (id, calendar_date, java_date, sql_date) VALUES (5, '1992-01-01', '1992-01-01', '1992-01-01');
+INSERT INTO date_entities (id, calendar_date, java_date, sql_date) VALUES (6, '1996-12-24', '1996-12-24', '1996-12-24');
 
 INSERT INTO time_entities (id, calendar_time, java_time, sql_time) VALUES (1, '11:22:33', '11:22:33', '11:22:33');
 INSERT INTO time_entities (id, calendar_time, java_time, sql_time) VALUES (2, '11:11:11', '11:11:11', '11:11:11');

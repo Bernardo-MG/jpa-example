@@ -40,6 +40,11 @@ public class QueryPropertiesPaths {
     public static final String BOOLEAN_CONVERTER = "classpath:config/persistence/query/test-boolean-converter-entity-query.properties";
 
     /**
+     * Date entity.
+     */
+    public static final String DATE              = "classpath:config/persistence/query/test-date-entity-query.properties";
+
+    /**
      * Enumeration entity.
      */
     public static final String ENUMERATION       = "classpath:config/persistence/query/test-enumeration-entity-query.properties";
@@ -48,6 +53,16 @@ public class QueryPropertiesPaths {
      * Simple entity.
      */
     public static final String SIMPLE_ENTITY     = "classpath:config/persistence/query/test-simple-entity-query.properties";
+
+    /**
+     * Time entity.
+     */
+    public static final String TIME              = "classpath:config/persistence/query/test-time-entity-query.properties";
+
+    /**
+     * Time entity.
+     */
+    public static final String TIMESTAMP         = "classpath:config/persistence/query/test-timestamp-entity-query.properties";
 
     /**
      * Private constructor to avoid initialization.

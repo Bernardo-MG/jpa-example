@@ -39,6 +39,11 @@ public class TestPropertiesConfig {
     public static final String BOOLEAN_CONVERTER = "classpath:config/entity/test-boolean-converter-entity.properties";
 
     /**
+     * Date entity.
+     */
+    public static final String DATE              = "classpath:config/entity/test-date-entity.properties";
+
+    /**
      * Enumeration entity.
      */
     public static final String ENUMERATION       = "classpath:config/entity/test-enumeration-entity.properties";
@@ -47,6 +52,16 @@ public class TestPropertiesConfig {
      * Simple entity.
      */
     public static final String SIMPLE_ENTITY     = "classpath:config/entity/test-simple-entity.properties";
+
+    /**
+     * Time entity.
+     */
+    public static final String TIME              = "classpath:config/entity/test-time-entity.properties";
+
+    /**
+     * Timestamp entity.
+     */
+    public static final String TIMESTAMP         = "classpath:config/entity/test-timestamp-entity.properties";
 
     /**
      * Private constructor to avoid initialization.
