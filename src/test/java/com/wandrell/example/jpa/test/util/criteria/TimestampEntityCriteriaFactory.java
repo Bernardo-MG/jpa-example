@@ -51,7 +51,39 @@ public class TimestampEntityCriteriaFactory {
      *            the limit timestamp for the query
      * @return all the entities with a timestamp after the specified timestamp
      */
-    public static final CriteriaQuery<TimestampEntity> findAfterDate(
+    public static final CriteriaQuery<TimestampEntity> findAfterSqlTimestamp(
+            final EntityManager entityManager,
+            final java.sql.Timestamp timestamp) {
+        final CriteriaBuilder builder;         // Builder
+        final CriteriaQuery<TimestampEntity> query; // Query
+        Root<TimestampEntity> entity;               // Root entity
+
+        // Prepares the criteria API classes
+        builder = entityManager.getCriteriaBuilder();
+        query = builder.createQuery(TimestampEntity.class);
+        entity = query.from(TimestampEntity.class);
+
+        // Generates a select query
+        query.select(entity);
+        query.where(builder.greaterThan(
+                entity.get(TimestampEntity_.sqlTimestamp), timestamp));
+
+        // Orders by the id
+        query.orderBy(builder.asc(entity.get(TimestampEntity_.id)));
+
+        return query;
+    }
+
+    /**
+     * Finds all the entities with a timestamp after the specified timestamp.
+     *
+     * @param entityManager
+     *            the entity manager with the entity's data
+     * @param timestamp
+     *            the limit timestamp for the query
+     * @return all the entities with a timestamp after the specified timestamp
+     */
+    public static final CriteriaQuery<TimestampEntity> findAfterTimestamp(
             final EntityManager entityManager, final Calendar timestamp) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimestampEntity> query; // Query
@@ -82,7 +114,7 @@ public class TimestampEntityCriteriaFactory {
      *            the limit timestamp for the query
      * @return all the entities with a timestamp after the specified timestamp
      */
-    public static final CriteriaQuery<TimestampEntity> findAfterDate(
+    public static final CriteriaQuery<TimestampEntity> findAfterTimestamp(
             final EntityManager entityManager, final Date timestamp) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimestampEntity> query; // Query
@@ -105,15 +137,15 @@ public class TimestampEntityCriteriaFactory {
     }
 
     /**
-     * Finds all the entities with a timestamp after the specified timestamp.
+     * Finds all the entities with a timestamp before the specified timestamp.
      *
      * @param entityManager
      *            the entity manager with the entity's data
      * @param timestamp
      *            the limit timestamp for the query
-     * @return all the entities with a timestamp after the specified timestamp
+     * @return all the entities with a timestamp before the specified timestamp
      */
-    public static final CriteriaQuery<TimestampEntity> findAfterDate(
+    public static final CriteriaQuery<TimestampEntity> findBeforeSqlTimestamp(
             final EntityManager entityManager,
             final java.sql.Timestamp timestamp) {
         final CriteriaBuilder builder;         // Builder
@@ -127,8 +159,8 @@ public class TimestampEntityCriteriaFactory {
 
         // Generates a select query
         query.select(entity);
-        query.where(builder.greaterThan(
-                entity.get(TimestampEntity_.sqlTimestamp), timestamp));
+        query.where(builder.lessThan(entity.get(TimestampEntity_.sqlTimestamp),
+                timestamp));
 
         // Orders by the id
         query.orderBy(builder.asc(entity.get(TimestampEntity_.id)));
@@ -145,7 +177,7 @@ public class TimestampEntityCriteriaFactory {
      *            the limit timestamp for the query
      * @return all the entities with a timestamp before the specified timestamp
      */
-    public static final CriteriaQuery<TimestampEntity> findBeforeDate(
+    public static final CriteriaQuery<TimestampEntity> findBeforeTimestamp(
             final EntityManager entityManager, final Calendar timestamp) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimestampEntity> query; // Query
@@ -176,7 +208,7 @@ public class TimestampEntityCriteriaFactory {
      *            the limit timestamp for the query
      * @return all the entities with a timestamp before the specified timestamp
      */
-    public static final CriteriaQuery<TimestampEntity> findBeforeDate(
+    public static final CriteriaQuery<TimestampEntity> findBeforeTimestamp(
             final EntityManager entityManager, final Date timestamp) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimestampEntity> query; // Query
@@ -199,15 +231,16 @@ public class TimestampEntityCriteriaFactory {
     }
 
     /**
-     * Finds all the entities with a timestamp before the specified timestamp.
+     * Finds all the entities with a timestamp equal to the specified timestamp.
      *
      * @param entityManager
      *            the entity manager with the entity's data
      * @param timestamp
      *            the limit timestamp for the query
-     * @return all the entities with a timestamp before the specified timestamp
+     * @return all the entities with a timestamp equal to the specified
+     *         timestamp
      */
-    public static final CriteriaQuery<TimestampEntity> findBeforeDate(
+    public static final CriteriaQuery<TimestampEntity> findInSqlTimestamp(
             final EntityManager entityManager,
             final java.sql.Timestamp timestamp) {
         final CriteriaBuilder builder;         // Builder
@@ -221,7 +254,7 @@ public class TimestampEntityCriteriaFactory {
 
         // Generates a select query
         query.select(entity);
-        query.where(builder.lessThan(entity.get(TimestampEntity_.sqlTimestamp),
+        query.where(builder.equal(entity.get(TimestampEntity_.sqlTimestamp),
                 timestamp));
 
         // Orders by the id
@@ -240,7 +273,7 @@ public class TimestampEntityCriteriaFactory {
      * @return all the entities with a timestamp equal to the specified
      *         timestamp
      */
-    public static final CriteriaQuery<TimestampEntity> findInDate(
+    public static final CriteriaQuery<TimestampEntity> findInTimestamp(
             final EntityManager entityManager, final Calendar timestamp) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimestampEntity> query; // Query
@@ -272,7 +305,7 @@ public class TimestampEntityCriteriaFactory {
      * @return all the entities with a timestamp equal to the specified
      *         timestamp
      */
-    public static final CriteriaQuery<TimestampEntity> findInDate(
+    public static final CriteriaQuery<TimestampEntity> findInTimestamp(
             final EntityManager entityManager, final Date timestamp) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimestampEntity> query; // Query
@@ -287,39 +320,6 @@ public class TimestampEntityCriteriaFactory {
         query.select(entity);
         query.where(
                 builder.equal(entity.get(TimestampEntity_.date), timestamp));
-
-        // Orders by the id
-        query.orderBy(builder.asc(entity.get(TimestampEntity_.id)));
-
-        return query;
-    }
-
-    /**
-     * Finds all the entities with a timestamp equal to the specified timestamp.
-     *
-     * @param entityManager
-     *            the entity manager with the entity's data
-     * @param timestamp
-     *            the limit timestamp for the query
-     * @return all the entities with a timestamp equal to the specified
-     *         timestamp
-     */
-    public static final CriteriaQuery<TimestampEntity> findInDate(
-            final EntityManager entityManager,
-            final java.sql.Timestamp timestamp) {
-        final CriteriaBuilder builder;         // Builder
-        final CriteriaQuery<TimestampEntity> query; // Query
-        Root<TimestampEntity> entity;               // Root entity
-
-        // Prepares the criteria API classes
-        builder = entityManager.getCriteriaBuilder();
-        query = builder.createQuery(TimestampEntity.class);
-        entity = query.from(TimestampEntity.class);
-
-        // Generates a select query
-        query.select(entity);
-        query.where(builder.equal(entity.get(TimestampEntity_.sqlTimestamp),
-                timestamp));
 
         // Orders by the id
         query.orderBy(builder.asc(entity.get(TimestampEntity_.id)));

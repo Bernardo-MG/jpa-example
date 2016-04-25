@@ -51,7 +51,37 @@ public class TimeEntityCriteriaFactory {
      *            the limit time for the query
      * @return all the entities with a time after the specified time
      */
-    public static final CriteriaQuery<TimeEntity> findAfterDate(
+    public static final CriteriaQuery<TimeEntity> findAfterSqlTime(
+            final EntityManager entityManager, final java.sql.Time time) {
+        final CriteriaBuilder builder;         // Builder
+        final CriteriaQuery<TimeEntity> query; // Query
+        Root<TimeEntity> entity;               // Root entity
+
+        // Prepares the criteria API classes
+        builder = entityManager.getCriteriaBuilder();
+        query = builder.createQuery(TimeEntity.class);
+        entity = query.from(TimeEntity.class);
+
+        // Generates a select query
+        query.select(entity);
+        query.where(builder.greaterThan(entity.get(TimeEntity_.sqlTime), time));
+
+        // Orders by the id
+        query.orderBy(builder.asc(entity.get(TimeEntity_.id)));
+
+        return query;
+    }
+
+    /**
+     * Finds all the entities with a time after the specified time.
+     *
+     * @param entityManager
+     *            the entity manager with the entity's data
+     * @param time
+     *            the limit time for the query
+     * @return all the entities with a time after the specified time
+     */
+    public static final CriteriaQuery<TimeEntity> findAfterTime(
             final EntityManager entityManager, final Calendar time) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimeEntity> query; // Query
@@ -83,7 +113,7 @@ public class TimeEntityCriteriaFactory {
      * @return all the entities with a time after the specified time
      */
     public static final CriteriaQuery<TimeEntity>
-            findAfterDate(final EntityManager entityManager, final Date time) {
+            findAfterTime(final EntityManager entityManager, final Date time) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimeEntity> query; // Query
         Root<TimeEntity> entity;               // Root entity
@@ -104,15 +134,15 @@ public class TimeEntityCriteriaFactory {
     }
 
     /**
-     * Finds all the entities with a time after the specified time.
+     * Finds all the entities with a time before the specified time.
      *
      * @param entityManager
      *            the entity manager with the entity's data
      * @param time
      *            the limit time for the query
-     * @return all the entities with a time after the specified time
+     * @return all the entities with a time before the specified time
      */
-    public static final CriteriaQuery<TimeEntity> findAfterDate(
+    public static final CriteriaQuery<TimeEntity> findBeforeSqlTime(
             final EntityManager entityManager, final java.sql.Time time) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimeEntity> query; // Query
@@ -125,7 +155,7 @@ public class TimeEntityCriteriaFactory {
 
         // Generates a select query
         query.select(entity);
-        query.where(builder.greaterThan(entity.get(TimeEntity_.sqlTime), time));
+        query.where(builder.lessThan(entity.get(TimeEntity_.sqlTime), time));
 
         // Orders by the id
         query.orderBy(builder.asc(entity.get(TimeEntity_.id)));
@@ -142,7 +172,7 @@ public class TimeEntityCriteriaFactory {
      *            the limit time for the query
      * @return all the entities with a time before the specified time
      */
-    public static final CriteriaQuery<TimeEntity> findBeforeDate(
+    public static final CriteriaQuery<TimeEntity> findBeforeTime(
             final EntityManager entityManager, final Calendar time) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimeEntity> query; // Query
@@ -173,7 +203,7 @@ public class TimeEntityCriteriaFactory {
      * @return all the entities with a time before the specified time
      */
     public static final CriteriaQuery<TimeEntity>
-            findBeforeDate(final EntityManager entityManager, final Date time) {
+            findBeforeTime(final EntityManager entityManager, final Date time) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimeEntity> query; // Query
         Root<TimeEntity> entity;               // Root entity
@@ -194,15 +224,15 @@ public class TimeEntityCriteriaFactory {
     }
 
     /**
-     * Finds all the entities with a time before the specified time.
+     * Finds all the entities with a time equal to the specified time.
      *
      * @param entityManager
      *            the entity manager with the entity's data
      * @param time
      *            the limit time for the query
-     * @return all the entities with a time before the specified time
+     * @return all the entities with a time equal to the specified time
      */
-    public static final CriteriaQuery<TimeEntity> findBeforeDate(
+    public static final CriteriaQuery<TimeEntity> findInSqlTime(
             final EntityManager entityManager, final java.sql.Time time) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimeEntity> query; // Query
@@ -215,7 +245,7 @@ public class TimeEntityCriteriaFactory {
 
         // Generates a select query
         query.select(entity);
-        query.where(builder.lessThan(entity.get(TimeEntity_.sqlTime), time));
+        query.where(builder.equal(entity.get(TimeEntity_.sqlTime), time));
 
         // Orders by the id
         query.orderBy(builder.asc(entity.get(TimeEntity_.id)));
@@ -233,7 +263,7 @@ public class TimeEntityCriteriaFactory {
      * @return all the entities with a time equal to the specified time
      */
     public static final CriteriaQuery<TimeEntity>
-            findInDate(final EntityManager entityManager, final Calendar time) {
+            findInTime(final EntityManager entityManager, final Calendar time) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimeEntity> query; // Query
         Root<TimeEntity> entity;               // Root entity
@@ -263,7 +293,7 @@ public class TimeEntityCriteriaFactory {
      * @return all the entities with a time equal to the specified time
      */
     public static final CriteriaQuery<TimeEntity>
-            findInDate(final EntityManager entityManager, final Date time) {
+            findInTime(final EntityManager entityManager, final Date time) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimeEntity> query; // Query
         Root<TimeEntity> entity;               // Root entity
@@ -276,36 +306,6 @@ public class TimeEntityCriteriaFactory {
         // Generates a select query
         query.select(entity);
         query.where(builder.equal(entity.get(TimeEntity_.date), time));
-
-        // Orders by the id
-        query.orderBy(builder.asc(entity.get(TimeEntity_.id)));
-
-        return query;
-    }
-
-    /**
-     * Finds all the entities with a time equal to the specified time.
-     *
-     * @param entityManager
-     *            the entity manager with the entity's data
-     * @param time
-     *            the limit time for the query
-     * @return all the entities with a time equal to the specified time
-     */
-    public static final CriteriaQuery<TimeEntity> findInDate(
-            final EntityManager entityManager, final java.sql.Time time) {
-        final CriteriaBuilder builder;         // Builder
-        final CriteriaQuery<TimeEntity> query; // Query
-        Root<TimeEntity> entity;               // Root entity
-
-        // Prepares the criteria API classes
-        builder = entityManager.getCriteriaBuilder();
-        query = builder.createQuery(TimeEntity.class);
-        entity = query.from(TimeEntity.class);
-
-        // Generates a select query
-        query.select(entity);
-        query.where(builder.equal(entity.get(TimeEntity_.sqlTime), time));
 
         // Orders by the id
         query.orderBy(builder.asc(entity.get(TimeEntity_.id)));
