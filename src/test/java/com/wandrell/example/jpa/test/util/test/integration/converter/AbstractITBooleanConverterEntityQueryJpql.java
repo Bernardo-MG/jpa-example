@@ -73,6 +73,7 @@ public abstract class AbstractITBooleanConverterEntityQueryJpql
      */
     public AbstractITBooleanConverterEntityQueryJpql() {
         super();
+        // TODO: Add the query results counts to the configuration files
     }
 
     /**

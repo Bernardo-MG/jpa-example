@@ -68,6 +68,7 @@ public abstract class AbstractITEnumerationEntityQueryCriteriaApi
      */
     public AbstractITEnumerationEntityQueryCriteriaApi() {
         super();
+        // TODO: Add the query results counts to the configuration files
     }
 
     /**

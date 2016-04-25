@@ -80,6 +80,7 @@ public abstract class AbstractITEnumerationEntityQueryJpql
      */
     public AbstractITEnumerationEntityQueryJpql() {
         super();
+        // TODO: Add the query results counts to the configuration files
     }
 
     /**

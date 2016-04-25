@@ -27,6 +27,7 @@ package com.wandrell.example.jpa.test.util.test.integration.temporal.date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -52,11 +53,23 @@ import com.wandrell.example.jpa.test.util.criteria.DateEntityCriteriaFactory;
  * Checks the following cases:
  * <ol>
  * <li>Retrieving all the entities before a date gives the correct number of
- * them</li>
+ * them when using a Java {@code Date} for the date</li>
+ * <li>Retrieving all the entities before a date gives the correct number of
+ * them when using a {@code Calendar} for the date</li>
+ * <li>Retrieving all the entities before a date gives the correct number of
+ * them when using a SQL {@code Date} for the date</li>
  * <li>Retrieving all the entities after a date gives the correct number of them
- * </li>
+ * when using a Java {@code Date} for the date</li>
+ * <li>Retrieving all the entities after a date gives the correct number of them
+ * when using a {@code Calendar} for the date</li>
+ * <li>Retrieving all the entities after a date gives the correct number of them
+ * when using a SQL {@code Date} for the date</li>
  * <li>Retrieving all the entities in a date gives the correct number of them
- * </li>
+ * when using a Java {@code Date} for the date</li>
+ * <li>Retrieving all the entities in a date gives the correct number of them
+ * when using a {@code Calendar} for the date</li>
+ * <li>Retrieving all the entities in a date gives the correct number of them
+ * when using a SQL {@code Date} for the date</li>
  * </ol>
  * <p>
  * This is meant to be used along a Spring context, which will set up the
@@ -69,7 +82,12 @@ public abstract class AbstractITDateEntityQueryCriteriaApi
         extends AbstractTransactionalTestNGSpringContextTests {
 
     /**
-     * Date for the test ranges.
+     * Calendar for the test ranges.
+     */
+    private Calendar      calendar;
+
+    /**
+     * Java date for the test ranges.
      */
     private Date          date;
 
@@ -90,7 +108,7 @@ public abstract class AbstractITDateEntityQueryCriteriaApi
     public AbstractITDateEntityQueryCriteriaApi() {
         super();
         // TODO: Add the date to the configuration files
-        // TODO: Add the entities count results to the configuration files
+        // TODO: Add the query results counts to the configuration files
     }
 
     /**
@@ -106,14 +124,29 @@ public abstract class AbstractITDateEntityQueryCriteriaApi
         format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
         date = format.parse(dateString);
+
+        calendar = Calendar.getInstance();
+        calendar.setTime(date);
     }
 
     /**
      * Tests that retrieving all the entities after a date gives the correct
-     * number of them.
+     * number of them when using a {@code Calendar} for the date.
      */
     @Test
-    public final void testGetAfterDate() {
+    public final void testGetAfterDate_Calendar() {
+        Assert.assertEquals((Integer) getEntityManager()
+                .createQuery(DateEntityCriteriaFactory
+                        .findAfterDate(getEntityManager(), calendar))
+                .getResultList().size(), new Integer(3));
+    }
+
+    /**
+     * Tests that retrieving all the entities after a date gives the correct
+     * number of them when using a Java {@code Date} for the date.
+     */
+    @Test
+    public final void testGetAfterDate_Java() {
         Assert.assertEquals((Integer) getEntityManager()
                 .createQuery(DateEntityCriteriaFactory
                         .findAfterDate(getEntityManager(), date))
@@ -122,10 +155,10 @@ public abstract class AbstractITDateEntityQueryCriteriaApi
 
     /**
      * Tests that retrieving all the entities before a date gives the correct
-     * number of them.
+     * number of them when using a Java {@code Date} for the date.
      */
     @Test
-    public final void testGetBeforeDate() {
+    public final void testGetBeforeDate_Java() {
         Assert.assertEquals((Integer) getEntityManager()
                 .createQuery(DateEntityCriteriaFactory
                         .findBeforeDate(getEntityManager(), date))
@@ -133,11 +166,35 @@ public abstract class AbstractITDateEntityQueryCriteriaApi
     }
 
     /**
-     * Tests that retrieving all the entities in a date gives the correct number
-     * of them.
+     * Tests that retrieving all the entities before a date gives the correct
+     * number of them when using a {@code Calendar} for the date.
      */
     @Test
-    public final void testGetInDate() {
+    public final void testGetBeforeDate_Java_Calendar() {
+        Assert.assertEquals((Integer) getEntityManager()
+                .createQuery(DateEntityCriteriaFactory
+                        .findBeforeDate(getEntityManager(), calendar))
+                .getResultList().size(), new Integer(2));
+    }
+
+    /**
+     * Tests that retrieving all the entities in a date gives the correct number
+     * of them when using a {@code Calendar} for the date.
+     */
+    @Test
+    public final void testGetInDate_Calendar() {
+        Assert.assertEquals((Integer) getEntityManager()
+                .createQuery(DateEntityCriteriaFactory
+                        .findInDate(getEntityManager(), calendar))
+                .getResultList().size(), new Integer(1));
+    }
+
+    /**
+     * Tests that retrieving all the entities in a date gives the correct number
+     * of them when using a Java {@code Date} for the date.
+     */
+    @Test
+    public final void testGetInDate_Java() {
         Assert.assertEquals((Integer) getEntityManager()
                 .createQuery(DateEntityCriteriaFactory
                         .findInDate(getEntityManager(), date))

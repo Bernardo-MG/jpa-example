@@ -67,6 +67,7 @@ public abstract class AbstractITBooleanConverterEntityQueryCriteriaApi
      */
     public AbstractITBooleanConverterEntityQueryCriteriaApi() {
         super();
+        // TODO: Add the query results counts to the configuration files
     }
 
     /**
