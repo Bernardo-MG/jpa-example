@@ -36,6 +36,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.simple.SimpleEntity;
+import com.wandrell.example.jpa.test.util.criteria.GenericCriteriaFactory;
 
 /**
  * Abstract integration tests for an entity testing it can be modified.
@@ -70,18 +71,6 @@ public abstract class AbstractITEntityModify<V>
      */
     @Value("${entities.total}")
     private Integer       entitiesCount;
-
-    /**
-     * The query to acquire all the entities.
-     */
-    @Value("${query.findAll}")
-    private String        findAll;
-
-    /**
-     * The query to acquire an entity by the id.
-     */
-    @Value("${query.findById}")
-    private String        findById;
 
     /**
      * Entity for the addition test.
@@ -122,8 +111,10 @@ public abstract class AbstractITEntityModify<V>
 
         // Checks the entity has been added
         Assert.assertEquals(
-                getEntityManager().createQuery(findAll).getResultList().size(),
-                entitiesCount + 1);
+                getEntityManager()
+                        .createQuery(GenericCriteriaFactory.findAll(
+                                getEntityManager(), newEntity.getClass()))
+                .getResultList().size(), entitiesCount + 1);
 
         // Checks that the entity was created correctly
         id = getId(newEntity);
@@ -133,8 +124,8 @@ public abstract class AbstractITEntityModify<V>
         // Queries the created entity from the DB
 
         // Builds the query
-        query = getEntityManager().createQuery(findById);
-        query.setParameter("id", getId(newEntity));
+        query = getEntityManager().createQuery(GenericCriteriaFactory.findById(
+                getEntityManager(), newEntity.getClass(), getId(newEntity)));
 
         // Acquires the entity
         queried = (V) query.getSingleResult();
@@ -153,8 +144,8 @@ public abstract class AbstractITEntityModify<V>
         final Query query;             // Query for the entity
 
         // Builds the query
-        query = getEntityManager().createQuery(findById);
-        query.setParameter("id", 1);
+        query = getEntityManager().createQuery(GenericCriteriaFactory
+                .findById(getEntityManager(), newEntity.getClass(), 1));
 
         // Acquires the entity
         entity = (V) query.getSingleResult();

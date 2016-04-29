@@ -36,7 +36,7 @@ import com.wandrell.example.jpa.model.temporal.TimeEntity;
 import com.wandrell.example.jpa.model.temporal.TimeEntity_;
 
 /**
- * Factory for creating criteria API classes for the {@link TimeEntity}.
+ * Factory for creating criteria API queries for the {@link TimeEntity}.
  *
  * @author Bernardo Martínez Garrido
  */
@@ -55,9 +55,9 @@ public class TimeEntityCriteriaFactory {
             final EntityManager entityManager, final java.sql.Time time) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimeEntity> query; // Query
-        Root<TimeEntity> entity;               // Root entity
+        final Root<TimeEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(TimeEntity.class);
         entity = query.from(TimeEntity.class);
@@ -85,9 +85,9 @@ public class TimeEntityCriteriaFactory {
             final EntityManager entityManager, final Calendar time) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimeEntity> query; // Query
-        Root<TimeEntity> entity;               // Root entity
+        final Root<TimeEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(TimeEntity.class);
         entity = query.from(TimeEntity.class);
@@ -116,9 +116,9 @@ public class TimeEntityCriteriaFactory {
             findAfterTime(final EntityManager entityManager, final Date time) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimeEntity> query; // Query
-        Root<TimeEntity> entity;               // Root entity
+        final Root<TimeEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(TimeEntity.class);
         entity = query.from(TimeEntity.class);
@@ -146,9 +146,9 @@ public class TimeEntityCriteriaFactory {
             final EntityManager entityManager, final java.sql.Time time) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimeEntity> query; // Query
-        Root<TimeEntity> entity;               // Root entity
+        final Root<TimeEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(TimeEntity.class);
         entity = query.from(TimeEntity.class);
@@ -176,9 +176,9 @@ public class TimeEntityCriteriaFactory {
             final EntityManager entityManager, final Calendar time) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimeEntity> query; // Query
-        Root<TimeEntity> entity;               // Root entity
+        final Root<TimeEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(TimeEntity.class);
         entity = query.from(TimeEntity.class);
@@ -206,9 +206,9 @@ public class TimeEntityCriteriaFactory {
             findBeforeTime(final EntityManager entityManager, final Date time) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimeEntity> query; // Query
-        Root<TimeEntity> entity;               // Root entity
+        final Root<TimeEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(TimeEntity.class);
         entity = query.from(TimeEntity.class);
@@ -236,9 +236,9 @@ public class TimeEntityCriteriaFactory {
             final EntityManager entityManager, final java.sql.Time time) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimeEntity> query; // Query
-        Root<TimeEntity> entity;               // Root entity
+        final Root<TimeEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(TimeEntity.class);
         entity = query.from(TimeEntity.class);
@@ -266,9 +266,9 @@ public class TimeEntityCriteriaFactory {
             findInTime(final EntityManager entityManager, final Calendar time) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimeEntity> query; // Query
-        Root<TimeEntity> entity;               // Root entity
+        final Root<TimeEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(TimeEntity.class);
         entity = query.from(TimeEntity.class);
@@ -296,9 +296,9 @@ public class TimeEntityCriteriaFactory {
             findInTime(final EntityManager entityManager, final Date time) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<TimeEntity> query; // Query
-        Root<TimeEntity> entity;               // Root entity
+        final Root<TimeEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(TimeEntity.class);
         entity = query.from(TimeEntity.class);

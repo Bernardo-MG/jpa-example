@@ -33,7 +33,7 @@ import com.wandrell.example.jpa.model.converter.BooleanConverterEntity;
 import com.wandrell.example.jpa.model.converter.BooleanConverterEntity_;
 
 /**
- * Factory for creating criteria API classes for the
+ * Factory for creating criteria API queries for the
  * {@code BooleanConverterEntity}.
  *
  * @author Bernardo Martínez Garrido
@@ -53,11 +53,11 @@ public class BooleanConverterEntityCriteriaFactory {
      */
     public static final CriteriaQuery<BooleanConverterEntity> findAllByFlag(
             final EntityManager entityManager, final Boolean flag) {
-        final CriteriaBuilder builder;                  // Builder
+        final CriteriaBuilder builder;                     // Builder
         final CriteriaQuery<BooleanConverterEntity> query; // Query
-        Root<BooleanConverterEntity> entity;               // Root entity
+        final Root<BooleanConverterEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(BooleanConverterEntity.class);
         entity = query.from(BooleanConverterEntity.class);

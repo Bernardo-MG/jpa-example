@@ -29,40 +29,37 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import com.wandrell.example.jpa.model.simple.DefaultSimpleEntity;
-import com.wandrell.example.jpa.model.simple.DefaultSimpleEntity_;
-import com.wandrell.example.jpa.model.simple.SimpleEntity;
-
 /**
- * Factory for creating criteria API queries for the {@link SimpleEntity}.
+ * Factory for creating criteria API queries for the tests.
+ * <p>
+ * These queries are generic, meant to work for any entity.
  *
  * @author Bernardo Martínez Garrido
  */
-public class SimpleEntityCriteriaFactory {
+public class GenericCriteriaFactory {
 
     /**
      * Generates a query to find all the entities.
      *
      * @param entityManager
      *            the entity manager with the entity's data
+     * @param entityClass
+     *            the class of the the entity for which the query is generated
      * @return the query to find all the entities
      */
-    public static final CriteriaQuery<DefaultSimpleEntity>
-            findAll(final EntityManager entityManager) {
-        final CriteriaBuilder builder;                  // Builder
-        final CriteriaQuery<DefaultSimpleEntity> query; // Query
-        final Root<DefaultSimpleEntity> entity;         // Root entity
+    public static final <V> CriteriaQuery<V> findAll(
+            final EntityManager entityManager, final Class<V> entityClass) {
+        final CriteriaBuilder builder; // Builder
+        final CriteriaQuery<V> query;  // Query
+        final Root<V> entity;          // Root entity
 
         // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
-        query = builder.createQuery(DefaultSimpleEntity.class);
-        entity = query.from(DefaultSimpleEntity.class);
+        query = builder.createQuery(entityClass);
+        entity = query.from(entityClass);
 
         // Generates a select query
         query.select(entity);
-
-        // Orders by the id
-        query.orderBy(builder.asc(entity.get(DefaultSimpleEntity_.id)));
 
         return query;
     }
@@ -72,29 +69,29 @@ public class SimpleEntityCriteriaFactory {
      *
      * @param entityManager
      *            the entity manager with the entity's data
+     * @param entityClass
+     *            the class of the the entity for which the query is generated
      * @param id
      *            the id to search
      * @return the query to find an the entity by the id
      */
-    public static final CriteriaQuery<DefaultSimpleEntity>
-            findById(final EntityManager entityManager, final Integer id) {
-        final CriteriaBuilder builder;                  // Builder
-        final CriteriaQuery<DefaultSimpleEntity> query; // Query
-        final Root<DefaultSimpleEntity> entity;         // Root entity
+    public static final <V> CriteriaQuery<V> findById(
+            final EntityManager entityManager, final Class<V> entityClass,
+            final Integer id) {
+        final CriteriaBuilder builder; // Builder
+        final CriteriaQuery<V> query;  // Query
+        final Root<V> entity;          // Root entity
 
         // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
-        query = builder.createQuery(DefaultSimpleEntity.class);
-        entity = query.from(DefaultSimpleEntity.class);
+        query = builder.createQuery(entityClass);
+        entity = query.from(entityClass);
 
         // Generates a select query
         query.select(entity);
 
         // Queries the entities with the specified id
-        query.where(builder.equal(entity.get(DefaultSimpleEntity_.id), id));
-
-        // Orders by the id
-        query.orderBy(builder.asc(entity.get(DefaultSimpleEntity_.id)));
+        query.where(builder.equal(entity.get("id"), id));
 
         return query;
     }
@@ -102,7 +99,7 @@ public class SimpleEntityCriteriaFactory {
     /**
      * Private constructor to avoid initialization.
      */
-    private SimpleEntityCriteriaFactory() {
+    private GenericCriteriaFactory() {
         super();
     }
 

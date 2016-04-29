@@ -36,7 +36,7 @@ import com.wandrell.example.jpa.model.temporal.TimestampEntity;
 import com.wandrell.example.jpa.model.temporal.TimestampEntity_;
 
 /**
- * Factory for creating criteria API classes for the {@link TimestampEntity}.
+ * Factory for creating criteria API queries for the {@link TimestampEntity}.
  *
  * @author Bernardo Martínez Garrido
  */
@@ -54,11 +54,11 @@ public class TimestampEntityCriteriaFactory {
     public static final CriteriaQuery<TimestampEntity> findAfterSqlTimestamp(
             final EntityManager entityManager,
             final java.sql.Timestamp timestamp) {
-        final CriteriaBuilder builder;         // Builder
+        final CriteriaBuilder builder;              // Builder
         final CriteriaQuery<TimestampEntity> query; // Query
-        Root<TimestampEntity> entity;               // Root entity
+        final Root<TimestampEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(TimestampEntity.class);
         entity = query.from(TimestampEntity.class);
@@ -85,11 +85,11 @@ public class TimestampEntityCriteriaFactory {
      */
     public static final CriteriaQuery<TimestampEntity> findAfterTimestamp(
             final EntityManager entityManager, final Calendar timestamp) {
-        final CriteriaBuilder builder;         // Builder
+        final CriteriaBuilder builder;              // Builder
         final CriteriaQuery<TimestampEntity> query; // Query
-        Root<TimestampEntity> entity;               // Root entity
+        final Root<TimestampEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(TimestampEntity.class);
         entity = query.from(TimestampEntity.class);
@@ -116,11 +116,11 @@ public class TimestampEntityCriteriaFactory {
      */
     public static final CriteriaQuery<TimestampEntity> findAfterTimestamp(
             final EntityManager entityManager, final Date timestamp) {
-        final CriteriaBuilder builder;         // Builder
+        final CriteriaBuilder builder;              // Builder
         final CriteriaQuery<TimestampEntity> query; // Query
-        Root<TimestampEntity> entity;               // Root entity
+        final Root<TimestampEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(TimestampEntity.class);
         entity = query.from(TimestampEntity.class);
@@ -148,11 +148,11 @@ public class TimestampEntityCriteriaFactory {
     public static final CriteriaQuery<TimestampEntity> findBeforeSqlTimestamp(
             final EntityManager entityManager,
             final java.sql.Timestamp timestamp) {
-        final CriteriaBuilder builder;         // Builder
+        final CriteriaBuilder builder;              // Builder
         final CriteriaQuery<TimestampEntity> query; // Query
-        Root<TimestampEntity> entity;               // Root entity
+        final Root<TimestampEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(TimestampEntity.class);
         entity = query.from(TimestampEntity.class);
@@ -179,11 +179,11 @@ public class TimestampEntityCriteriaFactory {
      */
     public static final CriteriaQuery<TimestampEntity> findBeforeTimestamp(
             final EntityManager entityManager, final Calendar timestamp) {
-        final CriteriaBuilder builder;         // Builder
+        final CriteriaBuilder builder;              // Builder
         final CriteriaQuery<TimestampEntity> query; // Query
-        Root<TimestampEntity> entity;               // Root entity
+        final Root<TimestampEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(TimestampEntity.class);
         entity = query.from(TimestampEntity.class);
@@ -210,11 +210,11 @@ public class TimestampEntityCriteriaFactory {
      */
     public static final CriteriaQuery<TimestampEntity> findBeforeTimestamp(
             final EntityManager entityManager, final Date timestamp) {
-        final CriteriaBuilder builder;         // Builder
+        final CriteriaBuilder builder;              // Builder
         final CriteriaQuery<TimestampEntity> query; // Query
-        Root<TimestampEntity> entity;               // Root entity
+        final Root<TimestampEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(TimestampEntity.class);
         entity = query.from(TimestampEntity.class);
@@ -243,11 +243,11 @@ public class TimestampEntityCriteriaFactory {
     public static final CriteriaQuery<TimestampEntity> findInSqlTimestamp(
             final EntityManager entityManager,
             final java.sql.Timestamp timestamp) {
-        final CriteriaBuilder builder;         // Builder
+        final CriteriaBuilder builder;              // Builder
         final CriteriaQuery<TimestampEntity> query; // Query
-        Root<TimestampEntity> entity;               // Root entity
+        final Root<TimestampEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(TimestampEntity.class);
         entity = query.from(TimestampEntity.class);
@@ -275,11 +275,11 @@ public class TimestampEntityCriteriaFactory {
      */
     public static final CriteriaQuery<TimestampEntity> findInTimestamp(
             final EntityManager entityManager, final Calendar timestamp) {
-        final CriteriaBuilder builder;         // Builder
+        final CriteriaBuilder builder;              // Builder
         final CriteriaQuery<TimestampEntity> query; // Query
-        Root<TimestampEntity> entity;               // Root entity
+        final Root<TimestampEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(TimestampEntity.class);
         entity = query.from(TimestampEntity.class);
@@ -307,11 +307,11 @@ public class TimestampEntityCriteriaFactory {
      */
     public static final CriteriaQuery<TimestampEntity> findInTimestamp(
             final EntityManager entityManager, final Date timestamp) {
-        final CriteriaBuilder builder;         // Builder
+        final CriteriaBuilder builder;              // Builder
         final CriteriaQuery<TimestampEntity> query; // Query
-        Root<TimestampEntity> entity;               // Root entity
+        final Root<TimestampEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(TimestampEntity.class);
         entity = query.from(TimestampEntity.class);

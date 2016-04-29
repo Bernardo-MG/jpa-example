@@ -36,7 +36,7 @@ import com.wandrell.example.jpa.model.temporal.DateEntity;
 import com.wandrell.example.jpa.model.temporal.DateEntity_;
 
 /**
- * Factory for creating criteria API classes for the {@link DateEntity}.
+ * Factory for creating criteria API queries for the {@link DateEntity}.
  *
  * @author Bernardo Martínez Garrido
  */
@@ -55,9 +55,9 @@ public class DateEntityCriteriaFactory {
             final EntityManager entityManager, final Calendar date) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<DateEntity> query; // Query
-        Root<DateEntity> entity;               // Root entity
+        final Root<DateEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(DateEntity.class);
         entity = query.from(DateEntity.class);
@@ -86,9 +86,9 @@ public class DateEntityCriteriaFactory {
             findAfterDate(final EntityManager entityManager, final Date date) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<DateEntity> query; // Query
-        Root<DateEntity> entity;               // Root entity
+        final Root<DateEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(DateEntity.class);
         entity = query.from(DateEntity.class);
@@ -116,9 +116,9 @@ public class DateEntityCriteriaFactory {
             final EntityManager entityManager, final java.sql.Date date) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<DateEntity> query; // Query
-        Root<DateEntity> entity;               // Root entity
+        final Root<DateEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(DateEntity.class);
         entity = query.from(DateEntity.class);
@@ -146,9 +146,9 @@ public class DateEntityCriteriaFactory {
             final EntityManager entityManager, final Calendar date) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<DateEntity> query; // Query
-        Root<DateEntity> entity;               // Root entity
+        final Root<DateEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(DateEntity.class);
         entity = query.from(DateEntity.class);
@@ -176,9 +176,9 @@ public class DateEntityCriteriaFactory {
             findBeforeDate(final EntityManager entityManager, final Date date) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<DateEntity> query; // Query
-        Root<DateEntity> entity;               // Root entity
+        final Root<DateEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(DateEntity.class);
         entity = query.from(DateEntity.class);
@@ -206,9 +206,9 @@ public class DateEntityCriteriaFactory {
             final EntityManager entityManager, final java.sql.Date date) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<DateEntity> query; // Query
-        Root<DateEntity> entity;               // Root entity
+        final Root<DateEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(DateEntity.class);
         entity = query.from(DateEntity.class);
@@ -236,9 +236,9 @@ public class DateEntityCriteriaFactory {
             findInDate(final EntityManager entityManager, final Calendar date) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<DateEntity> query; // Query
-        Root<DateEntity> entity;               // Root entity
+        final Root<DateEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(DateEntity.class);
         entity = query.from(DateEntity.class);
@@ -266,9 +266,9 @@ public class DateEntityCriteriaFactory {
             findInDate(final EntityManager entityManager, final Date date) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<DateEntity> query; // Query
-        Root<DateEntity> entity;               // Root entity
+        final Root<DateEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(DateEntity.class);
         entity = query.from(DateEntity.class);
@@ -296,9 +296,9 @@ public class DateEntityCriteriaFactory {
             final EntityManager entityManager, final java.sql.Date date) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<DateEntity> query; // Query
-        Root<DateEntity> entity;               // Root entity
+        final Root<DateEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(DateEntity.class);
         entity = query.from(DateEntity.class);

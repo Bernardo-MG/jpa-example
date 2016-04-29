@@ -34,7 +34,7 @@ import com.wandrell.example.jpa.model.enumeration.EnumerationEntity_;
 import com.wandrell.example.jpa.model.enumeration.NumbersEnum;
 
 /**
- * Factory for creating criteria API classes for the {@link EnumerationEntity}.
+ * Factory for creating criteria API queries for the {@link EnumerationEntity}.
  *
  * @author Bernardo Martínez Garrido
  */
@@ -53,11 +53,11 @@ public class EnumerationEntityCriteriaFactory {
      */
     public static final CriteriaQuery<EnumerationEntity> findAllByOrdinal(
             final EntityManager entityManager, final NumbersEnum value) {
-        final CriteriaBuilder builder;                  // Builder
+        final CriteriaBuilder builder;                // Builder
         final CriteriaQuery<EnumerationEntity> query; // Query
-        Root<EnumerationEntity> entity;               // Root entity
+        final Root<EnumerationEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(EnumerationEntity.class);
         entity = query.from(EnumerationEntity.class);
@@ -86,11 +86,11 @@ public class EnumerationEntityCriteriaFactory {
      */
     public static final CriteriaQuery<EnumerationEntity> findAllByString(
             final EntityManager entityManager, final NumbersEnum value) {
-        final CriteriaBuilder builder;                  // Builder
+        final CriteriaBuilder builder;                // Builder
         final CriteriaQuery<EnumerationEntity> query; // Query
-        Root<EnumerationEntity> entity;               // Root entity
+        final Root<EnumerationEntity> entity;         // Root entity
 
-        // Prepares the criteria API classes
+        // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
         query = builder.createQuery(EnumerationEntity.class);
         entity = query.from(EnumerationEntity.class);
