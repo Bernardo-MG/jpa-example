@@ -27,6 +27,7 @@ package com.wandrell.example.jpa.test.util.test.integration;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -89,11 +90,14 @@ public abstract class AbstractITEntityModify<V>
     /**
      * Tests that persisting an entity adds that entity to the persistence
      * context.
+     *
+     * @throws Exception
+     *             if the entity does not have a valid getter for the id field
      */
     @SuppressWarnings("unchecked")
     @Test
     @Transactional
-    public final void testCreate() {
+    public final void testCreate() throws Exception {
         final V queried; // Queried back entity
         final Query query;                    // Query to recover the entity
         final Integer id; // Id of the created entity
@@ -162,6 +166,20 @@ public abstract class AbstractITEntityModify<V>
     }
 
     /**
+     * Returns the id for the received entity.
+     *
+     * @param entity
+     *            the entity where to get the id from
+     * @return the entity's id
+     * @throws Exception
+     *             if the entity does not have a valid getter for the id field
+     */
+    private final Integer getId(final V entity) throws Exception {
+        return (Integer) BeanUtils.findMethod(entity.getClass(), "getId")
+                .invoke(entity);
+    }
+
+    /**
      * Asserts that the entity has received the expected modifications.
      * <p>
      * If this expectation fails, then an {@code AssertionError} will be thrown.
@@ -179,15 +197,6 @@ public abstract class AbstractITEntityModify<V>
     protected final EntityManager getEntityManager() {
         return emanager;
     }
-
-    /**
-     * Returns the id for the received entity.
-     *
-     * @param entity
-     *            the entity where to get the id from
-     * @return the entity's id
-     */
-    protected abstract Integer getId(final V entity);
 
     /**
      * Modifies the received entity.

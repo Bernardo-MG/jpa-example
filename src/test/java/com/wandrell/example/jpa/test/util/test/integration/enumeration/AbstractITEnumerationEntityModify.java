@@ -59,11 +59,6 @@ public abstract class AbstractITEnumerationEntityModify
     }
 
     @Override
-    protected final Integer getId(final EnumerationEntity entity) {
-        return entity.getId();
-    }
-
-    @Override
     protected final void modifyEntity(final EnumerationEntity entity) {
         entity.setEnumOrdinal(enumeration);
         entity.setEnumString(enumeration);

@@ -58,11 +58,6 @@ public abstract class AbstractITBooleanConverterEntityModify
     }
 
     @Override
-    protected final Integer getId(final BooleanConverterEntity entity) {
-        return entity.getId();
-    }
-
-    @Override
     protected final void modifyEntity(final BooleanConverterEntity entity) {
         entity.setFlag(flag);
     }

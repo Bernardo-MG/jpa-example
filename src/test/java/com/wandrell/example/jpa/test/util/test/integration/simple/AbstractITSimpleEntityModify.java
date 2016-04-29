@@ -57,11 +57,6 @@ public abstract class AbstractITSimpleEntityModify
     }
 
     @Override
-    protected final Integer getId(final SimpleEntity entity) {
-        return entity.getId();
-    }
-
-    @Override
     protected final void modifyEntity(final SimpleEntity entity) {
         entity.setName(name);
     }

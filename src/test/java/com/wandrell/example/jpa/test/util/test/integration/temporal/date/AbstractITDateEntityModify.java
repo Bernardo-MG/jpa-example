@@ -82,11 +82,6 @@ public abstract class AbstractITDateEntityModify
     }
 
     @Override
-    protected final Integer getId(final DateEntity entity) {
-        return entity.getId();
-    }
-
-    @Override
     protected final void modifyEntity(final DateEntity entity) {
         final DateFormat format; // Format for parsing the date string
         final Date date;         // Parsed date
