@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.eclipselink.temporal.date.h2;
+package com.wandrell.example.jpa.test.integration.eclipselink.temporal.times.h2;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -36,31 +36,31 @@ import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.temporal.date.AbstractITDateEntityModify;
+import com.wandrell.example.jpa.test.util.test.integration.temporal.time.AbstractITTimeEntityQueryJpql;
 
 /**
- * Integration tests for a {@code DateEntity} testing it can be modified.
+ * Integration tests for a {@code DateEntity} testing it loads values correctly
+ * by using JPQL queries.
  *
  * @author Bernardo Martínez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        TestContextConfig.ENTITY_MODIFIABLE,
         PersistenceContextConfig.ECLIPSELINK })
 @TestPropertySource(
-        locations = { TestPropertiesConfig.DATE,
+        locations = { TestPropertiesConfig.TIME,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
                 DataBaseUserPropertiesConfig.DEFAULT,
                 DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
-                JdbcPropertiesPaths.H2, QueryPropertiesPaths.DATE },
-        properties = { "jpa.persistenceUnitName=date_eclipselink_h2_modify",
-                "jdbc.url=jdbc:h2:mem:test_eclipselink_modify;DB_CLOSE_ON_EXIT=FALSE" })
-public final class ITDateEntityModifyEclipseLinkH2
-        extends AbstractITDateEntityModify {
+                JdbcPropertiesPaths.H2, QueryPropertiesPaths.TIME },
+        properties = { "jpa.persistenceUnitName=time_eclipselink_h2",
+                "jdbc.url=jdbc:h2:mem:test_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
+public final class ITTimeEntityQueryJpqlEclipseLinkH2
+        extends AbstractITTimeEntityQueryJpql {
 
     /**
      * Default constructor.
      */
-    public ITDateEntityModifyEclipseLinkH2() {
+    public ITTimeEntityQueryJpqlEclipseLinkH2() {
         super();
     }
 

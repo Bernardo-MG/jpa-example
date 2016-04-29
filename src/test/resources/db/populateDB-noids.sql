@@ -55,6 +55,8 @@ INSERT INTO time_entities (calendar_time, java_time, sql_time) VALUES ('11:22:33
 INSERT INTO time_entities (calendar_time, java_time, sql_time) VALUES ('11:11:11', '11:11:11', '11:11:11');
 INSERT INTO time_entities (calendar_time, java_time, sql_time) VALUES ('11:22:33', '11:22:33', '11:22:33');
 INSERT INTO time_entities (calendar_time, java_time, sql_time) VALUES ('03:15:10', '03:15:10', '03:15:10');
+INSERT INTO time_entities (calendar_time, java_time, sql_time) VALUES ('12:00:00', '12:00:00', '12:00:00');
+INSERT INTO time_entities (calendar_time, java_time, sql_time) VALUES ('01:10:10', '01:10:10', '01:10:10');
 
 INSERT INTO timestamp_entities (calendar_timestamp, java_timestamp, sql_timestamp) VALUES ('1990-02-03 11:22:33', '1990-02-03 11:22:33', '1990-02-03 11:22:33');
 INSERT INTO timestamp_entities (calendar_timestamp, java_timestamp, sql_timestamp) VALUES ('1991-05-02 11:11:11', '1991-05-02 11:11:11', '1991-05-02 11:11:11');
