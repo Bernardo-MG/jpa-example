@@ -22,9 +22,9 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.test.integration.temporal.time;
+package com.wandrell.example.jpa.test.util.test.integration.temporal.timestamp;
 
-import java.sql.Time;
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -34,47 +34,47 @@ import java.util.Locale;
 
 import org.testng.Assert;
 
-import com.wandrell.example.jpa.model.temporal.TimeEntity;
+import com.wandrell.example.jpa.model.temporal.TimestampEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
- * Abstract integration tests for a {@link TimeEntity} testing it can be
+ * Abstract integration tests for a {@link TimestampEntity} testing it can be
  * modified.
  *
  * @author Bernardo Martínez Garrido
- * @see TimeEntity
+ * @see TimestampEntity
  */
-public abstract class AbstractITTimeEntityModify
-        extends AbstractITEntityModify<TimeEntity> {
+public abstract class AbstractITTimestampEntityModify
+        extends AbstractITEntityModify<TimestampEntity> {
 
     /**
-     * Value to set on the time for the tests.
+     * Value to set on the timestamp for the tests.
      */
-    private final String timeString = "11:11:11";
+    private final String timestampString = "1991-05-02 11:11:11";
 
     /**
      * Default constructor.
      */
-    public AbstractITTimeEntityModify() {
+    public AbstractITTimestampEntityModify() {
         super();
     }
 
     @Override
-    protected final void assertEntityModified(final TimeEntity entity) {
-        final DateFormat format; // Format for parsing the time string
-        final Date date;         // Parsed time
-        final Calendar calendar; // Parsed time as calendar
+    protected final void assertEntityModified(final TimestampEntity entity) {
+        final DateFormat format; // Format for parsing the timestamp string
+        final Date date;         // Parsed timestamp
+        final Calendar calendar; // Parsed timestamp as calendar
 
-        format = new SimpleDateFormat("hh:mm:ss", Locale.ENGLISH);
+        format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
 
         try {
-            date = format.parse(timeString);
+            date = format.parse(timestampString);
             calendar = Calendar.getInstance();
             calendar.setTime(date);
 
             Assert.assertEquals(entity.getDate(), date);
             Assert.assertEquals(entity.getCalendar(), calendar);
-            Assert.assertEquals(entity.getSqlTime(),
+            Assert.assertEquals(entity.getSqlTimestamp(),
                     new java.sql.Date(date.getTime()));
         } catch (final ParseException e) {
             throw new RuntimeException(e);
@@ -82,21 +82,21 @@ public abstract class AbstractITTimeEntityModify
     }
 
     @Override
-    protected final void modifyEntity(final TimeEntity entity) {
-        final DateFormat format; // Format for parsing the time string
-        final Date date;         // Parsed time
-        final Calendar calendar; // Parsed time as calendar
+    protected final void modifyEntity(final TimestampEntity entity) {
+        final DateFormat format; // Format for parsing the timestamp string
+        final Date date;         // Parsed timestamp
+        final Calendar calendar; // Parsed timestamp as calendar
 
-        format = new SimpleDateFormat("hh:mm:ss", Locale.ENGLISH);
+        format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
 
         try {
-            date = format.parse(timeString);
+            date = format.parse(timestampString);
             calendar = Calendar.getInstance();
             calendar.setTime(date);
 
             entity.setCalendar(calendar);
             entity.setDate(date);
-            entity.setSqlTime(new Time(date.getTime()));
+            entity.setSqlTimestamp(new Timestamp(date.getTime()));
         } catch (final ParseException e) {
             throw new RuntimeException(e);
         }

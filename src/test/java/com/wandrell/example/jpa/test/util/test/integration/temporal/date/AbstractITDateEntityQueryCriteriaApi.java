@@ -39,7 +39,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.model.simple.SimpleEntity;
 import com.wandrell.example.jpa.model.temporal.DateEntity;
 import com.wandrell.example.jpa.test.util.criteria.DateEntityCriteriaFactory;
 
@@ -76,7 +75,7 @@ import com.wandrell.example.jpa.test.util.criteria.DateEntityCriteriaFactory;
  * repository and all of it's requirements.
  *
  * @author Bernardo Martínez Garrido
- * @see SimpleEntity
+ * @see DateEntity
  */
 public abstract class AbstractITDateEntityQueryCriteriaApi
         extends AbstractTransactionalTestNGSpringContextTests {

@@ -33,7 +33,6 @@ import java.util.Locale;
 
 import org.testng.Assert;
 
-import com.wandrell.example.jpa.model.simple.SimpleEntity;
 import com.wandrell.example.jpa.model.temporal.DateEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
@@ -42,7 +41,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  * modified.
  *
  * @author Bernardo Martínez Garrido
- * @see SimpleEntity
+ * @see DateEntity
  */
 public abstract class AbstractITDateEntityModify
         extends AbstractITEntityModify<DateEntity> {

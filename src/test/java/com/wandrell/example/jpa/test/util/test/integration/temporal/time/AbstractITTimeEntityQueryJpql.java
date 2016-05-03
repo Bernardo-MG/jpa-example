@@ -42,7 +42,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.model.simple.SimpleEntity;
 import com.wandrell.example.jpa.model.temporal.TimeEntity;
 
 /**
@@ -78,7 +77,7 @@ import com.wandrell.example.jpa.model.temporal.TimeEntity;
  * repository and all of it's requirements.
  *
  * @author Bernardo Martínez Garrido
- * @see SimpleEntity
+ * @see TimeEntity
  */
 public abstract class AbstractITTimeEntityQueryJpql
         extends AbstractTransactionalTestNGSpringContextTests {
@@ -100,58 +99,58 @@ public abstract class AbstractITTimeEntityQueryJpql
     private EntityManager entityManager;
 
     /**
-     * The query to acquire all the after a date, using the calendar.
+     * The query to acquire all the after a time, using the calendar.
      */
     @Value("${query.afterTime.calendar}")
-    private String        findAfterDateCalendar;
+    private String        findAfterTimeCalendar;
 
     /**
-     * The query to acquire all the after a date, using the Java date.
+     * The query to acquire all the after a time, using the Java date.
      */
     @Value("${query.afterTime.java}")
-    private String        findAfterDateJava;
+    private String        findAfterTimeJava;
 
     /**
-     * The query to acquire all the after a date, using the SQL date.
+     * The query to acquire all the after a time, using the SQL time.
      */
     @Value("${query.afterTime.sql}")
-    private String        findAfterDateSql;
+    private String        findAfterTimeSql;
 
     /**
-     * The query to acquire all the before a date, using the calendar.
+     * The query to acquire all the before a time, using the calendar.
      */
     @Value("${query.beforeTime.calendar}")
     private String        findBeforeDateCalendar;
 
     /**
-     * The query to acquire all the before a date, using the Java date.
+     * The query to acquire all the before a time, using the Java date.
      */
     @Value("${query.beforeTime.java}")
-    private String        findBeforeDateJava;
+    private String        findBeforeTimeJava;
 
     /**
-     * The query to acquire all the before a date, using the SQL date.
+     * The query to acquire all the before a time, using the SQL time.
      */
     @Value("${query.beforeTime.sql}")
-    private String        findBeforeDateSql;
+    private String        findBeforeTimeSql;
 
     /**
-     * The query to acquire all the before a date, using the calendar.
+     * The query to acquire all the before a time, using the calendar.
      */
     @Value("${query.inTime.calendar}")
-    private String        findInDateCalendar;
+    private String        findInTimeCalendar;
 
     /**
-     * The query to acquire all the before a date, using the Java date.
+     * The query to acquire all the before a time, using the Java date.
      */
     @Value("${query.inTime.java}")
-    private String        findInDateJava;
+    private String        findInTimeJava;
 
     /**
-     * The query to acquire all the before a date, using the SQL date.
+     * The query to acquire all the before a time, using the SQL time.
      */
     @Value("${query.inTime.sql}")
-    private String        findInDateSql;
+    private String        findInTimeSql;
 
     /**
      * Time for the test ranges.
@@ -159,7 +158,7 @@ public abstract class AbstractITTimeEntityQueryJpql
     private Time          time;
 
     /**
-     * String to generate the date for the test ranges.
+     * String to generate the time for the test ranges.
      */
     private String        timeString = "11:11:11";
 
@@ -168,19 +167,19 @@ public abstract class AbstractITTimeEntityQueryJpql
      */
     public AbstractITTimeEntityQueryJpql() {
         super();
-        // TODO: Add the date to the configuration files
+        // TODO: Add the time to the configuration files
         // TODO: Add the query results counts to the configuration files
     }
 
     /**
-     * Initializes the date to be used in the tests.
+     * Initializes the time to be used in the tests.
      *
      * @throws ParseException
-     *             if the date string can't be parsed
+     *             if the time string can't be parsed
      */
     @BeforeClass
     public final void setUpDate() throws ParseException {
-        final DateFormat format; // Format for parsing the date string
+        final DateFormat format; // Format for parsing the time string
 
         format = new SimpleDateFormat("hh:mm:ss", Locale.ENGLISH);
 
@@ -201,7 +200,7 @@ public abstract class AbstractITTimeEntityQueryJpql
         final Query query;         // Query for the entity
 
         // Builds the query
-        query = getEntityManager().createQuery(findAfterDateCalendar);
+        query = getEntityManager().createQuery(findAfterTimeCalendar);
         query.setParameter("time", calendar);
 
         Assert.assertEquals((Integer) query.getResultList().size(),
@@ -217,7 +216,7 @@ public abstract class AbstractITTimeEntityQueryJpql
         final Query query;         // Query for the entity
 
         // Builds the query
-        query = getEntityManager().createQuery(findAfterDateJava);
+        query = getEntityManager().createQuery(findAfterTimeJava);
         query.setParameter("time", date);
 
         Assert.assertEquals((Integer) query.getResultList().size(),
@@ -233,7 +232,7 @@ public abstract class AbstractITTimeEntityQueryJpql
         final Query query;         // Query for the entity
 
         // Builds the query
-        query = getEntityManager().createQuery(findAfterDateSql);
+        query = getEntityManager().createQuery(findAfterTimeSql);
         query.setParameter("time", time);
 
         Assert.assertEquals((Integer) query.getResultList().size(),
@@ -265,7 +264,7 @@ public abstract class AbstractITTimeEntityQueryJpql
         final Query query;         // Query for the entity
 
         // Builds the query
-        query = getEntityManager().createQuery(findBeforeDateJava);
+        query = getEntityManager().createQuery(findBeforeTimeJava);
         query.setParameter("time", date);
 
         Assert.assertEquals((Integer) query.getResultList().size(),
@@ -281,7 +280,7 @@ public abstract class AbstractITTimeEntityQueryJpql
         final Query query;         // Query for the entity
 
         // Builds the query
-        query = getEntityManager().createQuery(findBeforeDateSql);
+        query = getEntityManager().createQuery(findBeforeTimeSql);
         query.setParameter("time", time);
 
         Assert.assertEquals((Integer) query.getResultList().size(),
@@ -297,7 +296,7 @@ public abstract class AbstractITTimeEntityQueryJpql
         final Query query;         // Query for the entity
 
         // Builds the query
-        query = getEntityManager().createQuery(findInDateCalendar);
+        query = getEntityManager().createQuery(findInTimeCalendar);
         query.setParameter("time", calendar);
 
         Assert.assertEquals((Integer) query.getResultList().size(),
@@ -313,7 +312,7 @@ public abstract class AbstractITTimeEntityQueryJpql
         final Query query;         // Query for the entity
 
         // Builds the query
-        query = getEntityManager().createQuery(findInDateJava);
+        query = getEntityManager().createQuery(findInTimeJava);
         query.setParameter("time", date);
 
         Assert.assertEquals((Integer) query.getResultList().size(),
@@ -329,7 +328,7 @@ public abstract class AbstractITTimeEntityQueryJpql
         final Query query;         // Query for the entity
 
         // Builds the query
-        query = getEntityManager().createQuery(findInDateSql);
+        query = getEntityManager().createQuery(findInTimeSql);
         query.setParameter("time", time);
 
         Assert.assertEquals((Integer) query.getResultList().size(),

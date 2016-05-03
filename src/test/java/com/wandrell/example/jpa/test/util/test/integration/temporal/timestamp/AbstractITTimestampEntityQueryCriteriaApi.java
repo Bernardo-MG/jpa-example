@@ -22,9 +22,9 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.test.integration.temporal.time;
+package com.wandrell.example.jpa.test.util.test.integration.temporal.timestamp;
 
-import java.sql.Time;
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -40,45 +40,45 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.model.temporal.TimeEntity;
-import com.wandrell.example.jpa.test.util.criteria.TimeEntityCriteriaFactory;
+import com.wandrell.example.jpa.model.temporal.TimestampEntity;
+import com.wandrell.example.jpa.test.util.criteria.TimestampEntityCriteriaFactory;
 
 /**
- * Abstract integration tests for a {@link TimeEntity} testing it can be queried
- * correctly by using criteria API queries.
+ * Abstract integration tests for a {@link TimestampEntity} testing it can be
+ * queried correctly by using criteria API queries.
  * <p>
  * The tests cases just show how to do query operations with a JPA entity by
  * using the criteria API.
  * <p>
  * Checks the following cases:
  * <ol>
- * <li>Retrieving all the entities before a time gives the correct number of
- * them when using a Java {@code Time} for the time</li>
- * <li>Retrieving all the entities before a time gives the correct number of
- * them when using a {@code Calendar} for the time</li>
- * <li>Retrieving all the entities before a time gives the correct number of
- * them when using a {@code Time} for the time</li>
- * <li>Retrieving all the entities after a time gives the correct number of them
- * when using a Java {@code Time} for the time</li>
- * <li>Retrieving all the entities after a time gives the correct number of them
- * when using a {@code Calendar} for the time</li>
- * <li>Retrieving all the entities after a time gives the correct number of them
- * when using a {@code Time} for the time</li>
- * <li>Retrieving all the entities in a time gives the correct number of them
- * when using a Java {@code Time} for the time</li>
- * <li>Retrieving all the entities in a time gives the correct number of them
- * when using a {@code Calendar} for the time</li>
- * <li>Retrieving all the entities in a time gives the correct number of them
- * when using a {@code Time} for the time</li>
+ * <li>Retrieving all the entities before a timestamp gives the correct number
+ * of them when using a Java {@code Date} for the timestamp</li>
+ * <li>Retrieving all the entities before a timestamp gives the correct number
+ * of them when using a {@code Calendar} for the timestamp</li>
+ * <li>Retrieving all the entities before a timestamp gives the correct number
+ * of them when using a {@code Timestamp} for the timestamp</li>
+ * <li>Retrieving all the entities after a timestamp gives the correct number of
+ * them when using a Java {@code Date} for the timestamp</li>
+ * <li>Retrieving all the entities after a timestamp gives the correct number of
+ * them when using a {@code Calendar} for the timestamp</li>
+ * <li>Retrieving all the entities after a timestamp gives the correct number of
+ * them when using a {@code Timestamp} for the timestamp</li>
+ * <li>Retrieving all the entities in a timestamp gives the correct number of
+ * them when using a Java {@code Date} for the timestamp</li>
+ * <li>Retrieving all the entities in a timestamp gives the correct number of
+ * them when using a {@code Calendar} for the timestamp</li>
+ * <li>Retrieving all the entities in a timestamp gives the correct number of
+ * them when using a {@code Timestamp} for the timestamp</li>
  * </ol>
  * <p>
  * This is meant to be used along a Spring context, which will set up the
  * repository and all of it's requirements.
  *
  * @author Bernardo Martínez Garrido
- * @see TimeEntity
+ * @see TimestampEntity
  */
-public abstract class AbstractITTimeEntityQueryCriteriaApi
+public abstract class AbstractITTimestampEntityQueryCriteriaApi
         extends AbstractTransactionalTestNGSpringContextTests {
 
     /**
@@ -98,19 +98,19 @@ public abstract class AbstractITTimeEntityQueryCriteriaApi
     private EntityManager entityManager;
 
     /**
-     * Time for the test ranges.
+     * Timestamp for the test ranges.
      */
-    private Time          time;
+    private Timestamp     timestamp;
 
     /**
      * String to generate the time for the test ranges.
      */
-    private String        timeString = "11:11:11";
+    private String        timestampString = "1991-05-02 11:11:11";
 
     /**
      * Default constructor.
      */
-    public AbstractITTimeEntityQueryCriteriaApi() {
+    public AbstractITTimestampEntityQueryCriteriaApi() {
         super();
         // TODO: Add the time to the configuration files
         // TODO: Add the query results counts to the configuration files
@@ -128,119 +128,119 @@ public abstract class AbstractITTimeEntityQueryCriteriaApi
 
         format = new SimpleDateFormat("hh:mm:ss", Locale.ENGLISH);
 
-        date = format.parse(timeString);
+        date = format.parse(timestampString);
 
-        time = new Time(date.getTime());
+        timestamp = new Timestamp(date.getTime());
 
         calendar = Calendar.getInstance();
         calendar.setTime(date);
     }
 
     /**
-     * Tests that retrieving all the entities after a time gives the correct
-     * number of them when using a {@code Calendar} for the time.
+     * Tests that retrieving all the entities after a timestamp gives the
+     * correct number of them when using a {@code Calendar} for the timestamp.
      */
     @Test
     public final void testGetAfterTime_Calendar() {
         Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(TimeEntityCriteriaFactory
-                        .findAfterTime(getEntityManager(), calendar))
+                .createQuery(TimestampEntityCriteriaFactory
+                        .findAfterTimestamp(getEntityManager(), calendar))
                 .getResultList().size(), new Integer(3));
     }
 
     /**
-     * Tests that retrieving all the entities after a time gives the correct
-     * number of them when using a Java {@code Time} for the time.
+     * Tests that retrieving all the entities after a timestamp gives the
+     * correct number of them when using a Java {@code Date} for the timestamp.
      */
     @Test
     public final void testGetAfterTime_Java() {
         Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(TimeEntityCriteriaFactory
-                        .findAfterTime(getEntityManager(), date))
+                .createQuery(TimestampEntityCriteriaFactory
+                        .findAfterTimestamp(getEntityManager(), date))
                 .getResultList().size(), new Integer(3));
     }
 
     /**
-     * Tests that retrieving all the entities after a time gives the correct
-     * number of them when using a {@code Time} for the time.
+     * Tests that retrieving all the entities after a timestamp gives the
+     * correct number of them when using a {@code Timestamp} for the timestamp.
      */
     @Test
     public final void testGetAfterTime_Sql() {
         Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(TimeEntityCriteriaFactory
-                        .findAfterSqlTime(getEntityManager(), time))
+                .createQuery(TimestampEntityCriteriaFactory
+                        .findAfterSqlTimestamp(getEntityManager(), timestamp))
                 .getResultList().size(), new Integer(3));
     }
 
     /**
-     * Tests that retrieving all the entities before a time gives the correct
-     * number of them when using a {@code Calendar} for the time.
+     * Tests that retrieving all the entities before a timestamp gives the
+     * correct number of them when using a {@code Calendar} for the timestamp.
      */
     @Test
     public final void testGetBeforeTime_Calendar() {
         Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(TimeEntityCriteriaFactory
-                        .findBeforeTime(getEntityManager(), calendar))
+                .createQuery(TimestampEntityCriteriaFactory
+                        .findBeforeTimestamp(getEntityManager(), calendar))
                 .getResultList().size(), new Integer(2));
     }
 
     /**
-     * Tests that retrieving all the entities before a time gives the correct
-     * number of them when using a Java {@code Time} for the time.
+     * Tests that retrieving all the entities before a timestamp gives the
+     * correct number of them when using a Java {@code Date} for the timestamp.
      */
     @Test
     public final void testGetBeforeTime_Java() {
         Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(TimeEntityCriteriaFactory
-                        .findBeforeTime(getEntityManager(), date))
+                .createQuery(TimestampEntityCriteriaFactory
+                        .findBeforeTimestamp(getEntityManager(), date))
                 .getResultList().size(), new Integer(2));
     }
 
     /**
-     * Tests that retrieving all the entities before a time gives the correct
-     * number of them when using a {@code Time} for the time.
+     * Tests that retrieving all the entities before a timestamp gives the
+     * correct number of them when using a {@code Timestamp} for the timestamp.
      */
     @Test
     public final void testGetBeforeTime_Sql() {
         Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(TimeEntityCriteriaFactory
-                        .findBeforeSqlTime(getEntityManager(), time))
+                .createQuery(TimestampEntityCriteriaFactory
+                        .findBeforeSqlTimestamp(getEntityManager(), timestamp))
                 .getResultList().size(), new Integer(2));
     }
 
     /**
-     * Tests that retrieving all the entities in a time gives the correct number
-     * of them when using a {@code Calendar} for the time.
+     * Tests that retrieving all the entities in a timestamp gives the correct
+     * number of them when using a {@code Calendar} for the timestamp.
      */
     @Test
     public final void testGetInTime_Calendar() {
         Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(TimeEntityCriteriaFactory
-                        .findInTime(getEntityManager(), calendar))
+                .createQuery(TimestampEntityCriteriaFactory
+                        .findInTimestamp(getEntityManager(), calendar))
                 .getResultList().size(), new Integer(1));
     }
 
     /**
-     * Tests that retrieving all the entities in a time gives the correct number
-     * of them when using a Java {@code Time} for the time.
+     * Tests that retrieving all the entities in a timestamp gives the correct
+     * number of them when using a Java {@code Date} for the timestamp.
      */
     @Test
     public final void testGetInTime_Java() {
         Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(TimeEntityCriteriaFactory
-                        .findInTime(getEntityManager(), date))
+                .createQuery(TimestampEntityCriteriaFactory
+                        .findInTimestamp(getEntityManager(), date))
                 .getResultList().size(), new Integer(1));
     }
 
     /**
-     * Tests that retrieving all the entities in a time gives the correct number
-     * of them when using a {@code Time} for the time.
+     * Tests that retrieving all the entities in a timestamp gives the correct
+     * number of them when using a {@code Timestamp} for the timestamp.
      */
     @Test
     public final void testGetInTime_Sql() {
         Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(TimeEntityCriteriaFactory
-                        .findInSqlTime(getEntityManager(), time))
+                .createQuery(TimestampEntityCriteriaFactory
+                        .findInSqlTimestamp(getEntityManager(), timestamp))
                 .getResultList().size(), new Integer(1));
     }
 
