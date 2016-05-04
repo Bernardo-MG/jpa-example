@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.eclipselink.temporal.times.h2;
+package com.wandrell.example.jpa.test.integration.eclipselink.temporal.timestamp.h2;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -36,10 +36,10 @@ import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.temporal.time.AbstractITTimeEntityModify;
+import com.wandrell.example.jpa.test.util.test.integration.temporal.timestamp.AbstractITTimestampEntityModify;
 
 /**
- * Integration tests for a {@code TimeEntity} testing it can be modified.
+ * Integration tests for a {@code TimestampEntity} testing it can be modified.
  *
  * @author Bernardo Martínez Garrido
  */
@@ -47,20 +47,21 @@ import com.wandrell.example.jpa.test.util.test.integration.temporal.time.Abstrac
         TestContextConfig.ENTITY_MODIFIABLE,
         PersistenceContextConfig.ECLIPSELINK })
 @TestPropertySource(
-        locations = { TestPropertiesConfig.TIME,
+        locations = { TestPropertiesConfig.TIMESTAMP,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
                 DataBaseUserPropertiesConfig.DEFAULT,
                 DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
-                JdbcPropertiesPaths.H2, QueryPropertiesPaths.TIME },
-        properties = { "jpa.persistenceUnitName=time_eclipselink_h2_modify",
+                JdbcPropertiesPaths.H2, QueryPropertiesPaths.TIMESTAMP },
+        properties = {
+                "jpa.persistenceUnitName=timestamp_eclipselink_h2_modify",
                 "jdbc.url=jdbc:h2:mem:test_eclipselink_modify;DB_CLOSE_ON_EXIT=FALSE" })
-public final class ITTimeEntityModifyEclipseLinkH2
-        extends AbstractITTimeEntityModify {
+public final class ITTimestampEntityModifyEclipseLinkH2
+        extends AbstractITTimestampEntityModify {
 
     /**
      * Default constructor.
      */
-    public ITTimeEntityModifyEclipseLinkH2() {
+    public ITTimestampEntityModifyEclipseLinkH2() {
         super();
     }
 

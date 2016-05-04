@@ -126,7 +126,7 @@ public abstract class AbstractITTimestampEntityQueryCriteriaApi
     public final void setUpTime() throws ParseException {
         final DateFormat format; // Format for parsing the time string
 
-        format = new SimpleDateFormat("hh:mm:ss", Locale.ENGLISH);
+        format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
 
         date = format.parse(timestampString);
 

@@ -75,7 +75,7 @@ public abstract class AbstractITTimestampEntityModify
             Assert.assertEquals(entity.getDate(), date);
             Assert.assertEquals(entity.getCalendar(), calendar);
             Assert.assertEquals(entity.getSqlTimestamp(),
-                    new java.sql.Date(date.getTime()));
+                    new Timestamp(date.getTime()));
         } catch (final ParseException e) {
             throw new RuntimeException(e);
         }

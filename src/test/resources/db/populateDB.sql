@@ -62,3 +62,5 @@ INSERT INTO timestamp_entities (id, calendar_timestamp, java_timestamp, sql_time
 INSERT INTO timestamp_entities (id, calendar_timestamp, java_timestamp, sql_timestamp) VALUES (2, '1991-05-02 11:11:11', '1991-05-02 11:11:11', '1991-05-02 11:11:11');
 INSERT INTO timestamp_entities (id, calendar_timestamp, java_timestamp, sql_timestamp) VALUES (3, '1990-02-03 11:22:33', '1990-02-03 11:22:33', '1990-02-03 11:22:33');
 INSERT INTO timestamp_entities (id, calendar_timestamp, java_timestamp, sql_timestamp) VALUES (4, '1995-01-02 03:15:10', '1995-01-02 03:15:10', '1995-01-02 03:15:10');
+INSERT INTO timestamp_entities (id, calendar_timestamp, java_timestamp, sql_timestamp) VALUES (5, '1992-01-01 12:00:00', '1992-01-01 12:00:00', '1992-01-01 12:00:00');
+INSERT INTO timestamp_entities (id, calendar_timestamp, java_timestamp, sql_timestamp) VALUES (6, '1996-12-24 01:10:10', '1996-12-24 01:10:10', '1996-12-24 01:10:10');

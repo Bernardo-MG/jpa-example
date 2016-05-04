@@ -74,8 +74,7 @@ public abstract class AbstractITTimeEntityModify
 
             Assert.assertEquals(entity.getDate(), date);
             Assert.assertEquals(entity.getCalendar(), calendar);
-            Assert.assertEquals(entity.getSqlTime(),
-                    new java.sql.Date(date.getTime()));
+            Assert.assertEquals(entity.getSqlTime(), new Time(date.getTime()));
         } catch (final ParseException e) {
             throw new RuntimeException(e);
         }
