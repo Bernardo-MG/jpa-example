@@ -31,11 +31,15 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapKeyColumn;
 import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
@@ -45,8 +49,8 @@ import com.google.common.base.MoreObjects;
  *
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "MultiValueEntity")
-@Table(name = "multivalue_entities")
+@Entity(name = "MapEntity")
+@Table(name = "map_entities")
 public class MapEntity implements Serializable {
 
     /**
@@ -65,7 +69,11 @@ public class MapEntity implements Serializable {
     /**
      * Mapper integer values.
      */
-    @Column(name = "integersMap", nullable = false)
+    @ElementCollection
+    @MapKeyColumn(name = "value")
+    @CollectionTable(name = "map_entities_values",
+            joinColumns = @JoinColumn(name = "collectionId") )
+    @Column(name = "value", nullable = false)
     private Map<String, Integer> values           = new LinkedHashMap<String, Integer>();
 
     /**

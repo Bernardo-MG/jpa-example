@@ -4,6 +4,8 @@ DROP TABLE IF EXISTS enum_entities;
 DROP TABLE IF EXISTS date_entities;
 DROP TABLE IF EXISTS time_entities;
 DROP TABLE IF EXISTS timestamp_entities;
+DROP TABLE IF EXISTS collection_entities;
+DROP TABLE IF EXISTS collection_entities_values;
 
 CREATE TABLE simple_entities (
 	id		SERIAL PRIMARY KEY,
@@ -40,4 +42,13 @@ CREATE TABLE timestamp_entities (
 	calendar_timestamp	TIMESTAMP NOT NULL,
 	java_timestamp		TIMESTAMP NOT NULL,
 	sql_timestamp		TIMESTAMP NOT NULL
+);
+
+CREATE TABLE collection_entities (
+	id					SERIAL PRIMARY KEY
+);
+
+CREATE TABLE collection_entities_values (
+	collectionId		INTEGER DEFAULT 0 NOT NULL,
+	valueCol			INTEGER DEFAULT 0 NOT NULL
 );

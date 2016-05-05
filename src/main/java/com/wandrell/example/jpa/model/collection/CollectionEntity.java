@@ -31,11 +31,14 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Objects;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
@@ -45,8 +48,8 @@ import com.google.common.base.MoreObjects;
  *
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "MultiValueEntity")
-@Table(name = "multivalue_entities")
+@Entity(name = "CollectionEntity")
+@Table(name = "collection_entities")
 public class CollectionEntity implements Serializable {
 
     /**
@@ -64,8 +67,13 @@ public class CollectionEntity implements Serializable {
 
     /**
      * Integer values.
+     * <p>
+     * These are mapped into another table
      */
-    @Column(name = "integersCol", nullable = false)
+    @ElementCollection
+    @CollectionTable(name = "collection_entities_values",
+            joinColumns = @JoinColumn(name = "collectionId") )
+    @Column(name = "valueCol", nullable = false)
     private Collection<Integer> values           = new LinkedList<Integer>();
 
     /**
