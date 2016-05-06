@@ -35,7 +35,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.simple.SimpleEntity;
-import com.wandrell.example.jpa.test.util.criteria.SimpleEntityCriteriaFactory;
+import com.wandrell.example.jpa.test.util.criteria.simple.SimpleEntityCriteriaFactory;
 
 /**
  * Abstract integration tests for a {@link SimpleEntity} testing it can be

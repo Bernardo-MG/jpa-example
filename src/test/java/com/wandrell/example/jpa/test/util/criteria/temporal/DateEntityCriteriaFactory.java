@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.criteria;
+package com.wandrell.example.jpa.test.util.criteria.temporal;
 
 import java.util.Calendar;
 import java.util.Date;

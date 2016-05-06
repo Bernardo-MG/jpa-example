@@ -40,7 +40,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.temporal.DateEntity;
-import com.wandrell.example.jpa.test.util.criteria.DateEntityCriteriaFactory;
+import com.wandrell.example.jpa.test.util.criteria.temporal.DateEntityCriteriaFactory;
 
 /**
  * Abstract integration tests for a {@link DateEntity} testing it can be queried

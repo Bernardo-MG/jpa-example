@@ -41,7 +41,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.temporal.TimeEntity;
-import com.wandrell.example.jpa.test.util.criteria.TimeEntityCriteriaFactory;
+import com.wandrell.example.jpa.test.util.criteria.temporal.TimeEntityCriteriaFactory;
 
 /**
  * Abstract integration tests for a {@link TimeEntity} testing it can be queried

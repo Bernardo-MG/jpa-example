@@ -34,7 +34,7 @@ import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.enumeration.EnumerationEntity;
 import com.wandrell.example.jpa.model.enumeration.NumbersEnum;
-import com.wandrell.example.jpa.test.util.criteria.EnumerationEntityCriteriaFactory;
+import com.wandrell.example.jpa.test.util.criteria.enumeration.EnumerationEntityCriteriaFactory;
 
 /**
  * Abstract integration tests for a {@link EnumerationEntity} testing it loads

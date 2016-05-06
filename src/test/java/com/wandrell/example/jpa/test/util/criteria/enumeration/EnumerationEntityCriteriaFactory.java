@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.criteria;
+package com.wandrell.example.jpa.test.util.criteria.enumeration;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;

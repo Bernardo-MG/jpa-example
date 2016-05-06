@@ -41,7 +41,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.temporal.TimestampEntity;
-import com.wandrell.example.jpa.test.util.criteria.TimestampEntityCriteriaFactory;
+import com.wandrell.example.jpa.test.util.criteria.temporal.TimestampEntityCriteriaFactory;
 
 /**
  * Abstract integration tests for a {@link TimestampEntity} testing it can be

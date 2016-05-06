@@ -33,7 +33,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.converter.BooleanConverterEntity;
-import com.wandrell.example.jpa.test.util.criteria.BooleanConverterEntityCriteriaFactory;
+import com.wandrell.example.jpa.test.util.criteria.converter.BooleanConverterEntityCriteriaFactory;
 
 /**
  * Abstract integration tests for a {@link BooleanConverterEntity} testing it

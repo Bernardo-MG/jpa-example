@@ -22,53 +22,50 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.criteria;
+package com.wandrell.example.jpa.test.util.criteria.collection;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import com.wandrell.example.jpa.model.converter.BooleanConverterEntity;
-import com.wandrell.example.jpa.model.converter.BooleanConverterEntity_;
+import com.wandrell.example.jpa.model.collection.CollectionEntity;
+import com.wandrell.example.jpa.model.collection.CollectionEntity_;
 
 /**
- * Factory for creating criteria API queries for the
- * {@code BooleanConverterEntity}.
+ * Factory for creating criteria API queries for the {@link CollectionEntity}.
  *
  * @author Bernardo Martínez Garrido
  */
-public class BooleanConverterEntityCriteriaFactory {
+public class CollectionEntityCriteriaFactory {
 
     /**
-     * Generates a query to find all the entities where the value of the flag is
-     * the same as the received one.
+     * Generates a query to find all the entities with a specified value.
      *
      * @param entityManager
      *            the entity manager with the entity's data
-     * @param flag
-     *            the value of the flag to query
-     * @return the query to find all the entities with a flag having the
-     *         received value
+     * @param value
+     *            the value to search for
+     * @return the query to find all the entities
      */
-    public static final CriteriaQuery<BooleanConverterEntity> findAllByFlag(
-            final EntityManager entityManager, final Boolean flag) {
-        final CriteriaBuilder builder;                     // Builder
-        final CriteriaQuery<BooleanConverterEntity> query; // Query
-        final Root<BooleanConverterEntity> entity;         // Root entity
+    public static final CriteriaQuery<CollectionEntity> findAllWithValue(
+            final EntityManager entityManager, final Integer value) {
+        final CriteriaBuilder builder;                  // Builder
+        final CriteriaQuery<CollectionEntity> query; // Query
+        final Root<CollectionEntity> entity;         // Root entity
 
         // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
-        query = builder.createQuery(BooleanConverterEntity.class);
-        entity = query.from(BooleanConverterEntity.class);
+        query = builder.createQuery(CollectionEntity.class);
+        entity = query.from(CollectionEntity.class);
 
         // Generates a select query
         query.select(entity);
         query.where(
-                builder.equal(entity.get(BooleanConverterEntity_.flag), flag));
+                builder.isMember(value, entity.get(CollectionEntity_.values)));
 
         // Orders by the id
-        query.orderBy(builder.asc(entity.get(BooleanConverterEntity_.id)));
+        query.orderBy(builder.asc(entity.get(CollectionEntity_.id)));
 
         return query;
     }
@@ -76,7 +73,7 @@ public class BooleanConverterEntityCriteriaFactory {
     /**
      * Private constructor to avoid initialization.
      */
-    private BooleanConverterEntityCriteriaFactory() {
+    private CollectionEntityCriteriaFactory() {
         super();
     }
 
