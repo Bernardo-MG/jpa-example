@@ -64,3 +64,20 @@ INSERT INTO timestamp_entities (calendar_timestamp, java_timestamp, sql_timestam
 INSERT INTO timestamp_entities (calendar_timestamp, java_timestamp, sql_timestamp) VALUES ('1995-01-02 03:15:10', '1995-01-02 03:15:10', '1995-01-02 03:15:10');
 INSERT INTO timestamp_entities (calendar_timestamp, java_timestamp, sql_timestamp) VALUES ('1992-01-01 12:00:00', '1992-01-01 12:00:00', '1992-01-01 12:00:00');
 INSERT INTO timestamp_entities (calendar_timestamp, java_timestamp, sql_timestamp) VALUES ('1996-12-24 01:10:10', '1996-12-24 01:10:10', '1996-12-24 01:10:10');
+
+INSERT INTO collection_entities (name) VALUES ('col_entity_1');
+INSERT INTO collection_entities (name) VALUES ('col_entity_2');
+INSERT INTO collection_entities (name) VALUES ('col_entity_3');
+INSERT INTO collection_entities (name) VALUES ('col_entity_4');
+INSERT INTO collection_entities (name) VALUES ('col_entity_5');
+
+INSERT INTO collection_entities_values (collection_id, value_col) VALUES (1, 1);
+INSERT INTO collection_entities_values (collection_id, value_col) VALUES (1, 2);
+INSERT INTO collection_entities_values (collection_id, value_col) VALUES (2, 3);
+INSERT INTO collection_entities_values (collection_id, value_col) VALUES (3, 4);
+INSERT INTO collection_entities_values (collection_id, value_col) VALUES (3, 5);
+INSERT INTO collection_entities_values (collection_id, value_col) VALUES (4, 6);
+INSERT INTO collection_entities_values (collection_id, value_col) VALUES (5, 7);
+INSERT INTO collection_entities_values (collection_id, value_col) VALUES (5, 8);
+INSERT INTO collection_entities_values (collection_id, value_col) VALUES (5, 9);
+INSERT INTO collection_entities_values (collection_id, value_col) VALUES (1, 10);

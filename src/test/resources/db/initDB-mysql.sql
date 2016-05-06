@@ -45,10 +45,11 @@ CREATE TABLE timestamp_entities (
 );
 
 CREATE TABLE collection_entities (
-	id					INTEGER PRIMARY KEY AUTO_INCREMENT
+	id		INTEGER PRIMARY KEY AUTO_INCREMENT,
+	name	VARCHAR(30) DEFAULT '' NOT NULL
 );
 
 CREATE TABLE collection_entities_values (
-	collectionId		INTEGER DEFAULT 0 NOT NULL,
-	valueCol			INTEGER DEFAULT 0 NOT NULL
+	collection_id	INTEGER DEFAULT 0 NOT NULL,
+	value_col		INTEGER DEFAULT 0 NOT NULL
 );

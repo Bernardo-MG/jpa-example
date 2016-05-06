@@ -66,14 +66,23 @@ public class CollectionEntity implements Serializable {
     private Integer             id               = null;
 
     /**
+     * Name of the entity.
+     * <p>
+     * This is to have additional data apart from the id, to be used on the
+     * tests.
+     */
+    @Column(name = "name", nullable = false)
+    private String              name             = "";
+
+    /**
      * Integer values.
      * <p>
      * These are mapped into another table
      */
     @ElementCollection
     @CollectionTable(name = "collection_entities_values",
-            joinColumns = @JoinColumn(name = "collectionId") )
-    @Column(name = "valueCol", nullable = false)
+            joinColumns = @JoinColumn(name = "collection_id") )
+    @Column(name = "value_col", nullable = false)
     private Collection<Integer> values           = new LinkedList<Integer>();
 
     /**
@@ -111,6 +120,15 @@ public class CollectionEntity implements Serializable {
     }
 
     /**
+     * Returns the name of the entity.
+     *
+     * @return the entity's name
+     */
+    public final String getName() {
+        return name;
+    }
+
+    /**
      * Returns the integer values.
      *
      * @return the integer values
@@ -132,6 +150,16 @@ public class CollectionEntity implements Serializable {
      */
     public final void setId(final Integer identifier) {
         id = checkNotNull(identifier, "Received a null pointer as identifier");
+    }
+
+    /**
+     * Sets the name of the entity.
+     *
+     * @param name
+     *            the name to set on the entity
+     */
+    public final void setName(String name) {
+        this.name = name;
     }
 
     /**
