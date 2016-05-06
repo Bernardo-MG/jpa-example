@@ -40,6 +40,11 @@ public class QueryPropertiesPaths {
     public static final String BOOLEAN_CONVERTER = "classpath:config/persistence/query/test-boolean-converter-entity-query.properties";
 
     /**
+     * Collection entity.
+     */
+    public static final String COLLECTION        = "classpath:config/persistence/query/test-collection-entity-query.properties";
+
+    /**
      * Date entity.
      */
     public static final String DATE              = "classpath:config/persistence/query/test-date-entity-query.properties";
