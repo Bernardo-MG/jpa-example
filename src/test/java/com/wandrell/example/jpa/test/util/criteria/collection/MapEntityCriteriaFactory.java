@@ -27,45 +27,49 @@ package com.wandrell.example.jpa.test.util.criteria.collection;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.MapJoin;
 import javax.persistence.criteria.Root;
 
-import com.wandrell.example.jpa.model.collection.CollectionEntity;
-import com.wandrell.example.jpa.model.collection.CollectionEntity_;
+import com.wandrell.example.jpa.model.collection.MapEntity;
+import com.wandrell.example.jpa.model.collection.MapEntity_;
 
 /**
- * Factory for creating criteria API queries for the {@link CollectionEntity}.
+ * Factory for creating criteria API queries for the {@link MapEntity}.
  *
  * @author Bernardo Martínez Garrido
  */
-public class CollectionEntityCriteriaFactory {
+public class MapEntityCriteriaFactory {
 
     /**
-     * Generates a query to find all the entities with a specified value.
+     * Generates a query to find all the entities with a specified value on
+     * their map.
      *
      * @param entityManager
      *            the entity manager with the entity's data
      * @param value
      *            the value to search for
-     * @return the query to find all the entities with the specified value
+     * @return the query to find all the entities with the specified value on
+     *         their map
      */
-    public static final CriteriaQuery<CollectionEntity> findAllWithValue(
+    public static final CriteriaQuery<MapEntity> findAllWithValueInMap(
             final EntityManager entityManager, final Integer value) {
-        final CriteriaBuilder builder;               // Builder
-        final CriteriaQuery<CollectionEntity> query; // Query
-        final Root<CollectionEntity> entity;         // Root entity
+        final CriteriaBuilder builder;                     // Builder
+        final CriteriaQuery<MapEntity> query;              // Query
+        final Root<MapEntity> entity;                      // Root entity
+        final MapJoin<MapEntity, String, Integer> mapJoin; // Join for map
 
         // Prepares the criteria API query
         builder = entityManager.getCriteriaBuilder();
-        query = builder.createQuery(CollectionEntity.class);
-        entity = query.from(CollectionEntity.class);
+        query = builder.createQuery(MapEntity.class);
+        entity = query.from(MapEntity.class);
 
         // Generates a select query
         query.select(entity);
-        query.where(
-                builder.isMember(value, entity.get(CollectionEntity_.values)));
+        mapJoin = entity.join(MapEntity_.values);
+        query.where(builder.equal(mapJoin.value(), value));
 
         // Orders by the id
-        query.orderBy(builder.asc(entity.get(CollectionEntity_.id)));
+        query.orderBy(builder.asc(entity.get(MapEntity_.id)));
 
         return query;
     }
@@ -73,7 +77,7 @@ public class CollectionEntityCriteriaFactory {
     /**
      * Private constructor to avoid initialization.
      */
-    private CollectionEntityCriteriaFactory() {
+    private MapEntityCriteriaFactory() {
         super();
     }
 
