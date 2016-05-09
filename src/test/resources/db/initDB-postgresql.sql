@@ -6,6 +6,8 @@ DROP TABLE IF EXISTS time_entities;
 DROP TABLE IF EXISTS timestamp_entities;
 DROP TABLE IF EXISTS collection_entities;
 DROP TABLE IF EXISTS collection_entities_values;
+DROP TABLE IF EXISTS map_entities;
+DROP TABLE IF EXISTS map_entities_values;
 
 CREATE TABLE simple_entities (
 	id		SERIAL PRIMARY KEY,
@@ -52,4 +54,15 @@ CREATE TABLE collection_entities (
 CREATE TABLE collection_entities_values (
 	collection_id		INTEGER DEFAULT 0 NOT NULL,
 	value_col			INTEGER DEFAULT 0 NOT NULL
+);
+
+CREATE TABLE map_entities (
+	id		INTEGER IDENTITY PRIMARY KEY,
+	name	VARCHAR(30) DEFAULT '' NOT NULL
+);
+
+CREATE TABLE map_entities_values (
+	map_id			INTEGER DEFAULT 0 NOT NULL,
+	name			VARCHAR(30) DEFAULT '' NOT NULL,
+	number			INTEGER DEFAULT 0 NOT NULL
 );

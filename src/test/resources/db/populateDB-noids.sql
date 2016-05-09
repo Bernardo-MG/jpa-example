@@ -83,3 +83,22 @@ INSERT INTO collection_entities_values (collection_id, value_col) VALUES (5, 2);
 INSERT INTO collection_entities_values (collection_id, value_col) VALUES (5, 8);
 INSERT INTO collection_entities_values (collection_id, value_col) VALUES (5, 9);
 INSERT INTO collection_entities_values (collection_id, value_col) VALUES (1, 10);
+
+INSERT INTO map_entities (name) VALUES ('map_entity_1');
+INSERT INTO map_entities (name) VALUES ('map_entity_2');
+INSERT INTO map_entities (name) VALUES ('map_entity_3');
+INSERT INTO map_entities (name) VALUES ('map_entity_4');
+INSERT INTO map_entities (name) VALUES ('map_entity_5');
+
+INSERT INTO map_entities_values (map_id, name, number) VALUES (1, 'value_1', 1);
+INSERT INTO map_entities_values (map_id, name, number) VALUES (1, 'value_2', 2);
+INSERT INTO map_entities_values (map_id, name, number) VALUES (2, 'value_2', 3);
+INSERT INTO map_entities_values (map_id, name, number) VALUES (2, 'value_1', 2);
+INSERT INTO map_entities_values (map_id, name, number) VALUES (3, 'value_1', 4);
+INSERT INTO map_entities_values (map_id, name, number) VALUES (3, 'value_2', 5);
+INSERT INTO map_entities_values (map_id, name, number) VALUES (4, 'value_1', 6);
+INSERT INTO map_entities_values (map_id, name, number) VALUES (5, 'value_1', 7);
+INSERT INTO map_entities_values (map_id, name, number) VALUES (5, 'value_2', 2);
+INSERT INTO map_entities_values (map_id, name, number) VALUES (5, 'value_3', 8);
+INSERT INTO map_entities_values (map_id, name, number) VALUES (5, 'value_4', 9);
+INSERT INTO map_entities_values (map_id, name, number) VALUES (1, 'value_3', 10);

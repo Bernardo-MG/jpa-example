@@ -67,13 +67,22 @@ public class MapEntity implements Serializable {
     private Integer              id               = null;
 
     /**
+     * Name of the entity.
+     * <p>
+     * This is to have additional data apart from the id, to be used on the
+     * tests.
+     */
+    @Column(name = "name", nullable = false)
+    private String               name             = "";
+
+    /**
      * Mapper integer values.
      */
     @ElementCollection
-    @MapKeyColumn(name = "value")
+    @MapKeyColumn(name = "name")
     @CollectionTable(name = "map_entities_values",
-            joinColumns = @JoinColumn(name = "collectionId") )
-    @Column(name = "value", nullable = false)
+            joinColumns = @JoinColumn(name = "map_id") )
+    @Column(name = "number", nullable = false)
     private Map<String, Integer> values           = new LinkedHashMap<String, Integer>();
 
     /**
@@ -102,12 +111,31 @@ public class MapEntity implements Serializable {
     }
 
     /**
+     * Returns the name of the entity.
+     *
+     * @return the entity's name
+     */
+    public final String getName() {
+        return name;
+    }
+
+    /**
      * Returns the entity's id.
      *
      * @return the entity's id
      */
     public final Integer getId() {
         return id;
+    }
+
+    /**
+     * Sets the name of the entity.
+     *
+     * @param name
+     *            the name to set on the entity
+     */
+    public final void setName(String name) {
+        this.name = name;
     }
 
     /**
