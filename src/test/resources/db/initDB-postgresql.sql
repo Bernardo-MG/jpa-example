@@ -57,7 +57,7 @@ CREATE TABLE collection_entities_values (
 );
 
 CREATE TABLE map_entities (
-	id		INTEGER IDENTITY PRIMARY KEY,
+	id		SERIAL PRIMARY KEY,
 	name	VARCHAR(30) DEFAULT '' NOT NULL
 );
 
