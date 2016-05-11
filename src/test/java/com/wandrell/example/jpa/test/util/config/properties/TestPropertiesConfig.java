@@ -44,6 +44,11 @@ public class TestPropertiesConfig {
     public static final String COLLECTION        = "classpath:config/entity/test-collection-entity.properties";
 
     /**
+     * Map entity.
+     */
+    public static final String MAP               = "classpath:config/entity/test-map-entity.properties";
+
+    /**
      * Date entity.
      */
     public static final String DATE              = "classpath:config/entity/test-date-entity.properties";
