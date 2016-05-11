@@ -29,6 +29,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import com.wandrell.example.jpa.model.embedded.EmbeddableData_;
 import com.wandrell.example.jpa.model.embedded.EmbeddedEntity;
 import com.wandrell.example.jpa.model.embedded.EmbeddedEntity_;
 
@@ -63,8 +64,8 @@ public class EmbeddedEntityCriteriaFactory {
 
         // Generates a select query
         query.select(entity);
-        query.where(builder.equal(entity.get(EmbeddedEntity_.data.getName()),
-                name));
+        query.where(builder.equal(entity.get(EmbeddedEntity_.embeddedData)
+                .get(EmbeddableData_.name), name));
 
         // Orders by the id
         query.orderBy(builder.asc(entity.get(EmbeddedEntity_.id)));

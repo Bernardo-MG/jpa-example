@@ -62,7 +62,7 @@ public class EmbeddedEntity implements Serializable {
     @Embedded
     @AttributeOverrides({ @AttributeOverride(name = "desc",
             column = @Column(name = "description", nullable = false) ), })
-    private EmbeddableData    data;
+    private EmbeddableData    embeddedData;
 
     /**
      * Entity's ID.
@@ -98,6 +98,15 @@ public class EmbeddedEntity implements Serializable {
     }
 
     /**
+     * Returns the embedded data.
+     * 
+     * @return the embedded data
+     */
+    public final EmbeddableData getEmbeddedData() {
+        return embeddedData;
+    }
+
+    /**
      * Returns the entity's id.
      *
      * @return the entity's id
@@ -109,6 +118,16 @@ public class EmbeddedEntity implements Serializable {
     @Override
     public final int hashCode() {
         return Objects.hash(id);
+    }
+
+    /**
+     * Sets the embedded data.
+     * 
+     * @param embeddedData
+     *            the embedded data to set in the entity.
+     */
+    public final void setEmbeddedData(final EmbeddableData embeddedData) {
+        this.embeddedData = embeddedData;
     }
 
     /**
