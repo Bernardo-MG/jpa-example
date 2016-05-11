@@ -37,47 +37,52 @@ public class QueryPropertiesPaths {
     /**
      * Boolean converter entity.
      */
-    public static final String BOOLEAN_CONVERTER = "classpath:config/persistence/query/test-boolean-converter-entity-query.properties";
+    public static final String BOOLEAN_CONVERTER  = "classpath:config/persistence/query/test-boolean-converter-entity-query.properties";
 
     /**
      * Collection entity.
      */
-    public static final String COLLECTION        = "classpath:config/persistence/query/test-collection-entity-query.properties";
+    public static final String COLLECTION         = "classpath:config/persistence/query/test-collection-entity-query.properties";
 
     /**
      * Date entity.
      */
-    public static final String DATE              = "classpath:config/persistence/query/test-date-entity-query.properties";
+    public static final String DATE               = "classpath:config/persistence/query/test-date-entity-query.properties";
+
+    /**
+     * Element collection entity.
+     */
+    public static final String ELEMENT_COLLECTION = "classpath:config/persistence/query/test-element-collection-entity-query.properties";
 
     /**
      * Embedded data entity.
      */
-    public static final String EMBEDDED          = "classpath:config/persistence/query/test-embedded-entity-query.properties";
+    public static final String EMBEDDED           = "classpath:config/persistence/query/test-embedded-entity-query.properties";
 
     /**
      * Enumeration entity.
      */
-    public static final String ENUMERATION       = "classpath:config/persistence/query/test-enumeration-entity-query.properties";
+    public static final String ENUMERATION        = "classpath:config/persistence/query/test-enumeration-entity-query.properties";
 
     /**
      * Collection entity.
      */
-    public static final String MAP               = "classpath:config/persistence/query/test-map-entity-query.properties";
+    public static final String MAP                = "classpath:config/persistence/query/test-map-entity-query.properties";
 
     /**
      * Simple entity.
      */
-    public static final String SIMPLE_ENTITY     = "classpath:config/persistence/query/test-simple-entity-query.properties";
+    public static final String SIMPLE_ENTITY      = "classpath:config/persistence/query/test-simple-entity-query.properties";
 
     /**
      * Time entity.
      */
-    public static final String TIME              = "classpath:config/persistence/query/test-time-entity-query.properties";
+    public static final String TIME               = "classpath:config/persistence/query/test-time-entity-query.properties";
 
     /**
      * Time entity.
      */
-    public static final String TIMESTAMP         = "classpath:config/persistence/query/test-timestamp-entity-query.properties";
+    public static final String TIMESTAMP          = "classpath:config/persistence/query/test-timestamp-entity-query.properties";
 
     /**
      * Private constructor to avoid initialization.

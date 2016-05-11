@@ -36,47 +36,52 @@ public class TestPropertiesConfig {
     /**
      * Boolean converter entity.
      */
-    public static final String BOOLEAN_CONVERTER = "classpath:config/entity/test-boolean-converter-entity.properties";
+    public static final String BOOLEAN_CONVERTER  = "classpath:config/entity/test-boolean-converter-entity.properties";
 
     /**
      * Collection entity.
      */
-    public static final String COLLECTION        = "classpath:config/entity/test-collection-entity.properties";
+    public static final String COLLECTION         = "classpath:config/entity/test-collection-entity.properties";
 
     /**
      * Date entity.
      */
-    public static final String DATE              = "classpath:config/entity/test-date-entity.properties";
+    public static final String DATE               = "classpath:config/entity/test-date-entity.properties";
+
+    /**
+     * Element collection entity.
+     */
+    public static final String ELEMENT_COLLECTION = "classpath:config/entity/test-element-collection-entity.properties";
 
     /**
      * Embedded data entity.
      */
-    public static final String EMBEDDED          = "classpath:config/entity/test-embedded-entity.properties";
+    public static final String EMBEDDED           = "classpath:config/entity/test-embedded-entity.properties";
 
     /**
      * Enumeration entity.
      */
-    public static final String ENUMERATION       = "classpath:config/entity/test-enumeration-entity.properties";
+    public static final String ENUMERATION        = "classpath:config/entity/test-enumeration-entity.properties";
 
     /**
      * Map entity.
      */
-    public static final String MAP               = "classpath:config/entity/test-map-entity.properties";
+    public static final String MAP                = "classpath:config/entity/test-map-entity.properties";
 
     /**
      * Simple entity.
      */
-    public static final String SIMPLE_ENTITY     = "classpath:config/entity/test-simple-entity.properties";
+    public static final String SIMPLE_ENTITY      = "classpath:config/entity/test-simple-entity.properties";
 
     /**
      * Time entity.
      */
-    public static final String TIME              = "classpath:config/entity/test-time-entity.properties";
+    public static final String TIME               = "classpath:config/entity/test-time-entity.properties";
 
     /**
      * Timestamp entity.
      */
-    public static final String TIMESTAMP         = "classpath:config/entity/test-timestamp-entity.properties";
+    public static final String TIMESTAMP          = "classpath:config/entity/test-timestamp-entity.properties";
 
     /**
      * Private constructor to avoid initialization.

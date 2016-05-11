@@ -70,7 +70,8 @@ public class ElementCollectionEntity implements Serializable {
      * Embeddable objects.
      */
     @ElementCollection
-    @CollectionTable(name = "data", joinColumns = @JoinColumn(name = "id") )
+    @CollectionTable(name = "element_collection_entities_values",
+            joinColumns = @JoinColumn(name = "collection_id") )
     private Collection<EmbeddableData> values           = new LinkedList<EmbeddableData>();
 
     /**

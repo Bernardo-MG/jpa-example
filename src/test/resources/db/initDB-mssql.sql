@@ -9,6 +9,8 @@ DROP TABLE IF EXISTS collection_entities_values;
 DROP TABLE IF EXISTS map_entities;
 DROP TABLE IF EXISTS map_entities_values;
 DROP TABLE IF EXISTS embedded_entities;
+DROP TABLE IF EXISTS element_collection_entities;
+DROP TABLE IF EXISTS element_collection_entities_values;
 
 CREATE TABLE simple_entities (
 	id		INTEGER IDENTITY PRIMARY KEY,
@@ -70,6 +72,17 @@ CREATE TABLE map_entities_values (
 
 CREATE TABLE embedded_entities (
 	id			INTEGER IDENTITY PRIMARY KEY,
+	name		VARCHAR(30) DEFAULT '' NOT NULL,
+	description	VARCHAR(30) DEFAULT '' NOT NULL
+);
+
+CREATE TABLE element_collection_entities (
+	id		INTEGER IDENTITY PRIMARY KEY,
+	name	VARCHAR(30) DEFAULT '' NOT NULL
+);
+
+CREATE TABLE element_collection_entities_values (
+	collection_id	INTEGER DEFAULT 0 NOT NULL,
 	name		VARCHAR(30) DEFAULT '' NOT NULL,
 	description	VARCHAR(30) DEFAULT '' NOT NULL
 );
