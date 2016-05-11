@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS collection_entities;
 DROP TABLE IF EXISTS collection_entities_values;
 DROP TABLE IF EXISTS map_entities;
 DROP TABLE IF EXISTS map_entities_values;
+DROP TABLE IF EXISTS embedded_entities;
 
 CREATE TABLE simple_entities (
 	id		SERIAL PRIMARY KEY,
@@ -65,4 +66,10 @@ CREATE TABLE map_entities_values (
 	map_id			INTEGER DEFAULT 0 NOT NULL,
 	name			VARCHAR(30) DEFAULT '' NOT NULL,
 	number			INTEGER DEFAULT 0 NOT NULL
+);
+
+CREATE TABLE embedded_entities (
+	id			INTEGER DEFAULT 0 NOT NULL,
+	name		VARCHAR(30) DEFAULT '' NOT NULL,
+	description	VARCHAR(30) DEFAULT '' NOT NULL
 );

@@ -102,3 +102,9 @@ INSERT INTO map_entities_values (map_id, name, number) VALUES (5, 'value_2', 2);
 INSERT INTO map_entities_values (map_id, name, number) VALUES (5, 'value_3', 8);
 INSERT INTO map_entities_values (map_id, name, number) VALUES (5, 'value_4', 9);
 INSERT INTO map_entities_values (map_id, name, number) VALUES (1, 'value_3', 10);
+
+INSERT INTO embedded_entities (id, name, description) VALUES (1, 'embedded_entity_1', 'desc_1');
+INSERT INTO embedded_entities (id, name, description) VALUES (2, 'embedded_entity_2', 'desc_2');
+INSERT INTO embedded_entities (id, name, description) VALUES (3, 'embedded_entity_3', 'desc_3');
+INSERT INTO embedded_entities (id, name, description) VALUES (4, 'embedded_entity_4', 'desc_4');
+INSERT INTO embedded_entities (id, name, description) VALUES (5, 'embedded_entity_5', 'desc_5');

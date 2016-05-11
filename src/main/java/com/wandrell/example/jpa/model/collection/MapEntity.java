@@ -111,15 +111,6 @@ public class MapEntity implements Serializable {
     }
 
     /**
-     * Returns the name of the entity.
-     *
-     * @return the entity's name
-     */
-    public final String getName() {
-        return name;
-    }
-
-    /**
      * Returns the entity's id.
      *
      * @return the entity's id
@@ -129,13 +120,12 @@ public class MapEntity implements Serializable {
     }
 
     /**
-     * Sets the name of the entity.
+     * Returns the name of the entity.
      *
-     * @param name
-     *            the name to set on the entity
+     * @return the entity's name
      */
-    public final void setName(String name) {
-        this.name = name;
+    public final String getName() {
+        return name;
     }
 
     /**
@@ -160,6 +150,16 @@ public class MapEntity implements Serializable {
      */
     public final void setId(final Integer identifier) {
         id = checkNotNull(identifier, "Received a null pointer as identifier");
+    }
+
+    /**
+     * Sets the name of the entity.
+     *
+     * @param name
+     *            the name to set on the entity
+     */
+    public final void setName(final String name) {
+        this.name = name;
     }
 
     /**

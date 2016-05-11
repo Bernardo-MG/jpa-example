@@ -45,19 +45,24 @@ public class QueryPropertiesPaths {
     public static final String COLLECTION        = "classpath:config/persistence/query/test-collection-entity-query.properties";
 
     /**
-     * Collection entity.
-     */
-    public static final String MAP               = "classpath:config/persistence/query/test-map-entity-query.properties";
-
-    /**
      * Date entity.
      */
     public static final String DATE              = "classpath:config/persistence/query/test-date-entity-query.properties";
 
     /**
+     * Embedded data entity.
+     */
+    public static final String EMBEDDED          = "classpath:config/persistence/query/test-embedded-entity-query.properties";
+
+    /**
      * Enumeration entity.
      */
     public static final String ENUMERATION       = "classpath:config/persistence/query/test-enumeration-entity-query.properties";
+
+    /**
+     * Collection entity.
+     */
+    public static final String MAP               = "classpath:config/persistence/query/test-map-entity-query.properties";
 
     /**
      * Simple entity.

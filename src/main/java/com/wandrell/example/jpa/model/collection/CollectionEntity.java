@@ -158,7 +158,7 @@ public class CollectionEntity implements Serializable {
      * @param name
      *            the name to set on the entity
      */
-    public final void setName(String name) {
+    public final void setName(final String name) {
         this.name = name;
     }
 

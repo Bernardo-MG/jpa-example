@@ -44,19 +44,24 @@ public class TestPropertiesConfig {
     public static final String COLLECTION        = "classpath:config/entity/test-collection-entity.properties";
 
     /**
-     * Map entity.
-     */
-    public static final String MAP               = "classpath:config/entity/test-map-entity.properties";
-
-    /**
      * Date entity.
      */
     public static final String DATE              = "classpath:config/entity/test-date-entity.properties";
 
     /**
+     * Embedded data entity.
+     */
+    public static final String EMBEDDED          = "classpath:config/entity/test-embedded-entity.properties";
+
+    /**
      * Enumeration entity.
      */
     public static final String ENUMERATION       = "classpath:config/entity/test-enumeration-entity.properties";
+
+    /**
+     * Map entity.
+     */
+    public static final String MAP               = "classpath:config/entity/test-map-entity.properties";
 
     /**
      * Simple entity.
