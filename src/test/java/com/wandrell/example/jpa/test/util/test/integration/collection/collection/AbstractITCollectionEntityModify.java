@@ -22,58 +22,58 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.test.integration.collection;
+package com.wandrell.example.jpa.test.util.test.integration.collection.collection;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.Collection;
+import java.util.LinkedList;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 
-import com.wandrell.example.jpa.model.collection.MapEntity;
+import com.wandrell.example.jpa.model.collection.CollectionEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
- * Abstract integration tests for a {@link MapEntity} testing it can be
+ * Abstract integration tests for a {@link CollectionEntity} testing it can be
  * modified.
  *
  * @author Bernardo Martínez Garrido
- * @see MapEntity
+ * @see CollectionEntity
  */
-public abstract class AbstractITMapEntityModify
-        extends AbstractITEntityModify<MapEntity> {
+public abstract class AbstractITCollectionEntityModify
+        extends AbstractITEntityModify<CollectionEntity> {
 
     /**
      * Value to set on the name for the tests.
      */
-    private final String               name   = "The new name";
+    private final String              name   = "The new name";
 
     /**
      * Values to set on the entity.
      */
-    private final Map<String, Integer> values = new LinkedHashMap<String, Integer>();
+    private final Collection<Integer> values = new LinkedList<Integer>();
 
     /**
      * Default constructor.
      */
-    public AbstractITMapEntityModify() {
+    public AbstractITCollectionEntityModify() {
         super();
     }
 
     @BeforeTest
     public final void initializeValues() {
-        values.put("value_11", 11);
-        values.put("value_55", 55);
+        values.add(1);
+        values.add(5);
     }
 
     @Override
-    protected final void assertEntityModified(final MapEntity entity) {
+    protected final void assertEntityModified(final CollectionEntity entity) {
         Assert.assertEquals(entity.getName(), name);
         Assert.assertEquals(entity.getValues(), values);
     }
 
     @Override
-    protected final void modifyEntity(final MapEntity entity) {
+    protected final void modifyEntity(final CollectionEntity entity) {
         entity.setName(name);
         entity.setValues(values);
     }

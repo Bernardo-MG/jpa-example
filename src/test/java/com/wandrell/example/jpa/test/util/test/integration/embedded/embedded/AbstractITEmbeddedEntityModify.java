@@ -22,60 +22,45 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.test.integration.collection;
-
-import java.util.Collection;
-import java.util.LinkedList;
+package com.wandrell.example.jpa.test.util.test.integration.embedded.embedded;
 
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
 
-import com.wandrell.example.jpa.model.collection.CollectionEntity;
+import com.wandrell.example.jpa.model.embedded.EmbeddableData;
+import com.wandrell.example.jpa.model.embedded.EmbeddedEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
- * Abstract integration tests for a {@link CollectionEntity} testing it can be
+ * Abstract integration tests for a {@link EmbeddedEntity} testing it can be
  * modified.
  *
  * @author Bernardo Martínez Garrido
- * @see CollectionEntity
+ * @see EmbeddedEntity
  */
-public abstract class AbstractITCollectionEntityModify
-        extends AbstractITEntityModify<CollectionEntity> {
+public abstract class AbstractITEmbeddedEntityModify
+        extends AbstractITEntityModify<EmbeddedEntity> {
 
     /**
      * Value to set on the name for the tests.
      */
-    private final String              name   = "The new name";
-
-    /**
-     * Values to set on the entity.
-     */
-    private final Collection<Integer> values = new LinkedList<Integer>();
+    private final String name = "The new name";
 
     /**
      * Default constructor.
      */
-    public AbstractITCollectionEntityModify() {
+    public AbstractITEmbeddedEntityModify() {
         super();
     }
 
-    @BeforeTest
-    public final void initializeValues() {
-        values.add(1);
-        values.add(5);
+    @Override
+    protected final void assertEntityModified(final EmbeddedEntity entity) {
+        Assert.assertEquals(entity.getEmbeddedData().getName(), name);
     }
 
     @Override
-    protected final void assertEntityModified(final CollectionEntity entity) {
-        Assert.assertEquals(entity.getName(), name);
-        Assert.assertEquals(entity.getValues(), values);
-    }
-
-    @Override
-    protected final void modifyEntity(final CollectionEntity entity) {
-        entity.setName(name);
-        entity.setValues(values);
+    protected final void modifyEntity(final EmbeddedEntity entity) {
+        entity.setEmbeddedData(new EmbeddableData());
+        entity.getEmbeddedData().setName(name);
     }
 
 }

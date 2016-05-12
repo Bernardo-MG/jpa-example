@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.test.integration.collection;
+package com.wandrell.example.jpa.test.util.test.integration.embedded.embedded;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -33,15 +33,14 @@ import org.springframework.test.context.testng.AbstractTransactionalTestNGSpring
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.model.collection.CollectionEntity;
-import com.wandrell.example.jpa.test.util.criteria.collection.CollectionEntityCriteriaFactory;
+import com.wandrell.example.jpa.model.embedded.EmbeddedEntity;
 
 /**
- * Abstract integration tests for a {@link CollectionEntity} testing it can be
- * queried correctly by using criteria API queries.
+ * Abstract integration tests for a {@link EmbeddedEntity} testing it can be
+ * queried correctly by using JPQL queries.
  * <p>
  * The tests cases just show how to do query operations with a JPA entity by
- * using the criteria API.
+ * using JPQL queries.
  * <p>
  * Checks the following cases:
  * <ol>
@@ -53,16 +52,10 @@ import com.wandrell.example.jpa.test.util.criteria.collection.CollectionEntityCr
  * repository and all of it's requirements.
  *
  * @author Bernardo Martínez Garrido
- * @see CollectionEntity
+ * @see EmbeddedEntity
  */
-public abstract class AbstractITCollectionEntityQueryCriteriaApi
+public abstract class AbstractITEmbeddedEntityQueryJpql
         extends AbstractTransactionalTestNGSpringContextTests {
-
-    /**
-     * Initial number of entities in the persistence context.
-     */
-    @Value("${entities.total}")
-    private Integer       entitiesCount;
 
     /**
      * The JPA entity manager.
@@ -71,9 +64,15 @@ public abstract class AbstractITCollectionEntityQueryCriteriaApi
     private EntityManager entityManager;
 
     /**
+     * The query to acquire all the entities.
+     */
+    @Value("${query.findByName}")
+    private String        findByName;
+
+    /**
      * Default constructor.
      */
-    public AbstractITCollectionEntityQueryCriteriaApi() {
+    public AbstractITEmbeddedEntityQueryJpql() {
         super();
     }
 
@@ -82,20 +81,20 @@ public abstract class AbstractITCollectionEntityQueryCriteriaApi
      * correct number of them.
      */
     @Test
-    public final void testFindAllWithValue() {
-        final Integer value; // Value to find
+    public final void testFindByName() {
+        final String name;   // Value to find
         final Integer count; // Number of entities expected
         final Query query;   // Query for the entity
 
         // Queried value
-        value = 2;
+        name = "embedded_entity_1";
 
         // Expected result
-        count = 3;
+        count = 1;
 
         // Builds the query
-        query = getEntityManager().createQuery(CollectionEntityCriteriaFactory
-                .findAllWithValue(getEntityManager(), value));
+        query = getEntityManager().createQuery(findByName);
+        query.setParameter("name", name);
 
         // The entity's id is the correct one
         Assert.assertEquals((Integer) query.getResultList().size(), count);

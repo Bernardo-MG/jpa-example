@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.eclipselink.collection.h2;
+package com.wandrell.example.jpa.test.integration.eclipselink.collection.map.h2;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -36,31 +36,31 @@ import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.collection.AbstractITCollectionEntityQueryJpql;
+import com.wandrell.example.jpa.test.util.test.integration.collection.map.AbstractITMapEntityQueryCriteriaApi;
 
 /**
  * Integration tests for a {@code CollectionEntity} testing it loads values
- * correctly by using JPQL queries.
+ * correctly by using the criteria API.
  *
  * @author Bernardo Martínez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         PersistenceContextConfig.ECLIPSELINK })
 @TestPropertySource(
-        locations = { TestPropertiesConfig.COLLECTION,
+        locations = { TestPropertiesConfig.MAP,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
                 DataBaseUserPropertiesConfig.DEFAULT,
                 DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
-                JdbcPropertiesPaths.H2, QueryPropertiesPaths.COLLECTION },
-        properties = { "jpa.persistenceUnitName=collection_eclipselink_h2",
+                JdbcPropertiesPaths.H2, QueryPropertiesPaths.MAP },
+        properties = { "jpa.persistenceUnitName=map_eclipselink_h2",
                 "jdbc.url=jdbc:h2:mem:test_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
-public final class ITCollectionEntityQueryJpqlEclipseLinkH2
-        extends AbstractITCollectionEntityQueryJpql {
+public final class ITMapEntityQueryCriteriaApiEclipseLinkH2
+        extends AbstractITMapEntityQueryCriteriaApi {
 
     /**
      * Default constructor.
      */
-    public ITCollectionEntityQueryJpqlEclipseLinkH2() {
+    public ITMapEntityQueryCriteriaApiEclipseLinkH2() {
         super();
     }
 

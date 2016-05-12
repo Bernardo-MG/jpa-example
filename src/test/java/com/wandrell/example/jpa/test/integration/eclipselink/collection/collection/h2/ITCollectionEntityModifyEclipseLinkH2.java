@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.eclipselink.embedded.h2;
+package com.wandrell.example.jpa.test.integration.eclipselink.collection.collection.h2;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -36,31 +36,32 @@ import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.embedded.AbstractITEmbeddedEntityQueryCriteriaApi;
+import com.wandrell.example.jpa.test.util.test.integration.collection.collection.AbstractITCollectionEntityModify;
 
 /**
- * Integration tests for a {@code EmbeddedEntity} testing it loads values
- * correctly by using the criteria API.
+ * Integration tests for a {@code CollectionEntity} testing it can be modified.
  *
  * @author Bernardo Martínez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
+        TestContextConfig.ENTITY_MODIFIABLE,
         PersistenceContextConfig.ECLIPSELINK })
 @TestPropertySource(
-        locations = { TestPropertiesConfig.EMBEDDED,
+        locations = { TestPropertiesConfig.COLLECTION,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
                 DataBaseUserPropertiesConfig.DEFAULT,
                 DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
-                JdbcPropertiesPaths.H2, QueryPropertiesPaths.EMBEDDED },
-        properties = { "jpa.persistenceUnitName=embedded_eclipselink_h2",
-                "jdbc.url=jdbc:h2:mem:test_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
-public final class ITEmbeddedEntityQueryCriteriaApiEclipseLinkH2
-        extends AbstractITEmbeddedEntityQueryCriteriaApi {
+                JdbcPropertiesPaths.H2, QueryPropertiesPaths.COLLECTION },
+        properties = {
+                "jpa.persistenceUnitName=collection_eclipselink_h2_modify",
+                "jdbc.url=jdbc:h2:mem:test_eclipselink_modify;DB_CLOSE_ON_EXIT=FALSE" })
+public final class ITCollectionEntityModifyEclipseLinkH2
+        extends AbstractITCollectionEntityModify {
 
     /**
      * Default constructor.
      */
-    public ITEmbeddedEntityQueryCriteriaApiEclipseLinkH2() {
+    public ITCollectionEntityModifyEclipseLinkH2() {
         super();
     }
 

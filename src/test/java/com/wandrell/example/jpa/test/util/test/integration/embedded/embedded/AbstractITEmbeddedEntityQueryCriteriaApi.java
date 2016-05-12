@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.test.integration.collection;
+package com.wandrell.example.jpa.test.util.test.integration.embedded.embedded;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -33,14 +33,15 @@ import org.springframework.test.context.testng.AbstractTransactionalTestNGSpring
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.model.collection.MapEntity;
+import com.wandrell.example.jpa.model.embedded.EmbeddedEntity;
+import com.wandrell.example.jpa.test.util.criteria.embedded.EmbeddedEntityCriteriaFactory;
 
 /**
- * Abstract integration tests for a {@link MapEntity} testing it can be queried
- * correctly by using JPQL queries.
+ * Abstract integration tests for a {@link EmbeddedEntity} testing it can be
+ * queried correctly by using criteria API queries.
  * <p>
  * The tests cases just show how to do query operations with a JPA entity by
- * using JPQL queries.
+ * using the criteria API.
  * <p>
  * Checks the following cases:
  * <ol>
@@ -52,10 +53,16 @@ import com.wandrell.example.jpa.model.collection.MapEntity;
  * repository and all of it's requirements.
  *
  * @author Bernardo Martínez Garrido
- * @see MapEntity
+ * @see EmbeddedEntity
  */
-public abstract class AbstractITMapEntityQueryJpql
+public abstract class AbstractITEmbeddedEntityQueryCriteriaApi
         extends AbstractTransactionalTestNGSpringContextTests {
+
+    /**
+     * Initial number of entities in the persistence context.
+     */
+    @Value("${entities.total}")
+    private Integer       entitiesCount;
 
     /**
      * The JPA entity manager.
@@ -64,15 +71,9 @@ public abstract class AbstractITMapEntityQueryJpql
     private EntityManager entityManager;
 
     /**
-     * The query to acquire all the entities.
-     */
-    @Value("${query.findAllWithValueInMap}")
-    private String        findAllWithValueInMap;
-
-    /**
      * Default constructor.
      */
-    public AbstractITMapEntityQueryJpql() {
+    public AbstractITEmbeddedEntityQueryCriteriaApi() {
         super();
     }
 
@@ -81,20 +82,20 @@ public abstract class AbstractITMapEntityQueryJpql
      * correct number of them.
      */
     @Test
-    public final void testfindAllWithValueInMap() {
-        final Integer value; // Value to find
+    public final void testFindByName() {
+        final String name;   // Value to find
         final Integer count; // Number of entities expected
         final Query query;   // Query for the entity
 
         // Queried value
-        value = 2;
+        name = "embedded_entity_1";
 
         // Expected result
-        count = 3;
+        count = 1;
 
         // Builds the query
-        query = getEntityManager().createQuery(findAllWithValueInMap);
-        query.setParameter("value", value);
+        query = getEntityManager().createQuery(EmbeddedEntityCriteriaFactory
+                .findByName(getEntityManager(), name));
 
         // The entity's id is the correct one
         Assert.assertEquals((Integer) query.getResultList().size(), count);

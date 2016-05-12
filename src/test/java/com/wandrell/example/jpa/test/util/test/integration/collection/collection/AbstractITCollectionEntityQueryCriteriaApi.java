@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.test.integration.collection;
+package com.wandrell.example.jpa.test.util.test.integration.collection.collection;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -33,12 +33,12 @@ import org.springframework.test.context.testng.AbstractTransactionalTestNGSpring
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.model.collection.MapEntity;
-import com.wandrell.example.jpa.test.util.criteria.collection.MapEntityCriteriaFactory;
+import com.wandrell.example.jpa.model.collection.CollectionEntity;
+import com.wandrell.example.jpa.test.util.criteria.collection.CollectionEntityCriteriaFactory;
 
 /**
- * Abstract integration tests for a {@link MapEntity} testing it can be queried
- * correctly by using criteria API queries.
+ * Abstract integration tests for a {@link CollectionEntity} testing it can be
+ * queried correctly by using criteria API queries.
  * <p>
  * The tests cases just show how to do query operations with a JPA entity by
  * using the criteria API.
@@ -53,9 +53,9 @@ import com.wandrell.example.jpa.test.util.criteria.collection.MapEntityCriteriaF
  * repository and all of it's requirements.
  *
  * @author Bernardo Martínez Garrido
- * @see MapEntity
+ * @see CollectionEntity
  */
-public abstract class AbstractITMapEntityQueryCriteriaApi
+public abstract class AbstractITCollectionEntityQueryCriteriaApi
         extends AbstractTransactionalTestNGSpringContextTests {
 
     /**
@@ -73,7 +73,7 @@ public abstract class AbstractITMapEntityQueryCriteriaApi
     /**
      * Default constructor.
      */
-    public AbstractITMapEntityQueryCriteriaApi() {
+    public AbstractITCollectionEntityQueryCriteriaApi() {
         super();
     }
 
@@ -82,7 +82,7 @@ public abstract class AbstractITMapEntityQueryCriteriaApi
      * correct number of them.
      */
     @Test
-    public final void testfindAllWithValueInMap() {
+    public final void testFindAllWithValue() {
         final Integer value; // Value to find
         final Integer count; // Number of entities expected
         final Query query;   // Query for the entity
@@ -94,8 +94,8 @@ public abstract class AbstractITMapEntityQueryCriteriaApi
         count = 3;
 
         // Builds the query
-        query = getEntityManager().createQuery(MapEntityCriteriaFactory
-                .findAllWithValueInMap(getEntityManager(), value));
+        query = getEntityManager().createQuery(CollectionEntityCriteriaFactory
+                .findAllWithValue(getEntityManager(), value));
 
         // The entity's id is the correct one
         Assert.assertEquals((Integer) query.getResultList().size(), count);

@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.eclipselink.collection.h2;
+package com.wandrell.example.jpa.test.integration.eclipselink.collection.map.h2;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -36,15 +36,15 @@ import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.collection.AbstractITMapEntityQueryJpql;
+import com.wandrell.example.jpa.test.util.test.integration.collection.map.AbstractITMapEntityModify;
 
 /**
- * Integration tests for a {@code CollectionEntity} testing it loads values
- * correctly by using JPQL queries.
+ * Integration tests for a {@code CollectionEntity} testing it can be modified.
  *
  * @author Bernardo Martínez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
+        TestContextConfig.ENTITY_MODIFIABLE,
         PersistenceContextConfig.ECLIPSELINK })
 @TestPropertySource(
         locations = { TestPropertiesConfig.MAP,
@@ -52,15 +52,15 @@ import com.wandrell.example.jpa.test.util.test.integration.collection.AbstractIT
                 DataBaseUserPropertiesConfig.DEFAULT,
                 DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
                 JdbcPropertiesPaths.H2, QueryPropertiesPaths.MAP },
-        properties = { "jpa.persistenceUnitName=map_eclipselink_h2",
-                "jdbc.url=jdbc:h2:mem:test_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
-public final class ITMapEntityQueryJpqlEclipseLinkH2
-        extends AbstractITMapEntityQueryJpql {
+        properties = { "jpa.persistenceUnitName=map_eclipselink_h2_modify",
+                "jdbc.url=jdbc:h2:mem:test_eclipselink_modify;DB_CLOSE_ON_EXIT=FALSE" })
+public final class ITMapEntityModifyEclipseLinkH2
+        extends AbstractITMapEntityModify {
 
     /**
      * Default constructor.
      */
-    public ITMapEntityQueryJpqlEclipseLinkH2() {
+    public ITMapEntityModifyEclipseLinkH2() {
         super();
     }
 

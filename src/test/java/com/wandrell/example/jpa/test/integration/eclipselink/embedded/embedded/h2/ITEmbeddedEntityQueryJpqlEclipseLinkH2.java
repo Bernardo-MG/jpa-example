@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.eclipselink.embedded.h2;
+package com.wandrell.example.jpa.test.integration.eclipselink.embedded.embedded.h2;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -36,15 +36,15 @@ import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.embedded.AbstractITEmbeddedEntityModify;
+import com.wandrell.example.jpa.test.util.test.integration.embedded.embedded.AbstractITEmbeddedEntityQueryJpql;
 
 /**
- * Integration tests for a {@code EmbeddedEntity} testing it can be modified.
+ * Integration tests for a {@code EmbeddedEntity} testing it loads values
+ * correctly by using JPQL queries.
  *
  * @author Bernardo Martínez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        TestContextConfig.ENTITY_MODIFIABLE,
         PersistenceContextConfig.ECLIPSELINK })
 @TestPropertySource(
         locations = { TestPropertiesConfig.EMBEDDED,
@@ -52,15 +52,15 @@ import com.wandrell.example.jpa.test.util.test.integration.embedded.AbstractITEm
                 DataBaseUserPropertiesConfig.DEFAULT,
                 DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
                 JdbcPropertiesPaths.H2, QueryPropertiesPaths.EMBEDDED },
-        properties = { "jpa.persistenceUnitName=embedded_eclipselink_h2_modify",
-                "jdbc.url=jdbc:h2:mem:test_eclipselink_modify;DB_CLOSE_ON_EXIT=FALSE" })
-public final class ITEmbeddedEntityModifyEclipseLinkH2
-        extends AbstractITEmbeddedEntityModify {
+        properties = { "jpa.persistenceUnitName=embedded_eclipselink_h2",
+                "jdbc.url=jdbc:h2:mem:test_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
+public final class ITEmbeddedEntityQueryJpqlEclipseLinkH2
+        extends AbstractITEmbeddedEntityQueryJpql {
 
     /**
      * Default constructor.
      */
-    public ITEmbeddedEntityModifyEclipseLinkH2() {
+    public ITEmbeddedEntityQueryJpqlEclipseLinkH2() {
         super();
     }
 

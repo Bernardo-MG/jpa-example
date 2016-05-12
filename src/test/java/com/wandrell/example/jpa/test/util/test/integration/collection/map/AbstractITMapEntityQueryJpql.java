@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.test.integration.collection;
+package com.wandrell.example.jpa.test.util.test.integration.collection.map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -33,11 +33,11 @@ import org.springframework.test.context.testng.AbstractTransactionalTestNGSpring
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.model.collection.CollectionEntity;
+import com.wandrell.example.jpa.model.collection.MapEntity;
 
 /**
- * Abstract integration tests for a {@link CollectionEntity} testing it can be
- * queried correctly by using JPQL queries.
+ * Abstract integration tests for a {@link MapEntity} testing it can be queried
+ * correctly by using JPQL queries.
  * <p>
  * The tests cases just show how to do query operations with a JPA entity by
  * using JPQL queries.
@@ -52,9 +52,9 @@ import com.wandrell.example.jpa.model.collection.CollectionEntity;
  * repository and all of it's requirements.
  *
  * @author Bernardo Martínez Garrido
- * @see CollectionEntity
+ * @see MapEntity
  */
-public abstract class AbstractITCollectionEntityQueryJpql
+public abstract class AbstractITMapEntityQueryJpql
         extends AbstractTransactionalTestNGSpringContextTests {
 
     /**
@@ -66,13 +66,13 @@ public abstract class AbstractITCollectionEntityQueryJpql
     /**
      * The query to acquire all the entities.
      */
-    @Value("${query.findAllWithValue}")
-    private String        findAllWithValue;
+    @Value("${query.findAllWithValueInMap}")
+    private String        findAllWithValueInMap;
 
     /**
      * Default constructor.
      */
-    public AbstractITCollectionEntityQueryJpql() {
+    public AbstractITMapEntityQueryJpql() {
         super();
     }
 
@@ -81,7 +81,7 @@ public abstract class AbstractITCollectionEntityQueryJpql
      * correct number of them.
      */
     @Test
-    public final void testFindAllWithValue() {
+    public final void testfindAllWithValueInMap() {
         final Integer value; // Value to find
         final Integer count; // Number of entities expected
         final Query query;   // Query for the entity
@@ -93,7 +93,7 @@ public abstract class AbstractITCollectionEntityQueryJpql
         count = 3;
 
         // Builds the query
-        query = getEntityManager().createQuery(findAllWithValue);
+        query = getEntityManager().createQuery(findAllWithValueInMap);
         query.setParameter("value", value);
 
         // The entity's id is the correct one

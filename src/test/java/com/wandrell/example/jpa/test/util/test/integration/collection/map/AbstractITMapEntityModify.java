@@ -22,45 +22,60 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.test.integration.embedded;
+package com.wandrell.example.jpa.test.util.test.integration.collection.map;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 
-import com.wandrell.example.jpa.model.embedded.EmbeddableData;
-import com.wandrell.example.jpa.model.embedded.EmbeddedEntity;
+import com.wandrell.example.jpa.model.collection.MapEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
- * Abstract integration tests for a {@link EmbeddedEntity} testing it can be
+ * Abstract integration tests for a {@link MapEntity} testing it can be
  * modified.
  *
  * @author Bernardo Martínez Garrido
- * @see EmbeddedEntity
+ * @see MapEntity
  */
-public abstract class AbstractITEmbeddedEntityModify
-        extends AbstractITEntityModify<EmbeddedEntity> {
+public abstract class AbstractITMapEntityModify
+        extends AbstractITEntityModify<MapEntity> {
 
     /**
      * Value to set on the name for the tests.
      */
-    private final String name = "The new name";
+    private final String               name   = "The new name";
+
+    /**
+     * Values to set on the entity.
+     */
+    private final Map<String, Integer> values = new LinkedHashMap<String, Integer>();
 
     /**
      * Default constructor.
      */
-    public AbstractITEmbeddedEntityModify() {
+    public AbstractITMapEntityModify() {
         super();
     }
 
-    @Override
-    protected final void assertEntityModified(final EmbeddedEntity entity) {
-        Assert.assertEquals(entity.getEmbeddedData().getName(), name);
+    @BeforeTest
+    public final void initializeValues() {
+        values.put("value_11", 11);
+        values.put("value_55", 55);
     }
 
     @Override
-    protected final void modifyEntity(final EmbeddedEntity entity) {
-        entity.setEmbeddedData(new EmbeddableData());
-        entity.getEmbeddedData().setName(name);
+    protected final void assertEntityModified(final MapEntity entity) {
+        Assert.assertEquals(entity.getName(), name);
+        Assert.assertEquals(entity.getValues(), values);
+    }
+
+    @Override
+    protected final void modifyEntity(final MapEntity entity) {
+        entity.setName(name);
+        entity.setValues(values);
     }
 
 }

@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.eclipselink.collection.h2;
+package com.wandrell.example.jpa.test.integration.eclipselink.collection.collection.h2;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -36,11 +36,11 @@ import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.collection.AbstractITCollectionEntityQueryCriteriaApi;
+import com.wandrell.example.jpa.test.util.test.integration.collection.collection.AbstractITCollectionEntityQueryJpql;
 
 /**
  * Integration tests for a {@code CollectionEntity} testing it loads values
- * correctly by using the criteria API.
+ * correctly by using JPQL queries.
  *
  * @author Bernardo Martínez Garrido
  */
@@ -54,13 +54,13 @@ import com.wandrell.example.jpa.test.util.test.integration.collection.AbstractIT
                 JdbcPropertiesPaths.H2, QueryPropertiesPaths.COLLECTION },
         properties = { "jpa.persistenceUnitName=collection_eclipselink_h2",
                 "jdbc.url=jdbc:h2:mem:test_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
-public final class ITCollectionEntityQueryCriteriaApiEclipseLinkH2
-        extends AbstractITCollectionEntityQueryCriteriaApi {
+public final class ITCollectionEntityQueryJpqlEclipseLinkH2
+        extends AbstractITCollectionEntityQueryJpql {
 
     /**
      * Default constructor.
      */
-    public ITCollectionEntityQueryCriteriaApiEclipseLinkH2() {
+    public ITCollectionEntityQueryJpqlEclipseLinkH2() {
         super();
     }
 

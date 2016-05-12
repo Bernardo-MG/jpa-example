@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.eclipselink.embedded.h2;
+package com.wandrell.example.jpa.test.integration.eclipselink.embedded.embedded.h2;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -36,11 +36,11 @@ import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.embedded.AbstractITEmbeddedEntityQueryJpql;
+import com.wandrell.example.jpa.test.util.test.integration.embedded.embedded.AbstractITEmbeddedEntityQueryCriteriaApi;
 
 /**
  * Integration tests for a {@code EmbeddedEntity} testing it loads values
- * correctly by using JPQL queries.
+ * correctly by using the criteria API.
  *
  * @author Bernardo Martínez Garrido
  */
@@ -54,13 +54,13 @@ import com.wandrell.example.jpa.test.util.test.integration.embedded.AbstractITEm
                 JdbcPropertiesPaths.H2, QueryPropertiesPaths.EMBEDDED },
         properties = { "jpa.persistenceUnitName=embedded_eclipselink_h2",
                 "jdbc.url=jdbc:h2:mem:test_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
-public final class ITEmbeddedEntityQueryJpqlEclipseLinkH2
-        extends AbstractITEmbeddedEntityQueryJpql {
+public final class ITEmbeddedEntityQueryCriteriaApiEclipseLinkH2
+        extends AbstractITEmbeddedEntityQueryCriteriaApi {
 
     /**
      * Default constructor.
      */
-    public ITEmbeddedEntityQueryJpqlEclipseLinkH2() {
+    public ITEmbeddedEntityQueryCriteriaApiEclipseLinkH2() {
         super();
     }
 
