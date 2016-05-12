@@ -108,3 +108,22 @@ INSERT INTO embedded_entities (id, name, description) VALUES (2, 'embedded_entit
 INSERT INTO embedded_entities (id, name, description) VALUES (3, 'embedded_entity_3', 'desc_3');
 INSERT INTO embedded_entities (id, name, description) VALUES (4, 'embedded_entity_4', 'desc_4');
 INSERT INTO embedded_entities (id, name, description) VALUES (5, 'embedded_entity_5', 'desc_5');
+
+INSERT INTO element_collection_entities (id, name) VALUES (1, 'element_col_1');
+INSERT INTO element_collection_entities (id, name) VALUES (2, 'element_col_2');
+INSERT INTO element_collection_entities (id, name) VALUES (3, 'element_col_3');
+INSERT INTO element_collection_entities (id, name) VALUES (4, 'element_col_4');
+INSERT INTO element_collection_entities (id, name) VALUES (5, 'element_col_5');
+
+INSERT INTO element_collection_entities_values (collection_id, name, description) VALUES (1, 'name_1', 'desc_1');
+INSERT INTO element_collection_entities_values (collection_id, name, description) VALUES (1, 'name_2', 'desc_2');
+INSERT INTO element_collection_entities_values (collection_id, name, description) VALUES (2, 'name_1', 'desc_1');
+INSERT INTO element_collection_entities_values (collection_id, name, description) VALUES (2, 'name_2', 'desc_2');
+INSERT INTO element_collection_entities_values (collection_id, name, description) VALUES (3, 'name_1', 'desc_1');
+INSERT INTO element_collection_entities_values (collection_id, name, description) VALUES (3, 'name_2', 'desc_2');
+INSERT INTO element_collection_entities_values (collection_id, name, description) VALUES (4, 'name_1', 'desc_1');
+INSERT INTO element_collection_entities_values (collection_id, name, description) VALUES (5, 'name_1', 'desc_1');
+INSERT INTO element_collection_entities_values (collection_id, name, description) VALUES (5, 'name_2', 'desc_2');
+INSERT INTO element_collection_entities_values (collection_id, name, description) VALUES (5, 'name_3', 'desc_3');
+INSERT INTO element_collection_entities_values (collection_id, name, description) VALUES (5, 'name_4', 'desc_4');
+INSERT INTO element_collection_entities_values (collection_id, name, description) VALUES (1, 'name_3', 'desc_3');

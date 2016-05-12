@@ -60,8 +60,8 @@ public class EmbeddedEntity implements Serializable {
      * Embedded data.
      */
     @Embedded
-    @AttributeOverrides({ @AttributeOverride(name = "desc",
-            column = @Column(name = "description", nullable = false) ), })
+    @AttributeOverrides({ @AttributeOverride(name = "description",
+            column = @Column(nullable = false) ), })
     private EmbeddableData    embeddedData;
 
     /**
@@ -99,7 +99,7 @@ public class EmbeddedEntity implements Serializable {
 
     /**
      * Returns the embedded data.
-     * 
+     *
      * @return the embedded data
      */
     public final EmbeddableData getEmbeddedData() {
@@ -122,7 +122,7 @@ public class EmbeddedEntity implements Serializable {
 
     /**
      * Sets the embedded data.
-     * 
+     *
      * @param embeddedData
      *            the embedded data to set in the entity.
      */

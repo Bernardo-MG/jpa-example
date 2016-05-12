@@ -50,8 +50,8 @@ public final class EmbeddableData implements Serializable {
     /**
      * Description of the entity.
      */
-    @Column(name = "desc", nullable = false)
-    private String            desc             = "";
+    @Column(name = "description", nullable = false)
+    private String            description      = "";
 
     /**
      * Name of the entity.
@@ -82,7 +82,7 @@ public final class EmbeddableData implements Serializable {
 
         final EmbeddableData other = (EmbeddableData) obj;
         return Objects.equals(name, other.name)
-                && Objects.equals(desc, other.desc);
+                && Objects.equals(description, other.description);
     }
 
     /**
@@ -91,7 +91,7 @@ public final class EmbeddableData implements Serializable {
      * @return the description of the entity
      */
     public final String getDescription() {
-        return desc;
+        return description;
     }
 
     /**
@@ -105,7 +105,7 @@ public final class EmbeddableData implements Serializable {
 
     @Override
     public final int hashCode() {
-        return Objects.hash(name, desc);
+        return Objects.hash(name, description);
     }
 
     /**
@@ -115,7 +115,7 @@ public final class EmbeddableData implements Serializable {
      *            the description to set in the entity
      */
     public final void setDescription(final String value) {
-        this.desc = checkNotNull(value,
+        this.description = checkNotNull(value,
                 "Received a null pointer as description");
     }
 
@@ -132,7 +132,7 @@ public final class EmbeddableData implements Serializable {
     @Override
     public final String toString() {
         return MoreObjects.toStringHelper(this).add("name", name)
-                .add("description", desc).toString();
+                .add("description", description).toString();
     }
 
 }

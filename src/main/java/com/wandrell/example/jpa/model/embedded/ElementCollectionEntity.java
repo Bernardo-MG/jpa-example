@@ -67,6 +67,15 @@ public class ElementCollectionEntity implements Serializable {
     private Integer                    id               = null;
 
     /**
+     * Name of the entity.
+     * <p>
+     * This is to have additional data apart from the id, to be used on the
+     * tests.
+     */
+    @Column(name = "name", nullable = false)
+    private String                     name             = "";
+
+    /**
      * Embeddable objects.
      */
     @ElementCollection
@@ -79,6 +88,25 @@ public class ElementCollectionEntity implements Serializable {
      */
     public ElementCollectionEntity() {
         super();
+    }
+
+    /**
+     * Returns the name of the entity.
+     *
+     * @return the entity's name
+     */
+    public final String getName() {
+        return name;
+    }
+
+    /**
+     * Sets the name of the entity.
+     *
+     * @param name
+     *            the name to set on the entity
+     */
+    public final void setName(final String value) {
+        this.name = checkNotNull(value, "Received a null pointer as name");
     }
 
     @Override
