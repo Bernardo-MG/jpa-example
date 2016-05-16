@@ -97,7 +97,8 @@ public abstract class AbstractITElementCollectionEntityQueryJpql
 
         // Builds the query
         query = getEntityManager().createQuery(findContained);
-        query.setParameter("value", data);
+        query.setParameter("name", data.getName());
+        query.setParameter("description", data.getDescription());
 
         // The entity's id is the correct one
         Assert.assertEquals((Integer) query.getResultList().size(), count);
