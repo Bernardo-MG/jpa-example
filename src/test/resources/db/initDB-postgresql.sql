@@ -76,6 +76,11 @@ CREATE TABLE embedded_entities (
 	description	VARCHAR(30) DEFAULT '' NOT NULL
 );
 
+CREATE TABLE element_collection_entities (
+	id		INTEGER IDENTITY PRIMARY KEY,
+	name	VARCHAR(30) DEFAULT '' NOT NULL
+);
+
 CREATE TABLE element_collection_entities_values (
 	collection_id	INTEGER DEFAULT 0 NOT NULL,
 	name		VARCHAR(30) DEFAULT '' NOT NULL,
