@@ -11,6 +11,9 @@ DROP TABLE IF EXISTS map_entities_values;
 DROP TABLE IF EXISTS embedded_entities;
 DROP TABLE IF EXISTS element_collection_entities;
 DROP TABLE IF EXISTS element_collection_entities_values;
+DROP TABLE IF EXISTS multiple_table_inherit_root_entities;
+DROP TABLE IF EXISTS multiple_table_inherit_value_entities;
+DROP TABLE IF EXISTS multiple_table_inherit_description_entities;
 
 CREATE TABLE simple_entities (
 	id		INTEGER PRIMARY KEY AUTO_INCREMENT,
@@ -71,18 +74,33 @@ CREATE TABLE map_entities_values (
 );
 
 CREATE TABLE embedded_entities (
-	id			INTEGER DEFAULT 0 NOT NULL,
+	id			INTEGER PRIMARY KEY AUTO_INCREMENT,
 	name		VARCHAR(30) DEFAULT '' NOT NULL,
 	description	VARCHAR(30) DEFAULT '' NOT NULL
 );
 
 CREATE TABLE element_collection_entities (
-	id		INTEGER DEFAULT 0 NOT NULL,
+	id		INTEGER PRIMARY KEY AUTO_INCREMENT,
 	name	VARCHAR(30) DEFAULT '' NOT NULL
 );
 
 CREATE TABLE element_collection_entities_values (
 	collection_id	INTEGER DEFAULT 0 NOT NULL,
-	name		VARCHAR(30) DEFAULT '' NOT NULL,
-	description	VARCHAR(30) DEFAULT '' NOT NULL
+	name			VARCHAR(30) DEFAULT '' NOT NULL,
+	description		VARCHAR(30) DEFAULT '' NOT NULL
+);
+
+CREATE TABLE multiple_table_inherit_root_entities (
+	id		INTEGER PRIMARY KEY AUTO_INCREMENT,
+	name	VARCHAR(30) DEFAULT '' NOT NULL
+);
+
+CREATE TABLE multiple_table_inherit_value_entities (
+	id		INTEGER DEFAULT 0 NOT NULL,
+	value	INTEGER DEFAULT 0 NOT NULL
+);
+
+CREATE TABLE multiple_table_inherit_description_entities (
+	id				INTEGER DEFAULT 0 NOT NULL,
+	description		VARCHAR(30) DEFAULT '' NOT NULL
 );

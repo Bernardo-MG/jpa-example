@@ -127,3 +127,13 @@ INSERT INTO element_collection_entities_values (collection_id, name, description
 INSERT INTO element_collection_entities_values (collection_id, name, description) VALUES (5, 'name_3', 'desc_3');
 INSERT INTO element_collection_entities_values (collection_id, name, description) VALUES (5, 'name_4', 'desc_4');
 INSERT INTO element_collection_entities_values (collection_id, name, description) VALUES (1, 'name_3', 'desc_3');
+
+INSERT INTO multiple_table_inherit_root_entities (name) VALUES ('multi_inherit_1');
+INSERT INTO multiple_table_inherit_root_entities (name) VALUES ('multi_inherit_2');
+INSERT INTO multiple_table_inherit_root_entities (name) VALUES ('multi_inherit_3');
+
+INSERT INTO multiple_table_inherit_value_entities (value) VALUES (11);
+INSERT INTO multiple_table_inherit_value_entities (value) VALUES (22);
+
+INSERT INTO multiple_table_inherit_description_entities (description) VALUES ('desc_1');
+INSERT INTO multiple_table_inherit_description_entities (description) VALUES ('desc_3');

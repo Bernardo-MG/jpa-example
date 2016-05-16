@@ -24,8 +24,6 @@
 
 package com.wandrell.example.jpa.model.inheritance.multiple;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -36,10 +34,10 @@ import javax.persistence.Table;
  *
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "MultipleTableInheritanceNameEntity")
+@Entity(name = "MultipleTableInheritanceValueEntity")
 @DiscriminatorValue("A")
-@Table(name = "multiple_table_inherit_name_entities")
-public class MultipleTableInheritanceNameEntity
+@Table(name = "multiple_table_inherit_value_entities")
+public class MultipleTableInheritanceValueEntity
         extends MultipleTableInheritanceRootEntity {
 
     /**
@@ -48,35 +46,35 @@ public class MultipleTableInheritanceNameEntity
     private static final long serialVersionUID = 1743658290478708606L;
 
     /**
-     * The name.
+     * The value.
      */
-    @Column(name = "name")
-    private String            name             = "";
+    @Column(name = "value")
+    private Integer           value            = 0;
 
     /**
      * Default constructor.
      */
-    public MultipleTableInheritanceNameEntity() {
+    public MultipleTableInheritanceValueEntity() {
         super();
     }
 
     /**
-     * Returns the name.
-     *
-     * @return the name
+     * Returns the value.
+     * 
+     * @return the value
      */
-    public final String getName() {
-        return name;
+    public final Integer getValue() {
+        return value;
     }
 
     /**
-     * Sets the name.
+     * Sets the value.
      * 
      * @param value
-     *            the name to set in the entity
+     *            the value to set in the entity.
      */
-    public final void setName(final String value) {
-        this.name = checkNotNull(value, "Received a null pointer as name");
+    public final void setValue(final Integer value) {
+        this.value = value;
     }
 
 }
