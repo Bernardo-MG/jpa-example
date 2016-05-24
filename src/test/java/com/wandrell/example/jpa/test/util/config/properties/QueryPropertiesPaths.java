@@ -72,7 +72,7 @@ public class QueryPropertiesPaths {
     /**
      * Multiple table inheritance value entity.
      */
-    public static final String MULTIPLE_INHERITANCE_VALUE = "classpath:config/persistence/query/test-multiple-inheritance-value-entity-query.properties";
+    public static final String MULTIPLE_INHERITANCE_VALUE = "classpath:config/persistence/query/test-multiple-table-inheritance-value-entity-query.properties";
 
     /**
      * Simple entity.

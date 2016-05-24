@@ -71,7 +71,7 @@ public class TestPropertiesConfig {
     /**
      * Multiple table inheritance value entity.
      */
-    public static final String MULTIPLE_INHERITANCE_VALUE = "classpath:config/entity/test-multiple-inheritance-value-entity.properties";
+    public static final String MULTIPLE_INHERITANCE_VALUE = "classpath:config/entity/test-multiple-table-inheritance-value-entity.properties";
 
     /**
      * Simple entity.
