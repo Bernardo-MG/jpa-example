@@ -55,7 +55,7 @@ import com.wandrell.example.jpa.test.util.test.integration.inheritance.multiple.
                 JdbcPropertiesPaths.H2,
                 QueryPropertiesPaths.MULTIPLE_INHERITANCE_VALUE },
         properties = {
-                "jpa.persistenceUnitName=enumeration_eclipselink_h2_modify",
+                "jpa.persistenceUnitName=multiple_inheritance_eclipselink_h2_modify",
                 "jdbc.url=jdbc:h2:mem:test_eclipselink_modify;DB_CLOSE_ON_EXIT=FALSE" })
 public final class ITMultipleTableInheritanceValueEntityModifyEclipseLinkH2
         extends AbstractITMultipleTableInheritanceValueEntityModify {
