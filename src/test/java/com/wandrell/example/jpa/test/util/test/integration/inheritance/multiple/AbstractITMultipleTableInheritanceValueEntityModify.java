@@ -41,7 +41,12 @@ public abstract class AbstractITMultipleTableInheritanceValueEntityModify
         extends AbstractITEntityModify<MultipleTableInheritanceValueEntity> {
 
     /**
-     * Value to set on the value for the tests.
+     * Name to set on the entity for the tests.
+     */
+    private final String  name  = "entity";
+
+    /**
+     * Value to set on the entity for the tests.
      */
     private final Integer value = 123;
 
@@ -55,12 +60,14 @@ public abstract class AbstractITMultipleTableInheritanceValueEntityModify
     @Override
     protected final void assertEntityModified(
             final MultipleTableInheritanceValueEntity entity) {
+        Assert.assertEquals(entity.getName(), name);
         Assert.assertEquals(entity.getValue(), value);
     }
 
     @Override
     protected final void
             modifyEntity(final MultipleTableInheritanceValueEntity entity) {
+        entity.setName(name);
         entity.setValue(value);
     }
 
