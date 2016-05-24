@@ -91,8 +91,9 @@ CREATE TABLE element_collection_entities_values (
 );
 
 CREATE TABLE multiple_table_inherit_root_entities (
-	id		INTEGER PRIMARY KEY AUTO_INCREMENT,
-	name	VARCHAR(30) DEFAULT '' NOT NULL
+	id				INTEGER PRIMARY KEY AUTO_INCREMENT,
+	name			VARCHAR(30) DEFAULT '' NOT NULL,
+	discriminator	VARCHAR(30) DEFAULT '' NOT NULL
 );
 
 CREATE TABLE multiple_table_inherit_value_entities (
