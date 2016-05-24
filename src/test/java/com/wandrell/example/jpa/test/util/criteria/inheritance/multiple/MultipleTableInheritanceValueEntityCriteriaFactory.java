@@ -29,6 +29,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import com.wandrell.example.jpa.model.inheritance.multiple.MultipleTableInheritanceRootEntity_;
 import com.wandrell.example.jpa.model.inheritance.multiple.MultipleTableInheritanceValueEntity;
 import com.wandrell.example.jpa.model.inheritance.multiple.MultipleTableInheritanceValueEntity_;
 
@@ -71,7 +72,7 @@ public class MultipleTableInheritanceValueEntityCriteriaFactory {
 
         // Orders by the id
         query.orderBy(builder
-                .asc(entity.get(MultipleTableInheritanceValueEntity_.id)));
+                .asc(entity.get(MultipleTableInheritanceRootEntity_.id)));
 
         return query;
     }

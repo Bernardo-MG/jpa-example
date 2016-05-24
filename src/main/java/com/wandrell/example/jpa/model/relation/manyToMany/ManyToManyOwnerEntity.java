@@ -50,9 +50,9 @@ public class ManyToManyOwnerEntity implements Serializable {
     @ManyToMany
     @JoinTable(name = "many_to_many_joined",
             joinColumns = @JoinColumn(name = "owner_id",
-                    referencedColumnName = "id") ,
+                    referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "mapped_id",
-                    referencedColumnName = "id") )
+                    referencedColumnName = "id"))
     private Collection<ManyToManyMappedEntity> mapped;
 
     /**

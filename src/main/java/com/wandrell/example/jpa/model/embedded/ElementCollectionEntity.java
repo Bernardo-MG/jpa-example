@@ -80,7 +80,7 @@ public class ElementCollectionEntity implements Serializable {
      */
     @ElementCollection
     @CollectionTable(name = "element_collection_entities_values",
-            joinColumns = @JoinColumn(name = "collection_id") )
+            joinColumns = @JoinColumn(name = "collection_id"))
     private Collection<EmbeddableData> values           = new LinkedList<EmbeddableData>();
 
     /**
@@ -88,25 +88,6 @@ public class ElementCollectionEntity implements Serializable {
      */
     public ElementCollectionEntity() {
         super();
-    }
-
-    /**
-     * Returns the name of the entity.
-     *
-     * @return the entity's name
-     */
-    public final String getName() {
-        return name;
-    }
-
-    /**
-     * Sets the name of the entity.
-     *
-     * @param name
-     *            the name to set on the entity
-     */
-    public final void setName(final String value) {
-        this.name = checkNotNull(value, "Received a null pointer as name");
     }
 
     @Override
@@ -137,6 +118,15 @@ public class ElementCollectionEntity implements Serializable {
     }
 
     /**
+     * Returns the name of the entity.
+     *
+     * @return the entity's name
+     */
+    public final String getName() {
+        return name;
+    }
+
+    /**
      * Returns the embeddable objects.
      *
      * @return the embeddable objects
@@ -158,6 +148,16 @@ public class ElementCollectionEntity implements Serializable {
      */
     public final void setId(final Integer identifier) {
         id = checkNotNull(identifier, "Received a null pointer as identifier");
+    }
+
+    /**
+     * Sets the name of the entity.
+     *
+     * @param name
+     *            the name to set on the entity
+     */
+    public final void setName(final String value) {
+        this.name = checkNotNull(value, "Received a null pointer as name");
     }
 
     /**

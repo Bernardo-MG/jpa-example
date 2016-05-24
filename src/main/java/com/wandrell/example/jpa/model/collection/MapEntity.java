@@ -81,7 +81,7 @@ public class MapEntity implements Serializable {
     @ElementCollection
     @MapKeyColumn(name = "name")
     @CollectionTable(name = "map_entities_values",
-            joinColumns = @JoinColumn(name = "map_id") )
+            joinColumns = @JoinColumn(name = "map_id"))
     @Column(name = "number", nullable = false)
     private Map<String, Integer> values           = new LinkedHashMap<String, Integer>();
 

@@ -118,7 +118,8 @@ public abstract class AbstractITEntityModify<V>
                 getEntityManager()
                         .createQuery(GenericCriteriaFactory.findAll(
                                 getEntityManager(), newEntity.getClass()))
-                .getResultList().size(), entitiesCount + 1);
+                        .getResultList().size(),
+                entitiesCount + 1);
 
         // Checks that the entity was created correctly
         id = getId(newEntity);
