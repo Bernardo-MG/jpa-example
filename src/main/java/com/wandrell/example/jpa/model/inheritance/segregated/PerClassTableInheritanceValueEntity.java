@@ -24,8 +24,6 @@
 
 package com.wandrell.example.jpa.model.inheritance.segregated;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -37,7 +35,7 @@ import javax.persistence.Table;
  */
 @Entity(name = "PerClassTableInheritanceNameEntity")
 @Table(name = "per_class_table_inherit_name_entities")
-public class PerClassTableInheritanceNameEntity
+public class PerClassTableInheritanceValueEntity
         extends PerClassTableInheritanceRootEntity {
 
     /**
@@ -46,35 +44,35 @@ public class PerClassTableInheritanceNameEntity
     private static final long serialVersionUID = 957845193222735207L;
 
     /**
-     * The name.
+     * The value.
      */
-    @Column(name = "name")
-    private String            name             = "";
+    @Column(name = "value")
+    private Integer           value            = 0;
 
     /**
      * Default constructor.
      */
-    public PerClassTableInheritanceNameEntity() {
+    public PerClassTableInheritanceValueEntity() {
         super();
     }
 
     /**
-     * Returns the name.
+     * Returns the value.
      *
-     * @return the name
+     * @return the value
      */
-    public final String getName() {
-        return name;
+    public final Integer getValue() {
+        return value;
     }
 
     /**
-     * Sets the name.
-     * 
+     * Sets the value.
+     *
      * @param value
-     *            the name to set in the entity
+     *            the value to set in the entity.
      */
-    public final void setName(final String value) {
-        this.name = checkNotNull(value, "Received a null pointer as name");
+    public final void setValue(final Integer value) {
+        this.value = value;
     }
 
 }

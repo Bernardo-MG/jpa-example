@@ -22,59 +22,59 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.model.inheritance.single;
+package com.wandrell.example.jpa.model.inheritance.superclass;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
+import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
- * Entity for single table inheritance entities.
+ * Entity for super class inheritance entities.
  *
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "SingleTableInheritanceNameEntity")
-@DiscriminatorValue("A")
-public class SingleTableInheritanceNameEntity
-        extends SingleTableInheritanceRootEntity {
+@Entity(name = "SuperClassTableInheritanceNameEntity")
+@Table(name = "super_class_table_inherit_name_entities")
+@AttributeOverride(name = "id", column = @Column(name = "id_entity"))
+public class SuperClassTableInheritanceValueEntity
+        extends SuperClassTableInheritanceRootEntity {
 
     /**
      * Serialization ID.
      */
-    private static final long serialVersionUID = 4353534670422583551L;
+    private static final long serialVersionUID = 448987499302198165L;
 
     /**
-     * The name.
+     * The value.
      */
-    @Column(name = "name")
-    private String            name             = "";
+    @Column(name = "value")
+    private Integer           value            = 0;
 
     /**
      * Default constructor.
      */
-    public SingleTableInheritanceNameEntity() {
+    public SuperClassTableInheritanceValueEntity() {
         super();
     }
 
     /**
-     * Returns the name.
+     * Returns the value.
      *
-     * @return the name
+     * @return the value
      */
-    public final String getName() {
-        return name;
+    public final Integer getValue() {
+        return value;
     }
 
     /**
-     * Sets the name.
-     * 
+     * Sets the value.
+     *
      * @param value
-     *            the name to set in the entity
+     *            the value to set in the entity.
      */
-    public final void setName(final String value) {
-        this.name = checkNotNull(value, "Received a null pointer as name");
+    public final void setValue(final Integer value) {
+        this.value = value;
     }
 
 }
