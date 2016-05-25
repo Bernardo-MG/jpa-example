@@ -138,3 +138,9 @@ INSERT INTO multiple_table_inherit_value_entities (id, value) VALUES (3, 22);
 
 INSERT INTO multiple_table_inherit_description_entities (id, description) VALUES (2, 'desc_2');
 INSERT INTO multiple_table_inherit_description_entities (id, description) VALUES (4, 'desc_4');
+
+INSERT INTO per_class_table_inherit_value_entities (name, value) VALUES ('per_class_inherit_1', 11);
+INSERT INTO per_class_table_inherit_value_entities (name, value) VALUES ('per_class_inherit_3', 22);
+
+INSERT INTO per_class_table_inherit_description_entities (name, description) VALUES ('per_class_inherit_2', 'desc_2');
+INSERT INTO per_class_table_inherit_description_entities (name, description) VALUES ('per_class_inherit_4', 'desc_4');
