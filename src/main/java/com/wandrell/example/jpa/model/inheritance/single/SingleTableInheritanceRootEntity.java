@@ -67,6 +67,12 @@ public abstract class SingleTableInheritanceRootEntity implements Serializable {
     private Integer           id               = null;
 
     /**
+     * The name.
+     */
+    @Column(name = "name")
+    private String            name             = "";
+
+    /**
      * Default constructor.
      */
     public SingleTableInheritanceRootEntity() {
@@ -100,6 +106,15 @@ public abstract class SingleTableInheritanceRootEntity implements Serializable {
         return id;
     }
 
+    /**
+     * Returns the name.
+     *
+     * @return the name
+     */
+    public final String getName() {
+        return name;
+    }
+
     @Override
     public final int hashCode() {
         return Objects.hash(id);
@@ -113,6 +128,16 @@ public abstract class SingleTableInheritanceRootEntity implements Serializable {
      */
     public final void setId(final Integer identifier) {
         id = checkNotNull(identifier, "Received a null pointer as identifier");
+    }
+
+    /**
+     * Sets the name.
+     *
+     * @param value
+     *            the name to set in the entity
+     */
+    public final void setName(final String value) {
+        this.name = checkNotNull(value, "Received a null pointer as name");
     }
 
     @Override

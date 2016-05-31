@@ -61,7 +61,7 @@ public class EmbeddedEntity implements Serializable {
      */
     @Embedded
     @AttributeOverrides({ @AttributeOverride(name = "description",
-            column = @Column(nullable = false) ), })
+            column = @Column(nullable = false)), })
     private EmbeddableData    embeddedData;
 
     /**

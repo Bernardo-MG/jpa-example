@@ -81,7 +81,7 @@ public class CollectionEntity implements Serializable {
      */
     @ElementCollection
     @CollectionTable(name = "collection_entities_values",
-            joinColumns = @JoinColumn(name = "collection_id") )
+            joinColumns = @JoinColumn(name = "collection_id"))
     @Column(name = "value_col", nullable = false)
     private Collection<Integer> values           = new LinkedList<Integer>();
 

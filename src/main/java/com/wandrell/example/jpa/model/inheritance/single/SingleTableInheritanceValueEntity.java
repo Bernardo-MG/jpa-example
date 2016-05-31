@@ -24,8 +24,6 @@
 
 package com.wandrell.example.jpa.model.inheritance.single;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -37,7 +35,7 @@ import javax.persistence.Entity;
  */
 @Entity(name = "SingleTableInheritanceNameEntity")
 @DiscriminatorValue("A")
-public class SingleTableInheritanceNameEntity
+public class SingleTableInheritanceValueEntity
         extends SingleTableInheritanceRootEntity {
 
     /**
@@ -46,35 +44,35 @@ public class SingleTableInheritanceNameEntity
     private static final long serialVersionUID = 4353534670422583551L;
 
     /**
-     * The name.
+     * The value.
      */
-    @Column(name = "name")
-    private String            name             = "";
+    @Column(name = "value")
+    private Integer           value            = 0;
 
     /**
      * Default constructor.
      */
-    public SingleTableInheritanceNameEntity() {
+    public SingleTableInheritanceValueEntity() {
         super();
     }
 
     /**
-     * Returns the name.
+     * Returns the value.
      *
-     * @return the name
+     * @return the value
      */
-    public final String getName() {
-        return name;
+    public final Integer getValue() {
+        return value;
     }
 
     /**
-     * Sets the name.
-     * 
+     * Sets the value.
+     *
      * @param value
-     *            the name to set in the entity
+     *            the value to set in the entity.
      */
-    public final void setName(final String value) {
-        this.name = checkNotNull(value, "Received a null pointer as name");
+    public final void setValue(final Integer value) {
+        this.value = value;
     }
 
 }

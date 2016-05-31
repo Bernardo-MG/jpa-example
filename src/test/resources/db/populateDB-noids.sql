@@ -128,12 +128,19 @@ INSERT INTO element_collection_entities_values (collection_id, name, description
 INSERT INTO element_collection_entities_values (collection_id, name, description) VALUES (5, 'name_4', 'desc_4');
 INSERT INTO element_collection_entities_values (collection_id, name, description) VALUES (1, 'name_3', 'desc_3');
 
-INSERT INTO multiple_table_inherit_root_entities (name) VALUES ('multi_inherit_1');
-INSERT INTO multiple_table_inherit_root_entities (name) VALUES ('multi_inherit_2');
-INSERT INTO multiple_table_inherit_root_entities (name) VALUES ('multi_inherit_3');
+INSERT INTO multiple_table_inherit_root_entities (name, discriminator) VALUES ('multi_inherit_1', 'A');
+INSERT INTO multiple_table_inherit_root_entities (name, discriminator) VALUES ('multi_inherit_2', 'B');
+INSERT INTO multiple_table_inherit_root_entities (name, discriminator) VALUES ('multi_inherit_3', 'A');
+INSERT INTO multiple_table_inherit_root_entities (name, discriminator) VALUES ('multi_inherit_4', 'B');
 
-INSERT INTO multiple_table_inherit_value_entities (value) VALUES (11);
-INSERT INTO multiple_table_inherit_value_entities (value) VALUES (22);
+INSERT INTO multiple_table_inherit_value_entities (id, value) VALUES (1, 11);
+INSERT INTO multiple_table_inherit_value_entities (id, value) VALUES (3, 22);
 
-INSERT INTO multiple_table_inherit_description_entities (description) VALUES ('desc_1');
-INSERT INTO multiple_table_inherit_description_entities (description) VALUES ('desc_3');
+INSERT INTO multiple_table_inherit_description_entities (id, description) VALUES (2, 'desc_2');
+INSERT INTO multiple_table_inherit_description_entities (id, description) VALUES (4, 'desc_4');
+
+INSERT INTO per_class_table_inherit_value_entities (name, value) VALUES ('per_class_inherit_1', 11);
+INSERT INTO per_class_table_inherit_value_entities (name, value) VALUES ('per_class_inherit_3', 22);
+
+INSERT INTO per_class_table_inherit_description_entities (name, description) VALUES ('per_class_inherit_2', 'desc_2');
+INSERT INTO per_class_table_inherit_description_entities (name, description) VALUES ('per_class_inherit_4', 'desc_4');
