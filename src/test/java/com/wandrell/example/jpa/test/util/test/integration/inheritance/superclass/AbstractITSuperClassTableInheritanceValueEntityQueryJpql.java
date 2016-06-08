@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.test.integration.inheritance.multiple;
+package com.wandrell.example.jpa.test.util.test.integration.inheritance.superclass;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -33,11 +33,12 @@ import org.springframework.test.context.testng.AbstractTransactionalTestNGSpring
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.model.inheritance.multiple.MultipleTableInheritanceValueEntity;
+import com.wandrell.example.jpa.model.inheritance.superclass.SuperClassTableInheritanceValueEntity;
 
 /**
- * Abstract integration tests for a {@link MultipleTableInheritanceValueEntity}
- * testing it loads values correctly by using JPQL queries.
+ * Abstract integration tests for a
+ * {@link SuperClassTableInheritanceValueEntity} testing it loads values
+ * correctly by using JPQL queries.
  * <p>
  * Checks the following cases:
  * <ol>
@@ -51,9 +52,9 @@ import com.wandrell.example.jpa.model.inheritance.multiple.MultipleTableInherita
  * repository and all of it's requirements.
  *
  * @author Bernardo Martínez Garrido
- * @see MultipleTableInheritanceValueEntity
+ * @see SuperClassTableInheritanceValueEntity
  */
-public abstract class AbstractITMultipleTableInheritanceValueEntityQueryJpql
+public abstract class AbstractITSuperClassTableInheritanceValueEntityQueryJpql
         extends AbstractTransactionalTestNGSpringContextTests {
 
     /**
@@ -71,7 +72,7 @@ public abstract class AbstractITMultipleTableInheritanceValueEntityQueryJpql
     /**
      * Default constructor.
      */
-    public AbstractITMultipleTableInheritanceValueEntityQueryJpql() {
+    public AbstractITSuperClassTableInheritanceValueEntityQueryJpql() {
         super();
         // TODO: Add the query results counts to the configuration files
     }

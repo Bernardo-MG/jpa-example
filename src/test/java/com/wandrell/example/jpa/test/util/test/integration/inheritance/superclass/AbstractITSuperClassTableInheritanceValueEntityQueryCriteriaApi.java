@@ -22,22 +22,23 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.test.integration.inheritance.multiple;
+package com.wandrell.example.jpa.test.util.test.integration.inheritance.superclass;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.model.inheritance.multiple.MultipleTableInheritanceValueEntity;
+import com.wandrell.example.jpa.model.inheritance.superclass.SuperClassTableInheritanceValueEntity;
+import com.wandrell.example.jpa.test.util.criteria.inheritance.superclass.SuperClassTableInheritanceValueEntityCriteriaFactory;
 
 /**
- * Abstract integration tests for a {@link MultipleTableInheritanceValueEntity}
- * testing it loads values correctly by using JPQL queries.
+ * Abstract integration tests for a
+ * {@link SuperClassTableInheritanceValueEntity} testing it loads values
+ * correctly by using the criteria API.
  * <p>
  * Checks the following cases:
  * <ol>
@@ -51,9 +52,9 @@ import com.wandrell.example.jpa.model.inheritance.multiple.MultipleTableInherita
  * repository and all of it's requirements.
  *
  * @author Bernardo Martínez Garrido
- * @see MultipleTableInheritanceValueEntity
+ * @see SuperClassTableInheritanceValueEntity
  */
-public abstract class AbstractITMultipleTableInheritanceValueEntityQueryJpql
+public abstract class AbstractITSuperClassTableInheritanceValueEntityQueryCriteriaApi
         extends AbstractTransactionalTestNGSpringContextTests {
 
     /**
@@ -63,15 +64,9 @@ public abstract class AbstractITMultipleTableInheritanceValueEntityQueryJpql
     private EntityManager entityManager;
 
     /**
-     * The query to acquire all the entities by the ordinal value.
-     */
-    @Value("${query.findAllWithValue}")
-    private String        findAllWithValue;
-
-    /**
      * Default constructor.
      */
-    public AbstractITMultipleTableInheritanceValueEntityQueryJpql() {
+    public AbstractITSuperClassTableInheritanceValueEntityQueryCriteriaApi() {
         super();
         // TODO: Add the query results counts to the configuration files
     }
@@ -81,12 +76,13 @@ public abstract class AbstractITMultipleTableInheritanceValueEntityQueryJpql
      * ordinal value, gives the correct number of them.
      */
     @Test
-    public final void testFindAllWithValue() {
+    public final void testAllWithValue() {
         final Query query; // Query for the entity
 
         // Builds the query
-        query = getEntityManager().createQuery(findAllWithValue);
-        query.setParameter("value", 11);
+        query = getEntityManager().createQuery(
+                SuperClassTableInheritanceValueEntityCriteriaFactory
+                        .findAllWithValue(entityManager, 11));
 
         // The number of results is the expected one
         Assert.assertEquals(query.getResultList().size(), 1);

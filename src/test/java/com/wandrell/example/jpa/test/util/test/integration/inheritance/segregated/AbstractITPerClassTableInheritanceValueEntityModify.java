@@ -22,22 +22,22 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.test.integration.inheritance.multiple;
+package com.wandrell.example.jpa.test.util.test.integration.inheritance.segregated;
 
 import org.testng.Assert;
 
-import com.wandrell.example.jpa.model.inheritance.multiple.MultipleTableInheritanceValueEntity;
+import com.wandrell.example.jpa.model.inheritance.segregated.PerClassTableInheritanceValueEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
- * Abstract integration tests for a {@link MultipleTableInheritanceValueEntity}
+ * Abstract integration tests for a {@link PerClassTableInheritanceValueEntity}
  * testing it can be modified.
  *
  * @author Bernardo Martínez Garrido
- * @see MultipleTableInheritanceValueEntity
+ * @see PerClassTableInheritanceValueEntity
  */
-public abstract class AbstractITMultipleTableInheritanceValueEntityModify
-        extends AbstractITEntityModify<MultipleTableInheritanceValueEntity> {
+public abstract class AbstractITPerClassTableInheritanceValueEntityModify
+        extends AbstractITEntityModify<PerClassTableInheritanceValueEntity> {
 
     /**
      * Name to set on the entity for the tests.
@@ -52,20 +52,20 @@ public abstract class AbstractITMultipleTableInheritanceValueEntityModify
     /**
      * Default constructor.
      */
-    public AbstractITMultipleTableInheritanceValueEntityModify() {
+    public AbstractITPerClassTableInheritanceValueEntityModify() {
         super();
     }
 
     @Override
     protected final void assertEntityModified(
-            final MultipleTableInheritanceValueEntity entity) {
+            final PerClassTableInheritanceValueEntity entity) {
         Assert.assertEquals(entity.getName(), name);
         Assert.assertEquals(entity.getValue(), value);
     }
 
     @Override
     protected final void
-            modifyEntity(final MultipleTableInheritanceValueEntity entity) {
+            modifyEntity(final PerClassTableInheritanceValueEntity entity) {
         entity.setName(name);
         entity.setValue(value);
     }

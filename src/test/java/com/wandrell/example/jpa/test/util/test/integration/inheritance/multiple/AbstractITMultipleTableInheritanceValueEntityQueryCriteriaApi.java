@@ -32,12 +32,12 @@ import org.springframework.test.context.testng.AbstractTransactionalTestNGSpring
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.model.enumeration.EnumerationEntity;
+import com.wandrell.example.jpa.model.inheritance.multiple.MultipleTableInheritanceValueEntity;
 import com.wandrell.example.jpa.test.util.criteria.inheritance.multiple.MultipleTableInheritanceValueEntityCriteriaFactory;
 
 /**
- * Abstract integration tests for a {@link EnumerationEntity} testing it loads
- * values correctly by using the criteria API.
+ * Abstract integration tests for a {@link MultipleTableInheritanceValueEntity}
+ * testing it loads values correctly by using the criteria API.
  * <p>
  * Checks the following cases:
  * <ol>
@@ -51,7 +51,7 @@ import com.wandrell.example.jpa.test.util.criteria.inheritance.multiple.Multiple
  * repository and all of it's requirements.
  *
  * @author Bernardo Martínez Garrido
- * @see EnumerationEntity
+ * @see MultipleTableInheritanceValueEntity
  */
 public abstract class AbstractITMultipleTableInheritanceValueEntityQueryCriteriaApi
         extends AbstractTransactionalTestNGSpringContextTests {
