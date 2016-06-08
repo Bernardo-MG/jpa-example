@@ -16,6 +16,9 @@ DROP TABLE IF EXISTS multiple_table_inherit_value_entities;
 DROP TABLE IF EXISTS multiple_table_inherit_description_entities;
 DROP TABLE IF EXISTS per_class_table_inherit_value_entities;
 DROP TABLE IF EXISTS per_class_table_inherit_description_entities;
+DROP TABLE IF EXISTS single_table_inherit_entities;
+DROP TABLE IF EXISTS super_class_table_inherit_description_entities;
+DROP TABLE IF EXISTS super_class_table_inherit_value_entities;
 
 CREATE TABLE simple_entities (
 	id		SERIAL PRIMARY KEY,
@@ -115,6 +118,26 @@ CREATE TABLE per_class_table_inherit_value_entities (
 );
 
 CREATE TABLE per_class_table_inherit_description_entities (
+	id				SERIAL PRIMARY KEY,
+	name			VARCHAR(30) DEFAULT '' NOT NULL,
+	description		VARCHAR(30) DEFAULT '' NOT NULL
+);
+
+CREATE TABLE single_table_inherit_entities (
+	id				SERIAL PRIMARY KEY,
+	discriminator	VARCHAR(4) DEFAULT '' NOT NULL,
+	name			VARCHAR(30) DEFAULT '' NOT NULL,
+	description		VARCHAR(30),
+	value			INTEGER
+);
+
+CREATE TABLE super_class_table_inherit_value_entities (
+	id		SERIAL PRIMARY KEY,
+	name	VARCHAR(30) DEFAULT '' NOT NULL,
+	value	INTEGER DEFAULT 0 NOT NULL
+);
+
+CREATE TABLE super_class_table_inherit_description_entities (
 	id				SERIAL PRIMARY KEY,
 	name			VARCHAR(30) DEFAULT '' NOT NULL,
 	description		VARCHAR(30) DEFAULT '' NOT NULL

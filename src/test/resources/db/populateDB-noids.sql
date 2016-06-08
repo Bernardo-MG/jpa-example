@@ -144,3 +144,14 @@ INSERT INTO per_class_table_inherit_value_entities (name, value) VALUES ('per_cl
 
 INSERT INTO per_class_table_inherit_description_entities (name, description) VALUES ('per_class_inherit_2', 'desc_2');
 INSERT INTO per_class_table_inherit_description_entities (name, description) VALUES ('per_class_inherit_4', 'desc_4');
+
+INSERT INTO single_table_inherit_entities (id, discriminator, name, description, value) VALUES ('A', 'single_inherit_1', null, 11);
+INSERT INTO single_table_inherit_entities (id, discriminator, name, description, value) VALUES ('B', 'single_inherit_2', 'desc_2', null);
+INSERT INTO single_table_inherit_entities (id, discriminator, name, description, value) VALUES ('A', 'single_inherit_3', null, 22);
+INSERT INTO single_table_inherit_entities (id, discriminator, name, description, value) VALUES ('B', 'single_inherit_4', 'desc_4', null);
+
+INSERT INTO super_class_table_inherit_value_entities (name, value) VALUES ('per_class_inherit_1', 11);
+INSERT INTO super_class_table_inherit_value_entities (name, value) VALUES ('per_class_inherit_3', 22);
+
+INSERT INTO super_class_table_inherit_description_entities (name, description) VALUES ('per_class_inherit_2', 'desc_2');
+INSERT INTO super_class_table_inherit_description_entities (name, description) VALUES ('per_class_inherit_4', 'desc_4');
