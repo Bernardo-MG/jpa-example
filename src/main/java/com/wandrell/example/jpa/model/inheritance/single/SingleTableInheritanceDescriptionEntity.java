@@ -60,7 +60,7 @@ public class SingleTableInheritanceDescriptionEntity
 
     /**
      * Returns the description.
-     * 
+     *
      * @return the description.
      */
     public final String getDescription() {
@@ -69,7 +69,7 @@ public class SingleTableInheritanceDescriptionEntity
 
     /**
      * Sets the description.
-     * 
+     *
      * @param value
      *            the description to set in the entity
      */

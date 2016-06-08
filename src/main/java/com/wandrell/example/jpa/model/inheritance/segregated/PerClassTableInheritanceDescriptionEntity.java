@@ -69,7 +69,7 @@ public class PerClassTableInheritanceDescriptionEntity
 
     /**
      * Sets the description.
-     * 
+     *
      * @param value
      *            the description to set in the entity
      */

@@ -24,7 +24,6 @@
 
 package com.wandrell.example.jpa.model.inheritance.superclass;
 
-import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -34,9 +33,8 @@ import javax.persistence.Table;
  *
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "SuperClassTableInheritanceNameEntity")
+@Entity(name = "SuperClassTableInheritanceValueEntity")
 @Table(name = "super_class_table_inherit_value_entities")
-@AttributeOverride(name = "id", column = @Column(name = "id_entity"))
 public class SuperClassTableInheritanceValueEntity
         extends SuperClassTableInheritanceRootEntity {
 

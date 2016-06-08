@@ -33,7 +33,7 @@ import javax.persistence.Entity;
  *
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "SingleTableInheritanceNameEntity")
+@Entity(name = "SingleTableInheritanceValueEntity")
 @DiscriminatorValue("A")
 public class SingleTableInheritanceValueEntity
         extends SingleTableInheritanceRootEntity {

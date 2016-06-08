@@ -33,7 +33,7 @@ import javax.persistence.Table;
  *
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "PerClassTableInheritanceNameEntity")
+@Entity(name = "PerClassTableInheritanceValueEntity")
 @Table(name = "per_class_table_inherit_value_entities")
 public class PerClassTableInheritanceValueEntity
         extends PerClassTableInheritanceRootEntity {
