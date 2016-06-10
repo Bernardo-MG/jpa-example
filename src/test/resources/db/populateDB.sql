@@ -155,3 +155,8 @@ INSERT INTO super_class_table_inherit_value_entities (id, name, value) VALUES (2
 
 INSERT INTO super_class_table_inherit_description_entities (id, name, description) VALUES (1, 'per_class_inherit_2', 'desc_2');
 INSERT INTO super_class_table_inherit_description_entities (id, name, description) VALUES (2, 'per_class_inherit_4', 'desc_4');
+
+INSERT INTO composite_key_idclass_entities (id1, id2, name) VALUES (1, 1, 'composite_key_1');
+INSERT INTO composite_key_idclass_entities (id1, id2, name) VALUES (1, 2, 'composite_key_2');
+INSERT INTO composite_key_idclass_entities (id1, id2, name) VALUES (2, 1, 'composite_key_3');
+INSERT INTO composite_key_idclass_entities (id1, id2, name) VALUES (2, 2, 'composite_key_4');

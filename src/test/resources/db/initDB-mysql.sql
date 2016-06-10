@@ -19,6 +19,7 @@ DROP TABLE IF EXISTS per_class_table_inherit_description_entities;
 DROP TABLE IF EXISTS single_table_inherit_entities;
 DROP TABLE IF EXISTS super_class_table_inherit_description_entities;
 DROP TABLE IF EXISTS super_class_table_inherit_value_entities;
+DROP TABLE IF EXISTS composite_key_idclass_entities;
 
 CREATE TABLE simple_entities (
 	id		INTEGER PRIMARY KEY AUTO_INCREMENT,
@@ -141,4 +142,11 @@ CREATE TABLE super_class_table_inherit_description_entities (
 	id				INTEGER PRIMARY KEY AUTO_INCREMENT,
 	name			VARCHAR(30) DEFAULT '' NOT NULL,
 	description		VARCHAR(30) DEFAULT '' NOT NULL
+);
+
+CREATE TABLE composite_key_idclass_entities (
+	id1				INTEGER NOT NULL,
+	id2				INTEGER NOT NULL,
+	name			VARCHAR(30) DEFAULT '' NOT NULL,
+	PRIMARY KEY (id1, id2)
 );
