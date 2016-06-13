@@ -39,6 +39,11 @@ public class TestPropertiesConfig {
     public static final String BOOLEAN_CONVERTER            = "classpath:config/entity/test-boolean-converter-entity.properties";
 
     /**
+     * Class Id entity.
+     */
+    public static final String CLASS_ID                     = "classpath:config/entity/test-classid-entity.properties";
+
+    /**
      * Collection entity.
      */
     public static final String COLLECTION                   = "classpath:config/entity/test-collection-entity.properties";
