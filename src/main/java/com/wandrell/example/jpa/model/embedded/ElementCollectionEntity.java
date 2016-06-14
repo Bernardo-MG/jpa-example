@@ -153,7 +153,7 @@ public class ElementCollectionEntity implements Serializable {
     /**
      * Sets the name of the entity.
      *
-     * @param name
+     * @param value
      *            the name to set on the entity
      */
     public final void setName(final String value) {
