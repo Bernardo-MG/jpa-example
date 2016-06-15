@@ -98,9 +98,9 @@ public abstract class AbstractITEntityModify<V>
     @Test
     @Transactional
     public final void testCreate() throws Exception {
-        final V queried; // Queried back entity
-        final Query query;                    // Query to recover the entity
-        final Integer id; // Id of the created entity
+        final V queried;   // Queried back entity
+        final Query query; // Query to recover the entity
+        final Integer id;  // Id of the created entity
 
         // Sets up the entity
         modifyEntity(newEntity);

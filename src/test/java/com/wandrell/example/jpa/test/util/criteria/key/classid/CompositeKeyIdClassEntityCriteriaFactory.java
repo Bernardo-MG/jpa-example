@@ -51,7 +51,7 @@ public class CompositeKeyIdClassEntityCriteriaFactory {
      *            second id
      * @return all the entities with a time equal to the specified time
      */
-    public static final CriteriaQuery<CompositeKeyIdClassEntity> findAllWithIds(
+    public static final CriteriaQuery<CompositeKeyIdClassEntity> findByIds(
             final EntityManager entityManager, final Integer id1,
             final Integer id2) {
         final CriteriaBuilder builder;         // Builder
@@ -66,12 +66,12 @@ public class CompositeKeyIdClassEntityCriteriaFactory {
         // Generates a select query
         query.select(entity);
         query.where(builder.and(
-                builder.equal(entity.get(CompositeKeyIdClassEntity_.id1), id1),
-                builder.equal(entity.get(CompositeKeyIdClassEntity_.id2),
+                builder.equal(entity.get(CompositeKeyIdClassEntity_.id), id1),
+                builder.equal(entity.get(CompositeKeyIdClassEntity_.supportId),
                         id2)));
 
         // Orders by the id
-        query.orderBy(builder.asc(entity.get(CompositeKeyIdClassEntity_.id1)));
+        query.orderBy(builder.asc(entity.get(CompositeKeyIdClassEntity_.id)));
 
         return query;
     }
