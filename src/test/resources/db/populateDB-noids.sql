@@ -160,3 +160,11 @@ INSERT INTO composite_key_idclass_entities (id1, id2, name) VALUES (1, 1, 'compo
 INSERT INTO composite_key_idclass_entities (id1, id2, name) VALUES (1, 2, 'composite_key_2');
 INSERT INTO composite_key_idclass_entities (id1, id2, name) VALUES (2, 1, 'composite_key_3');
 INSERT INTO composite_key_idclass_entities (id1, id2, name) VALUES (2, 2, 'composite_key_4');
+
+INSERT INTO two_tables_entities_a (field1) VALUES ("value_a_1");
+INSERT INTO two_tables_entities_a (field1) VALUES ("value_a_2");
+INSERT INTO two_tables_entities_a (field1) VALUES ("value_a_3");
+
+INSERT INTO two_tables_entities_b (entity_id, field2) VALUES (1, "value_b_1");
+INSERT INTO two_tables_entities_b (entity_id, field2) VALUES (2, "value_b_2");
+INSERT INTO two_tables_entities_b (entity_id, field2) VALUES (3, "value_b_3");

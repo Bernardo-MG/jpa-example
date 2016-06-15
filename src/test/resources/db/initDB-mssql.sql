@@ -20,6 +20,8 @@ DROP TABLE IF EXISTS single_table_inherit_entities;
 DROP TABLE IF EXISTS super_class_table_inherit_description_entities;
 DROP TABLE IF EXISTS super_class_table_inherit_value_entities;
 DROP TABLE IF EXISTS composite_key_idclass_entities;
+DROP TABLE IF EXISTS two_tables_entities_a;
+DROP TABLE IF EXISTS two_tables_entities_b;
 
 CREATE TABLE simple_entities (
 	id		INTEGER IDENTITY PRIMARY KEY,
@@ -149,4 +151,15 @@ CREATE TABLE composite_key_idclass_entities (
 	id2				INTEGER NOT NULL,
 	name			VARCHAR(30) DEFAULT '' NOT NULL,
 	PRIMARY KEY (id1, id2)
+);
+
+CREATE TABLE two_tables_entities_a (
+	id				INTEGER IDENTITY PRIMARY KEY,
+	field1			VARCHAR(30) DEFAULT '' NOT NULL,
+);
+
+CREATE TABLE two_tables_entities_b (
+	entity_id		INTEGER NOT NULL,
+	field2			VARCHAR(30) DEFAULT '' NOT NULL,
+	FOREIGN KEY (entity_id) REFERENCES two_tables_entities_a(id)
 );
