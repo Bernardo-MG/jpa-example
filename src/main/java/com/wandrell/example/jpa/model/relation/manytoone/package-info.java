@@ -25,4 +25,4 @@
  * Many to one relationships.
  */
 
-package com.wandrell.example.jpa.model.relation.manyToOne;
+package com.wandrell.example.jpa.model.relation.manytoone;

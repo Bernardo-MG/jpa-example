@@ -25,4 +25,4 @@
  * Many to many relationships.
  */
 
-package com.wandrell.example.jpa.model.relation.manyToMany;
+package com.wandrell.example.jpa.model.relation.manytomany;

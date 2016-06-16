@@ -1,36 +1,35 @@
 
-package com.wandrell.example.jpa.model.relation.manyToOne;
+package com.wandrell.example.jpa.model.relation.onetoone;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
 
 /**
- * Entity with a one to many relationship.
+ * Entity with a one to one relationship mapped to another class.
  *
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "OneToManyEntity")
-@Table(name = "one_to_many_entities")
-public class OneToManyEntity implements Serializable {
+@Entity(name = "OneToOneInverseEntity")
+@Table(name = "one_to_one_inverse_entities")
+public class OneToOneInverseEntity implements Serializable {
 
     /**
      * Serialization ID.
      */
-    private static final long           serialVersionUID = -2230997873462793335L;
+    private static final long    serialVersionUID = -1518449549877765486L;
 
     /**
      * Entity's ID.
@@ -38,13 +37,7 @@ public class OneToManyEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer                     id               = null;
-
-    /**
-     * Entities in the "many" side.
-     */
-    @OneToMany(mappedBy = "oneToMany")
-    private Collection<ManyToOneEntity> manyToOne;
+    private Integer              id               = null;
 
     /**
      * Name of the entity.
@@ -53,12 +46,18 @@ public class OneToManyEntity implements Serializable {
      * tests.
      */
     @Column(name = "name", nullable = false)
-    private String                      name             = "";
+    private String               name             = "";
+
+    /**
+     * One to one entity with the main declaration of the relationship.
+     */
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "inverse")
+    private OneToOneSourceEntity source;
 
     /**
      * Default constructor.
      */
-    public OneToManyEntity() {
+    public OneToOneInverseEntity() {
         super();
     }
 
@@ -76,7 +75,7 @@ public class OneToManyEntity implements Serializable {
             return false;
         }
 
-        final OneToManyEntity other = (OneToManyEntity) obj;
+        final OneToOneInverseEntity other = (OneToOneInverseEntity) obj;
         return Objects.equals(id, other.id);
     }
 
@@ -90,21 +89,23 @@ public class OneToManyEntity implements Serializable {
     }
 
     /**
-     * Returns the entities in the "many" side.
-     *
-     * @return the entities in the "many" side
-     */
-    public final Collection<ManyToOneEntity> getManyToOne() {
-        return manyToOne;
-    }
-
-    /**
      * Returns the name of the entity.
      *
      * @return the entity's name
      */
     public final String getName() {
         return name;
+    }
+
+    /**
+     * Returns the one to one entity with the main declaration of the
+     * relationship.
+     * 
+     * @return the one to one entity with the main declaration of the
+     *         relationship
+     */
+    public final OneToOneSourceEntity getSource() {
+        return source;
     }
 
     @Override
@@ -123,17 +124,6 @@ public class OneToManyEntity implements Serializable {
     }
 
     /**
-     * Sets the entities in the "many" side.
-     *
-     * @param value
-     *            the entities to set in the "many" side
-     */
-    public final void setManyToOne(final List<ManyToOneEntity> value) {
-        this.manyToOne = checkNotNull(value,
-                "Received a null pointer as manyToOne");
-    }
-
-    /**
      * Sets the name of the entity.
      *
      * @param value
@@ -141,6 +131,17 @@ public class OneToManyEntity implements Serializable {
      */
     public final void setName(final String value) {
         this.name = checkNotNull(value, "Received a null pointer as name");
+    }
+
+    /**
+     * Sets the one to one entity with the main declaration of the relationship.
+     * 
+     * @param value
+     *            the one to one entity with the main declaration of the
+     *            relationship
+     */
+    public final void setSource(final OneToOneSourceEntity value) {
+        this.source = checkNotNull(value, "Received a null pointer as source");
     }
 
     @Override

@@ -1,10 +1,11 @@
 
-package com.wandrell.example.jpa.model.relation.manyToMany;
+package com.wandrell.example.jpa.model.relation.manytoone;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -12,29 +13,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
 
 /**
- * Entity with a many to many relationship and the main declaration for it.
- * <p>
- * It is the owner entity because it contains the actual definition of the
- * relationship, while the other entity will just be mapped to it.
+ * Entity with a one to many relationship.
  *
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "ManyToManyOwnerEntity")
-@Table(name = "many_to_many_owner_entities")
-public class ManyToManyOwnerEntity implements Serializable {
+@Entity(name = "OneToManyEntity")
+@Table(name = "one_to_many_entities")
+public class OneToManyEntity implements Serializable {
 
     /**
      * Serialization ID.
      */
-    private static final long                  serialVersionUID = 7907869801056876634L;
+    private static final long           serialVersionUID = -2230997873462793335L;
 
     /**
      * Entity's ID.
@@ -42,18 +38,13 @@ public class ManyToManyOwnerEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer                            id               = null;
+    private Integer                     id               = null;
 
     /**
-     * Mapped entities.
+     * Entities in the "many" side.
      */
-    @ManyToMany
-    @JoinTable(name = "many_to_many_joined",
-            joinColumns = @JoinColumn(name = "owner_id",
-                    referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "mapped_id",
-                    referencedColumnName = "id"))
-    private Collection<ManyToManyMappedEntity> mapped;
+    @OneToMany(mappedBy = "oneToMany")
+    private Collection<ManyToOneEntity> manyToOne;
 
     /**
      * Name of the entity.
@@ -62,12 +53,12 @@ public class ManyToManyOwnerEntity implements Serializable {
      * tests.
      */
     @Column(name = "name", nullable = false)
-    private String                             name             = "";
+    private String                      name             = "";
 
     /**
      * Default constructor.
      */
-    public ManyToManyOwnerEntity() {
+    public OneToManyEntity() {
         super();
     }
 
@@ -85,7 +76,7 @@ public class ManyToManyOwnerEntity implements Serializable {
             return false;
         }
 
-        final ManyToManyOwnerEntity other = (ManyToManyOwnerEntity) obj;
+        final OneToManyEntity other = (OneToManyEntity) obj;
         return Objects.equals(id, other.id);
     }
 
@@ -99,12 +90,12 @@ public class ManyToManyOwnerEntity implements Serializable {
     }
 
     /**
-     * Returns the mapped entities.
+     * Returns the entities in the "many" side.
      *
-     * @return the mapped entities.
+     * @return the entities in the "many" side
      */
-    public final Collection<ManyToManyMappedEntity> getMapped() {
-        return mapped;
+    public final Collection<ManyToOneEntity> getManyToOne() {
+        return manyToOne;
     }
 
     /**
@@ -132,14 +123,14 @@ public class ManyToManyOwnerEntity implements Serializable {
     }
 
     /**
-     * Sets the mapped entities.
+     * Sets the entities in the "many" side.
      *
      * @param value
-     *            the mapped entities to set in the entity
+     *            the entities to set in the "many" side
      */
-    public final void
-            setMapped(final Collection<ManyToManyMappedEntity> value) {
-        this.mapped = checkNotNull(value, "Received a null pointer as mapped");
+    public final void setManyToOne(final List<ManyToOneEntity> value) {
+        this.manyToOne = checkNotNull(value,
+                "Received a null pointer as manyToOne");
     }
 
     /**

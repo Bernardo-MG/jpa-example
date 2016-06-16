@@ -1,5 +1,5 @@
 
-package com.wandrell.example.jpa.model.relation.manyToOne;
+package com.wandrell.example.jpa.model.relation.manytoone;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
