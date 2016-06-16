@@ -20,8 +20,8 @@ DROP TABLE IF EXISTS single_table_inherit_entities;
 DROP TABLE IF EXISTS super_class_table_inherit_description_entities;
 DROP TABLE IF EXISTS super_class_table_inherit_value_entities;
 DROP TABLE IF EXISTS composite_key_idclass_entities;
-DROP TABLE IF EXISTS two_tables_entities_a;
 DROP TABLE IF EXISTS two_tables_entities_b;
+DROP TABLE IF EXISTS two_tables_entities_a;
 
 CREATE TABLE simple_entities (
 	id		SERIAL PRIMARY KEY,
