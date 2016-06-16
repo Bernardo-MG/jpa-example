@@ -155,7 +155,7 @@ CREATE TABLE composite_key_idclass_entities (
 
 CREATE TABLE two_tables_entities_a (
 	id				INTEGER PRIMARY KEY AUTO_INCREMENT,
-	field1			VARCHAR(30) DEFAULT '' NOT NULL,
+	field1			VARCHAR(30) DEFAULT '' NOT NULL
 );
 
 CREATE TABLE two_tables_entities_b (
