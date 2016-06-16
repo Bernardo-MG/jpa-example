@@ -79,6 +79,11 @@ public class TestPropertiesConfig {
     public static final String MULTIPLE_INHERITANCE_VALUE   = "classpath:config/entity/test-multiple-table-inheritance-value-entity.properties";
 
     /**
+     * Secondary table entity.
+     */
+    public static final String SECONDARY_TABLE              = "classpath:config/entity/test-secondary-table-entity.properties";
+
+    /**
      * Segregated table inheritance value entity.
      */
     public static final String SEGREGATED_INHERITANCE_VALUE = "classpath:config/entity/test-segregated-table-inheritance-value-entity.properties";

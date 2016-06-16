@@ -80,6 +80,11 @@ public class QueryPropertiesPaths {
     public static final String MULTIPLE_INHERITANCE_VALUE   = "classpath:config/persistence/query/test-multiple-table-inheritance-value-entity-query.properties";
 
     /**
+     * Secondary table entity.
+     */
+    public static final String SECONDARY_TABLE              = "classpath:config/persistence/query/test-secondary-table-entity-query.properties";
+
+    /**
      * Segregated table inheritance value entity.
      */
     public static final String SEGREGATED_INHERITANCE_VALUE = "classpath:config/persistence/query/test-segregated-table-inheritance-value-entity-query.properties";
