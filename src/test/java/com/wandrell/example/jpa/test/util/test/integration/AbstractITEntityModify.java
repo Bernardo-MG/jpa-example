@@ -27,7 +27,6 @@ package com.wandrell.example.jpa.test.util.test.integration;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -65,7 +64,7 @@ public abstract class AbstractITEntityModify<V>
      * The entity manager for the test context.
      */
     @Autowired(required = false)
-    private EntityManager emanager;
+    private EntityManager entityManager;
 
     /**
      * Initial number of entities in the persistence context.
@@ -176,8 +175,8 @@ public abstract class AbstractITEntityModify<V>
      *             if the entity does not have a valid getter for the id field
      */
     private final Integer getId(final V entity) throws Exception {
-        return (Integer) BeanUtils.findMethod(entity.getClass(), "getId")
-                .invoke(entity);
+        return (Integer) getEntityManager().getEntityManagerFactory()
+                .getPersistenceUnitUtil().getIdentifier(entity);
     }
 
     /**
@@ -196,7 +195,7 @@ public abstract class AbstractITEntityModify<V>
      * @return the JPA entity manager
      */
     protected final EntityManager getEntityManager() {
-        return emanager;
+        return entityManager;
     }
 
     /**
