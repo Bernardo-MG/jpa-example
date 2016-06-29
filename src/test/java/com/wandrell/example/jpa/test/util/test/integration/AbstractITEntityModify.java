@@ -61,16 +61,16 @@ public abstract class AbstractITEntityModify<V>
         extends AbstractTransactionalTestNGSpringContextTests {
 
     /**
-     * The entity manager for the test context.
-     */
-    @Autowired(required = false)
-    private EntityManager entityManager;
-
-    /**
      * Initial number of entities in the persistence context.
      */
     @Value("${entities.total}")
     private Integer       entitiesCount;
+
+    /**
+     * The entity manager for the test context.
+     */
+    @Autowired(required = false)
+    private EntityManager entityManager;
 
     /**
      * Entity for the addition test.

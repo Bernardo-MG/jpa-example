@@ -49,6 +49,11 @@ public class TestPropertiesConfig {
     public static final String COLLECTION                   = "classpath:config/entity/test-collection-entity.properties";
 
     /**
+     * Composite key Id entity.
+     */
+    public static final String COMPOSITE_KEY                = "classpath:config/entity/test-composite-key-entity-query.properties";
+
+    /**
      * Date entity.
      */
     public static final String DATE                         = "classpath:config/entity/test-date-entity.properties";
@@ -57,6 +62,11 @@ public class TestPropertiesConfig {
      * Element collection entity.
      */
     public static final String ELEMENT_COLLECTION           = "classpath:config/entity/test-element-collection-entity.properties";
+
+    /**
+     * Embeddable composite key Id entity.
+     */
+    public static final String EMBEDDABLE_COMPOSITE_KEY     = "classpath:config/entity/test-embeddable-composite-key-entity-query.properties";
 
     /**
      * Embedded data entity.

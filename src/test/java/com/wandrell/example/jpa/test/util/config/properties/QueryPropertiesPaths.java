@@ -50,6 +50,11 @@ public class QueryPropertiesPaths {
     public static final String COLLECTION                   = "classpath:config/persistence/query/test-collection-entity-query.properties";
 
     /**
+     * Composite key Id entity.
+     */
+    public static final String COMPOSITE_KEY                = "classpath:config/persistence/query/test-composite-key-entity-query.properties";
+
+    /**
      * Date entity.
      */
     public static final String DATE                         = "classpath:config/persistence/query/test-date-entity-query.properties";
@@ -58,6 +63,11 @@ public class QueryPropertiesPaths {
      * Element collection entity.
      */
     public static final String ELEMENT_COLLECTION           = "classpath:config/persistence/query/test-element-collection-entity-query.properties";
+
+    /**
+     * Embeddable composite key Id entity.
+     */
+    public static final String EMBEDDABLE_COMPOSITE_KEY     = "classpath:config/persistence/query/test-embeddable-composite-key-entity-query.properties";
 
     /**
      * Embedded data entity.

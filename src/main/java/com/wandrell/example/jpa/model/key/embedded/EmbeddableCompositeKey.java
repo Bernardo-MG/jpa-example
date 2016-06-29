@@ -52,13 +52,13 @@ public class EmbeddableCompositeKey implements Serializable {
      * First id.
      */
     @Column(name = "id1", nullable = false, unique = true)
-    private Integer           id1;
+    private Integer           id;
 
     /**
      * Second id.
      */
     @Column(name = "id2", nullable = false, unique = true)
-    private Long              id2;
+    private Long              supportId;
 
     /**
      * Default constructor.
@@ -82,7 +82,8 @@ public class EmbeddableCompositeKey implements Serializable {
         }
 
         final EmbeddableCompositeKey other = (EmbeddableCompositeKey) obj;
-        return Objects.equals(id1, other.id1) && Objects.equals(id2, other.id2);
+        return Objects.equals(id, other.id)
+                && Objects.equals(supportId, other.supportId);
     }
 
     /**
@@ -90,8 +91,8 @@ public class EmbeddableCompositeKey implements Serializable {
      *
      * @return the first id
      */
-    public final Integer getId1() {
-        return id1;
+    public final Integer getId() {
+        return id;
     }
 
     /**
@@ -99,13 +100,13 @@ public class EmbeddableCompositeKey implements Serializable {
      *
      * @return the second id
      */
-    public final Long getId2() {
-        return id2;
+    public final Long getSupportId() {
+        return supportId;
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hash(id1, id2);
+        return Objects.hash(id, supportId);
     }
 
     /**
@@ -114,8 +115,8 @@ public class EmbeddableCompositeKey implements Serializable {
      * @param identifier
      *            the first id for the entity
      */
-    public final void setId1(final Integer identifier) {
-        this.id1 = checkNotNull(identifier,
+    public final void setId(final Integer identifier) {
+        this.id = checkNotNull(identifier,
                 "Received a null pointer as the identifier");
     }
 
@@ -125,15 +126,15 @@ public class EmbeddableCompositeKey implements Serializable {
      * @param identifier
      *            the second id for the entity
      */
-    public final void setId2(final Long identifier) {
-        this.id2 = checkNotNull(identifier,
+    public final void setSupportId(final Long identifier) {
+        this.supportId = checkNotNull(identifier,
                 "Received a null pointer as the identifier");
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("id1", id1).add("id2", id2)
-                .toString();
+        return MoreObjects.toStringHelper(this).add("id1", id)
+                .add("id2", supportId).toString();
     }
 
 }
