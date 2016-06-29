@@ -66,7 +66,7 @@ public abstract class AbstractITSecondaryTableEntityModify
     @Override
     protected final void modifyEntity(final SecondaryTableEntity entity) {
         entity.setField1(field1);
-        entity.setField1(field2);
+        entity.setField2(field2);
     }
 
 }
