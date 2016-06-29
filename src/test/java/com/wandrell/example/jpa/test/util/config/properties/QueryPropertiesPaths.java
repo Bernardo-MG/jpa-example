@@ -50,6 +50,13 @@ public class QueryPropertiesPaths {
     public static final String COLLECTION                   = "classpath:config/persistence/query/test-collection-entity-query.properties";
 
     /**
+     * Collection entity.
+     * <p>
+     * Prepared for Hibernate.
+     */
+    public static final String COLLECTION_HIBERNATE         = "classpath:config/persistence/query/test-collection-entity-query-hibernate.properties";
+
+    /**
      * Composite key Id entity.
      */
     public static final String COMPOSITE_KEY                = "classpath:config/persistence/query/test-composite-key-entity-query.properties";
