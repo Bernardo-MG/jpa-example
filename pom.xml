@@ -249,7 +249,7 @@
         <plugin.processor.version>3.1.0</plugin.processor.version>
         <plugin.site.velocity.version>1.7</plugin.site.velocity.version>
         <!-- Maven Site -->
-        <site.skin.version>0.3.0</site.skin.version>
+        <site.skin.version>0.4.0</site.skin.version>
     </properties>
 
     <!-- ********************************************** -->
