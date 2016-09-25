@@ -54,8 +54,8 @@ import com.wandrell.example.jpa.test.util.test.integration.collection.collection
                 DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
                 JdbcPropertiesPaths.H2, QueryPropertiesPaths.COLLECTION,
                 HibernateDialectPropertiesConfig.H2 },
-        properties = { "jpa.persistenceUnitName=collection_eclipselink_h2",
-                "jdbc.url=jdbc:h2:mem:test_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
+        properties = { "jpa.persistenceUnitName=collection_hibernate_h2",
+                "jdbc.url=jdbc:h2:mem:test_hibernate;DB_CLOSE_ON_EXIT=FALSE" })
 public final class ITCollectionEntityQueryCriteriaApiHibernateH2
         extends AbstractITCollectionEntityQueryCriteriaApi {
 
