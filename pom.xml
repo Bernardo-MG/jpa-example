@@ -243,8 +243,8 @@
       <spring.version>4.3.2.RELEASE</spring.version>
       <testng.version>6.9.10</testng.version>
       <!-- Plugins versions -->
-      <plugin.buildhelp.version>1.12</plugin.buildhelp.version>
-      <plugin.processor.version>3.1.0</plugin.processor.version>
+      <plugin.buildhelp.version>3.0.0</plugin.buildhelp.version>
+      <plugin.processor.version>3.2.0</plugin.processor.version>
       <!-- Maven Site -->
       <site.skin.version>1.0.0</site.skin.version>
    </properties>
