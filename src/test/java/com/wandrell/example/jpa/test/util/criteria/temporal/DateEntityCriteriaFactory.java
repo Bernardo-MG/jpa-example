@@ -38,7 +38,7 @@ import com.wandrell.example.jpa.model.temporal.DateEntity_;
 /**
  * Factory for creating criteria API queries for the {@link DateEntity}.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public class DateEntityCriteriaFactory {
 

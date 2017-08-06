@@ -44,7 +44,7 @@ import com.wandrell.example.jpa.model.converter.BooleanToStringConverter;
  * <li>A random string is converted to {@code false}.</li>
  * </ol>
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class TestBooleanToStringConverter {
 

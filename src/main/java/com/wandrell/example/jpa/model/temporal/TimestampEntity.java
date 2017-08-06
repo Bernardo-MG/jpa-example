@@ -46,7 +46,7 @@ import com.google.common.base.MoreObjects;
 /**
  * JPA entity storing timestamp.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "TimestampEntity")
 @Table(name = "timestamp_entities")

@@ -37,7 +37,7 @@ import com.wandrell.example.jpa.model.inheritance.superclass.SuperClassTableInhe
  * Factory for creating criteria API queries for the
  * {@link SuperClassTableInheritanceValueEntity}.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public class SuperClassTableInheritanceValueEntityCriteriaFactory {
 

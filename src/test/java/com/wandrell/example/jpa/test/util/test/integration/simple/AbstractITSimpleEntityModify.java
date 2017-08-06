@@ -33,7 +33,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  * Abstract integration tests for a {@link SimpleEntity} testing it can be
  * modified.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  * @see SimpleEntity
  */
 public abstract class AbstractITSimpleEntityModify

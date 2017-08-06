@@ -30,7 +30,7 @@ package com.wandrell.example.jpa.test.util.config.properties;
  * These files contain the JPQL queries used to get data from the persistence
  * context, but also some related data, such as the total number of entities.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public class QueryPropertiesPaths {
 

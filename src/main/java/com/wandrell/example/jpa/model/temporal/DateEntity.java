@@ -45,7 +45,7 @@ import com.google.common.base.MoreObjects;
 /**
  * JPA entity storing full dates.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "DateEntity")
 @Table(name = "date_entities")

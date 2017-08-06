@@ -42,7 +42,7 @@ import com.google.common.base.MoreObjects;
  * <p>
  * The {@link CompositeKey} is used as the id class.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  * @see CompositeKey
  */
 @Entity(name = "CompositeKeyIdClassEntity")

@@ -25,7 +25,7 @@ import com.google.common.base.MoreObjects;
  * It is the owner entity because it contains the actual definition of the
  * relationship, while the other entity will just be mapped to it.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "ManyToManyOwnerEntity")
 @Table(name = "many_to_many_owner_entities")

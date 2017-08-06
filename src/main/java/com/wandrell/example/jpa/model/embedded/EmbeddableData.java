@@ -37,7 +37,7 @@ import com.google.common.base.MoreObjects;
 /**
  * Embeddabble entity to be added into a JPA entity.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Embeddable
 public final class EmbeddableData implements Serializable {

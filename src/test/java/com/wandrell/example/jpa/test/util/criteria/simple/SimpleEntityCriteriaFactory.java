@@ -36,7 +36,7 @@ import com.wandrell.example.jpa.model.simple.SimpleEntity;
 /**
  * Factory for creating criteria API queries for the {@link SimpleEntity}.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public class SimpleEntityCriteriaFactory {
 

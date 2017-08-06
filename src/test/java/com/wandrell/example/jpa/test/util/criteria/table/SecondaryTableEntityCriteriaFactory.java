@@ -36,7 +36,7 @@ import com.wandrell.example.jpa.model.table.SecondaryTableEntity_;
  * Factory for creating criteria API queries for the
  * {@code SecondaryTableEntity}.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public class SecondaryTableEntityCriteriaFactory {
 

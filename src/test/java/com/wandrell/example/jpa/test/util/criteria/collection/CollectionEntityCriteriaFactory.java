@@ -35,7 +35,7 @@ import com.wandrell.example.jpa.model.collection.CollectionEntity_;
 /**
  * Factory for creating criteria API queries for the {@link CollectionEntity}.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public class CollectionEntityCriteriaFactory {
 

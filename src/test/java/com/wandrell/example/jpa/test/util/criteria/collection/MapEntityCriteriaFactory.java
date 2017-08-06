@@ -36,7 +36,7 @@ import com.wandrell.example.jpa.model.collection.MapEntity_;
 /**
  * Factory for creating criteria API queries for the {@link MapEntity}.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public class MapEntityCriteriaFactory {
 

@@ -21,7 +21,7 @@ import com.google.common.base.MoreObjects;
 /**
  * Entity with a one to one relationship and the main declaration for it.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "OneToOneSourceEntity")
 @Table(name = "one_to_one_source_entities")

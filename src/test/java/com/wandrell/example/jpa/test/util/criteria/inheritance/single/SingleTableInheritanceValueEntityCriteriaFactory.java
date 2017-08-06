@@ -37,7 +37,7 @@ import com.wandrell.example.jpa.model.inheritance.single.SingleTableInheritanceV
  * Factory for creating criteria API queries for the
  * {@link SingleTableInheritanceValueEntity}.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public class SingleTableInheritanceValueEntityCriteriaFactory {
 

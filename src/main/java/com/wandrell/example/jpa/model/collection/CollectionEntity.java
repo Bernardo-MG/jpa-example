@@ -46,7 +46,7 @@ import com.google.common.base.MoreObjects;
 /**
  * JPA entity with a collection of simple types.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "CollectionEntity")
 @Table(name = "collection_entities")

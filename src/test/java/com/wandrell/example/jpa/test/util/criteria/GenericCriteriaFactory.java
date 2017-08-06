@@ -34,7 +34,7 @@ import javax.persistence.criteria.Root;
  * <p>
  * These queries are generic, meant to work for any entity.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public class GenericCriteriaFactory {
 

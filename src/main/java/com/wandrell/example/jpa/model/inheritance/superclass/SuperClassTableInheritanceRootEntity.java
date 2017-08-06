@@ -41,7 +41,7 @@ import com.google.common.base.MoreObjects;
 /**
  * Root entity for super class inheritance entities.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @MappedSuperclass
 public abstract class SuperClassTableInheritanceRootEntity

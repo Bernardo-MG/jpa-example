@@ -35,7 +35,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  * Abstract integration tests for a {@link ElementCollectionEntity} testing it
  * can be modified.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  * @see ElementCollectionEntity
  */
 public abstract class AbstractITElementCollectionEntityModify

@@ -53,7 +53,7 @@ import com.google.common.base.MoreObjects;
  * This transformation is done in both directions, so the entity will always
  * keep a boolean, while the table will always keep a string.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  * @see BooleanToStringConverter
  */
 @Entity(name = "BooleanConverterEntity")

@@ -39,7 +39,7 @@ import com.google.common.base.MoreObjects;
 /**
  * JPA entity using an identity-generated id.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "IdentityGeneratedIdEntity")
 @Table(name = "identity_id_entities")

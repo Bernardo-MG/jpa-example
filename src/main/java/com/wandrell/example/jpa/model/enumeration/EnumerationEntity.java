@@ -43,7 +43,7 @@ import com.google.common.base.MoreObjects;
 /**
  * JPA entity with an enum field.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  * @see NumbersEnum
  */
 @Entity(name = "EnumerationEntity")

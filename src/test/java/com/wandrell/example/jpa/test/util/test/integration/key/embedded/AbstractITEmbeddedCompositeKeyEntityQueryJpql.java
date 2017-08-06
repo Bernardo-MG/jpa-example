@@ -47,7 +47,7 @@ import com.wandrell.example.jpa.model.key.embedded.EmbeddedCompositeKeyEntity;
  * This is meant to be used along a Spring context, which will set up the
  * repository and all of it's requirements.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  * @see EmbeddedCompositeKeyEntity
  */
 public abstract class AbstractITEmbeddedCompositeKeyEntityQueryJpql

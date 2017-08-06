@@ -29,7 +29,7 @@ import java.io.Serializable;
 /**
  * Interface representing an entity to be used by the example.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public interface SimpleEntity extends Serializable {
 

@@ -20,7 +20,7 @@ import com.google.common.base.MoreObjects;
 /**
  * Entity with a one to one relationship mapped to another class.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "OneToOneInverseEntity")
 @Table(name = "one_to_one_inverse_entities")

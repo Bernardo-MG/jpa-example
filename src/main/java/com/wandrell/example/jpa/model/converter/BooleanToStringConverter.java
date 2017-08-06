@@ -38,7 +38,7 @@ import javax.persistence.Converter;
  * {@code false} value to a {@code F} string. It also performs the reverse
  * operation, from the strings to boolean values.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Converter
 public final class BooleanToStringConverter

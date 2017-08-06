@@ -43,7 +43,7 @@ import com.google.common.base.MoreObjects;
 /**
  * Root entity for per-class inheritance entities.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "PerClassTableInheritanceRootEntity")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)

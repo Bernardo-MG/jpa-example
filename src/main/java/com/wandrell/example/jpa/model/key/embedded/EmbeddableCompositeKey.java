@@ -37,7 +37,7 @@ import com.google.common.base.MoreObjects;
 /**
  * Embeddable composite key.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  * @see EmbeddedCompositeKeyEntity
  */
 @Embeddable

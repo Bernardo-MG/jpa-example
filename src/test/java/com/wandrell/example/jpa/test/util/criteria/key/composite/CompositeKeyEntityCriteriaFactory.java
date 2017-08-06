@@ -35,7 +35,7 @@ import com.wandrell.example.jpa.model.key.composite.CompositeKeyEntity_;
 /**
  * Factory for creating criteria API queries for the {@link CompositeKeyEntity}.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public class CompositeKeyEntityCriteriaFactory {
 

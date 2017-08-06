@@ -46,7 +46,7 @@ import com.google.common.base.MoreObjects;
 /**
  * Entity using a collection of embeddable objects.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  * @see EmbeddableData
  */
 @Entity(name = "ElementCollectionEntity")

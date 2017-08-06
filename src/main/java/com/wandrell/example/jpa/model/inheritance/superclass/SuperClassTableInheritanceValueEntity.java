@@ -31,7 +31,7 @@ import javax.persistence.Table;
 /**
  * Entity for super class inheritance entities.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "SuperClassTableInheritanceValueEntity")
 @Table(name = "super_class_table_inherit_value_entities")

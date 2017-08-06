@@ -45,7 +45,7 @@ import com.google.common.base.MoreObjects;
 /**
  * Root entity for multiple inheritance entities.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "MultipleTableInheritanceRootEntity")
 @Inheritance(strategy = InheritanceType.JOINED)

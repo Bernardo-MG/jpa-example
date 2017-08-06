@@ -40,7 +40,7 @@ import com.google.common.base.MoreObjects;
 /**
  * JPA entity using an sequence-generated id.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "SequenceGeneratedIdEntity")
 @Table(name = "sequence_id_entities")

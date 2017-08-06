@@ -27,7 +27,7 @@ package com.wandrell.example.jpa.test.util.config.context;
 /**
  * Configuration class for miscelany test context files.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public class TestContextConfig {
 

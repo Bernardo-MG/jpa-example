@@ -47,7 +47,7 @@ import com.google.common.base.MoreObjects;
 /**
  * JPA entity with a map of simple types.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "MapEntity")
 @Table(name = "map_entities")

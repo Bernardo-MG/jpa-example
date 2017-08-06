@@ -44,7 +44,7 @@ import com.google.common.base.MoreObjects;
 /**
  * Root entity for single table inheritance entities.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "SingleTableInheritanceRootEntity")
 @Inheritance

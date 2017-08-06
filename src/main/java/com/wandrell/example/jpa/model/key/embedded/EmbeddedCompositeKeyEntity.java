@@ -41,7 +41,7 @@ import com.google.common.base.MoreObjects;
  * <p>
  * The {@link EmbeddableCompositeKey} is used as the embedded id.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  * @see EmbeddableCompositeKey
  */
 @Entity(name = "EmbeddedKeyEntity")

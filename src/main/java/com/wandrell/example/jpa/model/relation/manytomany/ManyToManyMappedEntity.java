@@ -23,7 +23,7 @@ import com.google.common.base.MoreObjects;
  * <p>
  * The actual definition of the relationship is contained in the other class.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "ManyToManyMappedEntity")
 @Table(name = "many_to_many_mapped_entities")

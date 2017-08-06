@@ -27,7 +27,7 @@ package com.wandrell.example.jpa.test.util.config.properties;
 /**
  * Configuration class for the test persistence providers properties files.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public class PersistenceProviderPropertiesConfig {
 

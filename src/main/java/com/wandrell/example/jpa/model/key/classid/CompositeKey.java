@@ -34,7 +34,7 @@ import com.google.common.base.MoreObjects;
 /**
  * Composite key for an {@code IdClass} annotation.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  * @see CompositeKeyIdClassEntity
  */
 public class CompositeKey implements Serializable {

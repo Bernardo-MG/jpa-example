@@ -39,7 +39,7 @@ import com.google.common.base.MoreObjects;
 /**
  * Entity with a composite id.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "CompositeKeyEntity")
 @Table(name = "composite_key_entities")

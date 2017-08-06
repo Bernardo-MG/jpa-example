@@ -34,7 +34,7 @@ import javax.persistence.Table;
 /**
  * Entity for multiple inheritance entities.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "MultipleTableInheritanceDescriptionEntity")
 @DiscriminatorValue("B")

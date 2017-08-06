@@ -28,7 +28,7 @@ package com.wandrell.example.jpa.test.util.config.properties;
  * Configuration class for the test database username and password properties
  * files.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public class DataBaseUserPropertiesConfig {
 

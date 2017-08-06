@@ -33,7 +33,7 @@ import javax.persistence.Entity;
 /**
  * Entity for single table inheritance entities.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "SingleTableInheritanceDescriptionEntity")
 @DiscriminatorValue("B")

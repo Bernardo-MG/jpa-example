@@ -46,7 +46,7 @@ import com.google.common.base.MoreObjects;
 /**
  * JPA entity storing time.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "TimeEntity")
 @Table(name = "time_entities")

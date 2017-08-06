@@ -42,7 +42,7 @@ import com.wandrell.example.jpa.test.util.test.integration.embedded.collection.A
  * Integration tests for a {@code ElementCollectionEntity} testing it loads
  * values correctly by using the criteria API.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         PersistenceContextConfig.ECLIPSELINK })

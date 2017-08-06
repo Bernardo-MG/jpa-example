@@ -42,7 +42,7 @@ import com.wandrell.example.jpa.test.util.test.integration.collection.map.Abstra
  * Integration tests for a {@code CollectionEntity} testing it loads values
  * correctly by using JPQL queries.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         PersistenceContextConfig.ECLIPSELINK })

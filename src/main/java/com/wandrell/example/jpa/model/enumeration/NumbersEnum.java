@@ -29,7 +29,7 @@ package com.wandrell.example.jpa.model.enumeration;
  * <p>
  * It is just to be used for showing how to store an enumeration in a table.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public enum NumbersEnum {
 

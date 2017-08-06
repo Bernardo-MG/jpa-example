@@ -36,7 +36,7 @@ import com.wandrell.example.jpa.model.enumeration.NumbersEnum;
 /**
  * Factory for creating criteria API queries for the {@link EnumerationEntity}.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public class EnumerationEntityCriteriaFactory {
 

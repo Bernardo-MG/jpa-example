@@ -44,7 +44,7 @@ import com.google.common.base.MoreObjects;
 /**
  * JPA entity using an embeddable class.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  * @see EmbeddableData
  */
 @Entity(name = "EmbeddedEntity")

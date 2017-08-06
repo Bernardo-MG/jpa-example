@@ -42,7 +42,7 @@ import com.wandrell.example.jpa.test.util.test.integration.inheritance.segregate
  * Integration tests for a {@code PerClassTableInheritanceValueEntity} testing
  * it can be modified.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         TestContextConfig.ENTITY_MODIFIABLE,

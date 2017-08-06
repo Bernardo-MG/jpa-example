@@ -37,7 +37,7 @@ import com.wandrell.example.jpa.model.inheritance.multiple.MultipleTableInherita
  * Factory for creating criteria API queries for the
  * {@link MultipleTableInheritanceValueEntity}.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public class MultipleTableInheritanceValueEntityCriteriaFactory {
 

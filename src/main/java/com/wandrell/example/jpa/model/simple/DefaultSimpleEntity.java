@@ -41,7 +41,7 @@ import com.google.common.base.MoreObjects;
 /**
  * JPA annotated implementation of {@link SimpleEntity}.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "SimpleEntity")
 @Table(name = "simple_entities")

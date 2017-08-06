@@ -43,7 +43,7 @@ import com.google.common.base.MoreObjects;
 /**
  * JPA entity keeping a large object.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "ImageIconEntity")
 @Table(name = "image_icon_entities")

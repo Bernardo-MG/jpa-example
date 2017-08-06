@@ -36,7 +36,7 @@ import com.wandrell.example.jpa.model.embedded.EmbeddedEntity_;
 /**
  * Factory for creating criteria API queries for the {@code EmbeddedEntity}.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public class EmbeddedEntityCriteriaFactory {
 

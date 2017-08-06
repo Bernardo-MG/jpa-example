@@ -44,7 +44,7 @@ import com.google.common.base.MoreObjects;
 /**
  * JPA entity divided into a secondary table.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "SecondaryTableEntity")
 @Table(name = "two_tables_entities_a")

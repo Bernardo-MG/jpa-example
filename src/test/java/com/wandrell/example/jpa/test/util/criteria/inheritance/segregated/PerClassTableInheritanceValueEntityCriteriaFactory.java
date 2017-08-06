@@ -37,7 +37,7 @@ import com.wandrell.example.jpa.model.inheritance.segregated.PerClassTableInheri
  * Factory for creating criteria API queries for the
  * {@link PerClassTableInheritanceValueEntity}.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public class PerClassTableInheritanceValueEntityCriteriaFactory {
 
