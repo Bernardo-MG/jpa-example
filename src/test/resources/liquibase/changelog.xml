@@ -232,10 +232,10 @@
          </column>
       </createTable>
       <createTable tableName="composite_key_idclass_entities">
-         <column autoIncrement="true" name="id1" type="BIGINT">
+         <column name="id1" type="BIGINT">
             <constraints primaryKey="true" />
          </column>
-         <column autoIncrement="true" name="id2" type="BIGINT">
+         <column name="id2" type="BIGINT">
             <constraints primaryKey="true" />
          </column>
          <column name="name" type="VARCHAR(30)" defaultValue="">
@@ -252,16 +252,13 @@
       </createTable>
       <createTable tableName="two_tables_entities_b">
          <column name="entity_id" type="BIGINT">
-            <constraints nullable="false" />
+            <constraints nullable="false" foreignKeyName="fk_entity_id"
+               references="two_tables_entities_a(id)" />
          </column>
          <column name="field2" type="VARCHAR(30)" defaultValue="">
             <constraints nullable="false" />
          </column>
       </createTable>
-      <addForeignKeyConstraint baseColumnNames="entity_id"
-         baseTableName="two_tables_entities_b" constraintName="fk_entity_id"
-         onDelete="CASCADE" onUpdate="RESTRICT" referencedColumnNames="id"
-         referencedTableName="two_tables_entities_a" />
    </changeSet>
 
    <changeSet author="Bernardo" id="data">
@@ -830,17 +827,16 @@
          <column name="name">composite_key_4</column>
       </insert>
       <insert tableName="two_tables_entities_a">
+         <column name="id">1</column>
          <column name="field1">value_a_1</column>
       </insert>
       <insert tableName="two_tables_entities_a">
+         <column name="id">2</column>
          <column name="field1">value_a_2</column>
       </insert>
       <insert tableName="two_tables_entities_a">
+         <column name="id">3</column>
          <column name="field1">value_a_3</column>
-      </insert>
-      <insert tableName="two_tables_entities_b">
-         <column name="entity_id">1</column>
-         <column name="field2">value_b_1</column>
       </insert>
       <insert tableName="two_tables_entities_b">
          <column name="entity_id">1</column>
