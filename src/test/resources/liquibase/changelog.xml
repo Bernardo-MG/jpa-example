@@ -92,7 +92,7 @@
          </column>
       </createTable>
       <createTable tableName="map_entities">
-         <column autoIncrement="true" name="collection_id" type="BIGINT">
+         <column autoIncrement="true" name="id" type="BIGINT">
             <constraints primaryKey="true" />
          </column>
          <column name="name" type="VARCHAR(30)" defaultValue="">
