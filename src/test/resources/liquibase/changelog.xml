@@ -84,7 +84,7 @@
          </column>
       </createTable>
       <createTable tableName="collection_entities_values">
-         <column autoIncrement="true" name="collection_id" type="BIGINT">
+         <column name="collection_id" type="BIGINT">
             <constraints nullable="false" />
          </column>
          <column name="value_col" type="BIGINT">
