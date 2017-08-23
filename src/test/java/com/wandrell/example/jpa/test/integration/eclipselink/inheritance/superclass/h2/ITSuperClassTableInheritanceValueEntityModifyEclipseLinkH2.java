@@ -29,9 +29,6 @@ import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.jpa.test.util.config.context.PersistenceContextConfig;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.DataBaseUserPropertiesConfig;
-import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
@@ -50,9 +47,9 @@ import com.wandrell.example.jpa.test.util.test.integration.inheritance.superclas
         locations = { TestPropertiesConfig.LIQUIBASE,
                 TestPropertiesConfig.SUPERCLASS_INHERITANCE_VALUE,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                DataBaseUserPropertiesConfig.DEFAULT,
-                 JpaPropertiesConfig.H2,
-                JdbcPropertiesPaths.H2,
+                
+                 
+                
                 QueryPropertiesPaths.SUPERCLASS_INHERITANCE_VALUE },
         properties = {
                 "jpa.persistenceUnitName=superclass_inheritance_eclipselink_h2_modify",

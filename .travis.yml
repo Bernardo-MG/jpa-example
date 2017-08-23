@@ -8,6 +8,8 @@ jdk:
 #  - oraclejdk8
   - oraclejdk7
   - openjdk7
+env:
+  - DATABASE=h2
 services:
   - mysql
   - postgresql
@@ -15,7 +17,11 @@ matrix:
   include:
     # Documentation deployed with JDK8
     - jdk: oraclejdk8
-      env: DEPLOY_DOCS=true
+      env:
+        - DATABASE=h2 DEPLOY_DOCS=true
+        - DATABASE=hsqldb
+        - DATABASE=mysql
+        - DATABASE=postgres
 
 before_install:
   # Gets scripts
@@ -32,7 +38,7 @@ before_script:
   - ./.scripts/create-test-databases.sh
 script:
   # Unit and integration tests are run
-  - mvn clean verify
+  - mvn clean verify -P $DATABASE
 after_success:
   # Documentation deployment script
   - ~/.scripts/java/maven/deploy-site.sh $DO_DEPLOY_DOCS deployment

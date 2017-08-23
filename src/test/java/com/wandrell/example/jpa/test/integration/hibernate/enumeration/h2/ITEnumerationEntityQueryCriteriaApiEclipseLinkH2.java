@@ -29,10 +29,6 @@ import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.jpa.test.util.config.context.PersistenceContextConfig;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.DataBaseUserPropertiesConfig;
-import com.wandrell.example.jpa.test.util.config.properties.HibernateDialectPropertiesConfig;
-import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
@@ -46,13 +42,10 @@ import com.wandrell.example.jpa.test.util.test.integration.enumeration.AbstractI
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         PersistenceContextConfig.HIBERNATE })
-@TestPropertySource(
-        locations = { TestPropertiesConfig.LIQUIBASE,
-                TestPropertiesConfig.ENUMERATION,
-                PersistenceProviderPropertiesConfig.HIBERNATE,
-                DataBaseUserPropertiesConfig.DEFAULT, JpaPropertiesConfig.H2,
-                JdbcPropertiesPaths.H2, HibernateDialectPropertiesConfig.H2,
-                QueryPropertiesPaths.ENUMERATION },
+@TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
+        TestPropertiesConfig.ENUMERATION,
+        PersistenceProviderPropertiesConfig.HIBERNATE, 
+         QueryPropertiesPaths.ENUMERATION },
         properties = { "jpa.persistenceUnitName=enumeration_hibernate_h2",
                 "jdbc.url=jdbc:h2:mem:test_hibernate;DB_CLOSE_ON_EXIT=FALSE" })
 public final class ITEnumerationEntityQueryCriteriaApiEclipseLinkH2

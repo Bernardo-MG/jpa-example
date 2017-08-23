@@ -29,10 +29,6 @@ import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.jpa.test.util.config.context.PersistenceContextConfig;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.DataBaseUserPropertiesConfig;
-import com.wandrell.example.jpa.test.util.config.properties.HibernateDialectPropertiesConfig;
-import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
@@ -46,13 +42,10 @@ import com.wandrell.example.jpa.test.util.test.integration.collection.collection
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         TestContextConfig.ENTITY_MODIFIABLE,
         PersistenceContextConfig.HIBERNATE })
-@TestPropertySource(
-        locations = { TestPropertiesConfig.LIQUIBASE,
-                TestPropertiesConfig.COLLECTION,
-                PersistenceProviderPropertiesConfig.HIBERNATE,
-                DataBaseUserPropertiesConfig.DEFAULT, JpaPropertiesConfig.H2,
-                JdbcPropertiesPaths.H2, QueryPropertiesPaths.COLLECTION,
-                HibernateDialectPropertiesConfig.H2 },
+@TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
+        TestPropertiesConfig.COLLECTION,
+        PersistenceProviderPropertiesConfig.HIBERNATE, 
+         QueryPropertiesPaths.COLLECTION },
         properties = { "jpa.persistenceUnitName=collection_hibernate_h2_modify",
                 "jdbc.url=jdbc:h2:mem:test_hibernate_modify;DB_CLOSE_ON_EXIT=FALSE" })
 public final class ITCollectionEntityModifyHibernateH2
