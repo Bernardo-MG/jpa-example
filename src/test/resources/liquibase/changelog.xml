@@ -1,0 +1,859 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+   <changeSet author="Bernardo" id="test_tables">
+      <createTable tableName="simple_entities">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="name" type="VARCHAR(30)" defaultValue="">
+            <constraints nullable="false" unique="true" />
+         </column>
+      </createTable>
+      <createTable tableName="boolean_converter_entities">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="flag" type="VARCHAR(1)" defaultValue="F">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <createTable tableName="enum_entities">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="enum_ordinal" type="BIGINT" defaultValue="0">
+            <constraints nullable="false" />
+         </column>
+         <column name="enum_string" type="VARCHAR(20)"
+            defaultValue="">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <createTable tableName="date_entities">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="calendar_date" type="DATE">
+            <constraints nullable="false" />
+         </column>
+         <column name="java_date" type="DATE">
+            <constraints nullable="false" />
+         </column>
+         <column name="sql_date" type="DATE">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <createTable tableName="time_entities">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="calendar_time" type="TIME">
+            <constraints nullable="false" />
+         </column>
+         <column name="java_time" type="TIME">
+            <constraints nullable="false" />
+         </column>
+         <column name="sql_time" type="TIME">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <createTable tableName="timestamp_entities">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="calendar_timestamp" type="TIMESTAMP">
+            <constraints nullable="false" />
+         </column>
+         <column name="java_timestamp" type="TIMESTAMP">
+            <constraints nullable="false" />
+         </column>
+         <column name="sql_timestamp" type="TIMESTAMP">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <createTable tableName="collection_entities">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="name" type="VARCHAR(30)" defaultValue="">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <createTable tableName="collection_entities_values">
+         <column autoIncrement="true" name="collection_id" type="BIGINT">
+            <constraints nullable="false" />
+         </column>
+         <column name="value_col" type="BIGINT">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <createTable tableName="map_entities">
+         <column autoIncrement="true" name="collection_id" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="name" type="VARCHAR(30)" defaultValue="">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <createTable tableName="map_entities_values">
+         <column autoIncrement="true" name="map_id" type="BIGINT">
+            <constraints nullable="false" />
+         </column>
+         <column name="name" type="VARCHAR(30)" defaultValue="">
+            <constraints nullable="false" />
+         </column>
+         <column name="number" type="BIGINT">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <createTable tableName="embedded_entities">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="name" type="VARCHAR(30)" defaultValue="">
+            <constraints nullable="false" />
+         </column>
+         <column name="description" type="VARCHAR(30)"
+            defaultValue="">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <createTable tableName="element_collection_entities">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="name" type="VARCHAR(30)" defaultValue="">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <createTable tableName="element_collection_entities_values">
+         <column autoIncrement="true" name="collection_id" type="BIGINT">
+            <constraints nullable="false" />
+         </column>
+         <column name="name" type="VARCHAR(30)" defaultValue="">
+            <constraints nullable="false" />
+         </column>
+         <column name="description" type="VARCHAR(30)"
+            defaultValue="">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <createTable tableName="multiple_table_inherit_root_entities">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="name" type="VARCHAR(30)" defaultValue="">
+            <constraints nullable="false" />
+         </column>
+         <column name="discriminator" type="VARCHAR(30)"
+            defaultValue="">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <createTable tableName="multiple_table_inherit_value_entities">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="value" type="BIGINT">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <createTable tableName="multiple_table_inherit_description_entities">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="description" type="VARCHAR(30)"
+            defaultValue="">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <createTable tableName="per_class_table_inherit_value_entities">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="name" type="VARCHAR(30)" defaultValue="">
+            <constraints nullable="false" />
+         </column>
+         <column name="value" type="BIGINT">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <createTable tableName="per_class_table_inherit_description_entities">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="name" type="VARCHAR(30)" defaultValue="">
+            <constraints nullable="false" />
+         </column>
+         <column name="description" type="VARCHAR(30)"
+            defaultValue="">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <createTable tableName="single_table_inherit_entities">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="discriminator" type="VARCHAR(4)"
+            defaultValue="">
+            <constraints nullable="false" />
+         </column>
+         <column name="name" type="VARCHAR(30)" defaultValue="">
+            <constraints nullable="false" />
+         </column>
+         <column name="description" type="VARCHAR(30)" />
+         <column name="value" type="BIGINT" />
+      </createTable>
+      <createTable tableName="super_class_table_inherit_value_entities">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="name" type="VARCHAR(30)" defaultValue="">
+            <constraints nullable="false" />
+         </column>
+         <column name="value" type="BIGINT">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <createTable tableName="super_class_table_inherit_description_entities">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="name" type="VARCHAR(30)" defaultValue="">
+            <constraints nullable="false" />
+         </column>
+         <column name="description" type="VARCHAR(30)"
+            defaultValue="">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <createTable tableName="composite_key_idclass_entities">
+         <column autoIncrement="true" name="id1" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column autoIncrement="true" name="id2" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="name" type="VARCHAR(30)" defaultValue="">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <createTable tableName="two_tables_entities_a">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="field1" type="VARCHAR(30)" defaultValue="">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <createTable tableName="two_tables_entities_b">
+         <column name="entity_id" type="BIGINT">
+            <constraints nullable="false" />
+         </column>
+         <column name="field2" type="VARCHAR(30)" defaultValue="">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <addForeignKeyConstraint baseColumnNames="entity_id"
+         baseTableName="two_tables_entities_b" constraintName="fk_entity_id"
+         onDelete="CASCADE" onUpdate="RESTRICT" referencedColumnNames="id"
+         referencedTableName="two_tables_entities_a" />
+   </changeSet>
+
+   <changeSet author="Bernardo" id="data">
+      <insert tableName="simple_entities">
+         <column name="name">entity_1</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_2</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_3</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_4</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_5</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_6</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_7</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_8</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_9</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_10</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_11</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_12</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_13</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_14</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_15</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_16</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_17</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_18</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_19</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_20</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_21</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_22</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_23</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_24</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_25</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_26</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_27</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_28</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_29</column>
+      </insert>
+      <insert tableName="simple_entities">
+         <column name="name">entity_30</column>
+      </insert>
+      <insert tableName="boolean_converter_entities">
+         <column name="flag">T</column>
+      </insert>
+      <insert tableName="boolean_converter_entities">
+         <column name="flag">B</column>
+      </insert>
+      <insert tableName="boolean_converter_entities">
+         <column name="flag">F</column>
+      </insert>
+      <insert tableName="boolean_converter_entities">
+         <column name="flag">F</column>
+      </insert>
+      <insert tableName="boolean_converter_entities">
+         <column name="flag">T</column>
+      </insert>
+      <insert tableName="boolean_converter_entities">
+         <column name="flag">T</column>
+      </insert>
+      <insert tableName="boolean_converter_entities">
+         <column name="flag">B</column>
+      </insert>
+      <insert tableName="boolean_converter_entities">
+         <column name="flag">B</column>
+      </insert>
+      <insert tableName="boolean_converter_entities">
+         <column name="flag">B</column>
+      </insert>
+      <insert tableName="enum_entities">
+         <column name="enum_string">TWO</column>
+         <column name="enum_ordinal">2</column>
+      </insert>
+      <insert tableName="enum_entities">
+         <column name="enum_string">ONE</column>
+         <column name="enum_ordinal">0</column>
+      </insert>
+      <insert tableName="enum_entities">
+         <column name="enum_string">THREE</column>
+         <column name="enum_ordinal">1</column>
+      </insert>
+      <insert tableName="enum_entities">
+         <column name="enum_string">TWO</column>
+         <column name="enum_ordinal">2</column>
+      </insert>
+      <insert tableName="date_entities">
+         <column name="calendar_date">1990-02-03</column>
+         <column name="java_date">1990-02-03</column>
+         <column name="sql_date">1990-02-03</column>
+      </insert>
+      <insert tableName="date_entities">
+         <column name="calendar_date">1991-05-02</column>
+         <column name="java_date">1991-05-02</column>
+         <column name="sql_date">1991-05-02</column>
+      </insert>
+      <insert tableName="date_entities">
+         <column name="calendar_date">1990-02-03</column>
+         <column name="java_date">1990-02-03</column>
+         <column name="sql_date">1990-02-03</column>
+      </insert>
+      <insert tableName="date_entities">
+         <column name="calendar_date">1995-01-02</column>
+         <column name="java_date">1995-01-02</column>
+         <column name="sql_date">1995-01-02</column>
+      </insert>
+      <insert tableName="date_entities">
+         <column name="calendar_date">1992-01-01</column>
+         <column name="java_date">1992-01-01</column>
+         <column name="sql_date">1992-01-01</column>
+      </insert>
+      <insert tableName="date_entities">
+         <column name="calendar_date">1996-12-24</column>
+         <column name="java_date">1996-12-24</column>
+         <column name="sql_date">1996-12-24</column>
+      </insert>
+      <insert tableName="time_entities">
+         <column name="calendar_time">11:22:33</column>
+         <column name="java_time">11:22:33</column>
+         <column name="sql_time">11:22:33</column>
+      </insert>
+      <insert tableName="time_entities">
+         <column name="calendar_time">11:11:11</column>
+         <column name="java_time">11:11:11</column>
+         <column name="sql_time">11:11:11</column>
+      </insert>
+      <insert tableName="time_entities">
+         <column name="calendar_time">11:22:33</column>
+         <column name="java_time">11:22:33</column>
+         <column name="sql_time">11:22:33</column>
+      </insert>
+      <insert tableName="time_entities">
+         <column name="calendar_time">03:15:10</column>
+         <column name="java_time">03:15:10</column>
+         <column name="sql_time">03:15:10</column>
+      </insert>
+      <insert tableName="time_entities">
+         <column name="calendar_time">12:00:00</column>
+         <column name="java_time">12:00:00</column>
+         <column name="sql_time">12:00:00</column>
+      </insert>
+      <insert tableName="time_entities">
+         <column name="calendar_time">01:10:10</column>
+         <column name="java_time">01:10:10</column>
+         <column name="sql_time">01:10:10</column>
+      </insert>
+      <insert tableName="timestamp_entities">
+         <column name="calendar_timestamp">1990-02-03 11:22:33</column>
+         <column name="java_timestamp">1990-02-03 11:22:33</column>
+         <column name="sql_timestamp">1990-02-03 11:22:33</column>
+      </insert>
+      <insert tableName="timestamp_entities">
+         <column name="calendar_timestamp">1991-05-02 11:11:11</column>
+         <column name="java_timestamp">1991-05-02 11:11:11</column>
+         <column name="sql_timestamp">1991-05-02 11:11:11</column>
+      </insert>
+      <insert tableName="timestamp_entities">
+         <column name="calendar_timestamp">1990-02-03 11:22:33</column>
+         <column name="java_timestamp">1990-02-03 11:22:33</column>
+         <column name="sql_timestamp">1990-02-03 11:22:33</column>
+      </insert>
+      <insert tableName="timestamp_entities">
+         <column name="calendar_timestamp">1995-01-02 03:15:10</column>
+         <column name="java_timestamp">1995-01-02 03:15:10</column>
+         <column name="sql_timestamp">1995-01-02 03:15:10</column>
+      </insert>
+      <insert tableName="timestamp_entities">
+         <column name="calendar_timestamp">1992-01-01 12:00:00</column>
+         <column name="java_timestamp">1992-01-01 12:00:00</column>
+         <column name="sql_timestamp">1992-01-01 12:00:00</column>
+      </insert>
+      <insert tableName="timestamp_entities">
+         <column name="calendar_timestamp">1996-12-24 01:10:10</column>
+         <column name="java_timestamp">1996-12-24 01:10:10</column>
+         <column name="sql_timestamp">1996-12-24 01:10:10</column>
+      </insert>
+      <insert tableName="collection_entities">
+         <column name="name">col_entity_1</column>
+      </insert>
+      <insert tableName="collection_entities">
+         <column name="name">col_entity_2</column>
+      </insert>
+      <insert tableName="collection_entities">
+         <column name="name">col_entity_3</column>
+      </insert>
+      <insert tableName="collection_entities">
+         <column name="name">col_entity_4</column>
+      </insert>
+      <insert tableName="collection_entities">
+         <column name="name">col_entity_5</column>
+      </insert>
+      <insert tableName="collection_entities_values">
+         <column name="collection_id">1</column>
+         <column name="value_col">1</column>
+      </insert>
+      <insert tableName="collection_entities_values">
+         <column name="collection_id">1</column>
+         <column name="value_col">2</column>
+      </insert>
+      <insert tableName="collection_entities_values">
+         <column name="collection_id">2</column>
+         <column name="value_col">3</column>
+      </insert>
+      <insert tableName="collection_entities_values">
+         <column name="collection_id">2</column>
+         <column name="value_col">2</column>
+      </insert>
+      <insert tableName="collection_entities_values">
+         <column name="collection_id">3</column>
+         <column name="value_col">4</column>
+      </insert>
+      <insert tableName="collection_entities_values">
+         <column name="collection_id">3</column>
+         <column name="value_col">5</column>
+      </insert>
+      <insert tableName="collection_entities_values">
+         <column name="collection_id">4</column>
+         <column name="value_col">6</column>
+      </insert>
+      <insert tableName="collection_entities_values">
+         <column name="collection_id">5</column>
+         <column name="value_col">7</column>
+      </insert>
+      <insert tableName="collection_entities_values">
+         <column name="collection_id">5</column>
+         <column name="value_col">2</column>
+      </insert>
+      <insert tableName="collection_entities_values">
+         <column name="collection_id">5</column>
+         <column name="value_col">8</column>
+      </insert>
+      <insert tableName="collection_entities_values">
+         <column name="collection_id">5</column>
+         <column name="value_col">9</column>
+      </insert>
+      <insert tableName="collection_entities_values">
+         <column name="collection_id">1</column>
+         <column name="value_col">10</column>
+      </insert>
+      <insert tableName="map_entities">
+         <column name="name">map_entity_1</column>
+      </insert>
+      <insert tableName="map_entities">
+         <column name="name">map_entity_2</column>
+      </insert>
+      <insert tableName="map_entities">
+         <column name="name">map_entity_3</column>
+      </insert>
+      <insert tableName="map_entities">
+         <column name="name">map_entity_4</column>
+      </insert>
+      <insert tableName="map_entities">
+         <column name="name">map_entity_5</column>
+      </insert>
+      <insert tableName="map_entities_values">
+         <column name="map_id">1</column>
+         <column name="name">value_1</column>
+         <column name="number">1</column>
+      </insert>
+      <insert tableName="map_entities_values">
+         <column name="map_id">2</column>
+         <column name="name">value_2</column>
+         <column name="number">2</column>
+      </insert>
+      <insert tableName="map_entities_values">
+         <column name="map_id">2</column>
+         <column name="name">value_2</column>
+         <column name="number">3</column>
+      </insert>
+      <insert tableName="map_entities_values">
+         <column name="map_id">2</column>
+         <column name="name">value_1</column>
+         <column name="number">2</column>
+      </insert>
+      <insert tableName="map_entities_values">
+         <column name="map_id">3</column>
+         <column name="name">value_1</column>
+         <column name="number">4</column>
+      </insert>
+      <insert tableName="map_entities_values">
+         <column name="map_id">3</column>
+         <column name="name">value_2</column>
+         <column name="number">5</column>
+      </insert>
+      <insert tableName="map_entities_values">
+         <column name="map_id">4</column>
+         <column name="name">value_1</column>
+         <column name="number">6</column>
+      </insert>
+      <insert tableName="map_entities_values">
+         <column name="map_id">5</column>
+         <column name="name">value_1</column>
+         <column name="number">7</column>
+      </insert>
+      <insert tableName="map_entities_values">
+         <column name="map_id">5</column>
+         <column name="name">value_2</column>
+         <column name="number">2</column>
+      </insert>
+      <insert tableName="map_entities_values">
+         <column name="map_id">5</column>
+         <column name="name">value_3</column>
+         <column name="number">8</column>
+      </insert>
+      <insert tableName="map_entities_values">
+         <column name="map_id">5</column>
+         <column name="name">value_4</column>
+         <column name="number">9</column>
+      </insert>
+      <insert tableName="map_entities_values">
+         <column name="map_id">5</column>
+         <column name="name">value_3</column>
+         <column name="number">10</column>
+      </insert>
+      <insert tableName="embedded_entities">
+         <column name="name">embedded_entity_1</column>
+         <column name="description">desc_1</column>
+      </insert>
+      <insert tableName="embedded_entities">
+         <column name="name">embedded_entity_2</column>
+         <column name="description">desc_2</column>
+      </insert>
+      <insert tableName="embedded_entities">
+         <column name="name">embedded_entity_3</column>
+         <column name="description">desc_3</column>
+      </insert>
+      <insert tableName="embedded_entities">
+         <column name="name">embedded_entity_4</column>
+         <column name="description">desc_4</column>
+      </insert>
+      <insert tableName="embedded_entities">
+         <column name="name">embedded_entity_5</column>
+         <column name="description">desc_5</column>
+      </insert>
+      <insert tableName="element_collection_entities">
+         <column name="name">element_col_1</column>
+      </insert>
+      <insert tableName="element_collection_entities">
+         <column name="name">element_col_2</column>
+      </insert>
+      <insert tableName="element_collection_entities">
+         <column name="name">element_col_3</column>
+      </insert>
+      <insert tableName="element_collection_entities">
+         <column name="name">element_col_4</column>
+      </insert>
+      <insert tableName="element_collection_entities">
+         <column name="name">element_col_5</column>
+      </insert>
+      <insert tableName="element_collection_entities_values">
+         <column name="collection_id">1</column>
+         <column name="name">name_1</column>
+         <column name="description">desc_1</column>
+      </insert>
+      <insert tableName="element_collection_entities_values">
+         <column name="collection_id">1</column>
+         <column name="name">name_2</column>
+         <column name="description">desc_2</column>
+      </insert>
+      <insert tableName="element_collection_entities_values">
+         <column name="collection_id">2</column>
+         <column name="name">name_1</column>
+         <column name="description">desc_1</column>
+      </insert>
+      <insert tableName="element_collection_entities_values">
+         <column name="collection_id">2</column>
+         <column name="name">name_2</column>
+         <column name="description">desc_2</column>
+      </insert>
+      <insert tableName="element_collection_entities_values">
+         <column name="collection_id">3</column>
+         <column name="name">name_1</column>
+         <column name="description">desc_1</column>
+      </insert>
+      <insert tableName="element_collection_entities_values">
+         <column name="collection_id">3</column>
+         <column name="name">name_2</column>
+         <column name="description">desc_2</column>
+      </insert>
+      <insert tableName="element_collection_entities_values">
+         <column name="collection_id">4</column>
+         <column name="name">name_1</column>
+         <column name="description">desc_1</column>
+      </insert>
+      <insert tableName="element_collection_entities_values">
+         <column name="collection_id">5</column>
+         <column name="name">name_1</column>
+         <column name="description">desc_1</column>
+      </insert>
+      <insert tableName="element_collection_entities_values">
+         <column name="collection_id">5</column>
+         <column name="name">name_2</column>
+         <column name="description">desc_2</column>
+      </insert>
+      <insert tableName="element_collection_entities_values">
+         <column name="collection_id">5</column>
+         <column name="name">name_3</column>
+         <column name="description">desc_3</column>
+      </insert>
+      <insert tableName="element_collection_entities_values">
+         <column name="collection_id">5</column>
+         <column name="name">name_4</column>
+         <column name="description">desc_4</column>
+      </insert>
+      <insert tableName="element_collection_entities_values">
+         <column name="collection_id">1</column>
+         <column name="name">name_3</column>
+         <column name="description">desc_3</column>
+      </insert>
+      <insert tableName="multiple_table_inherit_root_entities">
+         <column name="name">multi_inherit_1</column>
+         <column name="discriminator">A</column>
+      </insert>
+      <insert tableName="multiple_table_inherit_root_entities">
+         <column name="name">multi_inherit_2</column>
+         <column name="discriminator">B</column>
+      </insert>
+      <insert tableName="multiple_table_inherit_root_entities">
+         <column name="name">multi_inherit_3</column>
+         <column name="discriminator">A</column>
+      </insert>
+      <insert tableName="multiple_table_inherit_root_entities">
+         <column name="name">multi_inherit_4</column>
+         <column name="discriminator">B</column>
+      </insert>
+      <insert tableName="multiple_table_inherit_value_entities">
+         <column name="id">1</column>
+         <column name="value">11</column>
+      </insert>
+      <insert tableName="multiple_table_inherit_value_entities">
+         <column name="id">3</column>
+         <column name="value">22</column>
+      </insert>
+      <insert tableName="multiple_table_inherit_description_entities">
+         <column name="id">2</column>
+         <column name="description">desc_2</column>
+      </insert>
+      <insert tableName="multiple_table_inherit_description_entities">
+         <column name="id">4</column>
+         <column name="description">desc_4</column>
+      </insert>
+      <insert tableName="per_class_table_inherit_value_entities">
+         <column name="name">per_class_inherit_1</column>
+         <column name="value">11</column>
+      </insert>
+      <insert tableName="per_class_table_inherit_value_entities">
+         <column name="name">per_class_inherit_3</column>
+         <column name="value">22</column>
+      </insert>
+      <insert tableName="per_class_table_inherit_description_entities">
+         <column name="name">per_class_inherit_2</column>
+         <column name="description">desc_2</column>
+      </insert>
+      <insert tableName="per_class_table_inherit_description_entities">
+         <column name="name">per_class_inherit_4</column>
+         <column name="description">desc_4</column>
+      </insert>
+      <insert tableName="single_table_inherit_entities">
+         <column name="discriminator">A</column>
+         <column name="name">single_inherit_1</column>
+         <column name="description">null</column>
+         <column name="value">11</column>
+      </insert>
+      <insert tableName="single_table_inherit_entities">
+         <column name="discriminator">B</column>
+         <column name="name">single_inherit_2</column>
+         <column name="description">desc_2</column>
+         <column name="value">null</column>
+      </insert>
+      <insert tableName="single_table_inherit_entities">
+         <column name="discriminator">A</column>
+         <column name="name">single_inherit_3</column>
+         <column name="description">null</column>
+         <column name="value">2</column>
+      </insert>
+      <insert tableName="single_table_inherit_entities">
+         <column name="discriminator">B</column>
+         <column name="name">single_inherit_4</column>
+         <column name="description">desc_4</column>
+         <column name="value">null</column>
+      </insert>
+      <insert tableName="super_class_table_inherit_value_entities">
+         <column name="name">per_class_inherit_1</column>
+         <column name="value">11</column>
+      </insert>
+      <insert tableName="super_class_table_inherit_value_entities">
+         <column name="name">per_class_inherit_3</column>
+         <column name="value">22</column>
+      </insert>
+      <insert tableName="super_class_table_inherit_description_entities">
+         <column name="name">per_class_inherit_2</column>
+         <column name="description">desc_2</column>
+      </insert>
+      <insert tableName="super_class_table_inherit_description_entities">
+         <column name="name">per_class_inherit_4</column>
+         <column name="description">desc_4</column>
+      </insert>
+      <insert tableName="composite_key_idclass_entities">
+         <column name="id1">1</column>
+         <column name="id2">1</column>
+         <column name="name">composite_key_1</column>
+      </insert>
+      <insert tableName="composite_key_idclass_entities">
+         <column name="id1">1</column>
+         <column name="id2">2</column>
+         <column name="name">composite_key_2</column>
+      </insert>
+      <insert tableName="composite_key_idclass_entities">
+         <column name="id1">2</column>
+         <column name="id2">1</column>
+         <column name="name">composite_key_3</column>
+      </insert>
+      <insert tableName="composite_key_idclass_entities">
+         <column name="id1">2</column>
+         <column name="id2">2</column>
+         <column name="name">composite_key_4</column>
+      </insert>
+      <insert tableName="two_tables_entities_a">
+         <column name="field1">value_a_1</column>
+      </insert>
+      <insert tableName="two_tables_entities_a">
+         <column name="field1">value_a_2</column>
+      </insert>
+      <insert tableName="two_tables_entities_a">
+         <column name="field1">value_a_3</column>
+      </insert>
+      <insert tableName="two_tables_entities_b">
+         <column name="entity_id">1</column>
+         <column name="field2">value_b_1</column>
+      </insert>
+      <insert tableName="two_tables_entities_b">
+         <column name="entity_id">1</column>
+         <column name="field2">value_b_1</column>
+      </insert>
+      <insert tableName="two_tables_entities_b">
+         <column name="entity_id">2</column>
+         <column name="field2">value_b_2</column>
+      </insert>
+      <insert tableName="two_tables_entities_b">
+         <column name="entity_id">3</column>
+         <column name="field2">value_b_3</column>
+      </insert>
+   </changeSet>
+
+</databaseChangeLog>

@@ -29,7 +29,6 @@ import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.jpa.test.util.config.context.PersistenceContextConfig;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.DataBaseScriptsPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.DataBaseUserPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
@@ -46,13 +45,11 @@ import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimp
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         TestContextConfig.ENTITY_MODIFIABLE,
         PersistenceContextConfig.ECLIPSELINK })
-@TestPropertySource(
-        locations = { TestPropertiesConfig.SIMPLE_ENTITY,
-                PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                DataBaseUserPropertiesConfig.DEFAULT,
-                DataBaseScriptsPropertiesConfig.MSSQL,
-                JpaPropertiesConfig.HSQLDB, JdbcPropertiesPaths.HSQLDB,
-                QueryPropertiesPaths.SIMPLE_ENTITY },
+@TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
+        TestPropertiesConfig.SIMPLE_ENTITY,
+        PersistenceProviderPropertiesConfig.ECLIPSELINK,
+        DataBaseUserPropertiesConfig.DEFAULT, JpaPropertiesConfig.HSQLDB,
+        JdbcPropertiesPaths.HSQLDB, QueryPropertiesPaths.SIMPLE_ENTITY },
         properties = {
                 "jpa.persistenceUnitName=simple_entity_eclipselink_hsqldb",
                 "jdbc.url=jdbc:hsqldb:mem:test_eclipselink" })

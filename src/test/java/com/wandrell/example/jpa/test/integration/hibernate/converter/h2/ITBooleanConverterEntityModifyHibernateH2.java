@@ -29,7 +29,6 @@ import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.jpa.test.util.config.context.PersistenceContextConfig;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.DataBaseScriptsPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.DataBaseUserPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.HibernateDialectPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
@@ -49,10 +48,10 @@ import com.wandrell.example.jpa.test.util.test.integration.converter.AbstractITB
         TestContextConfig.ENTITY_MODIFIABLE,
         PersistenceContextConfig.HIBERNATE })
 @TestPropertySource(
-        locations = { TestPropertiesConfig.BOOLEAN_CONVERTER,
+        locations = { TestPropertiesConfig.LIQUIBASE,
+                TestPropertiesConfig.BOOLEAN_CONVERTER,
                 PersistenceProviderPropertiesConfig.HIBERNATE,
-                DataBaseUserPropertiesConfig.DEFAULT,
-                DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
+                DataBaseUserPropertiesConfig.DEFAULT, JpaPropertiesConfig.H2,
                 JdbcPropertiesPaths.H2, QueryPropertiesPaths.BOOLEAN_CONVERTER,
                 HibernateDialectPropertiesConfig.H2 },
         properties = {

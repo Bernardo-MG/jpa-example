@@ -105,7 +105,7 @@ public abstract class AbstractITTimestampEntityQueryCriteriaApi
     /**
      * String to generate the time for the test ranges.
      */
-    private String        timestampString = "1991-05-02 11:11:11";
+    private final String        timestampString = "1991-05-02 11:11:11";
 
     /**
      * Default constructor.

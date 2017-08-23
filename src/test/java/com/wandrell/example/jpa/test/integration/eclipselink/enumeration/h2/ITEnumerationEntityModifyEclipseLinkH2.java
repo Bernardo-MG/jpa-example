@@ -29,7 +29,6 @@ import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.jpa.test.util.config.context.PersistenceContextConfig;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.DataBaseScriptsPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.DataBaseUserPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
@@ -47,10 +46,11 @@ import com.wandrell.example.jpa.test.util.test.integration.enumeration.AbstractI
         TestContextConfig.ENTITY_MODIFIABLE,
         PersistenceContextConfig.ECLIPSELINK })
 @TestPropertySource(
-        locations = { TestPropertiesConfig.ENUMERATION,
+        locations = { TestPropertiesConfig.LIQUIBASE,
+                TestPropertiesConfig.ENUMERATION,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
                 DataBaseUserPropertiesConfig.DEFAULT,
-                DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
+                 JpaPropertiesConfig.H2,
                 JdbcPropertiesPaths.H2, QueryPropertiesPaths.ENUMERATION },
         properties = {
                 "jpa.persistenceUnitName=enumeration_eclipselink_h2_modify",

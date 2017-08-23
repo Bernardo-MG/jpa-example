@@ -160,7 +160,7 @@ public abstract class AbstractITTimeEntityQueryJpql
     /**
      * String to generate the time for the test ranges.
      */
-    private String        timeString = "11:11:11";
+    private final String        timeString = "11:11:11";
 
     /**
      * Default constructor.

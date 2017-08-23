@@ -29,7 +29,6 @@ import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.jpa.test.util.config.context.PersistenceContextConfig;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.DataBaseScriptsPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.DataBaseUserPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.HibernateDialectPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
@@ -48,10 +47,10 @@ import com.wandrell.example.jpa.test.util.test.integration.enumeration.AbstractI
         TestContextConfig.ENTITY_MODIFIABLE,
         PersistenceContextConfig.HIBERNATE })
 @TestPropertySource(
-        locations = { TestPropertiesConfig.ENUMERATION,
+        locations = { TestPropertiesConfig.LIQUIBASE,
+                TestPropertiesConfig.ENUMERATION,
                 PersistenceProviderPropertiesConfig.HIBERNATE,
-                DataBaseUserPropertiesConfig.DEFAULT,
-                DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
+                DataBaseUserPropertiesConfig.DEFAULT, JpaPropertiesConfig.H2,
                 JdbcPropertiesPaths.H2, HibernateDialectPropertiesConfig.H2,
                 QueryPropertiesPaths.ENUMERATION },
         properties = { "jpa.persistenceUnitName=enumeration_hibernate_h2",

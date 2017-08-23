@@ -94,7 +94,7 @@ public abstract class AbstractITDateEntityQueryJpql
     /**
      * String to generate the date for the test ranges.
      */
-    private String        dateString = "1991-05-02";
+    private final String        dateString = "1991-05-02";
 
     /**
      * The JPA entity manager.

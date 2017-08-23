@@ -29,7 +29,6 @@ import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.jpa.test.util.config.context.PersistenceContextConfig;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.DataBaseScriptsPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.DataBaseUserPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
@@ -48,10 +47,11 @@ import com.wandrell.example.jpa.test.util.test.integration.inheritance.multiple.
         TestContextConfig.ENTITY_MODIFIABLE,
         PersistenceContextConfig.ECLIPSELINK })
 @TestPropertySource(
-        locations = { TestPropertiesConfig.MULTIPLE_INHERITANCE_VALUE,
+        locations = { TestPropertiesConfig.LIQUIBASE,
+                TestPropertiesConfig.MULTIPLE_INHERITANCE_VALUE,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
                 DataBaseUserPropertiesConfig.DEFAULT,
-                DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
+                 JpaPropertiesConfig.H2,
                 JdbcPropertiesPaths.H2,
                 QueryPropertiesPaths.MULTIPLE_INHERITANCE_VALUE },
         properties = {

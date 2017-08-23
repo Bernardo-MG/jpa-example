@@ -79,6 +79,11 @@ public class TestPropertiesConfig {
     public static final String ENUMERATION                  = "classpath:config/entity/test-enumeration-entity.properties";
 
     /**
+     * Liquibase.
+     */
+    public static final String LIQUIBASE                    = "classpath:config/persistence/liquibase.properties";
+
+    /**
      * Map entity.
      */
     public static final String MAP                          = "classpath:config/entity/test-map-entity.properties";

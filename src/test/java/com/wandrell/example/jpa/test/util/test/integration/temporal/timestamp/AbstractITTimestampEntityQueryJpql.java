@@ -160,7 +160,7 @@ public abstract class AbstractITTimestampEntityQueryJpql
     /**
      * String to generate the timestamp for the test ranges.
      */
-    private String        timestampString = "1991-05-02 11:11:11";
+    private final String        timestampString = "1991-05-02 11:11:11";
 
     /**
      * Default constructor.

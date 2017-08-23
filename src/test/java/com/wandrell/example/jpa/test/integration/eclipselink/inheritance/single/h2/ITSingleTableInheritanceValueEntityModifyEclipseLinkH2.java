@@ -29,7 +29,6 @@ import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.jpa.test.util.config.context.PersistenceContextConfig;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.DataBaseScriptsPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.DataBaseUserPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.JdbcPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.JpaPropertiesConfig;
@@ -47,13 +46,12 @@ import com.wandrell.example.jpa.test.util.test.integration.inheritance.single.Ab
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         TestContextConfig.ENTITY_MODIFIABLE,
         PersistenceContextConfig.ECLIPSELINK })
-@TestPropertySource(
-        locations = { TestPropertiesConfig.SINGLE_INHERITANCE_VALUE,
-                PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                DataBaseUserPropertiesConfig.DEFAULT,
-                DataBaseScriptsPropertiesConfig.MSSQL, JpaPropertiesConfig.H2,
-                JdbcPropertiesPaths.H2,
-                QueryPropertiesPaths.SINGLE_INHERITANCE_VALUE },
+@TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
+        TestPropertiesConfig.SINGLE_INHERITANCE_VALUE,
+        PersistenceProviderPropertiesConfig.ECLIPSELINK,
+        DataBaseUserPropertiesConfig.DEFAULT,
+         JpaPropertiesConfig.H2,
+        JdbcPropertiesPaths.H2, QueryPropertiesPaths.SINGLE_INHERITANCE_VALUE },
         properties = {
                 "jpa.persistenceUnitName=single_inheritance_eclipselink_h2_modify",
                 "jdbc.url=jdbc:h2:mem:test_eclipselink_modify;DB_CLOSE_ON_EXIT=FALSE" })
