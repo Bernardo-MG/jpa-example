@@ -131,7 +131,7 @@
          </column>
       </createTable>
       <createTable tableName="element_collection_entities_values">
-         <column autoIncrement="true" name="collection_id" type="BIGINT">
+         <column name="collection_id" type="BIGINT">
             <constraints nullable="false" />
          </column>
          <column name="name" type="VARCHAR(30)" defaultValue="">
