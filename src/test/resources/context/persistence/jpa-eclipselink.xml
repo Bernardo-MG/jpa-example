@@ -42,6 +42,7 @@
         <entry key="eclipselink.weaving" value="${eclipselink.weaving}" />
         <entry key="eclipselink.ddl-generation" value="${eclipselink.ddl-generation}" />
         <entry key="eclipselink.ddl-generation.output-mode" value="${eclipselink.ddl-generation.output-mode}" />
+        <entry key="eclipselink.allow-zero-id" value="${eclipselink.allow-zero-id}"/>
     </util:map>
 
     <!-- ============================== DATASOURCE =============================== -->
