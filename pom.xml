@@ -189,7 +189,7 @@
             <database.username>sa</database.username>
             <database.password></database.password>
             <!-- Spring context -->
-            <spring.profile.database>h2</spring.profile.database>
+            <spring.profile.database>hsqldb</spring.profile.database>
          </properties>
          <dependencies>
             <dependency>
