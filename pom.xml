@@ -244,6 +244,23 @@
          </dependencies>
       </profile>
       <profile>
+         <!-- EclipseLink JPA provider profile -->
+         <!-- Prepares the project to connect to the DB through EclipseLink -->
+         <id>eclipselink</id>
+         <properties>
+            <jpa.provider>eclipselink</jpa.provider>
+         </properties>
+         <dependencies>
+            <dependency>
+               <!-- Eclipselink -->
+               <groupId>org.eclipse.persistence</groupId>
+               <artifactId>eclipselink</artifactId>
+               <version>${eclipselink.version}</version>
+               <scope>test</scope>
+            </dependency>
+         </dependencies>
+      </profile>
+      <profile>
          <!-- Release site deployment profile -->
          <!-- Sets the site repository to point to the releases repo -->
          <id>deployment-release</id>
@@ -359,13 +376,6 @@
       <!-- ============================================== -->
       <!-- ======= TEST ENVIRONMENT DEPENDENCIES ======== -->
       <!-- ============================================== -->
-      <dependency>
-         <!-- Eclipselink -->
-         <groupId>org.eclipse.persistence</groupId>
-         <artifactId>eclipselink</artifactId>
-         <version>${eclipselink.version}</version>
-         <scope>test</scope>
-      </dependency>
       <dependency>
          <!-- Hibernate Core -->
          <groupId>org.hibernate</groupId>
