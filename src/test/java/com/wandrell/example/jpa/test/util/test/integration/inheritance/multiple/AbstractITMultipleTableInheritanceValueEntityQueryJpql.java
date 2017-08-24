@@ -65,7 +65,7 @@ public abstract class AbstractITMultipleTableInheritanceValueEntityQueryJpql
     /**
      * The query to acquire all the entities by the ordinal value.
      */
-    @Value("${query.findAllWithValue}")
+    @Value("${query.multipleTable.findAllWithValue}")
     private String        findAllWithValue;
 
     /**

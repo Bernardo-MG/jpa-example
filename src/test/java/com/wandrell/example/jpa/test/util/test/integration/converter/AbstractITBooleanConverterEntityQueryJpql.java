@@ -65,7 +65,7 @@ public abstract class AbstractITBooleanConverterEntityQueryJpql
     /**
      * The query to acquire all the entities by the flag.
      */
-    @Value("${query.findAllByFlag}")
+    @Value("${query.converter.findAllByFlag}")
     private String        findAllByFlag;
 
     /**

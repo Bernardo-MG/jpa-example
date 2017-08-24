@@ -65,7 +65,7 @@ public abstract class AbstractITPerClassTableInheritanceValueEntityQueryJpql
     /**
      * The query to acquire all the entities by the ordinal value.
      */
-    @Value("${query.findAllWithValue}")
+    @Value("${query.segregatedTable.findAllWithValue}")
     private String        findAllWithValue;
 
     /**

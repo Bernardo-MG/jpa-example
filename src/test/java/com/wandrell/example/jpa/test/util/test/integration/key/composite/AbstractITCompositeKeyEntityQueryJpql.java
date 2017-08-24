@@ -62,7 +62,7 @@ public abstract class AbstractITCompositeKeyEntityQueryJpql
     /**
      * The query to acquire an entity by its ids.
      */
-    @Value("${query.findByIds}")
+    @Value("${query.compositeKey.findByIds}")
     private String        findByIds;
 
     /**

@@ -66,7 +66,7 @@ public abstract class AbstractITCollectionEntityQueryJpql
     /**
      * The query to acquire all the entities.
      */
-    @Value("${query.findAllWithValue}")
+    @Value("${query.collection.findAllWithValue}")
     private String        findAllWithValue;
 
     /**
