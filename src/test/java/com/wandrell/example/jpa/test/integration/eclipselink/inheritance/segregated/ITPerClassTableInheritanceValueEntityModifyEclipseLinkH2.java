@@ -53,7 +53,7 @@ import com.wandrell.example.jpa.test.util.test.integration.inheritance.segregate
                 QueryPropertiesPaths.SEGREGATED_INHERITANCE_VALUE },
         properties = {
                 "jpa.persistenceUnitName=segregated_inheritance_eclipselink_h2_modify",
-                "jdbc.url=jdbc:h2:mem:test_eclipselink_modify;DB_CLOSE_ON_EXIT=FALSE" })
+                 })
 public final class ITPerClassTableInheritanceValueEntityModifyEclipseLinkH2
         extends AbstractITPerClassTableInheritanceValueEntityModify {
 

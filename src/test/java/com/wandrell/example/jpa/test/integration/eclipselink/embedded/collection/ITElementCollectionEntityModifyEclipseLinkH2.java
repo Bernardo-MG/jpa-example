@@ -51,7 +51,7 @@ import com.wandrell.example.jpa.test.util.test.integration.embedded.collection.A
          QueryPropertiesPaths.ELEMENT_COLLECTION },
         properties = {
                 "jpa.persistenceUnitName=element_collection_eclipselink_h2_modify",
-                "jdbc.url=jdbc:h2:mem:test_eclipselink_modify;DB_CLOSE_ON_EXIT=FALSE" })
+                 })
 public final class ITElementCollectionEntityModifyEclipseLinkH2
         extends AbstractITElementCollectionEntityModify {
 

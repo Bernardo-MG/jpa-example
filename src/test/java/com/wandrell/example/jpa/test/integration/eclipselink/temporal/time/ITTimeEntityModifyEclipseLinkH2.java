@@ -48,7 +48,7 @@ import com.wandrell.example.jpa.test.util.test.integration.temporal.time.Abstrac
                  
                  QueryPropertiesPaths.TIME },
         properties = { "jpa.persistenceUnitName=time_eclipselink_h2_modify",
-                "jdbc.url=jdbc:h2:mem:test_eclipselink_modify;DB_CLOSE_ON_EXIT=FALSE" })
+                 })
 public final class ITTimeEntityModifyEclipseLinkH2
         extends AbstractITTimeEntityModify {
 
