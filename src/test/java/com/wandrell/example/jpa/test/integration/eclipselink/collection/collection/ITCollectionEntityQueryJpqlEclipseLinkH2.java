@@ -44,10 +44,8 @@ import com.wandrell.example.jpa.test.util.test.integration.collection.collection
         PersistenceContextConfig.ECLIPSELINK })
 @TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
         TestPropertiesConfig.COLLECTION,
-        PersistenceProviderPropertiesConfig.ECLIPSELINK, 
-         QueryPropertiesPaths.COLLECTION },
-        properties = { "jpa.persistenceUnitName=collection_eclipselink_h2",
-                 })
+        PersistenceProviderPropertiesConfig.ECLIPSELINK,
+        QueryPropertiesPaths.COLLECTION })
 public final class ITCollectionEntityQueryJpqlEclipseLinkH2
         extends AbstractITCollectionEntityQueryJpql {
 

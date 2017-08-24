@@ -45,10 +45,7 @@ import com.wandrell.example.jpa.test.util.test.integration.temporal.date.Abstrac
 @TestPropertySource(
         locations = { TestPropertiesConfig.LIQUIBASE, TestPropertiesConfig.DATE,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                 
-                 QueryPropertiesPaths.DATE },
-        properties = { "jpa.persistenceUnitName=date_eclipselink_h2",
-                 })
+                QueryPropertiesPaths.DATE })
 public final class ITDateEntityQueryJpqlEclipseLinkH2
         extends AbstractITDateEntityQueryJpql {
 

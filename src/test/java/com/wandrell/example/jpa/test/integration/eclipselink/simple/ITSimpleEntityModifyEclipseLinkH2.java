@@ -42,15 +42,10 @@ import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimp
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         TestContextConfig.ENTITY_MODIFIABLE,
         PersistenceContextConfig.ECLIPSELINK })
-@TestPropertySource(
-        locations = { TestPropertiesConfig.LIQUIBASE,
-                TestPropertiesConfig.SIMPLE_ENTITY,
-                PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                
-                 
-                 QueryPropertiesPaths.SIMPLE_ENTITY },
-        properties = { "jpa.persistenceUnitName=entities_eclipselink_h2_modify",
-                 })
+@TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
+        TestPropertiesConfig.SIMPLE_ENTITY,
+        PersistenceProviderPropertiesConfig.ECLIPSELINK,
+        QueryPropertiesPaths.SIMPLE_ENTITY })
 public final class ITSimpleEntityModifyEclipseLinkH2
         extends AbstractITSimpleEntityModify {
 

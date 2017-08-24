@@ -43,17 +43,10 @@ import com.wandrell.example.jpa.test.util.test.integration.inheritance.segregate
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         TestContextConfig.ENTITY_MODIFIABLE,
         PersistenceContextConfig.ECLIPSELINK })
-@TestPropertySource(
-        locations = { TestPropertiesConfig.LIQUIBASE,
-                TestPropertiesConfig.SEGREGATED_INHERITANCE_VALUE,
-                PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                
-                 
-                
-                QueryPropertiesPaths.SEGREGATED_INHERITANCE_VALUE },
-        properties = {
-                "jpa.persistenceUnitName=segregated_inheritance_eclipselink_h2_modify",
-                 })
+@TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
+        TestPropertiesConfig.SEGREGATED_INHERITANCE_VALUE,
+        PersistenceProviderPropertiesConfig.ECLIPSELINK,
+        QueryPropertiesPaths.SEGREGATED_INHERITANCE_VALUE })
 public final class ITPerClassTableInheritanceValueEntityModifyEclipseLinkH2
         extends AbstractITPerClassTableInheritanceValueEntityModify {
 

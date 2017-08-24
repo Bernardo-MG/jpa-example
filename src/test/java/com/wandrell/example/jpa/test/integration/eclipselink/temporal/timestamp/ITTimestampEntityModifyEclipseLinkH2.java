@@ -42,15 +42,10 @@ import com.wandrell.example.jpa.test.util.test.integration.temporal.timestamp.Ab
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         TestContextConfig.ENTITY_MODIFIABLE,
         PersistenceContextConfig.ECLIPSELINK })
-@TestPropertySource(
-        locations = { TestPropertiesConfig.LIQUIBASE,
-                TestPropertiesConfig.TIMESTAMP,
-                PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                 
-                 QueryPropertiesPaths.TIMESTAMP },
-        properties = {
-                "jpa.persistenceUnitName=timestamp_eclipselink_h2_modify",
-                 })
+@TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
+        TestPropertiesConfig.TIMESTAMP,
+        PersistenceProviderPropertiesConfig.ECLIPSELINK,
+        QueryPropertiesPaths.TIMESTAMP })
 public final class ITTimestampEntityModifyEclipseLinkH2
         extends AbstractITTimestampEntityModify {
 

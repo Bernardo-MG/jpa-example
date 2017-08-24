@@ -45,12 +45,7 @@ import com.wandrell.example.jpa.test.util.test.integration.inheritance.single.Ab
 @TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
         TestPropertiesConfig.SINGLE_INHERITANCE_VALUE,
         PersistenceProviderPropertiesConfig.ECLIPSELINK,
-        
-         
-         QueryPropertiesPaths.SINGLE_INHERITANCE_VALUE },
-        properties = {
-                "jpa.persistenceUnitName=single_inheritance_eclipselink_h2",
-                 })
+        QueryPropertiesPaths.SINGLE_INHERITANCE_VALUE })
 public final class ITSingleTableInheritanceValueEntityQueryCriteriaApiEclipseLinkH2
         extends AbstractITSingleTableInheritanceValueEntityQueryCriteriaApi {
 

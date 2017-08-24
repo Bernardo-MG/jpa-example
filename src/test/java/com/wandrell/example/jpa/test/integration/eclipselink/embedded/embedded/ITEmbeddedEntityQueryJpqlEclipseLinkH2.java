@@ -42,15 +42,10 @@ import com.wandrell.example.jpa.test.util.test.integration.embedded.embedded.Abs
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         PersistenceContextConfig.ECLIPSELINK })
-@TestPropertySource(
-        locations = { TestPropertiesConfig.LIQUIBASE,
-                TestPropertiesConfig.EMBEDDED,
-                PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                
-                 
-                 QueryPropertiesPaths.EMBEDDED },
-        properties = { "jpa.persistenceUnitName=embedded_eclipselink_h2",
-                 })
+@TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
+        TestPropertiesConfig.EMBEDDED,
+        PersistenceProviderPropertiesConfig.ECLIPSELINK,
+        QueryPropertiesPaths.EMBEDDED })
 public final class ITEmbeddedEntityQueryJpqlEclipseLinkH2
         extends AbstractITEmbeddedEntityQueryJpql {
 

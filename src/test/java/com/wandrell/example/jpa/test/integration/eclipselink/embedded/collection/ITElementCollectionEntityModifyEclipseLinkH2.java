@@ -46,12 +46,7 @@ import com.wandrell.example.jpa.test.util.test.integration.embedded.collection.A
 @TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
         TestPropertiesConfig.ELEMENT_COLLECTION,
         PersistenceProviderPropertiesConfig.ECLIPSELINK,
-        
-         
-         QueryPropertiesPaths.ELEMENT_COLLECTION },
-        properties = {
-                "jpa.persistenceUnitName=element_collection_eclipselink_h2_modify",
-                 })
+        QueryPropertiesPaths.ELEMENT_COLLECTION })
 public final class ITElementCollectionEntityModifyEclipseLinkH2
         extends AbstractITElementCollectionEntityModify {
 

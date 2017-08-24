@@ -42,17 +42,10 @@ import com.wandrell.example.jpa.test.util.test.integration.inheritance.multiple.
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         PersistenceContextConfig.ECLIPSELINK })
-@TestPropertySource(
-        locations = { TestPropertiesConfig.LIQUIBASE,
-                TestPropertiesConfig.MULTIPLE_INHERITANCE_VALUE,
-                PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                
-                 
-                
-                QueryPropertiesPaths.MULTIPLE_INHERITANCE_VALUE },
-        properties = {
-                "jpa.persistenceUnitName=multiple_inheritance_eclipselink_h2",
-                 })
+@TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
+        TestPropertiesConfig.MULTIPLE_INHERITANCE_VALUE,
+        PersistenceProviderPropertiesConfig.ECLIPSELINK,
+        QueryPropertiesPaths.MULTIPLE_INHERITANCE_VALUE })
 public final class ITMultipleTableInheritanceValueEntityQueryJpqlEclipseLinkH2
         extends AbstractITMultipleTableInheritanceValueEntityQueryJpql {
 

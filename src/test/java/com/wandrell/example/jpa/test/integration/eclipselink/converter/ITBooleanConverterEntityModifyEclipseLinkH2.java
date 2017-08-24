@@ -46,12 +46,7 @@ import com.wandrell.example.jpa.test.util.test.integration.converter.AbstractITB
 @TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
         TestPropertiesConfig.BOOLEAN_CONVERTER,
         PersistenceProviderPropertiesConfig.ECLIPSELINK,
-        
-         
-         QueryPropertiesPaths.BOOLEAN_CONVERTER },
-        properties = {
-                "jpa.persistenceUnitName=boolean_converter_eclipselink_h2_modify",
-                 })
+        QueryPropertiesPaths.BOOLEAN_CONVERTER })
 public final class ITBooleanConverterEntityModifyEclipseLinkH2
         extends AbstractITBooleanConverterEntityModify {
 

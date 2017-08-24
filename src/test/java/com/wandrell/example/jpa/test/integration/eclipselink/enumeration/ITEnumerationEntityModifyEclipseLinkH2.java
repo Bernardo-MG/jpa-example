@@ -42,16 +42,10 @@ import com.wandrell.example.jpa.test.util.test.integration.enumeration.AbstractI
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         TestContextConfig.ENTITY_MODIFIABLE,
         PersistenceContextConfig.ECLIPSELINK })
-@TestPropertySource(
-        locations = { TestPropertiesConfig.LIQUIBASE,
-                TestPropertiesConfig.ENUMERATION,
-                PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                
-                 
-                 QueryPropertiesPaths.ENUMERATION },
-        properties = {
-                "jpa.persistenceUnitName=enumeration_eclipselink_h2_modify",
-                 })
+@TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
+        TestPropertiesConfig.ENUMERATION,
+        PersistenceProviderPropertiesConfig.ECLIPSELINK,
+        QueryPropertiesPaths.ENUMERATION })
 public final class ITEnumerationEntityModifyEclipseLinkH2
         extends AbstractITEnumerationEntityModify {
 

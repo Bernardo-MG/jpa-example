@@ -45,11 +45,7 @@ import com.wandrell.example.jpa.test.util.test.integration.collection.map.Abstra
 @TestPropertySource(
         locations = { TestPropertiesConfig.LIQUIBASE, TestPropertiesConfig.MAP,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                
-                 
-                 QueryPropertiesPaths.MAP },
-        properties = { "jpa.persistenceUnitName=map_eclipselink_h2",
-                 })
+                QueryPropertiesPaths.MAP })
 public final class ITMapEntityQueryJpqlEclipseLinkH2
         extends AbstractITMapEntityQueryJpql {
 

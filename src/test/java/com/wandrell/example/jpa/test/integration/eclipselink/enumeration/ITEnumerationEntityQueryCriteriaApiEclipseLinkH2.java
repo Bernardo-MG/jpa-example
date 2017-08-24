@@ -42,15 +42,10 @@ import com.wandrell.example.jpa.test.util.test.integration.enumeration.AbstractI
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         PersistenceContextConfig.ECLIPSELINK })
-@TestPropertySource(
-        locations = { TestPropertiesConfig.LIQUIBASE,
-                TestPropertiesConfig.ENUMERATION,
-                PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                
-                 
-                 QueryPropertiesPaths.ENUMERATION },
-        properties = { "jpa.persistenceUnitName=enumeration_eclipselink_h2",
-                 })
+@TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
+        TestPropertiesConfig.ENUMERATION,
+        PersistenceProviderPropertiesConfig.ECLIPSELINK,
+        QueryPropertiesPaths.ENUMERATION })
 public final class ITEnumerationEntityQueryCriteriaApiEclipseLinkH2
         extends AbstractITEnumerationEntityQueryCriteriaApi {
 

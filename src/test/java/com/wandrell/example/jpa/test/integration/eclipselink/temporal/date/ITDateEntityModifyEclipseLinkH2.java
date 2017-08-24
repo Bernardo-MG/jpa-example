@@ -45,10 +45,7 @@ import com.wandrell.example.jpa.test.util.test.integration.temporal.date.Abstrac
 @TestPropertySource(
         locations = { TestPropertiesConfig.LIQUIBASE, TestPropertiesConfig.DATE,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                 
-                 QueryPropertiesPaths.DATE },
-        properties = { "jpa.persistenceUnitName=date_eclipselink_h2_modify",
-                 })
+                QueryPropertiesPaths.DATE })
 public final class ITDateEntityModifyEclipseLinkH2
         extends AbstractITDateEntityModify {
 

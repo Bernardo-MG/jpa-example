@@ -42,17 +42,10 @@ import com.wandrell.example.jpa.test.util.test.integration.inheritance.superclas
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         PersistenceContextConfig.ECLIPSELINK })
-@TestPropertySource(
-        locations = { TestPropertiesConfig.LIQUIBASE,
-                TestPropertiesConfig.SUPERCLASS_INHERITANCE_VALUE,
-                PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                
-                 
-                
-                QueryPropertiesPaths.SUPERCLASS_INHERITANCE_VALUE },
-        properties = {
-                "jpa.persistenceUnitName=superclass_inheritance_eclipselink_h2",
-                 })
+@TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
+        TestPropertiesConfig.SUPERCLASS_INHERITANCE_VALUE,
+        PersistenceProviderPropertiesConfig.ECLIPSELINK,
+        QueryPropertiesPaths.SUPERCLASS_INHERITANCE_VALUE })
 public final class ITSuperClassTableInheritanceValueEntityQueryCriteriaApiEclipseLinkH2
         extends
         AbstractITSuperClassTableInheritanceValueEntityQueryCriteriaApi {

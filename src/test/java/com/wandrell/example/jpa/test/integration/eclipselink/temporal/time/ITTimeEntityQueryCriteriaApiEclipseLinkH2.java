@@ -45,10 +45,7 @@ import com.wandrell.example.jpa.test.util.test.integration.temporal.time.Abstrac
 @TestPropertySource(
         locations = { TestPropertiesConfig.LIQUIBASE, TestPropertiesConfig.TIME,
                 PersistenceProviderPropertiesConfig.ECLIPSELINK,
-                 
-                 QueryPropertiesPaths.TIME },
-        properties = { "jpa.persistenceUnitName=time_eclipselink_h2",
-                 })
+                QueryPropertiesPaths.TIME })
 public final class ITTimeEntityQueryCriteriaApiEclipseLinkH2
         extends AbstractITTimeEntityQueryCriteriaApi {
 
