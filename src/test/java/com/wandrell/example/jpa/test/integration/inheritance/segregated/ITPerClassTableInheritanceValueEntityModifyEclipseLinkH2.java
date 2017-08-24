@@ -28,7 +28,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.test.integration.inheritance.segregated.AbstractITPerClassTableInheritanceValueEntityModify;
@@ -44,7 +43,7 @@ import com.wandrell.example.jpa.test.util.test.integration.inheritance.segregate
          })
 @TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
         TestPropertiesConfig.SEGREGATED_INHERITANCE_VALUE,
-        PersistenceProviderPropertiesConfig.ECLIPSELINK,
+        
         QueryPropertiesPaths.SEGREGATED_INHERITANCE_VALUE })
 public final class ITPerClassTableInheritanceValueEntityModifyEclipseLinkH2
         extends AbstractITPerClassTableInheritanceValueEntityModify {

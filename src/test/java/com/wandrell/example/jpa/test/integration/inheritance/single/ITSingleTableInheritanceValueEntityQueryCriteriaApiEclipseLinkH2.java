@@ -28,7 +28,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.test.integration.inheritance.single.AbstractITSingleTableInheritanceValueEntityQueryCriteriaApi;
@@ -43,7 +42,7 @@ import com.wandrell.example.jpa.test.util.test.integration.inheritance.single.Ab
          })
 @TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
         TestPropertiesConfig.SINGLE_INHERITANCE_VALUE,
-        PersistenceProviderPropertiesConfig.ECLIPSELINK,
+        
         QueryPropertiesPaths.SINGLE_INHERITANCE_VALUE })
 public final class ITSingleTableInheritanceValueEntityQueryCriteriaApiEclipseLinkH2
         extends AbstractITSingleTableInheritanceValueEntityQueryCriteriaApi {

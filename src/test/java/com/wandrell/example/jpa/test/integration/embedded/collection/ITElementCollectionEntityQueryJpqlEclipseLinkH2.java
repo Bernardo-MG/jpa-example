@@ -28,7 +28,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.test.integration.embedded.collection.AbstractITElementCollectionEntityQueryJpql;
@@ -43,7 +42,7 @@ import com.wandrell.example.jpa.test.util.test.integration.embedded.collection.A
          })
 @TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
         TestPropertiesConfig.ELEMENT_COLLECTION,
-        PersistenceProviderPropertiesConfig.ECLIPSELINK,
+        
         QueryPropertiesPaths.ELEMENT_COLLECTION })
 public final class ITElementCollectionEntityQueryJpqlEclipseLinkH2
         extends AbstractITElementCollectionEntityQueryJpql {

@@ -28,7 +28,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.test.integration.embedded.embedded.AbstractITEmbeddedEntityQueryJpql;
@@ -43,7 +42,7 @@ import com.wandrell.example.jpa.test.util.test.integration.embedded.embedded.Abs
          })
 @TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
         TestPropertiesConfig.EMBEDDED,
-        PersistenceProviderPropertiesConfig.ECLIPSELINK,
+        
         QueryPropertiesPaths.EMBEDDED })
 public final class ITEmbeddedEntityQueryJpqlEclipseLinkH2
         extends AbstractITEmbeddedEntityQueryJpql {

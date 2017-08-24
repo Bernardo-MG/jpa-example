@@ -28,7 +28,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.test.integration.table.AbstractITSecondaryTableEntityModify;
@@ -44,7 +43,7 @@ import com.wandrell.example.jpa.test.util.test.integration.table.AbstractITSecon
          })
 @TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
         TestPropertiesConfig.SECONDARY_TABLE,
-        PersistenceProviderPropertiesConfig.ECLIPSELINK,
+        
         QueryPropertiesPaths.SECONDARY_TABLE })
 public final class ITSecondaryTableEntityModifyEclipseLinkH2
         extends AbstractITSecondaryTableEntityModify {

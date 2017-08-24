@@ -28,7 +28,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.PersistenceProviderPropertiesConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.test.integration.inheritance.superclass.AbstractITSuperClassTableInheritanceValueEntityQueryJpql;
@@ -43,7 +42,7 @@ import com.wandrell.example.jpa.test.util.test.integration.inheritance.superclas
          })
 @TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
         TestPropertiesConfig.SUPERCLASS_INHERITANCE_VALUE,
-        PersistenceProviderPropertiesConfig.ECLIPSELINK,
+        
         QueryPropertiesPaths.SUPERCLASS_INHERITANCE_VALUE })
 public final class ITSuperClassTableInheritanceValueEntityQueryJpqlEclipseLinkH2
         extends AbstractITSuperClassTableInheritanceValueEntityQueryJpql {

@@ -14,7 +14,8 @@
    <!-- Properties -->
    <context:property-placeholder
       location="classpath:config/persistence/persistence-@spring.profile.database@.properties, 
-                   classpath:config/persistence/persistence-access.properties" />
+                   classpath:config/persistence/persistence-access.properties,
+                   classpath:config/persistence/provider/test-provider-jpa-@jpa.provider@.properties" />
 
    <!-- Contexts -->
    <import resource="classpath:context/persistence/jpa-@jpa.provider@.xml" />
