@@ -244,6 +244,37 @@
          </dependencies>
       </profile>
       <profile>
+         <!-- Hibernate JPA provider profile -->
+         <!-- Prepares the project to connect to the DB through Hibernate -->
+         <id>hibernate</id>
+         <properties>
+            <jpa.provider>hibernate</jpa.provider>
+         </properties>
+         <dependencies>
+            <dependency>
+               <!-- Hibernate Core -->
+               <groupId>org.hibernate</groupId>
+               <artifactId>hibernate-core</artifactId>
+               <version>${hibernate.version}</version>
+               <scope>test</scope>
+            </dependency>
+            <dependency>
+               <!-- Hibernate Ehcache -->
+               <groupId>org.hibernate</groupId>
+               <artifactId>hibernate-ehcache</artifactId>
+               <version>${hibernate.version}</version>
+               <scope>test</scope>
+            </dependency>
+            <dependency>
+               <!-- Hibernate Entity Manager -->
+               <groupId>org.hibernate</groupId>
+               <artifactId>hibernate-entitymanager</artifactId>
+               <version>${hibernate.version}</version>
+               <scope>test</scope>
+            </dependency>
+         </dependencies>
+      </profile>
+      <profile>
          <!-- EclipseLink JPA provider profile -->
          <!-- Prepares the project to connect to the DB through EclipseLink -->
          <id>eclipselink</id>
@@ -376,27 +407,6 @@
       <!-- ============================================== -->
       <!-- ======= TEST ENVIRONMENT DEPENDENCIES ======== -->
       <!-- ============================================== -->
-      <dependency>
-         <!-- Hibernate Core -->
-         <groupId>org.hibernate</groupId>
-         <artifactId>hibernate-core</artifactId>
-         <version>${hibernate.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- Hibernate Ehcache -->
-         <groupId>org.hibernate</groupId>
-         <artifactId>hibernate-ehcache</artifactId>
-         <version>${hibernate.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- Hibernate Entity Manager -->
-         <groupId>org.hibernate</groupId>
-         <artifactId>hibernate-entitymanager</artifactId>
-         <version>${hibernate.version}</version>
-         <scope>test</scope>
-      </dependency>
       <dependency>
          <!-- Hikari CP -->
          <groupId>com.zaxxer</groupId>
