@@ -40,7 +40,7 @@ import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimp
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         TestContextConfig.ENTITY_MODIFIABLE,
          })
-@TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
+@TestPropertySource(locations = { 
         TestPropertiesConfig.SIMPLE_ENTITY,
         
         QueryPropertiesPaths.SIMPLE_ENTITY })

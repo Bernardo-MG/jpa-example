@@ -41,7 +41,7 @@ import com.wandrell.example.jpa.test.util.test.integration.temporal.date.Abstrac
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
          })
 @TestPropertySource(
-        locations = { TestPropertiesConfig.LIQUIBASE, TestPropertiesConfig.DATE,
+        locations = {  TestPropertiesConfig.DATE,
                 
                 QueryPropertiesPaths.DATE })
 public final class ITDateEntityQueryCriteriaApi

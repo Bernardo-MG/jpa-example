@@ -41,7 +41,7 @@ import com.wandrell.example.jpa.test.util.test.integration.inheritance.single.Ab
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         TestContextConfig.ENTITY_MODIFIABLE,
          })
-@TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
+@TestPropertySource(locations = { 
         TestPropertiesConfig.SINGLE_INHERITANCE_VALUE,
         
         QueryPropertiesPaths.SINGLE_INHERITANCE_VALUE })

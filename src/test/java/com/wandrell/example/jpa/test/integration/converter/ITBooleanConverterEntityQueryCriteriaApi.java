@@ -40,7 +40,7 @@ import com.wandrell.example.jpa.test.util.test.integration.converter.AbstractITB
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
          })
-@TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
+@TestPropertySource(locations = { 
         TestPropertiesConfig.BOOLEAN_CONVERTER,
         
         QueryPropertiesPaths.BOOLEAN_CONVERTER })

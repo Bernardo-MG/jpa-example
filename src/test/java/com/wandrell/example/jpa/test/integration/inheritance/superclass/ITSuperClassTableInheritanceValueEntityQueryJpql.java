@@ -40,7 +40,7 @@ import com.wandrell.example.jpa.test.util.test.integration.inheritance.superclas
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
          })
-@TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
+@TestPropertySource(locations = { 
         TestPropertiesConfig.SUPERCLASS_INHERITANCE_VALUE,
         
         QueryPropertiesPaths.SUPERCLASS_INHERITANCE_VALUE })

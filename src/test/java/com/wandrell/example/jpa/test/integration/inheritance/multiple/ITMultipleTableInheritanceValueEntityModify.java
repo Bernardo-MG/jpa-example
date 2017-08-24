@@ -41,7 +41,7 @@ import com.wandrell.example.jpa.test.util.test.integration.inheritance.multiple.
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         TestContextConfig.ENTITY_MODIFIABLE,
          })
-@TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
+@TestPropertySource(locations = { 
         TestPropertiesConfig.MULTIPLE_INHERITANCE_VALUE,
         
         QueryPropertiesPaths.MULTIPLE_INHERITANCE_VALUE })

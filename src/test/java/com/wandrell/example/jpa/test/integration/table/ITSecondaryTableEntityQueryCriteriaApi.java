@@ -40,7 +40,7 @@ import com.wandrell.example.jpa.test.util.test.integration.table.AbstractITSecon
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
          })
-@TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
+@TestPropertySource(locations = { 
         TestPropertiesConfig.SECONDARY_TABLE,
         
         QueryPropertiesPaths.SECONDARY_TABLE })

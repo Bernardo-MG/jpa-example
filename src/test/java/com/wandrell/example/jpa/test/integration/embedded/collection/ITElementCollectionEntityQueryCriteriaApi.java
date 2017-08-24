@@ -40,7 +40,7 @@ import com.wandrell.example.jpa.test.util.test.integration.embedded.collection.A
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
          })
-@TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
+@TestPropertySource(locations = { 
         TestPropertiesConfig.ELEMENT_COLLECTION,
         
         QueryPropertiesPaths.ELEMENT_COLLECTION })

@@ -40,7 +40,7 @@ import com.wandrell.example.jpa.test.util.test.integration.inheritance.segregate
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
          })
-@TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
+@TestPropertySource(locations = { 
         TestPropertiesConfig.SEGREGATED_INHERITANCE_VALUE,
         
         QueryPropertiesPaths.SEGREGATED_INHERITANCE_VALUE })

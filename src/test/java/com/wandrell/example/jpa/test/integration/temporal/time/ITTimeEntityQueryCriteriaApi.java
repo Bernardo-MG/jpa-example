@@ -41,7 +41,7 @@ import com.wandrell.example.jpa.test.util.test.integration.temporal.time.Abstrac
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
          })
 @TestPropertySource(
-        locations = { TestPropertiesConfig.LIQUIBASE, TestPropertiesConfig.TIME,
+        locations = {  TestPropertiesConfig.TIME,
                 
                 QueryPropertiesPaths.TIME })
 public final class ITTimeEntityQueryCriteriaApi

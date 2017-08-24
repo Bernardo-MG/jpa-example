@@ -41,7 +41,7 @@ import com.wandrell.example.jpa.test.util.test.integration.collection.map.Abstra
         TestContextConfig.ENTITY_MODIFIABLE,
          })
 @TestPropertySource(
-        locations = { TestPropertiesConfig.LIQUIBASE, TestPropertiesConfig.MAP,
+        locations = {  TestPropertiesConfig.MAP,
                 
                 QueryPropertiesPaths.MAP })
 public final class ITMapEntityModify

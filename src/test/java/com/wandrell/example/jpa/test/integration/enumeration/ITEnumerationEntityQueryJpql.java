@@ -40,7 +40,7 @@ import com.wandrell.example.jpa.test.util.test.integration.enumeration.AbstractI
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
          })
-@TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
+@TestPropertySource(locations = { 
         TestPropertiesConfig.ENUMERATION,
         
         QueryPropertiesPaths.ENUMERATION })

@@ -41,7 +41,7 @@ import com.wandrell.example.jpa.test.util.test.integration.temporal.date.Abstrac
         TestContextConfig.ENTITY_MODIFIABLE,
          })
 @TestPropertySource(
-        locations = { TestPropertiesConfig.LIQUIBASE, TestPropertiesConfig.DATE,
+        locations = {  TestPropertiesConfig.DATE,
                 
                 QueryPropertiesPaths.DATE })
 public final class ITDateEntityModify

@@ -40,7 +40,7 @@ import com.wandrell.example.jpa.test.util.test.integration.temporal.timestamp.Ab
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
          })
-@TestPropertySource(locations = { TestPropertiesConfig.LIQUIBASE,
+@TestPropertySource(locations = { 
         TestPropertiesConfig.TIMESTAMP,
         
         QueryPropertiesPaths.TIMESTAMP })
