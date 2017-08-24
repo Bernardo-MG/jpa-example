@@ -55,7 +55,7 @@ public abstract class AbstractITDateEntityModify
      * Default constructor.
      */
     public AbstractITDateEntityModify() {
-        super();
+        super(6);
     }
 
     @Override

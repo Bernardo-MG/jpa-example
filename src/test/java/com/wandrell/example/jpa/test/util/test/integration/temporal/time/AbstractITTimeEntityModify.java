@@ -56,7 +56,7 @@ public abstract class AbstractITTimeEntityModify
      * Default constructor.
      */
     public AbstractITTimeEntityModify() {
-        super();
+        super(6);
     }
 
     @Override

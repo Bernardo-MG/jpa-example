@@ -57,7 +57,7 @@ public abstract class AbstractITMapEntityModify
      * Default constructor.
      */
     public AbstractITMapEntityModify() {
-        super();
+        super(5);
     }
 
     @BeforeTest

@@ -48,7 +48,7 @@ public abstract class AbstractITBooleanConverterEntityModify
      * Default constructor.
      */
     public AbstractITBooleanConverterEntityModify() {
-        super();
+        super(9);
     }
 
     @Override

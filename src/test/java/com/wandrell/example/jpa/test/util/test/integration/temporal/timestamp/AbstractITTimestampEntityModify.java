@@ -56,7 +56,7 @@ public abstract class AbstractITTimestampEntityModify
      * Default constructor.
      */
     public AbstractITTimestampEntityModify() {
-        super();
+        super(6);
     }
 
     @Override

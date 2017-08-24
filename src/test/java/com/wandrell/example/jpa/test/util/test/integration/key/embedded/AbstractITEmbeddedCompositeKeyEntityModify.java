@@ -48,7 +48,7 @@ public abstract class AbstractITEmbeddedCompositeKeyEntityModify
      * Default constructor.
      */
     public AbstractITEmbeddedCompositeKeyEntityModify() {
-        super();
+        super(5);
     }
 
     @Override

@@ -53,7 +53,7 @@ public abstract class AbstractITMultipleTableInheritanceValueEntityModify
      * Default constructor.
      */
     public AbstractITMultipleTableInheritanceValueEntityModify() {
-        super();
+        super(2);
     }
 
     @Override

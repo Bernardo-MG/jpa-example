@@ -57,7 +57,7 @@ public abstract class AbstractITCollectionEntityModify
      * Default constructor.
      */
     public AbstractITCollectionEntityModify() {
-        super();
+        super(5);
     }
 
     @BeforeTest

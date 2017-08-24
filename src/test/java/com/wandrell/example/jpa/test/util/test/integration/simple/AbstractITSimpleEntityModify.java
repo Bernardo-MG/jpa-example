@@ -48,7 +48,7 @@ public abstract class AbstractITSimpleEntityModify
      * Default constructor.
      */
     public AbstractITSimpleEntityModify() {
-        super();
+        super(30);
     }
 
     @Override

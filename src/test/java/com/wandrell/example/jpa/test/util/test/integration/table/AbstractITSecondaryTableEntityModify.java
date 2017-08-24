@@ -53,7 +53,7 @@ public abstract class AbstractITSecondaryTableEntityModify
      * Default constructor.
      */
     public AbstractITSecondaryTableEntityModify() {
-        super();
+        super(3);
     }
 
     @Override

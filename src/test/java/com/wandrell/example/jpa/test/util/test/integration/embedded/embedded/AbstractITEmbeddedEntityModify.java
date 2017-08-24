@@ -49,7 +49,7 @@ public abstract class AbstractITEmbeddedEntityModify
      * Default constructor.
      */
     public AbstractITEmbeddedEntityModify() {
-        super();
+        super(5);
     }
 
     @Override

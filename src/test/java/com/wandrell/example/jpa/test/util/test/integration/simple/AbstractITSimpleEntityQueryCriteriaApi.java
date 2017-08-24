@@ -63,8 +63,7 @@ public abstract class AbstractITSimpleEntityQueryCriteriaApi
     /**
      * Initial number of entities in the persistence context.
      */
-    @Value("${entities.total}")
-    private Integer       entitiesCount;
+    private final Integer entitiesCount = 30;
 
     /**
      * The JPA entity manager.
@@ -84,12 +83,10 @@ public abstract class AbstractITSimpleEntityQueryCriteriaApi
      */
     @Test
     public final void testFindAll() {
-        Assert.assertEquals(
-                (Integer) getEntityManager()
-                        .createQuery(SimpleEntityCriteriaFactory
-                                .findAll(getEntityManager()))
-                        .getResultList().size(),
-                entitiesCount);
+        Assert.assertEquals((Integer) getEntityManager()
+                .createQuery(
+                        SimpleEntityCriteriaFactory.findAll(getEntityManager()))
+                .getResultList().size(), entitiesCount);
     }
 
     /**

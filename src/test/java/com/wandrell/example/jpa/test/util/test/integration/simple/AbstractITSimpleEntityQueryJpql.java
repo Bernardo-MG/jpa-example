@@ -62,8 +62,7 @@ public abstract class AbstractITSimpleEntityQueryJpql
     /**
      * Initial number of entities in the persistence context.
      */
-    @Value("${entities.total}")
-    private Integer       entitiesCount;
+    private final Integer entitiesCount = 30;
 
     /**
      * The JPA entity manager.

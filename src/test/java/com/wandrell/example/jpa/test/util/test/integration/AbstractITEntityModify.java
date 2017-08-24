@@ -24,6 +24,8 @@
 
 package com.wandrell.example.jpa.test.util.test.integration;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
@@ -63,8 +65,7 @@ public abstract class AbstractITEntityModify<V>
     /**
      * Initial number of entities in the persistence context.
      */
-    @Value("${entities.total}")
-    private Integer       entitiesCount;
+    private final Integer entitiesCount;
 
     /**
      * The entity manager for the test context.
@@ -82,8 +83,11 @@ public abstract class AbstractITEntityModify<V>
     /**
      * Default constructor.
      */
-    public AbstractITEntityModify() {
+    public AbstractITEntityModify(final Integer entities) {
         super();
+
+        entitiesCount = checkNotNull(entities,
+                "Received a null pointer as entities count");
     }
 
     /**

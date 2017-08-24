@@ -50,7 +50,7 @@ public abstract class AbstractITElementCollectionEntityModify
      * Default constructor.
      */
     public AbstractITElementCollectionEntityModify() {
-        super();
+        super(5);
     }
 
     @BeforeTest

@@ -49,7 +49,7 @@ public abstract class AbstractITEnumerationEntityModify
      * Default constructor.
      */
     public AbstractITEnumerationEntityModify() {
-        super();
+        super(4);
     }
 
     @Override

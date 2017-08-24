@@ -53,7 +53,7 @@ public abstract class AbstractITPerClassTableInheritanceValueEntityModify
      * Default constructor.
      */
     public AbstractITPerClassTableInheritanceValueEntityModify() {
-        super();
+        super(2);
     }
 
     @Override

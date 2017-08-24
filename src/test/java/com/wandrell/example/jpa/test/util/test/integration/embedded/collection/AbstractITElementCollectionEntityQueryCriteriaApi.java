@@ -60,12 +60,6 @@ public abstract class AbstractITElementCollectionEntityQueryCriteriaApi
         extends AbstractTransactionalTestNGSpringContextTests {
 
     /**
-     * Initial number of entities in the persistence context.
-     */
-    @Value("${entities.total}")
-    private Integer       entitiesCount;
-
-    /**
      * The JPA entity manager.
      */
     @Autowired
