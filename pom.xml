@@ -496,7 +496,7 @@
                <!-- Filter the contexts -->
                <include>context/test-default.xml</include>
                <!-- Filter the properties -->
-               <include>config/persistence-access.properties</include>
+               <include>config/persistence/persistence-access.properties</include>
             </includes>
             <filtering>true</filtering>
          </testResource>

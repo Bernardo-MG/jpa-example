@@ -50,7 +50,7 @@ import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimp
                  
                  QueryPropertiesPaths.SIMPLE_ENTITY },
         properties = { "jpa.persistenceUnitName=simple_entity_eclipselink_h2",
-                "jdbc.url=jdbc:h2:mem:test_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
+                 })
 public final class ITSimpleEntityQueryCriteriaApiEclipseLinkH2
         extends AbstractITSimpleEntityQueryCriteriaApi {
 

@@ -50,7 +50,7 @@ import com.wandrell.example.jpa.test.util.test.integration.embedded.embedded.Abs
                  
                  QueryPropertiesPaths.EMBEDDED },
         properties = { "jpa.persistenceUnitName=embedded_eclipselink_h2",
-                "jdbc.url=jdbc:h2:mem:test_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
+                 })
 public final class ITEmbeddedEntityQueryJpqlEclipseLinkH2
         extends AbstractITEmbeddedEntityQueryJpql {
 

@@ -50,7 +50,7 @@ import com.wandrell.example.jpa.test.util.test.integration.inheritance.single.Ab
          QueryPropertiesPaths.SINGLE_INHERITANCE_VALUE },
         properties = {
                 "jpa.persistenceUnitName=single_inheritance_eclipselink_h2",
-                "jdbc.url=jdbc:h2:mem:test_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
+                 })
 public final class ITSingleTableInheritanceValueEntityQueryJpqlEclipseLinkH2
         extends AbstractITSingleTableInheritanceValueEntityQueryJpql {
 

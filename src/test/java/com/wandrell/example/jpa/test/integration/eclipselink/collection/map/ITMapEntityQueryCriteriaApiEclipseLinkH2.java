@@ -49,7 +49,7 @@ import com.wandrell.example.jpa.test.util.test.integration.collection.map.Abstra
                  
                  QueryPropertiesPaths.MAP },
         properties = { "jpa.persistenceUnitName=map_eclipselink_h2",
-                "jdbc.url=jdbc:h2:mem:test_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
+                 })
 public final class ITMapEntityQueryCriteriaApiEclipseLinkH2
         extends AbstractITMapEntityQueryCriteriaApi {
 

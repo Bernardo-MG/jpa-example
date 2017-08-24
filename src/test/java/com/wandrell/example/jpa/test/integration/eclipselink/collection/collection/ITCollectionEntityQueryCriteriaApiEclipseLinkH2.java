@@ -47,7 +47,7 @@ import com.wandrell.example.jpa.test.util.test.integration.collection.collection
         PersistenceProviderPropertiesConfig.ECLIPSELINK, 
          QueryPropertiesPaths.COLLECTION },
         properties = { "jpa.persistenceUnitName=collection_eclipselink_h2",
-                "jdbc.url=jdbc:h2:mem:test_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
+                 })
 public final class ITCollectionEntityQueryCriteriaApiEclipseLinkH2
         extends AbstractITCollectionEntityQueryCriteriaApi {
 

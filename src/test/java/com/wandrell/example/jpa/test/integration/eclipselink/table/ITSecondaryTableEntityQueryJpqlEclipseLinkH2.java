@@ -49,7 +49,7 @@ import com.wandrell.example.jpa.test.util.test.integration.table.AbstractITSecon
                  
                  QueryPropertiesPaths.SECONDARY_TABLE },
         properties = { "jpa.persistenceUnitName=secondary_table_eclipselink_h2",
-                "jdbc.url=jdbc:h2:mem:test_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
+                 })
 public final class ITSecondaryTableEntityQueryJpqlEclipseLinkH2
         extends AbstractITSecondaryTableEntityQueryJpql {
 

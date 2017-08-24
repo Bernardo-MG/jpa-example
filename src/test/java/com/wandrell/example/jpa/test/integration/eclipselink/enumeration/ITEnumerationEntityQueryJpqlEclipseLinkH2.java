@@ -50,7 +50,7 @@ import com.wandrell.example.jpa.test.util.test.integration.enumeration.AbstractI
                  
                  QueryPropertiesPaths.ENUMERATION },
         properties = { "jpa.persistenceUnitName=enumeration_eclipselink_h2",
-                "jdbc.url=jdbc:h2:mem:test_eclipselink;DB_CLOSE_ON_EXIT=FALSE" })
+                 })
 public final class ITEnumerationEntityQueryJpqlEclipseLinkH2
         extends AbstractITEnumerationEntityQueryJpql {
 
