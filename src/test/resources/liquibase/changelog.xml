@@ -231,6 +231,17 @@
             <constraints nullable="false" />
          </column>
       </createTable>
+      <createTable tableName="composite_key_entities">
+         <column name="id1" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="id2" type="BIGINT">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="name" type="VARCHAR(30)" defaultValue="">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
       <createTable tableName="composite_key_idclass_entities">
          <column name="id1" type="BIGINT">
             <constraints primaryKey="true" />
@@ -805,6 +816,26 @@
       <insert tableName="super_class_table_inherit_description_entities">
          <column name="name">per_class_inherit_4</column>
          <column name="description">desc_4</column>
+      </insert>
+      <insert tableName="composite_key_entities">
+         <column name="id1">1</column>
+         <column name="id2">1</column>
+         <column name="name">composite_key_1</column>
+      </insert>
+      <insert tableName="composite_key_entities">
+         <column name="id1">1</column>
+         <column name="id2">2</column>
+         <column name="name">composite_key_2</column>
+      </insert>
+      <insert tableName="composite_key_entities">
+         <column name="id1">2</column>
+         <column name="id2">1</column>
+         <column name="name">composite_key_3</column>
+      </insert>
+      <insert tableName="composite_key_entities">
+         <column name="id1">2</column>
+         <column name="id2">2</column>
+         <column name="name">composite_key_4</column>
       </insert>
       <insert tableName="composite_key_idclass_entities">
          <column name="id1">1</column>

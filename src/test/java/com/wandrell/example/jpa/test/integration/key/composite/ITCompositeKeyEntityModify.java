@@ -22,11 +22,16 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.test.integration.key.composite;
+package com.wandrell.example.jpa.test.integration.key.composite;
 
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.testng.Assert;
 
 import com.wandrell.example.jpa.model.key.composite.CompositeKeyEntity;
+import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
+import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
+import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
@@ -36,7 +41,11 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  * @author Bernardo Mart&iacute;nez Garrido
  * @see CompositeKeyEntity
  */
-public abstract class AbstractITCompositeKeyEntityModify
+@ContextConfiguration(locations = { TestContextConfig.DEFAULT,
+        TestContextConfig.ENTITY_MODIFIABLE })
+@TestPropertySource(locations = { TestPropertiesConfig.COMPOSITE_KEY,
+        QueryPropertiesPaths.COMPOSITE_KEY })
+public abstract class ITCompositeKeyEntityModify
         extends AbstractITEntityModify<CompositeKeyEntity> {
 
     /**
@@ -47,8 +56,9 @@ public abstract class AbstractITCompositeKeyEntityModify
     /**
      * Default constructor.
      */
-    public AbstractITCompositeKeyEntityModify() {
+    public ITCompositeKeyEntityModify() {
         super(4);
+        // TODO: Make this work
     }
 
     @Override

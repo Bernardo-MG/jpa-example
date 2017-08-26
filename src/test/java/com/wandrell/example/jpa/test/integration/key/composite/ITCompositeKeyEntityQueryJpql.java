@@ -22,18 +22,23 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.test.integration.key.composite;
+package com.wandrell.example.jpa.test.integration.key.composite;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.key.composite.CompositeKeyEntity;
+import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
+import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
+import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 
 /**
  * Abstract integration tests for a {@link CompositeKeyEntity} testing it loads
@@ -50,7 +55,10 @@ import com.wandrell.example.jpa.model.key.composite.CompositeKeyEntity;
  * @author Bernardo Mart&iacute;nez Garrido
  * @see CompositeKeyEntity
  */
-public abstract class AbstractITCompositeKeyEntityQueryJpql
+@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
+@TestPropertySource(locations = { TestPropertiesConfig.COMPOSITE_KEY,
+        QueryPropertiesPaths.COMPOSITE_KEY })
+public final class ITCompositeKeyEntityQueryJpql
         extends AbstractTransactionalTestNGSpringContextTests {
 
     /**
@@ -68,7 +76,7 @@ public abstract class AbstractITCompositeKeyEntityQueryJpql
     /**
      * Default constructor.
      */
-    public AbstractITCompositeKeyEntityQueryJpql() {
+    public ITCompositeKeyEntityQueryJpql() {
         super();
         // TODO: Add the query results counts to the configuration files
     }
