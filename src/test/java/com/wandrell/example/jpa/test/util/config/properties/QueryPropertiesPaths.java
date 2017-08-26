@@ -62,6 +62,11 @@ public class QueryPropertiesPaths {
     public static final String COMPOSITE_KEY                = "classpath:config/persistence/query/test-composite-key-entity-query.properties";
 
     /**
+     * Composite key Id entity.
+     */
+    public static final String COMPOSITE_KEY_ID             = "classpath:config/persistence/query/test-composite-key-id-entity-query.properties";
+
+    /**
      * Date entity.
      */
     public static final String DATE                         = "classpath:config/persistence/query/test-date-entity-query.properties";

@@ -22,22 +22,27 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.test.integration.key.classid;
+package com.wandrell.example.jpa.test.integration.key.classid;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.key.classid.CompositeKeyIdClassEntity;
+import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
+import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
+import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 
 /**
- * Abstract integration tests for a {@link CompositeKeyIdClassEntity} testing it
- * loads values correctly by using JPQL queries.
+ * Integration tests for a {@link CompositeKeyIdClassEntity} testing it loads
+ * values correctly by using JPQL queries.
  * <p>
  * Checks the following cases:
  * <ol>
@@ -50,7 +55,10 @@ import com.wandrell.example.jpa.model.key.classid.CompositeKeyIdClassEntity;
  * @author Bernardo Mart&iacute;nez Garrido
  * @see CompositeKeyIdClassEntity
  */
-public abstract class AbstractITCompositeKeyIdClassEntityQueryJpql
+@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
+@TestPropertySource(locations = { TestPropertiesConfig.COMPOSITE_KEY_ID,
+        QueryPropertiesPaths.COMPOSITE_KEY_ID })
+public final class ITCompositeKeyIdClassEntityQueryJpql
         extends AbstractTransactionalTestNGSpringContextTests {
 
     /**
@@ -62,15 +70,14 @@ public abstract class AbstractITCompositeKeyIdClassEntityQueryJpql
     /**
      * The query to acquire an entity by its ids.
      */
-    @Value("${query.classId.findByIds}")
+    @Value("${query.compositeKeyId.findByIds}")
     private String        findByIds;
 
     /**
      * Default constructor.
      */
-    public AbstractITCompositeKeyIdClassEntityQueryJpql() {
+    public ITCompositeKeyIdClassEntityQueryJpql() {
         super();
-        // TODO: Add the query results counts to the configuration files
     }
 
     /**

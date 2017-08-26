@@ -51,7 +51,12 @@ public class TestPropertiesConfig {
     /**
      * Composite key Id entity.
      */
-    public static final String COMPOSITE_KEY                = "classpath:config/entity/test-composite-key-entity-query.properties";
+    public static final String COMPOSITE_KEY_ID             = "classpath:config/entity/test-composite-key-id-entity.properties";
+
+    /**
+     * Composite key Id entity.
+     */
+    public static final String COMPOSITE_KEY                = "classpath:config/entity/test-composite-key-entity.properties";
 
     /**
      * Date entity.
