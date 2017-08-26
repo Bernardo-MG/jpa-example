@@ -24,13 +24,19 @@
 
 package com.wandrell.example.jpa.test.integration.collection.collection;
 
+import java.util.Collection;
+import java.util.LinkedList;
+
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 
+import com.wandrell.example.jpa.model.collection.CollectionEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.collection.collection.AbstractITCollectionEntityModify;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
  * Integration tests for a {@code CollectionEntity} testing it can be modified.
@@ -39,18 +45,45 @@ import com.wandrell.example.jpa.test.util.test.integration.collection.collection
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
         TestContextConfig.ENTITY_MODIFIABLE, })
-@TestPropertySource(locations = { 
-        TestPropertiesConfig.COLLECTION,
-        
+@TestPropertySource(locations = { TestPropertiesConfig.COLLECTION,
+
         QueryPropertiesPaths.COLLECTION })
 public final class ITCollectionEntityModify
-        extends AbstractITCollectionEntityModify {
+        extends AbstractITEntityModify<CollectionEntity> {
+
+    /**
+     * Value to set on the name for the tests.
+     */
+    private final String              name   = "The new name";
+
+    /**
+     * Values to set on the entity.
+     */
+    private final Collection<Integer> values = new LinkedList<Integer>();
 
     /**
      * Default constructor.
      */
     public ITCollectionEntityModify() {
-        super();
+        super(5);
+    }
+
+    @BeforeTest
+    public final void initializeValues() {
+        values.add(1);
+        values.add(5);
+    }
+
+    @Override
+    protected final void assertEntityModified(final CollectionEntity entity) {
+        Assert.assertEquals(entity.getName(), name);
+        Assert.assertEquals(entity.getValues(), values);
+    }
+
+    @Override
+    protected final void modifyEntity(final CollectionEntity entity) {
+        entity.setName(name);
+        entity.setValues(values);
     }
 
 }

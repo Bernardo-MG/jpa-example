@@ -26,11 +26,13 @@ package com.wandrell.example.jpa.test.integration.converter;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.testng.Assert;
 
+import com.wandrell.example.jpa.model.converter.BooleanConverterEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.converter.AbstractITBooleanConverterEntityModify;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
  * Integration tests for a {@code BooleanConverterEntity} testing it can be
@@ -39,20 +41,34 @@ import com.wandrell.example.jpa.test.util.test.integration.converter.AbstractITB
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        TestContextConfig.ENTITY_MODIFIABLE,
-         })
-@TestPropertySource(locations = { 
-        TestPropertiesConfig.BOOLEAN_CONVERTER,
-        
+        TestContextConfig.ENTITY_MODIFIABLE, })
+@TestPropertySource(locations = { TestPropertiesConfig.BOOLEAN_CONVERTER,
+
         QueryPropertiesPaths.BOOLEAN_CONVERTER })
 public final class ITBooleanConverterEntityModify
-        extends AbstractITBooleanConverterEntityModify {
+        extends AbstractITEntityModify<BooleanConverterEntity> {
+
+    /**
+     * Value to set on the flag for the tests.
+     */
+    private final Boolean flag = true;
 
     /**
      * Default constructor.
      */
     public ITBooleanConverterEntityModify() {
-        super();
+        super(9);
+    }
+
+    @Override
+    protected final void
+            assertEntityModified(final BooleanConverterEntity entity) {
+        Assert.assertEquals(entity.getFlag(), flag);
+    }
+
+    @Override
+    protected final void modifyEntity(final BooleanConverterEntity entity) {
+        entity.setFlag(flag);
     }
 
 }

@@ -24,13 +24,20 @@
 
 package com.wandrell.example.jpa.test.integration.collection.collection;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.collection.collection.AbstractITCollectionEntityQueryJpql;
 
 /**
  * Integration tests for a {@code CollectionEntity} testing it loads values
@@ -38,20 +45,63 @@ import com.wandrell.example.jpa.test.util.test.integration.collection.collection
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-         })
-@TestPropertySource(locations = { 
-        TestPropertiesConfig.COLLECTION,
-        
+@ContextConfiguration(locations = { TestContextConfig.DEFAULT, })
+@TestPropertySource(locations = { TestPropertiesConfig.COLLECTION,
+
         QueryPropertiesPaths.COLLECTION })
 public final class ITCollectionEntityQueryJpql
-        extends AbstractITCollectionEntityQueryJpql {
+        extends AbstractTransactionalTestNGSpringContextTests {
+
+    /**
+     * The JPA entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
+
+    /**
+     * The query to acquire all the entities.
+     */
+    @Value("${query.collection.findAllWithValue}")
+    private String        findAllWithValue;
 
     /**
      * Default constructor.
      */
     public ITCollectionEntityQueryJpql() {
         super();
+    }
+
+    /**
+     * Tests that retrieving all the entities with a specific values returns the
+     * correct number of them.
+     */
+    @Test
+    public final void testFindAllWithValue() {
+        final Integer value; // Value to find
+        final Integer count; // Number of entities expected
+        final Query query;   // Query for the entity
+
+        // Queried value
+        value = 2;
+
+        // Expected result
+        count = 3;
+
+        // Builds the query
+        query = getEntityManager().createQuery(findAllWithValue);
+        query.setParameter("value", value);
+
+        // The entity's id is the correct one
+        Assert.assertEquals((Integer) query.getResultList().size(), count);
+    }
+
+    /**
+     * Returns the JPA entity manager.
+     *
+     * @return the JPA entity manager
+     */
+    protected final EntityManager getEntityManager() {
+        return entityManager;
     }
 
 }

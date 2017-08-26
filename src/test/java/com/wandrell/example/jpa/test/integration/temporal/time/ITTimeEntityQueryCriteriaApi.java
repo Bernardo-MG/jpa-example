@@ -24,13 +24,28 @@
 
 package com.wandrell.example.jpa.test.integration.temporal.time;
 
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
+import javax.persistence.EntityManager;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.temporal.time.AbstractITTimeEntityQueryCriteriaApi;
+import com.wandrell.example.jpa.test.util.criteria.temporal.TimeEntityCriteriaFactory;
 
 /**
  * Integration tests for a {@code TimeEntity} testing it loads values correctly
@@ -38,20 +53,180 @@ import com.wandrell.example.jpa.test.util.test.integration.temporal.time.Abstrac
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-         })
+@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
 @TestPropertySource(
-        locations = {  TestPropertiesConfig.TIME,
-                
-                QueryPropertiesPaths.TIME })
+        locations = { TestPropertiesConfig.TIME, QueryPropertiesPaths.TIME })
 public final class ITTimeEntityQueryCriteriaApi
-        extends AbstractITTimeEntityQueryCriteriaApi {
+        extends AbstractTransactionalTestNGSpringContextTests {
+
+    /**
+     * Calendar for the test ranges.
+     */
+    private Calendar      calendar;
+
+    /**
+     * Java date for the test ranges.
+     */
+    private Date          date;
+
+    /**
+     * The JPA entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
+
+    /**
+     * Time for the test ranges.
+     */
+    private Time          time;
+
+    /**
+     * String to generate the time for the test ranges.
+     */
+    private final String  timeString = "11:11:11";
 
     /**
      * Default constructor.
      */
     public ITTimeEntityQueryCriteriaApi() {
         super();
+    }
+
+    /**
+     * Initializes the time to be used in the tests.
+     *
+     * @throws ParseException
+     *             if the time string can't be parsed
+     */
+    @BeforeClass
+    public final void setUpTime() throws ParseException {
+        final DateFormat format; // Format for parsing the time string
+
+        format = new SimpleDateFormat("hh:mm:ss", Locale.ENGLISH);
+
+        date = format.parse(timeString);
+
+        time = new Time(date.getTime());
+
+        calendar = Calendar.getInstance();
+        calendar.setTime(date);
+    }
+
+    /**
+     * Tests that retrieving all the entities after a time gives the correct
+     * number of them when using a {@code Calendar} for the time.
+     */
+    @Test
+    public final void testGetAfterTime_Calendar() {
+        Assert.assertEquals((Integer) getEntityManager()
+                .createQuery(TimeEntityCriteriaFactory
+                        .findAfterTime(getEntityManager(), calendar))
+                .getResultList().size(), new Integer(3));
+    }
+
+    /**
+     * Tests that retrieving all the entities after a time gives the correct
+     * number of them when using a Java {@code Time} for the time.
+     */
+    @Test
+    public final void testGetAfterTime_Java() {
+        Assert.assertEquals((Integer) getEntityManager()
+                .createQuery(TimeEntityCriteriaFactory
+                        .findAfterTime(getEntityManager(), date))
+                .getResultList().size(), new Integer(3));
+    }
+
+    /**
+     * Tests that retrieving all the entities after a time gives the correct
+     * number of them when using a {@code Time} for the time.
+     */
+    @Test
+    public final void testGetAfterTime_Sql() {
+        Assert.assertEquals((Integer) getEntityManager()
+                .createQuery(TimeEntityCriteriaFactory
+                        .findAfterSqlTime(getEntityManager(), time))
+                .getResultList().size(), new Integer(3));
+    }
+
+    /**
+     * Tests that retrieving all the entities before a time gives the correct
+     * number of them when using a {@code Calendar} for the time.
+     */
+    @Test
+    public final void testGetBeforeTime_Calendar() {
+        Assert.assertEquals((Integer) getEntityManager()
+                .createQuery(TimeEntityCriteriaFactory
+                        .findBeforeTime(getEntityManager(), calendar))
+                .getResultList().size(), new Integer(2));
+    }
+
+    /**
+     * Tests that retrieving all the entities before a time gives the correct
+     * number of them when using a Java {@code Time} for the time.
+     */
+    @Test
+    public final void testGetBeforeTime_Java() {
+        Assert.assertEquals((Integer) getEntityManager()
+                .createQuery(TimeEntityCriteriaFactory
+                        .findBeforeTime(getEntityManager(), date))
+                .getResultList().size(), new Integer(2));
+    }
+
+    /**
+     * Tests that retrieving all the entities before a time gives the correct
+     * number of them when using a {@code Time} for the time.
+     */
+    @Test
+    public final void testGetBeforeTime_Sql() {
+        Assert.assertEquals((Integer) getEntityManager()
+                .createQuery(TimeEntityCriteriaFactory
+                        .findBeforeSqlTime(getEntityManager(), time))
+                .getResultList().size(), new Integer(2));
+    }
+
+    /**
+     * Tests that retrieving all the entities in a time gives the correct number
+     * of them when using a {@code Calendar} for the time.
+     */
+    @Test
+    public final void testGetInTime_Calendar() {
+        Assert.assertEquals((Integer) getEntityManager()
+                .createQuery(TimeEntityCriteriaFactory
+                        .findInTime(getEntityManager(), calendar))
+                .getResultList().size(), new Integer(1));
+    }
+
+    /**
+     * Tests that retrieving all the entities in a time gives the correct number
+     * of them when using a Java {@code Time} for the time.
+     */
+    @Test
+    public final void testGetInTime_Java() {
+        Assert.assertEquals((Integer) getEntityManager()
+                .createQuery(TimeEntityCriteriaFactory
+                        .findInTime(getEntityManager(), date))
+                .getResultList().size(), new Integer(1));
+    }
+
+    /**
+     * Tests that retrieving all the entities in a time gives the correct number
+     * of them when using a {@code Time} for the time.
+     */
+    @Test
+    public final void testGetInTime_Sql() {
+        Assert.assertEquals((Integer) getEntityManager()
+                .createQuery(TimeEntityCriteriaFactory
+                        .findInSqlTime(getEntityManager(), time))
+                .getResultList().size(), new Integer(1));
+    }
+
+    /**
+     * Returns the JPA entity manager.
+     *
+     * @return the JPA entity manager
+     */
+    protected final EntityManager getEntityManager() {
+        return entityManager;
     }
 
 }

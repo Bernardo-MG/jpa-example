@@ -24,13 +24,20 @@
 
 package com.wandrell.example.jpa.test.integration.inheritance.multiple;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.inheritance.multiple.AbstractITMultipleTableInheritanceValueEntityQueryCriteriaApi;
+import com.wandrell.example.jpa.test.util.criteria.inheritance.multiple.MultipleTableInheritanceValueEntityCriteriaFactory;
 
 /**
  * Integration tests for a {@code MultipleTableInheritanceValueEntity} testing
@@ -38,20 +45,50 @@ import com.wandrell.example.jpa.test.util.test.integration.inheritance.multiple.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-         })
-@TestPropertySource(locations = { 
-        TestPropertiesConfig.MULTIPLE_INHERITANCE_VALUE,
-        
-        QueryPropertiesPaths.MULTIPLE_INHERITANCE_VALUE })
+@ContextConfiguration(locations = { TestContextConfig.DEFAULT, })
+@TestPropertySource(
+        locations = { TestPropertiesConfig.MULTIPLE_INHERITANCE_VALUE,
+                QueryPropertiesPaths.MULTIPLE_INHERITANCE_VALUE })
 public final class ITMultipleTableInheritanceValueEntityQueryCriteriaApi
-        extends AbstractITMultipleTableInheritanceValueEntityQueryCriteriaApi {
+        extends AbstractTransactionalTestNGSpringContextTests {
+
+    /**
+     * The JPA entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * Default constructor.
      */
     public ITMultipleTableInheritanceValueEntityQueryCriteriaApi() {
         super();
+    }
+
+    /**
+     * Tests that retrieving all the entities with a specific enum, through the
+     * ordinal value, gives the correct number of them.
+     */
+    @Test
+    public final void testAllWithValue() {
+        final Query query; // Query for the entity
+
+        // Builds the query
+        query = getEntityManager()
+                .createQuery(MultipleTableInheritanceValueEntityCriteriaFactory
+                        .findAllWithValue(entityManager, 11));
+
+        // The number of results is the expected one
+        Assert.assertEquals(query.getResultList().size(), 1);
+    }
+
+    /**
+     * Returns the JPA entity manager.
+     *
+     * @return the JPA entity manager
+     */
+    protected final EntityManager getEntityManager() {
+        return entityManager;
     }
 
 }

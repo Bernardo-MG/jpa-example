@@ -24,13 +24,20 @@
 
 package com.wandrell.example.jpa.test.integration.collection.map;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.collection.map.AbstractITMapEntityQueryCriteriaApi;
+import com.wandrell.example.jpa.test.util.criteria.collection.MapEntityCriteriaFactory;
 
 /**
  * Integration tests for a {@code CollectionEntity} testing it loads values
@@ -38,20 +45,57 @@ import com.wandrell.example.jpa.test.util.test.integration.collection.map.Abstra
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-         })
-@TestPropertySource(
-        locations = {  TestPropertiesConfig.MAP,
-                
-                QueryPropertiesPaths.MAP })
+@ContextConfiguration(locations = { TestContextConfig.DEFAULT, })
+@TestPropertySource(locations = { TestPropertiesConfig.MAP,
+
+        QueryPropertiesPaths.MAP })
 public final class ITMapEntityQueryCriteriaApi
-        extends AbstractITMapEntityQueryCriteriaApi {
+        extends AbstractTransactionalTestNGSpringContextTests {
+
+    /**
+     * The JPA entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * Default constructor.
      */
     public ITMapEntityQueryCriteriaApi() {
         super();
+    }
+
+    /**
+     * Tests that retrieving all the entities with a specific values returns the
+     * correct number of them.
+     */
+    @Test
+    public final void testfindAllWithValueInMap() {
+        final Integer value; // Value to find
+        final Integer count; // Number of entities expected
+        final Query query;   // Query for the entity
+
+        // Queried value
+        value = 2;
+
+        // Expected result
+        count = 3;
+
+        // Builds the query
+        query = getEntityManager().createQuery(MapEntityCriteriaFactory
+                .findAllWithValueInMap(getEntityManager(), value));
+
+        // The entity's id is the correct one
+        Assert.assertEquals((Integer) query.getResultList().size(), count);
+    }
+
+    /**
+     * Returns the JPA entity manager.
+     *
+     * @return the JPA entity manager
+     */
+    protected final EntityManager getEntityManager() {
+        return entityManager;
     }
 
 }

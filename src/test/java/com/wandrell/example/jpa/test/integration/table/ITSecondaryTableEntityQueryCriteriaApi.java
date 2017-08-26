@@ -24,13 +24,21 @@
 
 package com.wandrell.example.jpa.test.integration.table;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
+import com.wandrell.example.jpa.model.table.SecondaryTableEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.table.AbstractITSecondaryTableEntityQueryCriteriaApi;
+import com.wandrell.example.jpa.test.util.criteria.table.SecondaryTableEntityCriteriaFactory;
 
 /**
  * Integration tests for a {@code SecondaryTableEntity} testing it loads values
@@ -38,20 +46,53 @@ import com.wandrell.example.jpa.test.util.test.integration.table.AbstractITSecon
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-         })
-@TestPropertySource(locations = { 
-        TestPropertiesConfig.SECONDARY_TABLE,
-        
+@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
+@TestPropertySource(locations = { TestPropertiesConfig.SECONDARY_TABLE,
         QueryPropertiesPaths.SECONDARY_TABLE })
 public final class ITSecondaryTableEntityQueryCriteriaApi
-        extends AbstractITSecondaryTableEntityQueryCriteriaApi {
+        extends AbstractTransactionalTestNGSpringContextTests {
+
+    /**
+     * The JPA entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * Default constructor.
      */
     public ITSecondaryTableEntityQueryCriteriaApi() {
         super();
+    }
+
+    /**
+     * Tests that retrieving an entity by the secondary table value returns the
+     * expected entity.
+     */
+    @Test
+    public final void testFindBySecondaryValue() {
+        final Query query;                 // Query for the entity
+        final SecondaryTableEntity entity; // Tested entity
+
+        // Builds the query
+        query = getEntityManager()
+                .createQuery(SecondaryTableEntityCriteriaFactory
+                        .findBySecondaryValue(entityManager, "value_b_2"));
+
+        // Acquires the entity
+        entity = (SecondaryTableEntity) query.getSingleResult();
+
+        // The entity's id is the correct one
+        Assert.assertEquals(entity.getId(), new Integer(2));
+    }
+
+    /**
+     * Returns the JPA entity manager.
+     *
+     * @return the JPA entity manager
+     */
+    protected final EntityManager getEntityManager() {
+        return entityManager;
     }
 
 }

@@ -26,11 +26,14 @@ package com.wandrell.example.jpa.test.integration.enumeration;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.testng.Assert;
 
+import com.wandrell.example.jpa.model.enumeration.EnumerationEntity;
+import com.wandrell.example.jpa.model.enumeration.NumbersEnum;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.enumeration.AbstractITEnumerationEntityModify;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
  * Integration tests for a {@code EnumerationEntity} testing it can be modified.
@@ -38,20 +41,34 @@ import com.wandrell.example.jpa.test.util.test.integration.enumeration.AbstractI
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        TestContextConfig.ENTITY_MODIFIABLE,
-         })
-@TestPropertySource(locations = { 
-        TestPropertiesConfig.ENUMERATION,
-        
+        TestContextConfig.ENTITY_MODIFIABLE, })
+@TestPropertySource(locations = { TestPropertiesConfig.ENUMERATION,
         QueryPropertiesPaths.ENUMERATION })
 public final class ITEnumerationEntityModify
-        extends AbstractITEnumerationEntityModify {
+        extends AbstractITEntityModify<EnumerationEntity> {
+
+    /**
+     * Value to set on the enumeration for the tests.
+     */
+    private final NumbersEnum enumeration = NumbersEnum.THREE;
 
     /**
      * Default constructor.
      */
     public ITEnumerationEntityModify() {
-        super();
+        super(4);
+    }
+
+    @Override
+    protected final void assertEntityModified(final EnumerationEntity entity) {
+        Assert.assertEquals(entity.getEnumOrdinal(), enumeration);
+        Assert.assertEquals(entity.getEnumString(), enumeration);
+    }
+
+    @Override
+    protected final void modifyEntity(final EnumerationEntity entity) {
+        entity.setEnumOrdinal(enumeration);
+        entity.setEnumString(enumeration);
     }
 
 }

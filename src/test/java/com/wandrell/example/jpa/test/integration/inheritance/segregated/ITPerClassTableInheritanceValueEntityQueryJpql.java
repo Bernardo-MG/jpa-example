@@ -24,13 +24,20 @@
 
 package com.wandrell.example.jpa.test.integration.inheritance.segregated;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.inheritance.segregated.AbstractITPerClassTableInheritanceValueEntityQueryJpql;
 
 /**
  * Integration tests for a {@code PerClassTableInheritanceValueEntity} testing
@@ -38,20 +45,56 @@ import com.wandrell.example.jpa.test.util.test.integration.inheritance.segregate
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-         })
-@TestPropertySource(locations = { 
-        TestPropertiesConfig.SEGREGATED_INHERITANCE_VALUE,
-        
-        QueryPropertiesPaths.SEGREGATED_INHERITANCE_VALUE })
+@ContextConfiguration(locations = { TestContextConfig.DEFAULT, })
+@TestPropertySource(
+        locations = { TestPropertiesConfig.SEGREGATED_INHERITANCE_VALUE,
+
+                QueryPropertiesPaths.SEGREGATED_INHERITANCE_VALUE })
 public final class ITPerClassTableInheritanceValueEntityQueryJpql
-        extends AbstractITPerClassTableInheritanceValueEntityQueryJpql {
+        extends AbstractTransactionalTestNGSpringContextTests {
+
+    /**
+     * The JPA entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
+
+    /**
+     * The query to acquire all the entities by the ordinal value.
+     */
+    @Value("${query.segregatedTable.findAllWithValue}")
+    private String        findAllWithValue;
 
     /**
      * Default constructor.
      */
     public ITPerClassTableInheritanceValueEntityQueryJpql() {
         super();
+    }
+
+    /**
+     * Tests that retrieving all the entities with a specific enum, through the
+     * ordinal value, gives the correct number of them.
+     */
+    @Test
+    public final void testFindAllWithValue() {
+        final Query query; // Query for the entity
+
+        // Builds the query
+        query = getEntityManager().createQuery(findAllWithValue);
+        query.setParameter("value", 11);
+
+        // The number of results is the expected one
+        Assert.assertEquals(query.getResultList().size(), 1);
+    }
+
+    /**
+     * Returns the JPA entity manager.
+     *
+     * @return the JPA entity manager
+     */
+    protected final EntityManager getEntityManager() {
+        return entityManager;
     }
 
 }

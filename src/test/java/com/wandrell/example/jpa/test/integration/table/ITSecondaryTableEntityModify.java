@@ -26,11 +26,13 @@ package com.wandrell.example.jpa.test.integration.table;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.testng.Assert;
 
+import com.wandrell.example.jpa.model.table.SecondaryTableEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.table.AbstractITSecondaryTableEntityModify;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
  * Integration tests for a {@code SecondaryTableEntity} testing it can be
@@ -39,20 +41,40 @@ import com.wandrell.example.jpa.test.util.test.integration.table.AbstractITSecon
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        TestContextConfig.ENTITY_MODIFIABLE,
-         })
-@TestPropertySource(locations = { 
-        TestPropertiesConfig.SECONDARY_TABLE,
-        
+        TestContextConfig.ENTITY_MODIFIABLE })
+@TestPropertySource(locations = { TestPropertiesConfig.SECONDARY_TABLE,
         QueryPropertiesPaths.SECONDARY_TABLE })
 public final class ITSecondaryTableEntityModify
-        extends AbstractITSecondaryTableEntityModify {
+        extends AbstractITEntityModify<SecondaryTableEntity> {
+
+    /**
+     * Value to set on the main table field for the tests.
+     */
+    private final String field1 = "first_field";
+
+    /**
+     * Value to set on the secondary table field for the tests.
+     */
+    private final String field2 = "second_field";
 
     /**
      * Default constructor.
      */
     public ITSecondaryTableEntityModify() {
-        super();
+        super(3);
+    }
+
+    @Override
+    protected final void
+            assertEntityModified(final SecondaryTableEntity entity) {
+        Assert.assertEquals(entity.getField1(), field1);
+        Assert.assertEquals(entity.getField2(), field2);
+    }
+
+    @Override
+    protected final void modifyEntity(final SecondaryTableEntity entity) {
+        entity.setField1(field1);
+        entity.setField2(field2);
     }
 
 }

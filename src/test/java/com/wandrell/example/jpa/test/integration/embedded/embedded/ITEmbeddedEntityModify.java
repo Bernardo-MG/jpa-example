@@ -26,11 +26,14 @@ package com.wandrell.example.jpa.test.integration.embedded.embedded;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.testng.Assert;
 
+import com.wandrell.example.jpa.model.embedded.EmbeddableData;
+import com.wandrell.example.jpa.model.embedded.EmbeddedEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.embedded.embedded.AbstractITEmbeddedEntityModify;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
  * Integration tests for a {@code EmbeddedEntity} testing it can be modified.
@@ -38,20 +41,33 @@ import com.wandrell.example.jpa.test.util.test.integration.embedded.embedded.Abs
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        TestContextConfig.ENTITY_MODIFIABLE,
-         })
-@TestPropertySource(locations = { 
-        TestPropertiesConfig.EMBEDDED,
-        
+        TestContextConfig.ENTITY_MODIFIABLE, })
+@TestPropertySource(locations = { TestPropertiesConfig.EMBEDDED,
         QueryPropertiesPaths.EMBEDDED })
 public final class ITEmbeddedEntityModify
-        extends AbstractITEmbeddedEntityModify {
+        extends AbstractITEntityModify<EmbeddedEntity> {
+
+    /**
+     * Value to set on the name for the tests.
+     */
+    private final String name = "The new name";
 
     /**
      * Default constructor.
      */
     public ITEmbeddedEntityModify() {
-        super();
+        super(5);
+    }
+
+    @Override
+    protected final void assertEntityModified(final EmbeddedEntity entity) {
+        Assert.assertEquals(entity.getEmbeddedData().getName(), name);
+    }
+
+    @Override
+    protected final void modifyEntity(final EmbeddedEntity entity) {
+        entity.setEmbeddedData(new EmbeddableData());
+        entity.getEmbeddedData().setName(name);
     }
 
 }

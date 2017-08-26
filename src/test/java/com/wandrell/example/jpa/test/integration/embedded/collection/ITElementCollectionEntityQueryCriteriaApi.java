@@ -24,13 +24,21 @@
 
 package com.wandrell.example.jpa.test.integration.embedded.collection;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
+import com.wandrell.example.jpa.model.embedded.EmbeddableData;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.embedded.collection.AbstractITElementCollectionEntityQueryCriteriaApi;
+import com.wandrell.example.jpa.test.util.criteria.embedded.ElementCollectionEntityCriteriaFactory;
 
 /**
  * Integration tests for a {@code ElementCollectionEntity} testing it loads
@@ -38,20 +46,59 @@ import com.wandrell.example.jpa.test.util.test.integration.embedded.collection.A
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-         })
-@TestPropertySource(locations = { 
-        TestPropertiesConfig.ELEMENT_COLLECTION,
-        
+@ContextConfiguration(locations = { TestContextConfig.DEFAULT, })
+@TestPropertySource(locations = { TestPropertiesConfig.ELEMENT_COLLECTION,
         QueryPropertiesPaths.ELEMENT_COLLECTION })
 public final class ITElementCollectionEntityQueryCriteriaApi
-        extends AbstractITElementCollectionEntityQueryCriteriaApi {
+        extends AbstractTransactionalTestNGSpringContextTests {
+
+    /**
+     * The JPA entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * Default constructor.
      */
     public ITElementCollectionEntityQueryCriteriaApi() {
         super();
+    }
+
+    /**
+     * Tests that retrieving all the entities with a specific values returns the
+     * correct number of them.
+     */
+    @Test
+    public final void testFindContained() {
+        final EmbeddableData data; // Value to find
+        final Integer count;       // Number of entities expected
+        final Query query;         // Query for the entity
+
+        // Queried value
+        data = new EmbeddableData();
+        data.setName("name_2");
+        data.setDescription("desc_2");
+
+        // Expected result
+        count = 4;
+
+        // Builds the query
+        query = getEntityManager()
+                .createQuery(ElementCollectionEntityCriteriaFactory
+                        .findContained(getEntityManager(), data));
+
+        // The entity's id is the correct one
+        Assert.assertEquals((Integer) query.getResultList().size(), count);
+    }
+
+    /**
+     * Returns the JPA entity manager.
+     *
+     * @return the JPA entity manager
+     */
+    protected final EntityManager getEntityManager() {
+        return entityManager;
     }
 
 }

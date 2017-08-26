@@ -26,11 +26,13 @@ package com.wandrell.example.jpa.test.integration.simple;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.testng.Assert;
 
+import com.wandrell.example.jpa.model.simple.SimpleEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimpleEntityModify;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
  * Integration tests for a {@code SimpleEntity} testing it can be modified.
@@ -38,20 +40,32 @@ import com.wandrell.example.jpa.test.util.test.integration.simple.AbstractITSimp
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        TestContextConfig.ENTITY_MODIFIABLE,
-         })
-@TestPropertySource(locations = { 
-        TestPropertiesConfig.SIMPLE_ENTITY,
-        
+        TestContextConfig.ENTITY_MODIFIABLE })
+@TestPropertySource(locations = { TestPropertiesConfig.SIMPLE_ENTITY,
         QueryPropertiesPaths.SIMPLE_ENTITY })
 public final class ITSimpleEntityModify
-        extends AbstractITSimpleEntityModify {
+        extends AbstractITEntityModify<SimpleEntity> {
+
+    /**
+     * Value to set on the name for the tests.
+     */
+    private final String name = "The new name";
 
     /**
      * Default constructor.
      */
     public ITSimpleEntityModify() {
-        super();
+        super(30);
+    }
+
+    @Override
+    protected final void assertEntityModified(final SimpleEntity entity) {
+        Assert.assertEquals(entity.getName(), name);
+    }
+
+    @Override
+    protected final void modifyEntity(final SimpleEntity entity) {
+        entity.setName(name);
     }
 
 }

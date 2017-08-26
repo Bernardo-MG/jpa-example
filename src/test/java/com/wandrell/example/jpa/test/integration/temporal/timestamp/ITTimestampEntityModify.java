@@ -24,13 +24,23 @@
 
 package com.wandrell.example.jpa.test.integration.temporal.timestamp;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.testng.Assert;
 
+import com.wandrell.example.jpa.model.temporal.TimestampEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.temporal.timestamp.AbstractITTimestampEntityModify;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
  * Integration tests for a {@code TimestampEntity} testing it can be modified.
@@ -38,20 +48,65 @@ import com.wandrell.example.jpa.test.util.test.integration.temporal.timestamp.Ab
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        TestContextConfig.ENTITY_MODIFIABLE,
-         })
-@TestPropertySource(locations = { 
-        TestPropertiesConfig.TIMESTAMP,
-        
+        TestContextConfig.ENTITY_MODIFIABLE })
+@TestPropertySource(locations = { TestPropertiesConfig.TIMESTAMP,
         QueryPropertiesPaths.TIMESTAMP })
 public final class ITTimestampEntityModify
-        extends AbstractITTimestampEntityModify {
+        extends AbstractITEntityModify<TimestampEntity> {
+
+    /**
+     * Value to set on the timestamp for the tests.
+     */
+    private final String timestampString = "1991-05-02 11:11:11";
 
     /**
      * Default constructor.
      */
     public ITTimestampEntityModify() {
-        super();
+        super(6);
+    }
+
+    @Override
+    protected final void assertEntityModified(final TimestampEntity entity) {
+        final DateFormat format; // Format for parsing the timestamp string
+        final Date date;         // Parsed timestamp
+        final Calendar calendar; // Parsed timestamp as calendar
+
+        format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
+
+        try {
+            date = format.parse(timestampString);
+            calendar = Calendar.getInstance();
+            calendar.setTime(date);
+
+            Assert.assertEquals(entity.getDate(), date);
+            Assert.assertEquals(entity.getCalendar(), calendar);
+            Assert.assertEquals(entity.getSqlTimestamp(),
+                    new Timestamp(date.getTime()));
+        } catch (final ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    protected final void modifyEntity(final TimestampEntity entity) {
+        final DateFormat format; // Format for parsing the timestamp string
+        final Date date;         // Parsed timestamp
+        final Calendar calendar; // Parsed timestamp as calendar
+
+        format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
+
+        try {
+            date = format.parse(timestampString);
+            calendar = Calendar.getInstance();
+            calendar.setTime(date);
+
+            entity.setCalendar(calendar);
+            entity.setDate(date);
+            entity.setSqlTimestamp(new Timestamp(date.getTime()));
+        } catch (final ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

@@ -24,13 +24,23 @@
 
 package com.wandrell.example.jpa.test.integration.temporal.time;
 
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.testng.Assert;
 
+import com.wandrell.example.jpa.model.temporal.TimeEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.temporal.time.AbstractITTimeEntityModify;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
  * Integration tests for a {@code TimeEntity} testing it can be modified.
@@ -38,20 +48,64 @@ import com.wandrell.example.jpa.test.util.test.integration.temporal.time.Abstrac
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        TestContextConfig.ENTITY_MODIFIABLE,
-         })
+        TestContextConfig.ENTITY_MODIFIABLE })
 @TestPropertySource(
-        locations = {  TestPropertiesConfig.TIME,
-                
-                QueryPropertiesPaths.TIME })
+        locations = { TestPropertiesConfig.TIME, QueryPropertiesPaths.TIME })
 public final class ITTimeEntityModify
-        extends AbstractITTimeEntityModify {
+        extends AbstractITEntityModify<TimeEntity> {
+
+    /**
+     * Value to set on the time for the tests.
+     */
+    private final String timeString = "11:11:11";
 
     /**
      * Default constructor.
      */
     public ITTimeEntityModify() {
-        super();
+        super(6);
+    }
+
+    @Override
+    protected final void assertEntityModified(final TimeEntity entity) {
+        final DateFormat format; // Format for parsing the time string
+        final Date date;         // Parsed time
+        final Calendar calendar; // Parsed time as calendar
+
+        format = new SimpleDateFormat("hh:mm:ss", Locale.ENGLISH);
+
+        try {
+            date = format.parse(timeString);
+            calendar = Calendar.getInstance();
+            calendar.setTime(date);
+
+            Assert.assertEquals(entity.getDate(), date);
+            Assert.assertEquals(entity.getCalendar(), calendar);
+            Assert.assertEquals(entity.getSqlTime(), new Time(date.getTime()));
+        } catch (final ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    protected final void modifyEntity(final TimeEntity entity) {
+        final DateFormat format; // Format for parsing the time string
+        final Date date;         // Parsed time
+        final Calendar calendar; // Parsed time as calendar
+
+        format = new SimpleDateFormat("hh:mm:ss", Locale.ENGLISH);
+
+        try {
+            date = format.parse(timeString);
+            calendar = Calendar.getInstance();
+            calendar.setTime(date);
+
+            entity.setCalendar(calendar);
+            entity.setDate(date);
+            entity.setSqlTime(new Time(date.getTime()));
+        } catch (final ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

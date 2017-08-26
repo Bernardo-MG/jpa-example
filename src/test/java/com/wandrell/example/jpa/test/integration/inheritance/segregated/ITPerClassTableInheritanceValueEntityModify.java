@@ -26,11 +26,13 @@ package com.wandrell.example.jpa.test.integration.inheritance.segregated;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.testng.Assert;
 
+import com.wandrell.example.jpa.model.inheritance.segregated.PerClassTableInheritanceValueEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.inheritance.segregated.AbstractITPerClassTableInheritanceValueEntityModify;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
  * Integration tests for a {@code PerClassTableInheritanceValueEntity} testing
@@ -39,20 +41,42 @@ import com.wandrell.example.jpa.test.util.test.integration.inheritance.segregate
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        TestContextConfig.ENTITY_MODIFIABLE,
-         })
-@TestPropertySource(locations = { 
-        TestPropertiesConfig.SEGREGATED_INHERITANCE_VALUE,
-        
-        QueryPropertiesPaths.SEGREGATED_INHERITANCE_VALUE })
+        TestContextConfig.ENTITY_MODIFIABLE, })
+@TestPropertySource(
+        locations = { TestPropertiesConfig.SEGREGATED_INHERITANCE_VALUE,
+                QueryPropertiesPaths.SEGREGATED_INHERITANCE_VALUE })
 public final class ITPerClassTableInheritanceValueEntityModify
-        extends AbstractITPerClassTableInheritanceValueEntityModify {
+        extends AbstractITEntityModify<PerClassTableInheritanceValueEntity> {
+
+    /**
+     * Name to set on the entity for the tests.
+     */
+    private final String  name  = "entity";
+
+    /**
+     * Value to set on the entity for the tests.
+     */
+    private final Integer value = 123;
 
     /**
      * Default constructor.
      */
     public ITPerClassTableInheritanceValueEntityModify() {
-        super();
+        super(2);
+    }
+
+    @Override
+    protected final void assertEntityModified(
+            final PerClassTableInheritanceValueEntity entity) {
+        Assert.assertEquals(entity.getName(), name);
+        Assert.assertEquals(entity.getValue(), value);
+    }
+
+    @Override
+    protected final void
+            modifyEntity(final PerClassTableInheritanceValueEntity entity) {
+        entity.setName(name);
+        entity.setValue(value);
     }
 
 }

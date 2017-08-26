@@ -26,11 +26,15 @@ package com.wandrell.example.jpa.test.integration.embedded.collection;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 
+import com.wandrell.example.jpa.model.embedded.ElementCollectionEntity;
+import com.wandrell.example.jpa.model.embedded.EmbeddableData;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.embedded.collection.AbstractITElementCollectionEntityModify;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
  * Integration tests for a {@code ElementCollectionEntity} testing it can be
@@ -39,20 +43,41 @@ import com.wandrell.example.jpa.test.util.test.integration.embedded.collection.A
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        TestContextConfig.ENTITY_MODIFIABLE,
-         })
-@TestPropertySource(locations = { 
-        TestPropertiesConfig.ELEMENT_COLLECTION,
-        
+        TestContextConfig.ENTITY_MODIFIABLE, })
+@TestPropertySource(locations = { TestPropertiesConfig.ELEMENT_COLLECTION,
         QueryPropertiesPaths.ELEMENT_COLLECTION })
 public final class ITElementCollectionEntityModify
-        extends AbstractITElementCollectionEntityModify {
+        extends AbstractITEntityModify<ElementCollectionEntity> {
+
+    /**
+     * Value to set on the name for the tests.
+     */
+    private final EmbeddableData data = new EmbeddableData();
 
     /**
      * Default constructor.
      */
     public ITElementCollectionEntityModify() {
-        super();
+        super(5);
+    }
+
+    @BeforeTest
+    public final void initializeValue() {
+        data.setName("name");
+        data.setDescription("desc");
+    }
+
+    @Override
+    protected final void
+            assertEntityModified(final ElementCollectionEntity entity) {
+        Assert.assertEquals(entity.getValues().iterator().next().getName(),
+                "name");
+    }
+
+    @Override
+    protected final void modifyEntity(final ElementCollectionEntity entity) {
+        entity.getValues().clear();
+        entity.getValues().add(data);
     }
 
 }

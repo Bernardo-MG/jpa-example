@@ -24,13 +24,21 @@
 
 package com.wandrell.example.jpa.test.integration.enumeration;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
+import com.wandrell.example.jpa.model.enumeration.NumbersEnum;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.enumeration.AbstractITEnumerationEntityQueryJpql;
 
 /**
  * Integration tests for a {@code EnumerationEntity} testing it loads values
@@ -38,20 +46,76 @@ import com.wandrell.example.jpa.test.util.test.integration.enumeration.AbstractI
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-         })
-@TestPropertySource(locations = { 
-        TestPropertiesConfig.ENUMERATION,
-        
+@ContextConfiguration(locations = { TestContextConfig.DEFAULT, })
+@TestPropertySource(locations = { TestPropertiesConfig.ENUMERATION,
         QueryPropertiesPaths.ENUMERATION })
 public final class ITEnumerationEntityQueryJpql
-        extends AbstractITEnumerationEntityQueryJpql {
+        extends AbstractTransactionalTestNGSpringContextTests {
+
+    /**
+     * The JPA entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
+
+    /**
+     * The query to acquire all the entities by the ordinal value.
+     */
+    @Value("${query.findAllByEnumOrdinal}")
+    private String        findAllByOrdinal;
+
+    /**
+     * The query to acquire all the entities by the string value.
+     */
+    @Value("${query.findAllByEnumString}")
+    private String        findAllByString;
 
     /**
      * Default constructor.
      */
     public ITEnumerationEntityQueryJpql() {
         super();
+    }
+
+    /**
+     * Tests that retrieving all the entities with a specific enum, through the
+     * ordinal value, gives the correct number of them.
+     */
+    @Test
+    public final void testGetEntity_Ordinal() {
+        final Query query; // Query for the entity
+
+        // Builds the query
+        query = getEntityManager().createQuery(findAllByOrdinal);
+        query.setParameter("enum", NumbersEnum.TWO);
+
+        // The number of results is the expected one
+        Assert.assertEquals(query.getResultList().size(), 2);
+    }
+
+    /**
+     * Tests that retrieving all the entities with a specific enum, through the
+     * string value, gives the correct number of them.
+     */
+    @Test
+    public final void testGetEntity_String() {
+        final Query query; // Query for the entity
+
+        // Builds the query
+        query = getEntityManager().createQuery(findAllByString);
+        query.setParameter("enum", NumbersEnum.TWO);
+
+        // The number of results is the expected one
+        Assert.assertEquals(query.getResultList().size(), 2);
+    }
+
+    /**
+     * Returns the JPA entity manager.
+     *
+     * @return the JPA entity manager
+     */
+    protected final EntityManager getEntityManager() {
+        return entityManager;
     }
 
 }

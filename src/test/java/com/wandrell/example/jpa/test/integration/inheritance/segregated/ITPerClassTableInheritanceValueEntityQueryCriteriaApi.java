@@ -24,13 +24,20 @@
 
 package com.wandrell.example.jpa.test.integration.inheritance.segregated;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.inheritance.segregated.AbstractITPerClassTableInheritanceValueEntityQueryCriteriaApi;
+import com.wandrell.example.jpa.test.util.criteria.inheritance.segregated.PerClassTableInheritanceValueEntityCriteriaFactory;
 
 /**
  * Integration tests for a {@code PerClassTableInheritanceValueEntity} testing
@@ -38,20 +45,50 @@ import com.wandrell.example.jpa.test.util.test.integration.inheritance.segregate
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-         })
-@TestPropertySource(locations = { 
-        TestPropertiesConfig.SEGREGATED_INHERITANCE_VALUE,
-        
-        QueryPropertiesPaths.SEGREGATED_INHERITANCE_VALUE })
+@ContextConfiguration(locations = { TestContextConfig.DEFAULT, })
+@TestPropertySource(
+        locations = { TestPropertiesConfig.SEGREGATED_INHERITANCE_VALUE,
+                QueryPropertiesPaths.SEGREGATED_INHERITANCE_VALUE })
 public final class ITPerClassTableInheritanceValueEntityQueryCriteriaApi
-        extends AbstractITPerClassTableInheritanceValueEntityQueryCriteriaApi {
+        extends AbstractTransactionalTestNGSpringContextTests {
+
+    /**
+     * The JPA entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * Default constructor.
      */
     public ITPerClassTableInheritanceValueEntityQueryCriteriaApi() {
         super();
+    }
+
+    /**
+     * Tests that retrieving all the entities with a specific enum, through the
+     * ordinal value, gives the correct number of them.
+     */
+    @Test
+    public final void testAllWithValue() {
+        final Query query; // Query for the entity
+
+        // Builds the query
+        query = getEntityManager()
+                .createQuery(PerClassTableInheritanceValueEntityCriteriaFactory
+                        .findAllWithValue(entityManager, 11));
+
+        // The number of results is the expected one
+        Assert.assertEquals(query.getResultList().size(), 1);
+    }
+
+    /**
+     * Returns the JPA entity manager.
+     *
+     * @return the JPA entity manager
+     */
+    protected final EntityManager getEntityManager() {
+        return entityManager;
     }
 
 }

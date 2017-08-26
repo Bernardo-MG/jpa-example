@@ -24,13 +24,19 @@
 
 package com.wandrell.example.jpa.test.integration.collection.map;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 
+import com.wandrell.example.jpa.model.collection.MapEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
-import com.wandrell.example.jpa.test.util.test.integration.collection.map.AbstractITMapEntityModify;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
  * Integration tests for a {@code CollectionEntity} testing it can be modified.
@@ -38,20 +44,45 @@ import com.wandrell.example.jpa.test.util.test.integration.collection.map.Abstra
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        TestContextConfig.ENTITY_MODIFIABLE,
-         })
-@TestPropertySource(
-        locations = {  TestPropertiesConfig.MAP,
-                
-                QueryPropertiesPaths.MAP })
-public final class ITMapEntityModify
-        extends AbstractITMapEntityModify {
+        TestContextConfig.ENTITY_MODIFIABLE, })
+@TestPropertySource(locations = { TestPropertiesConfig.MAP,
+
+        QueryPropertiesPaths.MAP })
+public final class ITMapEntityModify extends AbstractITEntityModify<MapEntity> {
+
+    /**
+     * Value to set on the name for the tests.
+     */
+    private final String               name   = "The new name";
+
+    /**
+     * Values to set on the entity.
+     */
+    private final Map<String, Integer> values = new LinkedHashMap<String, Integer>();
 
     /**
      * Default constructor.
      */
     public ITMapEntityModify() {
-        super();
+        super(5);
+    }
+
+    @BeforeTest
+    public final void initializeValues() {
+        values.put("value_11", 11);
+        values.put("value_55", 55);
+    }
+
+    @Override
+    protected final void assertEntityModified(final MapEntity entity) {
+        Assert.assertEquals(entity.getName(), name);
+        Assert.assertEquals(entity.getValues(), values);
+    }
+
+    @Override
+    protected final void modifyEntity(final MapEntity entity) {
+        entity.setName(name);
+        entity.setValues(values);
     }
 
 }
