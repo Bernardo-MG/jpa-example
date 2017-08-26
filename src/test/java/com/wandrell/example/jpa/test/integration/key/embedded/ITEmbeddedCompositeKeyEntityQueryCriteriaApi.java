@@ -22,17 +22,22 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.util.test.integration.key.embedded;
+package com.wandrell.example.jpa.test.integration.key.embedded;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.key.embedded.EmbeddedCompositeKeyEntity;
+import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
+import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
+import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.criteria.key.embedded.EmbeddedCompositeKeyEntityCriteriaFactory;
 
 /**
@@ -50,7 +55,10 @@ import com.wandrell.example.jpa.test.util.criteria.key.embedded.EmbeddedComposit
  * @author Bernardo Mart&iacute;nez Garrido
  * @see EmbeddedCompositeKeyEntity
  */
-public abstract class AbstractITEmbeddedCompositeKeyEntityQueryCriteriaApi
+@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
+@TestPropertySource(locations = { TestPropertiesConfig.EMBEDDED_COMPOSITE_KEY,
+        QueryPropertiesPaths.EMBEDDED_COMPOSITE_KEY })
+public abstract class ITEmbeddedCompositeKeyEntityQueryCriteriaApi
         extends AbstractTransactionalTestNGSpringContextTests {
 
     /**
@@ -62,9 +70,9 @@ public abstract class AbstractITEmbeddedCompositeKeyEntityQueryCriteriaApi
     /**
      * Default constructor.
      */
-    public AbstractITEmbeddedCompositeKeyEntityQueryCriteriaApi() {
+    public ITEmbeddedCompositeKeyEntityQueryCriteriaApi() {
         super();
-        // TODO: Add the query results counts to the configuration files
+        // TODO: Make this work
     }
 
     /**
@@ -72,7 +80,7 @@ public abstract class AbstractITEmbeddedCompositeKeyEntityQueryCriteriaApi
      */
     @Test
     public final void testFindByIds() {
-        final Query query;                      // Query for the entity
+        final Query query;                       // Query for the entity
         final EmbeddedCompositeKeyEntity entity; // The entity
 
         // Builds the query

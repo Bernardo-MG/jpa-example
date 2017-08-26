@@ -77,14 +77,14 @@ public class QueryPropertiesPaths {
     public static final String ELEMENT_COLLECTION           = "classpath:config/persistence/query/test-element-collection-entity-query.properties";
 
     /**
-     * Embeddable composite key Id entity.
-     */
-    public static final String EMBEDDABLE_COMPOSITE_KEY     = "classpath:config/persistence/query/test-embeddable-composite-key-entity-query.properties";
-
-    /**
      * Embedded data entity.
      */
     public static final String EMBEDDED                     = "classpath:config/persistence/query/test-embedded-entity-query.properties";
+
+    /**
+     * Embeddable composite key Id entity.
+     */
+    public static final String EMBEDDED_COMPOSITE_KEY       = "classpath:config/persistence/query/test-embedded-composite-key-entity-query.properties";
 
     /**
      * Enumeration entity.
