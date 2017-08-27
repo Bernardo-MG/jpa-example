@@ -61,7 +61,7 @@ public final class ITBooleanConverterEntityQueryCriteriaApi
                 .createQuery(BooleanConverterEntityCriteriaFactory
                         .findAllByFlag(getEntityManager(), false));
 
-        // The number of results is the expected one
+        // Reads the expected number of entities
         Assert.assertEquals(query.getResultList().size(), 2);
     }
 

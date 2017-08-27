@@ -68,7 +68,7 @@ public final class ITEmbeddedEntityQueryCriteriaApi
         query = getEntityManager().createQuery(EmbeddedEntityCriteriaFactory
                 .findByName(getEntityManager(), name));
 
-        // The entity's id is the correct one
+        // Reads the expected number of entities
         Assert.assertEquals((Integer) query.getResultList().size(), count);
     }
 

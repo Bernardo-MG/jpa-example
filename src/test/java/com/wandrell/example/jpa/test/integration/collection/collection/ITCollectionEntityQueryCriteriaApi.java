@@ -68,7 +68,7 @@ public final class ITCollectionEntityQueryCriteriaApi
         query = getEntityManager().createQuery(CollectionEntityCriteriaFactory
                 .findAllWithValue(getEntityManager(), value));
 
-        // The entity's id is the correct one
+        // Reads the expected number of entities
         Assert.assertEquals((Integer) query.getResultList().size(), count);
     }
 

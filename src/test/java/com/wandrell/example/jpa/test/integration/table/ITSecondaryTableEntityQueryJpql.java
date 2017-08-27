@@ -71,7 +71,7 @@ public final class ITSecondaryTableEntityQueryJpql
         // Acquires the entity
         entity = (SecondaryTableEntity) query.getSingleResult();
 
-        // The entity's id is the correct one
+        // The id is correct
         Assert.assertEquals(entity.getId(), new Integer(2));
     }
 

@@ -85,7 +85,7 @@ public final class ITSimpleEntityQueryCriteriaApi
         // Acquires the entity
         entity = (SimpleEntity) query.getSingleResult();
 
-        // The entity's id is the correct one
+        // The id is correct
         Assert.assertEquals(entity.getId(), id);
     }
 

@@ -81,7 +81,7 @@ public abstract class ITEmbeddedCompositeKeyEntityQueryJpql
         // Acquires the entity
         entity = (EmbeddedCompositeKeyEntity) query.getSingleResult();
 
-        // The number of results is the expected one
+        // The ids are correct
         Assert.assertEquals(entity.getKey().getId(), new Integer(1));
         Assert.assertEquals(entity.getKey().getSupportId(), new Long(2));
     }

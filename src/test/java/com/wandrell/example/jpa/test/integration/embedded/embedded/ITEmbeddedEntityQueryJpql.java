@@ -73,7 +73,7 @@ public final class ITEmbeddedEntityQueryJpql extends AbstractIntegrationTest {
         query = getEntityManager().createQuery(findByName);
         query.setParameter("name", name);
 
-        // The entity's id is the correct one
+        // Reads the expected number of entities
         Assert.assertEquals((Integer) query.getResultList().size(), count);
     }
 

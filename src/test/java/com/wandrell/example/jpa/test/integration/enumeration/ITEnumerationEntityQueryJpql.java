@@ -73,7 +73,7 @@ public final class ITEnumerationEntityQueryJpql
         query = getEntityManager().createQuery(findAllByOrdinal);
         query.setParameter("enum", NumbersEnum.TWO);
 
-        // The number of results is the expected one
+        // Reads the expected number of entities
         Assert.assertEquals(query.getResultList().size(), 2);
     }
 
@@ -89,7 +89,7 @@ public final class ITEnumerationEntityQueryJpql
         query = getEntityManager().createQuery(findAllByString);
         query.setParameter("enum", NumbersEnum.TWO);
 
-        // The number of results is the expected one
+        // Reads the expected number of entities
         Assert.assertEquals(query.getResultList().size(), 2);
     }
 

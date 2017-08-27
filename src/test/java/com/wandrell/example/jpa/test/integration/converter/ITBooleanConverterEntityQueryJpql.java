@@ -66,7 +66,7 @@ public final class ITBooleanConverterEntityQueryJpql
         query = getEntityManager().createQuery(findAllByFlag);
         query.setParameter("flag", false);
 
-        // The number of results is the expected one
+        // Reads the expected number of entities
         Assert.assertEquals(query.getResultList().size(), 2);
     }
 
@@ -82,7 +82,7 @@ public final class ITBooleanConverterEntityQueryJpql
         query = getEntityManager().createQuery(findAllByFlag);
         query.setParameter("flag", true);
 
-        // The number of results is the expected one
+        // Reads the expected number of entities
         Assert.assertEquals(query.getResultList().size(), 3);
     }
 

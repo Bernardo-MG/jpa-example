@@ -61,7 +61,7 @@ public final class ITSuperClassTableInheritanceValueEntityQueryCriteriaApi
                 SuperClassTableInheritanceValueEntityCriteriaFactory
                         .findAllWithValue(getEntityManager(), 11));
 
-        // The number of results is the expected one
+        // Reads the expected number of entities
         Assert.assertEquals(query.getResultList().size(), 1);
     }
 

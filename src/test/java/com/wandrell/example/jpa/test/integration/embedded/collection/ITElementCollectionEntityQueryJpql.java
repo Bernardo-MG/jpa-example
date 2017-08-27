@@ -78,7 +78,7 @@ public final class ITElementCollectionEntityQueryJpql
         query.setParameter("name", data.getName());
         query.setParameter("description", data.getDescription());
 
-        // The entity's id is the correct one
+        // Reads the expected number of entities
         Assert.assertEquals((Integer) query.getResultList().size(), count);
     }
 

@@ -73,7 +73,7 @@ public final class ITMapEntityQueryJpql extends AbstractIntegrationTest {
         query = getEntityManager().createQuery(findAllWithValueInMap);
         query.setParameter("value", value);
 
-        // The entity's id is the correct one
+        // Reads the expected number of entities
         Assert.assertEquals((Integer) query.getResultList().size(), count);
     }
 

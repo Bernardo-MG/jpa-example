@@ -67,7 +67,7 @@ public final class ITMapEntityQueryCriteriaApi extends AbstractIntegrationTest {
         query = getEntityManager().createQuery(MapEntityCriteriaFactory
                 .findAllWithValueInMap(getEntityManager(), value));
 
-        // The entity's id is the correct one
+        // Reads the expected number of entities
         Assert.assertEquals((Integer) query.getResultList().size(), count);
     }
 

@@ -66,7 +66,7 @@ public final class ITSuperClassTableInheritanceValueEntityQueryJpql
         query = getEntityManager().createQuery(findAllWithValue);
         query.setParameter("value", 11);
 
-        // The number of results is the expected one
+        // Reads the expected number of entities
         Assert.assertEquals(query.getResultList().size(), 1);
     }
 

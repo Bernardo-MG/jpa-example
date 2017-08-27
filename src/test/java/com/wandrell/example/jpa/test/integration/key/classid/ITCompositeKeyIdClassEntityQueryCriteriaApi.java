@@ -75,7 +75,7 @@ public final class ITCompositeKeyIdClassEntityQueryCriteriaApi
         // Acquires the entity
         entity = (CompositeKeyIdClassEntity) query.getSingleResult();
 
-        // The number of results is the expected one
+        // The ids are correct
         Assert.assertEquals(entity.getId(), new Integer(1));
         Assert.assertEquals(entity.getSupportId(), new Long(2));
     }

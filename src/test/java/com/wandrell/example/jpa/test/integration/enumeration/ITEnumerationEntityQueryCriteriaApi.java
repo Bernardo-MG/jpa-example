@@ -61,7 +61,7 @@ public final class ITEnumerationEntityQueryCriteriaApi
         query = getEntityManager().createQuery(EnumerationEntityCriteriaFactory
                 .findAllByOrdinal(getEntityManager(), NumbersEnum.TWO));
 
-        // The number of results is the expected one
+        // Reads the expected number of entities
         Assert.assertEquals(query.getResultList().size(), 2);
     }
 
@@ -77,7 +77,7 @@ public final class ITEnumerationEntityQueryCriteriaApi
         query = getEntityManager().createQuery(EnumerationEntityCriteriaFactory
                 .findAllByString(getEntityManager(), NumbersEnum.TWO));
 
-        // The number of results is the expected one
+        // Reads the expected number of entities
         Assert.assertEquals(query.getResultList().size(), 2);
     }
 
