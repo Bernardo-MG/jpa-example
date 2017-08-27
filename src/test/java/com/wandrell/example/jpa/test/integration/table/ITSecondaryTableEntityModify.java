@@ -64,6 +64,8 @@ public final class ITSecondaryTableEntityModify
 
     @Override
     protected final void modifyEntity(final SecondaryTableEntity entity) {
+        // TODO: This is to fix a bug in PostgreSQL
+        entity.setId(20);
         entity.setField1(field1);
         entity.setField2(field2);
     }
