@@ -45,7 +45,6 @@ import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 
 /**
  * Integration tests for a {@code DateEntity} testing it loads values correctly
@@ -54,8 +53,7 @@ import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT })
-@TestPropertySource(
-        locations = { TestPropertiesConfig.DATE, QueryPropertiesPaths.DATE })
+@TestPropertySource(locations = { QueryPropertiesPaths.DATE })
 public final class ITDateEntityQueryJpql
         extends AbstractTransactionalTestNGSpringContextTests {
 

@@ -124,8 +124,7 @@ public class ImageIconEntity implements Serializable {
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        this.id = checkNotNull(identifier,
-                "Received a null pointer as identifier");
+        id = checkNotNull(identifier, "Received a null pointer as identifier");
     }
 
     /**
@@ -135,8 +134,7 @@ public class ImageIconEntity implements Serializable {
      *            the image icon to set in the entity
      */
     public final void setImageIcon(final ImageIcon icon) {
-        this.image = checkNotNull(icon,
-                "Received a null pointer as image icon");
+        image = checkNotNull(icon, "Received a null pointer as image icon");
     }
 
     @Override

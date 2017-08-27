@@ -135,7 +135,7 @@ public class CompositeKeyEntity implements Serializable {
      *            the first id for the entity
      */
     public final void setId(final Integer identifier) {
-        this.id = checkNotNull(identifier, "Received a null pointer as id 1");
+        id = checkNotNull(identifier, "Received a null pointer as id 1");
     }
 
     /**
@@ -145,7 +145,7 @@ public class CompositeKeyEntity implements Serializable {
      *            the name to set on the entity
      */
     public final void setName(final String value) {
-        this.name = checkNotNull(value, "Received a null pointer as name");
+        name = checkNotNull(value, "Received a null pointer as name");
     }
 
     /**
@@ -155,8 +155,7 @@ public class CompositeKeyEntity implements Serializable {
      *            the second id for the entity
      */
     public final void setSupportId(final Long identifier) {
-        this.supportId = checkNotNull(identifier,
-                "Received a null pointer as id 2");
+        supportId = checkNotNull(identifier, "Received a null pointer as id 2");
     }
 
     @Override

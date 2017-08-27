@@ -38,7 +38,6 @@ import org.testng.annotations.Test;
 import com.wandrell.example.jpa.model.enumeration.NumbersEnum;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 
 /**
  * Integration tests for a {@code EnumerationEntity} testing it loads values
@@ -47,8 +46,7 @@ import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT, })
-@TestPropertySource(locations = { TestPropertiesConfig.ENUMERATION,
-        QueryPropertiesPaths.ENUMERATION })
+@TestPropertySource(locations = { QueryPropertiesPaths.ENUMERATION })
 public final class ITEnumerationEntityQueryJpql
         extends AbstractTransactionalTestNGSpringContextTests {
 

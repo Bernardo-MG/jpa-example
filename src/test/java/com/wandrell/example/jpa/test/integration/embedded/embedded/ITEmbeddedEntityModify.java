@@ -32,7 +32,6 @@ import com.wandrell.example.jpa.model.embedded.EmbeddableData;
 import com.wandrell.example.jpa.model.embedded.EmbeddedEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
@@ -40,10 +39,8 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        TestContextConfig.ENTITY_MODIFIABLE, })
-@TestPropertySource(locations = { TestPropertiesConfig.EMBEDDED,
-        QueryPropertiesPaths.EMBEDDED })
+@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
+@TestPropertySource(locations = { QueryPropertiesPaths.EMBEDDED })
 public final class ITEmbeddedEntityModify
         extends AbstractITEntityModify<EmbeddedEntity> {
 
@@ -56,7 +53,7 @@ public final class ITEmbeddedEntityModify
      * Default constructor.
      */
     public ITEmbeddedEntityModify() {
-        super(5);
+        super(EmbeddedEntity.class, 5);
     }
 
     @Override

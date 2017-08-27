@@ -58,7 +58,7 @@ public final class SequenceGeneratedIdEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
     @Column(name = "id", nullable = false, unique = true)
-    private Integer           id               = null;
+    private final Integer     id               = null;
 
     /**
      * Default constructor.

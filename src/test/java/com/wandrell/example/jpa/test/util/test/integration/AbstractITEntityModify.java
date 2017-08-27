@@ -30,7 +30,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.springframework.transaction.annotation.Transactional;
 import org.testng.Assert;
@@ -64,27 +63,29 @@ public abstract class AbstractITEntityModify<V>
     /**
      * Initial number of entities in the persistence context.
      */
-    private final Integer entitiesCount;
+    private final Integer  entitiesCount;
+
+    /**
+     * Class of the tested entity.
+     * <p>
+     * Used for creating new instances.
+     */
+    private final Class<V> entityClass;
 
     /**
      * The entity manager for the test context.
      */
     @Autowired(required = false)
-    private EntityManager entityManager;
-
-    /**
-     * Entity for the addition test.
-     */
-    @Autowired
-    @Qualifier("newEntity")
-    private V             newEntity;
+    private EntityManager  entityManager;
 
     /**
      * Default constructor.
      */
-    public AbstractITEntityModify(final Integer entities) {
+    public AbstractITEntityModify(final Class<V> cls, final Integer entities) {
         super();
 
+        entityClass = checkNotNull(cls,
+                "Received a null pointer as entity class");
         entitiesCount = checkNotNull(entities,
                 "Received a null pointer as entities count");
     }
@@ -103,6 +104,9 @@ public abstract class AbstractITEntityModify<V>
         final V queried;   // Queried back entity
         final Query query; // Query to recover the entity
         final Integer id;  // Id of the created entity
+        final V newEntity; // New entity
+
+        newEntity = getEntityClass().newInstance();
 
         // Sets up the entity
         modifyEntity(newEntity);
@@ -152,7 +156,7 @@ public abstract class AbstractITEntityModify<V>
 
         // Builds the query
         query = getEntityManager().createQuery(GenericCriteriaFactory
-                .findById(getEntityManager(), newEntity.getClass(), 1));
+                .findById(getEntityManager(), getEntityClass(), 1));
 
         // Acquires the entity
         entity = (V) query.getSingleResult();
@@ -166,6 +170,15 @@ public abstract class AbstractITEntityModify<V>
 
         // Checks that the entity has been saved correctly
         assertEntityModified(entity);
+    }
+
+    /**
+     * Returns the entity class.
+     * 
+     * @return the entity class
+     */
+    private final Class<V> getEntityClass() {
+        return entityClass;
     }
 
     /**

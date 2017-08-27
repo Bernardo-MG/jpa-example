@@ -31,7 +31,6 @@ import org.testng.Assert;
 import com.wandrell.example.jpa.model.inheritance.superclass.SuperClassTableInheritanceValueEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
@@ -40,11 +39,9 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        TestContextConfig.ENTITY_MODIFIABLE, })
+@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
 @TestPropertySource(
-        locations = { TestPropertiesConfig.SUPERCLASS_INHERITANCE_VALUE,
-                QueryPropertiesPaths.SUPERCLASS_INHERITANCE_VALUE })
+        locations = { QueryPropertiesPaths.SUPERCLASS_INHERITANCE_VALUE })
 public final class ITSuperClassTableInheritanceValueEntityModify
         extends AbstractITEntityModify<SuperClassTableInheritanceValueEntity> {
 
@@ -62,7 +59,7 @@ public final class ITSuperClassTableInheritanceValueEntityModify
      * Default constructor.
      */
     public ITSuperClassTableInheritanceValueEntityModify() {
-        super(2);
+        super(SuperClassTableInheritanceValueEntity.class, 2);
     }
 
     @Override

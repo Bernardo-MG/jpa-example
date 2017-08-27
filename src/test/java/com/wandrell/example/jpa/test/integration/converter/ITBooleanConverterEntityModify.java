@@ -31,7 +31,6 @@ import org.testng.Assert;
 import com.wandrell.example.jpa.model.converter.BooleanConverterEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
@@ -40,11 +39,8 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        TestContextConfig.ENTITY_MODIFIABLE, })
-@TestPropertySource(locations = { TestPropertiesConfig.BOOLEAN_CONVERTER,
-
-        QueryPropertiesPaths.BOOLEAN_CONVERTER })
+@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
+@TestPropertySource(locations = { QueryPropertiesPaths.BOOLEAN_CONVERTER })
 public final class ITBooleanConverterEntityModify
         extends AbstractITEntityModify<BooleanConverterEntity> {
 
@@ -57,7 +53,7 @@ public final class ITBooleanConverterEntityModify
      * Default constructor.
      */
     public ITBooleanConverterEntityModify() {
-        super(9);
+        super(BooleanConverterEntity.class, 9);
     }
 
     @Override

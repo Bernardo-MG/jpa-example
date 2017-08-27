@@ -38,7 +38,6 @@ import org.testng.annotations.Test;
 import com.wandrell.example.jpa.model.simple.SimpleEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.criteria.simple.SimpleEntityCriteriaFactory;
 
 /**
@@ -48,8 +47,7 @@ import com.wandrell.example.jpa.test.util.criteria.simple.SimpleEntityCriteriaFa
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT })
-@TestPropertySource(locations = { TestPropertiesConfig.SIMPLE_ENTITY,
-        QueryPropertiesPaths.SIMPLE_ENTITY })
+@TestPropertySource(locations = { QueryPropertiesPaths.SIMPLE_ENTITY })
 public final class ITSimpleEntityQueryCriteriaApi
         extends AbstractTransactionalTestNGSpringContextTests {
 

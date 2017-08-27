@@ -37,7 +37,6 @@ import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 
 /**
  * Integration tests for a {@code PerClassTableInheritanceValueEntity} testing
@@ -46,10 +45,9 @@ import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT, })
-@TestPropertySource(
-        locations = { TestPropertiesConfig.SEGREGATED_INHERITANCE_VALUE,
+@TestPropertySource(locations = {
 
-                QueryPropertiesPaths.SEGREGATED_INHERITANCE_VALUE })
+        QueryPropertiesPaths.SEGREGATED_INHERITANCE_VALUE })
 public final class ITPerClassTableInheritanceValueEntityQueryJpql
         extends AbstractTransactionalTestNGSpringContextTests {
 

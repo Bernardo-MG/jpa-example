@@ -37,7 +37,6 @@ import org.testng.annotations.Test;
 import com.wandrell.example.jpa.model.table.SecondaryTableEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.criteria.table.SecondaryTableEntityCriteriaFactory;
 
 /**
@@ -47,8 +46,7 @@ import com.wandrell.example.jpa.test.util.criteria.table.SecondaryTableEntityCri
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT })
-@TestPropertySource(locations = { TestPropertiesConfig.SECONDARY_TABLE,
-        QueryPropertiesPaths.SECONDARY_TABLE })
+@TestPropertySource(locations = { QueryPropertiesPaths.SECONDARY_TABLE })
 public final class ITSecondaryTableEntityQueryCriteriaApi
         extends AbstractTransactionalTestNGSpringContextTests {
 

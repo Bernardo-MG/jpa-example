@@ -36,7 +36,6 @@ import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.criteria.inheritance.superclass.SuperClassTableInheritanceValueEntityCriteriaFactory;
 
 /**
@@ -47,8 +46,7 @@ import com.wandrell.example.jpa.test.util.criteria.inheritance.superclass.SuperC
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT, })
 @TestPropertySource(
-        locations = { TestPropertiesConfig.SUPERCLASS_INHERITANCE_VALUE,
-                QueryPropertiesPaths.SUPERCLASS_INHERITANCE_VALUE })
+        locations = { QueryPropertiesPaths.SUPERCLASS_INHERITANCE_VALUE })
 public final class ITSuperClassTableInheritanceValueEntityQueryCriteriaApi
         extends AbstractTransactionalTestNGSpringContextTests {
 

@@ -38,7 +38,6 @@ import org.testng.Assert;
 import com.wandrell.example.jpa.model.temporal.DateEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
@@ -46,10 +45,8 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        TestContextConfig.ENTITY_MODIFIABLE })
-@TestPropertySource(
-        locations = { TestPropertiesConfig.DATE, QueryPropertiesPaths.DATE })
+@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
+@TestPropertySource(locations = { QueryPropertiesPaths.DATE })
 public final class ITDateEntityModify
         extends AbstractITEntityModify<DateEntity> {
 
@@ -62,7 +59,7 @@ public final class ITDateEntityModify
      * Default constructor.
      */
     public ITDateEntityModify() {
-        super(6);
+        super(DateEntity.class, 6);
     }
 
     @Override

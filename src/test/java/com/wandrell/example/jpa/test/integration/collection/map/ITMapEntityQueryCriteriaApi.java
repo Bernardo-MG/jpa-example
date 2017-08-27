@@ -36,7 +36,6 @@ import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.criteria.collection.MapEntityCriteriaFactory;
 
 /**
@@ -46,7 +45,7 @@ import com.wandrell.example.jpa.test.util.criteria.collection.MapEntityCriteriaF
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT, })
-@TestPropertySource(locations = { TestPropertiesConfig.MAP,
+@TestPropertySource(locations = {
 
         QueryPropertiesPaths.MAP })
 public final class ITMapEntityQueryCriteriaApi

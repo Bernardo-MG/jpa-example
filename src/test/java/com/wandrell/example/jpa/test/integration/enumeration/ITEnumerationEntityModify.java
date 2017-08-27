@@ -32,7 +32,6 @@ import com.wandrell.example.jpa.model.enumeration.EnumerationEntity;
 import com.wandrell.example.jpa.model.enumeration.NumbersEnum;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
@@ -40,10 +39,8 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        TestContextConfig.ENTITY_MODIFIABLE, })
-@TestPropertySource(locations = { TestPropertiesConfig.ENUMERATION,
-        QueryPropertiesPaths.ENUMERATION })
+@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
+@TestPropertySource(locations = { QueryPropertiesPaths.ENUMERATION })
 public final class ITEnumerationEntityModify
         extends AbstractITEntityModify<EnumerationEntity> {
 
@@ -56,7 +53,7 @@ public final class ITEnumerationEntityModify
      * Default constructor.
      */
     public ITEnumerationEntityModify() {
-        super(4);
+        super(EnumerationEntity.class, 4);
     }
 
     @Override

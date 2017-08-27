@@ -38,7 +38,6 @@ import org.testng.annotations.Test;
 import com.wandrell.example.jpa.model.key.composite.CompositeKeyEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 
 /**
  * Abstract integration tests for a {@link CompositeKeyEntity} testing it loads
@@ -56,8 +55,7 @@ import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig
  * @see CompositeKeyEntity
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT })
-@TestPropertySource(locations = { TestPropertiesConfig.COMPOSITE_KEY,
-        QueryPropertiesPaths.COMPOSITE_KEY })
+@TestPropertySource(locations = { QueryPropertiesPaths.COMPOSITE_KEY })
 public final class ITCompositeKeyEntityQueryJpql
         extends AbstractTransactionalTestNGSpringContextTests {
 

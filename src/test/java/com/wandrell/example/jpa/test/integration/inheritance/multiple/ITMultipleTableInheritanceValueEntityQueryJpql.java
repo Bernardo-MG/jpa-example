@@ -37,7 +37,6 @@ import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 
 /**
  * Integration tests for a {@code MultipleTableInheritanceValueEntity} testing
@@ -47,8 +46,7 @@ import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT, })
 @TestPropertySource(
-        locations = { TestPropertiesConfig.MULTIPLE_INHERITANCE_VALUE,
-                QueryPropertiesPaths.MULTIPLE_INHERITANCE_VALUE })
+        locations = { QueryPropertiesPaths.MULTIPLE_INHERITANCE_VALUE })
 public final class ITMultipleTableInheritanceValueEntityQueryJpql
         extends AbstractTransactionalTestNGSpringContextTests {
 

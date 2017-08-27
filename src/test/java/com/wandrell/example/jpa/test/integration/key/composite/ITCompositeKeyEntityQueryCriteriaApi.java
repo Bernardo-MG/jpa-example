@@ -37,7 +37,6 @@ import org.testng.annotations.Test;
 import com.wandrell.example.jpa.model.key.composite.CompositeKeyEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.criteria.key.composite.CompositeKeyEntityCriteriaFactory;
 
 /**
@@ -56,8 +55,7 @@ import com.wandrell.example.jpa.test.util.criteria.key.composite.CompositeKeyEnt
  * @see CompositeKeyEntity
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT })
-@TestPropertySource(locations = { TestPropertiesConfig.COMPOSITE_KEY,
-        QueryPropertiesPaths.COMPOSITE_KEY })
+@TestPropertySource(locations = { QueryPropertiesPaths.COMPOSITE_KEY })
 public final class ITCompositeKeyEntityQueryCriteriaApi
         extends AbstractTransactionalTestNGSpringContextTests {
 

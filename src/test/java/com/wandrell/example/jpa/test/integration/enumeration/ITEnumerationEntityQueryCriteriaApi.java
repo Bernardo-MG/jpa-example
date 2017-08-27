@@ -37,7 +37,6 @@ import org.testng.annotations.Test;
 import com.wandrell.example.jpa.model.enumeration.NumbersEnum;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.criteria.enumeration.EnumerationEntityCriteriaFactory;
 
 /**
@@ -47,8 +46,7 @@ import com.wandrell.example.jpa.test.util.criteria.enumeration.EnumerationEntity
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT, })
-@TestPropertySource(locations = { TestPropertiesConfig.ENUMERATION,
-        QueryPropertiesPaths.ENUMERATION })
+@TestPropertySource(locations = { QueryPropertiesPaths.ENUMERATION })
 public final class ITEnumerationEntityQueryCriteriaApi
         extends AbstractTransactionalTestNGSpringContextTests {
 

@@ -44,7 +44,6 @@ import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.criteria.temporal.TimestampEntityCriteriaFactory;
 
 /**
@@ -54,8 +53,7 @@ import com.wandrell.example.jpa.test.util.criteria.temporal.TimestampEntityCrite
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT })
-@TestPropertySource(locations = { TestPropertiesConfig.TIMESTAMP,
-        QueryPropertiesPaths.TIMESTAMP })
+@TestPropertySource(locations = { QueryPropertiesPaths.TIMESTAMP })
 public final class ITTimestampEntityQueryCriteriaApi
         extends AbstractTransactionalTestNGSpringContextTests {
 

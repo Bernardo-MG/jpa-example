@@ -37,12 +37,7 @@ public class TestContextConfig {
      * For those test which don't need any context configuration but require
      * loading Spring properties.
      */
-    public static final String DEFAULT           = "classpath:context/test-default.xml";
-
-    /**
-     * Entity prototype context.
-     */
-    public static final String ENTITY_MODIFIABLE = "classpath:context/entity/entity-modifiable.xml";
+    public static final String DEFAULT = "classpath:context/test-default.xml";
 
     /**
      * Private constructor to avoid initialization.

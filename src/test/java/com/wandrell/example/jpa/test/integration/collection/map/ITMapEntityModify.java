@@ -35,7 +35,6 @@ import org.testng.annotations.BeforeTest;
 import com.wandrell.example.jpa.model.collection.MapEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
@@ -43,11 +42,8 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        TestContextConfig.ENTITY_MODIFIABLE, })
-@TestPropertySource(locations = { TestPropertiesConfig.MAP,
-
-        QueryPropertiesPaths.MAP })
+@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
+@TestPropertySource(locations = { QueryPropertiesPaths.MAP })
 public final class ITMapEntityModify extends AbstractITEntityModify<MapEntity> {
 
     /**
@@ -64,7 +60,7 @@ public final class ITMapEntityModify extends AbstractITEntityModify<MapEntity> {
      * Default constructor.
      */
     public ITMapEntityModify() {
-        super(5);
+        super(MapEntity.class, 5);
     }
 
     @BeforeTest

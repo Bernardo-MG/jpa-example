@@ -31,7 +31,6 @@ import org.testng.Assert;
 import com.wandrell.example.jpa.model.simple.SimpleEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
@@ -39,10 +38,8 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT,
-        TestContextConfig.ENTITY_MODIFIABLE })
-@TestPropertySource(locations = { TestPropertiesConfig.SIMPLE_ENTITY,
-        QueryPropertiesPaths.SIMPLE_ENTITY })
+@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
+@TestPropertySource(locations = { QueryPropertiesPaths.SIMPLE_ENTITY })
 public final class ITSimpleEntityModify
         extends AbstractITEntityModify<SimpleEntity> {
 
@@ -55,7 +52,7 @@ public final class ITSimpleEntityModify
      * Default constructor.
      */
     public ITSimpleEntityModify() {
-        super(30);
+        super(SimpleEntity.class, 30);
     }
 
     @Override

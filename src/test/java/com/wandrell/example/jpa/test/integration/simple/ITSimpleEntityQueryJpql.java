@@ -39,7 +39,6 @@ import org.testng.annotations.Test;
 import com.wandrell.example.jpa.model.simple.SimpleEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 
 /**
  * Integration tests for a {@code SimpleEntity} testing it can be queried
@@ -48,8 +47,7 @@ import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT })
-@TestPropertySource(locations = { TestPropertiesConfig.SIMPLE_ENTITY,
-        QueryPropertiesPaths.SIMPLE_ENTITY })
+@TestPropertySource(locations = { QueryPropertiesPaths.SIMPLE_ENTITY })
 public final class ITSimpleEntityQueryJpql
         extends AbstractTransactionalTestNGSpringContextTests {
 

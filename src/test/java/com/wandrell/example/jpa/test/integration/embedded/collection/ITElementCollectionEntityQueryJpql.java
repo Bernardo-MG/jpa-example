@@ -38,7 +38,6 @@ import org.testng.annotations.Test;
 import com.wandrell.example.jpa.model.embedded.EmbeddableData;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 
 /**
  * Integration tests for a {@code ElementCollectionEntity} testing it loads
@@ -47,8 +46,7 @@ import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT, })
-@TestPropertySource(locations = { TestPropertiesConfig.ELEMENT_COLLECTION,
-        QueryPropertiesPaths.ELEMENT_COLLECTION })
+@TestPropertySource(locations = { QueryPropertiesPaths.ELEMENT_COLLECTION })
 public final class ITElementCollectionEntityQueryJpql
         extends AbstractTransactionalTestNGSpringContextTests {
 

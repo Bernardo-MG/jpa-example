@@ -37,7 +37,6 @@ import org.testng.annotations.Test;
 import com.wandrell.example.jpa.model.embedded.EmbeddableData;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
-import com.wandrell.example.jpa.test.util.config.properties.TestPropertiesConfig;
 import com.wandrell.example.jpa.test.util.criteria.embedded.ElementCollectionEntityCriteriaFactory;
 
 /**
@@ -47,8 +46,7 @@ import com.wandrell.example.jpa.test.util.criteria.embedded.ElementCollectionEnt
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT, })
-@TestPropertySource(locations = { TestPropertiesConfig.ELEMENT_COLLECTION,
-        QueryPropertiesPaths.ELEMENT_COLLECTION })
+@TestPropertySource(locations = { QueryPropertiesPaths.ELEMENT_COLLECTION })
 public final class ITElementCollectionEntityQueryCriteriaApi
         extends AbstractTransactionalTestNGSpringContextTests {
 
