@@ -6,6 +6,14 @@
 		<author email="programming@wandrell.com">Bernardo Martínez Garrido</author>
 	</properties>
 	<body>
+      <release version="1.1.0" date="2017-08-27" description="Reworked tests">
+         <action dev="bmg" type="update">
+            Test configuration is now based on Maven profiles.
+         </action>
+         <action dev="bmg" type="update">
+            Simplified test configuration.
+         </action>
+      </release>
 		<release version="1.0.0" date="2017-07-30" description="First release">
 			<action dev="bmg" type="update">
 				First release of the library.
