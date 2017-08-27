@@ -889,15 +889,12 @@
          <column name="name">embedded_key_4</column>
       </insert>
       <insert tableName="two_tables_entities_a">
-         <column name="id">1</column>
          <column name="field1">value_a_1</column>
       </insert>
       <insert tableName="two_tables_entities_a">
-         <column name="id">2</column>
          <column name="field1">value_a_2</column>
       </insert>
       <insert tableName="two_tables_entities_a">
-         <column name="id">3</column>
          <column name="field1">value_a_3</column>
       </insert>
       <insert tableName="two_tables_entities_b">
