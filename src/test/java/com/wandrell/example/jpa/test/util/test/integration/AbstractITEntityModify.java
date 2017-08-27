@@ -36,31 +36,13 @@ import com.wandrell.example.jpa.model.simple.SimpleEntity;
 import com.wandrell.example.jpa.test.util.criteria.GenericCriteriaFactory;
 
 /**
- * Abstract integration tests for an entity testing it can be modified.
- * <p>
- * The tests cases just show how to do create, remove and update operations with
- * a JPA entity.
- * <p>
- * Checks the following cases:
- * <ol>
- * <li>Persisting an entity adds that entity to the persistence context.</li>
- * <li>Removing an entity removes that entity from the persistence context.</li>
- * <li>Updating an entity changes it.</li>
- * </ol>
- * <p>
- * This is meant to be used along a Spring context, which will set up the
- * repository and all of it's requirements.
+ * Abstract integration tests verifying that entities can be modified.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  * @see SimpleEntity
  */
 public abstract class AbstractITEntityModify<V>
         extends AbstractIntegrationTest {
-
-    /**
-     * Initial number of entities in the persistence context.
-     */
-    private final Integer  entitiesCount;
 
     /**
      * Class of the tested entity.
@@ -70,6 +52,11 @@ public abstract class AbstractITEntityModify<V>
     private final Class<V> entityClass;
 
     /**
+     * Initial number of entities in the persistence context.
+     */
+    private final Integer  initialEntitiesCount;
+
+    /**
      * Default constructor.
      */
     public AbstractITEntityModify(final Class<V> cls, final Integer entities) {
@@ -77,90 +64,84 @@ public abstract class AbstractITEntityModify<V>
 
         entityClass = checkNotNull(cls,
                 "Received a null pointer as entity class");
-        entitiesCount = checkNotNull(entities,
+        initialEntitiesCount = checkNotNull(entities,
                 "Received a null pointer as entities count");
     }
 
     /**
      * Tests that persisting an entity adds that entity to the persistence
      * context.
-     *
-     * @throws Exception
-     *             if the entity does not have a valid getter for the id field
      */
-    @SuppressWarnings("unchecked")
     @Test
     @Transactional
-    public final void testCreate() throws Exception {
-        final V queried;   // Queried back entity
-        final Query query; // Query to recover the entity
-        final Integer id;  // Id of the created entity
+    public final void testCreate_Persisted() {
         final V newEntity; // New entity
 
-        newEntity = getEntityClass().newInstance();
+        newEntity = getNewEntity();
 
         // Sets up the entity
         modifyEntity(newEntity);
 
-        // Adds the entity
+        // Persists the entity
         getEntityManager().persist(newEntity);
-
-        if (getEntityManager() != null) {
-            // Flushed to force updating ids
-            getEntityManager().flush();
-        }
+        // Flushed to force updating ids
+        getEntityManager().flush();
 
         // Checks the entity has been added
-        Assert.assertEquals(
-                getEntityManager()
-                        .createQuery(GenericCriteriaFactory.findAll(
-                                getEntityManager(), newEntity.getClass()))
-                        .getResultList().size(),
-                entitiesCount + 1);
-
-        // Checks that the entity was created correctly
-        id = getId(newEntity);
-        Assert.assertNotNull(id);
-        Assert.assertTrue(id >= 0);
-
-        // Queries the created entity from the DB
-
-        // Builds the query
-        query = getEntityManager().createQuery(GenericCriteriaFactory.findById(
-                getEntityManager(), newEntity.getClass(), getId(newEntity)));
-
-        // Acquires the entity
-        queried = (V) query.getSingleResult();
-
-        // Checks that the queried entity is equal to the persisted one
-        Assert.assertEquals(queried, newEntity);
+        Assert.assertEquals(getEntitiesCount(),
+                new Integer(getInitialEntitiesCount() + 1));
     }
 
     /**
      * Tests that updating an entity changes it.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public final void testUpdate() {
-        V entity; // The entity being tested
-        final Query query;             // Query for the entity
-
-        // Builds the query
-        query = getEntityManager().createQuery(GenericCriteriaFactory
-                .findById(getEntityManager(), getEntityClass(), 1));
+        final V entity;   // Original entity
+        final V modified; // Updatd entity
 
         // Acquires the entity
-        entity = (V) query.getSingleResult();
+        entity = findById(1);
 
         // Changes the entity name
         modifyEntity(entity);
         getEntityManager().persist(entity);
 
         // Retrieves the entity again
-        entity = (V) query.getSingleResult();
+        modified = findById(1);
 
         // Checks that the entity has been saved correctly
-        assertEntityModified(entity);
+        assertEntityModified(modified);
+    }
+
+    /**
+     * Returns the entity matching the received id.
+     * 
+     * @param id
+     *            id to search for
+     * @return the entity matching the received id
+     */
+    @SuppressWarnings("unchecked")
+    private final V findById(final Integer id) {
+        final Query query; // Query for the entity
+
+        // Builds the query
+        query = getEntityManager().createQuery(GenericCriteriaFactory
+                .findById(getEntityManager(), getEntityClass(), 1));
+
+        // Acquires the entity
+        return (V) query.getSingleResult();
+    }
+
+    /**
+     * Returns the number of entities in the database.
+     * 
+     * @return the number of entities in the database
+     */
+    private final Integer getEntitiesCount() {
+        return getEntityManager().createQuery(GenericCriteriaFactory
+                .findAll(getEntityManager(), getEntityClass())).getResultList()
+                .size();
     }
 
     /**
@@ -173,17 +154,29 @@ public abstract class AbstractITEntityModify<V>
     }
 
     /**
-     * Returns the id for the received entity.
-     *
-     * @param entity
-     *            the entity where to get the id from
-     * @return the entity's id
-     * @throws Exception
-     *             if the entity does not have a valid getter for the id field
+     * Returns the initial number of entities in the persistence context.
+     * 
+     * @return the initial number of entities
      */
-    private final Integer getId(final V entity) throws Exception {
-        return (Integer) getEntityManager().getEntityManagerFactory()
-                .getPersistenceUnitUtil().getIdentifier(entity);
+    private final Integer getInitialEntitiesCount() {
+        return initialEntitiesCount;
+    }
+
+    /**
+     * Creates a new entity from the entity class.
+     * 
+     * @return a new entity
+     */
+    private final V getNewEntity() {
+        final V entity;
+
+        try {
+            entity = getEntityClass().newInstance();
+        } catch (InstantiationException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+
+        return entity;
     }
 
     /**
