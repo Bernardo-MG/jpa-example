@@ -34,10 +34,10 @@ public class TestContextConfig {
     /**
      * Default context file.
      * <p>
-     * For those test which don't need any context configuration but require
-     * loading Spring properties.
+     * Sets up the context for the database and JPA provider, based on the
+     * active Maven profiles.
      */
-    public static final String DEFAULT = "classpath:context/test-default.xml";
+    public static final String DEFAULT = "classpath:context/test-maven-profile.xml";
 
     /**
      * Private constructor to avoid initialization.

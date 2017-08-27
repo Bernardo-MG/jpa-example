@@ -9,8 +9,7 @@
    <description>
       Context for the tests.
 
-      It is prepared to be setup with Maven, which will replace the variables
-      to set the names of the actual files to be used.
+      It is prepared for Maven's variable replacement, which will set the names of the actual files to be used.
    </description>
 
    <!-- Properties -->
