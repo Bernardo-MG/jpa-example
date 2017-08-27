@@ -31,17 +31,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import javax.persistence.EntityManager;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.criteria.temporal.DateEntityCriteriaFactory;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
 
 /**
  * Integration tests for a {@code DateEntity} testing it loads values correctly
@@ -49,9 +44,8 @@ import com.wandrell.example.jpa.test.util.criteria.temporal.DateEntityCriteriaFa
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
 public final class ITDateEntityQueryCriteriaApi
-        extends AbstractTransactionalTestNGSpringContextTests {
+        extends AbstractIntegrationTest {
 
     /**
      * Calendar for the test ranges.
@@ -67,12 +61,6 @@ public final class ITDateEntityQueryCriteriaApi
      * String to generate the date for the test ranges.
      */
     private final String  dateString = "1991-05-02";
-
-    /**
-     * The JPA entity manager.
-     */
-    @Autowired
-    private EntityManager entityManager;
 
     /**
      * SQL date for the test ranges.
@@ -212,15 +200,6 @@ public final class ITDateEntityQueryCriteriaApi
                 .createQuery(DateEntityCriteriaFactory
                         .findInSqlDate(getEntityManager(), sqlDate))
                 .getResultList().size(), new Integer(1));
-    }
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
     }
 
 }

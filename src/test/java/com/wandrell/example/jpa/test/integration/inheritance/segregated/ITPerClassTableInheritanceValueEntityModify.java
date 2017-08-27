@@ -24,11 +24,9 @@
 
 package com.wandrell.example.jpa.test.integration.inheritance.segregated;
 
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.Assert;
 
 import com.wandrell.example.jpa.model.inheritance.segregated.PerClassTableInheritanceValueEntity;
-import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
@@ -37,7 +35,6 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
 public final class ITPerClassTableInheritanceValueEntityModify
         extends AbstractITEntityModify<PerClassTableInheritanceValueEntity> {
 

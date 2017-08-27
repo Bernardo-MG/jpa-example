@@ -32,17 +32,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import javax.persistence.EntityManager;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.criteria.temporal.TimestampEntityCriteriaFactory;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
 
 /**
  * Integration tests for a {@code TimestampEntity} testing it loads values
@@ -50,35 +45,28 @@ import com.wandrell.example.jpa.test.util.criteria.temporal.TimestampEntityCrite
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
 public final class ITTimestampEntityQueryCriteriaApi
-        extends AbstractTransactionalTestNGSpringContextTests {
+        extends AbstractIntegrationTest {
 
     /**
      * Calendar for the test ranges.
      */
-    private Calendar      calendar;
+    private Calendar     calendar;
 
     /**
      * Java date for the test ranges.
      */
-    private Date          date;
-
-    /**
-     * The JPA entity manager.
-     */
-    @Autowired
-    private EntityManager entityManager;
+    private Date         date;
 
     /**
      * Timestamp for the test ranges.
      */
-    private Timestamp     timestamp;
+    private Timestamp    timestamp;
 
     /**
      * String to generate the time for the test ranges.
      */
-    private final String  timestampString = "1991-05-02 11:11:11";
+    private final String timestampString = "1991-05-02 11:11:11";
 
     /**
      * Default constructor.
@@ -213,15 +201,6 @@ public final class ITTimestampEntityQueryCriteriaApi
                 .createQuery(TimestampEntityCriteriaFactory
                         .findInSqlTimestamp(getEntityManager(), timestamp))
                 .getResultList().size(), new Integer(1));
-    }
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
     }
 
 }

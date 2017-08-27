@@ -24,17 +24,13 @@
 
 package com.wandrell.example.jpa.test.integration.embedded.embedded;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.criteria.embedded.EmbeddedEntityCriteriaFactory;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
 
 /**
  * Integration tests for a {@code EmbeddedEntity} testing it loads values
@@ -42,15 +38,8 @@ import com.wandrell.example.jpa.test.util.criteria.embedded.EmbeddedEntityCriter
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
 public final class ITEmbeddedEntityQueryCriteriaApi
-        extends AbstractTransactionalTestNGSpringContextTests {
-
-    /**
-     * The JPA entity manager.
-     */
-    @Autowired
-    private EntityManager entityManager;
+        extends AbstractIntegrationTest {
 
     /**
      * Default constructor.
@@ -81,15 +70,6 @@ public final class ITEmbeddedEntityQueryCriteriaApi
 
         // The entity's id is the correct one
         Assert.assertEquals((Integer) query.getResultList().size(), count);
-    }
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
     }
 
 }

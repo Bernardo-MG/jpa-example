@@ -26,11 +26,8 @@ package com.wandrell.example.jpa.test.util.test.integration;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.springframework.transaction.annotation.Transactional;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -58,7 +55,7 @@ import com.wandrell.example.jpa.test.util.criteria.GenericCriteriaFactory;
  * @see SimpleEntity
  */
 public abstract class AbstractITEntityModify<V>
-        extends AbstractTransactionalTestNGSpringContextTests {
+        extends AbstractIntegrationTest {
 
     /**
      * Initial number of entities in the persistence context.
@@ -71,12 +68,6 @@ public abstract class AbstractITEntityModify<V>
      * Used for creating new instances.
      */
     private final Class<V> entityClass;
-
-    /**
-     * The entity manager for the test context.
-     */
-    @Autowired(required = false)
-    private EntityManager  entityManager;
 
     /**
      * Default constructor.
@@ -204,15 +195,6 @@ public abstract class AbstractITEntityModify<V>
      *            the entity to check
      */
     protected abstract void assertEntityModified(final V entity);
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
-    }
 
     /**
      * Modifies the received entity.

@@ -24,18 +24,14 @@
 
 package com.wandrell.example.jpa.test.integration.key.composite;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.key.composite.CompositeKeyEntity;
-import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.criteria.key.composite.CompositeKeyEntityCriteriaFactory;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
 
 /**
  * Abstract integration tests for a {@link CompositeKeyEntity} testing it loads
@@ -52,15 +48,8 @@ import com.wandrell.example.jpa.test.util.criteria.key.composite.CompositeKeyEnt
  * @author Bernardo Mart&iacute;nez Garrido
  * @see CompositeKeyEntity
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
 public final class ITCompositeKeyEntityQueryCriteriaApi
-        extends AbstractTransactionalTestNGSpringContextTests {
-
-    /**
-     * The JPA entity manager.
-     */
-    @Autowired
-    private EntityManager entityManager;
+        extends AbstractIntegrationTest {
 
     /**
      * Default constructor.
@@ -80,7 +69,7 @@ public final class ITCompositeKeyEntityQueryCriteriaApi
 
         // Builds the query
         query = getEntityManager().createQuery(CompositeKeyEntityCriteriaFactory
-                .findByIds(entityManager, 1, 2));
+                .findByIds(getEntityManager(), 1, 2));
 
         // Acquires the entity
         entity = (CompositeKeyEntity) query.getSingleResult();
@@ -88,15 +77,6 @@ public final class ITCompositeKeyEntityQueryCriteriaApi
         // The number of results is the expected one
         Assert.assertEquals(entity.getId(), new Integer(1));
         Assert.assertEquals(entity.getSupportId(), new Long(2));
-    }
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
     }
 
 }

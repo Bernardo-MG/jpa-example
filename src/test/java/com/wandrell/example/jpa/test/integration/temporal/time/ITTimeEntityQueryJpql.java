@@ -32,18 +32,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
 
 /**
  * Integration tests for a {@code DateEntity} testing it loads values correctly
@@ -51,89 +47,81 @@ import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
-public final class ITTimeEntityQueryJpql
-        extends AbstractTransactionalTestNGSpringContextTests {
+public final class ITTimeEntityQueryJpql extends AbstractIntegrationTest {
 
     /**
      * Calendar for the test ranges.
      */
-    private Calendar      calendar;
+    private Calendar     calendar;
 
     /**
      * Java date for the test ranges.
      */
-    private Date          date;
-
-    /**
-     * The JPA entity manager.
-     */
-    @Autowired
-    private EntityManager entityManager;
+    private Date         date;
 
     /**
      * The query to acquire all the after a time, using the calendar.
      */
     @Value("${query.afterTime.calendar}")
-    private String        findAfterTimeCalendar;
+    private String       findAfterTimeCalendar;
 
     /**
      * The query to acquire all the after a time, using the Java date.
      */
     @Value("${query.afterTime.java}")
-    private String        findAfterTimeJava;
+    private String       findAfterTimeJava;
 
     /**
      * The query to acquire all the after a time, using the SQL time.
      */
     @Value("${query.afterTime.sql}")
-    private String        findAfterTimeSql;
+    private String       findAfterTimeSql;
 
     /**
      * The query to acquire all the before a time, using the calendar.
      */
     @Value("${query.beforeTime.calendar}")
-    private String        findBeforeDateCalendar;
+    private String       findBeforeDateCalendar;
 
     /**
      * The query to acquire all the before a time, using the Java date.
      */
     @Value("${query.beforeTime.java}")
-    private String        findBeforeTimeJava;
+    private String       findBeforeTimeJava;
 
     /**
      * The query to acquire all the before a time, using the SQL time.
      */
     @Value("${query.beforeTime.sql}")
-    private String        findBeforeTimeSql;
+    private String       findBeforeTimeSql;
 
     /**
      * The query to acquire all the before a time, using the calendar.
      */
     @Value("${query.inTime.calendar}")
-    private String        findInTimeCalendar;
+    private String       findInTimeCalendar;
 
     /**
      * The query to acquire all the before a time, using the Java date.
      */
     @Value("${query.inTime.java}")
-    private String        findInTimeJava;
+    private String       findInTimeJava;
 
     /**
      * The query to acquire all the before a time, using the SQL time.
      */
     @Value("${query.inTime.sql}")
-    private String        findInTimeSql;
+    private String       findInTimeSql;
 
     /**
      * Time for the test ranges.
      */
-    private Time          time;
+    private Time         time;
 
     /**
      * String to generate the time for the test ranges.
      */
-    private final String  timeString = "11:11:11";
+    private final String timeString = "11:11:11";
 
     /**
      * Default constructor.
@@ -304,15 +292,6 @@ public final class ITTimeEntityQueryJpql
 
         Assert.assertEquals((Integer) query.getResultList().size(),
                 new Integer(1));
-    }
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
     }
 
 }

@@ -24,18 +24,14 @@
 
 package com.wandrell.example.jpa.test.integration.key.classid;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.key.classid.CompositeKeyIdClassEntity;
-import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
 
 /**
  * Integration tests for a {@link CompositeKeyIdClassEntity} testing it loads
@@ -52,21 +48,14 @@ import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
  * @author Bernardo Mart&iacute;nez Garrido
  * @see CompositeKeyIdClassEntity
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
 public final class ITCompositeKeyIdClassEntityQueryJpql
-        extends AbstractTransactionalTestNGSpringContextTests {
-
-    /**
-     * The JPA entity manager.
-     */
-    @Autowired
-    private EntityManager entityManager;
+        extends AbstractIntegrationTest {
 
     /**
      * The query to acquire an entity by its ids.
      */
     @Value("${query.compositeKeyId.findByIds}")
-    private String        findByIds;
+    private String findByIds;
 
     /**
      * Default constructor.
@@ -94,15 +83,6 @@ public final class ITCompositeKeyIdClassEntityQueryJpql
         // The number of results is the expected one
         Assert.assertEquals(entity.getId(), new Integer(1));
         Assert.assertEquals(entity.getSupportId(), new Long(2));
-    }
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
     }
 
 }

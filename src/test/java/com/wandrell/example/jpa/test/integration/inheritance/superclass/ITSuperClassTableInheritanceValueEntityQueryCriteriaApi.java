@@ -24,17 +24,13 @@
 
 package com.wandrell.example.jpa.test.integration.inheritance.superclass;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.criteria.inheritance.superclass.SuperClassTableInheritanceValueEntityCriteriaFactory;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
 
 /**
  * Integration tests for a {@code SingleTableInheritanceValueEntity} testing it
@@ -42,15 +38,8 @@ import com.wandrell.example.jpa.test.util.criteria.inheritance.superclass.SuperC
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
 public final class ITSuperClassTableInheritanceValueEntityQueryCriteriaApi
-        extends AbstractTransactionalTestNGSpringContextTests {
-
-    /**
-     * The JPA entity manager.
-     */
-    @Autowired
-    private EntityManager entityManager;
+        extends AbstractIntegrationTest {
 
     /**
      * Default constructor.
@@ -70,19 +59,10 @@ public final class ITSuperClassTableInheritanceValueEntityQueryCriteriaApi
         // Builds the query
         query = getEntityManager().createQuery(
                 SuperClassTableInheritanceValueEntityCriteriaFactory
-                        .findAllWithValue(entityManager, 11));
+                        .findAllWithValue(getEntityManager(), 11));
 
         // The number of results is the expected one
         Assert.assertEquals(query.getResultList().size(), 1);
-    }
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
     }
 
 }

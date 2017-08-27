@@ -27,12 +27,10 @@ package com.wandrell.example.jpa.test.integration.collection.map;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 
 import com.wandrell.example.jpa.model.collection.MapEntity;
-import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
@@ -40,7 +38,6 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
 public final class ITMapEntityModify extends AbstractITEntityModify<MapEntity> {
 
     /**

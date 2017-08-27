@@ -24,17 +24,13 @@
 
 package com.wandrell.example.jpa.test.integration.converter;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
 
 /**
  * Integration tests for a {@code BooleanConverterEntity} testing it loads
@@ -42,21 +38,14 @@ import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
 public final class ITBooleanConverterEntityQueryJpql
-        extends AbstractTransactionalTestNGSpringContextTests {
-
-    /**
-     * The JPA entity manager.
-     */
-    @Autowired
-    private EntityManager entityManager;
+        extends AbstractIntegrationTest {
 
     /**
      * The query to acquire all the entities by the flag.
      */
     @Value("${query.converter.findAllByFlag}")
-    private String        findAllByFlag;
+    private String findAllByFlag;
 
     /**
      * Default constructor.
@@ -95,15 +84,6 @@ public final class ITBooleanConverterEntityQueryJpql
 
         // The number of results is the expected one
         Assert.assertEquals(query.getResultList().size(), 3);
-    }
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
     }
 
 }

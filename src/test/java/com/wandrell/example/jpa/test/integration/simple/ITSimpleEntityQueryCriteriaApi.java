@@ -24,19 +24,15 @@
 
 package com.wandrell.example.jpa.test.integration.simple;
 
-import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.simple.SimpleEntity;
-import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.criteria.simple.SimpleEntityCriteriaFactory;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
 
 /**
  * Integration tests for a {@code SimpleEntity} testing it can be queried
@@ -44,20 +40,13 @@ import com.wandrell.example.jpa.test.util.criteria.simple.SimpleEntityCriteriaFa
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
 public final class ITSimpleEntityQueryCriteriaApi
-        extends AbstractTransactionalTestNGSpringContextTests {
+        extends AbstractIntegrationTest {
 
     /**
      * Initial number of entities in the persistence context.
      */
     private final Integer entitiesCount = 30;
-
-    /**
-     * The JPA entity manager.
-     */
-    @Autowired
-    private EntityManager entityManager;
 
     /**
      * Default constructor.
@@ -121,15 +110,6 @@ public final class ITSimpleEntityQueryCriteriaApi
 
         // The entity is null
         Assert.assertEquals(entity, null);
-    }
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
     }
 
 }

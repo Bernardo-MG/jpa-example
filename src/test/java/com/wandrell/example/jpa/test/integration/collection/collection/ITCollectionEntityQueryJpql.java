@@ -24,17 +24,13 @@
 
 package com.wandrell.example.jpa.test.integration.collection.collection;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
 
 /**
  * Integration tests for a {@code CollectionEntity} testing it loads values
@@ -42,21 +38,13 @@ import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
-public final class ITCollectionEntityQueryJpql
-        extends AbstractTransactionalTestNGSpringContextTests {
-
-    /**
-     * The JPA entity manager.
-     */
-    @Autowired
-    private EntityManager entityManager;
+public final class ITCollectionEntityQueryJpql extends AbstractIntegrationTest {
 
     /**
      * The query to acquire all the entities.
      */
     @Value("${query.collection.findAllWithValue}")
-    private String        findAllWithValue;
+    private String findAllWithValue;
 
     /**
      * Default constructor.
@@ -87,15 +75,6 @@ public final class ITCollectionEntityQueryJpql
 
         // The entity's id is the correct one
         Assert.assertEquals((Integer) query.getResultList().size(), count);
-    }
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
     }
 
 }

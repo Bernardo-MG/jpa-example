@@ -24,18 +24,14 @@
 
 package com.wandrell.example.jpa.test.integration.key.embedded;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.key.embedded.EmbeddedCompositeKeyEntity;
-import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.criteria.key.embedded.EmbeddedCompositeKeyEntityCriteriaFactory;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
 
 /**
  * Abstract integration tests for a {@link EmbeddedCompositeKeyEntity} testing
@@ -52,15 +48,8 @@ import com.wandrell.example.jpa.test.util.criteria.key.embedded.EmbeddedComposit
  * @author Bernardo Mart&iacute;nez Garrido
  * @see EmbeddedCompositeKeyEntity
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
 public abstract class ITEmbeddedCompositeKeyEntityQueryCriteriaApi
-        extends AbstractTransactionalTestNGSpringContextTests {
-
-    /**
-     * The JPA entity manager.
-     */
-    @Autowired
-    private EntityManager entityManager;
+        extends AbstractIntegrationTest {
 
     /**
      * Default constructor.
@@ -81,7 +70,7 @@ public abstract class ITEmbeddedCompositeKeyEntityQueryCriteriaApi
         // Builds the query
         query = getEntityManager()
                 .createQuery(EmbeddedCompositeKeyEntityCriteriaFactory
-                        .findByIds(entityManager, 1, 2));
+                        .findByIds(getEntityManager(), 1, 2));
 
         // Acquires the entity
         entity = (EmbeddedCompositeKeyEntity) query.getSingleResult();
@@ -89,15 +78,6 @@ public abstract class ITEmbeddedCompositeKeyEntityQueryCriteriaApi
         // The number of results is the expected one
         Assert.assertEquals(entity.getKey().getId(), new Integer(1));
         Assert.assertEquals(entity.getKey().getSupportId(), new Long(2));
-    }
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
     }
 
 }

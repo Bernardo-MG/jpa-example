@@ -24,17 +24,13 @@
 
 package com.wandrell.example.jpa.test.integration.inheritance.superclass;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
 
 /**
  * Integration tests for a {@code SingleTableInheritanceValueEntity} testing it
@@ -42,21 +38,14 @@ import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
 public final class ITSuperClassTableInheritanceValueEntityQueryJpql
-        extends AbstractTransactionalTestNGSpringContextTests {
-
-    /**
-     * The JPA entity manager.
-     */
-    @Autowired
-    private EntityManager entityManager;
+        extends AbstractIntegrationTest {
 
     /**
      * The query to acquire all the entities by the ordinal value.
      */
     @Value("${query.superClass.findAllWithValue}")
-    private String        findAllWithValue;
+    private String findAllWithValue;
 
     /**
      * Default constructor.
@@ -79,15 +68,6 @@ public final class ITSuperClassTableInheritanceValueEntityQueryJpql
 
         // The number of results is the expected one
         Assert.assertEquals(query.getResultList().size(), 1);
-    }
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
     }
 
 }

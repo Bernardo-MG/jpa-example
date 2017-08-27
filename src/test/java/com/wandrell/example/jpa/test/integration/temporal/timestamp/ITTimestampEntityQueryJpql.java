@@ -32,18 +32,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
 
 /**
  * Integration tests for a {@code TimestampEntity} testing it loads values
@@ -51,89 +47,81 @@ import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
-public final class ITTimestampEntityQueryJpql
-        extends AbstractTransactionalTestNGSpringContextTests {
+public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
 
     /**
      * Calendar for the test ranges.
      */
-    private Calendar      calendar;
+    private Calendar     calendar;
 
     /**
      * Java date for the test ranges.
      */
-    private Date          date;
-
-    /**
-     * The JPA entity manager.
-     */
-    @Autowired
-    private EntityManager entityManager;
+    private Date         date;
 
     /**
      * The query to acquire all the after a date, using the calendar.
      */
     @Value("${query.afterTimestamp.calendar}")
-    private String        findAfterTimestampCalendar;
+    private String       findAfterTimestampCalendar;
 
     /**
      * The query to acquire all the after a date, using the Java date.
      */
     @Value("${query.afterTimestamp.java}")
-    private String        findAfterTimestampJava;
+    private String       findAfterTimestampJava;
 
     /**
      * The query to acquire all the after a date, using the SQL date.
      */
     @Value("${query.afterTimestamp.sql}")
-    private String        findAfterTimestampSql;
+    private String       findAfterTimestampSql;
 
     /**
      * The query to acquire all the before a date, using the calendar.
      */
     @Value("${query.beforeTimestamp.calendar}")
-    private String        findBeforeTimestampCalendar;
+    private String       findBeforeTimestampCalendar;
 
     /**
      * The query to acquire all the before a date, using the Java date.
      */
     @Value("${query.beforeTimestamp.java}")
-    private String        findBeforeTimestampJava;
+    private String       findBeforeTimestampJava;
 
     /**
      * The query to acquire all the before a date, using the SQL date.
      */
     @Value("${query.beforeTimestamp.sql}")
-    private String        findBeforeTimestampSql;
+    private String       findBeforeTimestampSql;
 
     /**
      * The query to acquire all the before a date, using the calendar.
      */
     @Value("${query.inTimestamp.calendar}")
-    private String        findInTimestampCalendar;
+    private String       findInTimestampCalendar;
 
     /**
      * The query to acquire all the before a date, using the Java date.
      */
     @Value("${query.inTimestamp.java}")
-    private String        findInTimestampJava;
+    private String       findInTimestampJava;
 
     /**
      * The query to acquire all the before a date, using the SQL date.
      */
     @Value("${query.inTimestamp.sql}")
-    private String        findInTimestampSql;
+    private String       findInTimestampSql;
 
     /**
      * Timestamp for the test ranges.
      */
-    private Timestamp     timestamp;
+    private Timestamp    timestamp;
 
     /**
      * String to generate the timestamp for the test ranges.
      */
-    private final String  timestampString = "1991-05-02 11:11:11";
+    private final String timestampString = "1991-05-02 11:11:11";
 
     /**
      * Default constructor.
@@ -304,15 +292,6 @@ public final class ITTimestampEntityQueryJpql
 
         Assert.assertEquals((Integer) query.getResultList().size(),
                 new Integer(1));
-    }
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
     }
 
 }

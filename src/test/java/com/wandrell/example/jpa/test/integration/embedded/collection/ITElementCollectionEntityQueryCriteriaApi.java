@@ -24,18 +24,14 @@
 
 package com.wandrell.example.jpa.test.integration.embedded.collection;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.embedded.EmbeddableData;
-import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.criteria.embedded.ElementCollectionEntityCriteriaFactory;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
 
 /**
  * Integration tests for a {@code ElementCollectionEntity} testing it loads
@@ -43,15 +39,8 @@ import com.wandrell.example.jpa.test.util.criteria.embedded.ElementCollectionEnt
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
 public final class ITElementCollectionEntityQueryCriteriaApi
-        extends AbstractTransactionalTestNGSpringContextTests {
-
-    /**
-     * The JPA entity manager.
-     */
-    @Autowired
-    private EntityManager entityManager;
+        extends AbstractIntegrationTest {
 
     /**
      * Default constructor.
@@ -85,15 +74,6 @@ public final class ITElementCollectionEntityQueryCriteriaApi
 
         // The entity's id is the correct one
         Assert.assertEquals((Integer) query.getResultList().size(), count);
-    }
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
     }
 
 }

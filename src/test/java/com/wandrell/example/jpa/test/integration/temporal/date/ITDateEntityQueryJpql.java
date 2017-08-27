@@ -31,18 +31,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
 
 /**
  * Integration tests for a {@code DateEntity} testing it loads values correctly
@@ -50,9 +46,7 @@ import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
-public final class ITDateEntityQueryJpql
-        extends AbstractTransactionalTestNGSpringContextTests {
+public final class ITDateEntityQueryJpql extends AbstractIntegrationTest {
 
     /**
      * Calendar for the test ranges.
@@ -68,12 +62,6 @@ public final class ITDateEntityQueryJpql
      * String to generate the date for the test ranges.
      */
     private final String  dateString = "1991-05-02";
-
-    /**
-     * The JPA entity manager.
-     */
-    @Autowired
-    private EntityManager entityManager;
 
     /**
      * The query to acquire all the after a date, using the calendar.
@@ -303,15 +291,6 @@ public final class ITDateEntityQueryJpql
 
         Assert.assertEquals((Integer) query.getResultList().size(),
                 new Integer(1));
-    }
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
     }
 
 }

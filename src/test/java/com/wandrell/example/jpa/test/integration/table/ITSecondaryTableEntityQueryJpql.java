@@ -24,18 +24,14 @@
 
 package com.wandrell.example.jpa.test.integration.table;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.table.SecondaryTableEntity;
-import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
 
 /**
  * Integration tests for a {@code SecondaryTableEntity} testing it loads values
@@ -43,21 +39,14 @@ import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
 public final class ITSecondaryTableEntityQueryJpql
-        extends AbstractTransactionalTestNGSpringContextTests {
-
-    /**
-     * The JPA entity manager.
-     */
-    @Autowired
-    private EntityManager entityManager;
+        extends AbstractIntegrationTest {
 
     /**
      * The query to acquire all the entities by the flag.
      */
     @Value("${query.findBySecondaryValue}")
-    private String        findBySecondaryValue;
+    private String findBySecondaryValue;
 
     /**
      * Default constructor.
@@ -84,15 +73,6 @@ public final class ITSecondaryTableEntityQueryJpql
 
         // The entity's id is the correct one
         Assert.assertEquals(entity.getId(), new Integer(2));
-    }
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
     }
 
 }

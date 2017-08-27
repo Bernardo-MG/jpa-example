@@ -24,18 +24,14 @@
 
 package com.wandrell.example.jpa.test.integration.enumeration;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.enumeration.NumbersEnum;
-import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.criteria.enumeration.EnumerationEntityCriteriaFactory;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
 
 /**
  * Integration tests for a {@code EnumerationEntity} testing it loads values
@@ -43,15 +39,8 @@ import com.wandrell.example.jpa.test.util.criteria.enumeration.EnumerationEntity
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
 public final class ITEnumerationEntityQueryCriteriaApi
-        extends AbstractTransactionalTestNGSpringContextTests {
-
-    /**
-     * The JPA entity manager.
-     */
-    @Autowired
-    private EntityManager entityManager;
+        extends AbstractIntegrationTest {
 
     /**
      * Default constructor.
@@ -70,7 +59,7 @@ public final class ITEnumerationEntityQueryCriteriaApi
 
         // Builds the query
         query = getEntityManager().createQuery(EnumerationEntityCriteriaFactory
-                .findAllByOrdinal(entityManager, NumbersEnum.TWO));
+                .findAllByOrdinal(getEntityManager(), NumbersEnum.TWO));
 
         // The number of results is the expected one
         Assert.assertEquals(query.getResultList().size(), 2);
@@ -86,19 +75,10 @@ public final class ITEnumerationEntityQueryCriteriaApi
 
         // Builds the query
         query = getEntityManager().createQuery(EnumerationEntityCriteriaFactory
-                .findAllByString(entityManager, NumbersEnum.TWO));
+                .findAllByString(getEntityManager(), NumbersEnum.TWO));
 
         // The number of results is the expected one
         Assert.assertEquals(query.getResultList().size(), 2);
-    }
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
     }
 
 }

@@ -27,12 +27,10 @@ package com.wandrell.example.jpa.test.integration.collection.collection;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 
 import com.wandrell.example.jpa.model.collection.CollectionEntity;
-import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
@@ -40,7 +38,6 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
 public final class ITCollectionEntityModify
         extends AbstractITEntityModify<CollectionEntity> {
 
