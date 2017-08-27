@@ -25,12 +25,10 @@
 package com.wandrell.example.jpa.test.integration.key.embedded;
 
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
 import org.testng.Assert;
 
 import com.wandrell.example.jpa.model.key.embedded.EmbeddedCompositeKeyEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
@@ -41,7 +39,6 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  * @see EmbeddedCompositeKeyEntity
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT })
-@TestPropertySource(locations = { QueryPropertiesPaths.EMBEDDED_COMPOSITE_KEY })
 public abstract class ITEmbeddedCompositeKeyEntityModify
         extends AbstractITEntityModify<EmbeddedCompositeKeyEntity> {
 

@@ -30,13 +30,11 @@ import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 
 /**
  * Integration tests for a {@code PerClassTableInheritanceValueEntity} testing
@@ -44,10 +42,7 @@ import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT, })
-@TestPropertySource(locations = {
-
-        QueryPropertiesPaths.SEGREGATED_INHERITANCE_VALUE })
+@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
 public final class ITPerClassTableInheritanceValueEntityQueryJpql
         extends AbstractTransactionalTestNGSpringContextTests {
 

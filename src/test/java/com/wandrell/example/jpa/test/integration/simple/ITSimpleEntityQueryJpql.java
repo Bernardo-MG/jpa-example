@@ -31,14 +31,12 @@ import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.simple.SimpleEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 
 /**
  * Integration tests for a {@code SimpleEntity} testing it can be queried
@@ -47,7 +45,6 @@ import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT })
-@TestPropertySource(locations = { QueryPropertiesPaths.SIMPLE_ENTITY })
 public final class ITSimpleEntityQueryJpql
         extends AbstractTransactionalTestNGSpringContextTests {
 

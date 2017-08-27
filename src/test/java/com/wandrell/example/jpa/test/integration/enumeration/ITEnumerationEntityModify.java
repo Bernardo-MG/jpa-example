@@ -25,13 +25,11 @@
 package com.wandrell.example.jpa.test.integration.enumeration;
 
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
 import org.testng.Assert;
 
 import com.wandrell.example.jpa.model.enumeration.EnumerationEntity;
 import com.wandrell.example.jpa.model.enumeration.NumbersEnum;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
@@ -40,7 +38,6 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT })
-@TestPropertySource(locations = { QueryPropertiesPaths.ENUMERATION })
 public final class ITEnumerationEntityModify
         extends AbstractITEntityModify<EnumerationEntity> {
 

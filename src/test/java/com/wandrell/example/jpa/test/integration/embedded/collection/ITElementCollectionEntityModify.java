@@ -25,14 +25,12 @@
 package com.wandrell.example.jpa.test.integration.embedded.collection;
 
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 
 import com.wandrell.example.jpa.model.embedded.ElementCollectionEntity;
 import com.wandrell.example.jpa.model.embedded.EmbeddableData;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
@@ -42,7 +40,6 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT })
-@TestPropertySource(locations = { QueryPropertiesPaths.ELEMENT_COLLECTION })
 public final class ITElementCollectionEntityModify
         extends AbstractITEntityModify<ElementCollectionEntity> {
 

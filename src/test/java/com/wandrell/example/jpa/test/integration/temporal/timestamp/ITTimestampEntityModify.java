@@ -33,12 +33,10 @@ import java.util.Date;
 import java.util.Locale;
 
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
 import org.testng.Assert;
 
 import com.wandrell.example.jpa.model.temporal.TimestampEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
@@ -47,7 +45,6 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT })
-@TestPropertySource(locations = { QueryPropertiesPaths.TIMESTAMP })
 public final class ITTimestampEntityModify
         extends AbstractITEntityModify<TimestampEntity> {
 

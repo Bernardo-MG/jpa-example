@@ -29,13 +29,11 @@ import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.criteria.collection.MapEntityCriteriaFactory;
 
 /**
@@ -44,10 +42,7 @@ import com.wandrell.example.jpa.test.util.criteria.collection.MapEntityCriteriaF
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextConfig.DEFAULT, })
-@TestPropertySource(locations = {
-
-        QueryPropertiesPaths.MAP })
+@ContextConfiguration(locations = { TestContextConfig.DEFAULT })
 public final class ITMapEntityQueryCriteriaApi
         extends AbstractTransactionalTestNGSpringContextTests {
 

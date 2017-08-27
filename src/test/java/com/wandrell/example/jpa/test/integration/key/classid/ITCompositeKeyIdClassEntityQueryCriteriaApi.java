@@ -29,14 +29,12 @@ import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.key.classid.CompositeKeyIdClassEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.criteria.key.classid.CompositeKeyIdClassEntityCriteriaFactory;
 
 /**
@@ -55,7 +53,6 @@ import com.wandrell.example.jpa.test.util.criteria.key.classid.CompositeKeyIdCla
  * @see CompositeKeyIdClassEntity
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT })
-@TestPropertySource(locations = { QueryPropertiesPaths.COMPOSITE_KEY_ID })
 public final class ITCompositeKeyIdClassEntityQueryCriteriaApi
         extends AbstractTransactionalTestNGSpringContextTests {
 

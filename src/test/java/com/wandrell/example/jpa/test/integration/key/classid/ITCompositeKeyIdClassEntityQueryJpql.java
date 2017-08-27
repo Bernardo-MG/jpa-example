@@ -30,14 +30,12 @@ import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.key.classid.CompositeKeyIdClassEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 
 /**
  * Integration tests for a {@link CompositeKeyIdClassEntity} testing it loads
@@ -55,7 +53,6 @@ import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths
  * @see CompositeKeyIdClassEntity
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT })
-@TestPropertySource(locations = { QueryPropertiesPaths.COMPOSITE_KEY_ID })
 public final class ITCompositeKeyIdClassEntityQueryJpql
         extends AbstractTransactionalTestNGSpringContextTests {
 

@@ -25,12 +25,10 @@
 package com.wandrell.example.jpa.test.integration.simple;
 
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
 import org.testng.Assert;
 
 import com.wandrell.example.jpa.model.simple.DefaultSimpleEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
@@ -39,7 +37,6 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT })
-@TestPropertySource(locations = { QueryPropertiesPaths.SIMPLE_ENTITY })
 public final class ITSimpleEntityModify
         extends AbstractITEntityModify<DefaultSimpleEntity> {
 

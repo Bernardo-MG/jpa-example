@@ -30,14 +30,12 @@ import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.key.embedded.EmbeddedCompositeKeyEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
-import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 
 /**
  * Abstract integration tests for a {@link EmbeddedCompositeKeyEntity} testing
@@ -55,7 +53,6 @@ import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths
  * @see EmbeddedCompositeKeyEntity
  */
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT })
-@TestPropertySource(locations = { QueryPropertiesPaths.EMBEDDED_COMPOSITE_KEY })
 public abstract class ITEmbeddedCompositeKeyEntityQueryJpql
         extends AbstractTransactionalTestNGSpringContextTests {
 
