@@ -34,15 +34,10 @@ public class TestContextConfig {
     /**
      * Default context file.
      * <p>
-     * For those test which don't need any context configuration but require
-     * loading Spring properties.
+     * Sets up the context for the database and JPA provider, based on the
+     * active Maven profiles.
      */
-    public static final String DEFAULT           = "classpath:context/test-default.xml";
-
-    /**
-     * Entity prototype context.
-     */
-    public static final String ENTITY_MODIFIABLE = "classpath:context/entity/entity-modifiable.xml";
+    public static final String DEFAULT = "classpath:context/test-maven-profile.xml";
 
     /**
      * Private constructor to avoid initialization.

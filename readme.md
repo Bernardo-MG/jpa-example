@@ -39,7 +39,7 @@ Documentation is also generated from the latest snapshot, taken from the 'develo
 The documentation site sources come along the source code (as it is a Maven site), so it is always possible to generate them using the following Maven command:
 
 ```
-$ mvn verify site
+$ mvn verify site -P h2,eclipselink
 ```
 
 The verify phase is required, as otherwise some of the reports won't be created.
@@ -57,11 +57,35 @@ The project has been tested on the following Java versions:
 
 All other dependencies are handled through Maven, and noted in the included POM file.
 
+### Profiles
+
+Maven profiles are included for setting up the database and JPA provider.
+
+| Profile  | Database                  |
+|----------|---------------------------|
+| h2       | H2 in-memory database     |
+| hsqldb   | HSQLDB in-memory database |
+| mysql    | MySQL database            |
+| postgres | PostgreSQL database       |
+
+| Profile     | Provider    |
+|-------------|-------------|
+| hibernate   | Hibernate   |
+| eclipselink | Eclipselink |
+
+### Running the tests
+
+The project requires a database and a JPA provider for being able to run the integration tests:
+
+```
+$ mvn verify -P h2,eclipselink
+```
+
 ### Missing JPA metadata
 
 Currently there are some problems when generating the JPA metadata classes automatically. Mainly that they are not generated when trying to refresh the Maven project on Eclipse.
 
-To fix this just package the project with the usual Maven command:
+To fix this just package the project:
 
 ```
 $ mvn package

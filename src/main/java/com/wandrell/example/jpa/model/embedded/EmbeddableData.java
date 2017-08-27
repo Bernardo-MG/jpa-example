@@ -115,7 +115,7 @@ public final class EmbeddableData implements Serializable {
      *            the description to set in the entity
      */
     public final void setDescription(final String value) {
-        this.description = checkNotNull(value,
+        description = checkNotNull(value,
                 "Received a null pointer as description");
     }
 
@@ -126,7 +126,7 @@ public final class EmbeddableData implements Serializable {
      *            the name to set in the entity
      */
     public final void setName(final String value) {
-        this.name = checkNotNull(value, "Received a null pointer as name");
+        name = checkNotNull(value, "Received a null pointer as name");
     }
 
     @Override

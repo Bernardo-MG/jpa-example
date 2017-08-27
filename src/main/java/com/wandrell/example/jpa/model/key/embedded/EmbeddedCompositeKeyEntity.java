@@ -120,7 +120,7 @@ public class EmbeddedCompositeKeyEntity implements Serializable {
      *            the id to set in the entity
      */
     public final void setKey(final EmbeddableCompositeKey identifier) {
-        this.key = checkNotNull(identifier,
+        key = checkNotNull(identifier,
                 "Received a null pointer as the identifier");
     }
 
@@ -131,7 +131,7 @@ public class EmbeddedCompositeKeyEntity implements Serializable {
      *            the name to set on the entity
      */
     public final void setName(final String value) {
-        this.name = checkNotNull(value, "Received a null pointer as name");
+        name = checkNotNull(value, "Received a null pointer as name");
     }
 
     @Override

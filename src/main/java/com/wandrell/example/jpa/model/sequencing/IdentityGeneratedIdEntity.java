@@ -56,7 +56,7 @@ public final class IdentityGeneratedIdEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer           id               = null;
+    private final Integer     id               = null;
 
     /**
      * Default constructor.

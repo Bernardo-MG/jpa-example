@@ -76,7 +76,7 @@ public class MultipleTableInheritanceDescriptionEntity
      *            the description to set in the entity
      */
     public final void setDescription(final String value) {
-        this.description = checkNotNull(value,
+        description = checkNotNull(value,
                 "Received a null pointer as description");
     }
 

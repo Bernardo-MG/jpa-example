@@ -11,7 +11,7 @@
    <parent>
       <groupId>com.wandrell.maven</groupId>
       <artifactId>base-pom</artifactId>
-      <version>1.1.5</version>
+      <version>1.1.6</version>
    </parent>
 
    <!-- ********************************************** -->
@@ -20,7 +20,7 @@
 
    <groupId>com.wandrell.example</groupId>
    <artifactId>jpa-example</artifactId>
-   <version>1.0.0-SNAPSHOT</version>
+   <version>1.1.0-SNAPSHOT</version>
    <packaging>jar</packaging>
 
    <name>JPA Example</name>
@@ -80,10 +80,10 @@
    <profiles>
       <profile>
          <!-- Profile for the Eclipse Maven plugin -->
-         <!-- Sets the POM so this plugin does not give the usual unregistered goals 
-            errors -->
-         <!-- It will be activated automatically on Eclipse if this has the m2e plugin, 
-            by detecting the version property -->
+         <!-- Sets the POM so this plugin does not give the usual unregistered 
+            goals errors -->
+         <!-- It will be activated automatically on Eclipse if this has the 
+            m2e plugin, by detecting the version property -->
          <id>eclipse-maven</id>
          <activation>
             <property>
@@ -95,9 +95,10 @@
                <plugins>
                   <plugin>
                      <!-- m2e lifecycle mapping -->
-                     <!-- This is used to configure the Maven plugin for Eclipse. -->
-                     <!-- Among other things, it allows registering goals, which 
-                        Eclipse would otherwise reject. -->
+                     <!-- This is used to configure the Maven plugin for 
+                        Eclipse. -->
+                     <!-- Among other things, it allows registering goals, 
+                        which Eclipse would otherwise reject. -->
                      <!-- It has no real effect on Maven. -->
                      <groupId>org.eclipse.m2e</groupId>
                      <artifactId>lifecycle-mapping</artifactId>
@@ -119,8 +120,8 @@
                                     </goals>
                                  </pluginExecutionFilter>
                                  <action>
-                                    <!-- As m2e doesn't know what to do with the 
-                                       plugin, it is ignored to avoid error warnings. -->
+                                    <!-- As m2e doesn't know what to do with 
+                                       the plugin, it is ignored to avoid error warnings. -->
                                     <ignore />
                                  </action>
                               </pluginExecution>
@@ -156,6 +157,139 @@
                </plugins>
             </pluginManagement>
          </build>
+      </profile>
+      <profile>
+         <!-- H2 database profile -->
+         <!-- Prepares the project to make use of an H2 in-memory database -->
+         <id>h2</id>
+         <properties>
+            <!-- Access data -->
+            <database.url>jdbc:h2:mem:jpa_test</database.url>
+            <database.username>sa</database.username>
+            <database.password></database.password>
+            <!-- Spring context -->
+            <spring.profile.database>h2</spring.profile.database>
+         </properties>
+         <dependencies>
+            <dependency>
+               <!-- H2 database -->
+               <groupId>com.h2database</groupId>
+               <artifactId>h2</artifactId>
+               <version>${h2.version}</version>
+            </dependency>
+         </dependencies>
+      </profile>
+      <profile>
+         <!-- HSQLDB database profile -->
+         <!-- Prepares the project to make use of an HSQLDB in-memory database -->
+         <id>hsqldb</id>
+         <properties>
+            <!-- Access data -->
+            <database.url>jdbc:hsqldb:mem:jpa_test</database.url>
+            <database.username>sa</database.username>
+            <database.password></database.password>
+            <!-- Spring context -->
+            <spring.profile.database>hsqldb</spring.profile.database>
+         </properties>
+         <dependencies>
+            <dependency>
+               <!-- HSQLDB driver -->
+               <groupId>org.hsqldb</groupId>
+               <artifactId>hsqldb</artifactId>
+               <version>${hsqldb.version}</version>
+               <scope>test</scope>
+            </dependency>
+         </dependencies>
+      </profile>
+      <profile>
+         <!-- MySQL database profile -->
+         <!-- Prepares the project to make use of an H2 in-memory database -->
+         <id>mysql</id>
+         <properties>
+            <!-- Access data -->
+            <database.url>jdbc:mysql://localhost:3306/jpa_test</database.url>
+            <database.username>root</database.username>
+            <database.password></database.password>
+            <!-- Spring context -->
+            <spring.profile.database>mysql</spring.profile.database>
+         </properties>
+         <dependencies>
+            <dependency>
+               <!-- MySQL connector -->
+               <groupId>mysql</groupId>
+               <artifactId>mysql-connector-java</artifactId>
+               <version>${mysql.version}</version>
+            </dependency>
+         </dependencies>
+      </profile>
+      <profile>
+         <!-- Postgres database profile -->
+         <!-- Prepares the project to make use of a Postgres database -->
+         <id>postgres</id>
+         <properties>
+            <!-- Access data -->
+            <database.url>jdbc:postgresql://localhost:5432/jpa_test</database.url>
+            <database.username>postgres</database.username>
+            <database.password></database.password>
+            <!-- Spring context -->
+            <spring.profile.database>postgres</spring.profile.database>
+         </properties>
+         <dependencies>
+            <dependency>
+               <!-- Postgres connector -->
+               <groupId>org.postgresql</groupId>
+               <artifactId>postgresql</artifactId>
+               <version>${postgresql.version}</version>
+            </dependency>
+         </dependencies>
+      </profile>
+      <profile>
+         <!-- Hibernate JPA provider profile -->
+         <!-- Prepares the project to connect to the DB through Hibernate -->
+         <id>hibernate</id>
+         <properties>
+            <jpa.provider>hibernate</jpa.provider>
+         </properties>
+         <dependencies>
+            <dependency>
+               <!-- Hibernate Core -->
+               <groupId>org.hibernate</groupId>
+               <artifactId>hibernate-core</artifactId>
+               <version>${hibernate.version}</version>
+               <scope>test</scope>
+            </dependency>
+            <dependency>
+               <!-- Hibernate Ehcache -->
+               <groupId>org.hibernate</groupId>
+               <artifactId>hibernate-ehcache</artifactId>
+               <version>${hibernate.version}</version>
+               <scope>test</scope>
+            </dependency>
+            <dependency>
+               <!-- Hibernate Entity Manager -->
+               <groupId>org.hibernate</groupId>
+               <artifactId>hibernate-entitymanager</artifactId>
+               <version>${hibernate.version}</version>
+               <scope>test</scope>
+            </dependency>
+         </dependencies>
+      </profile>
+      <profile>
+         <!-- EclipseLink JPA provider profile -->
+         <!-- Prepares the project to connect to the DB through EclipseLink -->
+         <id>eclipselink</id>
+         <properties>
+            <jpa.provider>eclipselink</jpa.provider>
+         </properties>
+         <dependencies>
+            <dependency>
+               <!-- Eclipselink -->
+               <groupId>org.eclipse.persistence</groupId>
+               <artifactId>eclipselink</artifactId>
+               <version>${eclipselink.version}</version>
+               <scope>test</scope>
+            </dependency>
+         </dependencies>
       </profile>
       <profile>
          <!-- Release site deployment profile -->
@@ -232,10 +366,11 @@
       <eclipselink.version>2.6.4</eclipselink.version>
       <guava.version>20.0</guava.version>
       <h2.version>1.4.196</h2.version>
-      <hibernate.version>5.1.0.Final</hibernate.version>
+      <hibernate.version>5.1.10.Final</hibernate.version>
       <hikari.version>2.4.6</hikari.version>
       <hsqldb.version>2.3.5</hsqldb.version>
       <javaee.api.version>7.0</javaee.api.version>
+      <liquibase.version>3.5.3</liquibase.version>
       <log4j.version>2.7</log4j.version>
       <mysql.version>5.1.39</mysql.version>
       <postgresql.version>9.4.1211.jre7</postgresql.version>
@@ -273,53 +408,17 @@
       <!-- ======= TEST ENVIRONMENT DEPENDENCIES ======== -->
       <!-- ============================================== -->
       <dependency>
-         <!-- Eclipselink -->
-         <groupId>org.eclipse.persistence</groupId>
-         <artifactId>eclipselink</artifactId>
-         <version>${eclipselink.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- H2 Database -->
-         <groupId>com.h2database</groupId>
-         <artifactId>h2</artifactId>
-         <version>${h2.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- Hibernate Core -->
-         <groupId>org.hibernate</groupId>
-         <artifactId>hibernate-core</artifactId>
-         <version>${hibernate.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- Hibernate Ehcache -->
-         <groupId>org.hibernate</groupId>
-         <artifactId>hibernate-ehcache</artifactId>
-         <version>${hibernate.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- Hibernate Entity Manager -->
-         <groupId>org.hibernate</groupId>
-         <artifactId>hibernate-entitymanager</artifactId>
-         <version>${hibernate.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- HSQLDB driver -->
-         <groupId>org.hsqldb</groupId>
-         <artifactId>hsqldb</artifactId>
-         <version>${hsqldb.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
          <!-- Hikari CP -->
          <groupId>com.zaxxer</groupId>
          <artifactId>HikariCP</artifactId>
          <version>${hikari.version}</version>
          <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- Liquibase -->
+         <groupId>org.liquibase</groupId>
+         <artifactId>liquibase-core</artifactId>
+         <version>${liquibase.version}</version>
       </dependency>
       <dependency>
          <!-- Log4j core -->
@@ -340,20 +439,6 @@
          <groupId>org.apache.logging.log4j</groupId>
          <artifactId>log4j-jcl</artifactId>
          <version>${log4j.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- MYSQL connector -->
-         <groupId>mysql</groupId>
-         <artifactId>mysql-connector-java</artifactId>
-         <version>${mysql.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- PostgreSQL connector -->
-         <groupId>org.postgresql</groupId>
-         <artifactId>postgresql</artifactId>
-         <version>${postgresql.version}</version>
          <scope>test</scope>
       </dependency>
       <dependency>
@@ -419,7 +504,23 @@
    <!-- ********************************************** -->
 
    <build>
-      <defaultGoal>clean package install</defaultGoal>
+      <defaultGoal>clean package</defaultGoal>
+      <testResources>
+         <testResource>
+            <directory>src/test/resources/</directory>
+         </testResource>
+         <testResource>
+            <!-- Test resources -->
+            <directory>src/test/resources/</directory>
+            <includes>
+               <!-- Filter the contexts -->
+               <include>context/test-default.xml</include>
+               <!-- Filter the properties -->
+               <include>config/persistence/persistence-access.properties</include>
+            </includes>
+            <filtering>true</filtering>
+         </testResource>
+      </testResources>
       <plugins>
          <plugin>
             <!-- Changes -->
@@ -512,6 +613,22 @@
                </dependency>
             </dependencies>
          </plugin>
+         <plugin>
+            <!-- Resources -->
+            <!-- Handles the project resources. -->
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <configuration>
+               <!-- Variables to to override will be delimited with a @. -->
+               <!-- This avoids collisions with Spring variables. -->
+               <!-- So instead of replacing ${project.name} Maven will replace 
+                  @project.name@. -->
+               <useDefaultDelimiters>false</useDefaultDelimiters>
+               <delimiters>
+                  <delimiter>@</delimiter>
+               </delimiters>
+            </configuration>
+         </plugin>
       </plugins>
    </build>
 
@@ -562,7 +679,8 @@
          </plugin>
          <plugin>
             <!-- PMD -->
-            <!-- Checks that the code complies with a series of code quality rules -->
+            <!-- Checks that the code complies with a series of code quality 
+               rules -->
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-pmd-plugin</artifactId>
             <configuration>
