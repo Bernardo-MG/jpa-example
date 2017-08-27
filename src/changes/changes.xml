@@ -13,6 +13,9 @@
          <action dev="bmg" type="update">
             Simplified test configuration.
          </action>
+         <action dev="bmg" type="remove">
+            Removed support for JDK7.
+         </action>
       </release>
 		<release version="1.0.0" date="2017-07-30" description="First release">
 			<action dev="bmg" type="update">

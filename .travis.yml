@@ -3,13 +3,6 @@
 
 # Using Java for the project
 language: java
-jdk:
-# JDK 8 is set to deploy the docs in the configuration matrix
-#  - oraclejdk8
-  - oraclejdk7
-  - openjdk7
-env:
-  - DATABASE=h2 PROVIDER=eclipselink
 services:
   - mysql
   - postgresql

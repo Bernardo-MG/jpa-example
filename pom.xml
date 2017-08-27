@@ -360,6 +360,8 @@
    <!-- ********************************************** -->
 
    <properties>
+      <!-- Java version -->
+      <maven.compiler.source>1.8</maven.compiler.source>
       <!-- Manifest data -->
       <manifest.name>com/wandrell/example/jpa</manifest.name>
       <!-- Dependencies versions -->
