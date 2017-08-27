@@ -28,7 +28,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.testng.Assert;
 
-import com.wandrell.example.jpa.model.simple.SimpleEntity;
+import com.wandrell.example.jpa.model.simple.DefaultSimpleEntity;
 import com.wandrell.example.jpa.test.util.config.context.TestContextConfig;
 import com.wandrell.example.jpa.test.util.config.properties.QueryPropertiesPaths;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
@@ -41,7 +41,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
 @ContextConfiguration(locations = { TestContextConfig.DEFAULT })
 @TestPropertySource(locations = { QueryPropertiesPaths.SIMPLE_ENTITY })
 public final class ITSimpleEntityModify
-        extends AbstractITEntityModify<SimpleEntity> {
+        extends AbstractITEntityModify<DefaultSimpleEntity> {
 
     /**
      * Value to set on the name for the tests.
@@ -52,16 +52,17 @@ public final class ITSimpleEntityModify
      * Default constructor.
      */
     public ITSimpleEntityModify() {
-        super(SimpleEntity.class, 30);
+        super(DefaultSimpleEntity.class, 30);
     }
 
     @Override
-    protected final void assertEntityModified(final SimpleEntity entity) {
+    protected final void
+            assertEntityModified(final DefaultSimpleEntity entity) {
         Assert.assertEquals(entity.getName(), name);
     }
 
     @Override
-    protected final void modifyEntity(final SimpleEntity entity) {
+    protected final void modifyEntity(final DefaultSimpleEntity entity) {
         entity.setName(name);
     }
 
