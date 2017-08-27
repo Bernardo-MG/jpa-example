@@ -514,7 +514,7 @@
             <directory>src/test/resources/</directory>
             <includes>
                <!-- Filter the contexts -->
-               <include>context/test-default.xml</include>
+               <include>context/test-maven-profile.xml</include>
                <!-- Filter the properties -->
                <include>config/persistence/persistence-access.properties</include>
             </includes>
