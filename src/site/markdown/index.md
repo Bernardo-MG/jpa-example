@@ -5,6 +5,7 @@ An example showing how to set up and test JPA classes.
 ## Features
 
 Examples for:
+
 - Collection and map fields
 - Converters
 - Date, time and timestamp fields
