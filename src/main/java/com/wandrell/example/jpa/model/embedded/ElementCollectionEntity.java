@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016 the original author or authors.
+ * Copyright (c) 2016-2017 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -46,7 +46,7 @@ import com.google.common.base.MoreObjects;
 /**
  * Entity using a collection of embeddable objects.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  * @see EmbeddableData
  */
 @Entity(name = "ElementCollectionEntity")
@@ -157,7 +157,7 @@ public class ElementCollectionEntity implements Serializable {
      *            the name to set on the entity
      */
     public final void setName(final String value) {
-        this.name = checkNotNull(value, "Received a null pointer as name");
+        name = checkNotNull(value, "Received a null pointer as name");
     }
 
     /**
@@ -167,7 +167,7 @@ public class ElementCollectionEntity implements Serializable {
      *            embeddable objects to set in the entity
      */
     public final void setValues(final Collection<EmbeddableData> value) {
-        this.values = checkNotNull(value, "Received a null pointer as values");
+        values = checkNotNull(value, "Received a null pointer as values");
     }
 
     @Override

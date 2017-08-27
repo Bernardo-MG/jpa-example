@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016 the original author or authors.
+ * Copyright (c) 2016-2017 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,7 @@ import com.google.common.base.MoreObjects;
  * <p>
  * The {@link EmbeddableCompositeKey} is used as the embedded id.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  * @see EmbeddableCompositeKey
  */
 @Entity(name = "EmbeddedKeyEntity")
@@ -120,7 +120,7 @@ public class EmbeddedCompositeKeyEntity implements Serializable {
      *            the id to set in the entity
      */
     public final void setKey(final EmbeddableCompositeKey identifier) {
-        this.key = checkNotNull(identifier,
+        key = checkNotNull(identifier,
                 "Received a null pointer as the identifier");
     }
 
@@ -131,7 +131,7 @@ public class EmbeddedCompositeKeyEntity implements Serializable {
      *            the name to set on the entity
      */
     public final void setName(final String value) {
-        this.name = checkNotNull(value, "Received a null pointer as name");
+        name = checkNotNull(value, "Received a null pointer as name");
     }
 
     @Override

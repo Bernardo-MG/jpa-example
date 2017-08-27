@@ -20,7 +20,7 @@ import com.google.common.base.MoreObjects;
 /**
  * Entity with a one to one relationship mapped to another class.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "OneToOneInverseEntity")
 @Table(name = "one_to_one_inverse_entities")
@@ -130,7 +130,7 @@ public class OneToOneInverseEntity implements Serializable {
      *            the name to set in the entity
      */
     public final void setName(final String value) {
-        this.name = checkNotNull(value, "Received a null pointer as name");
+        name = checkNotNull(value, "Received a null pointer as name");
     }
 
     /**
@@ -141,7 +141,7 @@ public class OneToOneInverseEntity implements Serializable {
      *            relationship
      */
     public final void setSource(final OneToOneSourceEntity value) {
-        this.source = checkNotNull(value, "Received a null pointer as source");
+        source = checkNotNull(value, "Received a null pointer as source");
     }
 
     @Override

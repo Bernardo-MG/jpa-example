@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016 the original author or authors.
+ * Copyright (c) 2016-2017 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,7 @@ import javax.persistence.Converter;
  * {@code false} value to a {@code F} string. It also performs the reverse
  * operation, from the strings to boolean values.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Converter
 public final class BooleanToStringConverter
@@ -81,7 +81,6 @@ public final class BooleanToStringConverter
     /**
      * Converts the data stored in the database column into the value to be
      * stored in the entity attribute.
-     * <p>
      * <p>
      * In this case, it means converting a {@code T} string to a {@code true}
      * value, and any other string to a {@code false} value.

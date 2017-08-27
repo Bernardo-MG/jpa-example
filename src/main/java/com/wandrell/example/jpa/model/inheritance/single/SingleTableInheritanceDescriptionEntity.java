@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016 the original author or authors.
+ * Copyright (c) 2016-2017 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,7 @@ import javax.persistence.Entity;
 /**
  * Entity for single table inheritance entities.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "SingleTableInheritanceDescriptionEntity")
 @DiscriminatorValue("B")
@@ -74,7 +74,7 @@ public class SingleTableInheritanceDescriptionEntity
      *            the description to set in the entity
      */
     public final void setDescription(final String value) {
-        this.description = checkNotNull(value,
+        description = checkNotNull(value,
                 "Received a null pointer as description");
     }
 

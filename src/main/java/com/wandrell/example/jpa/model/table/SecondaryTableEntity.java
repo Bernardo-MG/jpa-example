@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016 the original author or authors.
+ * Copyright (c) 2016-2017 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -44,7 +44,7 @@ import com.google.common.base.MoreObjects;
 /**
  * JPA entity divided into a secondary table.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "SecondaryTableEntity")
 @Table(name = "two_tables_entities_a")
@@ -143,7 +143,7 @@ public final class SecondaryTableEntity implements Serializable {
      *            the field to set in the entity
      */
     public final void setField1(final String field) {
-        this.field1 = checkNotNull(field, "Received a null pointer as field 1");
+        field1 = checkNotNull(field, "Received a null pointer as field 1");
     }
 
     /**
@@ -153,7 +153,7 @@ public final class SecondaryTableEntity implements Serializable {
      *            the field to set in the entity
      */
     public final void setField2(final String field) {
-        this.field2 = checkNotNull(field, "Received a null pointer as field 2");
+        field2 = checkNotNull(field, "Received a null pointer as field 2");
     }
 
     /**
@@ -163,8 +163,7 @@ public final class SecondaryTableEntity implements Serializable {
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        this.id = checkNotNull(identifier,
-                "Received a null pointer as identifier");
+        id = checkNotNull(identifier, "Received a null pointer as identifier");
     }
 
     @Override

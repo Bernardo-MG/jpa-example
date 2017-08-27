@@ -21,7 +21,7 @@ import com.google.common.base.MoreObjects;
 /**
  * Entity with a many to one relationship.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "ManyToOneEntity")
 @Table(name = "many_to_one_entities")
@@ -130,7 +130,7 @@ public class ManyToOneEntity implements Serializable {
      *            the name to set in the entity
      */
     public final void setName(final String value) {
-        this.name = checkNotNull(value, "Received a null pointer as name");
+        name = checkNotNull(value, "Received a null pointer as name");
     }
 
     /**
@@ -140,8 +140,7 @@ public class ManyToOneEntity implements Serializable {
      *            the entity to set in the 'one' side.
      */
     public final void setOneToMany(final OneToManyEntity value) {
-        this.oneToMany = checkNotNull(value,
-                "Received a null pointer as oneToMany");
+        oneToMany = checkNotNull(value, "Received a null pointer as oneToMany");
     }
 
     @Override

@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016 the original author or authors.
+ * Copyright (c) 2016-2017 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,7 +39,7 @@ import com.google.common.base.MoreObjects;
 /**
  * Entity with a composite id.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "CompositeKeyEntity")
 @Table(name = "composite_key_entities")
@@ -135,7 +135,7 @@ public class CompositeKeyEntity implements Serializable {
      *            the first id for the entity
      */
     public final void setId(final Integer identifier) {
-        this.id = checkNotNull(identifier, "Received a null pointer as id 1");
+        id = checkNotNull(identifier, "Received a null pointer as id 1");
     }
 
     /**
@@ -145,7 +145,7 @@ public class CompositeKeyEntity implements Serializable {
      *            the name to set on the entity
      */
     public final void setName(final String value) {
-        this.name = checkNotNull(value, "Received a null pointer as name");
+        name = checkNotNull(value, "Received a null pointer as name");
     }
 
     /**
@@ -155,8 +155,7 @@ public class CompositeKeyEntity implements Serializable {
      *            the second id for the entity
      */
     public final void setSupportId(final Long identifier) {
-        this.supportId = checkNotNull(identifier,
-                "Received a null pointer as id 2");
+        supportId = checkNotNull(identifier, "Received a null pointer as id 2");
     }
 
     @Override

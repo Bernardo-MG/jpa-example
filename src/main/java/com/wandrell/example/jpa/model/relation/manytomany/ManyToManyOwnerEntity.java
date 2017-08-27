@@ -25,7 +25,7 @@ import com.google.common.base.MoreObjects;
  * It is the owner entity because it contains the actual definition of the
  * relationship, while the other entity will just be mapped to it.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "ManyToManyOwnerEntity")
 @Table(name = "many_to_many_owner_entities")
@@ -139,7 +139,7 @@ public class ManyToManyOwnerEntity implements Serializable {
      */
     public final void
             setMapped(final Collection<ManyToManyMappedEntity> value) {
-        this.mapped = checkNotNull(value, "Received a null pointer as mapped");
+        mapped = checkNotNull(value, "Received a null pointer as mapped");
     }
 
     /**
@@ -149,7 +149,7 @@ public class ManyToManyOwnerEntity implements Serializable {
      *            the name to set in the entity
      */
     public final void setName(final String value) {
-        this.name = checkNotNull(value, "Received a null pointer as name");
+        name = checkNotNull(value, "Received a null pointer as name");
     }
 
     @Override
