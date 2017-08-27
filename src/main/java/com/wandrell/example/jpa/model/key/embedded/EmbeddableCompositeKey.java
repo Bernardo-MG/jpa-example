@@ -116,7 +116,7 @@ public class EmbeddableCompositeKey implements Serializable {
      *            the first id for the entity
      */
     public final void setId(final Integer identifier) {
-        this.id = checkNotNull(identifier,
+        id = checkNotNull(identifier,
                 "Received a null pointer as the identifier");
     }
 
@@ -127,7 +127,7 @@ public class EmbeddableCompositeKey implements Serializable {
      *            the second id for the entity
      */
     public final void setSupportId(final Long identifier) {
-        this.supportId = checkNotNull(identifier,
+        supportId = checkNotNull(identifier,
                 "Received a null pointer as the identifier");
     }
 

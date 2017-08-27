@@ -82,7 +82,6 @@ public final class BooleanToStringConverter
      * Converts the data stored in the database column into the value to be
      * stored in the entity attribute.
      * <p>
-     * <p>
      * In this case, it means converting a {@code T} string to a {@code true}
      * value, and any other string to a {@code false} value.
      */

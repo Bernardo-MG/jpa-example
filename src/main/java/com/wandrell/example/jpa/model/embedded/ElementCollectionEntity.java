@@ -157,7 +157,7 @@ public class ElementCollectionEntity implements Serializable {
      *            the name to set on the entity
      */
     public final void setName(final String value) {
-        this.name = checkNotNull(value, "Received a null pointer as name");
+        name = checkNotNull(value, "Received a null pointer as name");
     }
 
     /**
@@ -167,7 +167,7 @@ public class ElementCollectionEntity implements Serializable {
      *            embeddable objects to set in the entity
      */
     public final void setValues(final Collection<EmbeddableData> value) {
-        this.values = checkNotNull(value, "Received a null pointer as values");
+        values = checkNotNull(value, "Received a null pointer as values");
     }
 
     @Override

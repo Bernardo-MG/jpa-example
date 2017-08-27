@@ -131,7 +131,7 @@ public class ManyToManyMappedEntity implements Serializable {
      *            the name to set in the entity
      */
     public final void setName(final String value) {
-        this.name = checkNotNull(value, "Received a null pointer as name");
+        name = checkNotNull(value, "Received a null pointer as name");
     }
 
     /**
@@ -141,7 +141,7 @@ public class ManyToManyMappedEntity implements Serializable {
      *            the owner entities to set in the entity
      */
     public final void setOwners(final List<ManyToManyOwnerEntity> value) {
-        this.owners = checkNotNull(value, "Received a null pointer as owners");
+        owners = checkNotNull(value, "Received a null pointer as owners");
     }
 
     @Override

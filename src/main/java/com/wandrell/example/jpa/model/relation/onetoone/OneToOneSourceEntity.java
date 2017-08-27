@@ -134,8 +134,7 @@ public class OneToOneSourceEntity implements Serializable {
      *            relationship to set in the entity
      */
     public final void setInverse(final OneToOneInverseEntity value) {
-        this.inverse = checkNotNull(value,
-                "Received a null pointer as inverse");
+        inverse = checkNotNull(value, "Received a null pointer as inverse");
     }
 
     /**
@@ -145,7 +144,7 @@ public class OneToOneSourceEntity implements Serializable {
      *            the name to set in the entity
      */
     public final void setName(final String value) {
-        this.name = checkNotNull(value, "Received a null pointer as name");
+        name = checkNotNull(value, "Received a null pointer as name");
     }
 
     @Override

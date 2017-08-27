@@ -143,7 +143,7 @@ public final class SecondaryTableEntity implements Serializable {
      *            the field to set in the entity
      */
     public final void setField1(final String field) {
-        this.field1 = checkNotNull(field, "Received a null pointer as field 1");
+        field1 = checkNotNull(field, "Received a null pointer as field 1");
     }
 
     /**
@@ -153,7 +153,7 @@ public final class SecondaryTableEntity implements Serializable {
      *            the field to set in the entity
      */
     public final void setField2(final String field) {
-        this.field2 = checkNotNull(field, "Received a null pointer as field 2");
+        field2 = checkNotNull(field, "Received a null pointer as field 2");
     }
 
     /**
@@ -163,8 +163,7 @@ public final class SecondaryTableEntity implements Serializable {
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        this.id = checkNotNull(identifier,
-                "Received a null pointer as identifier");
+        id = checkNotNull(identifier, "Received a null pointer as identifier");
     }
 
     @Override

@@ -9,15 +9,9 @@ set -o nounset
 set -e
 
 # MySQL tables
-mysql -e "create database IF NOT EXISTS test_hibernate;" -uroot
-mysql -e "create database IF NOT EXISTS test_hibernate_modify;" -uroot
-mysql -e "create database IF NOT EXISTS test_eclipselink;" -uroot
-mysql -e "create database IF NOT EXISTS test_eclipselink_modify;" -uroot
+mysql -e "create database IF NOT EXISTS jpa_test;" -uroot
 
 # PostgreSQL tables
-psql -c 'create database test_hibernate;' -U postgres
-psql -c 'create database test_hibernate_modify;' -U postgres
-psql -c 'create database test_eclipselink;' -U postgres
-psql -c 'create database test_eclipselink_modify;' -U postgres
+psql -c 'create database jpa_test;' -U postgres
 
 exit 0
