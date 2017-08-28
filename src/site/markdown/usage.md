@@ -29,3 +29,7 @@ Only the in-memory databases, such as H2, do not require additional configuratio
 |-------------|-------------|
 | hibernate   | Hibernate   |
 | eclipselink | Eclipselink |
+
+## JDK
+
+The project works on JDK 8.
