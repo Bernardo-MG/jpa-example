@@ -27,8 +27,8 @@ package com.wandrell.example.jpa.model.embedded;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.Objects;
 
 import javax.persistence.CollectionTable;
@@ -81,7 +81,7 @@ public class ElementCollectionEntity implements Serializable {
     @ElementCollection
     @CollectionTable(name = "element_collection_entities_values",
             joinColumns = @JoinColumn(name = "collection_id"))
-    private Collection<EmbeddableData> values           = new LinkedList<EmbeddableData>();
+    private Collection<EmbeddableData> values           = new ArrayList<EmbeddableData>();
 
     /**
      * Default constructor.

@@ -27,8 +27,8 @@ package com.wandrell.example.jpa.model.collection;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.Objects;
 
 import javax.persistence.CollectionTable;
@@ -83,7 +83,7 @@ public class CollectionEntity implements Serializable {
     @CollectionTable(name = "collection_entities_values",
             joinColumns = @JoinColumn(name = "collection_id"))
     @Column(name = "value_col", nullable = false)
-    private Collection<Integer> values           = new LinkedList<Integer>();
+    private Collection<Integer> values           = new ArrayList<Integer>();
 
     /**
      * Default constructor.

@@ -24,8 +24,8 @@
 
 package com.wandrell.example.jpa.test.integration.collection.collection;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
@@ -49,7 +49,7 @@ public final class ITCollectionEntityModify
     /**
      * Values to set on the entity.
      */
-    private final Collection<Integer> values = new LinkedList<Integer>();
+    private final Collection<Integer> values = new ArrayList<Integer>();
 
     /**
      * Default constructor.
