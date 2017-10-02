@@ -112,7 +112,7 @@ public abstract class AbstractITEntityModify<V>
      * Tests that updating an entity changes it.
      */
     @Test
-    public final void testUpdate() {
+    public final void testUpdate_Persisted() {
         final V entity;   // Original entity
         final V modified; // Updatd entity
 

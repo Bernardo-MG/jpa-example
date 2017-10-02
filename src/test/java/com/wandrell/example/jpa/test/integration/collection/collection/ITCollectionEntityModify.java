@@ -28,8 +28,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
-
 import com.wandrell.example.jpa.model.collection.CollectionEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
@@ -44,12 +42,7 @@ public final class ITCollectionEntityModify
     /**
      * Value to set on the name for the tests.
      */
-    private final String              name   = "The new name";
-
-    /**
-     * Values to set on the entity.
-     */
-    private final Collection<Integer> values = new ArrayList<Integer>();
+    private final String name = "The new name";
 
     /**
      * Default constructor.
@@ -58,20 +51,26 @@ public final class ITCollectionEntityModify
         super(CollectionEntity::new, 5);
     }
 
-    @BeforeTest
-    public final void initializeValues() {
-        values.add(1);
-        values.add(5);
-    }
-
     @Override
     protected final void assertEntityModified(final CollectionEntity entity) {
+        final Collection<Integer> values;
+
+        values = new ArrayList<Integer>();
+        values.add(1);
+        values.add(5);
+
         Assert.assertEquals(entity.getName(), name);
         Assert.assertEquals(entity.getValues(), values);
     }
 
     @Override
     protected final void modifyEntity(final CollectionEntity entity) {
+        final Collection<Integer> values;
+
+        values = new ArrayList<Integer>();
+        values.add(1);
+        values.add(5);
+
         entity.setName(name);
         entity.setValues(values);
     }
