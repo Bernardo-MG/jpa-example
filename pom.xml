@@ -371,7 +371,7 @@
       <hibernate.version>5.2.10.Final</hibernate.version>
       <hikari.version>2.7.2</hikari.version>
       <hsqldb.version>2.4.0</hsqldb.version>
-      <javaee.api.version>7.0</javaee.api.version>
+      <javaee.api.version>2.2</javaee.api.version>
       <liquibase.version>3.5.3</liquibase.version>
       <log4j.version>2.9.1</log4j.version>
       <mysql.version>6.0.6</mysql.version>
@@ -402,8 +402,8 @@
       <!-- ============================================== -->
       <dependency>
          <!-- JEE API -->
-         <groupId>javax</groupId>
-         <artifactId>javaee-api</artifactId>
+         <groupId>javax.persistence</groupId>
+         <artifactId>javax.persistence-api</artifactId>
          <version>${javaee.api.version}</version>
       </dependency>
       <!-- ============================================== -->
