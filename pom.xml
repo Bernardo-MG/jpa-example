@@ -681,6 +681,9 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
             <configuration>
+               <links>
+                  <link>https://javadoc.io/doc/org.eclipse.persistence/javax.persistence/</link>
+               </links>
                <sourceFileExcludes>
                   <!-- Excludes generated code -->
                   <exclude>**/generated/**/*</exclude>
