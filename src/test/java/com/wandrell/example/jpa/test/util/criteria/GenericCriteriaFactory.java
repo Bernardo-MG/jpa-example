@@ -77,7 +77,7 @@ public final class GenericCriteriaFactory {
      */
     public static final <V> CriteriaQuery<V> findById(
             final EntityManager entityManager, final Class<V> entityClass,
-            final Integer id) {
+            final Object id) {
         final CriteriaBuilder builder; // Builder
         final CriteriaQuery<V> query;  // Query
         final Root<V> entity;          // Root entity

@@ -53,7 +53,7 @@ public class CompositeKeyIdClassEntityCriteriaFactory {
      */
     public static final CriteriaQuery<CompositeKeyIdClassEntity> findByIds(
             final EntityManager entityManager, final Integer id1,
-            final Integer id2) {
+            final Long id2) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<CompositeKeyIdClassEntity> query; // Query
         final Root<CompositeKeyIdClassEntity> entity;         // Root entity

@@ -42,6 +42,9 @@ import com.wandrell.example.jpa.test.util.criteria.GenericCriteriaFactory;
  *
  * @author Bernardo Mart&iacute;nez Garrido
  * @see SimpleEntity
+ * 
+ * @param <V>
+ *            type of the entity
  */
 public abstract class AbstractITEntityModify<V>
         extends AbstractIntegrationTest {
@@ -114,17 +117,20 @@ public abstract class AbstractITEntityModify<V>
     @Test
     public final void testUpdate_Persisted() {
         final V entity;   // Original entity
-        final V modified; // Updatd entity
+        final V modified; // Updated entity
+        final Object id;  // Id of the entity to update
+
+        id = getId();
 
         // Acquires the entity
-        entity = findById(1);
+        entity = findById(id);
 
         // Changes the entity
         modifyEntity(entity);
         getEntityManager().persist(entity);
 
         // Retrieves the entity again
-        modified = findById(1);
+        modified = findById(id);
 
         // Checks that the entity has been saved correctly
         assertEntityModified(modified);
@@ -138,12 +144,12 @@ public abstract class AbstractITEntityModify<V>
      * @return the entity matching the received id
      */
     @SuppressWarnings("unchecked")
-    private final V findById(final Integer id) {
+    protected V findById(final Object id) {
         final Query query; // Query for the entity
 
         // Builds the query
         query = getEntityManager().createQuery(GenericCriteriaFactory
-                .findById(getEntityManager(), getEntityClass(), 1));
+                .findById(getEntityManager(), getEntityClass(), id));
 
         // Acquires the entity
         return (V) query.getSingleResult();
@@ -205,6 +211,15 @@ public abstract class AbstractITEntityModify<V>
      *            the entity to check
      */
     protected abstract void assertEntityModified(final V entity);
+
+    /**
+     * Returns the id used to find the entity to update.
+     * 
+     * @return the id used to find the entity to update
+     */
+    protected Object getId() {
+        return new Integer(1);
+    }
 
     /**
      * Modifies the received entity.

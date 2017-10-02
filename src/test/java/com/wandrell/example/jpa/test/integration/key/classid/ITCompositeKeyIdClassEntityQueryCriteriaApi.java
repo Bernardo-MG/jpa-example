@@ -70,7 +70,7 @@ public final class ITCompositeKeyIdClassEntityQueryCriteriaApi
         // Builds the query
         query = getEntityManager()
                 .createQuery(CompositeKeyIdClassEntityCriteriaFactory
-                        .findByIds(getEntityManager(), 1, 2));
+                        .findByIds(getEntityManager(), 1, 2l));
 
         // Acquires the entity
         entity = (CompositeKeyIdClassEntity) query.getSingleResult();
