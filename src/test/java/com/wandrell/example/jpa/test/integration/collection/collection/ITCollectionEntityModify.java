@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.testng.Assert;
+
 import com.wandrell.example.jpa.model.collection.CollectionEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 

@@ -232,10 +232,10 @@
          </column>
       </createTable>
       <createTable tableName="composite_key_entities">
-         <column name="id1" type="BIGINT">
+         <column autoIncrement="true" startWith="1" name="id1" type="BIGINT">
             <constraints primaryKey="true" />
          </column>
-         <column name="id2" type="BIGINT">
+         <column autoIncrement="true" startWith="1" name="id2" type="BIGINT">
             <constraints primaryKey="true" />
          </column>
          <column name="name" type="VARCHAR(30)" defaultValue="">
@@ -254,10 +254,10 @@
          </column>
       </createTable>
       <createTable tableName="embedded_key_entities">
-         <column name="id1" type="BIGINT">
+         <column autoIncrement="true" startWith="1" name="id1" type="BIGINT">
             <constraints primaryKey="true" />
          </column>
-         <column name="id2" type="BIGINT">
+         <column autoIncrement="true" startWith="1" name="id2" type="BIGINT">
             <constraints primaryKey="true" />
          </column>
          <column name="name" type="VARCHAR(30)" defaultValue="">

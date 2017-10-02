@@ -24,9 +24,12 @@
 
 package com.wandrell.example.jpa.test.integration.key.composite;
 
+import javax.persistence.Query;
+
 import org.testng.Assert;
 
 import com.wandrell.example.jpa.model.key.composite.CompositeKeyEntity;
+import com.wandrell.example.jpa.test.util.criteria.key.composite.CompositeKeyEntityCriteriaFactory;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
@@ -36,8 +39,18 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  * @author Bernardo Mart&iacute;nez Garrido
  * @see CompositeKeyEntity
  */
-public abstract class ITCompositeKeyEntityModify
+public final class ITCompositeKeyEntityModify
         extends AbstractITEntityModify<CompositeKeyEntity> {
+
+    private static final CompositeKeyEntity getNewEntity() {
+        final CompositeKeyEntity entity;
+
+        entity = new CompositeKeyEntity();
+        entity.setId(10);
+        entity.setSupportId(10l);
+
+        return entity;
+    }
 
     /**
      * Value to set on the name for the tests.
@@ -48,13 +61,24 @@ public abstract class ITCompositeKeyEntityModify
      * Default constructor.
      */
     public ITCompositeKeyEntityModify() {
-        super(CompositeKeyEntity::new, 4);
-        // TODO: Make this work
+        super(ITCompositeKeyEntityModify::getNewEntity, 4);
     }
 
     @Override
     protected final void assertEntityModified(final CompositeKeyEntity entity) {
         Assert.assertEquals(entity.getName(), name);
+    }
+
+    @Override
+    protected final CompositeKeyEntity findById(final Object id) {
+        final Query query; // Query for the entity
+
+        // Builds the query
+        query = getEntityManager().createQuery(CompositeKeyEntityCriteriaFactory
+                .findByIds(getEntityManager(), (Integer) id, 2l));
+
+        // Acquires the entity
+        return (CompositeKeyEntity) query.getSingleResult();
     }
 
     @Override

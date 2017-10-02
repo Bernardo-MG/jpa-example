@@ -25,6 +25,7 @@
 package com.wandrell.example.jpa.test.integration.key.classid;
 
 import javax.persistence.Query;
+
 import org.testng.Assert;
 
 import com.wandrell.example.jpa.model.key.classid.CompositeKey;

@@ -137,25 +137,6 @@ public abstract class AbstractITEntityModify<V>
     }
 
     /**
-     * Returns the entity matching the received id.
-     * 
-     * @param id
-     *            id to search for
-     * @return the entity matching the received id
-     */
-    @SuppressWarnings("unchecked")
-    protected V findById(final Object id) {
-        final Query query; // Query for the entity
-
-        // Builds the query
-        query = getEntityManager().createQuery(GenericCriteriaFactory
-                .findById(getEntityManager(), getEntityClass(), id));
-
-        // Acquires the entity
-        return (V) query.getSingleResult();
-    }
-
-    /**
      * Returns the number of entities in the database.
      * 
      * @return the number of entities in the database
@@ -211,6 +192,25 @@ public abstract class AbstractITEntityModify<V>
      *            the entity to check
      */
     protected abstract void assertEntityModified(final V entity);
+
+    /**
+     * Returns the entity matching the received id.
+     * 
+     * @param id
+     *            id to search for
+     * @return the entity matching the received id
+     */
+    @SuppressWarnings("unchecked")
+    protected V findById(final Object id) {
+        final Query query; // Query for the entity
+
+        // Builds the query
+        query = getEntityManager().createQuery(GenericCriteriaFactory
+                .findById(getEntityManager(), getEntityClass(), id));
+
+        // Acquires the entity
+        return (V) query.getSingleResult();
+    }
 
     /**
      * Returns the id used to find the entity to update.
