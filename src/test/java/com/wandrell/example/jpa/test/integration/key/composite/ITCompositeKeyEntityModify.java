@@ -24,7 +24,7 @@
 
 package com.wandrell.example.jpa.test.integration.key.composite;
 
-import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
 
 import org.testng.Assert;
 
@@ -70,15 +70,10 @@ public final class ITCompositeKeyEntityModify
     }
 
     @Override
-    protected final CompositeKeyEntity findById(final Object id) {
-        final Query query; // Query for the entity
-
-        // Builds the query
-        query = getEntityManager().createQuery(CompositeKeyEntityCriteriaFactory
-                .findByIds(getEntityManager(), (Integer) id, 2l));
-
-        // Acquires the entity
-        return (CompositeKeyEntity) query.getSingleResult();
+    protected CriteriaQuery<CompositeKeyEntity>
+            getCriteriaQuery(final Object id) {
+        return CompositeKeyEntityCriteriaFactory.findByIds(getEntityManager(),
+                (Integer) id, 2l);
     }
 
     @Override

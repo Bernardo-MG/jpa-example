@@ -24,7 +24,7 @@
 
 package com.wandrell.example.jpa.test.integration.key.embedded;
 
-import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
 
 import org.testng.Assert;
 
@@ -76,16 +76,22 @@ public final class ITEmbeddedCompositeKeyEntityModify
     }
 
     @Override
-    protected final EmbeddedCompositeKeyEntity findById(final Object id) {
-        final Query query; // Query for the entity
+    protected CriteriaQuery<EmbeddedCompositeKeyEntity>
+            getCriteriaQuery(final Object id) {
+        return EmbeddedCompositeKeyEntityCriteriaFactory.findByIds(
+                getEntityManager(), ((EmbeddableCompositeKey) id).getId(),
+                ((EmbeddableCompositeKey) id).getSupportId());
+    }
 
-        // Builds the query
-        query = getEntityManager()
-                .createQuery(EmbeddedCompositeKeyEntityCriteriaFactory
-                        .findByIds(getEntityManager(), (Integer) id, 2l));
+    @Override
+    protected final Object getId() {
+        final EmbeddableCompositeKey id;
 
-        // Acquires the entity
-        return (EmbeddedCompositeKeyEntity) query.getSingleResult();
+        id = new EmbeddableCompositeKey();
+        id.setId(1);
+        id.setSupportId(1l);
+
+        return id;
     }
 
     @Override

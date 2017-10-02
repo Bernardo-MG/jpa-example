@@ -29,6 +29,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.util.function.Supplier;
 
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
 
 import org.springframework.transaction.annotation.Transactional;
 import org.testng.Assert;
@@ -137,6 +138,24 @@ public abstract class AbstractITEntityModify<V>
     }
 
     /**
+     * Returns the entity matching the received id.
+     * 
+     * @param id
+     *            id to search for
+     * @return the entity matching the received id
+     */
+    @SuppressWarnings("unchecked")
+    private final V findById(final Object id) {
+        final Query query; // Query for the entity
+
+        // Builds the query
+        query = getEntityManager().createQuery(getCriteriaQuery(id));
+
+        // Acquires the entity
+        return (V) query.getSingleResult();
+    }
+
+    /**
      * Returns the number of entities in the database.
      * 
      * @return the number of entities in the database
@@ -194,22 +213,15 @@ public abstract class AbstractITEntityModify<V>
     protected abstract void assertEntityModified(final V entity);
 
     /**
-     * Returns the entity matching the received id.
+     * Returns the query for finding an entity by its id.
      * 
      * @param id
-     *            id to search for
-     * @return the entity matching the received id
+     *            id to search
+     * @return query for the entity matching the received id
      */
-    @SuppressWarnings("unchecked")
-    protected V findById(final Object id) {
-        final Query query; // Query for the entity
-
-        // Builds the query
-        query = getEntityManager().createQuery(GenericCriteriaFactory
-                .findById(getEntityManager(), getEntityClass(), id));
-
-        // Acquires the entity
-        return (V) query.getSingleResult();
+    protected CriteriaQuery<V> getCriteriaQuery(final Object id) {
+        return GenericCriteriaFactory.findById(getEntityManager(),
+                getEntityClass(), id);
     }
 
     /**
