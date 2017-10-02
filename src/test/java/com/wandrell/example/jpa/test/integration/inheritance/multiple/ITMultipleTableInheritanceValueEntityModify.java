@@ -52,7 +52,7 @@ public final class ITMultipleTableInheritanceValueEntityModify
      * Default constructor.
      */
     public ITMultipleTableInheritanceValueEntityModify() {
-        super(MultipleTableInheritanceValueEntity.class, 2);
+        super(MultipleTableInheritanceValueEntity::new, 2);
     }
 
     @Override

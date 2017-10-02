@@ -53,7 +53,7 @@ public final class ITDateEntityModify
      * Default constructor.
      */
     public ITDateEntityModify() {
-        super(DateEntity.class, 6);
+        super(DateEntity::new, 6);
     }
 
     @Override

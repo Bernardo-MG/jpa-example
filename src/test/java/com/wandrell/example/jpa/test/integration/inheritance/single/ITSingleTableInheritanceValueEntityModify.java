@@ -52,7 +52,7 @@ public final class ITSingleTableInheritanceValueEntityModify
      * Default constructor.
      */
     public ITSingleTableInheritanceValueEntityModify() {
-        super(SingleTableInheritanceValueEntity.class, 2);
+        super(SingleTableInheritanceValueEntity::new, 2);
     }
 
     @Override

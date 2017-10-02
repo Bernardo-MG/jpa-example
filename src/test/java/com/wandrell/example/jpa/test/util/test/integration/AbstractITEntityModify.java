@@ -26,6 +26,8 @@ package com.wandrell.example.jpa.test.util.test.integration;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.util.function.Supplier;
+
 import javax.persistence.Query;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -49,23 +51,37 @@ public abstract class AbstractITEntityModify<V>
      * <p>
      * Used for creating new instances.
      */
-    private final Class<V> entityClass;
+    private final Class<V>    entityClass;
+
+    /**
+     * Supplier for generating new instances of the entity.
+     */
+    private final Supplier<V> entitySupplier;
 
     /**
      * Initial number of entities in the persistence context.
      */
-    private final Integer  initialEntitiesCount;
+    private final Integer     initialEntitiesCount;
 
     /**
      * Default constructor.
+     * 
+     * @param supplier
+     *            supplier for the entity being tested
+     * @param entities
+     *            expected number of entities
      */
-    public AbstractITEntityModify(final Class<V> cls, final Integer entities) {
+    @SuppressWarnings("unchecked")
+    public AbstractITEntityModify(final Supplier<V> supplier,
+            final Integer entities) {
         super();
 
-        entityClass = checkNotNull(cls,
-                "Received a null pointer as entity class");
+        entitySupplier = checkNotNull(supplier,
+                "Received a null pointer as entity supplier");
         initialEntitiesCount = checkNotNull(entities,
                 "Received a null pointer as entities count");
+
+        entityClass = (Class<V>) entitySupplier.get().getClass();
     }
 
     /**
@@ -103,7 +119,7 @@ public abstract class AbstractITEntityModify<V>
         // Acquires the entity
         entity = findById(1);
 
-        // Changes the entity name
+        // Changes the entity
         modifyEntity(entity);
         getEntityManager().persist(entity);
 
@@ -168,15 +184,16 @@ public abstract class AbstractITEntityModify<V>
      * @return a new entity
      */
     private final V getNewEntity() {
-        final V entity;
+        return getSupplier().get();
+    }
 
-        try {
-            entity = getEntityClass().newInstance();
-        } catch (InstantiationException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-
-        return entity;
+    /**
+     * Returns the entity supplier.
+     * 
+     * @return the entity supplier
+     */
+    private final Supplier<V> getSupplier() {
+        return entitySupplier;
     }
 
     /**

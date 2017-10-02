@@ -48,7 +48,7 @@ public abstract class ITEmbeddedCompositeKeyEntityModify
      * Default constructor.
      */
     public ITEmbeddedCompositeKeyEntityModify() {
-        super(EmbeddedCompositeKeyEntity.class, 5);
+        super(EmbeddedCompositeKeyEntity::new, 5);
         // TODO: Make this work
     }
 

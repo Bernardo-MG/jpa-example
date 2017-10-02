@@ -47,7 +47,7 @@ public final class ITEmbeddedEntityModify
      * Default constructor.
      */
     public ITEmbeddedEntityModify() {
-        super(EmbeddedEntity.class, 5);
+        super(EmbeddedEntity::new, 5);
     }
 
     @Override

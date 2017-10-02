@@ -48,7 +48,7 @@ public abstract class ITCompositeKeyEntityModify
      * Default constructor.
      */
     public ITCompositeKeyEntityModify() {
-        super(CompositeKeyEntity.class, 4);
+        super(CompositeKeyEntity::new, 4);
         // TODO: Make this work
     }
 

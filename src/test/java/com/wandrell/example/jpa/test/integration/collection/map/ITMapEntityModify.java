@@ -54,7 +54,7 @@ public final class ITMapEntityModify extends AbstractITEntityModify<MapEntity> {
      * Default constructor.
      */
     public ITMapEntityModify() {
-        super(MapEntity.class, 5);
+        super(MapEntity::new, 5);
     }
 
     @BeforeTest

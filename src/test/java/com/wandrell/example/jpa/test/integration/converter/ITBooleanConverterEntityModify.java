@@ -47,7 +47,7 @@ public final class ITBooleanConverterEntityModify
      * Default constructor.
      */
     public ITBooleanConverterEntityModify() {
-        super(BooleanConverterEntity.class, 9);
+        super(BooleanConverterEntity::new, 9);
     }
 
     @Override

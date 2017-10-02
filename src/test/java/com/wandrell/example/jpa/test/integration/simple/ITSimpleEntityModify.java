@@ -46,7 +46,7 @@ public final class ITSimpleEntityModify
      * Default constructor.
      */
     public ITSimpleEntityModify() {
-        super(DefaultSimpleEntity.class, 30);
+        super(DefaultSimpleEntity::new, 30);
     }
 
     @Override

@@ -49,7 +49,7 @@ public final class ITElementCollectionEntityModify
      * Default constructor.
      */
     public ITElementCollectionEntityModify() {
-        super(ElementCollectionEntity.class, 5);
+        super(ElementCollectionEntity::new, 5);
     }
 
     @BeforeTest

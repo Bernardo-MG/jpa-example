@@ -54,7 +54,7 @@ public final class ITTimestampEntityModify
      * Default constructor.
      */
     public ITTimestampEntityModify() {
-        super(TimestampEntity.class, 6);
+        super(TimestampEntity::new, 6);
     }
 
     @Override

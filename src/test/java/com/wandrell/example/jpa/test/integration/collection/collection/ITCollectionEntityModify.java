@@ -55,7 +55,7 @@ public final class ITCollectionEntityModify
      * Default constructor.
      */
     public ITCollectionEntityModify() {
-        super(CollectionEntity.class, 5);
+        super(CollectionEntity::new, 5);
     }
 
     @BeforeTest

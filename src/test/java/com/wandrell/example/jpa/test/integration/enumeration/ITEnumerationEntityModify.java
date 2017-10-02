@@ -47,7 +47,7 @@ public final class ITEnumerationEntityModify
      * Default constructor.
      */
     public ITEnumerationEntityModify() {
-        super(EnumerationEntity.class, 4);
+        super(EnumerationEntity::new, 4);
     }
 
     @Override

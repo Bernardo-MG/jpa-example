@@ -52,7 +52,7 @@ public final class ITSecondaryTableEntityModify
      * Default constructor.
      */
     public ITSecondaryTableEntityModify() {
-        super(SecondaryTableEntity.class, 3);
+        super(SecondaryTableEntity::new, 3);
     }
 
     @Override
