@@ -54,7 +54,7 @@ public class EmbeddedCompositeKeyEntityCriteriaFactory {
      */
     public static final CriteriaQuery<EmbeddedCompositeKeyEntity> findByIds(
             final EntityManager entityManager, final Integer id1,
-            final Integer id2) {
+            final Long id2) {
         final CriteriaBuilder builder;         // Builder
         final CriteriaQuery<EmbeddedCompositeKeyEntity> query; // Query
         final Root<EmbeddedCompositeKeyEntity> entity;         // Root entity

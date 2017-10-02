@@ -48,7 +48,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  * @author Bernardo Mart&iacute;nez Garrido
  * @see EmbeddedCompositeKeyEntity
  */
-public abstract class ITEmbeddedCompositeKeyEntityQueryJpql
+public final class ITEmbeddedCompositeKeyEntityQueryJpql
         extends AbstractIntegrationTest {
 
     /**
@@ -62,7 +62,6 @@ public abstract class ITEmbeddedCompositeKeyEntityQueryJpql
      */
     public ITEmbeddedCompositeKeyEntityQueryJpql() {
         super();
-        // TODO: Make this work
     }
 
     /**

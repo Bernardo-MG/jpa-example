@@ -48,7 +48,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  * @author Bernardo Mart&iacute;nez Garrido
  * @see EmbeddedCompositeKeyEntity
  */
-public abstract class ITEmbeddedCompositeKeyEntityQueryCriteriaApi
+public final class ITEmbeddedCompositeKeyEntityQueryCriteriaApi
         extends AbstractIntegrationTest {
 
     /**
@@ -56,7 +56,6 @@ public abstract class ITEmbeddedCompositeKeyEntityQueryCriteriaApi
      */
     public ITEmbeddedCompositeKeyEntityQueryCriteriaApi() {
         super();
-        // TODO: Make this work
     }
 
     /**
@@ -70,7 +69,7 @@ public abstract class ITEmbeddedCompositeKeyEntityQueryCriteriaApi
         // Builds the query
         query = getEntityManager()
                 .createQuery(EmbeddedCompositeKeyEntityCriteriaFactory
-                        .findByIds(getEntityManager(), 1, 2));
+                        .findByIds(getEntityManager(), 1, 2l));
 
         // Acquires the entity
         entity = (EmbeddedCompositeKeyEntity) query.getSingleResult();
