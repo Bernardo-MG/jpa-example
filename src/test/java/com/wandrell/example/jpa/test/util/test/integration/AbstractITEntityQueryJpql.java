@@ -22,49 +22,36 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.jpa.test.integration.collection.collection;
+package com.wandrell.example.jpa.test.util.test.integration;
 
 import javax.persistence.Query;
 
-import org.springframework.beans.factory.annotation.Value;
-
-import com.wandrell.example.jpa.model.collection.CollectionEntity;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQueryJpql;
+import com.wandrell.example.jpa.model.simple.SimpleEntity;
 
 /**
- * Integration tests for a {@code CollectionEntity} testing it loads values
- * correctly by using JPQL queries.
+ * Abstract integration tests verifying that entities can be modified.
  *
  * @author Bernardo Mart&iacute;nez Garrido
+ * @see SimpleEntity
+ * 
+ * @param <V>
+ *            type of the entity
  */
-public final class ITCollectionEntityQueryJpql
-        extends AbstractITEntityQueryJpql<CollectionEntity> {
-
-    /**
-     * The query to acquire all the entities.
-     */
-    @Value("${query.collection.findAllWithValue}")
-    private String findAllWithValue;
+public abstract class AbstractITEntityQueryJpql<V>
+        extends AbstractITEntityQuery<V> {
 
     /**
      * Default constructor.
+     * 
+     * @param entitiesCount
+     *            number of entities returned by the query
      */
-    public ITCollectionEntityQueryJpql() {
-        super(3);
+    public AbstractITEntityQueryJpql(final Integer entitiesCount) {
+        super(entitiesCount);
     }
 
-    @Override
-    protected Query getQuery() {
-        final Integer value; // Value to find
-        final Query query;
-
-        // Queried value
-        value = 2;
-
-        query = getQuery(findAllWithValue);
-        query.setParameter("value", value);
-
-        return query;
+    protected final Query getQuery(final String query) {
+        return getEntityManager().createQuery(query);
     }
 
 }

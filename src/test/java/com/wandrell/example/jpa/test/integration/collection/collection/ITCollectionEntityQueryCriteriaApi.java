@@ -24,13 +24,11 @@
 
 package com.wandrell.example.jpa.test.integration.collection.collection;
 
-import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
+import com.wandrell.example.jpa.model.collection.CollectionEntity;
 import com.wandrell.example.jpa.test.util.criteria.collection.CollectionEntityCriteriaFactory;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQueryCriteriaApi;
 
 /**
  * Integration tests for a {@code CollectionEntity} testing it loads values
@@ -39,37 +37,24 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class ITCollectionEntityQueryCriteriaApi
-        extends AbstractIntegrationTest {
+        extends AbstractITEntityQueryCriteriaApi<CollectionEntity> {
 
     /**
      * Default constructor.
      */
     public ITCollectionEntityQueryCriteriaApi() {
-        super();
+        super(3);
     }
 
-    /**
-     * Tests that retrieving all the entities with a specific values returns the
-     * correct number of them.
-     */
-    @Test
-    public final void testFindAllWithValue() {
+    @Override
+    protected CriteriaQuery<CollectionEntity> getEntitiesQuery() {
         final Integer value; // Value to find
-        final Integer count; // Number of entities expected
-        final Query query;   // Query for the entity
 
         // Queried value
         value = 2;
 
-        // Expected result
-        count = 3;
-
-        // Builds the query
-        query = getEntityManager().createQuery(CollectionEntityCriteriaFactory
-                .findAllWithValue(getEntityManager(), value));
-
-        // Reads the expected number of entities
-        Assert.assertEquals((Integer) query.getResultList().size(), count);
+        return CollectionEntityCriteriaFactory
+                .findAllWithValue(getEntityManager(), value);
     }
 
 }
