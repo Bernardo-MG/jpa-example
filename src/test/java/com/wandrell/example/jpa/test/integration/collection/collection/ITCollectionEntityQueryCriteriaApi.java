@@ -24,11 +24,13 @@
 
 package com.wandrell.example.jpa.test.integration.collection.collection;
 
-import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.Query;
+
+import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.collection.CollectionEntity;
 import com.wandrell.example.jpa.test.util.criteria.collection.CollectionEntityCriteriaFactory;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQueryCriteriaApi;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code CollectionEntity} testing it loads values
@@ -37,24 +39,37 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQuery
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class ITCollectionEntityQueryCriteriaApi
-        extends AbstractITEntityQueryCriteriaApi<CollectionEntity> {
+        extends AbstractITEntityQuery<CollectionEntity> {
 
     /**
      * Default constructor.
      */
     public ITCollectionEntityQueryCriteriaApi() {
-        super(3);
+        super();
     }
 
-    @Override
-    protected CriteriaQuery<CollectionEntity> getEntitiesQuery() {
+    /**
+     * Tests that retrieving all the entities with a a value returns the
+     * expected number of entities.
+     */
+    @Test
+    public final void testFindAllWithValue() {
+        assertResultSizeEquals(getQuery(), 3);
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getQuery() {
         final Integer value; // Value to find
 
         // Queried value
         value = 2;
 
-        return CollectionEntityCriteriaFactory
-                .findAllWithValue(getEntityManager(), value);
+        return getQuery(CollectionEntityCriteriaFactory
+                .findAllWithValue(getEntityManager(), value));
     }
 
 }

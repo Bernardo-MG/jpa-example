@@ -26,10 +26,12 @@ package com.wandrell.example.jpa.test.integration.collection.collection;
 
 import javax.persistence.Query;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.collection.CollectionEntity;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQueryJpql;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code CollectionEntity} testing it loads values
@@ -38,7 +40,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQuery
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class ITCollectionEntityQueryJpql
-        extends AbstractITEntityQueryJpql<CollectionEntity> {
+        extends AbstractITEntityQuery<CollectionEntity> {
 
     /**
      * The query to acquire all the entities.
@@ -49,12 +51,26 @@ public final class ITCollectionEntityQueryJpql
     /**
      * Default constructor.
      */
+    @Autowired
     public ITCollectionEntityQueryJpql() {
-        super(3);
+        super();
     }
 
-    @Override
-    protected Query getQuery() {
+    /**
+     * Tests that retrieving all the entities with a a value returns the
+     * expected number of entities.
+     */
+    @Test
+    public final void testFindAllWithValue() {
+        assertResultSizeEquals(getQuery(), 3);
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getQuery() {
         final Integer value; // Value to find
         final Query query;
 

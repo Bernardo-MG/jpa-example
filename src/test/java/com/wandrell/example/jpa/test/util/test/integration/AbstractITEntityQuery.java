@@ -24,12 +24,10 @@
 
 package com.wandrell.example.jpa.test.util.test.integration;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
 
 import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.simple.SimpleEntity;
 
@@ -44,39 +42,51 @@ import com.wandrell.example.jpa.model.simple.SimpleEntity;
  */
 public abstract class AbstractITEntityQuery<V> extends AbstractIntegrationTest {
 
-    private final Integer expectedEntitiesCount;
-
     /**
      * Default constructor.
-     * 
-     * @param entitiesCount
-     *            number of entities returned by the query
      */
-    public AbstractITEntityQuery(final Integer entitiesCount) {
+    public AbstractITEntityQuery() {
         super();
-
-        expectedEntitiesCount = checkNotNull(entitiesCount,
-                "Received a null pointer as entities count");
     }
 
     /**
-     * Tests that retrieving all the entities with a specific values returns the
-     * correct number of them.
+     * Asserts that the result size from the query equals the expected count.
+     * 
+     * @param query
+     *            query used to acquire the results
+     * @param expectedCount
+     *            expected number of elements
      */
-    @Test
-    public final void testFindAllWithValue() {
+    protected final void assertResultSizeEquals(final Query query,
+            final Integer expectedCount) {
+        final Integer readCount;
+
+        readCount = query.getResultList().size();
+
         // Reads the expected number of entities
-        Assert.assertEquals(getEntitiesCount(), getExpectedEntitiesCount());
+        Assert.assertEquals(readCount, expectedCount);
     }
 
-    private final Integer getEntitiesCount() {
-        return getQuery().getResultList().size();
+    /**
+     * Creates a query from the received criteria query.
+     * 
+     * @param query
+     *            criteria query for the query
+     * @return a query
+     */
+    protected final Query getQuery(final CriteriaQuery<V> query) {
+        return getEntityManager().createQuery(query);
     }
 
-    private final Integer getExpectedEntitiesCount() {
-        return expectedEntitiesCount;
+    /**
+     * Creates a query from the received query string.
+     * 
+     * @param query
+     *            query string for the query
+     * @return a query
+     */
+    protected final Query getQuery(final String query) {
+        return getEntityManager().createQuery(query);
     }
-
-    protected abstract Query getQuery();
 
 }
