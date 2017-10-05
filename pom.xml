@@ -20,7 +20,7 @@
 
    <groupId>com.wandrell.example</groupId>
    <artifactId>jpa-example</artifactId>
-   <version>1.1.0-SNAPSHOT</version>
+   <version>1.2.0-SNAPSHOT</version>
    <packaging>jar</packaging>
 
    <name>JPA Example</name>
@@ -158,6 +158,9 @@
             </pluginManagement>
          </build>
       </profile>
+      <!-- ============================================== -->
+      <!-- ============= DATABASE PROFILES ============== -->
+      <!-- ============================================== -->
       <profile>
          <!-- H2 database profile -->
          <!-- Prepares the project to make use of an H2 in-memory database -->
@@ -243,6 +246,30 @@
             </dependency>
          </dependencies>
       </profile>
+      <profile>
+         <!-- SQLite database profile -->
+         <!-- Prepares the project to make use of a SQLite database -->
+         <id>sqlite</id>
+         <properties>
+            <!-- Access data -->
+            <database.url>jdbc:sqlite:target/sqlite_test_jpa_eclipselink_modify.db</database.url>
+            <database.username>sa</database.username>
+            <database.password></database.password>
+            <!-- Spring context -->
+            <spring.profile.database>sqlite</spring.profile.database>
+         </properties>
+         <dependencies>
+            <dependency>
+               <!-- SQLite connector -->
+               <groupId>org.xerial</groupId>
+               <artifactId>sqlite-jdbc</artifactId>
+               <version>${sqlite.version}</version>
+            </dependency>
+         </dependencies>
+      </profile>
+      <!-- ============================================== -->
+      <!-- ============ JPA PROVIDER PROFILES =========== -->
+      <!-- ============================================== -->
       <profile>
          <!-- Hibernate JPA provider profile -->
          <!-- Prepares the project to connect to the DB through Hibernate -->
@@ -382,6 +409,7 @@
       <log4j.version>2.9.1</log4j.version>
       <mysql.version>6.0.6</mysql.version>
       <postgresql.version>42.1.4</postgresql.version>
+      <sqlite.version>3.20.0</sqlite.version>
       <slf4j.version>1.7.25</slf4j.version>
       <spring.version>4.3.11.RELEASE</spring.version>
       <testng.version>6.11</testng.version>

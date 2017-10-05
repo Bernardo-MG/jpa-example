@@ -6,12 +6,15 @@
 		<author email="programming@wandrell.com">Bernardo Martínez Garrido</author>
 	</properties>
 	<body>
-      <release version="1.1.0" date="2017-10-02" description="Fixed tests">
+      <release version="1.2.0" date="2017-10-02" description="Fixed tests">
          <action dev="bmg" type="fix">
             Enabled tests which weren't working.
          </action>
          <action dev="bmg" type="update">
             Updated to JEE8.
+         </action>
+         <action dev="bmg" type="add">
+            Added SQLite test environment.
          </action>
          <action dev="bmg" type="update">
             Javadocs are now linking to external Javadoc APIs.

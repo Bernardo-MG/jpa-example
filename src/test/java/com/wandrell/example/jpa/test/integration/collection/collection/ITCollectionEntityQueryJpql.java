@@ -26,7 +26,6 @@ package com.wandrell.example.jpa.test.integration.collection.collection;
 
 import javax.persistence.Query;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.testng.annotations.Test;
 
@@ -51,7 +50,6 @@ public final class ITCollectionEntityQueryJpql
     /**
      * Default constructor.
      */
-    @Autowired
     public ITCollectionEntityQueryJpql() {
         super();
     }

@@ -16,12 +16,13 @@ Only the in-memory databases, such as H2, do not require additional configuratio
 
 ### Database profiles
 
-| Profile  | Database                  |
-|----------|---------------------------|
-| h2       | H2 in-memory database     |
-| hsqldb   | HSQLDB in-memory database |
-| mysql    | MySQL database            |
-| postgres | PostgreSQL database       |
+| Profile  | Database   | Kind      |
+|----------|------------|-----------|
+| h2       | H2         | In-memory |
+| hsqldb   | HSQLDB     | In-memory |
+| mysql    | MySQL      | Service   |
+| postgres | PostgreSQL | Service   |
+| sqlite   | SQLite     | Embedded  |
 
 ### JPA provider profiles
 
@@ -29,6 +30,16 @@ Only the in-memory databases, such as H2, do not require additional configuratio
 |-------------|-------------|
 | hibernate   | Hibernate   |
 | eclipselink | Eclipselink |
+
+## Differences between databases
+
+There are three kinds of databases used by the profiles:
+
+* Service databases, which require a service running
+* Embedded databases, which require a file storing the DB
+* In-memory databases, which are loaded into volatile memory
+
+The project comes prepared to use any of the databases for testing, and they are used, with help of Jenkins, on the CI tests.
 
 ## JDK
 
