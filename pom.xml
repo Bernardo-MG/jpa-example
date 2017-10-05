@@ -318,6 +318,9 @@
             </dependency>
          </dependencies>
       </profile>
+      <!-- ============================================== -->
+      <!-- ============= DEPLOYMENT PROFILES ============ -->
+      <!-- ============================================== -->
       <profile>
          <!-- Release site deployment profile -->
          <!-- Sets the site repository to point to the releases repo -->
@@ -439,7 +442,7 @@
       <!-- ============== JPA DEPENDENCIES ============== -->
       <!-- ============================================== -->
       <dependency>
-         <!-- JEE API -->
+         <!-- JPA API -->
          <groupId>javax.persistence</groupId>
          <artifactId>javax.persistence-api</artifactId>
          <version>${javaee.api.version}</version>
