@@ -252,7 +252,7 @@
          <id>sqlite</id>
          <properties>
             <!-- Access data -->
-            <database.url>jdbc:sqlite:target/sqlite_test_jpa_eclipselink_modify.db</database.url>
+            <database.url>jdbc:sqlite:target/jpa_test.db</database.url>
             <database.username>sa</database.username>
             <database.password></database.password>
             <!-- Spring context -->
