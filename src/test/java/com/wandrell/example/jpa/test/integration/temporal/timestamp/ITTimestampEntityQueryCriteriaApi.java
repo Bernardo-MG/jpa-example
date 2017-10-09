@@ -34,6 +34,7 @@ import java.util.Locale;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.wandrell.example.jpa.test.util.criteria.temporal.TimestampEntityCriteriaFactory;
@@ -45,6 +46,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@Disabled
 public final class ITTimestampEntityQueryCriteriaApi
         extends AbstractIntegrationTest {
 

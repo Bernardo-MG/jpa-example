@@ -35,6 +35,7 @@ import javax.persistence.Query;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -46,6 +47,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@Disabled
 public final class ITDateEntityQueryJpql extends AbstractIntegrationTest {
 
     /**
