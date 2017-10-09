@@ -26,9 +26,9 @@ package com.wandrell.example.jpa.test.integration.table;
 
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.table.SecondaryTableEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
@@ -72,7 +72,7 @@ public final class ITSecondaryTableEntityQueryJpql
         entity = (SecondaryTableEntity) query.getSingleResult();
 
         // The id is correct
-        Assert.assertEquals(entity.getId(), new Integer(2));
+        Assertions.assertEquals(new Integer(2), entity.getId());
     }
 
 }

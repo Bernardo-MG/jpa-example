@@ -34,10 +34,11 @@ import java.util.Locale;
 
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
-import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
 
@@ -47,6 +48,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@Disabled
 public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
 
     /**
@@ -136,7 +138,7 @@ public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
      * @throws ParseException
      *             if the timestamp string can't be parsed
      */
-    @BeforeClass
+    @BeforeEach
     public final void setUpDate() throws ParseException {
         final DateFormat format; // Format for parsing the timestamp string
 
@@ -162,8 +164,8 @@ public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
         query = getEntityManager().createQuery(findAfterTimestampCalendar);
         query.setParameter("timestamp", calendar);
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(3));
+        Assertions.assertEquals(new Integer(3),
+                (Integer) query.getResultList().size());
     }
 
     /**
@@ -178,8 +180,8 @@ public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
         query = getEntityManager().createQuery(findAfterTimestampJava);
         query.setParameter("timestamp", date);
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(3));
+        Assertions.assertEquals(new Integer(3),
+                (Integer) query.getResultList().size());
     }
 
     /**
@@ -194,8 +196,8 @@ public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
         query = getEntityManager().createQuery(findAfterTimestampSql);
         query.setParameter("timestamp", timestamp);
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(3));
+        Assertions.assertEquals(new Integer(3),
+                (Integer) query.getResultList().size());
     }
 
     /**
@@ -210,8 +212,8 @@ public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
         query = getEntityManager().createQuery(findBeforeTimestampCalendar);
         query.setParameter("timestamp", calendar);
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(2));
+        Assertions.assertEquals(new Integer(2),
+                (Integer) query.getResultList().size());
     }
 
     /**
@@ -226,8 +228,8 @@ public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
         query = getEntityManager().createQuery(findBeforeTimestampJava);
         query.setParameter("timestamp", date);
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(2));
+        Assertions.assertEquals(new Integer(2),
+                (Integer) query.getResultList().size());
     }
 
     /**
@@ -242,8 +244,8 @@ public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
         query = getEntityManager().createQuery(findBeforeTimestampSql);
         query.setParameter("timestamp", timestamp);
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(2));
+        Assertions.assertEquals(new Integer(2),
+                (Integer) query.getResultList().size());
     }
 
     /**
@@ -258,8 +260,8 @@ public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
         query = getEntityManager().createQuery(findInTimestampCalendar);
         query.setParameter("timestamp", calendar);
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(1));
+        Assertions.assertEquals(new Integer(1),
+                (Integer) query.getResultList().size());
     }
 
     /**
@@ -274,8 +276,8 @@ public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
         query = getEntityManager().createQuery(findInTimestampJava);
         query.setParameter("timestamp", date);
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(1));
+        Assertions.assertEquals(new Integer(1),
+                (Integer) query.getResultList().size());
     }
 
     /**
@@ -290,8 +292,8 @@ public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
         query = getEntityManager().createQuery(findInTimestampSql);
         query.setParameter("timestamp", timestamp);
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(1));
+        Assertions.assertEquals(new Integer(1),
+                (Integer) query.getResultList().size());
     }
 
 }

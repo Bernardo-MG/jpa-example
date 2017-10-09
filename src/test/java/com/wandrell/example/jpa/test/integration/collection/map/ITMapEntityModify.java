@@ -27,7 +27,7 @@ package com.wandrell.example.jpa.test.integration.collection.map;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.testng.Assert;
+import org.junit.jupiter.api.Assertions;
 
 import com.wandrell.example.jpa.model.collection.MapEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
@@ -59,8 +59,8 @@ public final class ITMapEntityModify extends AbstractITEntityModify<MapEntity> {
         values.put("value_11", 11);
         values.put("value_55", 55);
 
-        Assert.assertEquals(entity.getName(), name);
-        Assert.assertEquals(entity.getValues(), values);
+        Assertions.assertEquals(name, entity.getName());
+        Assertions.assertEquals(values, entity.getValues());
     }
 
     @Override

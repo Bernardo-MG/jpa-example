@@ -27,9 +27,9 @@ package com.wandrell.example.jpa.test.integration.simple;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
+import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Value;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.simple.SimpleEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
@@ -64,6 +64,7 @@ public final class ITSimpleEntityQueryJpql extends AbstractIntegrationTest {
      */
     public ITSimpleEntityQueryJpql() {
         super();
+        // TODO: Use the new JUnit 5 annotations
     }
 
     /**
@@ -71,8 +72,8 @@ public final class ITSimpleEntityQueryJpql extends AbstractIntegrationTest {
      */
     @Test
     public final void testFindAll() {
-        Assert.assertEquals((Integer) getEntityManager().createQuery(findAll)
-                .getResultList().size(), entitiesCount);
+        Assertions.assertEquals(entitiesCount, (Integer) getEntityManager()
+                .createQuery(findAll).getResultList().size());
     }
 
     /**
@@ -95,13 +96,13 @@ public final class ITSimpleEntityQueryJpql extends AbstractIntegrationTest {
         entity = (SimpleEntity) query.getSingleResult();
 
         // The id is correct
-        Assert.assertEquals(entity.getId(), id);
+        Assertions.assertEquals(id, entity.getId());
     }
 
     /**
      * Tests that retrieving a not existing entity throws an exception.
      */
-    @Test(expectedExceptions = { NoResultException.class })
+    @Test(expected = NoResultException.class)
     public final void testFindById_NotExisting_Null() {
         final Integer id;          // Invalid entity ID
         final SimpleEntity entity; // Tested entity
@@ -118,7 +119,7 @@ public final class ITSimpleEntityQueryJpql extends AbstractIntegrationTest {
         entity = (SimpleEntity) query.getSingleResult();
 
         // The entity is null
-        Assert.assertEquals(entity, null);
+        Assertions.assertNull(entity);
     }
 
 }

@@ -24,8 +24,8 @@
 
 package com.wandrell.example.jpa.test.integration.embedded.collection;
 
-import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 
 import com.wandrell.example.jpa.model.embedded.ElementCollectionEntity;
 import com.wandrell.example.jpa.model.embedded.EmbeddableData;
@@ -52,7 +52,7 @@ public final class ITElementCollectionEntityModify
         super(ElementCollectionEntity::new, 5);
     }
 
-    @BeforeTest
+    @BeforeEach
     public final void initializeValue() {
         data.setName("name");
         data.setDescription("desc");
@@ -61,8 +61,8 @@ public final class ITElementCollectionEntityModify
     @Override
     protected final void
             assertEntityModified(final ElementCollectionEntity entity) {
-        Assert.assertEquals(entity.getValues().iterator().next().getName(),
-                "name");
+        Assertions.assertEquals("name",
+                entity.getValues().iterator().next().getName());
     }
 
     @Override

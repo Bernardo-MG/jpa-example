@@ -24,7 +24,7 @@
 
 package com.wandrell.example.jpa.test.integration.table;
 
-import org.testng.Assert;
+import org.junit.jupiter.api.Assertions;
 
 import com.wandrell.example.jpa.model.table.SecondaryTableEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
@@ -58,8 +58,8 @@ public final class ITSecondaryTableEntityModify
     @Override
     protected final void
             assertEntityModified(final SecondaryTableEntity entity) {
-        Assert.assertEquals(entity.getField1(), field1);
-        Assert.assertEquals(entity.getField2(), field2);
+        Assertions.assertEquals(field1, entity.getField1());
+        Assertions.assertEquals(field2, entity.getField2());
     }
 
     @Override

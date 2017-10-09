@@ -32,7 +32,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import org.testng.Assert;
+import org.junit.jupiter.api.Assertions;
 
 import com.wandrell.example.jpa.model.temporal.TimestampEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
@@ -70,10 +70,10 @@ public final class ITTimestampEntityModify
             calendar = Calendar.getInstance();
             calendar.setTime(date);
 
-            Assert.assertEquals(entity.getDate(), date);
-            Assert.assertEquals(entity.getCalendar(), calendar);
-            Assert.assertEquals(entity.getSqlTimestamp(),
-                    new Timestamp(date.getTime()));
+            Assertions.assertEquals(date, entity.getDate());
+            Assertions.assertEquals(calendar, entity.getCalendar());
+            Assertions.assertEquals(new Timestamp(date.getTime()),
+                    entity.getSqlTimestamp());
         } catch (final ParseException e) {
             throw new RuntimeException(e);
         }

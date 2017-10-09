@@ -24,7 +24,7 @@
 
 package com.wandrell.example.jpa.test.integration.enumeration;
 
-import org.testng.Assert;
+import org.junit.jupiter.api.Assertions;
 
 import com.wandrell.example.jpa.model.enumeration.EnumerationEntity;
 import com.wandrell.example.jpa.model.enumeration.NumbersEnum;
@@ -52,8 +52,8 @@ public final class ITEnumerationEntityModify
 
     @Override
     protected final void assertEntityModified(final EnumerationEntity entity) {
-        Assert.assertEquals(entity.getEnumOrdinal(), enumeration);
-        Assert.assertEquals(entity.getEnumString(), enumeration);
+        Assertions.assertEquals(enumeration, entity.getEnumOrdinal());
+        Assertions.assertEquals(enumeration, entity.getEnumString());
     }
 
     @Override

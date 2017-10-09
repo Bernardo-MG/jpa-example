@@ -26,8 +26,8 @@ package com.wandrell.example.jpa.test.integration.inheritance.segregated;
 
 import javax.persistence.Query;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.wandrell.example.jpa.test.util.criteria.inheritance.segregated.PerClassTableInheritanceValueEntityCriteriaFactory;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
@@ -62,7 +62,7 @@ public final class ITPerClassTableInheritanceValueEntityQueryCriteriaApi
                         .findAllWithValue(getEntityManager(), 11));
 
         // Reads the expected number of entities
-        Assert.assertEquals(query.getResultList().size(), 1);
+        Assertions.assertEquals(1, query.getResultList().size());
     }
 
 }

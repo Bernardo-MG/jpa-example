@@ -26,7 +26,7 @@ package com.wandrell.example.jpa.test.integration.key.classid;
 
 import javax.persistence.criteria.CriteriaQuery;
 
-import org.testng.Assert;
+import org.junit.jupiter.api.Assertions;
 
 import com.wandrell.example.jpa.model.key.classid.CompositeKey;
 import com.wandrell.example.jpa.model.key.classid.CompositeKeyIdClassEntity;
@@ -68,7 +68,7 @@ public final class ITCompositeKeyIdClassEntityModify
     @Override
     protected final void
             assertEntityModified(final CompositeKeyIdClassEntity entity) {
-        Assert.assertEquals(entity.getName(), name);
+        Assertions.assertEquals(name, entity.getName());
     }
 
     @Override

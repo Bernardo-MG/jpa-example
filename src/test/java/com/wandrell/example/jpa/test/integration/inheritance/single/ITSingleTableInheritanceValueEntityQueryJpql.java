@@ -26,9 +26,9 @@ package com.wandrell.example.jpa.test.integration.inheritance.single;
 
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
 
@@ -67,7 +67,7 @@ public final class ITSingleTableInheritanceValueEntityQueryJpql
         query.setParameter("value", 11);
 
         // Reads the expected number of entities
-        Assert.assertEquals(query.getResultList().size(), 1);
+        Assertions.assertEquals(1, query.getResultList().size());
     }
 
 }

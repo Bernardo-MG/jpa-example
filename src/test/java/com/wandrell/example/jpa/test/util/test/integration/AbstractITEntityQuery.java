@@ -27,7 +27,7 @@ package com.wandrell.example.jpa.test.util.test.integration;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 
-import org.testng.Assert;
+import org.junit.jupiter.api.Assertions;
 
 import com.wandrell.example.jpa.model.simple.SimpleEntity;
 
@@ -52,19 +52,19 @@ public abstract class AbstractITEntityQuery<V> extends AbstractIntegrationTest {
     /**
      * Asserts that the result size from the query equals the expected count.
      * 
-     * @param query
-     *            query used to acquire the results
      * @param expectedCount
      *            expected number of elements
+     * @param query
+     *            query used to acquire the results
      */
-    protected final void assertResultSizeEquals(final Query query,
-            final Integer expectedCount) {
+    protected final void assertResultSizeEquals(final Integer expectedCount,
+            final Query query) {
         final Integer readCount;
 
         readCount = query.getResultList().size();
 
         // Reads the expected number of entities
-        Assert.assertEquals(readCount, expectedCount);
+        Assertions.assertEquals(expectedCount, readCount);
     }
 
     /**

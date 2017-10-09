@@ -26,9 +26,9 @@ package com.wandrell.example.jpa.test.integration.collection.map;
 
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
 
@@ -74,7 +74,7 @@ public final class ITMapEntityQueryJpql extends AbstractIntegrationTest {
         query.setParameter("value", value);
 
         // Reads the expected number of entities
-        Assert.assertEquals((Integer) query.getResultList().size(), count);
+        Assertions.assertEquals(count, (Integer) query.getResultList().size());
     }
 
 }

@@ -26,8 +26,8 @@ package com.wandrell.example.jpa.test.integration.table;
 
 import javax.persistence.Query;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.wandrell.example.jpa.model.table.SecondaryTableEntity;
 import com.wandrell.example.jpa.test.util.criteria.table.SecondaryTableEntityCriteriaFactory;
@@ -67,7 +67,7 @@ public final class ITSecondaryTableEntityQueryCriteriaApi
         entity = (SecondaryTableEntity) query.getSingleResult();
 
         // The id is correct
-        Assert.assertEquals(entity.getId(), new Integer(2));
+        Assertions.assertEquals(new Integer(2), entity.getId());
     }
 
 }

@@ -26,8 +26,8 @@ package com.wandrell.example.jpa.test.integration.converter;
 
 import javax.persistence.Query;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.wandrell.example.jpa.test.util.criteria.converter.BooleanConverterEntityCriteriaFactory;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
@@ -62,7 +62,7 @@ public final class ITBooleanConverterEntityQueryCriteriaApi
                         .findAllByFlag(getEntityManager(), false));
 
         // Reads the expected number of entities
-        Assert.assertEquals(query.getResultList().size(), 2);
+        Assertions.assertEquals(2, query.getResultList().size());
     }
 
     /**
@@ -79,7 +79,7 @@ public final class ITBooleanConverterEntityQueryCriteriaApi
                         .findAllByFlag(getEntityManager(), true));
 
         // The number of results is the expected one
-        Assert.assertEquals(query.getResultList().size(), 3);
+        Assertions.assertEquals(3, query.getResultList().size());
     }
 
 }

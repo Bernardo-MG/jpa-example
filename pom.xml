@@ -408,14 +408,15 @@
       <hikari.version>2.7.2</hikari.version>
       <hsqldb.version>2.4.0</hsqldb.version>
       <javaee.api.version>2.2</javaee.api.version>
+      <junit.jupiter.version>5.0.1</junit.jupiter.version>
+      <junit.platform.version>1.0.1</junit.platform.version>
       <liquibase.version>3.5.3</liquibase.version>
       <log4j.version>2.9.1</log4j.version>
       <mysql.version>6.0.6</mysql.version>
       <postgresql.version>42.1.4</postgresql.version>
       <sqlite.version>3.20.0</sqlite.version>
       <slf4j.version>1.7.25</slf4j.version>
-      <spring.version>4.3.11.RELEASE</spring.version>
-      <testng.version>6.11</testng.version>
+      <spring.version>5.0.0.RELEASE</spring.version>
       <!-- ============================================== -->
       <!-- ============== PLUGINS VERSIONS ============== -->
       <!-- ============================================== -->
@@ -462,6 +463,21 @@
          <groupId>org.liquibase</groupId>
          <artifactId>liquibase-core</artifactId>
          <version>${liquibase.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- JUnit Jupiter Engine -->
+         <groupId>org.junit.jupiter</groupId>
+         <artifactId>junit-jupiter-engine</artifactId>
+         <version>${junit.jupiter.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- JUnit Jupiter Platform -->
+         <groupId>org.junit.platform</groupId>
+         <artifactId>junit-platform-runner</artifactId>
+         <version>${junit.platform.version}</version>
+         <scope>test</scope>
       </dependency>
       <dependency>
          <!-- Log4j core -->
@@ -531,13 +547,6 @@
          <groupId>org.springframework</groupId>
          <artifactId>spring-tx</artifactId>
          <version>${spring.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- TestNG -->
-         <groupId>org.testng</groupId>
-         <artifactId>testng</artifactId>
-         <version>${testng.version}</version>
          <scope>test</scope>
       </dependency>
    </dependencies>

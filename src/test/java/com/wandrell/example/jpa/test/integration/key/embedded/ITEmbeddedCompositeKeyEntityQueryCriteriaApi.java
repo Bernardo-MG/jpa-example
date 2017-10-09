@@ -26,8 +26,8 @@ package com.wandrell.example.jpa.test.integration.key.embedded;
 
 import javax.persistence.Query;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.wandrell.example.jpa.model.key.embedded.EmbeddedCompositeKeyEntity;
 import com.wandrell.example.jpa.test.util.criteria.key.embedded.EmbeddedCompositeKeyEntityCriteriaFactory;
@@ -75,8 +75,8 @@ public final class ITEmbeddedCompositeKeyEntityQueryCriteriaApi
         entity = (EmbeddedCompositeKeyEntity) query.getSingleResult();
 
         // The ids are correct
-        Assert.assertEquals(entity.getKey().getId(), new Integer(1));
-        Assert.assertEquals(entity.getKey().getSupportId(), new Long(2));
+        Assertions.assertEquals(new Integer(1), entity.getKey().getId());
+        Assertions.assertEquals(new Long(2), entity.getKey().getSupportId());
     }
 
 }
