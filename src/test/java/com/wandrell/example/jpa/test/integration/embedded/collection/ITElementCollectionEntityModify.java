@@ -25,7 +25,7 @@
 package com.wandrell.example.jpa.test.integration.embedded.collection;
 
 import org.junit.Assert;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
 import com.wandrell.example.jpa.model.embedded.ElementCollectionEntity;
 import com.wandrell.example.jpa.model.embedded.EmbeddableData;
@@ -52,7 +52,7 @@ public final class ITElementCollectionEntityModify
         super(ElementCollectionEntity::new, 5);
     }
 
-    @BeforeAll
+    @BeforeEach
     public final void initializeValue() {
         data.setName("name");
         data.setDescription("desc");
