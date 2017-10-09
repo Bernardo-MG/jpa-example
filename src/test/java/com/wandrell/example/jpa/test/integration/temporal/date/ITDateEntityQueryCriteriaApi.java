@@ -31,8 +31,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import org.junit.Assert;
 import org.junit.Before;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -102,10 +102,11 @@ public final class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetAfterDate_Calendar() {
-        Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(DateEntityCriteriaFactory
-                        .findAfterDate(getEntityManager(), calendar))
-                .getResultList().size(), new Integer(3));
+        Assertions.assertEquals(new Integer(3),
+                (Integer) getEntityManager()
+                        .createQuery(DateEntityCriteriaFactory
+                                .findAfterDate(getEntityManager(), calendar))
+                        .getResultList().size());
     }
 
     /**
@@ -114,10 +115,11 @@ public final class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetAfterDate_Java() {
-        Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(DateEntityCriteriaFactory
-                        .findAfterDate(getEntityManager(), date))
-                .getResultList().size(), new Integer(3));
+        Assertions.assertEquals(new Integer(3),
+                (Integer) getEntityManager()
+                        .createQuery(DateEntityCriteriaFactory
+                                .findAfterDate(getEntityManager(), date))
+                        .getResultList().size());
     }
 
     /**
@@ -126,10 +128,11 @@ public final class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetAfterDate_Sql() {
-        Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(DateEntityCriteriaFactory
-                        .findAfterSqlDate(getEntityManager(), sqlDate))
-                .getResultList().size(), new Integer(3));
+        Assertions.assertEquals(new Integer(3),
+                (Integer) getEntityManager()
+                        .createQuery(DateEntityCriteriaFactory
+                                .findAfterSqlDate(getEntityManager(), sqlDate))
+                        .getResultList().size());
     }
 
     /**
@@ -138,10 +141,11 @@ public final class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetBeforeDate_Calendar() {
-        Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(DateEntityCriteriaFactory
-                        .findBeforeDate(getEntityManager(), calendar))
-                .getResultList().size(), new Integer(2));
+        Assertions.assertEquals(new Integer(2),
+                (Integer) getEntityManager()
+                        .createQuery(DateEntityCriteriaFactory
+                                .findBeforeDate(getEntityManager(), calendar))
+                        .getResultList().size());
     }
 
     /**
@@ -150,10 +154,11 @@ public final class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetBeforeDate_Java() {
-        Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(DateEntityCriteriaFactory
-                        .findBeforeDate(getEntityManager(), date))
-                .getResultList().size(), new Integer(2));
+        Assertions.assertEquals(new Integer(2),
+                (Integer) getEntityManager()
+                        .createQuery(DateEntityCriteriaFactory
+                                .findBeforeDate(getEntityManager(), date))
+                        .getResultList().size());
     }
 
     /**
@@ -162,10 +167,11 @@ public final class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetBeforeDate_Sql() {
-        Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(DateEntityCriteriaFactory
-                        .findBeforeSqlDate(getEntityManager(), sqlDate))
-                .getResultList().size(), new Integer(2));
+        Assertions.assertEquals(new Integer(2),
+                (Integer) getEntityManager()
+                        .createQuery(DateEntityCriteriaFactory
+                                .findBeforeSqlDate(getEntityManager(), sqlDate))
+                        .getResultList().size());
     }
 
     /**
@@ -174,10 +180,11 @@ public final class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetInDate_Calendar() {
-        Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(DateEntityCriteriaFactory
-                        .findInDate(getEntityManager(), calendar))
-                .getResultList().size(), new Integer(1));
+        Assertions.assertEquals(new Integer(1),
+                (Integer) getEntityManager()
+                        .createQuery(DateEntityCriteriaFactory
+                                .findInDate(getEntityManager(), calendar))
+                        .getResultList().size());
     }
 
     /**
@@ -186,10 +193,11 @@ public final class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetInDate_Java() {
-        Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(DateEntityCriteriaFactory
-                        .findInDate(getEntityManager(), date))
-                .getResultList().size(), new Integer(1));
+        Assertions.assertEquals(new Integer(1),
+                (Integer) getEntityManager()
+                        .createQuery(DateEntityCriteriaFactory
+                                .findInDate(getEntityManager(), date))
+                        .getResultList().size());
     }
 
     /**
@@ -198,10 +206,11 @@ public final class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetInDate_Sql() {
-        Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(DateEntityCriteriaFactory
-                        .findInSqlDate(getEntityManager(), sqlDate))
-                .getResultList().size(), new Integer(1));
+        Assertions.assertEquals(new Integer(1),
+                (Integer) getEntityManager()
+                        .createQuery(DateEntityCriteriaFactory
+                                .findInSqlDate(getEntityManager(), sqlDate))
+                        .getResultList().size());
     }
 
 }

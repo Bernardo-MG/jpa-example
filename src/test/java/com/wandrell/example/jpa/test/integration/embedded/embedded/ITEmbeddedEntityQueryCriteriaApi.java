@@ -26,7 +26,7 @@ package com.wandrell.example.jpa.test.integration.embedded.embedded;
 
 import javax.persistence.Query;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import com.wandrell.example.jpa.test.util.criteria.embedded.EmbeddedEntityCriteriaFactory;
@@ -69,7 +69,7 @@ public final class ITEmbeddedEntityQueryCriteriaApi
                 .findByName(getEntityManager(), name));
 
         // Reads the expected number of entities
-        Assert.assertEquals((Integer) query.getResultList().size(), count);
+        Assertions.assertEquals(count, (Integer) query.getResultList().size());
     }
 
 }

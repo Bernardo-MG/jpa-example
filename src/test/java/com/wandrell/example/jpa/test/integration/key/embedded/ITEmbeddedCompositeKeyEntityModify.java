@@ -26,7 +26,7 @@ package com.wandrell.example.jpa.test.integration.key.embedded;
 
 import javax.persistence.criteria.CriteriaQuery;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 
 import com.wandrell.example.jpa.model.key.embedded.EmbeddableCompositeKey;
 import com.wandrell.example.jpa.model.key.embedded.EmbeddedCompositeKeyEntity;
@@ -72,7 +72,7 @@ public final class ITEmbeddedCompositeKeyEntityModify
     @Override
     protected final void
             assertEntityModified(final EmbeddedCompositeKeyEntity entity) {
-        Assert.assertEquals(entity.getName(), name);
+        Assertions.assertEquals(name, entity.getName());
     }
 
     @Override

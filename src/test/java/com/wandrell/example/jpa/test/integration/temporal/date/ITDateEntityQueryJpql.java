@@ -33,8 +33,8 @@ import java.util.Locale;
 
 import javax.persistence.Query;
 
-import org.junit.Assert;
 import org.junit.Before;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
@@ -163,8 +163,8 @@ public final class ITDateEntityQueryJpql extends AbstractIntegrationTest {
         query = getEntityManager().createQuery(findAfterDateCalendar);
         query.setParameter("date", calendar);
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(3));
+        Assertions.assertEquals(new Integer(3),
+                (Integer) query.getResultList().size());
     }
 
     /**
@@ -179,8 +179,8 @@ public final class ITDateEntityQueryJpql extends AbstractIntegrationTest {
         query = getEntityManager().createQuery(findAfterDateJava);
         query.setParameter("date", date);
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(3));
+        Assertions.assertEquals(new Integer(3),
+                (Integer) query.getResultList().size());
     }
 
     /**
@@ -195,8 +195,8 @@ public final class ITDateEntityQueryJpql extends AbstractIntegrationTest {
         query = getEntityManager().createQuery(findAfterDateSql);
         query.setParameter("date", sqlDate);
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(3));
+        Assertions.assertEquals(new Integer(3),
+                (Integer) query.getResultList().size());
     }
 
     /**
@@ -211,8 +211,8 @@ public final class ITDateEntityQueryJpql extends AbstractIntegrationTest {
         query = getEntityManager().createQuery(findBeforeDateCalendar);
         query.setParameter("date", calendar);
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(2));
+        Assertions.assertEquals(new Integer(2),
+                (Integer) query.getResultList().size());
     }
 
     /**
@@ -227,8 +227,8 @@ public final class ITDateEntityQueryJpql extends AbstractIntegrationTest {
         query = getEntityManager().createQuery(findBeforeDateJava);
         query.setParameter("date", date);
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(2));
+        Assertions.assertEquals(new Integer(2),
+                (Integer) query.getResultList().size());
     }
 
     /**
@@ -243,8 +243,8 @@ public final class ITDateEntityQueryJpql extends AbstractIntegrationTest {
         query = getEntityManager().createQuery(findBeforeDateSql);
         query.setParameter("date", sqlDate);
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(2));
+        Assertions.assertEquals(new Integer(2),
+                (Integer) query.getResultList().size());
     }
 
     /**
@@ -259,8 +259,8 @@ public final class ITDateEntityQueryJpql extends AbstractIntegrationTest {
         query = getEntityManager().createQuery(findInDateCalendar);
         query.setParameter("date", calendar);
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(1));
+        Assertions.assertEquals(new Integer(1),
+                (Integer) query.getResultList().size());
     }
 
     /**
@@ -275,8 +275,8 @@ public final class ITDateEntityQueryJpql extends AbstractIntegrationTest {
         query = getEntityManager().createQuery(findInDateJava);
         query.setParameter("date", date);
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(1));
+        Assertions.assertEquals(new Integer(1),
+                (Integer) query.getResultList().size());
     }
 
     /**
@@ -291,8 +291,8 @@ public final class ITDateEntityQueryJpql extends AbstractIntegrationTest {
         query = getEntityManager().createQuery(findInDateSql);
         query.setParameter("date", sqlDate);
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(1));
+        Assertions.assertEquals(new Integer(1),
+                (Integer) query.getResultList().size());
     }
 
 }

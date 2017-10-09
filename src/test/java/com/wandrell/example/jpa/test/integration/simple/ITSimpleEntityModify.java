@@ -24,7 +24,7 @@
 
 package com.wandrell.example.jpa.test.integration.simple;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 
 import com.wandrell.example.jpa.model.simple.DefaultSimpleEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
@@ -52,7 +52,7 @@ public final class ITSimpleEntityModify
     @Override
     protected final void
             assertEntityModified(final DefaultSimpleEntity entity) {
-        Assert.assertEquals(entity.getName(), name);
+        Assertions.assertEquals(name, entity.getName());
     }
 
     @Override

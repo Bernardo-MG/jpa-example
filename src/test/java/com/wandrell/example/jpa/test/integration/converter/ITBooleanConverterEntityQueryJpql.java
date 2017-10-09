@@ -26,7 +26,7 @@ package com.wandrell.example.jpa.test.integration.converter;
 
 import javax.persistence.Query;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -67,7 +67,7 @@ public final class ITBooleanConverterEntityQueryJpql
         query.setParameter("flag", false);
 
         // Reads the expected number of entities
-        Assert.assertEquals(query.getResultList().size(), 2);
+        Assertions.assertEquals(2, query.getResultList().size());
     }
 
     /**
@@ -83,7 +83,7 @@ public final class ITBooleanConverterEntityQueryJpql
         query.setParameter("flag", true);
 
         // Reads the expected number of entities
-        Assert.assertEquals(query.getResultList().size(), 3);
+        Assertions.assertEquals(3, query.getResultList().size());
     }
 
 }

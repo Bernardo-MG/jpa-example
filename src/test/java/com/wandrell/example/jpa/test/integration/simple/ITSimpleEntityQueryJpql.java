@@ -27,8 +27,8 @@ package com.wandrell.example.jpa.test.integration.simple;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
-import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.wandrell.example.jpa.model.simple.SimpleEntity;
@@ -72,8 +72,8 @@ public final class ITSimpleEntityQueryJpql extends AbstractIntegrationTest {
      */
     @Test
     public final void testFindAll() {
-        Assert.assertEquals((Integer) getEntityManager().createQuery(findAll)
-                .getResultList().size(), entitiesCount);
+        Assertions.assertEquals(entitiesCount, (Integer) getEntityManager()
+                .createQuery(findAll).getResultList().size());
     }
 
     /**
@@ -96,7 +96,7 @@ public final class ITSimpleEntityQueryJpql extends AbstractIntegrationTest {
         entity = (SimpleEntity) query.getSingleResult();
 
         // The id is correct
-        Assert.assertEquals(entity.getId(), id);
+        Assertions.assertEquals(id, entity.getId());
     }
 
     /**
@@ -119,7 +119,7 @@ public final class ITSimpleEntityQueryJpql extends AbstractIntegrationTest {
         entity = (SimpleEntity) query.getSingleResult();
 
         // The entity is null
-        Assert.assertEquals(entity, null);
+        Assertions.assertNull(entity);
     }
 
 }

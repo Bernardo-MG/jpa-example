@@ -26,7 +26,7 @@ package com.wandrell.example.jpa.test.integration.inheritance.single;
 
 import javax.persistence.Query;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import com.wandrell.example.jpa.test.util.criteria.inheritance.single.SingleTableInheritanceValueEntityCriteriaFactory;
@@ -62,7 +62,7 @@ public final class ITSingleTableInheritanceValueEntityQueryCriteriaApi
                         .findAllWithValue(getEntityManager(), 11));
 
         // Reads the expected number of entities
-        Assert.assertEquals(query.getResultList().size(), 1);
+        Assertions.assertEquals(1, query.getResultList().size());
     }
 
 }

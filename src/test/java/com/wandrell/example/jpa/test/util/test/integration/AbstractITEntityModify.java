@@ -31,7 +31,7 @@ import java.util.function.Supplier;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -108,7 +108,7 @@ public abstract class AbstractITEntityModify<V>
         getEntityManager().flush();
 
         // Checks the entity has been added
-        Assert.assertEquals(getEntitiesCount(),
+        Assertions.assertEquals(getEntitiesCount(),
                 new Integer(getInitialEntitiesCount() + 1));
     }
 

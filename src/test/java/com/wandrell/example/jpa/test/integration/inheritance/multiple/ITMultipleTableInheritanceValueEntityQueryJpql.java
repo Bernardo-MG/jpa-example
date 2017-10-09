@@ -26,7 +26,7 @@ package com.wandrell.example.jpa.test.integration.inheritance.multiple;
 
 import javax.persistence.Query;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -67,7 +67,7 @@ public final class ITMultipleTableInheritanceValueEntityQueryJpql
         query.setParameter("value", 11);
 
         // Reads the expected number of entities
-        Assert.assertEquals(query.getResultList().size(), 1);
+        Assertions.assertEquals(1, query.getResultList().size());
     }
 
 }

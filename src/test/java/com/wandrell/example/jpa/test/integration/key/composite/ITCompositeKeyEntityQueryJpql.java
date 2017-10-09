@@ -26,7 +26,7 @@ package com.wandrell.example.jpa.test.integration.key.composite;
 
 import javax.persistence.Query;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -82,8 +82,8 @@ public final class ITCompositeKeyEntityQueryJpql
         entity = (CompositeKeyEntity) query.getSingleResult();
 
         // The ids are correct
-        Assert.assertEquals(entity.getId(), new Integer(1));
-        Assert.assertEquals(entity.getSupportId(), new Long(2));
+        Assertions.assertEquals(new Integer(1), entity.getId());
+        Assertions.assertEquals(new Long(2), entity.getSupportId());
     }
 
 }

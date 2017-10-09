@@ -26,7 +26,7 @@ package com.wandrell.example.jpa.test.integration.key.classid;
 
 import javax.persistence.Query;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import com.wandrell.example.jpa.model.key.classid.CompositeKeyIdClassEntity;
@@ -76,8 +76,8 @@ public final class ITCompositeKeyIdClassEntityQueryCriteriaApi
         entity = (CompositeKeyIdClassEntity) query.getSingleResult();
 
         // The ids are correct
-        Assert.assertEquals(entity.getId(), new Integer(1));
-        Assert.assertEquals(entity.getSupportId(), new Long(2));
+        Assertions.assertEquals(new Integer(1), entity.getId());
+        Assertions.assertEquals(new Long(2), entity.getSupportId());
     }
 
 }

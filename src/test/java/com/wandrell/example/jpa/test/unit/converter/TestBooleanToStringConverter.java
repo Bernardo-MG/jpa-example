@@ -24,7 +24,7 @@
 
 package com.wandrell.example.jpa.test.unit.converter;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
@@ -68,7 +68,7 @@ public final class TestBooleanToStringConverter {
 
         converter = new BooleanToStringConverter();
 
-        Assert.assertEquals(converter.convertToEntityAttribute("F"),
+        Assertions.assertEquals(converter.convertToEntityAttribute("F"),
                 Boolean.FALSE);
     }
 
@@ -81,7 +81,7 @@ public final class TestBooleanToStringConverter {
 
         converter = new BooleanToStringConverter();
 
-        Assert.assertEquals(converter.convertToEntityAttribute("ABCDE"),
+        Assertions.assertEquals(converter.convertToEntityAttribute("ABCDE"),
                 Boolean.FALSE);
     }
 
@@ -95,7 +95,7 @@ public final class TestBooleanToStringConverter {
 
         converter = new BooleanToStringConverter();
 
-        Assert.assertEquals(converter.convertToEntityAttribute("T"),
+        Assertions.assertEquals(converter.convertToEntityAttribute("T"),
                 Boolean.TRUE);
     }
 
@@ -109,7 +109,7 @@ public final class TestBooleanToStringConverter {
 
         converter = new BooleanToStringConverter();
 
-        Assert.assertEquals(converter.convertToDatabaseColumn(false), "F");
+        Assertions.assertEquals(converter.convertToDatabaseColumn(false), "F");
     }
 
     /**
@@ -122,7 +122,7 @@ public final class TestBooleanToStringConverter {
 
         converter = new BooleanToStringConverter();
 
-        Assert.assertEquals(converter.convertToDatabaseColumn(true), "T");
+        Assertions.assertEquals(converter.convertToDatabaseColumn(true), "T");
     }
 
 }

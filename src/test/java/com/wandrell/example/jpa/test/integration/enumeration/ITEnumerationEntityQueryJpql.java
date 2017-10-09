@@ -26,7 +26,7 @@ package com.wandrell.example.jpa.test.integration.enumeration;
 
 import javax.persistence.Query;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -74,7 +74,7 @@ public final class ITEnumerationEntityQueryJpql
         query.setParameter("enum", NumbersEnum.TWO);
 
         // Reads the expected number of entities
-        Assert.assertEquals(query.getResultList().size(), 2);
+        Assertions.assertEquals(2, query.getResultList().size());
     }
 
     /**
@@ -90,7 +90,7 @@ public final class ITEnumerationEntityQueryJpql
         query.setParameter("enum", NumbersEnum.TWO);
 
         // Reads the expected number of entities
-        Assert.assertEquals(query.getResultList().size(), 2);
+        Assertions.assertEquals(2, query.getResultList().size());
     }
 
 }

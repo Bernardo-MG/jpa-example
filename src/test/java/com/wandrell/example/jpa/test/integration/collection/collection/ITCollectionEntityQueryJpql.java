@@ -60,7 +60,7 @@ public final class ITCollectionEntityQueryJpql
      */
     @Test
     public final void testFindAllWithValue() {
-        assertResultSizeEquals(getQuery(), 3);
+        assertResultSizeEquals(3, getQuery());
     }
 
     /**

@@ -31,7 +31,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 
 import com.wandrell.example.jpa.model.temporal.DateEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
@@ -69,10 +69,10 @@ public final class ITDateEntityModify
             calendar = Calendar.getInstance();
             calendar.setTime(date);
 
-            Assert.assertEquals(entity.getDate(), date);
-            Assert.assertEquals(entity.getCalendar(), calendar);
-            Assert.assertEquals(entity.getSqlDate(),
-                    new java.sql.Date(date.getTime()));
+            Assertions.assertEquals(date, entity.getDate());
+            Assertions.assertEquals(calendar, entity.getCalendar());
+            Assertions.assertEquals(new java.sql.Date(date.getTime()),
+                    entity.getSqlDate());
         } catch (final ParseException e) {
             throw new RuntimeException(e);
         }

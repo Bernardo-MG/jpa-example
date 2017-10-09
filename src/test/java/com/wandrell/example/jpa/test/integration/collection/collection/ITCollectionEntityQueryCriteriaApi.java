@@ -54,7 +54,7 @@ public final class ITCollectionEntityQueryCriteriaApi
      */
     @Test
     public final void testFindAllWithValue() {
-        assertResultSizeEquals(getQuery(), 3);
+        assertResultSizeEquals(3, getQuery());
     }
 
     /**

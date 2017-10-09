@@ -24,7 +24,7 @@
 
 package com.wandrell.example.jpa.test.integration.embedded.collection;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 
 import com.wandrell.example.jpa.model.embedded.ElementCollectionEntity;
@@ -61,8 +61,8 @@ public final class ITElementCollectionEntityModify
     @Override
     protected final void
             assertEntityModified(final ElementCollectionEntity entity) {
-        Assert.assertEquals(entity.getValues().iterator().next().getName(),
-                "name");
+        Assertions.assertEquals("name",
+                entity.getValues().iterator().next().getName());
     }
 
     @Override

@@ -24,7 +24,7 @@
 
 package com.wandrell.example.jpa.test.integration.embedded.embedded;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 
 import com.wandrell.example.jpa.model.embedded.EmbeddableData;
 import com.wandrell.example.jpa.model.embedded.EmbeddedEntity;
@@ -52,7 +52,7 @@ public final class ITEmbeddedEntityModify
 
     @Override
     protected final void assertEntityModified(final EmbeddedEntity entity) {
-        Assert.assertEquals(entity.getEmbeddedData().getName(), name);
+        Assertions.assertEquals(name, entity.getEmbeddedData().getName());
     }
 
     @Override
