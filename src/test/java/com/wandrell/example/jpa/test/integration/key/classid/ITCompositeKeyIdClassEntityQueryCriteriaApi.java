@@ -26,8 +26,8 @@ package com.wandrell.example.jpa.test.integration.key.classid;
 
 import javax.persistence.Query;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
 
 import com.wandrell.example.jpa.model.key.classid.CompositeKeyIdClassEntity;
 import com.wandrell.example.jpa.test.util.criteria.key.classid.CompositeKeyIdClassEntityCriteriaFactory;

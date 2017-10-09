@@ -31,9 +31,9 @@ import java.util.function.Supplier;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
 import org.springframework.transaction.annotation.Transactional;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.simple.SimpleEntity;
 import com.wandrell.example.jpa.test.util.criteria.GenericCriteriaFactory;

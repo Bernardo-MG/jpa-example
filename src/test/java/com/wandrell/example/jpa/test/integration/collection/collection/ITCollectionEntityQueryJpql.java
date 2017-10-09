@@ -26,8 +26,8 @@ package com.wandrell.example.jpa.test.integration.collection.collection;
 
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
-import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.collection.CollectionEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQuery;

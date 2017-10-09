@@ -32,9 +32,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.jupiter.api.Test;
 
 import com.wandrell.example.jpa.test.util.criteria.temporal.TimeEntityCriteriaFactory;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
@@ -81,7 +81,7 @@ public final class ITTimeEntityQueryCriteriaApi
      * @throws ParseException
      *             if the time string can't be parsed
      */
-    @BeforeClass
+    @Before
     public final void setUpTime() throws ParseException {
         final DateFormat format; // Format for parsing the time string
 

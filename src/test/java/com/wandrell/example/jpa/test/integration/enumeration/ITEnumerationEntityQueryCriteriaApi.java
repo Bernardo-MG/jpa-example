@@ -26,8 +26,8 @@ package com.wandrell.example.jpa.test.integration.enumeration;
 
 import javax.persistence.Query;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
 
 import com.wandrell.example.jpa.model.enumeration.NumbersEnum;
 import com.wandrell.example.jpa.test.util.criteria.enumeration.EnumerationEntityCriteriaFactory;

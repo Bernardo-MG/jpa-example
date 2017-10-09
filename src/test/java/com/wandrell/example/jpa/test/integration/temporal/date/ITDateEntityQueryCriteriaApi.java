@@ -31,9 +31,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.jupiter.api.Test;
 
 import com.wandrell.example.jpa.test.util.criteria.temporal.DateEntityCriteriaFactory;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
@@ -80,7 +80,7 @@ public final class ITDateEntityQueryCriteriaApi
      * @throws ParseException
      *             if the date string can't be parsed
      */
-    @BeforeClass
+    @Before
     public final void setUpDate() throws ParseException {
         final DateFormat format; // Format for parsing the date string
 

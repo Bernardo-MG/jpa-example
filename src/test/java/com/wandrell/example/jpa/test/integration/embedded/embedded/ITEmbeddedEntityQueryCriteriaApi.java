@@ -26,8 +26,8 @@ package com.wandrell.example.jpa.test.integration.embedded.embedded;
 
 import javax.persistence.Query;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
 
 import com.wandrell.example.jpa.test.util.criteria.embedded.EmbeddedEntityCriteriaFactory;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;

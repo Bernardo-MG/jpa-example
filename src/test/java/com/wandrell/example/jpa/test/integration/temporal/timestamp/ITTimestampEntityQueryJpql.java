@@ -34,10 +34,10 @@ import java.util.Locale;
 
 import javax.persistence.Query;
 
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
-import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
 
@@ -136,7 +136,7 @@ public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
      * @throws ParseException
      *             if the timestamp string can't be parsed
      */
-    @BeforeClass
+    @Before
     public final void setUpDate() throws ParseException {
         final DateFormat format; // Format for parsing the timestamp string
 

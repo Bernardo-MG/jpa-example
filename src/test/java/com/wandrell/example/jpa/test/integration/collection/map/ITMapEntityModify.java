@@ -27,7 +27,7 @@ package com.wandrell.example.jpa.test.integration.collection.map;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.testng.Assert;
+import org.junit.Assert;
 
 import com.wandrell.example.jpa.model.collection.MapEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;

@@ -24,7 +24,7 @@
 
 package com.wandrell.example.jpa.test.integration.enumeration;
 
-import org.testng.Assert;
+import org.junit.Assert;
 
 import com.wandrell.example.jpa.model.enumeration.EnumerationEntity;
 import com.wandrell.example.jpa.model.enumeration.NumbersEnum;

@@ -26,7 +26,7 @@ package com.wandrell.example.jpa.test.integration.collection.collection;
 
 import javax.persistence.Query;
 
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import com.wandrell.example.jpa.model.collection.CollectionEntity;
 import com.wandrell.example.jpa.test.util.criteria.collection.CollectionEntityCriteriaFactory;

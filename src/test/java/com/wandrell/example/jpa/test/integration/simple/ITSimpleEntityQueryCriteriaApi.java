@@ -27,8 +27,8 @@ package com.wandrell.example.jpa.test.integration.simple;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 import com.wandrell.example.jpa.model.simple.SimpleEntity;
 import com.wandrell.example.jpa.test.util.criteria.simple.SimpleEntityCriteriaFactory;
@@ -53,6 +53,7 @@ public final class ITSimpleEntityQueryCriteriaApi
      */
     public ITSimpleEntityQueryCriteriaApi() {
         super();
+        // TODO: Use the new JUnit 5 annotations
     }
 
     /**
@@ -92,7 +93,7 @@ public final class ITSimpleEntityQueryCriteriaApi
     /**
      * Tests that retrieving a not existing entity throws an exception.
      */
-    @Test(expectedExceptions = { NoResultException.class })
+    @Test(expected = NoResultException.class)
     public final void testFindById_NotExisting_Null() {
         final Integer id;          // Invalid entity ID
         final SimpleEntity entity; // Tested entity

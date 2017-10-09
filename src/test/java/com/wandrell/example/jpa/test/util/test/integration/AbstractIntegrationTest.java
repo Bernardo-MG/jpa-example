@@ -26,9 +26,18 @@ package com.wandrell.example.jpa.test.util.test.integration;
 
 import javax.persistence.EntityManager;
 
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
+import org.springframework.test.context.TestExecutionListeners;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+import org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener;
+import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
+import org.springframework.test.context.web.ServletTestExecutionListener;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Abstract integration tests with an entity manager and the test configuration.
@@ -37,8 +46,14 @@ import org.springframework.test.context.testng.AbstractTransactionalTestNGSpring
  */
 @ContextConfiguration(
         locations = { "classpath:context/test-maven-profile.xml" })
-public abstract class AbstractIntegrationTest
-        extends AbstractTransactionalTestNGSpringContextTests {
+@RunWith(JUnitPlatform.class)
+@ExtendWith(SpringExtension.class)
+@TestExecutionListeners({ ServletTestExecutionListener.class,
+        DirtiesContextBeforeModesTestExecutionListener.class,
+        DependencyInjectionTestExecutionListener.class,
+        DirtiesContextTestExecutionListener.class })
+@Transactional
+public abstract class AbstractIntegrationTest {
 
     /**
      * The persistence entity manager.

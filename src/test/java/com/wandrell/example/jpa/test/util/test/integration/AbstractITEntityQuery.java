@@ -27,7 +27,7 @@ package com.wandrell.example.jpa.test.util.test.integration;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 
-import org.testng.Assert;
+import org.junit.Assert;
 
 import com.wandrell.example.jpa.model.simple.SimpleEntity;
 

@@ -24,8 +24,10 @@
 
 package com.wandrell.example.jpa.test.unit.converter;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 
 import com.wandrell.example.jpa.model.converter.BooleanToStringConverter;
 
@@ -46,6 +48,7 @@ import com.wandrell.example.jpa.model.converter.BooleanToStringConverter;
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@RunWith(JUnitPlatform.class)
 public final class TestBooleanToStringConverter {
 
     /**

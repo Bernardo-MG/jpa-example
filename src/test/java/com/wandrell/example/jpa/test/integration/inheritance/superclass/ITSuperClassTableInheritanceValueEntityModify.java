@@ -24,7 +24,7 @@
 
 package com.wandrell.example.jpa.test.integration.inheritance.superclass;
 
-import org.testng.Assert;
+import org.junit.Assert;
 
 import com.wandrell.example.jpa.model.inheritance.superclass.SuperClassTableInheritanceValueEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;

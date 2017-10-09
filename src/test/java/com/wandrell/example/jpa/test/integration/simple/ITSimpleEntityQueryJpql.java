@@ -27,9 +27,9 @@ package com.wandrell.example.jpa.test.integration.simple;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
+import org.junit.Assert;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Value;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.simple.SimpleEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
@@ -64,6 +64,7 @@ public final class ITSimpleEntityQueryJpql extends AbstractIntegrationTest {
      */
     public ITSimpleEntityQueryJpql() {
         super();
+        // TODO: Use the new JUnit 5 annotations
     }
 
     /**
@@ -101,7 +102,7 @@ public final class ITSimpleEntityQueryJpql extends AbstractIntegrationTest {
     /**
      * Tests that retrieving a not existing entity throws an exception.
      */
-    @Test(expectedExceptions = { NoResultException.class })
+    @Test(expected = NoResultException.class)
     public final void testFindById_NotExisting_Null() {
         final Integer id;          // Invalid entity ID
         final SimpleEntity entity; // Tested entity

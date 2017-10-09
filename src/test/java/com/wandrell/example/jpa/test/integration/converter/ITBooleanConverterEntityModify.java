@@ -24,7 +24,7 @@
 
 package com.wandrell.example.jpa.test.integration.converter;
 
-import org.testng.Assert;
+import org.junit.Assert;
 
 import com.wandrell.example.jpa.model.converter.BooleanConverterEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;

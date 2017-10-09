@@ -24,7 +24,7 @@
 
 package com.wandrell.example.jpa.test.integration.embedded.embedded;
 
-import org.testng.Assert;
+import org.junit.Assert;
 
 import com.wandrell.example.jpa.model.embedded.EmbeddableData;
 import com.wandrell.example.jpa.model.embedded.EmbeddedEntity;

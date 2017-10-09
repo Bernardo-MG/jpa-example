@@ -26,7 +26,7 @@ package com.wandrell.example.jpa.test.integration.key.composite;
 
 import javax.persistence.criteria.CriteriaQuery;
 
-import org.testng.Assert;
+import org.junit.Assert;
 
 import com.wandrell.example.jpa.model.key.composite.CompositeKeyEntity;
 import com.wandrell.example.jpa.test.util.criteria.key.composite.CompositeKeyEntityCriteriaFactory;
