@@ -47,7 +47,8 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
+public abstract class ITTimestampEntityQueryJpql
+        extends AbstractIntegrationTest {
 
     /**
      * Calendar for the test ranges.

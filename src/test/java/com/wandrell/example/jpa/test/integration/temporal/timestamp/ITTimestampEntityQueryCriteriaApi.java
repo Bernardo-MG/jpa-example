@@ -45,7 +45,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class ITTimestampEntityQueryCriteriaApi
+public abstract class ITTimestampEntityQueryCriteriaApi
         extends AbstractIntegrationTest {
 
     /**
