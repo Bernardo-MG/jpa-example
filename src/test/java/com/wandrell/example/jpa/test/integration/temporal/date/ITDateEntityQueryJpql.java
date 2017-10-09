@@ -33,8 +33,8 @@ import java.util.Locale;
 
 import javax.persistence.Query;
 
-import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
@@ -137,7 +137,7 @@ public final class ITDateEntityQueryJpql extends AbstractIntegrationTest {
      * @throws ParseException
      *             if the date string can't be parsed
      */
-    @Before
+    @BeforeEach
     public final void setUpDate() throws ParseException {
         final DateFormat format; // Format for parsing the date string
 

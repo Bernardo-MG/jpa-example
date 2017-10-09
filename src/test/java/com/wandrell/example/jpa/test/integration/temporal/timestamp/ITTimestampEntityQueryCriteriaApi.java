@@ -32,8 +32,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -83,7 +83,7 @@ public final class ITTimestampEntityQueryCriteriaApi
      * @throws ParseException
      *             if the time string can't be parsed
      */
-    @Before
+    @BeforeEach
     public final void setUpTime() throws ParseException {
         final DateFormat format; // Format for parsing the time string
 
