@@ -19,7 +19,8 @@
                   classpath:config/persistence/persistence-access.properties,
                   classpath:config/persistence/jpa.properties,
                   classpath:config/persistence/provider/jpa-@jpa.provider@.properties,
-                  classpath:config/persistence/jpql-queries.properties" />
+                  classpath:config/persistence/jpql-queries.properties,
+                  classpath:config/persistence/jpql-queries-@jpa.provider@.properties" />
 
    <!-- Contexts -->
    <import resource="classpath:context/persistence/jpa-@jpa.provider@.xml" />

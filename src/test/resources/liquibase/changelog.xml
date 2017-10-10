@@ -4,9 +4,40 @@
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
+   <changeSet author="Bernardo" id="sequence_generators">
+      <createTable tableName="sequence">
+         <column name="seq_name" type="VARCHAR(50)">
+            <constraints nullable="false" />
+         </column>
+         <column name="seq_count" type="INTEGER">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+      <createTable tableName="hibernate_sequences">
+         <column name="sequence_name" type="VARCHAR(50)">
+            <constraints nullable="false" />
+         </column>
+         <column name="next_val" type="INTEGER">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
+   </changeSet>
+
+   <changeSet author="Bernardo" id="sequence_data">
+      <insert tableName="sequence">
+         <column name="seq_name">table_generator</column>
+         <column name="seq_count">10</column>
+      </insert>
+      <insert tableName="hibernate_sequences">
+         <column name="sequence_name">table_generator</column>
+         <column name="next_val">10</column>
+      </insert>
+   </changeSet>
+
    <changeSet author="Bernardo" id="test_tables">
       <createTable tableName="simple_entities">
-         <column autoIncrement="true" startWith="1" name="id" type="INTEGER">
+         <column autoIncrement="true" incrementBy="1" startWith="1"
+            name="id" type="INTEGER">
             <constraints primaryKey="true" />
          </column>
          <column name="name" type="VARCHAR(30)" defaultValue="">
@@ -14,7 +45,8 @@
          </column>
       </createTable>
       <createTable tableName="boolean_converter_entities">
-         <column autoIncrement="true" startWith="1" name="id" type="INTEGER">
+         <column autoIncrement="true" incrementBy="1" startWith="1"
+            name="id" type="INTEGER">
             <constraints primaryKey="true" />
          </column>
          <column name="flag" type="VARCHAR(1)" defaultValue="F">
@@ -22,7 +54,8 @@
          </column>
       </createTable>
       <createTable tableName="enum_entities">
-         <column autoIncrement="true" startWith="1" name="id" type="INTEGER">
+         <column autoIncrement="true" incrementBy="1" startWith="1"
+            name="id" type="INTEGER">
             <constraints primaryKey="true" />
          </column>
          <column name="enum_ordinal" type="INTEGER" defaultValue="0">
@@ -34,7 +67,8 @@
          </column>
       </createTable>
       <createTable tableName="date_entities">
-         <column autoIncrement="true" startWith="1" name="id" type="INTEGER">
+         <column autoIncrement="true" incrementBy="1" startWith="1"
+            name="id" type="INTEGER">
             <constraints primaryKey="true" />
          </column>
          <column name="calendar_date" type="DATE">
@@ -48,7 +82,8 @@
          </column>
       </createTable>
       <createTable tableName="time_entities">
-         <column autoIncrement="true" startWith="1" name="id" type="INTEGER">
+         <column autoIncrement="true" incrementBy="1" startWith="1"
+            name="id" type="INTEGER">
             <constraints primaryKey="true" />
          </column>
          <column name="calendar_time" type="TIME">
@@ -62,7 +97,8 @@
          </column>
       </createTable>
       <createTable tableName="timestamp_entities">
-         <column autoIncrement="true" startWith="1" name="id" type="INTEGER">
+         <column autoIncrement="true" incrementBy="1" startWith="1"
+            name="id" type="INTEGER">
             <constraints primaryKey="true" />
          </column>
          <column name="calendar_timestamp" type="TIMESTAMP">
@@ -76,7 +112,8 @@
          </column>
       </createTable>
       <createTable tableName="collection_entities">
-         <column autoIncrement="true" startWith="1" name="id" type="INTEGER">
+         <column autoIncrement="true" incrementBy="1" startWith="1"
+            name="id" type="INTEGER">
             <constraints primaryKey="true" />
          </column>
          <column name="name" type="VARCHAR(30)" defaultValue="">
@@ -92,7 +129,8 @@
          </column>
       </createTable>
       <createTable tableName="map_entities">
-         <column autoIncrement="true" startWith="1" name="id" type="INTEGER">
+         <column autoIncrement="true" incrementBy="1" startWith="1"
+            name="id" type="INTEGER">
             <constraints primaryKey="true" />
          </column>
          <column name="name" type="VARCHAR(30)" defaultValue="">
@@ -111,7 +149,8 @@
          </column>
       </createTable>
       <createTable tableName="embedded_entities">
-         <column autoIncrement="true" startWith="1" name="id" type="INTEGER">
+         <column autoIncrement="true" incrementBy="1" startWith="1"
+            name="id" type="INTEGER">
             <constraints primaryKey="true" />
          </column>
          <column name="name" type="VARCHAR(30)" defaultValue="">
@@ -123,7 +162,8 @@
          </column>
       </createTable>
       <createTable tableName="element_collection_entities">
-         <column autoIncrement="true" startWith="1" name="id" type="INTEGER">
+         <column autoIncrement="true" incrementBy="1" startWith="1"
+            name="id" type="INTEGER">
             <constraints primaryKey="true" />
          </column>
          <column name="name" type="VARCHAR(30)" defaultValue="">
@@ -143,7 +183,8 @@
          </column>
       </createTable>
       <createTable tableName="multiple_table_inherit_root_entities">
-         <column autoIncrement="true" startWith="1" name="id" type="INTEGER">
+         <column autoIncrement="true" incrementBy="1" startWith="1"
+            name="id" type="INTEGER">
             <constraints primaryKey="true" />
          </column>
          <column name="name" type="VARCHAR(30)" defaultValue="">
@@ -155,7 +196,8 @@
          </column>
       </createTable>
       <createTable tableName="multiple_table_inherit_value_entities">
-         <column autoIncrement="true" startWith="1" name="id" type="INTEGER">
+         <column autoIncrement="true" incrementBy="1" startWith="1"
+            name="id" type="INTEGER">
             <constraints primaryKey="true" />
          </column>
          <column name="value" type="INTEGER">
@@ -163,7 +205,8 @@
          </column>
       </createTable>
       <createTable tableName="multiple_table_inherit_description_entities">
-         <column autoIncrement="true" startWith="1" name="id" type="INTEGER">
+         <column autoIncrement="true" incrementBy="1" startWith="1"
+            name="id" type="INTEGER">
             <constraints primaryKey="true" />
          </column>
          <column name="description" type="VARCHAR(30)"
@@ -172,7 +215,8 @@
          </column>
       </createTable>
       <createTable tableName="per_class_table_inherit_value_entities">
-         <column autoIncrement="true" startWith="1" name="id" type="INTEGER">
+         <column autoIncrement="true" incrementBy="1" startWith="1"
+            name="id" type="INTEGER">
             <constraints primaryKey="true" />
          </column>
          <column name="name" type="VARCHAR(30)" defaultValue="">
@@ -183,7 +227,8 @@
          </column>
       </createTable>
       <createTable tableName="per_class_table_inherit_description_entities">
-         <column autoIncrement="true" startWith="1" name="id" type="INTEGER">
+         <column autoIncrement="true" incrementBy="1" startWith="1"
+            name="id" type="INTEGER">
             <constraints primaryKey="true" />
          </column>
          <column name="name" type="VARCHAR(30)" defaultValue="">
@@ -195,7 +240,8 @@
          </column>
       </createTable>
       <createTable tableName="single_table_inherit_entities">
-         <column autoIncrement="true" startWith="1" name="id" type="INTEGER">
+         <column autoIncrement="true" incrementBy="1" startWith="1"
+            name="id" type="INTEGER">
             <constraints primaryKey="true" />
          </column>
          <column name="discriminator" type="VARCHAR(4)"
@@ -209,7 +255,8 @@
          <column name="value" type="INTEGER" />
       </createTable>
       <createTable tableName="super_class_table_inherit_value_entities">
-         <column autoIncrement="true" startWith="1" name="id" type="INTEGER">
+         <column autoIncrement="true" incrementBy="1" startWith="1"
+            name="id" type="INTEGER">
             <constraints primaryKey="true" />
          </column>
          <column name="name" type="VARCHAR(30)" defaultValue="">
@@ -220,7 +267,8 @@
          </column>
       </createTable>
       <createTable tableName="super_class_table_inherit_description_entities">
-         <column autoIncrement="true" startWith="1" name="id" type="INTEGER">
+         <column autoIncrement="true" incrementBy="1" startWith="1"
+            name="id" type="INTEGER">
             <constraints primaryKey="true" />
          </column>
          <column name="name" type="VARCHAR(30)" defaultValue="">
@@ -265,7 +313,8 @@
          </column>
       </createTable>
       <createTable tableName="two_tables_entities_a">
-         <column autoIncrement="true" startWith="1" name="id" type="INTEGER">
+         <column autoIncrement="true" incrementBy="1" startWith="1"
+            name="id" type="INTEGER">
             <constraints primaryKey="true" />
          </column>
          <column name="field1" type="VARCHAR(30)" defaultValue="">

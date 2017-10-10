@@ -8,7 +8,8 @@
 
    <Appenders>
       <Console name="console" target="SYSTEM_OUT">
-         <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+         <PatternLayout
+            pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
       </Console>
 
       <File name="file" fileName="${filename}">
@@ -20,8 +21,17 @@
    </Appenders>
 
    <Loggers>
-      <Logger name="com.wandrell.tabletop" level="debug" additivity="false">
-         <AppenderRef ref="file" />
+      <Logger name="com.wandrell.example" level="debug"
+         additivity="false">
+         <AppenderRef ref="console" />
+      </Logger>
+
+      <Logger name="org.hibernate.SQL" level="off" additivity="false">
+         <AppenderRef ref="console" />
+      </Logger>
+
+      <Logger name="org.hibernate.type" level="off" additivity="false">
+         <AppenderRef ref="console" />
       </Logger>
 
       <Root level="error">

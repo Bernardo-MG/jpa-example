@@ -75,7 +75,7 @@ public final class ITEmbeddedCompositeKeyEntityQueryJpql
         // Builds the query
         query = getEntityManager().createQuery(findByIds);
         query.setParameter("id1", 1);
-        query.setParameter("id2", 2);
+        query.setParameter("id2", 2l);
 
         // Acquires the entity
         entity = (EmbeddedCompositeKeyEntity) query.getSingleResult();
