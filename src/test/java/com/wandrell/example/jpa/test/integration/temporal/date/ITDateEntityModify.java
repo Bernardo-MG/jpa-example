@@ -32,6 +32,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 
 import com.wandrell.example.jpa.model.temporal.DateEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
@@ -41,6 +42,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@Disabled
 public final class ITDateEntityModify
         extends AbstractITEntityModify<DateEntity> {
 
