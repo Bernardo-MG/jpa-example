@@ -45,7 +45,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Disabled
+@Disabled("Entities not supported by Hibernate")
 public final class ITDateEntityQueryCriteriaApi
         extends AbstractIntegrationTest {
 

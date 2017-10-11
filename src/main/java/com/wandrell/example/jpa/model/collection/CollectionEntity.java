@@ -83,7 +83,7 @@ public class CollectionEntity implements Serializable {
     @CollectionTable(name = "collection_entities_values",
             joinColumns = @JoinColumn(name = "collection_id"))
     @Column(name = "value_col", nullable = false)
-    private Collection<Integer> values           = new ArrayList<Integer>();
+    private Collection<Integer> values           = new ArrayList<>();
 
     /**
      * Default constructor.

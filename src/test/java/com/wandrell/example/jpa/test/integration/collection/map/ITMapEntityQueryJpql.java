@@ -27,6 +27,7 @@ package com.wandrell.example.jpa.test.integration.collection.map;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -38,6 +39,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@Disabled("Fails on Hibernate")
 public final class ITMapEntityQueryJpql extends AbstractIntegrationTest {
 
     /**

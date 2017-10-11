@@ -24,20 +24,15 @@
 
 package com.wandrell.example.jpa.test.util.criteria.embedded;
 
-import java.util.Arrays;
-
 import javax.persistence.EntityManager;
-import javax.persistence.criteria.CollectionJoin;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Join;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Root;
 
 import com.wandrell.example.jpa.model.embedded.ElementCollectionEntity;
 import com.wandrell.example.jpa.model.embedded.ElementCollectionEntity_;
 import com.wandrell.example.jpa.model.embedded.EmbeddableData;
-import com.wandrell.example.jpa.model.embedded.EmbeddableData_;
 
 /**
  * Factory for creating criteria API queries for the

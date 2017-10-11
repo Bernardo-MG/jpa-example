@@ -83,7 +83,7 @@ public class MapEntity implements Serializable {
     @CollectionTable(name = "map_entities_values",
             joinColumns = @JoinColumn(name = "map_id"))
     @Column(name = "number", nullable = false)
-    private Map<String, Integer> values           = new HashMap<String, Integer>();
+    private Map<String, Integer> values           = new HashMap<>();
 
     /**
      * Default constructor.
