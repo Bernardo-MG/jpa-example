@@ -14,6 +14,9 @@
             Updated to JEE8.
          </action>
          <action dev="bmg" type="add">
+            Added Hibernate test environment.
+         </action>
+         <action dev="bmg" type="add">
             Added SQLite test environment.
          </action>
          <action dev="bmg" type="update">

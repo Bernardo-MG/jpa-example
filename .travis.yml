@@ -8,6 +8,7 @@ services:
   - postgresql
 matrix:
   include:
+    # Eclipselink environments
     # Documentation deployed with JDK8
     - jdk: oraclejdk8
       env: DATABASE=h2 PROVIDER=eclipselink DEPLOY_DOCS=true
@@ -17,6 +18,15 @@ matrix:
       env: DATABASE=mysql PROVIDER=eclipselink
     - jdk: oraclejdk8
       env: DATABASE=postgres PROVIDER=eclipselink
+    # Hibernate environments
+    - jdk: oraclejdk8
+      env: DATABASE=h2 PROVIDER=hibernate
+    - jdk: oraclejdk8
+      env: DATABASE=hsqldb PROVIDER=hibernate
+    - jdk: oraclejdk8
+      env: DATABASE=mysql PROVIDER=hibernate
+    - jdk: oraclejdk8
+      env: DATABASE=postgres PROVIDER=hibernate
 
 before_install:
   # Gets scripts
