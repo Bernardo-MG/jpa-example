@@ -6,7 +6,7 @@
 		<author email="programming@wandrell.com">Bernardo Martínez Garrido</author>
 	</properties>
 	<body>
-      <release version="1.2.0" date="2017-10-11" description="Added test environments">
+      <release version="1.2.0" date="2017-10-12" description="Added test environments">
          <action dev="bmg" type="update">
             Updated to JEE8.
          </action>
