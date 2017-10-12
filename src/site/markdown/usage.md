@@ -22,7 +22,6 @@ Only the in-memory databases, such as H2, do not require additional configuratio
 | hsqldb   | HSQLDB     | In-memory |
 | mysql    | MySQL      | Service   |
 | postgres | PostgreSQL | Service   |
-| sqlite   | SQLite     | Embedded  |
 
 ### JPA provider profiles
 
