@@ -26,12 +26,12 @@ package com.wandrell.example.jpa.test.integration.enumeration;
 
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
+import com.wandrell.example.jpa.model.enumeration.EnumerationEntity;
 import com.wandrell.example.jpa.model.enumeration.NumbersEnum;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code EnumerationEntity} testing it loads values
@@ -40,7 +40,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class ITEnumerationEntityQueryJpql
-        extends AbstractIntegrationTest {
+        extends AbstractITEntityQuery<EnumerationEntity> {
 
     /**
      * The query to acquire all the entities by the ordinal value.
@@ -67,14 +67,13 @@ public final class ITEnumerationEntityQueryJpql
      */
     @Test
     public final void testGetEntity_Ordinal() {
-        final Query query; // Query for the entity
+        final Integer count; // Number of entities expected
 
-        // Builds the query
-        query = getEntityManager().createQuery(findAllByOrdinal);
-        query.setParameter("enum", NumbersEnum.TWO);
+        // Expected result
+        count = 2;
 
         // Reads the expected number of entities
-        Assert.assertEquals(query.getResultList().size(), 2);
+        assertResultSizeEquals(count, getOrdinalQuery());
     }
 
     /**
@@ -83,14 +82,49 @@ public final class ITEnumerationEntityQueryJpql
      */
     @Test
     public final void testGetEntity_String() {
-        final Query query; // Query for the entity
+        final Integer count; // Number of entities expected
 
-        // Builds the query
-        query = getEntityManager().createQuery(findAllByString);
-        query.setParameter("enum", NumbersEnum.TWO);
+        // Expected result
+        count = 2;
 
         // Reads the expected number of entities
-        Assert.assertEquals(query.getResultList().size(), 2);
+        assertResultSizeEquals(count, getStringQuery());
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getOrdinalQuery() {
+        final NumbersEnum value; // Value to find
+        final Query query;
+
+        // Queried value
+        value = NumbersEnum.TWO;
+
+        query = getQuery(findAllByOrdinal);
+        query.setParameter("enum", value);
+
+        return query;
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getStringQuery() {
+        final NumbersEnum value; // Value to find
+        final Query query;
+
+        // Queried value
+        value = NumbersEnum.TWO;
+
+        query = getQuery(findAllByString);
+        query.setParameter("enum", value);
+
+        return query;
     }
 
 }

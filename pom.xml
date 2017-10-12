@@ -20,7 +20,7 @@
 
    <groupId>com.wandrell.example</groupId>
    <artifactId>jpa-example</artifactId>
-   <version>1.1.0</version>
+   <version>1.2.0</version>
    <packaging>jar</packaging>
 
    <name>JPA Example</name>
@@ -158,6 +158,9 @@
             </pluginManagement>
          </build>
       </profile>
+      <!-- ============================================== -->
+      <!-- ============= DATABASE PROFILES ============== -->
+      <!-- ============================================== -->
       <profile>
          <!-- H2 database profile -->
          <!-- Prepares the project to make use of an H2 in-memory database -->
@@ -243,6 +246,9 @@
             </dependency>
          </dependencies>
       </profile>
+      <!-- ============================================== -->
+      <!-- ============ JPA PROVIDER PROFILES =========== -->
+      <!-- ============================================== -->
       <profile>
          <!-- Hibernate JPA provider profile -->
          <!-- Prepares the project to connect to the DB through Hibernate -->
@@ -291,6 +297,9 @@
             </dependency>
          </dependencies>
       </profile>
+      <!-- ============================================== -->
+      <!-- ============= DEPLOYMENT PROFILES ============ -->
+      <!-- ============================================== -->
       <profile>
          <!-- Release site deployment profile -->
          <!-- Sets the site repository to point to the releases repo -->
@@ -360,29 +369,40 @@
    <!-- ********************************************** -->
 
    <properties>
-      <!-- Java version -->
-      <maven.compiler.source>1.8</maven.compiler.source>
-      <!-- Manifest data -->
+      <!-- ============================================== -->
+      <!-- ================ JAVA VERSION ================ -->
+      <!-- ============================================== -->
+      <java.version>1.8</java.version>
+      <!-- ============================================== -->
+      <!-- =============== MANIFEST DATA ================ -->
+      <!-- ============================================== -->
       <manifest.name>com/wandrell/example/jpa</manifest.name>
-      <!-- Dependencies versions -->
+      <!-- ============================================== -->
+      <!-- =========== DEPENDENCIES VERSIONS ============ -->
+      <!-- ============================================== -->
       <eclipselink.version>2.7.0</eclipselink.version>
       <guava.version>23.0</guava.version>
       <h2.version>1.4.196</h2.version>
-      <hibernate.version>5.2.10.Final</hibernate.version>
-      <hikari.version>2.6.3</hikari.version>
+      <hibernate.version>5.2.11.Final</hibernate.version>
+      <hikari.version>2.7.2</hikari.version>
       <hsqldb.version>2.4.0</hsqldb.version>
-      <javaee.api.version>7.0</javaee.api.version>
+      <javaee.api.version>2.2</javaee.api.version>
+      <junit.jupiter.version>5.0.1</junit.jupiter.version>
+      <junit.platform.version>1.0.1</junit.platform.version>
       <liquibase.version>3.5.3</liquibase.version>
-      <log4j.version>2.8.2</log4j.version>
+      <log4j.version>2.9.1</log4j.version>
       <mysql.version>6.0.6</mysql.version>
       <postgresql.version>42.1.4</postgresql.version>
       <slf4j.version>1.7.25</slf4j.version>
-      <spring.version>4.3.10.RELEASE</spring.version>
-      <testng.version>6.11</testng.version>
-      <!-- Plugins versions -->
+      <spring.version>5.0.0.RELEASE</spring.version>
+      <!-- ============================================== -->
+      <!-- ============== PLUGINS VERSIONS ============== -->
+      <!-- ============================================== -->
       <plugin.buildhelp.version>3.0.0</plugin.buildhelp.version>
       <plugin.processor.version>3.2.0</plugin.processor.version>
-      <!-- Maven Site -->
+      <!-- ============================================== -->
+      <!-- ================= MAVEN SITE ================= -->
+      <!-- ============================================== -->
       <site.skin.version>1.0.0</site.skin.version>
    </properties>
 
@@ -401,9 +421,9 @@
       <!-- ============== JPA DEPENDENCIES ============== -->
       <!-- ============================================== -->
       <dependency>
-         <!-- JEE API -->
-         <groupId>javax</groupId>
-         <artifactId>javaee-api</artifactId>
+         <!-- JPA API -->
+         <groupId>javax.persistence</groupId>
+         <artifactId>javax.persistence-api</artifactId>
          <version>${javaee.api.version}</version>
       </dependency>
       <!-- ============================================== -->
@@ -421,6 +441,21 @@
          <groupId>org.liquibase</groupId>
          <artifactId>liquibase-core</artifactId>
          <version>${liquibase.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- JUnit Jupiter Engine -->
+         <groupId>org.junit.jupiter</groupId>
+         <artifactId>junit-jupiter-engine</artifactId>
+         <version>${junit.jupiter.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- JUnit Jupiter Platform -->
+         <groupId>org.junit.platform</groupId>
+         <artifactId>junit-platform-runner</artifactId>
+         <version>${junit.platform.version}</version>
+         <scope>test</scope>
       </dependency>
       <dependency>
          <!-- Log4j core -->
@@ -490,13 +525,6 @@
          <groupId>org.springframework</groupId>
          <artifactId>spring-tx</artifactId>
          <version>${spring.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- TestNG -->
-         <groupId>org.testng</groupId>
-         <artifactId>testng</artifactId>
-         <version>${testng.version}</version>
          <scope>test</scope>
       </dependency>
    </dependencies>
@@ -671,6 +699,9 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
             <configuration>
+               <links>
+                  <link>https://javadoc.io/doc/org.eclipse.persistence/javax.persistence/</link>
+               </links>
                <sourceFileExcludes>
                   <!-- Excludes generated code -->
                   <exclude>**/generated/**/*</exclude>

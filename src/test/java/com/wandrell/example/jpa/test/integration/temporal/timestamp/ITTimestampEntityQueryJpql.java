@@ -34,12 +34,13 @@ import java.util.Locale;
 
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
-import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
+import com.wandrell.example.jpa.model.temporal.TimestampEntity;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code TimestampEntity} testing it loads values
@@ -47,7 +48,9 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
+@Disabled("Entities not supported by Hibernate")
+public final class ITTimestampEntityQueryJpql
+        extends AbstractITEntityQuery<TimestampEntity> {
 
     /**
      * Calendar for the test ranges.
@@ -136,7 +139,7 @@ public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
      * @throws ParseException
      *             if the timestamp string can't be parsed
      */
-    @BeforeClass
+    @BeforeEach
     public final void setUpDate() throws ParseException {
         final DateFormat format; // Format for parsing the timestamp string
 
@@ -155,15 +158,13 @@ public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
      * correct number of them when using a {@code Calendar} for the timestamp.
      */
     @Test
-    public final void testGetAfterDate_Calendar() {
-        final Query query;         // Query for the entity
+    public final void testGetAfterTime_Calendar() {
+        final Integer count; // Number of entities expected
 
-        // Builds the query
-        query = getEntityManager().createQuery(findAfterTimestampCalendar);
-        query.setParameter("timestamp", calendar);
+        // Expected result
+        count = 3;
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(3));
+        assertResultSizeEquals(count, getAfterTimeCalendarQuery());
     }
 
     /**
@@ -171,15 +172,13 @@ public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
      * correct number of them when using a Java {@code Date} for the timestamp.
      */
     @Test
-    public final void testGetAfterDate_Java() {
-        final Query query;         // Query for the entity
+    public final void testGetAfterTime_Java() {
+        final Integer count; // Number of entities expected
 
-        // Builds the query
-        query = getEntityManager().createQuery(findAfterTimestampJava);
-        query.setParameter("timestamp", date);
+        // Expected result
+        count = 3;
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(3));
+        assertResultSizeEquals(count, getAfterTimeJavaQuery());
     }
 
     /**
@@ -187,15 +186,13 @@ public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
      * correct number of them when using a {@code Timestamp} for the timestamp.
      */
     @Test
-    public final void testGetAfterDate_Sql() {
-        final Query query;         // Query for the entity
+    public final void testGetAfterTime_Sql() {
+        final Integer count; // Number of entities expected
 
-        // Builds the query
-        query = getEntityManager().createQuery(findAfterTimestampSql);
-        query.setParameter("timestamp", timestamp);
+        // Expected result
+        count = 3;
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(3));
+        assertResultSizeEquals(count, getAfterTimeSqlQuery());
     }
 
     /**
@@ -203,15 +200,13 @@ public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
      * correct number of them when using a {@code Calendar} for the timestamp.
      */
     @Test
-    public final void testGetBeforeDate_Calendar() {
-        final Query query;         // Query for the entity
+    public final void testGetBeforeTime_Calendar() {
+        final Integer count; // Number of entities expected
 
-        // Builds the query
-        query = getEntityManager().createQuery(findBeforeTimestampCalendar);
-        query.setParameter("timestamp", calendar);
+        // Expected result
+        count = 2;
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(2));
+        assertResultSizeEquals(count, getBeforeTimeCalendarQuery());
     }
 
     /**
@@ -219,15 +214,13 @@ public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
      * correct number of them when using a Java {@code Date} for the timestamp.
      */
     @Test
-    public final void testGetBeforeDate_Java() {
-        final Query query;         // Query for the entity
+    public final void testGetBeforeTime_Java() {
+        final Integer count; // Number of entities expected
 
-        // Builds the query
-        query = getEntityManager().createQuery(findBeforeTimestampJava);
-        query.setParameter("timestamp", date);
+        // Expected result
+        count = 2;
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(2));
+        assertResultSizeEquals(count, getBeforeTimeJavaQuery());
     }
 
     /**
@@ -235,15 +228,13 @@ public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
      * correct number of them when using a {@code Timestamp} for the timestamp.
      */
     @Test
-    public final void testGetBeforeDate_Sql() {
-        final Query query;         // Query for the entity
+    public final void testGetBeforeTime_Sql() {
+        final Integer count; // Number of entities expected
 
-        // Builds the query
-        query = getEntityManager().createQuery(findBeforeTimestampSql);
-        query.setParameter("timestamp", timestamp);
+        // Expected result
+        count = 2;
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(2));
+        assertResultSizeEquals(count, getBeforeTimeSqlQuery());
     }
 
     /**
@@ -251,15 +242,13 @@ public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
      * number of them when using a {@code Calendar} for the timestamp.
      */
     @Test
-    public final void testGetInDate_Calendar() {
-        final Query query;         // Query for the entity
+    public final void testGetInTime_Calendar() {
+        final Integer count; // Number of entities expected
 
-        // Builds the query
-        query = getEntityManager().createQuery(findInTimestampCalendar);
-        query.setParameter("timestamp", calendar);
+        // Expected result
+        count = 1;
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(1));
+        assertResultSizeEquals(count, getInTimeCalendarQuery());
     }
 
     /**
@@ -267,15 +256,13 @@ public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
      * number of them when using a Java {@code Date} for the timestamp.
      */
     @Test
-    public final void testGetInDate_Java() {
-        final Query query;         // Query for the entity
+    public final void testGetInTime_Java() {
+        final Integer count; // Number of entities expected
 
-        // Builds the query
-        query = getEntityManager().createQuery(findInTimestampJava);
-        query.setParameter("timestamp", date);
+        // Expected result
+        count = 1;
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(1));
+        assertResultSizeEquals(count, getInTimeJavaQuery());
     }
 
     /**
@@ -283,15 +270,139 @@ public final class ITTimestampEntityQueryJpql extends AbstractIntegrationTest {
      * number of them when using a {@code Timestamp} for the timestamp.
      */
     @Test
-    public final void testGetInDate_Sql() {
-        final Query query;         // Query for the entity
+    public final void testGetInTime_Sql() {
+        final Integer count; // Number of entities expected
 
-        // Builds the query
-        query = getEntityManager().createQuery(findInTimestampSql);
+        // Expected result
+        count = 1;
+
+        assertResultSizeEquals(count, getInTimeSqlQuery());
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getAfterTimeCalendarQuery() {
+        final Query query;
+
+        query = getQuery(findAfterTimestampCalendar);
+        query.setParameter("timestamp", calendar);
+
+        return query;
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getAfterTimeJavaQuery() {
+        final Query query;
+
+        query = getQuery(findAfterTimestampJava);
+        query.setParameter("timestamp", date);
+
+        return query;
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getAfterTimeSqlQuery() {
+        final Query query;
+
+        query = getQuery(findAfterTimestampSql);
         query.setParameter("timestamp", timestamp);
 
-        Assert.assertEquals((Integer) query.getResultList().size(),
-                new Integer(1));
+        return query;
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getBeforeTimeCalendarQuery() {
+        final Query query;
+
+        query = getQuery(findBeforeTimestampCalendar);
+        query.setParameter("timestamp", calendar);
+
+        return query;
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getBeforeTimeJavaQuery() {
+        final Query query;
+
+        query = getQuery(findBeforeTimestampJava);
+        query.setParameter("timestamp", date);
+
+        return query;
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getBeforeTimeSqlQuery() {
+        final Query query;
+
+        query = getQuery(findBeforeTimestampSql);
+        query.setParameter("timestamp", timestamp);
+
+        return query;
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getInTimeCalendarQuery() {
+        final Query query;
+
+        query = getQuery(findInTimestampCalendar);
+        query.setParameter("timestamp", calendar);
+
+        return query;
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getInTimeJavaQuery() {
+        final Query query;
+
+        query = getQuery(findInTimestampJava);
+        query.setParameter("timestamp", date);
+
+        return query;
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getInTimeSqlQuery() {
+        final Query query;
+
+        query = getQuery(findInTimestampSql);
+        query.setParameter("timestamp", timestamp);
+
+        return query;
     }
 
 }

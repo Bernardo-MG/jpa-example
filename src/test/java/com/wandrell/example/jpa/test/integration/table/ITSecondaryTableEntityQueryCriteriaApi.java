@@ -26,12 +26,11 @@ package com.wandrell.example.jpa.test.integration.table;
 
 import javax.persistence.Query;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import com.wandrell.example.jpa.model.table.SecondaryTableEntity;
 import com.wandrell.example.jpa.test.util.criteria.table.SecondaryTableEntityCriteriaFactory;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code SecondaryTableEntity} testing it loads values
@@ -40,7 +39,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class ITSecondaryTableEntityQueryCriteriaApi
-        extends AbstractIntegrationTest {
+        extends AbstractITEntityQuery<SecondaryTableEntity> {
 
     /**
      * Default constructor.
@@ -55,19 +54,27 @@ public final class ITSecondaryTableEntityQueryCriteriaApi
      */
     @Test
     public final void testFindBySecondaryValue() {
-        final Query query;                 // Query for the entity
-        final SecondaryTableEntity entity; // Tested entity
+        final Integer count; // Number of entities expected
 
-        // Builds the query
-        query = getEntityManager()
-                .createQuery(SecondaryTableEntityCriteriaFactory
-                        .findBySecondaryValue(getEntityManager(), "value_b_2"));
+        // Expected result
+        count = 1;
 
-        // Acquires the entity
-        entity = (SecondaryTableEntity) query.getSingleResult();
+        assertResultSizeEquals(count, getQuery());
+    }
 
-        // The id is correct
-        Assert.assertEquals(entity.getId(), new Integer(2));
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getQuery() {
+        final String value; // Value to find
+
+        // Queried value
+        value = "value_b_2";
+
+        return getQuery(SecondaryTableEntityCriteriaFactory
+                .findBySecondaryValue(getEntityManager(), value));
     }
 
 }

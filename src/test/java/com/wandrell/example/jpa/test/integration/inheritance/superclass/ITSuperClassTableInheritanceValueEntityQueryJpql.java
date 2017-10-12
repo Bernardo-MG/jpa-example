@@ -26,11 +26,11 @@ package com.wandrell.example.jpa.test.integration.inheritance.superclass;
 
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
+import com.wandrell.example.jpa.model.inheritance.superclass.SuperClassTableInheritanceValueEntity;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code SingleTableInheritanceValueEntity} testing it
@@ -39,7 +39,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class ITSuperClassTableInheritanceValueEntityQueryJpql
-        extends AbstractIntegrationTest {
+        extends AbstractITEntityQuery<SuperClassTableInheritanceValueEntity> {
 
     /**
      * The query to acquire all the entities by the ordinal value.
@@ -60,14 +60,30 @@ public final class ITSuperClassTableInheritanceValueEntityQueryJpql
      */
     @Test
     public final void testFindAllWithValue() {
-        final Query query; // Query for the entity
+        final Integer count; // Number of entities expected
 
-        // Builds the query
-        query = getEntityManager().createQuery(findAllWithValue);
-        query.setParameter("value", 11);
+        // Expected result
+        count = 1;
 
-        // Reads the expected number of entities
-        Assert.assertEquals(query.getResultList().size(), 1);
+        assertResultSizeEquals(count, getQuery());
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getQuery() {
+        final Integer value; // Value to find
+        final Query query;
+
+        // Queried value
+        value = 11;
+
+        query = getQuery(findAllWithValue);
+        query.setParameter("value", value);
+
+        return query;
     }
 
 }

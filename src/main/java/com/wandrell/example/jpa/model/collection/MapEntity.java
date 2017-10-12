@@ -27,7 +27,7 @@ package com.wandrell.example.jpa.model.collection;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -83,7 +83,7 @@ public class MapEntity implements Serializable {
     @CollectionTable(name = "map_entities_values",
             joinColumns = @JoinColumn(name = "map_id"))
     @Column(name = "number", nullable = false)
-    private Map<String, Integer> values           = new LinkedHashMap<String, Integer>();
+    private Map<String, Integer> values           = new HashMap<>();
 
     /**
      * Default constructor.

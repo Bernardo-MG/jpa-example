@@ -6,6 +6,17 @@
 		<author email="programming@wandrell.com">Bernardo Martínez Garrido</author>
 	</properties>
 	<body>
+      <release version="1.2.0" date="2017-10-12" description="Added test environments">
+         <action dev="bmg" type="update">
+            Updated to JEE8.
+         </action>
+         <action dev="bmg" type="add">
+            Added Hibernate test environment.
+         </action>
+         <action dev="bmg" type="fix">
+            Enabled tests which weren't working.
+         </action>
+      </release>
       <release version="1.1.0" date="2017-08-27" description="Reworked tests">
          <action dev="bmg" type="update">
             Test configuration is now based on Maven profiles.

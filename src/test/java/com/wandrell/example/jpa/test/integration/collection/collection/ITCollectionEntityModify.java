@@ -24,11 +24,10 @@
 
 package com.wandrell.example.jpa.test.integration.collection.collection;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 
-import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
+import org.junit.jupiter.api.Assertions;
 
 import com.wandrell.example.jpa.model.collection.CollectionEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
@@ -44,34 +43,35 @@ public final class ITCollectionEntityModify
     /**
      * Value to set on the name for the tests.
      */
-    private final String              name   = "The new name";
-
-    /**
-     * Values to set on the entity.
-     */
-    private final Collection<Integer> values = new LinkedList<Integer>();
+    private final String name = "The new name";
 
     /**
      * Default constructor.
      */
     public ITCollectionEntityModify() {
-        super(CollectionEntity.class, 5);
-    }
-
-    @BeforeTest
-    public final void initializeValues() {
-        values.add(1);
-        values.add(5);
+        super(CollectionEntity::new, 5);
     }
 
     @Override
     protected final void assertEntityModified(final CollectionEntity entity) {
-        Assert.assertEquals(entity.getName(), name);
-        Assert.assertEquals(entity.getValues(), values);
+        final Collection<Integer> values;
+
+        values = new ArrayList<Integer>();
+        values.add(1);
+        values.add(5);
+
+        Assertions.assertEquals(name, entity.getName());
+        Assertions.assertEquals(values, entity.getValues());
     }
 
     @Override
     protected final void modifyEntity(final CollectionEntity entity) {
+        final Collection<Integer> values;
+
+        values = new ArrayList<Integer>();
+        values.add(1);
+        values.add(5);
+
         entity.setName(name);
         entity.setValues(values);
     }

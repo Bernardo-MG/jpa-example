@@ -24,9 +24,13 @@
 
 package com.wandrell.example.jpa.test.integration.key.classid;
 
-import org.testng.Assert;
+import javax.persistence.criteria.CriteriaQuery;
 
+import org.junit.jupiter.api.Assertions;
+
+import com.wandrell.example.jpa.model.key.classid.CompositeKey;
 import com.wandrell.example.jpa.model.key.classid.CompositeKeyIdClassEntity;
+import com.wandrell.example.jpa.test.util.criteria.key.classid.CompositeKeyIdClassEntityCriteriaFactory;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
@@ -36,8 +40,18 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  * @author Bernardo Mart&iacute;nez Garrido
  * @see CompositeKeyIdClassEntity
  */
-public abstract class ITCompositeKeyIdClassEntityModify
+public final class ITCompositeKeyIdClassEntityModify
         extends AbstractITEntityModify<CompositeKeyIdClassEntity> {
+
+    private static final CompositeKeyIdClassEntity getNewEntity() {
+        final CompositeKeyIdClassEntity entity;
+
+        entity = new CompositeKeyIdClassEntity();
+        entity.setId(10);
+        entity.setSupportId(10l);
+
+        return entity;
+    }
 
     /**
      * Value to set on the name for the tests.
@@ -48,14 +62,32 @@ public abstract class ITCompositeKeyIdClassEntityModify
      * Default constructor.
      */
     public ITCompositeKeyIdClassEntityModify() {
-        super(CompositeKeyIdClassEntity.class, 4);
-        // TODO: Make this work
+        super(ITCompositeKeyIdClassEntityModify::getNewEntity, 4);
     }
 
     @Override
     protected final void
             assertEntityModified(final CompositeKeyIdClassEntity entity) {
-        Assert.assertEquals(entity.getName(), name);
+        Assertions.assertEquals(name, entity.getName());
+    }
+
+    @Override
+    protected CriteriaQuery<CompositeKeyIdClassEntity>
+            getCriteriaQuery(final Object id) {
+        return CompositeKeyIdClassEntityCriteriaFactory.findByIds(
+                getEntityManager(), ((CompositeKey) id).getId(),
+                ((CompositeKey) id).getSupportId());
+    }
+
+    @Override
+    protected final Object getId() {
+        final CompositeKey id;
+
+        id = new CompositeKey();
+        id.setId(1);
+        id.setSupportId(1l);
+
+        return id;
     }
 
     @Override

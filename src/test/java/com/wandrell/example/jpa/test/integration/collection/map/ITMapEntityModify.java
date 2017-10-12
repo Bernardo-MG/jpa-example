@@ -24,11 +24,10 @@
 
 package com.wandrell.example.jpa.test.integration.collection.map;
 
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.Map;
 
-import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
+import org.junit.jupiter.api.Assertions;
 
 import com.wandrell.example.jpa.model.collection.MapEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
@@ -43,34 +42,35 @@ public final class ITMapEntityModify extends AbstractITEntityModify<MapEntity> {
     /**
      * Value to set on the name for the tests.
      */
-    private final String               name   = "The new name";
-
-    /**
-     * Values to set on the entity.
-     */
-    private final Map<String, Integer> values = new LinkedHashMap<String, Integer>();
+    private final String name = "The new name";
 
     /**
      * Default constructor.
      */
     public ITMapEntityModify() {
-        super(MapEntity.class, 5);
-    }
-
-    @BeforeTest
-    public final void initializeValues() {
-        values.put("value_11", 11);
-        values.put("value_55", 55);
+        super(MapEntity::new, 5);
     }
 
     @Override
     protected final void assertEntityModified(final MapEntity entity) {
-        Assert.assertEquals(entity.getName(), name);
-        Assert.assertEquals(entity.getValues(), values);
+        final Map<String, Integer> values;
+
+        values = new HashMap<String, Integer>();
+        values.put("value_11", 11);
+        values.put("value_55", 55);
+
+        Assertions.assertEquals(name, entity.getName());
+        Assertions.assertEquals(values, entity.getValues());
     }
 
     @Override
     protected final void modifyEntity(final MapEntity entity) {
+        final Map<String, Integer> values;
+
+        values = new HashMap<String, Integer>();
+        values.put("value_11", 11);
+        values.put("value_55", 55);
+
         entity.setName(name);
         entity.setValues(values);
     }

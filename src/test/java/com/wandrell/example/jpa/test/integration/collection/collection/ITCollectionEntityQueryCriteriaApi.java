@@ -26,11 +26,11 @@ package com.wandrell.example.jpa.test.integration.collection.collection;
 
 import javax.persistence.Query;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
+import com.wandrell.example.jpa.model.collection.CollectionEntity;
 import com.wandrell.example.jpa.test.util.criteria.collection.CollectionEntityCriteriaFactory;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code CollectionEntity} testing it loads values
@@ -39,7 +39,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class ITCollectionEntityQueryCriteriaApi
-        extends AbstractIntegrationTest {
+        extends AbstractITEntityQuery<CollectionEntity> {
 
     /**
      * Default constructor.
@@ -49,27 +49,32 @@ public final class ITCollectionEntityQueryCriteriaApi
     }
 
     /**
-     * Tests that retrieving all the entities with a specific values returns the
-     * correct number of them.
+     * Tests that retrieving all the entities with a a value returns the
+     * expected number of entities.
      */
     @Test
     public final void testFindAllWithValue() {
-        final Integer value; // Value to find
         final Integer count; // Number of entities expected
-        final Query query;   // Query for the entity
-
-        // Queried value
-        value = 2;
 
         // Expected result
         count = 3;
 
-        // Builds the query
-        query = getEntityManager().createQuery(CollectionEntityCriteriaFactory
-                .findAllWithValue(getEntityManager(), value));
+        assertResultSizeEquals(count, getQuery());
+    }
 
-        // Reads the expected number of entities
-        Assert.assertEquals((Integer) query.getResultList().size(), count);
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getQuery() {
+        final Integer value; // Value to find
+
+        // Queried value
+        value = 2;
+
+        return getQuery(CollectionEntityCriteriaFactory
+                .findAllWithValue(getEntityManager(), value));
     }
 
 }

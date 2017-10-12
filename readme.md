@@ -51,9 +51,7 @@ The application is coded in Java, using Maven to manage the project.
 ### Prerequisites
 
 The project has been tested on the following Java versions:
-* JDK 7
 * JDK 8
-* OpenJDK 7
 
 All other dependencies are handled through Maven, and noted in the included POM file.
 
@@ -67,6 +65,7 @@ Maven profiles are included for setting up the database and JPA provider.
 | hsqldb   | HSQLDB in-memory database |
 | mysql    | MySQL database            |
 | postgres | PostgreSQL database       |
+| sqlite   | SQLite embedded database  |
 
 | Profile     | Provider    |
 |-------------|-------------|

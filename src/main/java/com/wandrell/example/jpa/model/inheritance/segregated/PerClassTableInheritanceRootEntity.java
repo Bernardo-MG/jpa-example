@@ -36,6 +36,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.TableGenerator;
 import javax.persistence.Transient;
 
 import com.google.common.base.MoreObjects;
@@ -47,6 +48,8 @@ import com.google.common.base.MoreObjects;
  */
 @Entity(name = "PerClassTableInheritanceRootEntity")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@TableGenerator(name = "table_generator", initialValue = 10,
+        allocationSize = 50)
 public abstract class PerClassTableInheritanceRootEntity
         implements Serializable {
 
@@ -60,7 +63,8 @@ public abstract class PerClassTableInheritanceRootEntity
      * Entity's ID.
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE,
+            generator = "table_generator")
     @Column(name = "id", nullable = false, unique = true)
     private Integer           id               = null;
 

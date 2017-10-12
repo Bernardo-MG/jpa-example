@@ -26,11 +26,14 @@ package com.wandrell.example.jpa.test.util.test.integration;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import javax.persistence.Query;
+import java.util.function.Supplier;
 
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.transaction.annotation.Transactional;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.simple.SimpleEntity;
 import com.wandrell.example.jpa.test.util.criteria.GenericCriteriaFactory;
@@ -40,6 +43,9 @@ import com.wandrell.example.jpa.test.util.criteria.GenericCriteriaFactory;
  *
  * @author Bernardo Mart&iacute;nez Garrido
  * @see SimpleEntity
+ * 
+ * @param <V>
+ *            type of the entity
  */
 public abstract class AbstractITEntityModify<V>
         extends AbstractIntegrationTest {
@@ -49,23 +55,37 @@ public abstract class AbstractITEntityModify<V>
      * <p>
      * Used for creating new instances.
      */
-    private final Class<V> entityClass;
+    private final Class<V>    entityClass;
+
+    /**
+     * Supplier for generating new instances of the entity.
+     */
+    private final Supplier<V> entitySupplier;
 
     /**
      * Initial number of entities in the persistence context.
      */
-    private final Integer  initialEntitiesCount;
+    private final Integer     initialEntitiesCount;
 
     /**
      * Default constructor.
+     * 
+     * @param supplier
+     *            supplier for the entity being tested
+     * @param entities
+     *            expected number of entities
      */
-    public AbstractITEntityModify(final Class<V> cls, final Integer entities) {
+    @SuppressWarnings("unchecked")
+    public AbstractITEntityModify(final Supplier<V> supplier,
+            final Integer entities) {
         super();
 
-        entityClass = checkNotNull(cls,
-                "Received a null pointer as entity class");
+        entitySupplier = checkNotNull(supplier,
+                "Received a null pointer as entity supplier");
         initialEntitiesCount = checkNotNull(entities,
                 "Received a null pointer as entities count");
+
+        entityClass = (Class<V>) entitySupplier.get().getClass();
     }
 
     /**
@@ -88,7 +108,7 @@ public abstract class AbstractITEntityModify<V>
         getEntityManager().flush();
 
         // Checks the entity has been added
-        Assert.assertEquals(getEntitiesCount(),
+        Assertions.assertEquals(getEntitiesCount(),
                 new Integer(getInitialEntitiesCount() + 1));
     }
 
@@ -96,19 +116,22 @@ public abstract class AbstractITEntityModify<V>
      * Tests that updating an entity changes it.
      */
     @Test
-    public final void testUpdate() {
+    public final void testUpdate_Persisted() {
         final V entity;   // Original entity
-        final V modified; // Updatd entity
+        final V modified; // Updated entity
+        final Object id;  // Id of the entity to update
+
+        id = getId();
 
         // Acquires the entity
-        entity = findById(1);
+        entity = findById(id);
 
-        // Changes the entity name
+        // Changes the entity
         modifyEntity(entity);
         getEntityManager().persist(entity);
 
         // Retrieves the entity again
-        modified = findById(1);
+        modified = findById(id);
 
         // Checks that the entity has been saved correctly
         assertEntityModified(modified);
@@ -122,12 +145,11 @@ public abstract class AbstractITEntityModify<V>
      * @return the entity matching the received id
      */
     @SuppressWarnings("unchecked")
-    private final V findById(final Integer id) {
+    private final V findById(final Object id) {
         final Query query; // Query for the entity
 
         // Builds the query
-        query = getEntityManager().createQuery(GenericCriteriaFactory
-                .findById(getEntityManager(), getEntityClass(), 1));
+        query = getEntityManager().createQuery(getCriteriaQuery(id));
 
         // Acquires the entity
         return (V) query.getSingleResult();
@@ -168,15 +190,16 @@ public abstract class AbstractITEntityModify<V>
      * @return a new entity
      */
     private final V getNewEntity() {
-        final V entity;
+        return getSupplier().get();
+    }
 
-        try {
-            entity = getEntityClass().newInstance();
-        } catch (InstantiationException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-
-        return entity;
+    /**
+     * Returns the entity supplier.
+     * 
+     * @return the entity supplier
+     */
+    private final Supplier<V> getSupplier() {
+        return entitySupplier;
     }
 
     /**
@@ -188,6 +211,27 @@ public abstract class AbstractITEntityModify<V>
      *            the entity to check
      */
     protected abstract void assertEntityModified(final V entity);
+
+    /**
+     * Returns the query for finding an entity by its id.
+     * 
+     * @param id
+     *            id to search
+     * @return query for the entity matching the received id
+     */
+    protected CriteriaQuery<V> getCriteriaQuery(final Object id) {
+        return GenericCriteriaFactory.findById(getEntityManager(),
+                getEntityClass(), id);
+    }
+
+    /**
+     * Returns the id used to find the entity to update.
+     * 
+     * @return the id used to find the entity to update
+     */
+    protected Object getId() {
+        return new Integer(1);
+    }
 
     /**
      * Modifies the received entity.

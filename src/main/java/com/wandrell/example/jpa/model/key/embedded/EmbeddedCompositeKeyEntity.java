@@ -44,7 +44,7 @@ import com.google.common.base.MoreObjects;
  * @author Bernardo Mart&iacute;nez Garrido
  * @see EmbeddableCompositeKey
  */
-@Entity(name = "EmbeddedKeyEntity")
+@Entity(name = "EmbeddedCompositeKeyEntity")
 @Table(name = "embedded_key_entities")
 public class EmbeddedCompositeKeyEntity implements Serializable {
 

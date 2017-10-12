@@ -32,12 +32,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import javax.persistence.Query;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+
+import com.wandrell.example.jpa.model.temporal.TimestampEntity;
 import com.wandrell.example.jpa.test.util.criteria.temporal.TimestampEntityCriteriaFactory;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code TimestampEntity} testing it loads values
@@ -45,8 +48,9 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@Disabled("Entities not supported by Hibernate")
 public final class ITTimestampEntityQueryCriteriaApi
-        extends AbstractIntegrationTest {
+        extends AbstractITEntityQuery<TimestampEntity> {
 
     /**
      * Calendar for the test ranges.
@@ -81,7 +85,7 @@ public final class ITTimestampEntityQueryCriteriaApi
      * @throws ParseException
      *             if the time string can't be parsed
      */
-    @BeforeClass
+    @BeforeEach
     public final void setUpTime() throws ParseException {
         final DateFormat format; // Format for parsing the time string
 
@@ -101,10 +105,12 @@ public final class ITTimestampEntityQueryCriteriaApi
      */
     @Test
     public final void testGetAfterTime_Calendar() {
-        Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(TimestampEntityCriteriaFactory
-                        .findAfterTimestamp(getEntityManager(), calendar))
-                .getResultList().size(), new Integer(3));
+        final Integer count; // Number of entities expected
+
+        // Expected result
+        count = 3;
+
+        assertResultSizeEquals(count, getAfterTimeCalendarQuery());
     }
 
     /**
@@ -113,10 +119,12 @@ public final class ITTimestampEntityQueryCriteriaApi
      */
     @Test
     public final void testGetAfterTime_Java() {
-        Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(TimestampEntityCriteriaFactory
-                        .findAfterTimestamp(getEntityManager(), date))
-                .getResultList().size(), new Integer(3));
+        final Integer count; // Number of entities expected
+
+        // Expected result
+        count = 3;
+
+        assertResultSizeEquals(count, getAfterTimeJavaQuery());
     }
 
     /**
@@ -125,10 +133,12 @@ public final class ITTimestampEntityQueryCriteriaApi
      */
     @Test
     public final void testGetAfterTime_Sql() {
-        Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(TimestampEntityCriteriaFactory
-                        .findAfterSqlTimestamp(getEntityManager(), timestamp))
-                .getResultList().size(), new Integer(3));
+        final Integer count; // Number of entities expected
+
+        // Expected result
+        count = 3;
+
+        assertResultSizeEquals(count, getAfterTimeSqlQuery());
     }
 
     /**
@@ -137,10 +147,12 @@ public final class ITTimestampEntityQueryCriteriaApi
      */
     @Test
     public final void testGetBeforeTime_Calendar() {
-        Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(TimestampEntityCriteriaFactory
-                        .findBeforeTimestamp(getEntityManager(), calendar))
-                .getResultList().size(), new Integer(2));
+        final Integer count; // Number of entities expected
+
+        // Expected result
+        count = 2;
+
+        assertResultSizeEquals(count, getBeforeTimeCalendarQuery());
     }
 
     /**
@@ -149,10 +161,12 @@ public final class ITTimestampEntityQueryCriteriaApi
      */
     @Test
     public final void testGetBeforeTime_Java() {
-        Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(TimestampEntityCriteriaFactory
-                        .findBeforeTimestamp(getEntityManager(), date))
-                .getResultList().size(), new Integer(2));
+        final Integer count; // Number of entities expected
+
+        // Expected result
+        count = 2;
+
+        assertResultSizeEquals(count, getBeforeTimeJavaQuery());
     }
 
     /**
@@ -161,10 +175,12 @@ public final class ITTimestampEntityQueryCriteriaApi
      */
     @Test
     public final void testGetBeforeTime_Sql() {
-        Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(TimestampEntityCriteriaFactory
-                        .findBeforeSqlTimestamp(getEntityManager(), timestamp))
-                .getResultList().size(), new Integer(2));
+        final Integer count; // Number of entities expected
+
+        // Expected result
+        count = 2;
+
+        assertResultSizeEquals(count, getBeforeTimeSqlQuery());
     }
 
     /**
@@ -173,10 +189,12 @@ public final class ITTimestampEntityQueryCriteriaApi
      */
     @Test
     public final void testGetInTime_Calendar() {
-        Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(TimestampEntityCriteriaFactory
-                        .findInTimestamp(getEntityManager(), calendar))
-                .getResultList().size(), new Integer(1));
+        final Integer count; // Number of entities expected
+
+        // Expected result
+        count = 1;
+
+        assertResultSizeEquals(count, getInTimeCalendarQuery());
     }
 
     /**
@@ -185,10 +203,12 @@ public final class ITTimestampEntityQueryCriteriaApi
      */
     @Test
     public final void testGetInTime_Java() {
-        Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(TimestampEntityCriteriaFactory
-                        .findInTimestamp(getEntityManager(), date))
-                .getResultList().size(), new Integer(1));
+        final Integer count; // Number of entities expected
+
+        // Expected result
+        count = 1;
+
+        assertResultSizeEquals(count, getInTimeJavaQuery());
     }
 
     /**
@@ -197,10 +217,102 @@ public final class ITTimestampEntityQueryCriteriaApi
      */
     @Test
     public final void testGetInTime_Sql() {
-        Assert.assertEquals((Integer) getEntityManager()
-                .createQuery(TimestampEntityCriteriaFactory
-                        .findInSqlTimestamp(getEntityManager(), timestamp))
-                .getResultList().size(), new Integer(1));
+        final Integer count; // Number of entities expected
+
+        // Expected result
+        count = 1;
+
+        assertResultSizeEquals(count, getInTimeSqlQuery());
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getAfterTimeCalendarQuery() {
+        return getQuery(TimestampEntityCriteriaFactory
+                .findAfterTimestamp(getEntityManager(), calendar));
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getAfterTimeJavaQuery() {
+        return getQuery(TimestampEntityCriteriaFactory
+                .findAfterTimestamp(getEntityManager(), date));
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getAfterTimeSqlQuery() {
+        return getQuery(TimestampEntityCriteriaFactory
+                .findAfterSqlTimestamp(getEntityManager(), timestamp));
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getBeforeTimeCalendarQuery() {
+        return getQuery(TimestampEntityCriteriaFactory
+                .findBeforeTimestamp(getEntityManager(), calendar));
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getBeforeTimeJavaQuery() {
+        return getQuery(TimestampEntityCriteriaFactory
+                .findBeforeTimestamp(getEntityManager(), date));
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getBeforeTimeSqlQuery() {
+        return getQuery(TimestampEntityCriteriaFactory
+                .findBeforeSqlTimestamp(getEntityManager(), timestamp));
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getInTimeCalendarQuery() {
+        return getQuery(TimestampEntityCriteriaFactory
+                .findInTimestamp(getEntityManager(), calendar));
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getInTimeJavaQuery() {
+        return getQuery(TimestampEntityCriteriaFactory
+                .findInTimestamp(getEntityManager(), date));
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getInTimeSqlQuery() {
+        return getQuery(TimestampEntityCriteriaFactory
+                .findInSqlTimestamp(getEntityManager(), timestamp));
     }
 
 }

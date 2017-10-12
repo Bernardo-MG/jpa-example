@@ -44,6 +44,7 @@
       <entry key="eclipselink.ddl-generation" value="${eclipselink.ddl-generation}" />
       <entry key="eclipselink.ddl-generation.output-mode" value="${eclipselink.ddl-generation.output-mode}" />
       <entry key="eclipselink.allow-zero-id" value="${eclipselink.allow-zero-id}" />
+      <entry key="eclipselink.id-validation" value="${eclipselink.id-validation}" />
    </util:map>
 
    <!-- ============================== DATASOURCE =============================== -->

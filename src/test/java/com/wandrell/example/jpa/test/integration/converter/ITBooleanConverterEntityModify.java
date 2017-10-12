@@ -24,7 +24,7 @@
 
 package com.wandrell.example.jpa.test.integration.converter;
 
-import org.testng.Assert;
+import org.junit.jupiter.api.Assertions;
 
 import com.wandrell.example.jpa.model.converter.BooleanConverterEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
@@ -47,13 +47,13 @@ public final class ITBooleanConverterEntityModify
      * Default constructor.
      */
     public ITBooleanConverterEntityModify() {
-        super(BooleanConverterEntity.class, 9);
+        super(BooleanConverterEntity::new, 9);
     }
 
     @Override
     protected final void
             assertEntityModified(final BooleanConverterEntity entity) {
-        Assert.assertEquals(entity.getFlag(), flag);
+        Assertions.assertEquals(flag, entity.getFlag());
     }
 
     @Override

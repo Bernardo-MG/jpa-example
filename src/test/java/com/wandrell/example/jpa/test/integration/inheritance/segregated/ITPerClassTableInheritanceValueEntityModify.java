@@ -24,7 +24,7 @@
 
 package com.wandrell.example.jpa.test.integration.inheritance.segregated;
 
-import org.testng.Assert;
+import org.junit.jupiter.api.Assertions;
 
 import com.wandrell.example.jpa.model.inheritance.segregated.PerClassTableInheritanceValueEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
@@ -52,14 +52,14 @@ public final class ITPerClassTableInheritanceValueEntityModify
      * Default constructor.
      */
     public ITPerClassTableInheritanceValueEntityModify() {
-        super(PerClassTableInheritanceValueEntity.class, 2);
+        super(PerClassTableInheritanceValueEntity::new, 2);
     }
 
     @Override
     protected final void assertEntityModified(
             final PerClassTableInheritanceValueEntity entity) {
-        Assert.assertEquals(entity.getName(), name);
-        Assert.assertEquals(entity.getValue(), value);
+        Assertions.assertEquals(name, entity.getName());
+        Assertions.assertEquals(value, entity.getValue());
     }
 
     @Override

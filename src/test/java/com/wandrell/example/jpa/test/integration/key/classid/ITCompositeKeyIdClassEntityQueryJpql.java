@@ -26,9 +26,9 @@ package com.wandrell.example.jpa.test.integration.key.classid;
 
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.key.classid.CompositeKeyIdClassEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
@@ -75,14 +75,14 @@ public final class ITCompositeKeyIdClassEntityQueryJpql
         // Builds the query
         query = getEntityManager().createQuery(findByIds);
         query.setParameter("id1", 1);
-        query.setParameter("id2", 2);
+        query.setParameter("id2", 2l);
 
         // Acquires the entity
         entity = (CompositeKeyIdClassEntity) query.getSingleResult();
 
         // The ids are correct
-        Assert.assertEquals(entity.getId(), new Integer(1));
-        Assert.assertEquals(entity.getSupportId(), new Long(2));
+        Assertions.assertEquals(new Integer(1), entity.getId());
+        Assertions.assertEquals(new Long(2), entity.getSupportId());
     }
 
 }

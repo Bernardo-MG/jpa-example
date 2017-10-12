@@ -26,12 +26,11 @@ package com.wandrell.example.jpa.test.integration.embedded.collection;
 
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.model.embedded.EmbeddableData;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
+import com.wandrell.example.jpa.model.embedded.ElementCollectionEntity;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code ElementCollectionEntity} testing it loads
@@ -40,7 +39,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class ITElementCollectionEntityQueryJpql
-        extends AbstractIntegrationTest {
+        extends AbstractITEntityQuery<ElementCollectionEntity> {
 
     /**
      * The query to acquire all the entities.
@@ -61,25 +60,34 @@ public final class ITElementCollectionEntityQueryJpql
      */
     @Test
     public final void testFindContained() {
-        final EmbeddableData data; // Value to find
-        final Integer count;       // Number of entities expected
-        final Query query;         // Query for the entity
-
-        // Queried value
-        data = new EmbeddableData();
-        data.setName("name_2");
-        data.setDescription("desc_2");
+        final Integer count; // Number of entities expected
 
         // Expected result
         count = 4;
 
-        // Builds the query
-        query = getEntityManager().createQuery(findContained);
-        query.setParameter("name", data.getName());
-        query.setParameter("description", data.getDescription());
-
         // Reads the expected number of entities
-        Assert.assertEquals((Integer) query.getResultList().size(), count);
+        assertResultSizeEquals(count, getQuery());
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getQuery() {
+        final String name; // Value to find
+        final String desc; // Value to find
+        final Query query;
+
+        // Queried value
+        name = "name_2";
+        desc = "desc_2";
+
+        query = getQuery(findContained);
+        query.setParameter("name", name);
+        query.setParameter("description", desc);
+
+        return query;
     }
 
 }

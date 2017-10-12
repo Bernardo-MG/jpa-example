@@ -24,9 +24,13 @@
 
 package com.wandrell.example.jpa.test.integration.key.embedded;
 
-import org.testng.Assert;
+import javax.persistence.criteria.CriteriaQuery;
 
+import org.junit.jupiter.api.Assertions;
+
+import com.wandrell.example.jpa.model.key.embedded.EmbeddableCompositeKey;
 import com.wandrell.example.jpa.model.key.embedded.EmbeddedCompositeKeyEntity;
+import com.wandrell.example.jpa.test.util.criteria.key.embedded.EmbeddedCompositeKeyEntityCriteriaFactory;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
 
 /**
@@ -36,8 +40,22 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  * @author Bernardo Mart&iacute;nez Garrido
  * @see EmbeddedCompositeKeyEntity
  */
-public abstract class ITEmbeddedCompositeKeyEntityModify
+public final class ITEmbeddedCompositeKeyEntityModify
         extends AbstractITEntityModify<EmbeddedCompositeKeyEntity> {
+
+    private static final EmbeddedCompositeKeyEntity getNewEntity() {
+        final EmbeddedCompositeKeyEntity entity;
+        final EmbeddableCompositeKey id;
+
+        id = new EmbeddableCompositeKey();
+        id.setId(10);
+        id.setSupportId(10l);
+
+        entity = new EmbeddedCompositeKeyEntity();
+        entity.setKey(id);
+
+        return entity;
+    }
 
     /**
      * Value to set on the name for the tests.
@@ -48,14 +66,32 @@ public abstract class ITEmbeddedCompositeKeyEntityModify
      * Default constructor.
      */
     public ITEmbeddedCompositeKeyEntityModify() {
-        super(EmbeddedCompositeKeyEntity.class, 5);
-        // TODO: Make this work
+        super(ITEmbeddedCompositeKeyEntityModify::getNewEntity, 4);
     }
 
     @Override
     protected final void
             assertEntityModified(final EmbeddedCompositeKeyEntity entity) {
-        Assert.assertEquals(entity.getName(), name);
+        Assertions.assertEquals(name, entity.getName());
+    }
+
+    @Override
+    protected CriteriaQuery<EmbeddedCompositeKeyEntity>
+            getCriteriaQuery(final Object id) {
+        return EmbeddedCompositeKeyEntityCriteriaFactory.findByIds(
+                getEntityManager(), ((EmbeddableCompositeKey) id).getId(),
+                ((EmbeddableCompositeKey) id).getSupportId());
+    }
+
+    @Override
+    protected final Object getId() {
+        final EmbeddableCompositeKey id;
+
+        id = new EmbeddableCompositeKey();
+        id.setId(1);
+        id.setSupportId(1l);
+
+        return id;
     }
 
     @Override

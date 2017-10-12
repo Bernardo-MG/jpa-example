@@ -27,6 +27,7 @@ package com.wandrell.example.jpa.test.util.criteria.embedded;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Root;
 
 import com.wandrell.example.jpa.model.embedded.ElementCollectionEntity;
@@ -64,7 +65,7 @@ public class ElementCollectionEntityCriteriaFactory {
         entity = query.from(ElementCollectionEntity.class);
 
         // Generates a select query
-        query.select(entity);
+        query.select(entity.join("values", JoinType.LEFT));
         query.where(builder.isMember(data,
                 entity.get(ElementCollectionEntity_.values)));
 

@@ -24,7 +24,7 @@
 
 package com.wandrell.example.jpa.test.integration.inheritance.single;
 
-import org.testng.Assert;
+import org.junit.jupiter.api.Assertions;
 
 import com.wandrell.example.jpa.model.inheritance.single.SingleTableInheritanceValueEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
@@ -52,14 +52,14 @@ public final class ITSingleTableInheritanceValueEntityModify
      * Default constructor.
      */
     public ITSingleTableInheritanceValueEntityModify() {
-        super(SingleTableInheritanceValueEntity.class, 2);
+        super(SingleTableInheritanceValueEntity::new, 2);
     }
 
     @Override
     protected final void assertEntityModified(
             final SingleTableInheritanceValueEntity entity) {
-        Assert.assertEquals(entity.getName(), name);
-        Assert.assertEquals(entity.getValue(), value);
+        Assertions.assertEquals(name, entity.getName());
+        Assertions.assertEquals(value, entity.getValue());
     }
 
     @Override

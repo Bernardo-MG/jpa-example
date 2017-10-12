@@ -32,7 +32,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import org.testng.Assert;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 
 import com.wandrell.example.jpa.model.temporal.TimeEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
@@ -42,6 +43,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModif
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@Disabled("Entities not supported by Hibernate")
 public final class ITTimeEntityModify
         extends AbstractITEntityModify<TimeEntity> {
 
@@ -54,7 +56,7 @@ public final class ITTimeEntityModify
      * Default constructor.
      */
     public ITTimeEntityModify() {
-        super(TimeEntity.class, 6);
+        super(TimeEntity::new, 6);
     }
 
     @Override
@@ -70,9 +72,10 @@ public final class ITTimeEntityModify
             calendar = Calendar.getInstance();
             calendar.setTime(date);
 
-            Assert.assertEquals(entity.getDate(), date);
-            Assert.assertEquals(entity.getCalendar(), calendar);
-            Assert.assertEquals(entity.getSqlTime(), new Time(date.getTime()));
+            Assertions.assertEquals(date, entity.getDate());
+            Assertions.assertEquals(calendar, entity.getCalendar());
+            Assertions.assertEquals(new Time(date.getTime()),
+                    entity.getSqlTime());
         } catch (final ParseException e) {
             throw new RuntimeException(e);
         }

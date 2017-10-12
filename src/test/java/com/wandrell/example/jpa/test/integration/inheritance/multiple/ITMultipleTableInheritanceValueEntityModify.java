@@ -24,7 +24,7 @@
 
 package com.wandrell.example.jpa.test.integration.inheritance.multiple;
 
-import org.testng.Assert;
+import org.junit.jupiter.api.Assertions;
 
 import com.wandrell.example.jpa.model.inheritance.multiple.MultipleTableInheritanceValueEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityModify;
@@ -52,14 +52,14 @@ public final class ITMultipleTableInheritanceValueEntityModify
      * Default constructor.
      */
     public ITMultipleTableInheritanceValueEntityModify() {
-        super(MultipleTableInheritanceValueEntity.class, 2);
+        super(MultipleTableInheritanceValueEntity::new, 2);
     }
 
     @Override
     protected final void assertEntityModified(
             final MultipleTableInheritanceValueEntity entity) {
-        Assert.assertEquals(entity.getName(), name);
-        Assert.assertEquals(entity.getValue(), value);
+        Assertions.assertEquals(name, entity.getName());
+        Assertions.assertEquals(value, entity.getValue());
     }
 
     @Override

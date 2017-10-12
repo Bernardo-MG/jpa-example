@@ -26,9 +26,9 @@ package com.wandrell.example.jpa.test.integration.key.embedded;
 
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import com.wandrell.example.jpa.model.key.embedded.EmbeddedCompositeKeyEntity;
 import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
@@ -48,7 +48,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  * @author Bernardo Mart&iacute;nez Garrido
  * @see EmbeddedCompositeKeyEntity
  */
-public abstract class ITEmbeddedCompositeKeyEntityQueryJpql
+public final class ITEmbeddedCompositeKeyEntityQueryJpql
         extends AbstractIntegrationTest {
 
     /**
@@ -62,7 +62,6 @@ public abstract class ITEmbeddedCompositeKeyEntityQueryJpql
      */
     public ITEmbeddedCompositeKeyEntityQueryJpql() {
         super();
-        // TODO: Make this work
     }
 
     /**
@@ -76,14 +75,14 @@ public abstract class ITEmbeddedCompositeKeyEntityQueryJpql
         // Builds the query
         query = getEntityManager().createQuery(findByIds);
         query.setParameter("id1", 1);
-        query.setParameter("id2", 2);
+        query.setParameter("id2", 2l);
 
         // Acquires the entity
         entity = (EmbeddedCompositeKeyEntity) query.getSingleResult();
 
         // The ids are correct
-        Assert.assertEquals(entity.getKey().getId(), new Integer(1));
-        Assert.assertEquals(entity.getKey().getSupportId(), new Long(2));
+        Assertions.assertEquals(new Integer(1), entity.getKey().getId());
+        Assertions.assertEquals(new Long(2), entity.getKey().getSupportId());
     }
 
 }

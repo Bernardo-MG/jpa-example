@@ -36,7 +36,7 @@ import javax.persistence.criteria.Root;
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public class GenericCriteriaFactory {
+public final class GenericCriteriaFactory {
 
     /**
      * Generates a query to find all the entities.
@@ -77,7 +77,7 @@ public class GenericCriteriaFactory {
      */
     public static final <V> CriteriaQuery<V> findById(
             final EntityManager entityManager, final Class<V> entityClass,
-            final Integer id) {
+            final Object id) {
         final CriteriaBuilder builder; // Builder
         final CriteriaQuery<V> query;  // Query
         final Root<V> entity;          // Root entity

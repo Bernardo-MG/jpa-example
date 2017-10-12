@@ -26,11 +26,11 @@ package com.wandrell.example.jpa.test.integration.embedded.embedded;
 
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
-import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
+import com.wandrell.example.jpa.model.embedded.EmbeddedEntity;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code EmbeddedEntity} testing it loads values
@@ -38,7 +38,8 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class ITEmbeddedEntityQueryJpql extends AbstractIntegrationTest {
+public final class ITEmbeddedEntityQueryJpql
+        extends AbstractITEntityQuery<EmbeddedEntity> {
 
     /**
      * The query to acquire all the entities.
@@ -59,22 +60,31 @@ public final class ITEmbeddedEntityQueryJpql extends AbstractIntegrationTest {
      */
     @Test
     public final void testFindByName() {
-        final String name;   // Value to find
         final Integer count; // Number of entities expected
-        final Query query;   // Query for the entity
-
-        // Queried value
-        name = "embedded_entity_1";
 
         // Expected result
         count = 1;
 
-        // Builds the query
-        query = getEntityManager().createQuery(findByName);
+        // Reads the expected number of entities
+        assertResultSizeEquals(count, getQuery());
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getQuery() {
+        final String name;   // Value to find
+        final Query query;
+
+        // Queried value
+        name = "embedded_entity_1";
+
+        query = getQuery(findByName);
         query.setParameter("name", name);
 
-        // Reads the expected number of entities
-        Assert.assertEquals((Integer) query.getResultList().size(), count);
+        return query;
     }
 
 }
