@@ -26,12 +26,12 @@ package com.wandrell.example.jpa.test.integration.collection.map;
 
 import javax.persistence.Query;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 
-import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
+import com.wandrell.example.jpa.model.collection.MapEntity;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code CollectionEntity} testing it loads values
@@ -40,7 +40,8 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Disabled("Fails on Hibernate")
-public final class ITMapEntityQueryJpql extends AbstractIntegrationTest {
+public final class ITMapEntityQueryJpql
+        extends AbstractITEntityQuery<MapEntity> {
 
     /**
      * The query to acquire all the entities.
@@ -61,22 +62,30 @@ public final class ITMapEntityQueryJpql extends AbstractIntegrationTest {
      */
     @Test
     public final void testfindAllWithValueInMap() {
-        final Integer value; // Value to find
         final Integer count; // Number of entities expected
-        final Query query;   // Query for the entity
-
-        // Queried value
-        value = 2;
 
         // Expected result
         count = 3;
 
-        // Builds the query
-        query = getEntityManager().createQuery(findAllWithValueInMap);
+        assertResultSizeEquals(count, getQuery());
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getQuery() {
+        final Integer value; // Value to find
+        final Query query;
+
+        // Queried value
+        value = 2;
+
+        query = getQuery(findAllWithValueInMap);
         query.setParameter("value", value);
 
-        // Reads the expected number of entities
-        Assertions.assertEquals(count, (Integer) query.getResultList().size());
+        return query;
     }
 
 }

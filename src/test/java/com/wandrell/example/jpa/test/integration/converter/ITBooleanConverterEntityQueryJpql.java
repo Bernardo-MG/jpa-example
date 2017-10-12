@@ -26,11 +26,11 @@ package com.wandrell.example.jpa.test.integration.converter;
 
 import javax.persistence.Query;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 
-import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
+import com.wandrell.example.jpa.model.converter.BooleanConverterEntity;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code BooleanConverterEntity} testing it loads
@@ -39,7 +39,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class ITBooleanConverterEntityQueryJpql
-        extends AbstractIntegrationTest {
+        extends AbstractITEntityQuery<BooleanConverterEntity> {
 
     /**
      * The query to acquire all the entities by the flag.
@@ -60,14 +60,12 @@ public final class ITBooleanConverterEntityQueryJpql
      */
     @Test
     public final void testGetEntity_AllFalse() {
-        final Query query; // Query for the entity
+        final Integer count; // Number of entities expected
 
-        // Builds the query
-        query = getEntityManager().createQuery(findAllByFlag);
-        query.setParameter("flag", false);
+        // Expected result
+        count = 2;
 
-        // Reads the expected number of entities
-        Assertions.assertEquals(2, query.getResultList().size());
+        assertResultSizeEquals(count, getAllFalseQuery());
     }
 
     /**
@@ -76,14 +74,48 @@ public final class ITBooleanConverterEntityQueryJpql
      */
     @Test
     public final void testGetEntity_AllTrue() {
-        final Query query; // Query for the entity
+        final Integer count; // Number of entities expected
 
-        // Builds the query
-        query = getEntityManager().createQuery(findAllByFlag);
-        query.setParameter("flag", true);
+        // Expected result
+        count = 3;
 
-        // Reads the expected number of entities
-        Assertions.assertEquals(3, query.getResultList().size());
+        assertResultSizeEquals(count, getAllTrueQuery());
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getAllFalseQuery() {
+        final Boolean value; // Value to find
+        final Query query;
+
+        // Queried value
+        value = false;
+
+        query = getQuery(findAllByFlag);
+        query.setParameter("flag", value);
+
+        return query;
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getAllTrueQuery() {
+        final Boolean value; // Value to find
+        final Query query;
+
+        // Queried value
+        value = true;
+
+        query = getQuery(findAllByFlag);
+        query.setParameter("flag", value);
+
+        return query;
     }
 
 }

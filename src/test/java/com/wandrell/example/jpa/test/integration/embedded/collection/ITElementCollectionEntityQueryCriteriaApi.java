@@ -26,13 +26,13 @@ package com.wandrell.example.jpa.test.integration.embedded.collection;
 
 import javax.persistence.Query;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import com.wandrell.example.jpa.model.embedded.ElementCollectionEntity;
 import com.wandrell.example.jpa.model.embedded.EmbeddableData;
 import com.wandrell.example.jpa.test.util.criteria.embedded.ElementCollectionEntityCriteriaFactory;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code ElementCollectionEntity} testing it loads
@@ -42,7 +42,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  */
 @Disabled("Fails on Hibernate")
 public final class ITElementCollectionEntityQueryCriteriaApi
-        extends AbstractIntegrationTest {
+        extends AbstractITEntityQuery<ElementCollectionEntity> {
 
     /**
      * Default constructor.
@@ -57,25 +57,30 @@ public final class ITElementCollectionEntityQueryCriteriaApi
      */
     @Test
     public final void testFindContained() {
+        final Integer count; // Number of entities expected
+
+        // Expected result
+        count = 4;
+
+        // Reads the expected number of entities
+        assertResultSizeEquals(count, getQuery());
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getQuery() {
         final EmbeddableData data; // Value to find
-        final Integer count;       // Number of entities expected
-        final Query query;         // Query for the entity
 
         // Queried value
         data = new EmbeddableData();
         data.setName("name_2");
         data.setDescription("desc_2");
 
-        // Expected result
-        count = 4;
-
-        // Builds the query
-        query = getEntityManager()
-                .createQuery(ElementCollectionEntityCriteriaFactory
-                        .findContained(getEntityManager(), data));
-
-        // Reads the expected number of entities
-        Assertions.assertEquals(count, (Integer) query.getResultList().size());
+        return getQuery(ElementCollectionEntityCriteriaFactory
+                .findContained(getEntityManager(), data));
     }
 
 }

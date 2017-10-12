@@ -26,11 +26,11 @@ package com.wandrell.example.jpa.test.integration.embedded.embedded;
 
 import javax.persistence.Query;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import com.wandrell.example.jpa.model.embedded.EmbeddedEntity;
 import com.wandrell.example.jpa.test.util.criteria.embedded.EmbeddedEntityCriteriaFactory;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code EmbeddedEntity} testing it loads values
@@ -39,7 +39,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class ITEmbeddedEntityQueryCriteriaApi
-        extends AbstractIntegrationTest {
+        extends AbstractITEntityQuery<EmbeddedEntity> {
 
     /**
      * Default constructor.
@@ -54,22 +54,28 @@ public final class ITEmbeddedEntityQueryCriteriaApi
      */
     @Test
     public final void testFindByName() {
-        final String name;   // Value to find
         final Integer count; // Number of entities expected
-        final Query query;   // Query for the entity
-
-        // Queried value
-        name = "embedded_entity_1";
 
         // Expected result
         count = 1;
 
-        // Builds the query
-        query = getEntityManager().createQuery(EmbeddedEntityCriteriaFactory
-                .findByName(getEntityManager(), name));
-
         // Reads the expected number of entities
-        Assertions.assertEquals(count, (Integer) query.getResultList().size());
+        assertResultSizeEquals(count, getQuery());
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getQuery() {
+        final String name;   // Value to find
+
+        // Queried value
+        name = "embedded_entity_1";
+
+        return getQuery(EmbeddedEntityCriteriaFactory
+                .findByName(getEntityManager(), name));
     }
 
 }

@@ -26,11 +26,11 @@ package com.wandrell.example.jpa.test.integration.inheritance.multiple;
 
 import javax.persistence.Query;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 
-import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
+import com.wandrell.example.jpa.model.inheritance.multiple.MultipleTableInheritanceValueEntity;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code MultipleTableInheritanceValueEntity} testing
@@ -39,7 +39,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class ITMultipleTableInheritanceValueEntityQueryJpql
-        extends AbstractIntegrationTest {
+        extends AbstractITEntityQuery<MultipleTableInheritanceValueEntity> {
 
     /**
      * The query to acquire all the entities by the ordinal value.
@@ -60,14 +60,30 @@ public final class ITMultipleTableInheritanceValueEntityQueryJpql
      */
     @Test
     public final void testFindAllWithValue() {
-        final Query query; // Query for the entity
+        final Integer count; // Number of entities expected
 
-        // Builds the query
-        query = getEntityManager().createQuery(findAllWithValue);
-        query.setParameter("value", 11);
+        // Expected result
+        count = 1;
 
-        // Reads the expected number of entities
-        Assertions.assertEquals(1, query.getResultList().size());
+        assertResultSizeEquals(count, getQuery());
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getQuery() {
+        final Integer value; // Value to find
+        final Query query;
+
+        // Queried value
+        value = 11;
+
+        query = getQuery(findAllWithValue);
+        query.setParameter("value", value);
+
+        return query;
     }
 
 }

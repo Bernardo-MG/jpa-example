@@ -26,12 +26,11 @@ package com.wandrell.example.jpa.test.integration.table;
 
 import javax.persistence.Query;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.wandrell.example.jpa.model.table.SecondaryTableEntity;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code SecondaryTableEntity} testing it loads values
@@ -40,7 +39,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class ITSecondaryTableEntityQueryJpql
-        extends AbstractIntegrationTest {
+        extends AbstractITEntityQuery<SecondaryTableEntity> {
 
     /**
      * The query to acquire all the entities by the flag.
@@ -61,18 +60,30 @@ public final class ITSecondaryTableEntityQueryJpql
      */
     @Test
     public final void testGetEntity_AllFalse() {
-        final Query query;                 // Query for the entity
-        final SecondaryTableEntity entity; // Tested entity
+        final Integer count; // Number of entities expected
 
-        // Builds the query
-        query = getEntityManager().createQuery(findBySecondaryValue);
-        query.setParameter("value", "value_b_2");
+        // Expected result
+        count = 1;
 
-        // Acquires the entity
-        entity = (SecondaryTableEntity) query.getSingleResult();
+        assertResultSizeEquals(count, getQuery());
+    }
 
-        // The id is correct
-        Assertions.assertEquals(new Integer(2), entity.getId());
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getQuery() {
+        final String value; // Value to find
+        final Query query;
+
+        // Queried value
+        value = "value_b_2";
+
+        query = getQuery(findBySecondaryValue);
+        query.setParameter("value", value);
+
+        return query;
     }
 
 }

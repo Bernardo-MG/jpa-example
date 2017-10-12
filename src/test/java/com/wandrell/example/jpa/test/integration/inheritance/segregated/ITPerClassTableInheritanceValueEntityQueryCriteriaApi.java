@@ -26,11 +26,11 @@ package com.wandrell.example.jpa.test.integration.inheritance.segregated;
 
 import javax.persistence.Query;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import com.wandrell.example.jpa.model.inheritance.segregated.PerClassTableInheritanceValueEntity;
 import com.wandrell.example.jpa.test.util.criteria.inheritance.segregated.PerClassTableInheritanceValueEntityCriteriaFactory;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code PerClassTableInheritanceValueEntity} testing
@@ -39,7 +39,7 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class ITPerClassTableInheritanceValueEntityQueryCriteriaApi
-        extends AbstractIntegrationTest {
+        extends AbstractITEntityQuery<PerClassTableInheritanceValueEntity> {
 
     /**
      * Default constructor.
@@ -54,15 +54,27 @@ public final class ITPerClassTableInheritanceValueEntityQueryCriteriaApi
      */
     @Test
     public final void testAllWithValue() {
-        final Query query; // Query for the entity
+        final Integer count; // Number of entities expected
 
-        // Builds the query
-        query = getEntityManager()
-                .createQuery(PerClassTableInheritanceValueEntityCriteriaFactory
-                        .findAllWithValue(getEntityManager(), 11));
+        // Expected result
+        count = 1;
 
-        // Reads the expected number of entities
-        Assertions.assertEquals(1, query.getResultList().size());
+        assertResultSizeEquals(count, getQuery());
+    }
+
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getQuery() {
+        final Integer value; // Value to find
+
+        // Queried value
+        value = 11;
+
+        return getQuery(PerClassTableInheritanceValueEntityCriteriaFactory
+                .findAllWithValue(getEntityManager(), value));
     }
 
 }

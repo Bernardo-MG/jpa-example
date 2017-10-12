@@ -27,12 +27,13 @@ package com.wandrell.example.jpa.test.integration.simple;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 
+import com.wandrell.example.jpa.model.simple.DefaultSimpleEntity;
 import com.wandrell.example.jpa.model.simple.SimpleEntity;
-import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTest;
+import com.wandrell.example.jpa.test.util.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code SimpleEntity} testing it can be queried
@@ -40,31 +41,26 @@ import com.wandrell.example.jpa.test.util.test.integration.AbstractIntegrationTe
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class ITSimpleEntityQueryJpql extends AbstractIntegrationTest {
-
-    /**
-     * Initial number of entities in the persistence context.
-     */
-    private final Integer entitiesCount = 30;
+public final class ITSimpleEntityQueryJpql
+        extends AbstractITEntityQuery<DefaultSimpleEntity> {
 
     /**
      * The query to acquire all the entities.
      */
     @Value("${query.findAll}")
-    private String        findAll;
+    private String findAll;
 
     /**
      * The query to acquire an entity by the id.
      */
     @Value("${query.findById}")
-    private String        findById;
+    private String findById;
 
     /**
      * Default constructor.
      */
     public ITSimpleEntityQueryJpql() {
         super();
-        // TODO: Use the new JUnit 5 annotations
     }
 
     /**
@@ -72,8 +68,12 @@ public final class ITSimpleEntityQueryJpql extends AbstractIntegrationTest {
      */
     @Test
     public final void testFindAll() {
-        Assertions.assertEquals(entitiesCount, (Integer) getEntityManager()
-                .createQuery(findAll).getResultList().size());
+        final Integer count; // Number of entities expected
+
+        // Expected result
+        count = 30;
+
+        assertResultSizeEquals(count, getAllQuery());
     }
 
     /**
@@ -102,24 +102,31 @@ public final class ITSimpleEntityQueryJpql extends AbstractIntegrationTest {
     /**
      * Tests that retrieving a not existing entity throws an exception.
      */
-    @Test(expected = NoResultException.class)
+    @Test
     public final void testFindById_NotExisting_Null() {
-        final Integer id;          // Invalid entity ID
-        final SimpleEntity entity; // Tested entity
-        final Query query;         // Query for the entity
+        final Integer id;  // Invalid entity ID
+        final Query query; // Query for the entity
 
         // Invalid entity id
-        id = 123;
+        id = 100;
 
         // Builds the query
         query = getEntityManager().createQuery(findById);
         query.setParameter("id", id);
 
         // Tries to acquire the entity
-        entity = (SimpleEntity) query.getSingleResult();
+        Assertions.assertThrows(NoResultException.class, () -> {
+            query.getSingleResult();
+        });
+    }
 
-        // The entity is null
-        Assertions.assertNull(entity);
+    /**
+     * Returns the query for the test.
+     * 
+     * @return the query for the test
+     */
+    private final Query getAllQuery() {
+        return getQuery(findAll);
     }
 
 }
