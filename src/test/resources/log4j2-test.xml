@@ -21,7 +21,7 @@
    </Appenders>
 
    <Loggers>
-      <Logger name="com.wandrell.example" level="debug"
+      <Logger name="com.bernardomg.example" level="debug"
          additivity="false">
          <AppenderRef ref="console" />
       </Logger>
