@@ -18,4 +18,18 @@
       <property name="password" value="${jdbc.password}" />
    </bean>
 
+   <!-- Transaction manager -->
+   <!-- Required for rolling back and handling tests -->
+   <bean id="transactionManager" class="${jpa.transactionManager.class}">
+      <property name="entityManagerFactory" ref="entityManagerFactory" />
+   </bean>
+
+   <!-- Entity manager -->
+   <bean id="entityManager" class="${jpa.entityManager.class}">
+      <property name="entityManagerFactory" ref="entityManagerFactory" />
+   </bean>
+
+   <!-- Persistence versioning -->
+   <import resource="classpath:context/persistence/liquibase.xml" />
+
 </beans>
