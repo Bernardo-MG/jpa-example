@@ -41,7 +41,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@SpringJUnitConfig(locations = { "classpath:context/test-maven-profile.xml" })
+@SpringJUnitConfig(locations = { "classpath:context/test-context.xml" })
 @RunWith(JUnitPlatform.class)
 @TestExecutionListeners({ TransactionalTestExecutionListener.class,
         DependencyInjectionTestExecutionListener.class })
