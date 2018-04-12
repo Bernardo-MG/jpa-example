@@ -106,7 +106,7 @@ public abstract class SuperClassTableInheritanceRootEntity
      *
      * @return the name
      */
-    public final String getName() {
+    public String getName() {
         return name;
     }
 
@@ -131,7 +131,7 @@ public abstract class SuperClassTableInheritanceRootEntity
      * @param value
      *            the name to set in the entity
      */
-    public final void setName(final String value) {
+    public void setName(final String value) {
         name = checkNotNull(value, "Received a null pointer as name");
     }
 

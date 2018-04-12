@@ -65,7 +65,7 @@ public class MultipleTableInheritanceDescriptionEntity
      *
      * @return the description.
      */
-    public final String getDescription() {
+    public String getDescription() {
         return description;
     }
 
@@ -75,7 +75,7 @@ public class MultipleTableInheritanceDescriptionEntity
      * @param value
      *            the description to set in the entity
      */
-    public final void setDescription(final String value) {
+    public void setDescription(final String value) {
         description = checkNotNull(value,
                 "Received a null pointer as description");
     }

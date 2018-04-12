@@ -110,7 +110,7 @@ public class CompositeKeyEntity implements Serializable {
      *
      * @return the entity's name
      */
-    public final String getName() {
+    public String getName() {
         return name;
     }
 
@@ -144,7 +144,7 @@ public class CompositeKeyEntity implements Serializable {
      * @param value
      *            the name to set on the entity
      */
-    public final void setName(final String value) {
+    public void setName(final String value) {
         name = checkNotNull(value, "Received a null pointer as name");
     }
 

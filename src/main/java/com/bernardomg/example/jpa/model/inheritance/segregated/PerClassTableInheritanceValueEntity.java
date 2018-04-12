@@ -61,7 +61,7 @@ public class PerClassTableInheritanceValueEntity
      *
      * @return the value
      */
-    public final Integer getValue() {
+    public Integer getValue() {
         return value;
     }
 
@@ -71,7 +71,7 @@ public class PerClassTableInheritanceValueEntity
      * @param value
      *            the value to set in the entity.
      */
-    public final void setValue(final Integer value) {
+    public void setValue(final Integer value) {
         this.value = value;
     }
 

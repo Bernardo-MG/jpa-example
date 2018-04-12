@@ -124,7 +124,7 @@ public class CollectionEntity implements Serializable {
      *
      * @return the entity's name
      */
-    public final String getName() {
+    public String getName() {
         return name;
     }
 
@@ -133,7 +133,7 @@ public class CollectionEntity implements Serializable {
      *
      * @return the integer values
      */
-    public final Collection<Integer> getValues() {
+    public Collection<Integer> getValues() {
         return values;
     }
 
@@ -158,7 +158,7 @@ public class CollectionEntity implements Serializable {
      * @param name
      *            the name to set on the entity
      */
-    public final void setName(final String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -168,7 +168,7 @@ public class CollectionEntity implements Serializable {
      * @param value
      *            the integer values to set in the entity
      */
-    public final void setValues(final Collection<Integer> value) {
+    public void setValues(final Collection<Integer> value) {
         values = checkNotNull(value, "Received a null pointer as value");
     }
 
