@@ -386,12 +386,12 @@
       <guava.version>24.1-jre</guava.version>
       <h2.version>1.4.197</h2.version>
       <hibernate.version>5.2.16.Final</hibernate.version>
-      <hikari.version>2.7.8</hikari.version>
+      <hikari.version>3.1.0</hikari.version>
       <hsqldb.version>2.4.0</hsqldb.version>
       <javaee.api.version>2.2</javaee.api.version>
-      <junit.jupiter.version>5.1.0</junit.jupiter.version>
-      <junit.platform.version>1.1.0</junit.platform.version>
-      <liquibase.version>3.5.5</liquibase.version>
+      <junit.jupiter.version>5.1.1</junit.jupiter.version>
+      <junit.platform.version>1.1.1</junit.platform.version>
+      <liquibase.version>3.6.1</liquibase.version>
       <log4j.version>2.11.0</log4j.version>
       <mysql.version>6.0.6</mysql.version>
       <postgresql.version>42.2.2</postgresql.version>
