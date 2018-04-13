@@ -39,7 +39,7 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQue
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class ITEnumerationEntityQueryJpql
+public class ITEnumerationEntityQueryJpql
         extends AbstractITEntityQuery<EnumerationEntity> {
 
     /**

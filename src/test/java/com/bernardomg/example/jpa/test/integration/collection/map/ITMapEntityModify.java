@@ -37,7 +37,7 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityMod
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class ITMapEntityModify extends AbstractITEntityModify<MapEntity> {
+public class ITMapEntityModify extends AbstractITEntityModify<MapEntity> {
 
     /**
      * Value to set on the name for the tests.

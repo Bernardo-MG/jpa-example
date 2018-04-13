@@ -44,7 +44,7 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityMod
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Disabled("Entities not supported by Hibernate")
-public final class ITTimeEntityModify
+public class ITTimeEntityModify
         extends AbstractITEntityModify<TimeEntity> {
 
     /**

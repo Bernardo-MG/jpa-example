@@ -40,7 +40,7 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityMod
  * @author Bernardo Mart&iacute;nez Garrido
  * @see CompositeKeyIdClassEntity
  */
-public final class ITCompositeKeyIdClassEntityModify
+public class ITCompositeKeyIdClassEntityModify
         extends AbstractITEntityModify<CompositeKeyIdClassEntity> {
 
     private static final CompositeKeyIdClassEntity getNewEntity() {

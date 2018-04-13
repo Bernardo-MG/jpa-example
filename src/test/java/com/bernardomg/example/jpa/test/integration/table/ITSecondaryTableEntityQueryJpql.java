@@ -38,7 +38,7 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQue
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class ITSecondaryTableEntityQueryJpql
+public class ITSecondaryTableEntityQueryJpql
         extends AbstractITEntityQuery<SecondaryTableEntity> {
 
     /**

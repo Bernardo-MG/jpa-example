@@ -49,7 +49,7 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQue
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Disabled("Entities not supported by Hibernate")
-public final class ITTimestampEntityQueryCriteriaApi
+public class ITTimestampEntityQueryCriteriaApi
         extends AbstractITEntityQuery<TimestampEntity> {
 
     /**

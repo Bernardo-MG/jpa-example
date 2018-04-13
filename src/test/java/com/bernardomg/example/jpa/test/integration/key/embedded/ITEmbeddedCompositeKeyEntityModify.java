@@ -40,7 +40,7 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityMod
  * @author Bernardo Mart&iacute;nez Garrido
  * @see EmbeddedCompositeKeyEntity
  */
-public final class ITEmbeddedCompositeKeyEntityModify
+public class ITEmbeddedCompositeKeyEntityModify
         extends AbstractITEntityModify<EmbeddedCompositeKeyEntity> {
 
     private static final EmbeddedCompositeKeyEntity getNewEntity() {

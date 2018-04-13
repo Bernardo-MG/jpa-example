@@ -41,7 +41,7 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQue
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class ITSimpleEntityQueryJpql
+public class ITSimpleEntityQueryJpql
         extends AbstractITEntityQuery<DefaultSimpleEntity> {
 
     /**

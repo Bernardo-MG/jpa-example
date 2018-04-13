@@ -48,7 +48,7 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractIntegration
  * @author Bernardo Mart&iacute;nez Garrido
  * @see CompositeKeyIdClassEntity
  */
-public final class ITCompositeKeyIdClassEntityQueryCriteriaApi
+public class ITCompositeKeyIdClassEntityQueryCriteriaApi
         extends AbstractIntegrationTest {
 
     /**

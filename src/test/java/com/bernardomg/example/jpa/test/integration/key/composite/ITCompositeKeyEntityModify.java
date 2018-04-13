@@ -39,7 +39,7 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityMod
  * @author Bernardo Mart&iacute;nez Garrido
  * @see CompositeKeyEntity
  */
-public final class ITCompositeKeyEntityModify
+public class ITCompositeKeyEntityModify
         extends AbstractITEntityModify<CompositeKeyEntity> {
 
     private static final CompositeKeyEntity getNewEntity() {

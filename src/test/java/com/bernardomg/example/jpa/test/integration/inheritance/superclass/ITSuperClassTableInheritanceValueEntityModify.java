@@ -35,7 +35,7 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityMod
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class ITSuperClassTableInheritanceValueEntityModify
+public class ITSuperClassTableInheritanceValueEntityModify
         extends AbstractITEntityModify<SuperClassTableInheritanceValueEntity> {
 
     /**

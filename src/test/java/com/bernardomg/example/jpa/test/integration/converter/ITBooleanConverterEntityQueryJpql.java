@@ -38,7 +38,7 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQue
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class ITBooleanConverterEntityQueryJpql
+public class ITBooleanConverterEntityQueryJpql
         extends AbstractITEntityQuery<BooleanConverterEntity> {
 
     /**
