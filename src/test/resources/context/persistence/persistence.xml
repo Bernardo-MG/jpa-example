@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+   xmlns:tx="http://www.springframework.org/schema/tx"
    xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/jdbc
-        http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+        http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
 
    <description>
       Persistence datasource.
@@ -18,18 +22,21 @@
       <property name="password" value="${jdbc.password}" />
    </bean>
 
+   <!-- Entity manager -->
+   <bean id="entityManager" class="${jpa.entityManager.class}">
+      <property name="entityManagerFactory" ref="entityManagerFactory" />
+   </bean>
+
    <!-- Transaction manager -->
    <!-- Required for rolling back and handling tests -->
    <bean id="transactionManager" class="${jpa.transactionManager.class}">
       <property name="entityManagerFactory" ref="entityManagerFactory" />
    </bean>
 
-   <!-- Entity manager -->
-   <bean id="entityManager" class="${jpa.entityManager.class}">
-      <property name="entityManagerFactory" ref="entityManagerFactory" />
-   </bean>
+   <tx:annotation-driven transaction-manager="transactionManager" />
 
-   <!-- Persistence versioning -->
+   <!-- ============================== PERSISTENCE VERSIONING =============================== -->
+
    <import resource="classpath:context/persistence/liquibase.xml" />
 
 </beans>
