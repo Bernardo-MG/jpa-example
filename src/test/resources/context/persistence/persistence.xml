@@ -33,6 +33,7 @@
       <property name="entityManagerFactory" ref="entityManagerFactory" />
    </bean>
 
+   <!-- Activates transactionality -->
    <tx:annotation-driven transaction-manager="transactionManager" />
 
    <!-- ============================== PERSISTENCE VERSIONING =============================== -->
