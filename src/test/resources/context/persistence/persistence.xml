@@ -31,6 +31,7 @@
    <!-- Required for rolling back and handling tests -->
    <bean id="transactionManager" class="${jpa.transactionManager.class}">
       <property name="entityManagerFactory" ref="entityManagerFactory" />
+      <property name="dataSource" ref="dataSource" />
    </bean>
 
    <!-- Activates transactionality -->
