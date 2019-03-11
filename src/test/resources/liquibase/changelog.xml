@@ -34,10 +34,10 @@
       </insert>
       <!-- Hibernate's default sequence -->
       <createSequence sequenceName="HIBERNATE_SEQUENCE"
-         incrementBy="1" startValue="10" catalogName="jpa_test" />
+         incrementBy="1" startValue="10" />
       <!-- Matches Eclipselink's default sequence -->
       <createSequence sequenceName="SEQ_GEN" incrementBy="1"
-         startValue="10" catalogName="jpa_test" />
+         startValue="10" />
    </changeSet>
 
    <changeSet author="Bernardo" id="test_tables">
