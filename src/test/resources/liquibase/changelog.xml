@@ -13,24 +13,12 @@
             <constraints nullable="false" />
          </column>
       </createTable>
-      <createTable tableName="hibernate_sequences">
-         <column name="sequence_name" type="VARCHAR(50)">
-            <constraints nullable="false" />
-         </column>
-         <column name="next_val" type="INTEGER">
-            <constraints nullable="false" />
-         </column>
-      </createTable>
    </changeSet>
 
    <changeSet author="Bernardo" id="sequence_data">
       <insert tableName="SEQUENCE">
-         <column name="seq_name">TABLE_GENERATOR</column>
+         <column name="seq_name">TABLE_PER_CLASS_GENERATOR</column>
          <column name="seq_count">10</column>
-      </insert>
-      <insert tableName="hibernate_sequences">
-         <column name="sequence_name">TABLE_GENERATOR</column>
-         <column name="next_val">10</column>
       </insert>
    </changeSet>
 
