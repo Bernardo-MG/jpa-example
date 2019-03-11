@@ -11,7 +11,7 @@
    <parent>
       <groupId>com.bernardomg.maven</groupId>
       <artifactId>base-pom</artifactId>
-      <version>1.2.2</version>
+      <version>1.2.3</version>
    </parent>
 
    <!-- ********************************************** -->
@@ -375,17 +375,17 @@
       <!-- ============================================== -->
       <!-- =========== DEPENDENCIES VERSIONS ============ -->
       <!-- ============================================== -->
-      <eclipselink.version>2.7.3</eclipselink.version>
-      <guava.version>26.0-jre</guava.version>
-      <h2.version>1.4.197</h2.version>
+      <eclipselink.version>2.7.4</eclipselink.version>
+      <guava.version>27.1-jre</guava.version>
+      <h2.version>1.4.198</h2.version>
       <hibernate.version>5.2.17.Final</hibernate.version>
       <hikari.version>3.2.0</hikari.version>
       <hsqldb.version>2.4.1</hsqldb.version>
       <javaee.api.version>2.2</javaee.api.version>
-      <junit.jupiter.version>5.2.0</junit.jupiter.version>
-      <junit.platform.version>1.2.0</junit.platform.version>
-      <liquibase.version>3.6.2</liquibase.version>
-      <log4j.version>2.11.1</log4j.version>
+      <junit.jupiter.version>5.4.0</junit.jupiter.version>
+      <junit.platform.version>1.4.0</junit.platform.version>
+      <liquibase.version>3.6.3</liquibase.version>
+      <log4j.version>2.11.2</log4j.version>
       <mysql.version>6.0.6</mysql.version>
       <postgresql.version>42.2.4</postgresql.version>
       <slf4j.version>1.8.0-alpha2</slf4j.version>
@@ -393,11 +393,11 @@
       <!-- ============================================== -->
       <!-- ============== PLUGINS VERSIONS ============== -->
       <!-- ============================================== -->
-      <plugin.processor.version>3.3.2</plugin.processor.version>
+      <plugin.processor.version>3.3.3</plugin.processor.version>
       <!-- ============================================== -->
       <!-- ================= MAVEN SITE ================= -->
       <!-- ============================================== -->
-      <site.skin.version>1.2.0</site.skin.version>
+      <site.skin.version>1.4.0</site.skin.version>
    </properties>
 
    <!-- ********************************************** -->
