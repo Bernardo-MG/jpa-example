@@ -44,7 +44,7 @@ import com.google.common.base.MoreObjects;
  */
 @Entity(name = "TableGeneratedIdEntity")
 @Table(name = "table_id_entities")
-@TableGenerator(name = "tab", initialValue = 1, allocationSize = 50)
+@TableGenerator(name = "TAB", initialValue = 1, allocationSize = 50)
 public final class TableGeneratedIdEntity implements Serializable {
 
     /**
@@ -56,7 +56,7 @@ public final class TableGeneratedIdEntity implements Serializable {
      * Entity's ID.
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "tab")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "TAB")
     @Column(name = "id", nullable = false, unique = true)
     private final Integer     id               = null;
 

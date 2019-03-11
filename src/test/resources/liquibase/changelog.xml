@@ -25,11 +25,11 @@
 
    <changeSet author="Bernardo" id="sequence_data">
       <insert tableName="SEQUENCE">
-         <column name="seq_name">table_generator</column>
+         <column name="seq_name">TABLE_GENERATOR</column>
          <column name="seq_count">10</column>
       </insert>
       <insert tableName="hibernate_sequences">
-         <column name="sequence_name">table_generator</column>
+         <column name="sequence_name">TABLE_GENERATOR</column>
          <column name="next_val">10</column>
       </insert>
    </changeSet>

@@ -44,7 +44,7 @@ import com.google.common.base.MoreObjects;
  */
 @Entity(name = "SequenceGeneratedIdEntity")
 @Table(name = "sequence_id_entities")
-@SequenceGenerator(name = "seq", initialValue = 1, allocationSize = 100)
+@SequenceGenerator(name = "SEQ", initialValue = 1, allocationSize = 100)
 public final class SequenceGeneratedIdEntity implements Serializable {
 
     /**
@@ -56,7 +56,7 @@ public final class SequenceGeneratedIdEntity implements Serializable {
      * Entity's ID.
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ")
     @Column(name = "id", nullable = false, unique = true)
     private final Integer     id               = null;
 

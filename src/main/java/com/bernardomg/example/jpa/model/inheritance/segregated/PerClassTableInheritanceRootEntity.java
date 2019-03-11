@@ -48,7 +48,7 @@ import com.google.common.base.MoreObjects;
  */
 @Entity(name = "PerClassTableInheritanceRootEntity")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@TableGenerator(name = "table_generator", initialValue = 10,
+@TableGenerator(name = "TABLE_GENERATOR", initialValue = 10,
         allocationSize = 50)
 public abstract class PerClassTableInheritanceRootEntity
         implements Serializable {
@@ -64,7 +64,7 @@ public abstract class PerClassTableInheritanceRootEntity
      */
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE,
-            generator = "table_generator")
+            generator = "TABLE_GENERATOR")
     @Column(name = "id", nullable = false, unique = true)
     private Integer           id               = null;
 
