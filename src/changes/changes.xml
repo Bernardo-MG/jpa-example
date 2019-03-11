@@ -6,7 +6,10 @@
 		<author email="programming@bernardomg.com">Bernardo Martínez Garrido</author>
 	</properties>
 	<body>
-      <release version="1.3.2" date="2018-03-30" description="Configuration changes">
+      <release version="1.4.0" date="2018-03-30" description="Configuration changes">
+         <action dev="bmg" type="add">
+            Added tests for generated ids.
+         </action>
          <action dev="bmg" type="add">
             Activated transactionality.
          </action>
