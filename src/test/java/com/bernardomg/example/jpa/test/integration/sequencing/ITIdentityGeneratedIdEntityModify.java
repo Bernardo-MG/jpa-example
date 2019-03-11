@@ -61,4 +61,9 @@ public class ITIdentityGeneratedIdEntityModify
         entity.setName(name);
     }
 
+    @Override
+    protected Object getId() {
+        return new Integer(5);
+    }
+
 }

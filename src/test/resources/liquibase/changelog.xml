@@ -470,7 +470,7 @@
          <column name="name">entity_1</column>
       </insert>
       <insert tableName="identity_id_entities">
-         <column name="id">1</column>
+         <column name="id">5</column>
          <column name="name">entity_1</column>
       </insert>
       <insert tableName="sequence_id_entities">
