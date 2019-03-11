@@ -30,8 +30,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import com.bernardomg.example.jpa.model.simple.DefaultSimpleEntity;
-import com.bernardomg.example.jpa.model.simple.SimpleEntity;
 import com.bernardomg.example.jpa.model.simple.DefaultSimpleEntity_;
+import com.bernardomg.example.jpa.model.simple.SimpleEntity;
 
 /**
  * Factory for creating criteria API queries for the {@link SimpleEntity}.

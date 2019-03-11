@@ -49,8 +49,7 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQue
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Disabled("Entities not supported by Hibernate")
-public class ITTimeEntityQueryJpql
-        extends AbstractITEntityQuery<TimeEntity> {
+public class ITTimeEntityQueryJpql extends AbstractITEntityQuery<TimeEntity> {
 
     /**
      * Calendar for the test ranges.

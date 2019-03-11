@@ -24,6 +24,8 @@
 
 package com.bernardomg.example.jpa.model.sequencing;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -44,7 +46,9 @@ import com.google.common.base.MoreObjects;
  */
 @Entity(name = "TableGeneratedIdEntity")
 @Table(name = "table_id_entities")
-@TableGenerator(name = "TAB", initialValue = 1, allocationSize = 50)
+@TableGenerator(name = "TABLE_GENERATOR", table = "SEQUENCE",
+        pkColumnName = "seq_name", valueColumnName = "seq_count",
+        initialValue = 10, allocationSize = 10)
 public final class TableGeneratedIdEntity implements Serializable {
 
     /**
@@ -56,9 +60,19 @@ public final class TableGeneratedIdEntity implements Serializable {
      * Entity's ID.
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "TAB")
+    @GeneratedValue(strategy = GenerationType.TABLE,
+            generator = "TABLE_GENERATOR")
     @Column(name = "id", nullable = false, unique = true)
     private final Integer     id               = null;
+
+    /**
+     * Name of the entity.
+     * <p>
+     * This is to have additional data apart from the id, to be used on the
+     * tests.
+     */
+    @Column(name = "name", nullable = false)
+    private String            name             = "";
 
     /**
      * Default constructor.
@@ -85,9 +99,28 @@ public final class TableGeneratedIdEntity implements Serializable {
         return Objects.equals(id, other.id);
     }
 
+    /**
+     * Returns the name of the entity.
+     *
+     * @return the entity's name
+     */
+    public final String getName() {
+        return name;
+    }
+
     @Override
     public final int hashCode() {
         return Objects.hash(id);
+    }
+
+    /**
+     * Sets the name of the entity.
+     *
+     * @param value
+     *            the name to set on the entity
+     */
+    public final void setName(final String value) {
+        name = checkNotNull(value, "Received a null pointer as name");
     }
 
     @Override

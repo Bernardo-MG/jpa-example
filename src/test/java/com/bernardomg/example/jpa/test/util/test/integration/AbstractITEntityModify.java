@@ -108,8 +108,8 @@ public abstract class AbstractITEntityModify<V>
         getEntityManager().flush();
 
         // Checks the entity has been added
-        Assertions.assertEquals(getEntitiesCount(),
-                new Integer(getInitialEntitiesCount() + 1));
+        Assertions.assertEquals(new Integer(getInitialEntitiesCount() + 1),
+                getEntitiesCount());
     }
 
     /**

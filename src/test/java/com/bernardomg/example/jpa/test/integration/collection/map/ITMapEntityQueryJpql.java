@@ -40,8 +40,7 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQue
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Disabled("Fails on Hibernate")
-public class ITMapEntityQueryJpql
-        extends AbstractITEntityQuery<MapEntity> {
+public class ITMapEntityQueryJpql extends AbstractITEntityQuery<MapEntity> {
 
     /**
      * The query to acquire all the entities.

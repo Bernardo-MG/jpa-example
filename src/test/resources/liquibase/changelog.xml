@@ -13,6 +13,14 @@
             <constraints nullable="false" />
          </column>
       </createTable>
+      <createTable tableName="hibernate_sequences">
+         <column name="sequence_name" type="VARCHAR(50)">
+            <constraints nullable="false" />
+         </column>
+         <column name="next_val" type="INTEGER">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
    </changeSet>
 
    <changeSet author="Bernardo" id="sequence_data">
@@ -20,12 +28,56 @@
          <column name="seq_name">TABLE_PER_CLASS_GENERATOR</column>
          <column name="seq_count">10</column>
       </insert>
+      <insert tableName="SEQUENCE">
+         <column name="seq_name">TABLE_GENERATOR</column>
+         <column name="seq_count">10</column>
+      </insert>
+      <!-- Hibernate's default sequence -->
+      <createSequence sequenceName="HIBERNATE_SEQUENCE"
+         incrementBy="1" startValue="10" minValue="10" maxValue="1000"
+         ordered="true" />
+      <!-- Matches Eclipselink's default sequence -->
+      <createSequence sequenceName="SEQ_GEN" incrementBy="1"
+         startValue="10" minValue="10" maxValue="1000" ordered="true" />
    </changeSet>
 
    <changeSet author="Bernardo" id="test_tables">
       <createTable tableName="simple_entities">
          <column autoIncrement="true" incrementBy="1" startWith="1"
             name="id" type="INTEGER">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="name" type="VARCHAR(30)" defaultValue="">
+            <constraints nullable="false" unique="true" />
+         </column>
+      </createTable>
+      <createTable tableName="auto_id_entities">
+         <column name="id" type="INTEGER">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="name" type="VARCHAR(30)" defaultValue="">
+            <constraints nullable="false" unique="true" />
+         </column>
+      </createTable>
+      <createTable tableName="identity_id_entities">
+         <column name="id" autoIncrement="true" incrementBy="1"
+            startWith="1" type="INTEGER">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="name" type="VARCHAR(30)" defaultValue="">
+            <constraints nullable="false" unique="true" />
+         </column>
+      </createTable>
+      <createTable tableName="sequence_id_entities">
+         <column name="id" type="INTEGER">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="name" type="VARCHAR(30)" defaultValue="">
+            <constraints nullable="false" unique="true" />
+         </column>
+      </createTable>
+      <createTable tableName="table_id_entities">
+         <column name="id" type="INTEGER">
             <constraints primaryKey="true" />
          </column>
          <column name="name" type="VARCHAR(30)" defaultValue="">
@@ -410,6 +462,22 @@
       </insert>
       <insert tableName="simple_entities">
          <column name="name">entity_30</column>
+      </insert>
+      <insert tableName="auto_id_entities">
+         <column name="id">5</column>
+         <column name="name">entity_1</column>
+      </insert>
+      <insert tableName="identity_id_entities">
+         <column name="id">1</column>
+         <column name="name">entity_1</column>
+      </insert>
+      <insert tableName="sequence_id_entities">
+         <column name="id">1</column>
+         <column name="name">entity_1</column>
+      </insert>
+      <insert tableName="table_id_entities">
+         <column name="id">1</column>
+         <column name="name">entity_1</column>
       </insert>
       <insert tableName="boolean_converter_entities">
          <column name="flag">T</column>

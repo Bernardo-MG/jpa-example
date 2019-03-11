@@ -31,8 +31,8 @@ import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Root;
 
 import com.bernardomg.example.jpa.model.embedded.ElementCollectionEntity;
-import com.bernardomg.example.jpa.model.embedded.EmbeddableData;
 import com.bernardomg.example.jpa.model.embedded.ElementCollectionEntity_;
+import com.bernardomg.example.jpa.model.embedded.EmbeddableData;
 
 /**
  * Factory for creating criteria API queries for the

@@ -30,8 +30,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import com.bernardomg.example.jpa.model.enumeration.EnumerationEntity;
-import com.bernardomg.example.jpa.model.enumeration.NumbersEnum;
 import com.bernardomg.example.jpa.model.enumeration.EnumerationEntity_;
+import com.bernardomg.example.jpa.model.enumeration.NumbersEnum;
 
 /**
  * Factory for creating criteria API queries for the {@link EnumerationEntity}.

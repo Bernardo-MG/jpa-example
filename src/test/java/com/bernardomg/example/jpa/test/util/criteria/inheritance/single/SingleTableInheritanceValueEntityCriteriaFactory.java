@@ -29,8 +29,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import com.bernardomg.example.jpa.model.inheritance.single.SingleTableInheritanceValueEntity;
 import com.bernardomg.example.jpa.model.inheritance.single.SingleTableInheritanceRootEntity_;
+import com.bernardomg.example.jpa.model.inheritance.single.SingleTableInheritanceValueEntity;
 import com.bernardomg.example.jpa.model.inheritance.single.SingleTableInheritanceValueEntity_;
 
 /**

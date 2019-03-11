@@ -29,8 +29,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import com.bernardomg.example.jpa.model.embedded.EmbeddedEntity;
 import com.bernardomg.example.jpa.model.embedded.EmbeddableData_;
+import com.bernardomg.example.jpa.model.embedded.EmbeddedEntity;
 import com.bernardomg.example.jpa.model.embedded.EmbeddedEntity_;
 
 /**

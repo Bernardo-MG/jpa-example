@@ -43,8 +43,7 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityMod
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Disabled("Entities not supported by Hibernate")
-public class ITDateEntityModify
-        extends AbstractITEntityModify<DateEntity> {
+public class ITDateEntityModify extends AbstractITEntityModify<DateEntity> {
 
     /**
      * Value to set on the date for the tests.
