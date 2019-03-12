@@ -34,8 +34,8 @@ import java.util.Locale;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.springframework.test.context.junit.jupiter.EnabledIf;
 
 import com.bernardomg.example.jpa.model.temporal.DateEntity;
 import com.bernardomg.example.jpa.test.util.criteria.temporal.DateEntityCriteriaFactory;
@@ -47,7 +47,8 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQue
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Disabled("Entities not supported by Hibernate")
+@EnabledIf(expression = "#{!'${jpa.adapter.class}'.contains('Hibernate')}",
+        reason = "Supports persisted dates", loadContext = true)
 public class ITDateEntityQueryCriteriaApi
         extends AbstractITEntityQuery<DateEntity> {
 

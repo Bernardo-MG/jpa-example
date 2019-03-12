@@ -57,13 +57,13 @@ public class ITIdentityGeneratedIdEntityModify
     }
 
     @Override
-    protected final void modifyEntity(final IdentityGeneratedIdEntity entity) {
-        entity.setName(name);
+    protected Object getId() {
+        return new Integer(5);
     }
 
     @Override
-    protected Object getId() {
-        return new Integer(5);
+    protected final void modifyEntity(final IdentityGeneratedIdEntity entity) {
+        entity.setName(name);
     }
 
 }

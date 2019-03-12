@@ -35,9 +35,9 @@ import java.util.Locale;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.test.context.junit.jupiter.EnabledIf;
 
 import com.bernardomg.example.jpa.model.temporal.TimestampEntity;
 import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQuery;
@@ -48,7 +48,8 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQue
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Disabled("Entities not supported by Hibernate")
+@EnabledIf(expression = "#{!'${jpa.adapter.class}'.contains('Hibernate')}",
+        reason = "Supports persisted timestamp", loadContext = true)
 public class ITTimestampEntityQueryJpql
         extends AbstractITEntityQuery<TimestampEntity> {
 
