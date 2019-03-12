@@ -25,6 +25,8 @@
 package com.bernardomg.example.jpa.test.integration.sequencing;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
+import org.springframework.test.context.junit.jupiter.EnabledIf;
 
 import com.bernardomg.example.jpa.model.sequencing.SequenceGeneratedIdEntity;
 import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityModify;
@@ -35,6 +37,9 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityMod
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@EnabledIf(
+        expression = "#{!('${jpa.adapter.class}'.contains('HibernateJpaVendorAdapter') && '${jpa.database}'.equals('MYSQL'))}",
+        loadContext = true)
 public class ITSequenceGeneratedIdEntityModify
         extends AbstractITEntityModify<SequenceGeneratedIdEntity> {
 
