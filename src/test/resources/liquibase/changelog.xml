@@ -95,6 +95,15 @@
             <constraints nullable="false" />
          </column>
       </createTable>
+      <createTable tableName="boolean_entities">
+         <column autoIncrement="true" incrementBy="1" startWith="1"
+            name="id" type="INTEGER">
+            <constraints primaryKey="true" />
+         </column>
+         <column name="flag" type="BOOLEAN" defaultValue="F">
+            <constraints nullable="false" />
+         </column>
+      </createTable>
       <createTable tableName="enum_entities">
          <column autoIncrement="true" incrementBy="1" startWith="1"
             name="id" type="INTEGER">
@@ -507,6 +516,12 @@
       </insert>
       <insert tableName="boolean_converter_entities">
          <column name="flag">B</column>
+      </insert>
+      <insert tableName="boolean_entities">
+         <column name="flag">true</column>
+      </insert>
+      <insert tableName="boolean_entities">
+         <column name="flag">false</column>
       </insert>
       <insert tableName="enum_entities">
          <column name="enum_string">TWO</column>
