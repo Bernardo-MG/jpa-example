@@ -13,10 +13,7 @@
       JPA Eclipselink persistence layer.
    </description>
 
-   <!-- Entity manager -->
-   <bean id="entityManager" class="${jpa.entityManager.class}">
-      <property name="entityManagerFactory" ref="entityManagerFactory" />
-   </bean>
+   <import resource="classpath:context/persistence/persistence.xml" />
 
    <!-- JPA EntityManagerFactory -->
    <bean id="entityManagerFactory" class="${jpa.entityManagerFactory.class}">
@@ -46,21 +43,5 @@
       <entry key="eclipselink.allow-zero-id" value="${eclipselink.allow-zero-id}" />
       <entry key="eclipselink.id-validation" value="${eclipselink.id-validation}" />
    </util:map>
-
-   <!-- ============================== DATASOURCE =============================== -->
-
-   <import resource="classpath:context/persistence/datasource.xml" />
-
-   <!-- ======================= LIQUIBASE DB VERSIONING ========================= -->
-
-   <import resource="classpath:context/persistence/liquibase.xml" />
-
-   <!-- ============================= TEST CONFIG =============================== -->
-
-   <!-- Transaction manager -->
-   <!-- Required for rolling back and handling tests -->
-   <bean id="transactionManager" class="${jpa.transactionManager.class}">
-      <property name="entityManagerFactory" ref="entityManagerFactory" />
-   </bean>
 
 </beans>

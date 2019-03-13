@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2017 the the original author or authors.
+ * Copyright (c) 2016-2019 the the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,8 +29,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import com.bernardomg.example.jpa.model.key.embedded.EmbeddedCompositeKeyEntity;
 import com.bernardomg.example.jpa.model.key.embedded.EmbeddableCompositeKey_;
+import com.bernardomg.example.jpa.model.key.embedded.EmbeddedCompositeKeyEntity;
 import com.bernardomg.example.jpa.model.key.embedded.EmbeddedCompositeKeyEntity_;
 
 /**

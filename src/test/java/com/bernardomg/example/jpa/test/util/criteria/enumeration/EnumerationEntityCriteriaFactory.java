@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2017 the the original author or authors.
+ * Copyright (c) 2016-2019 the the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,8 +30,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import com.bernardomg.example.jpa.model.enumeration.EnumerationEntity;
-import com.bernardomg.example.jpa.model.enumeration.NumbersEnum;
 import com.bernardomg.example.jpa.model.enumeration.EnumerationEntity_;
+import com.bernardomg.example.jpa.model.enumeration.NumbersEnum;
 
 /**
  * Factory for creating criteria API queries for the {@link EnumerationEntity}.

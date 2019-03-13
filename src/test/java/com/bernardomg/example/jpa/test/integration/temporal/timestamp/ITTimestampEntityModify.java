@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2017 the the original author or authors.
+ * Copyright (c) 2016-2019 the the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
+import org.springframework.test.context.junit.jupiter.EnabledIf;
 
 import com.bernardomg.example.jpa.model.temporal.TimestampEntity;
 import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityModify;
@@ -43,8 +43,9 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityMod
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Disabled("Entities not supported by Hibernate")
-public final class ITTimestampEntityModify
+@EnabledIf(expression = "#{!'${jpa.adapter.class}'.contains('Hibernate')}",
+        reason = "Supports persisted timestamp", loadContext = true)
+public class ITTimestampEntityModify
         extends AbstractITEntityModify<TimestampEntity> {
 
     /**

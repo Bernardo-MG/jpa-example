@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2017 the original author or authors.
+ * Copyright (c) 2016-2019 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -122,7 +122,7 @@ public class ElementCollectionEntity implements Serializable {
      *
      * @return the entity's name
      */
-    public final String getName() {
+    public String getName() {
         return name;
     }
 
@@ -131,7 +131,7 @@ public class ElementCollectionEntity implements Serializable {
      *
      * @return the embeddable objects
      */
-    public final Collection<EmbeddableData> getValues() {
+    public Collection<EmbeddableData> getValues() {
         return values;
     }
 
@@ -156,7 +156,7 @@ public class ElementCollectionEntity implements Serializable {
      * @param value
      *            the name to set on the entity
      */
-    public final void setName(final String value) {
+    public void setName(final String value) {
         name = checkNotNull(value, "Received a null pointer as name");
     }
 
@@ -166,7 +166,7 @@ public class ElementCollectionEntity implements Serializable {
      * @param value
      *            embeddable objects to set in the entity
      */
-    public final void setValues(final Collection<EmbeddableData> value) {
+    public void setValues(final Collection<EmbeddableData> value) {
         values = checkNotNull(value, "Received a null pointer as values");
     }
 

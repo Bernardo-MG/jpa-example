@@ -96,7 +96,7 @@ public class ManyToManyMappedEntity implements Serializable {
      *
      * @return the entity's name
      */
-    public final String getName() {
+    public String getName() {
         return name;
     }
 
@@ -105,7 +105,7 @@ public class ManyToManyMappedEntity implements Serializable {
      *
      * @return the owner entities
      */
-    public final Collection<ManyToManyOwnerEntity> getOwners() {
+    public Collection<ManyToManyOwnerEntity> getOwners() {
         return owners;
     }
 
@@ -130,7 +130,7 @@ public class ManyToManyMappedEntity implements Serializable {
      * @param value
      *            the name to set in the entity
      */
-    public final void setName(final String value) {
+    public void setName(final String value) {
         name = checkNotNull(value, "Received a null pointer as name");
     }
 
@@ -140,7 +140,7 @@ public class ManyToManyMappedEntity implements Serializable {
      * @param value
      *            the owner entities to set in the entity
      */
-    public final void setOwners(final List<ManyToManyOwnerEntity> value) {
+    public void setOwners(final List<ManyToManyOwnerEntity> value) {
         owners = checkNotNull(value, "Received a null pointer as owners");
     }
 

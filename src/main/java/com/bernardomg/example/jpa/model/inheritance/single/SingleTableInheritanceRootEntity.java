@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2017 the original author or authors.
+ * Copyright (c) 2016-2019 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -111,7 +111,7 @@ public abstract class SingleTableInheritanceRootEntity implements Serializable {
      *
      * @return the name
      */
-    public final String getName() {
+    public String getName() {
         return name;
     }
 
@@ -136,7 +136,7 @@ public abstract class SingleTableInheritanceRootEntity implements Serializable {
      * @param value
      *            the name to set in the entity
      */
-    public final void setName(final String value) {
+    public void setName(final String value) {
         name = checkNotNull(value, "Received a null pointer as name");
     }
 

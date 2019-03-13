@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2017 the the original author or authors.
+ * Copyright (c) 2016-2019 the the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -108,8 +108,8 @@ public abstract class AbstractITEntityModify<V>
         getEntityManager().flush();
 
         // Checks the entity has been added
-        Assertions.assertEquals(getEntitiesCount(),
-                new Integer(getInitialEntitiesCount() + 1));
+        Assertions.assertEquals(new Integer(getInitialEntitiesCount() + 1),
+                getEntitiesCount());
     }
 
     /**

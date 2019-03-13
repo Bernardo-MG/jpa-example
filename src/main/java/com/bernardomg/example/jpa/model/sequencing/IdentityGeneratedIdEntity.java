@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2017 the original author or authors.
+ * Copyright (c) 2016-2019 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,8 @@
  */
 
 package com.bernardomg.example.jpa.model.sequencing;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -59,6 +61,15 @@ public final class IdentityGeneratedIdEntity implements Serializable {
     private final Integer     id               = null;
 
     /**
+     * Name of the entity.
+     * <p>
+     * This is to have additional data apart from the id, to be used on the
+     * tests.
+     */
+    @Column(name = "name", nullable = false)
+    private String            name             = "";
+
+    /**
      * Default constructor.
      */
     public IdentityGeneratedIdEntity() {
@@ -83,9 +94,28 @@ public final class IdentityGeneratedIdEntity implements Serializable {
         return Objects.equals(id, other.id);
     }
 
+    /**
+     * Returns the name of the entity.
+     *
+     * @return the entity's name
+     */
+    public final String getName() {
+        return name;
+    }
+
     @Override
     public final int hashCode() {
         return Objects.hash(id);
+    }
+
+    /**
+     * Sets the name of the entity.
+     *
+     * @param value
+     *            the name to set on the entity
+     */
+    public final void setName(final String value) {
+        name = checkNotNull(value, "Received a null pointer as name");
     }
 
     @Override

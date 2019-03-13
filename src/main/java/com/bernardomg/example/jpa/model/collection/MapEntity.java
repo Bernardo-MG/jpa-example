@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2017 the original author or authors.
+ * Copyright (c) 2016-2019 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -124,7 +124,7 @@ public class MapEntity implements Serializable {
      *
      * @return the entity's name
      */
-    public final String getName() {
+    public String getName() {
         return name;
     }
 
@@ -133,7 +133,7 @@ public class MapEntity implements Serializable {
      *
      * @return the mapped integer values
      */
-    public final Map<String, Integer> getValues() {
+    public Map<String, Integer> getValues() {
         return values;
     }
 
@@ -158,7 +158,7 @@ public class MapEntity implements Serializable {
      * @param name
      *            the name to set on the entity
      */
-    public final void setName(final String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -168,7 +168,7 @@ public class MapEntity implements Serializable {
      * @param value
      *            the mapped integer values to set in the entity
      */
-    public final void setValues(final Map<String, Integer> value) {
+    public void setValues(final Map<String, Integer> value) {
         values = checkNotNull(value, "Received a null pointer as identifier");
     }
 

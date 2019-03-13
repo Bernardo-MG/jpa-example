@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2017 the original author or authors.
+ * Copyright (c) 2016-2019 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -102,7 +102,7 @@ public class EmbeddedEntity implements Serializable {
      *
      * @return the embedded data
      */
-    public final EmbeddableData getEmbeddedData() {
+    public EmbeddableData getEmbeddedData() {
         return embeddedData;
     }
 
@@ -126,7 +126,7 @@ public class EmbeddedEntity implements Serializable {
      * @param embeddedData
      *            the embedded data to set in the entity.
      */
-    public final void setEmbeddedData(final EmbeddableData embeddedData) {
+    public void setEmbeddedData(final EmbeddableData embeddedData) {
         this.embeddedData = embeddedData;
     }
 

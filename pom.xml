@@ -11,7 +11,7 @@
    <parent>
       <groupId>com.bernardomg.maven</groupId>
       <artifactId>base-pom</artifactId>
-      <version>1.2.1</version>
+      <version>1.2.3</version>
    </parent>
 
    <!-- ********************************************** -->
@@ -20,7 +20,7 @@
 
    <groupId>com.bernardomg.example</groupId>
    <artifactId>jpa-example</artifactId>
-   <version>1.3.1</version>
+   <version>1.4.0</version>
    <packaging>jar</packaging>
 
    <name>JPA Example</name>
@@ -271,13 +271,6 @@
                <version>${hibernate.version}</version>
                <scope>test</scope>
             </dependency>
-            <dependency>
-               <!-- Hibernate Entity Manager -->
-               <groupId>org.hibernate</groupId>
-               <artifactId>hibernate-entitymanager</artifactId>
-               <version>${hibernate.version}</version>
-               <scope>test</scope>
-            </dependency>
          </dependencies>
       </profile>
       <profile>
@@ -382,34 +375,47 @@
       <!-- ============================================== -->
       <!-- =========== DEPENDENCIES VERSIONS ============ -->
       <!-- ============================================== -->
-      <eclipselink.version>2.7.1</eclipselink.version>
-      <guava.version>24.1-jre</guava.version>
-      <h2.version>1.4.197</h2.version>
-      <hibernate.version>5.2.16.Final</hibernate.version>
-      <hikari.version>2.7.8</hikari.version>
-      <hsqldb.version>2.4.0</hsqldb.version>
+      <eclipselink.version>2.7.4</eclipselink.version>
+      <guava.version>27.1-jre</guava.version>
+      <h2.version>1.4.198</h2.version>
+      <hibernate.version>5.4.1.Final</hibernate.version>
+      <hikari.version>3.3.1</hikari.version>
+      <hsqldb.version>2.4.1</hsqldb.version>
       <javaee.api.version>2.2</javaee.api.version>
-      <junit.jupiter.version>5.1.0</junit.jupiter.version>
-      <junit.platform.version>1.1.0</junit.platform.version>
-      <liquibase.version>3.5.5</liquibase.version>
-      <log4j.version>2.11.0</log4j.version>
-      <mysql.version>6.0.6</mysql.version>
-      <postgresql.version>42.2.2</postgresql.version>
-      <slf4j.version>1.8.0-alpha2</slf4j.version>
-      <spring.version>5.0.4.RELEASE</spring.version>
+      <junit.jupiter.version>5.4.0</junit.jupiter.version>
+      <junit.platform.version>1.4.0</junit.platform.version>
+      <liquibase.version>3.6.3</liquibase.version>
+      <log4j.version>2.11.2</log4j.version>
+      <mysql.version>8.0.15</mysql.version>
+      <postgresql.version>42.2.5</postgresql.version>
+      <slf4j.version>1.8.0-beta4</slf4j.version>
+      <spring.version>5.1.5.RELEASE</spring.version>
       <!-- ============================================== -->
       <!-- ============== PLUGINS VERSIONS ============== -->
       <!-- ============================================== -->
-      <plugin.processor.version>3.3.2</plugin.processor.version>
+      <plugin.processor.version>3.3.3</plugin.processor.version>
       <!-- ============================================== -->
       <!-- ================= MAVEN SITE ================= -->
       <!-- ============================================== -->
-      <site.skin.version>1.2.0</site.skin.version>
+      <site.skin.version>1.4.0</site.skin.version>
    </properties>
 
    <!-- ********************************************** -->
    <!-- *************** DEPENDENCIES ***************** -->
    <!-- ********************************************** -->
+
+   <dependencyManagement>
+      <dependencies>
+         <dependency>
+            <!-- Spring Framework BOM -->
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-framework-bom</artifactId>
+            <version>${spring.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+         </dependency>
+      </dependencies>
+   </dependencyManagement>
 
    <dependencies>
       <dependency>
@@ -490,42 +496,36 @@
          <!-- Spring AOP -->
          <groupId>org.springframework</groupId>
          <artifactId>spring-aop</artifactId>
-         <version>${spring.version}</version>
          <scope>test</scope>
       </dependency>
       <dependency>
          <!-- Spring Beans -->
          <groupId>org.springframework</groupId>
          <artifactId>spring-beans</artifactId>
-         <version>${spring.version}</version>
          <scope>test</scope>
       </dependency>
       <dependency>
          <!-- Spring Framework Context -->
          <groupId>org.springframework</groupId>
          <artifactId>spring-context</artifactId>
-         <version>${spring.version}</version>
          <scope>test</scope>
       </dependency>
       <dependency>
          <!-- Spring ORM -->
          <groupId>org.springframework</groupId>
          <artifactId>spring-orm</artifactId>
-         <version>${spring.version}</version>
          <scope>test</scope>
       </dependency>
       <dependency>
          <!-- Spring Test -->
          <groupId>org.springframework</groupId>
          <artifactId>spring-test</artifactId>
-         <version>${spring.version}</version>
          <scope>test</scope>
       </dependency>
       <dependency>
          <!-- Spring Transactions -->
          <groupId>org.springframework</groupId>
          <artifactId>spring-tx</artifactId>
-         <version>${spring.version}</version>
          <scope>test</scope>
       </dependency>
    </dependencies>

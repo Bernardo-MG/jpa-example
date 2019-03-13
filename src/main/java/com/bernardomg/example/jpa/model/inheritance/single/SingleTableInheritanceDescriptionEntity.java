@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2017 the original author or authors.
+ * Copyright (c) 2016-2019 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -63,7 +63,7 @@ public class SingleTableInheritanceDescriptionEntity
      *
      * @return the description.
      */
-    public final String getDescription() {
+    public String getDescription() {
         return description;
     }
 
@@ -73,7 +73,7 @@ public class SingleTableInheritanceDescriptionEntity
      * @param value
      *            the description to set in the entity
      */
-    public final void setDescription(final String value) {
+    public void setDescription(final String value) {
         description = checkNotNull(value,
                 "Received a null pointer as description");
     }

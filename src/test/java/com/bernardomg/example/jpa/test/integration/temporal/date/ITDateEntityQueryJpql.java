@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2017 the the original author or authors.
+ * Copyright (c) 2016-2019 the the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,9 +34,9 @@ import java.util.Locale;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.test.context.junit.jupiter.EnabledIf;
 
 import com.bernardomg.example.jpa.model.temporal.DateEntity;
 import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQuery;
@@ -47,9 +47,9 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQue
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Disabled("Entities not supported by Hibernate")
-public final class ITDateEntityQueryJpql
-        extends AbstractITEntityQuery<DateEntity> {
+@EnabledIf(expression = "#{!'${jpa.adapter.class}'.contains('Hibernate')}",
+        reason = "Supports persisted dates", loadContext = true)
+public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
 
     /**
      * Calendar for the test ranges.

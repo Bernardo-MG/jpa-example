@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2017 the original author or authors.
+ * Copyright (c) 2016-2019 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -48,8 +48,9 @@ import com.google.common.base.MoreObjects;
  */
 @Entity(name = "PerClassTableInheritanceRootEntity")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@TableGenerator(name = "table_generator", initialValue = 10,
-        allocationSize = 50)
+@TableGenerator(name = "TABLE_PER_CLASS_GENERATOR", table = "SEQUENCE",
+        pkColumnName = "seq_name", valueColumnName = "seq_count",
+        initialValue = 10, allocationSize = 50)
 public abstract class PerClassTableInheritanceRootEntity
         implements Serializable {
 
@@ -64,7 +65,7 @@ public abstract class PerClassTableInheritanceRootEntity
      */
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE,
-            generator = "table_generator")
+            generator = "TABLE_PER_CLASS_GENERATOR")
     @Column(name = "id", nullable = false, unique = true)
     private Integer           id               = null;
 
@@ -113,7 +114,7 @@ public abstract class PerClassTableInheritanceRootEntity
      *
      * @return the name
      */
-    public final String getName() {
+    public String getName() {
         return name;
     }
 
@@ -138,7 +139,7 @@ public abstract class PerClassTableInheritanceRootEntity
      * @param value
      *            the name to set in the entity
      */
-    public final void setName(final String value) {
+    public void setName(final String value) {
         name = checkNotNull(value, "Received a null pointer as name");
     }
 

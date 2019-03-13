@@ -97,7 +97,7 @@ public class OneToOneSourceEntity implements Serializable {
      * @return the one to one entity with the inverse declaration of the
      *         relationship
      */
-    public final OneToOneInverseEntity getInverse() {
+    public OneToOneInverseEntity getInverse() {
         return inverse;
     }
 
@@ -106,7 +106,7 @@ public class OneToOneSourceEntity implements Serializable {
      *
      * @return the entity's name
      */
-    public final String getName() {
+    public String getName() {
         return name;
     }
 
@@ -133,7 +133,7 @@ public class OneToOneSourceEntity implements Serializable {
      *            the one to one entity with the inverse declaration of the
      *            relationship to set in the entity
      */
-    public final void setInverse(final OneToOneInverseEntity value) {
+    public void setInverse(final OneToOneInverseEntity value) {
         inverse = checkNotNull(value, "Received a null pointer as inverse");
     }
 
@@ -143,7 +143,7 @@ public class OneToOneSourceEntity implements Serializable {
      * @param value
      *            the name to set in the entity
      */
-    public final void setName(final String value) {
+    public void setName(final String value) {
         name = checkNotNull(value, "Received a null pointer as name");
     }
 
