@@ -518,10 +518,10 @@
          <column name="flag">B</column>
       </insert>
       <insert tableName="boolean_entities">
-         <column name="flag">true</column>
+         <column name="flag" valueBoolean="true" />
       </insert>
       <insert tableName="boolean_entities">
-         <column name="flag">false</column>
+         <column name="flag" valueBoolean="false" />
       </insert>
       <insert tableName="enum_entities">
          <column name="enum_string">TWO</column>
