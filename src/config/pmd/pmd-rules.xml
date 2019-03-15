@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
-<!DOCTYPE xml>
-<ruleset name="Defaultbernardomg">
+<ruleset name="Default">
     <description>
         Default list of rulesets to use, along ignored rules.
     </description>
@@ -14,8 +13,6 @@
     <rule ref="rulesets/java/naming.xml" />
     <rule ref="rulesets/java/optimizations.xml" />
     <rule ref="rulesets/java/strings.xml" />
-    <rule ref="rulesets/java/unusedcode.xml">
-        <exclude name="UnnecessaryModifier" />
-    </rule>
+    <rule ref="rulesets/java/unusedcode.xml" />
 
 </ruleset>
