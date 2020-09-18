@@ -233,7 +233,7 @@
             <!-- Access data -->
             <database.url>jdbc:postgresql://localhost:5432/jpa_test</database.url>
             <database.username>postgres</database.username>
-            <database.password></database.password>
+            <database.password>pass</database.password>
             <!-- Spring context -->
             <spring.profile.database>postgres</spring.profile.database>
          </properties>
