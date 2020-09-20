@@ -152,13 +152,13 @@
             name="id" type="INTEGER">
             <constraints primaryKey="true" />
          </column>
-         <column name="calendar_timestamp" type="TIMESTAMP">
+         <column name="calendar_timestamp" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
             <constraints nullable="false" />
          </column>
-         <column name="java_timestamp" type="TIMESTAMP">
+         <column name="java_timestamp" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
             <constraints nullable="false" />
          </column>
-         <column name="sql_timestamp" type="TIMESTAMP">
+         <column name="sql_timestamp" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
             <constraints nullable="false" />
          </column>
       </createTable>
