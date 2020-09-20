@@ -30,27 +30,9 @@ databaseChangeLog:
                   constraints:
                     nullable: false
   - changeSet:
-      id: sequence_data
+      id: sequences
       author: Bernardo
       changes:
-        - insert:
-            tableName: SEQUENCE
-            columns:
-            - column:
-                name: seq_name
-                value: "TABLE_PER_CLASS_GENERATOR"
-            - column:
-                name: seq_count
-                value: 10
-        - insert:
-            tableName: SEQUENCE
-            columns:
-            - column:
-                name: seq_name
-                value: "TABLE_GENERATOR"
-            - column:
-                name: seq_count
-                value: 10
         -  createSequence:
             sequenceName: HIBERNATE_SEQUENCE
             incrementBy: 1

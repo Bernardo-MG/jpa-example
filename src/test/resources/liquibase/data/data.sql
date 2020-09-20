@@ -27,6 +27,10 @@
 -- This SQL script populates the initial data.
 -- ****************************************
 
+INSERT INTO SEQUENCE (seq_name, seq_count) VALUES
+   ('TABLE_PER_CLASS_GENERATOR', 10),
+   ('TABLE_GENERATOR', 10);
+
 INSERT INTO simple_entities (name) VALUES
    ('entity_01'),
    ('entity_02'),
