@@ -9,8 +9,8 @@ jobs:
     strategy:
       matrix:
         jdk: [ 8 ]
-        db: [ h2, mysql, postgres ]
-        provider: [ hibernate, eclipselink ]
+        db: [ h2, mysql ]
+        provider: [ hibernate ]
 
     services:
       mysql:
