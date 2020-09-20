@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         jdk: [ 8 ]
-        db: [ h2, postgres ]
+        db: [ h2, mysql ]
         provider: [ hibernate, eclipselink ]
 
     services:
@@ -24,8 +24,7 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_PASSWORD: pass
-          POSTGRES_DATABASE: jpa_test
+          POSTGRES_PASSWORD: postgres
         options: >-
           --health-cmd pg_isready
           --health-interval 10s

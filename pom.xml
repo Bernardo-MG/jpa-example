@@ -231,9 +231,9 @@
          <id>postgres</id>
          <properties>
             <!-- Access data -->
-            <database.url>jdbc:postgresql://localhost:${postgres.port}/jpa_test</database.url>
+            <database.url>jdbc:postgresql://localhost:${postgres.port}/postgres</database.url>
             <database.username>postgres</database.username>
-            <database.password>pass</database.password>
+            <database.password>postgres</database.password>
             <!-- Spring context -->
             <spring.profile.database>postgres</spring.profile.database>
          </properties>
