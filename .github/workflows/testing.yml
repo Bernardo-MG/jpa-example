@@ -19,7 +19,8 @@ jobs:
             MYSQL_DATABASE: jpa_test
             MYSQL_ROOT_PASSWORD: root
         ports:
-            - 3306
+          # Maps port on service container to the host
+            - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
       postgres:
         image: postgres
@@ -31,7 +32,7 @@ jobs:
           --health-timeout 5s
           --health-retries 5
         ports:
-          # Maps tcp port 5432 on service container to the host
+          # Maps port on service container to the host
           - 5432:5432
     steps:
     - name: Check-out
@@ -42,6 +43,6 @@ jobs:
         java-version: ${{ matrix.jdk }}
     - name: Run all tests
       env:
-        MYSQL_PORT: ${{ job.services.mysql.ports[3306] }}
+        MYSQL_PORT: 3306
         POSTGRES_PORT: 5432
       run: mvn clean verify -P ${{ matrix.db }},${{ matrix.provider }} -D mysql.port=${{ env.MYSQL_PORT }},postgres.port=${{ env.POSTGRES_PORT }}
