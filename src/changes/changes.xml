@@ -6,6 +6,8 @@
 		<author email="programming@bernardomg.com">Bernardo Martínez Garrido</author>
 	</properties>
 	<body>
+      <release version="1.6.0" date="2020-09-20" description="">
+      </release>
       <release version="1.5.0" date="2020-09-20" description="Github actions">
          <action dev="bmg" type="update">
             Moved to Github actions.
