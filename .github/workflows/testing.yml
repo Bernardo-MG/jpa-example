@@ -10,7 +10,7 @@ jobs:
       matrix:
         jdk: [ 8 ]
         db: [ h2, mysql ]
-        provider: [ hibernate, eclipselink ]
+        provider: [ hibernate ]
 
     services:
       mysql:
@@ -21,6 +21,16 @@ jobs:
         ports:
             - 3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: pass
+          POSTGRES_DATABASE: jpa_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
     - name: Check-out
       uses: actions/checkout@v2
@@ -30,5 +40,5 @@ jobs:
         java-version: ${{ matrix.jdk }}
     - name: Run all tests
       env:
-        DB_PORT: ${{ job.services.mysql.ports[3306] }}
-      run: mvn clean verify -P ${{ matrix.db }},${{ matrix.provider }} -D mysql.port=${{ env.DB_PORT }}
+        MYSQL_PORT: ${{ job.services.mysql.ports[3306] }}
+      run: mvn clean verify -P ${{ matrix.db }},${{ matrix.provider }} -D mysql.port=${{ env.MYSQL_PORT }}
