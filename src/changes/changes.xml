@@ -6,6 +6,20 @@
 		<author email="programming@bernardomg.com">Bernardo Martínez Garrido</author>
 	</properties>
 	<body>
+      <release version="1.5.0" date="2020-09-20" description="Github actions">
+         <action dev="bmg" type="update">
+            Moved to Github actions.
+         </action>
+         <action dev="bmg" type="update">
+            Using YAML liquibase config.
+         </action>
+         <action dev="bmg" type="update">
+            Updated dependencies.
+         </action>
+         <action dev="bmg" type="fix">
+            Corrected logging configuration.
+         </action>
+      </release>
       <release version="1.4.0" date="2018-03-30" description="Configuration changes">
          <action dev="bmg" type="add">
             Added tests for generated ids.

@@ -48,13 +48,6 @@ The verify phase is required, as otherwise some of the reports won't be created.
 
 The application is coded in Java, using Maven to manage the project.
 
-### Prerequisites
-
-The project has been tested on the following Java versions:
-* JDK 8
-
-All other dependencies are handled through Maven, and noted in the included POM file.
-
 ### Profiles
 
 Maven profiles are included for setting up the database and JPA provider.

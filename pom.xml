@@ -11,7 +11,7 @@
    <parent>
       <groupId>com.bernardomg.maven</groupId>
       <artifactId>base-pom</artifactId>
-      <version>1.2.3</version>
+      <version>1.3.4</version>
    </parent>
 
    <!-- ********************************************** -->
@@ -20,7 +20,7 @@
 
    <groupId>com.bernardomg.example</groupId>
    <artifactId>jpa-example</artifactId>
-   <version>1.4.0</version>
+   <version>1.5.0</version>
    <packaging>jar</packaging>
 
    <name>JPA Example</name>
@@ -212,7 +212,7 @@
             <!-- Access data -->
             <database.url>jdbc:mysql://localhost:3306/jpa_test</database.url>
             <database.username>root</database.username>
-            <database.password></database.password>
+            <database.password>root</database.password>
             <!-- Spring context -->
             <spring.profile.database>mysql</spring.profile.database>
          </properties>
@@ -231,9 +231,9 @@
          <id>postgres</id>
          <properties>
             <!-- Access data -->
-            <database.url>jdbc:postgresql://localhost:5432/jpa_test</database.url>
+            <database.url>jdbc:postgresql://localhost:5432/postgres</database.url>
             <database.username>postgres</database.username>
-            <database.password></database.password>
+            <database.password>postgres</database.password>
             <!-- Spring context -->
             <spring.profile.database>postgres</spring.profile.database>
          </properties>
@@ -365,6 +365,10 @@
 
    <properties>
       <!-- ============================================== -->
+      <!-- =============== MAVEN VERSION ================ -->
+      <!-- ============================================== -->
+      <maven.version>3.5.2</maven.version>
+      <!-- ============================================== -->
       <!-- ================ JAVA VERSION ================ -->
       <!-- ============================================== -->
       <java.version>1.8</java.version>
@@ -375,21 +379,24 @@
       <!-- ============================================== -->
       <!-- =========== DEPENDENCIES VERSIONS ============ -->
       <!-- ============================================== -->
-      <eclipselink.version>2.7.4</eclipselink.version>
-      <guava.version>27.1-jre</guava.version>
-      <h2.version>1.4.198</h2.version>
-      <hibernate.version>5.4.1.Final</hibernate.version>
-      <hikari.version>3.3.1</hikari.version>
-      <hsqldb.version>2.4.1</hsqldb.version>
+      <eclipselink.version>2.7.7</eclipselink.version>
+      <guava.version>29.0-jre</guava.version>
+      <h2.version>1.4.200</h2.version>
+      <hibernate.version>5.4.21.Final</hibernate.version>
+      <hikari.version>3.4.5</hikari.version>
+      <hsqldb.version>2.5.1</hsqldb.version>
       <javaee.api.version>2.2</javaee.api.version>
-      <junit.jupiter.version>5.4.0</junit.jupiter.version>
-      <junit.platform.version>1.4.0</junit.platform.version>
-      <liquibase.version>3.6.3</liquibase.version>
-      <log4j.version>2.11.2</log4j.version>
-      <mysql.version>8.0.15</mysql.version>
-      <postgresql.version>42.2.5</postgresql.version>
-      <slf4j.version>1.8.0-beta4</slf4j.version>
-      <spring.version>5.1.5.RELEASE</spring.version>
+      <jaxb.version>2.3.1</jaxb.version>
+      <junit.jupiter.version>5.7.0</junit.jupiter.version>
+      <junit.platform.version>1.7.0</junit.platform.version>
+      <liquibase.version>4.0.0</liquibase.version>
+      <log4j.version>2.13.3</log4j.version>
+      <mysql.version>8.0.21</mysql.version>
+      <postgresql.version>42.2.16</postgresql.version>
+      <qual.checker.version>3.5.0</qual.checker.version>
+      <slf4j.version>1.7.30</slf4j.version>
+      <snakeyaml.version>1.27</snakeyaml.version>
+      <spring.version>5.2.9.RELEASE</spring.version>
       <!-- ============================================== -->
       <!-- ============== PLUGINS VERSIONS ============== -->
       <!-- ============================================== -->
@@ -397,7 +404,7 @@
       <!-- ============================================== -->
       <!-- ================= MAVEN SITE ================= -->
       <!-- ============================================== -->
-      <site.skin.version>1.4.0</site.skin.version>
+      <site.skin.version>2.0.8</site.skin.version>
    </properties>
 
    <!-- ********************************************** -->
@@ -448,6 +455,19 @@
          <groupId>org.liquibase</groupId>
          <artifactId>liquibase-core</artifactId>
          <version>${liquibase.version}</version>
+         <exclusions>
+            <exclusion>
+               <groupId>ch.qos.logback</groupId>
+               <artifactId>logback-classic</artifactId>
+            </exclusion>
+         </exclusions>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- SnakeYAML -->
+         <groupId>org.yaml</groupId>
+         <artifactId>snakeyaml</artifactId>
+         <version>${snakeyaml.version}</version>
          <scope>test</scope>
       </dependency>
       <dependency>
@@ -462,34 +482,6 @@
          <groupId>org.junit.platform</groupId>
          <artifactId>junit-platform-runner</artifactId>
          <version>${junit.platform.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- Log4j core -->
-         <groupId>org.apache.logging.log4j</groupId>
-         <artifactId>log4j-core</artifactId>
-         <version>${log4j.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- Log4j SLF4J Bridge -->
-         <groupId>org.apache.logging.log4j</groupId>
-         <artifactId>log4j-slf4j-impl</artifactId>
-         <version>${log4j.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- Log4j Commons Logging Bridge -->
-         <groupId>org.apache.logging.log4j</groupId>
-         <artifactId>log4j-jcl</artifactId>
-         <version>${log4j.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- SLF4J API -->
-         <groupId>org.slf4j</groupId>
-         <artifactId>slf4j-api</artifactId>
-         <version>${slf4j.version}</version>
          <scope>test</scope>
       </dependency>
       <dependency>
@@ -526,6 +518,47 @@
          <!-- Spring Transactions -->
          <groupId>org.springframework</groupId>
          <artifactId>spring-tx</artifactId>
+         <scope>test</scope>
+      </dependency>
+      <!-- ********************************************** -->
+      <!-- ****************** LOGGERS ******************* -->
+      <!-- ********************************************** -->
+      <dependency>
+         <!-- SLF4J API -->
+         <groupId>org.slf4j</groupId>
+         <artifactId>slf4j-api</artifactId>
+         <version>${slf4j.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- Log4j SLF4J Bridge -->
+         <groupId>org.apache.logging.log4j</groupId>
+         <artifactId>log4j-slf4j-impl</artifactId>
+         <version>${log4j.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- Log4j core -->
+         <groupId>org.apache.logging.log4j</groupId>
+         <artifactId>log4j-core</artifactId>
+         <version>${log4j.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <!-- ********************************************** -->
+      <!-- ************ VERSION ENFORCEMENT ************* -->
+      <!-- ********************************************** -->
+      <dependency>
+         <!-- JAXB API -->
+         <groupId>javax.xml.bind</groupId>
+         <artifactId>jaxb-api</artifactId>
+         <version>${jaxb.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- Qual Checker -->
+         <groupId>org.checkerframework</groupId>
+         <artifactId>checker-qual</artifactId>
+         <version>${qual.checker.version}</version>
          <scope>test</scope>
       </dependency>
    </dependencies>
