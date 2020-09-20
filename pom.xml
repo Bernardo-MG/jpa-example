@@ -210,7 +210,7 @@
          <id>mysql</id>
          <properties>
             <!-- Access data -->
-            <database.url>jdbc:mysql://localhost:${mysql.port}/jpa_test</database.url>
+            <database.url>jdbc:mysql://localhost:3306/jpa_test</database.url>
             <database.username>root</database.username>
             <database.password>root</database.password>
             <!-- Spring context -->
@@ -231,7 +231,7 @@
          <id>postgres</id>
          <properties>
             <!-- Access data -->
-            <database.url>jdbc:postgresql://localhost:${postgres.port}/postgres</database.url>
+            <database.url>jdbc:postgresql://localhost:5432/postgres</database.url>
             <database.username>postgres</database.username>
             <database.password>postgres</database.password>
             <!-- Spring context -->
