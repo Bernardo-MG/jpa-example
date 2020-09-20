@@ -13,6 +13,9 @@
          <action dev="bmg" type="update">
             Using YAML liquibase config.
          </action>
+         <action dev="bmg" type="update">
+            Updated dependencies.
+         </action>
          <action dev="bmg" type="fix">
             Corrected logging configuration.
          </action>
