@@ -210,7 +210,7 @@
          <id>mysql</id>
          <properties>
             <!-- Access data -->
-            <database.url>jdbc:mysql://localhost:3306/jpa_test</database.url>
+            <database.url>jdbc:mysql://localhost:${mysql.port}/jpa_test</database.url>
             <database.username>root</database.username>
             <database.password></database.password>
             <!-- Spring context -->
