@@ -573,17 +573,11 @@ databaseChangeLog:
               - column:
                   name: id1
                   type: bigint
-                  autoIncrement: true
-                  incrementBy: 1
-                  startWith: 1
                   constraints:
                     primaryKey: true
               - column:
                   name: id2
                   type: bigint
-                  autoIncrement: true
-                  incrementBy: 1
-                  startWith: 1
                   constraints:
                     primaryKey: true
               - column:
@@ -597,17 +591,11 @@ databaseChangeLog:
               - column:
                   name: id1
                   type: bigint
-                  autoIncrement: true
-                  incrementBy: 1
-                  startWith: 1
                   constraints:
                     primaryKey: true
               - column:
                   name: id2
                   type: bigint
-                  autoIncrement: true
-                  incrementBy: 1
-                  startWith: 1
                   constraints:
                     primaryKey: true
               - column:
@@ -621,17 +609,11 @@ databaseChangeLog:
               - column:
                   name: id1
                   type: bigint
-                  autoIncrement: true
-                  incrementBy: 1
-                  startWith: 1
                   constraints:
                     primaryKey: true
               - column:
                   name: id2
                   type: bigint
-                  autoIncrement: true
-                  incrementBy: 1
-                  startWith: 1
                   constraints:
                     primaryKey: true
               - column:
