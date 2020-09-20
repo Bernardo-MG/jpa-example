@@ -70,10 +70,10 @@ INSERT INTO identity_id_entities (id, name) VALUES
    (5, 'entity_01');
 
 INSERT INTO sequence_id_entities (id, name) VALUES
-   (5, 'entity_1');
+   (1, 'entity_1');
 
 INSERT INTO table_id_entities (id, name) VALUES
-   (5, 'entity_1');
+   (1, 'entity_1');
 
 INSERT INTO boolean_converter_entities (flag) VALUES
    ('T'),
