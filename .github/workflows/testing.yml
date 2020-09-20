@@ -9,8 +9,8 @@ jobs:
     strategy:
       matrix:
         jdk: [ 8 ]
-        db: [ h2, mysql, postgres ]
-        provider: [ hibernate ]
+        db: [ h2, mysql ]
+        provider: [ hibernate, eclipselink ]
 
     services:
       mysql:
@@ -21,16 +21,6 @@ jobs:
         ports:
             - 3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-      postgres:
-        image: postgres
-        env:
-          POSTGRES_PASSWORD: pass
-          POSTGRES_DATABASE: jpa_test
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
     steps:
     - name: Check-out
       uses: actions/checkout@v2
