@@ -365,6 +365,10 @@
 
    <properties>
       <!-- ============================================== -->
+      <!-- =============== MAVEN VERSION ================ -->
+      <!-- ============================================== -->
+      <maven.version>3.5.2</maven.version>
+      <!-- ============================================== -->
       <!-- ================ JAVA VERSION ================ -->
       <!-- ============================================== -->
       <java.version>1.8</java.version>
@@ -375,22 +379,23 @@
       <!-- ============================================== -->
       <!-- =========== DEPENDENCIES VERSIONS ============ -->
       <!-- ============================================== -->
-      <eclipselink.version>2.7.4</eclipselink.version>
+      <eclipselink.version>2.7.7</eclipselink.version>
       <guava.version>29.0-jre</guava.version>
       <h2.version>1.4.200</h2.version>
-      <hibernate.version>5.4.1.Final</hibernate.version>
+      <hibernate.version>5.4.21.Final</hibernate.version>
       <hikari.version>3.4.5</hikari.version>
-      <hsqldb.version>2.4.1</hsqldb.version>
+      <hsqldb.version>2.5.1</hsqldb.version>
       <javaee.api.version>2.2</javaee.api.version>
+      <jaxb.version>2.3.1</jaxb.version>
       <junit.jupiter.version>5.7.0</junit.jupiter.version>
       <junit.platform.version>1.7.0</junit.platform.version>
-      <liquibase.version>3.6.3</liquibase.version>
+      <liquibase.version>4.0.0</liquibase.version>
       <log4j.version>2.13.3</log4j.version>
-      <mysql.version>8.0.15</mysql.version>
-      <postgresql.version>42.2.5</postgresql.version>
+      <mysql.version>8.0.21</mysql.version>
+      <postgresql.version>42.2.16</postgresql.version>
       <slf4j.version>1.7.30</slf4j.version>
       <snakeyaml.version>1.27</snakeyaml.version>
-      <spring.version>5.1.5.RELEASE</spring.version>
+      <spring.version>5.2.9.RELEASE</spring.version>
       <!-- ============================================== -->
       <!-- ============== PLUGINS VERSIONS ============== -->
       <!-- ============================================== -->
@@ -536,6 +541,16 @@
          <groupId>org.apache.logging.log4j</groupId>
          <artifactId>log4j-core</artifactId>
          <version>${log4j.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <!-- ********************************************** -->
+      <!-- ************ VERSION ENFORCEMENT ************* -->
+      <!-- ********************************************** -->
+      <dependency>
+         <!-- JAXB API -->
+         <groupId>javax.xml.bind</groupId>
+         <artifactId>jaxb-api</artifactId>
+         <version>${jaxb.version}</version>
          <scope>test</scope>
       </dependency>
    </dependencies>
