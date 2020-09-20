@@ -22,7 +22,7 @@
             Corrected logging configuration.
          </action>
       </release>
-      <release version="1.4.0" date="2018-03-30" description="Configuration changes">
+      <release version="1.4.0" date="2019-03-13" description="Configuration changes">
          <action dev="bmg" type="add">
             Added tests for generated ids.
          </action>
