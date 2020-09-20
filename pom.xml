@@ -393,6 +393,7 @@
       <log4j.version>2.13.3</log4j.version>
       <mysql.version>8.0.21</mysql.version>
       <postgresql.version>42.2.16</postgresql.version>
+      <qual.checker.version>3.5.0</qual.checker.version>
       <slf4j.version>1.7.30</slf4j.version>
       <snakeyaml.version>1.27</snakeyaml.version>
       <spring.version>5.2.9.RELEASE</spring.version>
@@ -551,6 +552,13 @@
          <groupId>javax.xml.bind</groupId>
          <artifactId>jaxb-api</artifactId>
          <version>${jaxb.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- Qual Checker -->
+         <groupId>org.checkerframework</groupId>
+         <artifactId>checker-qual</artifactId>
+         <version>${qual.checker.version}</version>
          <scope>test</scope>
       </dependency>
    </dependencies>
