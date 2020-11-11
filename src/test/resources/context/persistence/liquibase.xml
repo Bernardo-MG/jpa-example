@@ -10,9 +10,9 @@
       Liquibase DB versioning.
    </description>
 
-   <bean id="liquibase" class="${liquibase.integration.class}">
+   <bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase">
       <property name="dataSource" ref="dataSource" />
-      <property name="changeLog" value="${liquibase.changelog.path}" />
+      <property name="changeLog" value="classpath:liquibase/db.changelog-master.yaml" />
    </bean>
 
 </beans>

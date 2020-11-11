@@ -16,7 +16,7 @@
    <import resource="classpath:context/persistence/persistence.xml" />
 
    <!-- JPA EntityManagerFactory -->
-   <bean id="entityManagerFactory" class="${jpa.entityManagerFactory.class}">
+   <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
       <property name="jpaVendorAdapter" ref="jpaAdapter" />
       <property name="dataSource" ref="dataSource" />
       <property name="persistenceUnitName" value="${jpa.persistenceUnitName}" />
