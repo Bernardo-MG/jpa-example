@@ -5,7 +5,7 @@ The project is meant to be an example showcasing JPA entities and queries.
 There are some tests included to verify that these work as expected, and can be run with the verify command:
 
 ```
-$ mvn verify -P h2,eclipselink
+mvn verify -P h2,eclipselink
 ```
 
 The tests require two profiles, one defining the database to be used, and another defining the JPA provider.

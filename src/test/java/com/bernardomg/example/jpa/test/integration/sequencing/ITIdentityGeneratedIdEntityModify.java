@@ -58,7 +58,7 @@ public class ITIdentityGeneratedIdEntityModify
 
     @Override
     protected Object getId() {
-        return new Integer(5);
+        return 5;
     }
 
     @Override

@@ -6,6 +6,14 @@
 		<author email="programming@bernardomg.com">Bernardo Martínez Garrido</author>
 	</properties>
 	<body>
+      <release version="1.6.0" date="2021-09-16" description="Updated dependencies">
+         <action dev="bmg" type="update">
+            Updated dependencies.
+         </action>
+         <action dev="bmg" type="remove">
+            Dropped support for JDK 8.
+         </action>
+      </release>
       <release version="1.5.0" date="2020-09-20" description="Github actions">
          <action dev="bmg" type="update">
             Moved to Github actions.
@@ -20,7 +28,7 @@
             Corrected logging configuration.
          </action>
       </release>
-      <release version="1.4.0" date="2018-03-30" description="Configuration changes">
+      <release version="1.4.0" date="2019-03-13" description="Configuration changes">
          <action dev="bmg" type="add">
             Added tests for generated ids.
          </action>

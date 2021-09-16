@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
    <modelVersion>4.0.0</modelVersion>
@@ -11,7 +12,7 @@
    <parent>
       <groupId>com.bernardomg.maven</groupId>
       <artifactId>base-pom</artifactId>
-      <version>1.3.4</version>
+      <version>1.4.4</version>
    </parent>
 
    <!-- ********************************************** -->
@@ -20,7 +21,7 @@
 
    <groupId>com.bernardomg.example</groupId>
    <artifactId>jpa-example</artifactId>
-   <version>1.5.0</version>
+   <version>1.6.0</version>
    <packaging>jar</packaging>
 
    <name>JPA Example</name>
@@ -371,7 +372,7 @@
       <!-- ============================================== -->
       <!-- ================ JAVA VERSION ================ -->
       <!-- ============================================== -->
-      <java.version>1.8</java.version>
+      <java.version>11</java.version>
       <!-- ============================================== -->
       <!-- =============== MANIFEST DATA ================ -->
       <!-- ============================================== -->
@@ -379,32 +380,32 @@
       <!-- ============================================== -->
       <!-- =========== DEPENDENCIES VERSIONS ============ -->
       <!-- ============================================== -->
-      <eclipselink.version>2.7.7</eclipselink.version>
-      <guava.version>29.0-jre</guava.version>
+      <eclipselink.version>2.7.9</eclipselink.version>
+      <guava.version>30.1.1-jre</guava.version>
       <h2.version>1.4.200</h2.version>
-      <hibernate.version>5.4.21.Final</hibernate.version>
+      <hibernate.version>5.5.7.Final</hibernate.version>
       <hikari.version>3.4.5</hikari.version>
-      <hsqldb.version>2.5.1</hsqldb.version>
+      <hsqldb.version>2.6.0</hsqldb.version>
       <javaee.api.version>2.2</javaee.api.version>
+      <javax.annotation.version>1.3.2</javax.annotation.version>
       <jaxb.version>2.3.1</jaxb.version>
-      <junit.jupiter.version>5.7.0</junit.jupiter.version>
-      <junit.platform.version>1.7.0</junit.platform.version>
-      <liquibase.version>4.0.0</liquibase.version>
-      <log4j.version>2.13.3</log4j.version>
+      <junit.jupiter.version>5.8.0</junit.jupiter.version>
+      <junit.platform.version>1.8.0</junit.platform.version>
+      <liquibase.version>4.4.3</liquibase.version>
+      <log4j.version>2.14.1</log4j.version>
       <mysql.version>8.0.21</mysql.version>
-      <postgresql.version>42.2.16</postgresql.version>
-      <qual.checker.version>3.5.0</qual.checker.version>
+      <postgresql.version>42.2.23</postgresql.version>
       <slf4j.version>1.7.30</slf4j.version>
-      <snakeyaml.version>1.27</snakeyaml.version>
-      <spring.version>5.2.9.RELEASE</spring.version>
+      <snakeyaml.version>1.29</snakeyaml.version>
+      <spring.version>5.3.10</spring.version>
       <!-- ============================================== -->
       <!-- ============== PLUGINS VERSIONS ============== -->
       <!-- ============================================== -->
-      <plugin.processor.version>3.3.3</plugin.processor.version>
+      <plugin.processor.version>4.5</plugin.processor.version>
       <!-- ============================================== -->
       <!-- ================= MAVEN SITE ================= -->
       <!-- ============================================== -->
-      <site.skin.version>2.0.8</site.skin.version>
+      <site.skin.version>2.2.4</site.skin.version>
    </properties>
 
    <!-- ********************************************** -->
@@ -432,13 +433,22 @@
          <version>${guava.version}</version>
       </dependency>
       <!-- ============================================== -->
-      <!-- ============== JPA DEPENDENCIES ============== -->
+      <!-- ==================== JPA ===================== -->
       <!-- ============================================== -->
       <dependency>
          <!-- JPA API -->
          <groupId>javax.persistence</groupId>
          <artifactId>javax.persistence-api</artifactId>
          <version>${javaee.api.version}</version>
+      </dependency>
+      <!-- ============================================== -->
+      <!-- ==================== JAVAX =================== -->
+      <!-- ============================================== -->
+      <dependency>
+         <!-- JavaX Annotation -->
+         <groupId>javax.annotation</groupId>
+         <artifactId>javax.annotation-api</artifactId>
+         <version>${javax.annotation.version}</version>
       </dependency>
       <!-- ============================================== -->
       <!-- ======= TEST ENVIRONMENT DEPENDENCIES ======== -->
@@ -554,13 +564,6 @@
          <version>${jaxb.version}</version>
          <scope>test</scope>
       </dependency>
-      <dependency>
-         <!-- Qual Checker -->
-         <groupId>org.checkerframework</groupId>
-         <artifactId>checker-qual</artifactId>
-         <version>${qual.checker.version}</version>
-         <scope>test</scope>
-      </dependency>
    </dependencies>
 
    <!-- ********************************************** -->
@@ -659,6 +662,7 @@
                   <goals>
                      <goal>process</goal>
                   </goals>
+                  <phase>generate-sources</phase>
                   <configuration>
                      <processors>
                         <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
@@ -701,16 +705,6 @@
 
    <reporting>
       <plugins>
-         <plugin>
-            <!-- FindBugs -->
-            <!-- Checks for patterns which are prone to errors -->
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>findbugs-maven-plugin</artifactId>
-            <configuration>
-               <!-- Exclusion patterns -->
-               <excludeFilterFile>${project.basedir}/src/config/findbugs/findbugs-exclude.xml</excludeFilterFile>
-            </configuration>
-         </plugin>
          <plugin>
             <!-- Checkstyle -->
             <!-- Checks that the source files comply with style standards -->
@@ -760,6 +754,16 @@
                   <!-- Excludes metamodel -->
                   <exclude>**/*_.java</exclude>
                </excludes>
+            </configuration>
+         </plugin>
+         <plugin>
+             <!-- SpotBugs -->
+             <!-- Checks for patterns which are prone to errors -->
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs-maven-plugin</artifactId>
+            <configuration>
+               <!-- Exclusion patterns -->
+               <excludeFilterFile>${project.basedir}/src/config/spotbugs/spotbugs-exclude.xml</excludeFilterFile>
             </configuration>
          </plugin>
       </plugins>

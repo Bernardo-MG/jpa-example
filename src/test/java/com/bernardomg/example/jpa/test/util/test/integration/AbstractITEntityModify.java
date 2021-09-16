@@ -108,7 +108,7 @@ public abstract class AbstractITEntityModify<V>
         getEntityManager().flush();
 
         // Checks the entity has been added
-        Assertions.assertEquals(new Integer(getInitialEntitiesCount() + 1),
+        Assertions.assertEquals(getInitialEntitiesCount() + 1,
                 getEntitiesCount());
     }
 
@@ -230,7 +230,7 @@ public abstract class AbstractITEntityModify<V>
      * @return the id used to find the entity to update
      */
     protected Object getId() {
-        return new Integer(1);
+        return 1;
     }
 
     /**
