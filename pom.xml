@@ -379,28 +379,26 @@
       <!-- ============================================== -->
       <!-- =========== DEPENDENCIES VERSIONS ============ -->
       <!-- ============================================== -->
-      <eclipselink.version>2.7.7</eclipselink.version>
-      <guava.version>29.0-jre</guava.version>
+      <eclipselink.version>3.0.2</eclipselink.version>
+      <guava.version>30.1.1-jre</guava.version>
       <h2.version>1.4.200</h2.version>
-      <hibernate.version>5.4.21.Final</hibernate.version>
+      <hibernate.version>5.5.7.Final</hibernate.version>
       <hikari.version>3.4.5</hikari.version>
-      <hsqldb.version>2.5.1</hsqldb.version>
+      <hsqldb.version>2.6.0</hsqldb.version>
       <javaee.api.version>2.2</javaee.api.version>
-      <jaxb.version>2.3.1</jaxb.version>
-      <junit.jupiter.version>5.7.0</junit.jupiter.version>
-      <junit.platform.version>1.7.0</junit.platform.version>
-      <liquibase.version>4.0.0</liquibase.version>
-      <log4j.version>2.13.3</log4j.version>
+      <junit.jupiter.version>5.8.0</junit.jupiter.version>
+      <junit.platform.version>1.8.0</junit.platform.version>
+      <liquibase.version>4.4.3</liquibase.version>
+      <log4j.version>2.14.1</log4j.version>
       <mysql.version>8.0.21</mysql.version>
-      <postgresql.version>42.2.16</postgresql.version>
-      <qual.checker.version>3.5.0</qual.checker.version>
+      <postgresql.version>42.2.23</postgresql.version>
       <slf4j.version>1.7.30</slf4j.version>
-      <snakeyaml.version>1.27</snakeyaml.version>
-      <spring.version>5.2.9.RELEASE</spring.version>
+      <snakeyaml.version>1.29</snakeyaml.version>
+      <spring.version>5.3.10</spring.version>
       <!-- ============================================== -->
       <!-- ============== PLUGINS VERSIONS ============== -->
       <!-- ============================================== -->
-      <plugin.processor.version>3.3.3</plugin.processor.version>
+      <plugin.processor.version>4.5</plugin.processor.version>
       <!-- ============================================== -->
       <!-- ================= MAVEN SITE ================= -->
       <!-- ============================================== -->
@@ -542,23 +540,6 @@
          <groupId>org.apache.logging.log4j</groupId>
          <artifactId>log4j-core</artifactId>
          <version>${log4j.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <!-- ********************************************** -->
-      <!-- ************ VERSION ENFORCEMENT ************* -->
-      <!-- ********************************************** -->
-      <dependency>
-         <!-- JAXB API -->
-         <groupId>javax.xml.bind</groupId>
-         <artifactId>jaxb-api</artifactId>
-         <version>${jaxb.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- Qual Checker -->
-         <groupId>org.checkerframework</groupId>
-         <artifactId>checker-qual</artifactId>
-         <version>${qual.checker.version}</version>
          <scope>test</scope>
       </dependency>
    </dependencies>
