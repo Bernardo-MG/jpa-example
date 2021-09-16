@@ -380,7 +380,7 @@
       <!-- ============================================== -->
       <!-- =========== DEPENDENCIES VERSIONS ============ -->
       <!-- ============================================== -->
-      <eclipselink.version>3.0.2</eclipselink.version>
+      <eclipselink.version>2.7.9</eclipselink.version>
       <guava.version>30.1.1-jre</guava.version>
       <h2.version>1.4.200</h2.version>
       <hibernate.version>5.5.7.Final</hibernate.version>
