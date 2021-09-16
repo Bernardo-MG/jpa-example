@@ -75,8 +75,8 @@ public class ITEmbeddedCompositeKeyEntityQueryCriteriaApi
         entity = (EmbeddedCompositeKeyEntity) query.getSingleResult();
 
         // The ids are correct
-        Assertions.assertEquals(new Integer(1), entity.getKey().getId());
-        Assertions.assertEquals(new Long(2), entity.getKey().getSupportId());
+        Assertions.assertEquals(1, entity.getKey().getId());
+        Assertions.assertEquals(2l, entity.getKey().getSupportId());
     }
 
 }

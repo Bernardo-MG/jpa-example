@@ -75,8 +75,8 @@ public class ITCompositeKeyEntityQueryCriteriaApi
         entity = (CompositeKeyEntity) query.getSingleResult();
 
         // The ids are correct
-        Assertions.assertEquals(new Integer(1), entity.getId());
-        Assertions.assertEquals(new Long(2), entity.getSupportId());
+        Assertions.assertEquals(1, entity.getId());
+        Assertions.assertEquals(2l, entity.getSupportId());
     }
 
 }
