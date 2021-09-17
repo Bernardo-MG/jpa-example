@@ -29,7 +29,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 import com.bernardomg.example.jpa.model.embedded.ElementCollectionEntity;
 import com.bernardomg.example.jpa.model.embedded.EmbeddableData;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityModify;
+import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityModify;
 
 /**
  * Integration tests for a {@code ElementCollectionEntity} testing it can be

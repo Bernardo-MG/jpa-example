@@ -30,8 +30,8 @@ import org.junit.jupiter.api.Test;
 
 import com.bernardomg.example.jpa.model.enumeration.EnumerationEntity;
 import com.bernardomg.example.jpa.model.enumeration.NumbersEnum;
-import com.bernardomg.example.jpa.test.util.criteria.enumeration.EnumerationEntityCriteriaFactory;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQuery;
+import com.bernardomg.example.jpa.test.config.criteria.enumeration.EnumerationEntityCriteriaFactory;
+import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code EnumerationEntity} testing it loads values

@@ -30,8 +30,8 @@ import org.junit.jupiter.api.Assertions;
 
 import com.bernardomg.example.jpa.model.key.classid.CompositeKey;
 import com.bernardomg.example.jpa.model.key.classid.CompositeKeyIdClassEntity;
-import com.bernardomg.example.jpa.test.util.criteria.key.classid.CompositeKeyIdClassEntityCriteriaFactory;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityModify;
+import com.bernardomg.example.jpa.test.config.criteria.key.classid.CompositeKeyIdClassEntityCriteriaFactory;
+import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityModify;
 
 /**
  * Integration tests for a {@link CompositeKeyIdClassEntity} testing it can be

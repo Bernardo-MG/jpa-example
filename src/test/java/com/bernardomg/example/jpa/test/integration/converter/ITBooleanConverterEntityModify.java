@@ -27,7 +27,7 @@ package com.bernardomg.example.jpa.test.integration.converter;
 import org.junit.jupiter.api.Assertions;
 
 import com.bernardomg.example.jpa.model.converter.BooleanConverterEntity;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityModify;
+import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityModify;
 
 /**
  * Integration tests for a {@code BooleanConverterEntity} testing it can be

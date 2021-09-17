@@ -32,8 +32,8 @@ import org.junit.jupiter.api.Test;
 
 import com.bernardomg.example.jpa.model.simple.DefaultSimpleEntity;
 import com.bernardomg.example.jpa.model.simple.SimpleEntity;
-import com.bernardomg.example.jpa.test.util.criteria.simple.SimpleEntityCriteriaFactory;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQuery;
+import com.bernardomg.example.jpa.test.config.criteria.simple.SimpleEntityCriteriaFactory;
+import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code SimpleEntity} testing it can be queried

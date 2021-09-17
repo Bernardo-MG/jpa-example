@@ -29,8 +29,8 @@ import javax.persistence.Query;
 import org.junit.jupiter.api.Test;
 
 import com.bernardomg.example.jpa.model.embedded.EmbeddedEntity;
-import com.bernardomg.example.jpa.test.util.criteria.embedded.EmbeddedEntityCriteriaFactory;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQuery;
+import com.bernardomg.example.jpa.test.config.criteria.embedded.EmbeddedEntityCriteriaFactory;
+import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code EmbeddedEntity} testing it loads values

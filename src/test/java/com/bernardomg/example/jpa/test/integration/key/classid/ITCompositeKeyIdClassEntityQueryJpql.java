@@ -31,7 +31,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.bernardomg.example.jpa.model.key.classid.CompositeKeyIdClassEntity;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractIntegrationTest;
+import com.bernardomg.example.jpa.test.config.test.integration.AbstractIntegrationTest;
 
 /**
  * Integration tests for a {@link CompositeKeyIdClassEntity} testing it loads

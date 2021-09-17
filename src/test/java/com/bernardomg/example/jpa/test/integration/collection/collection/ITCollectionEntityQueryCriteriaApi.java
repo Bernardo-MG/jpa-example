@@ -29,8 +29,8 @@ import javax.persistence.Query;
 import org.junit.jupiter.api.Test;
 
 import com.bernardomg.example.jpa.model.collection.CollectionEntity;
-import com.bernardomg.example.jpa.test.util.criteria.collection.CollectionEntityCriteriaFactory;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQuery;
+import com.bernardomg.example.jpa.test.config.criteria.collection.CollectionEntityCriteriaFactory;
+import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code CollectionEntity} testing it loads values

@@ -31,8 +31,8 @@ import org.junit.jupiter.api.Test;
 
 import com.bernardomg.example.jpa.model.embedded.ElementCollectionEntity;
 import com.bernardomg.example.jpa.model.embedded.EmbeddableData;
-import com.bernardomg.example.jpa.test.util.criteria.embedded.ElementCollectionEntityCriteriaFactory;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQuery;
+import com.bernardomg.example.jpa.test.config.criteria.embedded.ElementCollectionEntityCriteriaFactory;
+import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code ElementCollectionEntity} testing it loads

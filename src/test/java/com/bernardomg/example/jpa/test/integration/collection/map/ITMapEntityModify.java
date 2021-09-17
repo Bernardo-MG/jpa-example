@@ -30,7 +30,7 @@ import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 
 import com.bernardomg.example.jpa.model.collection.MapEntity;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityModify;
+import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityModify;
 
 /**
  * Integration tests for a {@code CollectionEntity} testing it can be modified.

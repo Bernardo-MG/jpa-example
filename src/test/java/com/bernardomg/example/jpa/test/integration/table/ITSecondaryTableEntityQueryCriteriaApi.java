@@ -29,8 +29,8 @@ import javax.persistence.Query;
 import org.junit.jupiter.api.Test;
 
 import com.bernardomg.example.jpa.model.table.SecondaryTableEntity;
-import com.bernardomg.example.jpa.test.util.criteria.table.SecondaryTableEntityCriteriaFactory;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQuery;
+import com.bernardomg.example.jpa.test.config.criteria.table.SecondaryTableEntityCriteriaFactory;
+import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code SecondaryTableEntity} testing it loads values

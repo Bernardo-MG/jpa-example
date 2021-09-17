@@ -29,8 +29,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import org.junit.jupiter.api.Assertions;
 
 import com.bernardomg.example.jpa.model.key.composite.CompositeKeyEntity;
-import com.bernardomg.example.jpa.test.util.criteria.key.composite.CompositeKeyEntityCriteriaFactory;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityModify;
+import com.bernardomg.example.jpa.test.config.criteria.key.composite.CompositeKeyEntityCriteriaFactory;
+import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityModify;
 
 /**
  * Abstract integration tests for a {@link CompositeKeyEntity} testing it can be

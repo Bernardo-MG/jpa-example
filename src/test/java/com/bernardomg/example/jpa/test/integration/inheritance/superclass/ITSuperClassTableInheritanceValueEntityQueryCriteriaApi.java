@@ -29,8 +29,8 @@ import javax.persistence.Query;
 import org.junit.jupiter.api.Test;
 
 import com.bernardomg.example.jpa.model.inheritance.superclass.SuperClassTableInheritanceValueEntity;
-import com.bernardomg.example.jpa.test.util.criteria.inheritance.superclass.SuperClassTableInheritanceValueEntityCriteriaFactory;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQuery;
+import com.bernardomg.example.jpa.test.config.criteria.inheritance.superclass.SuperClassTableInheritanceValueEntityCriteriaFactory;
+import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code SingleTableInheritanceValueEntity} testing it

@@ -27,7 +27,7 @@ package com.bernardomg.example.jpa.test.integration.inheritance.segregated;
 import org.junit.jupiter.api.Assertions;
 
 import com.bernardomg.example.jpa.model.inheritance.segregated.PerClassTableInheritanceValueEntity;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityModify;
+import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityModify;
 
 /**
  * Integration tests for a {@code PerClassTableInheritanceValueEntity} testing

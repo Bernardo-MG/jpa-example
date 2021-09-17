@@ -27,7 +27,7 @@ package com.bernardomg.example.jpa.test.integration.inheritance.superclass;
 import org.junit.jupiter.api.Assertions;
 
 import com.bernardomg.example.jpa.model.inheritance.superclass.SuperClassTableInheritanceValueEntity;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityModify;
+import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityModify;
 
 /**
  * Integration tests for a {@code SingleTableInheritanceValueEntity} testing it

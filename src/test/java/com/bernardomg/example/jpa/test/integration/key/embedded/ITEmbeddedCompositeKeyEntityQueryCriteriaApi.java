@@ -30,8 +30,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import com.bernardomg.example.jpa.model.key.embedded.EmbeddedCompositeKeyEntity;
-import com.bernardomg.example.jpa.test.util.criteria.key.embedded.EmbeddedCompositeKeyEntityCriteriaFactory;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractIntegrationTest;
+import com.bernardomg.example.jpa.test.config.criteria.key.embedded.EmbeddedCompositeKeyEntityCriteriaFactory;
+import com.bernardomg.example.jpa.test.config.test.integration.AbstractIntegrationTest;
 
 /**
  * Abstract integration tests for a {@link EmbeddedCompositeKeyEntity} testing

@@ -31,7 +31,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.bernardomg.example.jpa.model.key.embedded.EmbeddedCompositeKeyEntity;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractIntegrationTest;
+import com.bernardomg.example.jpa.test.config.test.integration.AbstractIntegrationTest;
 
 /**
  * Abstract integration tests for a {@link EmbeddedCompositeKeyEntity} testing
