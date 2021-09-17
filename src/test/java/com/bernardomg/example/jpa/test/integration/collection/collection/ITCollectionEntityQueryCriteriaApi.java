@@ -27,6 +27,7 @@ package com.bernardomg.example.jpa.test.integration.collection.collection;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -62,12 +63,12 @@ public class ITCollectionEntityQueryCriteriaApi
      */
     @Test
     public final void testFindAllWithValue() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 3;
+        readCount = getQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(3, readCount);
     }
 
     /**

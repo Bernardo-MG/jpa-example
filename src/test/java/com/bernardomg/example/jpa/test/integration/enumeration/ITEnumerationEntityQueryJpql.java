@@ -27,6 +27,7 @@ package com.bernardomg.example.jpa.test.integration.enumeration;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -75,13 +76,12 @@ public class ITEnumerationEntityQueryJpql
      */
     @Test
     public final void testGetEntity_Ordinal() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 2;
+        readCount = getOrdinalQuery().getResultList().size();
 
         // Reads the expected number of entities
-        assertResultSizeEquals(count, getOrdinalQuery());
+        Assertions.assertEquals(2, readCount);
     }
 
     /**
@@ -90,13 +90,12 @@ public class ITEnumerationEntityQueryJpql
      */
     @Test
     public final void testGetEntity_String() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 2;
+        readCount = getStringQuery().getResultList().size();
 
         // Reads the expected number of entities
-        assertResultSizeEquals(count, getStringQuery());
+        Assertions.assertEquals(2, readCount);
     }
 
     /**

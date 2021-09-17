@@ -27,6 +27,7 @@ package com.bernardomg.example.jpa.test.integration.converter;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -68,12 +69,12 @@ public class ITBooleanConverterEntityQueryJpql
      */
     @Test
     public final void testGetEntity_AllFalse() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 2;
+        readCount = getAllFalseQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getAllFalseQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(2, readCount);
     }
 
     /**
@@ -82,12 +83,12 @@ public class ITBooleanConverterEntityQueryJpql
      */
     @Test
     public final void testGetEntity_AllTrue() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 3;
+        readCount = getAllTrueQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getAllTrueQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(3, readCount);
     }
 
     /**

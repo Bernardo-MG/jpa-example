@@ -34,6 +34,7 @@ import java.util.Locale;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -113,12 +114,12 @@ public class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetAfterDate_Calendar() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 3;
+        readCount = getAfterDateCalendarQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getAfterDateCalendarQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(1, readCount);
     }
 
     /**
@@ -127,12 +128,12 @@ public class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetAfterDate_Java() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 3;
+        readCount = getAfterDateJavaQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getAfterDateJavaQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(3, readCount);
     }
 
     /**
@@ -141,12 +142,12 @@ public class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetAfterDate_Sql() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 3;
+        readCount = getAfterDateSqlQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getAfterDateSqlQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(3, readCount);
     }
 
     /**
@@ -155,12 +156,12 @@ public class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetBeforeDate_Calendar() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 2;
+        readCount = getBeforeDateCalendarQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getBeforeDateCalendarQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(3, readCount);
     }
 
     /**
@@ -169,12 +170,12 @@ public class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetBeforeDate_Java() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 2;
+        readCount = getBeforeDateJavaQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getBeforeDateJavaQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(3, readCount);
     }
 
     /**
@@ -183,12 +184,12 @@ public class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetBeforeDate_Sql() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 2;
+        readCount = getBeforeDateSqlQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getBeforeDateSqlQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(3, readCount);
     }
 
     /**
@@ -197,12 +198,12 @@ public class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetInDate_Calendar() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 1;
+        readCount = getInDateCalendarQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getInDateCalendarQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(2, readCount);
     }
 
     /**
@@ -211,12 +212,12 @@ public class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetInDate_Java() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 1;
+        readCount = getInDateJavaQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getInDateJavaQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(1, readCount);
     }
 
     /**
@@ -225,12 +226,12 @@ public class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetInDate_Sql() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 1;
+        readCount = getInDateSqlQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getInDateSqlQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(1, readCount);
     }
 
     /**

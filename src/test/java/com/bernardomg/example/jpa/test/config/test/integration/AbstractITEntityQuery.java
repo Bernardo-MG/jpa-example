@@ -24,9 +24,6 @@
 
 package com.bernardomg.example.jpa.test.config.test.integration;
 
-import javax.persistence.Query;
-
-import org.junit.jupiter.api.Assertions;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 import com.bernardomg.example.jpa.model.simple.SimpleEntity;
@@ -50,24 +47,6 @@ public abstract class AbstractITEntityQuery<V>
      */
     public AbstractITEntityQuery() {
         super();
-    }
-
-    /**
-     * Asserts that the result size from the query equals the expected count.
-     * 
-     * @param expectedCount
-     *            expected number of elements
-     * @param query
-     *            query used to acquire the results
-     */
-    protected final void assertResultSizeEquals(final Integer expectedCount,
-            final Query query) {
-        final Integer readCount;
-
-        readCount = query.getResultList().size();
-
-        // Reads the expected number of entities
-        Assertions.assertEquals(expectedCount, readCount);
     }
 
 }

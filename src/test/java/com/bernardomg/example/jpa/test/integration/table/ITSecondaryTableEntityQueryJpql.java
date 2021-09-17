@@ -27,6 +27,7 @@ package com.bernardomg.example.jpa.test.integration.table;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -68,12 +69,12 @@ public class ITSecondaryTableEntityQueryJpql
      */
     @Test
     public final void testGetEntity_AllFalse() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 1;
+        readCount = getQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(1, readCount);
     }
 
     /**

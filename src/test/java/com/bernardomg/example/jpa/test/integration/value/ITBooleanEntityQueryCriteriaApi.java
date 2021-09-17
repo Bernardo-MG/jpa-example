@@ -27,6 +27,7 @@ package com.bernardomg.example.jpa.test.integration.value;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -61,12 +62,12 @@ public class ITBooleanEntityQueryCriteriaApi
      */
     @Test
     public final void testFindAll() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 2;
+        readCount = getQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getAllQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(2, readCount);
     }
 
     /**
@@ -74,7 +75,7 @@ public class ITBooleanEntityQueryCriteriaApi
      * 
      * @return the query for the test
      */
-    private final Query getAllQuery() {
+    private final Query getQuery() {
         return entityManager.createQuery(
                 BooleanEntityCriteriaFactory.findAll(entityManager));
     }
