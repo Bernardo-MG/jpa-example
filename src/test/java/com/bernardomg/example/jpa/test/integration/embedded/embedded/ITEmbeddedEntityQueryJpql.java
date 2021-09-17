@@ -81,7 +81,7 @@ public class ITEmbeddedEntityQueryJpql
         // Queried value
         name = "embedded_entity_1";
 
-        query = getQuery(findByName);
+        query = getEntityManager().createQuery(findByName);
         query.setParameter("name", name);
 
         return query;

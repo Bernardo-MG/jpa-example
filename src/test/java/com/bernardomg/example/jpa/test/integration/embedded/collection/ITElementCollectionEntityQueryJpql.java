@@ -83,7 +83,7 @@ public class ITElementCollectionEntityQueryJpql
         name = "name_2";
         desc = "desc_2";
 
-        query = getQuery(findContained);
+        query = getEntityManager().createQuery(findContained);
         query.setParameter("name", name);
         query.setParameter("description", desc);
 

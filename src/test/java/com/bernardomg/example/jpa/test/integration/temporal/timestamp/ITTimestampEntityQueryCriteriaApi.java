@@ -232,7 +232,7 @@ public class ITTimestampEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAfterTimeCalendarQuery() {
-        return getQuery(TimestampEntityCriteriaFactory
+        return getEntityManager().createQuery(TimestampEntityCriteriaFactory
                 .findAfterTimestamp(getEntityManager(), calendar));
     }
 
@@ -242,7 +242,7 @@ public class ITTimestampEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAfterTimeJavaQuery() {
-        return getQuery(TimestampEntityCriteriaFactory
+        return getEntityManager().createQuery(TimestampEntityCriteriaFactory
                 .findAfterTimestamp(getEntityManager(), date));
     }
 
@@ -252,7 +252,7 @@ public class ITTimestampEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAfterTimeSqlQuery() {
-        return getQuery(TimestampEntityCriteriaFactory
+        return getEntityManager().createQuery(TimestampEntityCriteriaFactory
                 .findAfterSqlTimestamp(getEntityManager(), timestamp));
     }
 
@@ -262,7 +262,7 @@ public class ITTimestampEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getBeforeTimeCalendarQuery() {
-        return getQuery(TimestampEntityCriteriaFactory
+        return getEntityManager().createQuery(TimestampEntityCriteriaFactory
                 .findBeforeTimestamp(getEntityManager(), calendar));
     }
 
@@ -272,7 +272,7 @@ public class ITTimestampEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getBeforeTimeJavaQuery() {
-        return getQuery(TimestampEntityCriteriaFactory
+        return getEntityManager().createQuery(TimestampEntityCriteriaFactory
                 .findBeforeTimestamp(getEntityManager(), date));
     }
 
@@ -282,7 +282,7 @@ public class ITTimestampEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getBeforeTimeSqlQuery() {
-        return getQuery(TimestampEntityCriteriaFactory
+        return getEntityManager().createQuery(TimestampEntityCriteriaFactory
                 .findBeforeSqlTimestamp(getEntityManager(), timestamp));
     }
 
@@ -292,7 +292,7 @@ public class ITTimestampEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getInTimeCalendarQuery() {
-        return getQuery(TimestampEntityCriteriaFactory
+        return getEntityManager().createQuery(TimestampEntityCriteriaFactory
                 .findInTimestamp(getEntityManager(), calendar));
     }
 
@@ -302,7 +302,7 @@ public class ITTimestampEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getInTimeJavaQuery() {
-        return getQuery(TimestampEntityCriteriaFactory
+        return getEntityManager().createQuery(TimestampEntityCriteriaFactory
                 .findInTimestamp(getEntityManager(), date));
     }
 
@@ -312,7 +312,7 @@ public class ITTimestampEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getInTimeSqlQuery() {
-        return getQuery(TimestampEntityCriteriaFactory
+        return getEntityManager().createQuery(TimestampEntityCriteriaFactory
                 .findInSqlTimestamp(getEntityManager(), timestamp));
     }
 

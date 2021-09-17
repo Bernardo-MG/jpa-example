@@ -73,7 +73,7 @@ public class ITBooleanEntityQueryJpql
      * @return the query for the test
      */
     private final Query getAllQuery() {
-        return getQuery(findAll);
+        return getEntityManager().createQuery(findAll);
     }
 
 }

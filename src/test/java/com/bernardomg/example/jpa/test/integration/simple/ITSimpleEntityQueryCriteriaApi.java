@@ -113,7 +113,7 @@ public class ITSimpleEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAllQuery() {
-        return getQuery(
+        return getEntityManager().createQuery(
                 SimpleEntityCriteriaFactory.findAll(getEntityManager()));
     }
 

@@ -67,7 +67,7 @@ public class ITBooleanEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAllQuery() {
-        return getQuery(
+        return getEntityManager().createQuery(
                 BooleanEntityCriteriaFactory.findAll(getEntityManager()));
     }
 

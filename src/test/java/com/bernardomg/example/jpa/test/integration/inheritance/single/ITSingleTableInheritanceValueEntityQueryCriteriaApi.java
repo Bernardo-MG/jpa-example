@@ -73,8 +73,9 @@ public class ITSingleTableInheritanceValueEntityQueryCriteriaApi
         // Queried value
         value = 11;
 
-        return getQuery(SingleTableInheritanceValueEntityCriteriaFactory
-                .findAllWithValue(getEntityManager(), value));
+        return getEntityManager()
+                .createQuery(SingleTableInheritanceValueEntityCriteriaFactory
+                        .findAllWithValue(getEntityManager(), value));
     }
 
 }

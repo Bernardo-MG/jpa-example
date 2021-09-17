@@ -80,7 +80,7 @@ public class ITMultipleTableInheritanceValueEntityQueryJpql
         // Queried value
         value = 11;
 
-        query = getQuery(findAllWithValue);
+        query = getEntityManager().createQuery(findAllWithValue);
         query.setParameter("value", value);
 
         return query;

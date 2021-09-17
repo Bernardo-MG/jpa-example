@@ -82,7 +82,7 @@ public class ITMapEntityQueryJpql extends AbstractITEntityQuery<MapEntity> {
         // Queried value
         value = 2;
 
-        query = getQuery(findAllWithValueInMap);
+        query = getEntityManager().createQuery(findAllWithValueInMap);
         query.setParameter("value", value);
 
         return query;

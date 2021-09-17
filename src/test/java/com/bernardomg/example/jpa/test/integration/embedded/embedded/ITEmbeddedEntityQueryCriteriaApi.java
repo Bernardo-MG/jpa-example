@@ -74,7 +74,7 @@ public class ITEmbeddedEntityQueryCriteriaApi
         // Queried value
         name = "embedded_entity_1";
 
-        return getQuery(EmbeddedEntityCriteriaFactory
+        return getEntityManager().createQuery(EmbeddedEntityCriteriaFactory
                 .findByName(getEntityManager(), name));
     }
 

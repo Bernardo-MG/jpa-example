@@ -103,7 +103,7 @@ public class ITEnumerationEntityQueryJpql
         // Queried value
         value = NumbersEnum.TWO;
 
-        query = getQuery(findAllByOrdinal);
+        query = getEntityManager().createQuery(findAllByOrdinal);
         query.setParameter("enum", value);
 
         return query;
@@ -121,7 +121,7 @@ public class ITEnumerationEntityQueryJpql
         // Queried value
         value = NumbersEnum.TWO;
 
-        query = getQuery(findAllByString);
+        query = getEntityManager().createQuery(findAllByString);
         query.setParameter("enum", value);
 
         return query;

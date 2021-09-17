@@ -288,7 +288,7 @@ public class ITTimestampEntityQueryJpql
     private final Query getAfterTimeCalendarQuery() {
         final Query query;
 
-        query = getQuery(findAfterTimestampCalendar);
+        query = getEntityManager().createQuery(findAfterTimestampCalendar);
         query.setParameter("timestamp", calendar);
 
         return query;
@@ -302,7 +302,7 @@ public class ITTimestampEntityQueryJpql
     private final Query getAfterTimeJavaQuery() {
         final Query query;
 
-        query = getQuery(findAfterTimestampJava);
+        query = getEntityManager().createQuery(findAfterTimestampJava);
         query.setParameter("timestamp", date);
 
         return query;
@@ -316,7 +316,7 @@ public class ITTimestampEntityQueryJpql
     private final Query getAfterTimeSqlQuery() {
         final Query query;
 
-        query = getQuery(findAfterTimestampSql);
+        query = getEntityManager().createQuery(findAfterTimestampSql);
         query.setParameter("timestamp", timestamp);
 
         return query;
@@ -330,7 +330,7 @@ public class ITTimestampEntityQueryJpql
     private final Query getBeforeTimeCalendarQuery() {
         final Query query;
 
-        query = getQuery(findBeforeTimestampCalendar);
+        query = getEntityManager().createQuery(findBeforeTimestampCalendar);
         query.setParameter("timestamp", calendar);
 
         return query;
@@ -344,7 +344,7 @@ public class ITTimestampEntityQueryJpql
     private final Query getBeforeTimeJavaQuery() {
         final Query query;
 
-        query = getQuery(findBeforeTimestampJava);
+        query = getEntityManager().createQuery(findBeforeTimestampJava);
         query.setParameter("timestamp", date);
 
         return query;
@@ -358,7 +358,7 @@ public class ITTimestampEntityQueryJpql
     private final Query getBeforeTimeSqlQuery() {
         final Query query;
 
-        query = getQuery(findBeforeTimestampSql);
+        query = getEntityManager().createQuery(findBeforeTimestampSql);
         query.setParameter("timestamp", timestamp);
 
         return query;
@@ -372,7 +372,7 @@ public class ITTimestampEntityQueryJpql
     private final Query getInTimeCalendarQuery() {
         final Query query;
 
-        query = getQuery(findInTimestampCalendar);
+        query = getEntityManager().createQuery(findInTimestampCalendar);
         query.setParameter("timestamp", calendar);
 
         return query;
@@ -386,7 +386,7 @@ public class ITTimestampEntityQueryJpql
     private final Query getInTimeJavaQuery() {
         final Query query;
 
-        query = getQuery(findInTimestampJava);
+        query = getEntityManager().createQuery(findInTimestampJava);
         query.setParameter("timestamp", date);
 
         return query;
@@ -400,7 +400,7 @@ public class ITTimestampEntityQueryJpql
     private final Query getInTimeSqlQuery() {
         final Query query;
 
-        query = getQuery(findInTimestampSql);
+        query = getEntityManager().createQuery(findInTimestampSql);
         query.setParameter("timestamp", timestamp);
 
         return query;

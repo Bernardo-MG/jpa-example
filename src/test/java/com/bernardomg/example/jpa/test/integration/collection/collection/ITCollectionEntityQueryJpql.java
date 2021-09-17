@@ -80,7 +80,7 @@ public class ITCollectionEntityQueryJpql
         // Queried value
         value = 2;
 
-        query = getQuery(findAllWithValue);
+        query = getEntityManager().createQuery(findAllWithValue);
         query.setParameter("value", value);
 
         return query;

@@ -26,7 +26,6 @@ package com.bernardomg.example.jpa.test.config.test.integration;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaQuery;
 
 import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,28 +85,6 @@ public abstract class AbstractITEntityQuery<V>
      */
     protected final EntityManager getEntityManager() {
         return entityManager;
-    }
-
-    /**
-     * Creates a query from the received criteria query.
-     * 
-     * @param query
-     *            criteria query for the query
-     * @return a query
-     */
-    protected final Query getQuery(final CriteriaQuery<V> query) {
-        return getEntityManager().createQuery(query);
-    }
-
-    /**
-     * Creates a query from the received query string.
-     * 
-     * @param query
-     *            query string for the query
-     * @return a query
-     */
-    protected final Query getQuery(final String query) {
-        return getEntityManager().createQuery(query);
     }
 
 }

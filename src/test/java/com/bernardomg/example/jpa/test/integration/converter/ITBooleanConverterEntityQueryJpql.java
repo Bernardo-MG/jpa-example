@@ -94,7 +94,7 @@ public class ITBooleanConverterEntityQueryJpql
         // Queried value
         value = false;
 
-        query = getQuery(findAllByFlag);
+        query = getEntityManager().createQuery(findAllByFlag);
         query.setParameter("flag", value);
 
         return query;
@@ -112,7 +112,7 @@ public class ITBooleanConverterEntityQueryJpql
         // Queried value
         value = true;
 
-        query = getQuery(findAllByFlag);
+        query = getEntityManager().createQuery(findAllByFlag);
         query.setParameter("flag", value);
 
         return query;

@@ -79,8 +79,9 @@ public class ITElementCollectionEntityQueryCriteriaApi
         data.setName("name_2");
         data.setDescription("desc_2");
 
-        return getQuery(ElementCollectionEntityCriteriaFactory
-                .findContained(getEntityManager(), data));
+        return getEntityManager()
+                .createQuery(ElementCollectionEntityCriteriaFactory
+                        .findContained(getEntityManager(), data));
     }
 
 }

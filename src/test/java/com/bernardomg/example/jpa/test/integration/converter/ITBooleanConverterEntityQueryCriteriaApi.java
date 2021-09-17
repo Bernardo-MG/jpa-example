@@ -87,7 +87,7 @@ public class ITBooleanConverterEntityQueryCriteriaApi
         // Queried value
         value = false;
 
-        return getQuery(BooleanConverterEntityCriteriaFactory
+        return getEntityManager().createQuery(BooleanConverterEntityCriteriaFactory
                 .findAllByFlag(getEntityManager(), value));
     }
 
@@ -102,7 +102,7 @@ public class ITBooleanConverterEntityQueryCriteriaApi
         // Queried value
         value = true;
 
-        return getQuery(BooleanConverterEntityCriteriaFactory
+        return getEntityManager().createQuery(BooleanConverterEntityCriteriaFactory
                 .findAllByFlag(getEntityManager(), value));
     }
 

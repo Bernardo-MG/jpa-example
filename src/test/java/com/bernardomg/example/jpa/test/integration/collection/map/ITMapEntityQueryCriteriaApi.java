@@ -73,7 +73,7 @@ public class ITMapEntityQueryCriteriaApi
         // Queried value
         value = 2;
 
-        return getQuery(MapEntityCriteriaFactory
+        return getEntityManager().createQuery(MapEntityCriteriaFactory
                 .findAllWithValueInMap(getEntityManager(), value));
     }
 

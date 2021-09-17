@@ -73,8 +73,9 @@ public class ITSecondaryTableEntityQueryCriteriaApi
         // Queried value
         value = "value_b_2";
 
-        return getQuery(SecondaryTableEntityCriteriaFactory
-                .findBySecondaryValue(getEntityManager(), value));
+        return getEntityManager()
+                .createQuery(SecondaryTableEntityCriteriaFactory
+                        .findBySecondaryValue(getEntityManager(), value));
     }
 
 }

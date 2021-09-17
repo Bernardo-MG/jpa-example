@@ -231,7 +231,7 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAfterDateCalendarQuery() {
-        return getQuery(DateEntityCriteriaFactory
+        return getEntityManager().createQuery(DateEntityCriteriaFactory
                 .findAfterDate(getEntityManager(), calendar));
     }
 
@@ -241,7 +241,7 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAfterDateJavaQuery() {
-        return getQuery(DateEntityCriteriaFactory
+        return getEntityManager().createQuery(DateEntityCriteriaFactory
                 .findAfterDate(getEntityManager(), date));
     }
 
@@ -251,7 +251,7 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAfterDateSqlQuery() {
-        return getQuery(DateEntityCriteriaFactory
+        return getEntityManager().createQuery(DateEntityCriteriaFactory
                 .findAfterSqlDate(getEntityManager(), sqlDate));
     }
 
@@ -261,7 +261,7 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getBeforeDateCalendarQuery() {
-        return getQuery(DateEntityCriteriaFactory
+        return getEntityManager().createQuery(DateEntityCriteriaFactory
                 .findBeforeDate(getEntityManager(), calendar));
     }
 
@@ -271,7 +271,7 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getBeforeDateJavaQuery() {
-        return getQuery(DateEntityCriteriaFactory
+        return getEntityManager().createQuery(DateEntityCriteriaFactory
                 .findBeforeDate(getEntityManager(), date));
     }
 
@@ -281,7 +281,7 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getBeforeDateSqlQuery() {
-        return getQuery(DateEntityCriteriaFactory
+        return getEntityManager().createQuery(DateEntityCriteriaFactory
                 .findBeforeSqlDate(getEntityManager(), sqlDate));
     }
 
@@ -291,7 +291,7 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getInDateCalendarQuery() {
-        return getQuery(DateEntityCriteriaFactory.findInDate(getEntityManager(),
+        return getEntityManager().createQuery(DateEntityCriteriaFactory.findInDate(getEntityManager(),
                 calendar));
     }
 
@@ -301,7 +301,7 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getInDateJavaQuery() {
-        return getQuery(
+        return getEntityManager().createQuery(
                 DateEntityCriteriaFactory.findInDate(getEntityManager(), date));
     }
 
@@ -311,7 +311,7 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getInDateSqlQuery() {
-        return getQuery(DateEntityCriteriaFactory
+        return getEntityManager().createQuery(DateEntityCriteriaFactory
                 .findInSqlDate(getEntityManager(), sqlDate));
     }
 

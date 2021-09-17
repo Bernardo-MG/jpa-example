@@ -232,7 +232,7 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAfterTimeCalendarQuery() {
-        return getQuery(TimeEntityCriteriaFactory
+        return getEntityManager().createQuery(TimeEntityCriteriaFactory
                 .findAfterTime(getEntityManager(), calendar));
     }
 
@@ -242,7 +242,7 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAfterTimeJavaQuery() {
-        return getQuery(TimeEntityCriteriaFactory
+        return getEntityManager().createQuery(TimeEntityCriteriaFactory
                 .findAfterTime(getEntityManager(), date));
     }
 
@@ -252,7 +252,7 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAfterTimeSqlQuery() {
-        return getQuery(TimeEntityCriteriaFactory
+        return getEntityManager().createQuery(TimeEntityCriteriaFactory
                 .findAfterSqlTime(getEntityManager(), time));
     }
 
@@ -262,7 +262,7 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getBeforeTimeCalendarQuery() {
-        return getQuery(TimeEntityCriteriaFactory
+        return getEntityManager().createQuery(TimeEntityCriteriaFactory
                 .findBeforeTime(getEntityManager(), calendar));
     }
 
@@ -272,7 +272,7 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getBeforeTimeJavaQuery() {
-        return getQuery(TimeEntityCriteriaFactory
+        return getEntityManager().createQuery(TimeEntityCriteriaFactory
                 .findBeforeTime(getEntityManager(), date));
     }
 
@@ -282,7 +282,7 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getBeforeTimeSqlQuery() {
-        return getQuery(TimeEntityCriteriaFactory
+        return getEntityManager().createQuery(TimeEntityCriteriaFactory
                 .findBeforeSqlTime(getEntityManager(), time));
     }
 
@@ -292,7 +292,7 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getInTimeCalendarQuery() {
-        return getQuery(TimeEntityCriteriaFactory.findInTime(getEntityManager(),
+        return getEntityManager().createQuery(TimeEntityCriteriaFactory.findInTime(getEntityManager(),
                 calendar));
     }
 
@@ -302,7 +302,7 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getInTimeJavaQuery() {
-        return getQuery(
+        return getEntityManager().createQuery(
                 TimeEntityCriteriaFactory.findInTime(getEntityManager(), date));
     }
 
@@ -312,7 +312,7 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getInTimeSqlQuery() {
-        return getQuery(TimeEntityCriteriaFactory
+        return getEntityManager().createQuery(TimeEntityCriteriaFactory
                 .findInSqlTime(getEntityManager(), time));
     }
 

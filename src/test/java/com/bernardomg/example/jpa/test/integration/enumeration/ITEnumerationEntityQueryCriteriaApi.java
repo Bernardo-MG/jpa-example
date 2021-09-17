@@ -90,7 +90,7 @@ public class ITEnumerationEntityQueryCriteriaApi
         // Queried value
         value = NumbersEnum.TWO;
 
-        return getQuery(EnumerationEntityCriteriaFactory
+        return getEntityManager().createQuery(EnumerationEntityCriteriaFactory
                 .findAllByOrdinal(getEntityManager(), value));
     }
 
@@ -105,7 +105,7 @@ public class ITEnumerationEntityQueryCriteriaApi
         // Queried value
         value = NumbersEnum.TWO;
 
-        return getQuery(EnumerationEntityCriteriaFactory
+        return getEntityManager().createQuery(EnumerationEntityCriteriaFactory
                 .findAllByString(getEntityManager(), value));
     }
 

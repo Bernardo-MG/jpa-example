@@ -73,7 +73,7 @@ public class ITCollectionEntityQueryCriteriaApi
         // Queried value
         value = 2;
 
-        return getQuery(CollectionEntityCriteriaFactory
+        return getEntityManager().createQuery(CollectionEntityCriteriaFactory
                 .findAllWithValue(getEntityManager(), value));
     }
 

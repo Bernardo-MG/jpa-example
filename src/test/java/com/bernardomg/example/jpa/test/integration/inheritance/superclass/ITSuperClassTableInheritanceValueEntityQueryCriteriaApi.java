@@ -73,8 +73,9 @@ public class ITSuperClassTableInheritanceValueEntityQueryCriteriaApi
         // Queried value
         value = 11;
 
-        return getQuery(SuperClassTableInheritanceValueEntityCriteriaFactory
-                .findAllWithValue(getEntityManager(), value));
+        return getEntityManager().createQuery(
+                SuperClassTableInheritanceValueEntityCriteriaFactory
+                        .findAllWithValue(getEntityManager(), value));
     }
 
 }

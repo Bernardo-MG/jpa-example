@@ -80,7 +80,7 @@ public class ITSecondaryTableEntityQueryJpql
         // Queried value
         value = "value_b_2";
 
-        query = getQuery(findBySecondaryValue);
+        query = getEntityManager().createQuery(findBySecondaryValue);
         query.setParameter("value", value);
 
         return query;

@@ -126,7 +126,7 @@ public class ITSimpleEntityQueryJpql
      * @return the query for the test
      */
     private final Query getAllQuery() {
-        return getQuery(findAll);
+        return getEntityManager().createQuery(findAll);
     }
 
 }
