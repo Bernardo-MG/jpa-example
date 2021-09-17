@@ -24,14 +24,17 @@
 
 package com.bernardomg.example.jpa.test.integration.key.embedded;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 import com.bernardomg.example.jpa.model.key.embedded.EmbeddedCompositeKeyEntity;
+import com.bernardomg.example.jpa.test.config.annotation.PersistenceIntegrationTest;
 import com.bernardomg.example.jpa.test.config.criteria.key.embedded.EmbeddedCompositeKeyEntityCriteriaFactory;
-import com.bernardomg.example.jpa.test.config.test.integration.AbstractIntegrationTest;
 
 /**
  * Abstract integration tests for a {@link EmbeddedCompositeKeyEntity} testing
@@ -48,8 +51,15 @@ import com.bernardomg.example.jpa.test.config.test.integration.AbstractIntegrati
  * @author Bernardo Mart&iacute;nez Garrido
  * @see EmbeddedCompositeKeyEntity
  */
+@PersistenceIntegrationTest
 public class ITEmbeddedCompositeKeyEntityQueryCriteriaApi
-        extends AbstractIntegrationTest {
+        extends AbstractJUnit4SpringContextTests {
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * Default constructor.
@@ -77,6 +87,15 @@ public class ITEmbeddedCompositeKeyEntityQueryCriteriaApi
         // The ids are correct
         Assertions.assertEquals(1, entity.getKey().getId());
         Assertions.assertEquals(2l, entity.getKey().getSupportId());
+    }
+
+    /**
+     * Returns the JPA entity manager.
+     *
+     * @return the JPA entity manager
+     */
+    protected final EntityManager getEntityManager() {
+        return entityManager;
     }
 
 }

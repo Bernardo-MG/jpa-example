@@ -24,14 +24,17 @@
 
 package com.bernardomg.example.jpa.test.integration.key.classid;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 import com.bernardomg.example.jpa.model.key.classid.CompositeKeyIdClassEntity;
-import com.bernardomg.example.jpa.test.config.test.integration.AbstractIntegrationTest;
+import com.bernardomg.example.jpa.test.config.annotation.PersistenceIntegrationTest;
 
 /**
  * Integration tests for a {@link CompositeKeyIdClassEntity} testing it loads
@@ -48,14 +51,21 @@ import com.bernardomg.example.jpa.test.config.test.integration.AbstractIntegrati
  * @author Bernardo Mart&iacute;nez Garrido
  * @see CompositeKeyIdClassEntity
  */
+@PersistenceIntegrationTest
 public class ITCompositeKeyIdClassEntityQueryJpql
-        extends AbstractIntegrationTest {
+        extends AbstractJUnit4SpringContextTests {
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * The query to acquire an entity by its ids.
      */
     @Value("${query.compositeKeyId.findByIds}")
-    private String findByIds;
+    private String        findByIds;
 
     /**
      * Default constructor.
@@ -83,6 +93,15 @@ public class ITCompositeKeyIdClassEntityQueryJpql
         // The ids are correct
         Assertions.assertEquals(1, entity.getId());
         Assertions.assertEquals(2l, entity.getSupportId());
+    }
+
+    /**
+     * Returns the JPA entity manager.
+     *
+     * @return the JPA entity manager
+     */
+    protected final EntityManager getEntityManager() {
+        return entityManager;
     }
 
 }

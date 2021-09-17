@@ -28,13 +28,17 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.function.Supplier;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 import com.bernardomg.example.jpa.model.simple.SimpleEntity;
+import com.bernardomg.example.jpa.test.config.annotation.PersistenceIntegrationTest;
 import com.bernardomg.example.jpa.test.config.criteria.GenericCriteriaFactory;
 
 /**
@@ -46,8 +50,9 @@ import com.bernardomg.example.jpa.test.config.criteria.GenericCriteriaFactory;
  * @param <V>
  *            type of the entity
  */
+@PersistenceIntegrationTest
 public abstract class AbstractITEntityModify<V>
-        extends AbstractIntegrationTest {
+        extends AbstractJUnit4SpringContextTests {
 
     /**
      * Class of the tested entity.
@@ -55,6 +60,12 @@ public abstract class AbstractITEntityModify<V>
      * Used for creating new instances.
      */
     private final Class<V>    entityClass;
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager     entityManager;
 
     /**
      * Supplier for generating new instances of the entity.
@@ -220,6 +231,15 @@ public abstract class AbstractITEntityModify<V>
     protected CriteriaQuery<V> getCriteriaQuery(final Object id) {
         return GenericCriteriaFactory.findById(getEntityManager(),
                 getEntityClass(), id);
+    }
+
+    /**
+     * Returns the JPA entity manager.
+     *
+     * @return the JPA entity manager
+     */
+    protected final EntityManager getEntityManager() {
+        return entityManager;
     }
 
     /**
