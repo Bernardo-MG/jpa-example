@@ -31,10 +31,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.EnabledIf;
 
 import com.bernardomg.example.jpa.model.temporal.DateEntity;
@@ -66,6 +68,12 @@ public class ITDateEntityQueryCriteriaApi
      * String to generate the date for the test ranges.
      */
     private final String  dateString = "1991-05-02";
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * SQL date for the test ranges.
@@ -231,8 +239,8 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAfterDateCalendarQuery() {
-        return getEntityManager().createQuery(DateEntityCriteriaFactory
-                .findAfterDate(getEntityManager(), calendar));
+        return entityManager.createQuery(DateEntityCriteriaFactory
+                .findAfterDate(entityManager, calendar));
     }
 
     /**
@@ -241,8 +249,8 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAfterDateJavaQuery() {
-        return getEntityManager().createQuery(DateEntityCriteriaFactory
-                .findAfterDate(getEntityManager(), date));
+        return entityManager.createQuery(
+                DateEntityCriteriaFactory.findAfterDate(entityManager, date));
     }
 
     /**
@@ -251,8 +259,8 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAfterDateSqlQuery() {
-        return getEntityManager().createQuery(DateEntityCriteriaFactory
-                .findAfterSqlDate(getEntityManager(), sqlDate));
+        return entityManager.createQuery(DateEntityCriteriaFactory
+                .findAfterSqlDate(entityManager, sqlDate));
     }
 
     /**
@@ -261,8 +269,8 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getBeforeDateCalendarQuery() {
-        return getEntityManager().createQuery(DateEntityCriteriaFactory
-                .findBeforeDate(getEntityManager(), calendar));
+        return entityManager.createQuery(DateEntityCriteriaFactory
+                .findBeforeDate(entityManager, calendar));
     }
 
     /**
@@ -271,8 +279,8 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getBeforeDateJavaQuery() {
-        return getEntityManager().createQuery(DateEntityCriteriaFactory
-                .findBeforeDate(getEntityManager(), date));
+        return entityManager.createQuery(
+                DateEntityCriteriaFactory.findBeforeDate(entityManager, date));
     }
 
     /**
@@ -281,8 +289,8 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getBeforeDateSqlQuery() {
-        return getEntityManager().createQuery(DateEntityCriteriaFactory
-                .findBeforeSqlDate(getEntityManager(), sqlDate));
+        return entityManager.createQuery(DateEntityCriteriaFactory
+                .findBeforeSqlDate(entityManager, sqlDate));
     }
 
     /**
@@ -291,8 +299,8 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getInDateCalendarQuery() {
-        return getEntityManager().createQuery(DateEntityCriteriaFactory.findInDate(getEntityManager(),
-                calendar));
+        return entityManager.createQuery(
+                DateEntityCriteriaFactory.findInDate(entityManager, calendar));
     }
 
     /**
@@ -301,8 +309,8 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getInDateJavaQuery() {
-        return getEntityManager().createQuery(
-                DateEntityCriteriaFactory.findInDate(getEntityManager(), date));
+        return entityManager.createQuery(
+                DateEntityCriteriaFactory.findInDate(entityManager, date));
     }
 
     /**
@@ -311,8 +319,8 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getInDateSqlQuery() {
-        return getEntityManager().createQuery(DateEntityCriteriaFactory
-                .findInSqlDate(getEntityManager(), sqlDate));
+        return entityManager.createQuery(DateEntityCriteriaFactory
+                .findInSqlDate(entityManager, sqlDate));
     }
 
 }

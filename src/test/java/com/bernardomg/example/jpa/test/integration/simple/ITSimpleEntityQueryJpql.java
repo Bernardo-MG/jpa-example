@@ -24,11 +24,13 @@
 
 package com.bernardomg.example.jpa.test.integration.simple;
 
+import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.bernardomg.example.jpa.model.simple.DefaultSimpleEntity;
@@ -45,16 +47,22 @@ public class ITSimpleEntityQueryJpql
         extends AbstractITEntityQuery<DefaultSimpleEntity> {
 
     /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
+
+    /**
      * The query to acquire all the entities.
      */
     @Value("${query.findAll}")
-    private String findAll;
+    private String        findAll;
 
     /**
      * The query to acquire an entity by the id.
      */
     @Value("${query.findById}")
-    private String findById;
+    private String        findById;
 
     /**
      * Default constructor.
@@ -89,7 +97,7 @@ public class ITSimpleEntityQueryJpql
         id = 1;
 
         // Builds the query
-        query = getEntityManager().createQuery(findById);
+        query = entityManager.createQuery(findById);
         query.setParameter("id", id);
 
         // Acquires the entity
@@ -111,7 +119,7 @@ public class ITSimpleEntityQueryJpql
         id = 100;
 
         // Builds the query
-        query = getEntityManager().createQuery(findById);
+        query = entityManager.createQuery(findById);
         query.setParameter("id", id);
 
         // Tries to acquire the entity
@@ -126,7 +134,7 @@ public class ITSimpleEntityQueryJpql
      * @return the query for the test
      */
     private final Query getAllQuery() {
-        return getEntityManager().createQuery(findAll);
+        return entityManager.createQuery(findAll);
     }
 
 }

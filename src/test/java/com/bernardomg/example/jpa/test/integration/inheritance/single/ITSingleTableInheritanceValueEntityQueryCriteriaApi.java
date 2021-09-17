@@ -24,9 +24,11 @@
 
 package com.bernardomg.example.jpa.test.integration.inheritance.single;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bernardomg.example.jpa.model.inheritance.single.SingleTableInheritanceValueEntity;
 import com.bernardomg.example.jpa.test.config.criteria.inheritance.single.SingleTableInheritanceValueEntityCriteriaFactory;
@@ -40,6 +42,12 @@ import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQ
  */
 public class ITSingleTableInheritanceValueEntityQueryCriteriaApi
         extends AbstractITEntityQuery<SingleTableInheritanceValueEntity> {
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * Default constructor.
@@ -73,9 +81,9 @@ public class ITSingleTableInheritanceValueEntityQueryCriteriaApi
         // Queried value
         value = 11;
 
-        return getEntityManager()
+        return entityManager
                 .createQuery(SingleTableInheritanceValueEntityCriteriaFactory
-                        .findAllWithValue(getEntityManager(), value));
+                        .findAllWithValue(entityManager, value));
     }
 
 }

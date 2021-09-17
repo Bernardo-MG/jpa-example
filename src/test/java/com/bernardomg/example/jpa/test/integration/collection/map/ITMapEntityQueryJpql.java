@@ -24,9 +24,11 @@
 
 package com.bernardomg.example.jpa.test.integration.collection.map;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.junit.jupiter.EnabledIf;
 
@@ -44,10 +46,16 @@ import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQ
 public class ITMapEntityQueryJpql extends AbstractITEntityQuery<MapEntity> {
 
     /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
+
+    /**
      * The query to acquire all the entities.
      */
     @Value("${query.findAllWithValueInMap}")
-    private String findAllWithValueInMap;
+    private String        findAllWithValueInMap;
 
     /**
      * Default constructor.
@@ -82,7 +90,7 @@ public class ITMapEntityQueryJpql extends AbstractITEntityQuery<MapEntity> {
         // Queried value
         value = 2;
 
-        query = getEntityManager().createQuery(findAllWithValueInMap);
+        query = entityManager.createQuery(findAllWithValueInMap);
         query.setParameter("value", value);
 
         return query;

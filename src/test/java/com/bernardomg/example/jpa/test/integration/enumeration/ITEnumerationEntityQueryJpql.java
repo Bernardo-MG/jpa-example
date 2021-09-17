@@ -24,9 +24,11 @@
 
 package com.bernardomg.example.jpa.test.integration.enumeration;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.bernardomg.example.jpa.model.enumeration.EnumerationEntity;
@@ -43,16 +45,22 @@ public class ITEnumerationEntityQueryJpql
         extends AbstractITEntityQuery<EnumerationEntity> {
 
     /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
+
+    /**
      * The query to acquire all the entities by the ordinal value.
      */
     @Value("${query.findAllByEnumOrdinal}")
-    private String findAllByOrdinal;
+    private String        findAllByOrdinal;
 
     /**
      * The query to acquire all the entities by the string value.
      */
     @Value("${query.findAllByEnumString}")
-    private String findAllByString;
+    private String        findAllByString;
 
     /**
      * Default constructor.
@@ -103,7 +111,7 @@ public class ITEnumerationEntityQueryJpql
         // Queried value
         value = NumbersEnum.TWO;
 
-        query = getEntityManager().createQuery(findAllByOrdinal);
+        query = entityManager.createQuery(findAllByOrdinal);
         query.setParameter("enum", value);
 
         return query;
@@ -121,7 +129,7 @@ public class ITEnumerationEntityQueryJpql
         // Queried value
         value = NumbersEnum.TWO;
 
-        query = getEntityManager().createQuery(findAllByString);
+        query = entityManager.createQuery(findAllByString);
         query.setParameter("enum", value);
 
         return query;

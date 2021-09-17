@@ -24,10 +24,12 @@
 
 package com.bernardomg.example.jpa.test.integration.embedded.collection;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bernardomg.example.jpa.model.embedded.ElementCollectionEntity;
 import com.bernardomg.example.jpa.model.embedded.EmbeddableData;
@@ -43,6 +45,12 @@ import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQ
 @Disabled("Fails on Hibernate")
 public class ITElementCollectionEntityQueryCriteriaApi
         extends AbstractITEntityQuery<ElementCollectionEntity> {
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * Default constructor.
@@ -79,9 +87,8 @@ public class ITElementCollectionEntityQueryCriteriaApi
         data.setName("name_2");
         data.setDescription("desc_2");
 
-        return getEntityManager()
-                .createQuery(ElementCollectionEntityCriteriaFactory
-                        .findContained(getEntityManager(), data));
+        return entityManager.createQuery(ElementCollectionEntityCriteriaFactory
+                .findContained(entityManager, data));
     }
 
 }

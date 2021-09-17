@@ -24,9 +24,11 @@
 
 package com.bernardomg.example.jpa.test.integration.collection.collection;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.bernardomg.example.jpa.model.collection.CollectionEntity;
@@ -42,10 +44,16 @@ public class ITCollectionEntityQueryJpql
         extends AbstractITEntityQuery<CollectionEntity> {
 
     /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
+
+    /**
      * The query to acquire all the entities.
      */
     @Value("${query.collection.findAllWithValue}")
-    private String findAllWithValue;
+    private String        findAllWithValue;
 
     /**
      * Default constructor.
@@ -80,7 +88,7 @@ public class ITCollectionEntityQueryJpql
         // Queried value
         value = 2;
 
-        query = getEntityManager().createQuery(findAllWithValue);
+        query = entityManager.createQuery(findAllWithValue);
         query.setParameter("value", value);
 
         return query;

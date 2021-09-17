@@ -31,10 +31,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.junit.jupiter.EnabledIf;
 
@@ -65,6 +67,12 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
      * String to generate the date for the test ranges.
      */
     private final String  dateString = "1991-05-02";
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * The query to acquire all the after a date, using the calendar.
@@ -286,7 +294,7 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
     private final Query getAfterDateCalendarQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findAfterDateCalendar);
+        query = entityManager.createQuery(findAfterDateCalendar);
         query.setParameter("date", calendar);
 
         return query;
@@ -300,7 +308,7 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
     private final Query getAfterDateJavaQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findAfterDateJava);
+        query = entityManager.createQuery(findAfterDateJava);
         query.setParameter("date", date);
 
         return query;
@@ -314,7 +322,7 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
     private final Query getAfterDateSqlQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findAfterDateSql);
+        query = entityManager.createQuery(findAfterDateSql);
         query.setParameter("date", sqlDate);
 
         return query;
@@ -328,7 +336,7 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
     private final Query getBeforeDateCalendarQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findBeforeDateCalendar);
+        query = entityManager.createQuery(findBeforeDateCalendar);
         query.setParameter("date", calendar);
 
         return query;
@@ -342,7 +350,7 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
     private final Query getBeforeDateJavaQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findBeforeDateJava);
+        query = entityManager.createQuery(findBeforeDateJava);
         query.setParameter("date", date);
 
         return query;
@@ -356,7 +364,7 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
     private final Query getBeforeDateSqlQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findBeforeDateSql);
+        query = entityManager.createQuery(findBeforeDateSql);
         query.setParameter("date", sqlDate);
 
         return query;
@@ -370,7 +378,7 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
     private final Query getInDateJavaQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findInDateJava);
+        query = entityManager.createQuery(findInDateJava);
         query.setParameter("date", date);
 
         return query;
@@ -384,7 +392,7 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
     private final Query getInDateSqlCalendar() {
         final Query query;
 
-        query = getEntityManager().createQuery(findInDateCalendar);
+        query = entityManager.createQuery(findInDateCalendar);
         query.setParameter("date", calendar);
 
         return query;
@@ -398,7 +406,7 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
     private final Query getInDateSqlQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findInDateSql);
+        query = entityManager.createQuery(findInDateSql);
         query.setParameter("date", sqlDate);
 
         return query;

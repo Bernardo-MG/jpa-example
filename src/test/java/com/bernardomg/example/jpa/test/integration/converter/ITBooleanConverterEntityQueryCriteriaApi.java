@@ -24,9 +24,11 @@
 
 package com.bernardomg.example.jpa.test.integration.converter;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bernardomg.example.jpa.model.converter.BooleanConverterEntity;
 import com.bernardomg.example.jpa.test.config.criteria.converter.BooleanConverterEntityCriteriaFactory;
@@ -40,6 +42,12 @@ import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQ
  */
 public class ITBooleanConverterEntityQueryCriteriaApi
         extends AbstractITEntityQuery<BooleanConverterEntity> {
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * Default constructor.
@@ -87,8 +95,8 @@ public class ITBooleanConverterEntityQueryCriteriaApi
         // Queried value
         value = false;
 
-        return getEntityManager().createQuery(BooleanConverterEntityCriteriaFactory
-                .findAllByFlag(getEntityManager(), value));
+        return entityManager.createQuery(BooleanConverterEntityCriteriaFactory
+                .findAllByFlag(entityManager, value));
     }
 
     /**
@@ -102,8 +110,8 @@ public class ITBooleanConverterEntityQueryCriteriaApi
         // Queried value
         value = true;
 
-        return getEntityManager().createQuery(BooleanConverterEntityCriteriaFactory
-                .findAllByFlag(getEntityManager(), value));
+        return entityManager.createQuery(BooleanConverterEntityCriteriaFactory
+                .findAllByFlag(entityManager, value));
     }
 
 }

@@ -77,9 +77,9 @@ public class ITEmbeddedCompositeKeyEntityQueryCriteriaApi
         final EmbeddedCompositeKeyEntity entity; // The entity
 
         // Builds the query
-        query = getEntityManager()
+        query = entityManager
                 .createQuery(EmbeddedCompositeKeyEntityCriteriaFactory
-                        .findByIds(getEntityManager(), 1, 2l));
+                        .findByIds(entityManager, 1, 2l));
 
         // Acquires the entity
         entity = (EmbeddedCompositeKeyEntity) query.getSingleResult();
@@ -87,15 +87,6 @@ public class ITEmbeddedCompositeKeyEntityQueryCriteriaApi
         // The ids are correct
         Assertions.assertEquals(1, entity.getKey().getId());
         Assertions.assertEquals(2l, entity.getKey().getSupportId());
-    }
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
     }
 
 }

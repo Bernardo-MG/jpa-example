@@ -24,9 +24,11 @@
 
 package com.bernardomg.example.jpa.test.integration.collection.map;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bernardomg.example.jpa.model.collection.MapEntity;
 import com.bernardomg.example.jpa.test.config.criteria.collection.MapEntityCriteriaFactory;
@@ -40,6 +42,12 @@ import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQ
  */
 public class ITMapEntityQueryCriteriaApi
         extends AbstractITEntityQuery<MapEntity> {
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * Default constructor.
@@ -73,8 +81,8 @@ public class ITMapEntityQueryCriteriaApi
         // Queried value
         value = 2;
 
-        return getEntityManager().createQuery(MapEntityCriteriaFactory
-                .findAllWithValueInMap(getEntityManager(), value));
+        return entityManager.createQuery(MapEntityCriteriaFactory
+                .findAllWithValueInMap(entityManager, value));
     }
 
 }

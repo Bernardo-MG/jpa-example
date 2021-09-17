@@ -24,9 +24,11 @@
 
 package com.bernardomg.example.jpa.test.integration.embedded.embedded;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bernardomg.example.jpa.model.embedded.EmbeddedEntity;
 import com.bernardomg.example.jpa.test.config.criteria.embedded.EmbeddedEntityCriteriaFactory;
@@ -40,6 +42,12 @@ import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQ
  */
 public class ITEmbeddedEntityQueryCriteriaApi
         extends AbstractITEntityQuery<EmbeddedEntity> {
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * Default constructor.
@@ -74,8 +82,8 @@ public class ITEmbeddedEntityQueryCriteriaApi
         // Queried value
         name = "embedded_entity_1";
 
-        return getEntityManager().createQuery(EmbeddedEntityCriteriaFactory
-                .findByName(getEntityManager(), name));
+        return entityManager.createQuery(
+                EmbeddedEntityCriteriaFactory.findByName(entityManager, name));
     }
 
 }

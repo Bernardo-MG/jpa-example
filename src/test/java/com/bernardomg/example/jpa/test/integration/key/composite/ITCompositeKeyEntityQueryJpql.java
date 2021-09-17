@@ -84,7 +84,7 @@ public class ITCompositeKeyEntityQueryJpql
         final CompositeKeyEntity entity; // The entity
 
         // Builds the query
-        query = getEntityManager().createQuery(findByIds);
+        query = entityManager.createQuery(findByIds);
         query.setParameter("id1", 1);
         query.setParameter("id2", 2l);
 
@@ -94,15 +94,6 @@ public class ITCompositeKeyEntityQueryJpql
         // The ids are correct
         Assertions.assertEquals(1, entity.getId());
         Assertions.assertEquals(2l, entity.getSupportId());
-    }
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
     }
 
 }

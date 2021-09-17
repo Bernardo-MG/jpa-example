@@ -112,9 +112,9 @@ public abstract class AbstractITEntityModify<V>
         modifyEntity(newEntity);
 
         // Persists the entity
-        getEntityManager().persist(newEntity);
+        entityManager.persist(newEntity);
         // Flushed to force updating ids
-        getEntityManager().flush();
+        entityManager.flush();
 
         // Checks the entity has been added
         Assertions.assertEquals(getInitialEntitiesCount() + 1,
@@ -137,7 +137,7 @@ public abstract class AbstractITEntityModify<V>
 
         // Changes the entity
         modifyEntity(entity);
-        getEntityManager().persist(entity);
+        entityManager.persist(entity);
 
         // Retrieves the entity again
         modified = findById(id);
@@ -158,7 +158,7 @@ public abstract class AbstractITEntityModify<V>
         final Query query; // Query for the entity
 
         // Builds the query
-        query = getEntityManager().createQuery(getCriteriaQuery(id));
+        query = entityManager.createQuery(getCriteriaQuery(id));
 
         // Acquires the entity
         return (V) query.getSingleResult();
@@ -170,9 +170,9 @@ public abstract class AbstractITEntityModify<V>
      * @return the number of entities in the database
      */
     private final Integer getEntitiesCount() {
-        return getEntityManager().createQuery(GenericCriteriaFactory
-                .findAll(getEntityManager(), getEntityClass())).getResultList()
-                .size();
+        return entityManager.createQuery(
+                GenericCriteriaFactory.findAll(entityManager, getEntityClass()))
+                .getResultList().size();
     }
 
     /**
@@ -229,17 +229,8 @@ public abstract class AbstractITEntityModify<V>
      * @return query for the entity matching the received id
      */
     protected CriteriaQuery<V> getCriteriaQuery(final Object id) {
-        return GenericCriteriaFactory.findById(getEntityManager(),
-                getEntityClass(), id);
-    }
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
+        return GenericCriteriaFactory.findById(entityManager, getEntityClass(),
+                id);
     }
 
     /**

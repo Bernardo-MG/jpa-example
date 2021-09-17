@@ -24,9 +24,11 @@
 
 package com.bernardomg.example.jpa.test.integration.key.embedded;
 
+import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 
 import org.junit.jupiter.api.Assertions;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bernardomg.example.jpa.model.key.embedded.EmbeddableCompositeKey;
 import com.bernardomg.example.jpa.model.key.embedded.EmbeddedCompositeKeyEntity;
@@ -58,6 +60,12 @@ public class ITEmbeddedCompositeKeyEntityModify
     }
 
     /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
+
+    /**
      * Value to set on the name for the tests.
      */
     private final String name = "ABC";
@@ -79,7 +87,7 @@ public class ITEmbeddedCompositeKeyEntityModify
     protected CriteriaQuery<EmbeddedCompositeKeyEntity>
             getCriteriaQuery(final Object id) {
         return EmbeddedCompositeKeyEntityCriteriaFactory.findByIds(
-                getEntityManager(), ((EmbeddableCompositeKey) id).getId(),
+                entityManager, ((EmbeddableCompositeKey) id).getId(),
                 ((EmbeddableCompositeKey) id).getSupportId());
     }
 

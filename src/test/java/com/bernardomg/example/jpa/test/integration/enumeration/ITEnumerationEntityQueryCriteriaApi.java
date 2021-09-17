@@ -24,9 +24,11 @@
 
 package com.bernardomg.example.jpa.test.integration.enumeration;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bernardomg.example.jpa.model.enumeration.EnumerationEntity;
 import com.bernardomg.example.jpa.model.enumeration.NumbersEnum;
@@ -41,6 +43,12 @@ import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQ
  */
 public class ITEnumerationEntityQueryCriteriaApi
         extends AbstractITEntityQuery<EnumerationEntity> {
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * Default constructor.
@@ -90,8 +98,8 @@ public class ITEnumerationEntityQueryCriteriaApi
         // Queried value
         value = NumbersEnum.TWO;
 
-        return getEntityManager().createQuery(EnumerationEntityCriteriaFactory
-                .findAllByOrdinal(getEntityManager(), value));
+        return entityManager.createQuery(EnumerationEntityCriteriaFactory
+                .findAllByOrdinal(entityManager, value));
     }
 
     /**
@@ -105,8 +113,8 @@ public class ITEnumerationEntityQueryCriteriaApi
         // Queried value
         value = NumbersEnum.TWO;
 
-        return getEntityManager().createQuery(EnumerationEntityCriteriaFactory
-                .findAllByString(getEntityManager(), value));
+        return entityManager.createQuery(EnumerationEntityCriteriaFactory
+                .findAllByString(entityManager, value));
     }
 
 }

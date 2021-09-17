@@ -24,9 +24,11 @@
 
 package com.bernardomg.example.jpa.test.integration.inheritance.superclass;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.bernardomg.example.jpa.model.inheritance.superclass.SuperClassTableInheritanceValueEntity;
@@ -42,10 +44,16 @@ public class ITSuperClassTableInheritanceValueEntityQueryJpql
         extends AbstractITEntityQuery<SuperClassTableInheritanceValueEntity> {
 
     /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
+
+    /**
      * The query to acquire all the entities by the ordinal value.
      */
     @Value("${query.superClass.findAllWithValue}")
-    private String findAllWithValue;
+    private String        findAllWithValue;
 
     /**
      * Default constructor.
@@ -80,7 +88,7 @@ public class ITSuperClassTableInheritanceValueEntityQueryJpql
         // Queried value
         value = 11;
 
-        query = getEntityManager().createQuery(findAllWithValue);
+        query = entityManager.createQuery(findAllWithValue);
         query.setParameter("value", value);
 
         return query;

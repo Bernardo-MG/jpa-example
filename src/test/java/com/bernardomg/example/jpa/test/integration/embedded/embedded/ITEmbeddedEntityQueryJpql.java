@@ -24,9 +24,11 @@
 
 package com.bernardomg.example.jpa.test.integration.embedded.embedded;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.bernardomg.example.jpa.model.embedded.EmbeddedEntity;
@@ -42,10 +44,16 @@ public class ITEmbeddedEntityQueryJpql
         extends AbstractITEntityQuery<EmbeddedEntity> {
 
     /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
+
+    /**
      * The query to acquire all the entities.
      */
     @Value("${query.findByName}")
-    private String findByName;
+    private String        findByName;
 
     /**
      * Default constructor.
@@ -81,7 +89,7 @@ public class ITEmbeddedEntityQueryJpql
         // Queried value
         name = "embedded_entity_1";
 
-        query = getEntityManager().createQuery(findByName);
+        query = entityManager.createQuery(findByName);
         query.setParameter("name", name);
 
         return query;

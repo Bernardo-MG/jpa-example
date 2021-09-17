@@ -24,9 +24,11 @@
 
 package com.bernardomg.example.jpa.test.integration.converter;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.bernardomg.example.jpa.model.converter.BooleanConverterEntity;
@@ -42,10 +44,16 @@ public class ITBooleanConverterEntityQueryJpql
         extends AbstractITEntityQuery<BooleanConverterEntity> {
 
     /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
+
+    /**
      * The query to acquire all the entities by the flag.
      */
     @Value("${query.converter.findAllByFlag}")
-    private String findAllByFlag;
+    private String        findAllByFlag;
 
     /**
      * Default constructor.
@@ -94,7 +102,7 @@ public class ITBooleanConverterEntityQueryJpql
         // Queried value
         value = false;
 
-        query = getEntityManager().createQuery(findAllByFlag);
+        query = entityManager.createQuery(findAllByFlag);
         query.setParameter("flag", value);
 
         return query;
@@ -112,7 +120,7 @@ public class ITBooleanConverterEntityQueryJpql
         // Queried value
         value = true;
 
-        query = getEntityManager().createQuery(findAllByFlag);
+        query = entityManager.createQuery(findAllByFlag);
         query.setParameter("flag", value);
 
         return query;

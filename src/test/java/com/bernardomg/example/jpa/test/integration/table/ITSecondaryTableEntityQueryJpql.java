@@ -24,9 +24,11 @@
 
 package com.bernardomg.example.jpa.test.integration.table;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.bernardomg.example.jpa.model.table.SecondaryTableEntity;
@@ -42,10 +44,16 @@ public class ITSecondaryTableEntityQueryJpql
         extends AbstractITEntityQuery<SecondaryTableEntity> {
 
     /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
+
+    /**
      * The query to acquire all the entities by the flag.
      */
     @Value("${query.findBySecondaryValue}")
-    private String findBySecondaryValue;
+    private String        findBySecondaryValue;
 
     /**
      * Default constructor.
@@ -80,7 +88,7 @@ public class ITSecondaryTableEntityQueryJpql
         // Queried value
         value = "value_b_2";
 
-        query = getEntityManager().createQuery(findBySecondaryValue);
+        query = entityManager.createQuery(findBySecondaryValue);
         query.setParameter("value", value);
 
         return query;

@@ -24,9 +24,11 @@
 
 package com.bernardomg.example.jpa.test.integration.value;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.bernardomg.example.jpa.model.value.BooleanEntity;
@@ -42,10 +44,16 @@ public class ITBooleanEntityQueryJpql
         extends AbstractITEntityQuery<BooleanEntity> {
 
     /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
+
+    /**
      * The query to acquire all the entities.
      */
     @Value("${query.boolean.findAll}")
-    private String findAll;
+    private String        findAll;
 
     /**
      * Default constructor.
@@ -73,7 +81,7 @@ public class ITBooleanEntityQueryJpql
      * @return the query for the test
      */
     private final Query getAllQuery() {
-        return getEntityManager().createQuery(findAll);
+        return entityManager.createQuery(findAll);
     }
 
 }

@@ -32,10 +32,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.junit.jupiter.EnabledIf;
 
@@ -55,76 +57,82 @@ public class ITTimeEntityQueryJpql extends AbstractITEntityQuery<TimeEntity> {
     /**
      * Calendar for the test ranges.
      */
-    private Calendar     calendar;
+    private Calendar      calendar;
 
     /**
      * Java date for the test ranges.
      */
-    private Date         date;
+    private Date          date;
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * The query to acquire all the after a time, using the calendar.
      */
     @Value("${query.afterTime.calendar}")
-    private String       findAfterTimeCalendar;
+    private String        findAfterTimeCalendar;
 
     /**
      * The query to acquire all the after a time, using the Java date.
      */
     @Value("${query.afterTime.java}")
-    private String       findAfterTimeJava;
+    private String        findAfterTimeJava;
 
     /**
      * The query to acquire all the after a time, using the SQL time.
      */
     @Value("${query.afterTime.sql}")
-    private String       findAfterTimeSql;
+    private String        findAfterTimeSql;
 
     /**
      * The query to acquire all the before a time, using the calendar.
      */
     @Value("${query.beforeTime.calendar}")
-    private String       findBeforeTimeCalendar;
+    private String        findBeforeTimeCalendar;
 
     /**
      * The query to acquire all the before a time, using the Java date.
      */
     @Value("${query.beforeTime.java}")
-    private String       findBeforeTimeJava;
+    private String        findBeforeTimeJava;
 
     /**
      * The query to acquire all the before a time, using the SQL time.
      */
     @Value("${query.beforeTime.sql}")
-    private String       findBeforeTimeSql;
+    private String        findBeforeTimeSql;
 
     /**
      * The query to acquire all the before a time, using the calendar.
      */
     @Value("${query.inTime.calendar}")
-    private String       findInTimeCalendar;
+    private String        findInTimeCalendar;
 
     /**
      * The query to acquire all the before a time, using the Java date.
      */
     @Value("${query.inTime.java}")
-    private String       findInTimeJava;
+    private String        findInTimeJava;
 
     /**
      * The query to acquire all the before a time, using the SQL time.
      */
     @Value("${query.inTime.sql}")
-    private String       findInTimeSql;
+    private String        findInTimeSql;
 
     /**
      * Time for the test ranges.
      */
-    private Time         time;
+    private Time          time;
 
     /**
      * String to generate the time for the test ranges.
      */
-    private final String timeString = "11:11:11";
+    private final String  timeString = "11:11:11";
 
     /**
      * Default constructor.
@@ -287,7 +295,7 @@ public class ITTimeEntityQueryJpql extends AbstractITEntityQuery<TimeEntity> {
     private final Query getAfterTimeCalendarQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findAfterTimeCalendar);
+        query = entityManager.createQuery(findAfterTimeCalendar);
         query.setParameter("time", calendar);
 
         return query;
@@ -301,7 +309,7 @@ public class ITTimeEntityQueryJpql extends AbstractITEntityQuery<TimeEntity> {
     private final Query getAfterTimeJavaQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findAfterTimeJava);
+        query = entityManager.createQuery(findAfterTimeJava);
         query.setParameter("time", date);
 
         return query;
@@ -315,7 +323,7 @@ public class ITTimeEntityQueryJpql extends AbstractITEntityQuery<TimeEntity> {
     private final Query getAfterTimeSqlQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findAfterTimeSql);
+        query = entityManager.createQuery(findAfterTimeSql);
         query.setParameter("time", time);
 
         return query;
@@ -329,7 +337,7 @@ public class ITTimeEntityQueryJpql extends AbstractITEntityQuery<TimeEntity> {
     private final Query getBeforeTimeCalendarQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findBeforeTimeCalendar);
+        query = entityManager.createQuery(findBeforeTimeCalendar);
         query.setParameter("time", calendar);
 
         return query;
@@ -343,7 +351,7 @@ public class ITTimeEntityQueryJpql extends AbstractITEntityQuery<TimeEntity> {
     private final Query getBeforeTimeJavaQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findBeforeTimeJava);
+        query = entityManager.createQuery(findBeforeTimeJava);
         query.setParameter("time", date);
 
         return query;
@@ -357,7 +365,7 @@ public class ITTimeEntityQueryJpql extends AbstractITEntityQuery<TimeEntity> {
     private final Query getBeforeTimeSqlQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findBeforeTimeSql);
+        query = entityManager.createQuery(findBeforeTimeSql);
         query.setParameter("time", time);
 
         return query;
@@ -371,7 +379,7 @@ public class ITTimeEntityQueryJpql extends AbstractITEntityQuery<TimeEntity> {
     private final Query getInTimeCalendarQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findInTimeCalendar);
+        query = entityManager.createQuery(findInTimeCalendar);
         query.setParameter("time", calendar);
 
         return query;
@@ -385,7 +393,7 @@ public class ITTimeEntityQueryJpql extends AbstractITEntityQuery<TimeEntity> {
     private final Query getInTimeJavaQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findInTimeJava);
+        query = entityManager.createQuery(findInTimeJava);
         query.setParameter("time", date);
 
         return query;
@@ -399,7 +407,7 @@ public class ITTimeEntityQueryJpql extends AbstractITEntityQuery<TimeEntity> {
     private final Query getInTimeSqlQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findInTimeSql);
+        query = entityManager.createQuery(findInTimeSql);
         query.setParameter("time", time);
 
         return query;

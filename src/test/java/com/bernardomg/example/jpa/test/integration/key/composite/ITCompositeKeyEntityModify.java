@@ -24,9 +24,11 @@
 
 package com.bernardomg.example.jpa.test.integration.key.composite;
 
+import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 
 import org.junit.jupiter.api.Assertions;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bernardomg.example.jpa.model.key.composite.CompositeKeyEntity;
 import com.bernardomg.example.jpa.test.config.criteria.key.composite.CompositeKeyEntityCriteriaFactory;
@@ -53,6 +55,12 @@ public class ITCompositeKeyEntityModify
     }
 
     /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
+
+    /**
      * Value to set on the name for the tests.
      */
     private final String name = "ABC";
@@ -72,7 +80,7 @@ public class ITCompositeKeyEntityModify
     @Override
     protected CriteriaQuery<CompositeKeyEntity>
             getCriteriaQuery(final Object id) {
-        return CompositeKeyEntityCriteriaFactory.findByIds(getEntityManager(),
+        return CompositeKeyEntityCriteriaFactory.findByIds(entityManager,
                 (Integer) id, 2l);
     }
 

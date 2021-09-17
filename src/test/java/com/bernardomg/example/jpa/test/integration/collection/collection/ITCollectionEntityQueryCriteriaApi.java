@@ -24,9 +24,11 @@
 
 package com.bernardomg.example.jpa.test.integration.collection.collection;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bernardomg.example.jpa.model.collection.CollectionEntity;
 import com.bernardomg.example.jpa.test.config.criteria.collection.CollectionEntityCriteriaFactory;
@@ -40,6 +42,12 @@ import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQ
  */
 public class ITCollectionEntityQueryCriteriaApi
         extends AbstractITEntityQuery<CollectionEntity> {
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * Default constructor.
@@ -73,8 +81,8 @@ public class ITCollectionEntityQueryCriteriaApi
         // Queried value
         value = 2;
 
-        return getEntityManager().createQuery(CollectionEntityCriteriaFactory
-                .findAllWithValue(getEntityManager(), value));
+        return entityManager.createQuery(CollectionEntityCriteriaFactory
+                .findAllWithValue(entityManager, value));
     }
 
 }

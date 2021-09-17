@@ -24,9 +24,11 @@
 
 package com.bernardomg.example.jpa.test.integration.table;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bernardomg.example.jpa.model.table.SecondaryTableEntity;
 import com.bernardomg.example.jpa.test.config.criteria.table.SecondaryTableEntityCriteriaFactory;
@@ -40,6 +42,12 @@ import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQ
  */
 public class ITSecondaryTableEntityQueryCriteriaApi
         extends AbstractITEntityQuery<SecondaryTableEntity> {
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * Default constructor.
@@ -73,9 +81,8 @@ public class ITSecondaryTableEntityQueryCriteriaApi
         // Queried value
         value = "value_b_2";
 
-        return getEntityManager()
-                .createQuery(SecondaryTableEntityCriteriaFactory
-                        .findBySecondaryValue(getEntityManager(), value));
+        return entityManager.createQuery(SecondaryTableEntityCriteriaFactory
+                .findBySecondaryValue(entityManager, value));
     }
 
 }

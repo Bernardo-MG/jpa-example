@@ -24,11 +24,13 @@
 
 package com.bernardomg.example.jpa.test.integration.simple;
 
+import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bernardomg.example.jpa.model.simple.DefaultSimpleEntity;
 import com.bernardomg.example.jpa.model.simple.SimpleEntity;
@@ -43,6 +45,12 @@ import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQ
  */
 public class ITSimpleEntityQueryCriteriaApi
         extends AbstractITEntityQuery<DefaultSimpleEntity> {
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * Default constructor.
@@ -77,8 +85,8 @@ public class ITSimpleEntityQueryCriteriaApi
         id = 1;
 
         // Builds the query
-        query = getEntityManager().createQuery(
-                SimpleEntityCriteriaFactory.findById(getEntityManager(), id));
+        query = entityManager.createQuery(
+                SimpleEntityCriteriaFactory.findById(entityManager, id));
 
         // Acquires the entity
         entity = (SimpleEntity) query.getSingleResult();
@@ -99,8 +107,8 @@ public class ITSimpleEntityQueryCriteriaApi
         id = 100;
 
         // Builds the query
-        query = getEntityManager().createQuery(
-                SimpleEntityCriteriaFactory.findById(getEntityManager(), id));
+        query = entityManager.createQuery(
+                SimpleEntityCriteriaFactory.findById(entityManager, id));
 
         Assertions.assertThrows(NoResultException.class, () -> {
             query.getSingleResult();
@@ -113,8 +121,8 @@ public class ITSimpleEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAllQuery() {
-        return getEntityManager().createQuery(
-                SimpleEntityCriteriaFactory.findAll(getEntityManager()));
+        return entityManager.createQuery(
+                SimpleEntityCriteriaFactory.findAll(entityManager));
     }
 
 }

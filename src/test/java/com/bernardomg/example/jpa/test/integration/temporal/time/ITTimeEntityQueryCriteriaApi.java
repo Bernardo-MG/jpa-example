@@ -32,10 +32,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.EnabledIf;
 
 import com.bernardomg.example.jpa.model.temporal.TimeEntity;
@@ -56,22 +58,28 @@ public class ITTimeEntityQueryCriteriaApi
     /**
      * Calendar for the test ranges.
      */
-    private Calendar     calendar;
+    private Calendar      calendar;
 
     /**
      * Java date for the test ranges.
      */
-    private Date         date;
+    private Date          date;
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * Time for the test ranges.
      */
-    private Time         time;
+    private Time          time;
 
     /**
      * String to generate the time for the test ranges.
      */
-    private final String timeString = "11:11:11";
+    private final String  timeString = "11:11:11";
 
     /**
      * Default constructor.
@@ -232,8 +240,8 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAfterTimeCalendarQuery() {
-        return getEntityManager().createQuery(TimeEntityCriteriaFactory
-                .findAfterTime(getEntityManager(), calendar));
+        return entityManager.createQuery(TimeEntityCriteriaFactory
+                .findAfterTime(entityManager, calendar));
     }
 
     /**
@@ -242,8 +250,8 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAfterTimeJavaQuery() {
-        return getEntityManager().createQuery(TimeEntityCriteriaFactory
-                .findAfterTime(getEntityManager(), date));
+        return entityManager.createQuery(
+                TimeEntityCriteriaFactory.findAfterTime(entityManager, date));
     }
 
     /**
@@ -252,8 +260,8 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAfterTimeSqlQuery() {
-        return getEntityManager().createQuery(TimeEntityCriteriaFactory
-                .findAfterSqlTime(getEntityManager(), time));
+        return entityManager.createQuery(TimeEntityCriteriaFactory
+                .findAfterSqlTime(entityManager, time));
     }
 
     /**
@@ -262,8 +270,8 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getBeforeTimeCalendarQuery() {
-        return getEntityManager().createQuery(TimeEntityCriteriaFactory
-                .findBeforeTime(getEntityManager(), calendar));
+        return entityManager.createQuery(TimeEntityCriteriaFactory
+                .findBeforeTime(entityManager, calendar));
     }
 
     /**
@@ -272,8 +280,8 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getBeforeTimeJavaQuery() {
-        return getEntityManager().createQuery(TimeEntityCriteriaFactory
-                .findBeforeTime(getEntityManager(), date));
+        return entityManager.createQuery(
+                TimeEntityCriteriaFactory.findBeforeTime(entityManager, date));
     }
 
     /**
@@ -282,8 +290,8 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getBeforeTimeSqlQuery() {
-        return getEntityManager().createQuery(TimeEntityCriteriaFactory
-                .findBeforeSqlTime(getEntityManager(), time));
+        return entityManager.createQuery(TimeEntityCriteriaFactory
+                .findBeforeSqlTime(entityManager, time));
     }
 
     /**
@@ -292,8 +300,8 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getInTimeCalendarQuery() {
-        return getEntityManager().createQuery(TimeEntityCriteriaFactory.findInTime(getEntityManager(),
-                calendar));
+        return entityManager.createQuery(
+                TimeEntityCriteriaFactory.findInTime(entityManager, calendar));
     }
 
     /**
@@ -302,8 +310,8 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getInTimeJavaQuery() {
-        return getEntityManager().createQuery(
-                TimeEntityCriteriaFactory.findInTime(getEntityManager(), date));
+        return entityManager.createQuery(
+                TimeEntityCriteriaFactory.findInTime(entityManager, date));
     }
 
     /**
@@ -312,8 +320,8 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getInTimeSqlQuery() {
-        return getEntityManager().createQuery(TimeEntityCriteriaFactory
-                .findInSqlTime(getEntityManager(), time));
+        return entityManager.createQuery(
+                TimeEntityCriteriaFactory.findInSqlTime(entityManager, time));
     }
 
 }

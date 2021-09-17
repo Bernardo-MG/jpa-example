@@ -32,10 +32,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.junit.jupiter.EnabledIf;
 
@@ -56,76 +58,82 @@ public class ITTimestampEntityQueryJpql
     /**
      * Calendar for the test ranges.
      */
-    private Calendar     calendar;
+    private Calendar      calendar;
 
     /**
      * Java date for the test ranges.
      */
-    private Date         date;
+    private Date          date;
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * The query to acquire all the after a date, using the calendar.
      */
     @Value("${query.afterTimestamp.calendar}")
-    private String       findAfterTimestampCalendar;
+    private String        findAfterTimestampCalendar;
 
     /**
      * The query to acquire all the after a date, using the Java date.
      */
     @Value("${query.afterTimestamp.java}")
-    private String       findAfterTimestampJava;
+    private String        findAfterTimestampJava;
 
     /**
      * The query to acquire all the after a date, using the SQL date.
      */
     @Value("${query.afterTimestamp.sql}")
-    private String       findAfterTimestampSql;
+    private String        findAfterTimestampSql;
 
     /**
      * The query to acquire all the before a date, using the calendar.
      */
     @Value("${query.beforeTimestamp.calendar}")
-    private String       findBeforeTimestampCalendar;
+    private String        findBeforeTimestampCalendar;
 
     /**
      * The query to acquire all the before a date, using the Java date.
      */
     @Value("${query.beforeTimestamp.java}")
-    private String       findBeforeTimestampJava;
+    private String        findBeforeTimestampJava;
 
     /**
      * The query to acquire all the before a date, using the SQL date.
      */
     @Value("${query.beforeTimestamp.sql}")
-    private String       findBeforeTimestampSql;
+    private String        findBeforeTimestampSql;
 
     /**
      * The query to acquire all the before a date, using the calendar.
      */
     @Value("${query.inTimestamp.calendar}")
-    private String       findInTimestampCalendar;
+    private String        findInTimestampCalendar;
 
     /**
      * The query to acquire all the before a date, using the Java date.
      */
     @Value("${query.inTimestamp.java}")
-    private String       findInTimestampJava;
+    private String        findInTimestampJava;
 
     /**
      * The query to acquire all the before a date, using the SQL date.
      */
     @Value("${query.inTimestamp.sql}")
-    private String       findInTimestampSql;
+    private String        findInTimestampSql;
 
     /**
      * Timestamp for the test ranges.
      */
-    private Timestamp    timestamp;
+    private Timestamp     timestamp;
 
     /**
      * String to generate the timestamp for the test ranges.
      */
-    private final String timestampString = "1991-05-02 11:11:11";
+    private final String  timestampString = "1991-05-02 11:11:11";
 
     /**
      * Default constructor.
@@ -288,7 +296,7 @@ public class ITTimestampEntityQueryJpql
     private final Query getAfterTimeCalendarQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findAfterTimestampCalendar);
+        query = entityManager.createQuery(findAfterTimestampCalendar);
         query.setParameter("timestamp", calendar);
 
         return query;
@@ -302,7 +310,7 @@ public class ITTimestampEntityQueryJpql
     private final Query getAfterTimeJavaQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findAfterTimestampJava);
+        query = entityManager.createQuery(findAfterTimestampJava);
         query.setParameter("timestamp", date);
 
         return query;
@@ -316,7 +324,7 @@ public class ITTimestampEntityQueryJpql
     private final Query getAfterTimeSqlQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findAfterTimestampSql);
+        query = entityManager.createQuery(findAfterTimestampSql);
         query.setParameter("timestamp", timestamp);
 
         return query;
@@ -330,7 +338,7 @@ public class ITTimestampEntityQueryJpql
     private final Query getBeforeTimeCalendarQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findBeforeTimestampCalendar);
+        query = entityManager.createQuery(findBeforeTimestampCalendar);
         query.setParameter("timestamp", calendar);
 
         return query;
@@ -344,7 +352,7 @@ public class ITTimestampEntityQueryJpql
     private final Query getBeforeTimeJavaQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findBeforeTimestampJava);
+        query = entityManager.createQuery(findBeforeTimestampJava);
         query.setParameter("timestamp", date);
 
         return query;
@@ -358,7 +366,7 @@ public class ITTimestampEntityQueryJpql
     private final Query getBeforeTimeSqlQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findBeforeTimestampSql);
+        query = entityManager.createQuery(findBeforeTimestampSql);
         query.setParameter("timestamp", timestamp);
 
         return query;
@@ -372,7 +380,7 @@ public class ITTimestampEntityQueryJpql
     private final Query getInTimeCalendarQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findInTimestampCalendar);
+        query = entityManager.createQuery(findInTimestampCalendar);
         query.setParameter("timestamp", calendar);
 
         return query;
@@ -386,7 +394,7 @@ public class ITTimestampEntityQueryJpql
     private final Query getInTimeJavaQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findInTimestampJava);
+        query = entityManager.createQuery(findInTimestampJava);
         query.setParameter("timestamp", date);
 
         return query;
@@ -400,7 +408,7 @@ public class ITTimestampEntityQueryJpql
     private final Query getInTimeSqlQuery() {
         final Query query;
 
-        query = getEntityManager().createQuery(findInTimestampSql);
+        query = entityManager.createQuery(findInTimestampSql);
         query.setParameter("timestamp", timestamp);
 
         return query;

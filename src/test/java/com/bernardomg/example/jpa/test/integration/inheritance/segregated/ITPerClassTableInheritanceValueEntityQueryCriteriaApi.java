@@ -24,9 +24,11 @@
 
 package com.bernardomg.example.jpa.test.integration.inheritance.segregated;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bernardomg.example.jpa.model.inheritance.segregated.PerClassTableInheritanceValueEntity;
 import com.bernardomg.example.jpa.test.config.criteria.inheritance.segregated.PerClassTableInheritanceValueEntityCriteriaFactory;
@@ -40,6 +42,12 @@ import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQ
  */
 public class ITPerClassTableInheritanceValueEntityQueryCriteriaApi
         extends AbstractITEntityQuery<PerClassTableInheritanceValueEntity> {
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * Default constructor.
@@ -73,9 +81,9 @@ public class ITPerClassTableInheritanceValueEntityQueryCriteriaApi
         // Queried value
         value = 11;
 
-        return getEntityManager()
+        return entityManager
                 .createQuery(PerClassTableInheritanceValueEntityCriteriaFactory
-                        .findAllWithValue(getEntityManager(), value));
+                        .findAllWithValue(entityManager, value));
     }
 
 }

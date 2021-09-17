@@ -24,11 +24,9 @@
 
 package com.bernardomg.example.jpa.test.config.test.integration;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Assertions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 import com.bernardomg.example.jpa.model.simple.SimpleEntity;
@@ -46,12 +44,6 @@ import com.bernardomg.example.jpa.test.config.annotation.PersistenceIntegrationT
 @PersistenceIntegrationTest
 public abstract class AbstractITEntityQuery<V>
         extends AbstractJUnit4SpringContextTests {
-
-    /**
-     * The persistence entity manager.
-     */
-    @Autowired
-    private EntityManager entityManager;
 
     /**
      * Default constructor.
@@ -76,15 +68,6 @@ public abstract class AbstractITEntityQuery<V>
 
         // Reads the expected number of entities
         Assertions.assertEquals(expectedCount, readCount);
-    }
-
-    /**
-     * Returns the JPA entity manager.
-     *
-     * @return the JPA entity manager
-     */
-    protected final EntityManager getEntityManager() {
-        return entityManager;
     }
 
 }
