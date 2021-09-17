@@ -27,22 +27,16 @@ package com.bernardomg.example.jpa.test.config.test.integration;
 import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
-import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
-import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
-import org.springframework.transaction.annotation.Transactional;
+
+import com.bernardomg.example.jpa.test.config.annotation.PersistenceIntegrationTest;
 
 /**
  * Abstract integration tests with an entity manager and the test configuration.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@SpringJUnitConfig(locations = { "classpath:context/test-context.xml" })
-@TestExecutionListeners({ TransactionalTestExecutionListener.class,
-        DependencyInjectionTestExecutionListener.class })
-@Transactional
+@PersistenceIntegrationTest
 public abstract class AbstractIntegrationTest
         extends AbstractJUnit4SpringContextTests {
 
