@@ -120,7 +120,7 @@ public class ITDateEntityQueryCriteriaApi
         readCount = getAfterDateCalendarQuery().getResultList().size();
 
         // Reads the expected number of entities
-        Assertions.assertEquals(1, readCount);
+        Assertions.assertEquals(3, readCount);
     }
 
     /**
@@ -162,7 +162,7 @@ public class ITDateEntityQueryCriteriaApi
         readCount = getBeforeDateCalendarQuery().getResultList().size();
 
         // Reads the expected number of entities
-        Assertions.assertEquals(3, readCount);
+        Assertions.assertEquals(2, readCount);
     }
 
     /**
@@ -176,7 +176,7 @@ public class ITDateEntityQueryCriteriaApi
         readCount = getBeforeDateJavaQuery().getResultList().size();
 
         // Reads the expected number of entities
-        Assertions.assertEquals(3, readCount);
+        Assertions.assertEquals(2, readCount);
     }
 
     /**
@@ -190,7 +190,7 @@ public class ITDateEntityQueryCriteriaApi
         readCount = getBeforeDateSqlQuery().getResultList().size();
 
         // Reads the expected number of entities
-        Assertions.assertEquals(3, readCount);
+        Assertions.assertEquals(2, readCount);
     }
 
     /**
@@ -204,7 +204,7 @@ public class ITDateEntityQueryCriteriaApi
         readCount = getInDateCalendarQuery().getResultList().size();
 
         // Reads the expected number of entities
-        Assertions.assertEquals(2, readCount);
+        Assertions.assertEquals(1, readCount);
     }
 
     /**

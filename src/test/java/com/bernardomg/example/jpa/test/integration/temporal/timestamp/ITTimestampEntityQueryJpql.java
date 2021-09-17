@@ -217,7 +217,7 @@ public class ITTimestampEntityQueryJpql
         readCount = getBeforeTimeCalendarQuery().getResultList().size();
 
         // Reads the expected number of entities
-        Assertions.assertEquals(3, readCount);
+        Assertions.assertEquals(2, readCount);
     }
 
     /**

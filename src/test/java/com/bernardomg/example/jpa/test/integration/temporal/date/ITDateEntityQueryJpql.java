@@ -173,7 +173,7 @@ public class ITDateEntityQueryJpql extends AbstractJUnit4SpringContextTests {
         readCount = getAfterDateCalendarQuery().getResultList().size();
 
         // Reads the expected number of entities
-        Assertions.assertEquals(1, readCount);
+        Assertions.assertEquals(3, readCount);
     }
 
     /**
@@ -215,7 +215,7 @@ public class ITDateEntityQueryJpql extends AbstractJUnit4SpringContextTests {
         readCount = getBeforeDateCalendarQuery().getResultList().size();
 
         // Reads the expected number of entities
-        Assertions.assertEquals(3, readCount);
+        Assertions.assertEquals(2, readCount);
     }
 
     /**
@@ -229,7 +229,7 @@ public class ITDateEntityQueryJpql extends AbstractJUnit4SpringContextTests {
         readCount = getBeforeDateJavaQuery().getResultList().size();
 
         // Reads the expected number of entities
-        Assertions.assertEquals(3, readCount);
+        Assertions.assertEquals(2, readCount);
     }
 
     /**
@@ -243,7 +243,7 @@ public class ITDateEntityQueryJpql extends AbstractJUnit4SpringContextTests {
         readCount = getBeforeDateSqlQuery().getResultList().size();
 
         // Reads the expected number of entities
-        Assertions.assertEquals(3, readCount);
+        Assertions.assertEquals(2, readCount);
     }
 
     /**
