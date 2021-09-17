@@ -30,10 +30,10 @@ import javax.persistence.Query;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import com.bernardomg.example.jpa.model.collection.CollectionEntity;
+import com.bernardomg.example.jpa.test.config.annotation.PersistenceIntegrationTest;
 import com.bernardomg.example.jpa.test.config.criteria.collection.CollectionEntityCriteriaFactory;
-import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code CollectionEntity} testing it loads values
@@ -41,8 +41,9 @@ import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQ
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@PersistenceIntegrationTest
 public class ITCollectionEntityQueryCriteriaApi
-        extends AbstractITEntityQuery<CollectionEntity> {
+        extends AbstractJUnit4SpringContextTests {
 
     /**
      * The persistence entity manager.

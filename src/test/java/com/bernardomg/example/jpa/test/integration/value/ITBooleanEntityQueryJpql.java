@@ -31,9 +31,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import com.bernardomg.example.jpa.model.value.BooleanEntity;
-import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQuery;
+import com.bernardomg.example.jpa.test.config.annotation.PersistenceIntegrationTest;
 
 /**
  * Integration tests for a {@code BooleanEntity} testing it loads values
@@ -41,8 +41,8 @@ import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQ
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public class ITBooleanEntityQueryJpql
-        extends AbstractITEntityQuery<BooleanEntity> {
+@PersistenceIntegrationTest
+public class ITBooleanEntityQueryJpql extends AbstractJUnit4SpringContextTests {
 
     /**
      * The persistence entity manager.

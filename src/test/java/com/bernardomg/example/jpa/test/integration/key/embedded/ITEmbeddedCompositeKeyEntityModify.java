@@ -68,7 +68,7 @@ public class ITEmbeddedCompositeKeyEntityModify
     /**
      * Value to set on the name for the tests.
      */
-    private final String name = "ABC";
+    private final String  name = "ABC";
 
     /**
      * Default constructor.

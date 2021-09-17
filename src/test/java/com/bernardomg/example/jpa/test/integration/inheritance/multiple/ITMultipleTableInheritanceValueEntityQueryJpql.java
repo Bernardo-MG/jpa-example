@@ -31,9 +31,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import com.bernardomg.example.jpa.model.inheritance.multiple.MultipleTableInheritanceValueEntity;
-import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQuery;
+import com.bernardomg.example.jpa.test.config.annotation.PersistenceIntegrationTest;
 
 /**
  * Integration tests for a {@code MultipleTableInheritanceValueEntity} testing
@@ -41,8 +41,9 @@ import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQ
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@PersistenceIntegrationTest
 public class ITMultipleTableInheritanceValueEntityQueryJpql
-        extends AbstractITEntityQuery<MultipleTableInheritanceValueEntity> {
+        extends AbstractJUnit4SpringContextTests {
 
     /**
      * The persistence entity manager.

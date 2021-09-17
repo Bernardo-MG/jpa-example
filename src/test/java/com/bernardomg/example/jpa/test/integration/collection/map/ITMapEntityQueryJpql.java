@@ -32,9 +32,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.junit.jupiter.EnabledIf;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import com.bernardomg.example.jpa.model.collection.MapEntity;
-import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQuery;
+import com.bernardomg.example.jpa.test.config.annotation.PersistenceIntegrationTest;
 
 /**
  * Integration tests for a {@code CollectionEntity} testing it loads values
@@ -42,9 +42,10 @@ import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQ
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@PersistenceIntegrationTest
 @EnabledIf(expression = "#{!'${jpa.adapter.class}'.contains('Hibernate')}",
         reason = "Supports persisted dates", loadContext = true)
-public class ITMapEntityQueryJpql extends AbstractITEntityQuery<MapEntity> {
+public class ITMapEntityQueryJpql extends AbstractJUnit4SpringContextTests {
 
     /**
      * The persistence entity manager.

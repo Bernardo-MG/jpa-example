@@ -40,10 +40,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.EnabledIf;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import com.bernardomg.example.jpa.model.temporal.TimeEntity;
+import com.bernardomg.example.jpa.test.config.annotation.PersistenceIntegrationTest;
 import com.bernardomg.example.jpa.test.config.criteria.temporal.TimeEntityCriteriaFactory;
-import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code TimeEntity} testing it loads values correctly
@@ -51,10 +51,11 @@ import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQ
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@PersistenceIntegrationTest
 @EnabledIf(expression = "#{!'${jpa.adapter.class}'.contains('Hibernate')}",
         reason = "Supports persisted time", loadContext = true)
 public class ITTimeEntityQueryCriteriaApi
-        extends AbstractITEntityQuery<TimeEntity> {
+        extends AbstractJUnit4SpringContextTests {
 
     /**
      * Calendar for the test ranges.

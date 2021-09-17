@@ -30,10 +30,10 @@ import javax.persistence.Query;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import com.bernardomg.example.jpa.model.converter.BooleanConverterEntity;
+import com.bernardomg.example.jpa.test.config.annotation.PersistenceIntegrationTest;
 import com.bernardomg.example.jpa.test.config.criteria.converter.BooleanConverterEntityCriteriaFactory;
-import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQuery;
 
 /**
  * Integration tests for a {@code BooleanConverterEntity} testing it loads
@@ -41,8 +41,9 @@ import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQ
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@PersistenceIntegrationTest
 public class ITBooleanConverterEntityQueryCriteriaApi
-        extends AbstractITEntityQuery<BooleanConverterEntity> {
+        extends AbstractJUnit4SpringContextTests {
 
     /**
      * The persistence entity manager.

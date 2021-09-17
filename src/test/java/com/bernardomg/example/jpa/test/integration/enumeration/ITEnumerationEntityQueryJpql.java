@@ -31,10 +31,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import com.bernardomg.example.jpa.model.enumeration.EnumerationEntity;
 import com.bernardomg.example.jpa.model.enumeration.NumbersEnum;
-import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQuery;
+import com.bernardomg.example.jpa.test.config.annotation.PersistenceIntegrationTest;
 
 /**
  * Integration tests for a {@code EnumerationEntity} testing it loads values
@@ -42,8 +42,9 @@ import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityQ
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@PersistenceIntegrationTest
 public class ITEnumerationEntityQueryJpql
-        extends AbstractITEntityQuery<EnumerationEntity> {
+        extends AbstractJUnit4SpringContextTests {
 
     /**
      * The persistence entity manager.
