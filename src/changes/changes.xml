@@ -6,6 +6,8 @@
 		<author email="programming@bernardomg.com">Bernardo Martínez Garrido</author>
 	</properties>
 	<body>
+      <release version="1.7.0" date="2021-09-16" description="">
+      </release>
       <release version="1.6.0" date="2021-09-16" description="Updated dependencies">
          <action dev="bmg" type="update">
             Updated dependencies.
