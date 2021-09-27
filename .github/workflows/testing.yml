@@ -20,7 +20,6 @@ jobs:
             MYSQL_DATABASE: jpa_test
             MYSQL_ROOT_PASSWORD: root
         ports:
-          # Maps port on service container to the host
             - 3306:3306
         options: >-
           --health-cmd="mysqladmin ping"
@@ -31,14 +30,13 @@ jobs:
         image: postgres:9.6-bullseye
         env:
           POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
         options: >-
           --health-cmd=pg_isready
           --health-interval=10s
           --health-timeout=5s
           --health-retries=5
-        ports:
-          # Maps port on service container to the host
-          - 5432:5432
     steps:
     - name: Check-out
       uses: actions/checkout@v2
