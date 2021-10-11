@@ -24,9 +24,8 @@
 
 package com.bernardomg.example.jpa.model.simple;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.util.Objects;
+import java.util.StringJoiner;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,8 +34,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-
-import com.google.common.base.MoreObjects;
 
 /**
  * JPA annotated implementation of {@link SimpleEntity}.
@@ -112,17 +109,19 @@ public final class DefaultSimpleEntity implements SimpleEntity {
 
     @Override
     public final void setId(final Integer identifier) {
-        id = checkNotNull(identifier, "Received a null pointer as identifier");
+        id = Objects.requireNonNull(identifier,
+                "Received a null pointer as identifier");
     }
 
     @Override
     public final void setName(final String value) {
-        name = checkNotNull(value, "Received a null pointer as name");
+        name = Objects.requireNonNull(value, "Received a null pointer as name");
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("id", id).toString();
+        return new StringJoiner(" | ", this.getClass().getSimpleName() + "[ ",
+                " ]").add("id=" + id).toString();
     }
 
 }

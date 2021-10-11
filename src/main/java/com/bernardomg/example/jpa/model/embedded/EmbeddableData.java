@@ -24,15 +24,12 @@
 
 package com.bernardomg.example.jpa.model.embedded;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-
-import com.google.common.base.MoreObjects;
 
 /**
  * Embeddabble entity to be added into a JPA entity.
@@ -115,7 +112,7 @@ public final class EmbeddableData implements Serializable {
      *            the description to set in the entity
      */
     public final void setDescription(final String value) {
-        description = checkNotNull(value,
+        description = Objects.requireNonNull(value,
                 "Received a null pointer as description");
     }
 
@@ -126,13 +123,14 @@ public final class EmbeddableData implements Serializable {
      *            the name to set in the entity
      */
     public final void setName(final String value) {
-        name = checkNotNull(value, "Received a null pointer as name");
+        name = Objects.requireNonNull(value, "Received a null pointer as name");
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("name", name)
-                .add("description", description).toString();
+        return new StringJoiner(" | ", this.getClass().getSimpleName() + "[ ",
+                " ]").add("name=" + name).add("description=" + description)
+                        .toString();
     }
 
 }

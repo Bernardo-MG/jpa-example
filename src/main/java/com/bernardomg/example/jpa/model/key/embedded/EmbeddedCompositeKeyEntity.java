@@ -24,17 +24,14 @@
 
 package com.bernardomg.example.jpa.model.key.embedded;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-
-import com.google.common.base.MoreObjects;
 
 /**
  * Entity with a composite embedded id.
@@ -120,7 +117,7 @@ public class EmbeddedCompositeKeyEntity implements Serializable {
      *            the id to set in the entity
      */
     public final void setKey(final EmbeddableCompositeKey identifier) {
-        key = checkNotNull(identifier,
+        key = Objects.requireNonNull(identifier,
                 "Received a null pointer as the identifier");
     }
 
@@ -131,12 +128,13 @@ public class EmbeddedCompositeKeyEntity implements Serializable {
      *            the name to set on the entity
      */
     public void setName(final String value) {
-        name = checkNotNull(value, "Received a null pointer as name");
+        name = Objects.requireNonNull(value, "Received a null pointer as name");
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("key", key).toString();
+        return new StringJoiner(" | ", this.getClass().getSimpleName() + "[ ",
+                " ]").add("key=" + key).toString();
     }
 
 }

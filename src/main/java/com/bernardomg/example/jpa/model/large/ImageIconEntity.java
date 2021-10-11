@@ -24,10 +24,9 @@
 
 package com.bernardomg.example.jpa.model.large;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,8 +36,6 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.swing.ImageIcon;
-
-import com.google.common.base.MoreObjects;
 
 /**
  * JPA entity keeping a large object.
@@ -124,7 +121,8 @@ public class ImageIconEntity implements Serializable {
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        id = checkNotNull(identifier, "Received a null pointer as identifier");
+        id = Objects.requireNonNull(identifier,
+                "Received a null pointer as identifier");
     }
 
     /**
@@ -134,12 +132,14 @@ public class ImageIconEntity implements Serializable {
      *            the image icon to set in the entity
      */
     public final void setImageIcon(final ImageIcon icon) {
-        image = checkNotNull(icon, "Received a null pointer as image icon");
+        image = Objects.requireNonNull(icon,
+                "Received a null pointer as image icon");
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("id", id).toString();
+        return new StringJoiner(" | ", this.getClass().getSimpleName() + "[ ",
+                " ]").add("id=" + id).toString();
     }
 
 }

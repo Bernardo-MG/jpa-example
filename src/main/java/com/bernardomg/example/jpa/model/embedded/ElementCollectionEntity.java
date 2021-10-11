@@ -24,12 +24,11 @@
 
 package com.bernardomg.example.jpa.model.embedded;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
@@ -40,8 +39,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
-
-import com.google.common.base.MoreObjects;
 
 /**
  * Entity using a collection of embeddable objects.
@@ -147,7 +144,8 @@ public class ElementCollectionEntity implements Serializable {
      *            the id to set in the entity
      */
     public final void setId(final Integer identifier) {
-        id = checkNotNull(identifier, "Received a null pointer as identifier");
+        id = Objects.requireNonNull(identifier,
+                "Received a null pointer as identifier");
     }
 
     /**
@@ -157,7 +155,7 @@ public class ElementCollectionEntity implements Serializable {
      *            the name to set on the entity
      */
     public void setName(final String value) {
-        name = checkNotNull(value, "Received a null pointer as name");
+        name = Objects.requireNonNull(value, "Received a null pointer as name");
     }
 
     /**
@@ -167,12 +165,14 @@ public class ElementCollectionEntity implements Serializable {
      *            embeddable objects to set in the entity
      */
     public void setValues(final Collection<EmbeddableData> value) {
-        values = checkNotNull(value, "Received a null pointer as values");
+        values = Objects.requireNonNull(value,
+                "Received a null pointer as values");
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("id", id).toString();
+        return new StringJoiner(" | ", this.getClass().getSimpleName() + "[ ",
+                " ]").add("id=" + id).toString();
     }
 
 }

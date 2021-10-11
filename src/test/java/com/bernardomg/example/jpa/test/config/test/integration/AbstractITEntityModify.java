@@ -24,8 +24,7 @@
 
 package com.bernardomg.example.jpa.test.config.test.integration;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
+import java.util.Objects;
 import java.util.function.Supplier;
 
 import javax.persistence.EntityManager;
@@ -90,9 +89,9 @@ public abstract class AbstractITEntityModify<V>
             final Integer entities) {
         super();
 
-        entitySupplier = checkNotNull(supplier,
+        entitySupplier = Objects.requireNonNull(supplier,
                 "Received a null pointer as entity supplier");
-        initialEntitiesCount = checkNotNull(entities,
+        initialEntitiesCount = Objects.requireNonNull(entities,
                 "Received a null pointer as entities count");
 
         entityClass = (Class<V>) entitySupplier.get().getClass();

@@ -24,7 +24,7 @@
 
 package com.bernardomg.example.jpa.model.inheritance.single;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
@@ -74,7 +74,7 @@ public class SingleTableInheritanceDescriptionEntity
      *            the description to set in the entity
      */
     public void setDescription(final String value) {
-        description = checkNotNull(value,
+        description = Objects.requireNonNull(value,
                 "Received a null pointer as description");
     }
 

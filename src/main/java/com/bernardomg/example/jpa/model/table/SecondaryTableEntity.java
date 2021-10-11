@@ -24,10 +24,9 @@
 
 package com.bernardomg.example.jpa.model.table;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,8 +37,6 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-
-import com.google.common.base.MoreObjects;
 
 /**
  * JPA entity divided into a secondary table.
@@ -143,7 +140,8 @@ public final class SecondaryTableEntity implements Serializable {
      *            the field to set in the entity
      */
     public final void setField1(final String field) {
-        field1 = checkNotNull(field, "Received a null pointer as field 1");
+        field1 = Objects.requireNonNull(field,
+                "Received a null pointer as field 1");
     }
 
     /**
@@ -153,7 +151,8 @@ public final class SecondaryTableEntity implements Serializable {
      *            the field to set in the entity
      */
     public final void setField2(final String field) {
-        field2 = checkNotNull(field, "Received a null pointer as field 2");
+        field2 = Objects.requireNonNull(field,
+                "Received a null pointer as field 2");
     }
 
     /**
@@ -163,12 +162,14 @@ public final class SecondaryTableEntity implements Serializable {
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        id = checkNotNull(identifier, "Received a null pointer as identifier");
+        id = Objects.requireNonNull(identifier,
+                "Received a null pointer as identifier");
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("id", id).toString();
+        return new StringJoiner(" | ", this.getClass().getSimpleName() + "[ ",
+                " ]").add("id=" + id).toString();
     }
 
 }

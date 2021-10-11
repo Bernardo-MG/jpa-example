@@ -24,12 +24,11 @@
 
 package com.bernardomg.example.jpa.model.collection;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
@@ -41,8 +40,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.Table;
-
-import com.google.common.base.MoreObjects;
 
 /**
  * JPA entity with a map of simple types.
@@ -149,7 +146,8 @@ public class MapEntity implements Serializable {
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        id = checkNotNull(identifier, "Received a null pointer as identifier");
+        id = Objects.requireNonNull(identifier,
+                "Received a null pointer as identifier");
     }
 
     /**
@@ -169,12 +167,14 @@ public class MapEntity implements Serializable {
      *            the mapped integer values to set in the entity
      */
     public void setValues(final Map<String, Integer> value) {
-        values = checkNotNull(value, "Received a null pointer as identifier");
+        values = Objects.requireNonNull(value,
+                "Received a null pointer as identifier");
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("id", id).toString();
+        return new StringJoiner(" | ", this.getClass().getSimpleName() + "[ ",
+                " ]").add("id=" + id).toString();
     }
 
 }

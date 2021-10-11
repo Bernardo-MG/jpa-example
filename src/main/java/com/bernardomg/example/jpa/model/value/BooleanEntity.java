@@ -24,10 +24,9 @@
 
 package com.bernardomg.example.jpa.model.value;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,7 +37,6 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.bernardomg.example.jpa.model.converter.BooleanToStringConverter;
-import com.google.common.base.MoreObjects;
 
 /**
  * JPA entity making use of the {@link BooleanToStringConverter}.
@@ -135,7 +133,7 @@ public final class BooleanEntity implements Serializable {
      *            the flag to set on the entity
      */
     public final void setFlag(final Boolean value) {
-        flag = checkNotNull(value, "Received a null pointer as flag");
+        flag = Objects.requireNonNull(value, "Received a null pointer as flag");
     }
 
     /**
@@ -145,12 +143,14 @@ public final class BooleanEntity implements Serializable {
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        id = checkNotNull(identifier, "Received a null pointer as identifier");
+        id = Objects.requireNonNull(identifier,
+                "Received a null pointer as identifier");
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("id", id).toString();
+        return new StringJoiner(" | ", this.getClass().getSimpleName() + "[ ",
+                " ]").add("id=" + id).toString();
     }
 
 }

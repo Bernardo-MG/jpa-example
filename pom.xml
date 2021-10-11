@@ -384,7 +384,6 @@
       <!-- =========== DEPENDENCIES VERSIONS ============ -->
       <!-- ============================================== -->
       <eclipselink.version>2.7.9</eclipselink.version>
-      <guava.version>31.0-jre</guava.version>
       <h2.version>1.4.200</h2.version>
       <hibernate.version>5.5.7.Final</hibernate.version>
       <hikari.version>5.0.0</hikari.version>
@@ -437,12 +436,6 @@
    </dependencyManagement>
 
    <dependencies>
-      <dependency>
-         <!-- Guava -->
-         <groupId>com.google.guava</groupId>
-         <artifactId>guava</artifactId>
-         <version>${guava.version}</version>
-      </dependency>
       <!-- ============================================== -->
       <!-- ==================== JPA ===================== -->
       <!-- ============================================== -->

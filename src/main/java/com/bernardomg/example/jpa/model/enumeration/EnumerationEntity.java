@@ -24,10 +24,9 @@
 
 package com.bernardomg.example.jpa.model.enumeration;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,8 +36,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import com.google.common.base.MoreObjects;
 
 /**
  * JPA entity with an enum field.
@@ -141,7 +138,8 @@ public final class EnumerationEntity implements Serializable {
      *            the enumeration value to be stored as an ordinal in the table
      */
     public final void setEnumOrdinal(final NumbersEnum value) {
-        enumOrdinal = checkNotNull(value, "Received a null pointer as enum");
+        enumOrdinal = Objects.requireNonNull(value,
+                "Received a null pointer as enum");
     }
 
     /**
@@ -151,7 +149,8 @@ public final class EnumerationEntity implements Serializable {
      *            the enumeration value to be stored as a string in the table
      */
     public final void setEnumString(final NumbersEnum value) {
-        enumString = checkNotNull(value, "Received a null pointer as enum");
+        enumString = Objects.requireNonNull(value,
+                "Received a null pointer as enum");
     }
 
     /**
@@ -161,12 +160,14 @@ public final class EnumerationEntity implements Serializable {
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        id = checkNotNull(identifier, "Received a null pointer as identifier");
+        id = Objects.requireNonNull(identifier,
+                "Received a null pointer as identifier");
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("id", id).toString();
+        return new StringJoiner(" | ", this.getClass().getSimpleName() + "[ ",
+                " ]").add("id=" + id).toString();
     }
 
 }
