@@ -26,10 +26,10 @@
    </bean>
 
    <!-- Load time weaver -->
-   <bean id="loadTimeWeaver" class="${jpa.loadTimeWeaver.class}" />
+   <bean id="loadTimeWeaver" class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
 
    <!-- JPA Adapter -->
-   <bean id="jpaAdapter" class="${jpa.adapter.class}">
+   <bean id="jpaAdapter" class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
       <property name="database" value="${jpa.database}" />
       <property name="showSql" value="${jpa.showSql}" />
    </bean>
