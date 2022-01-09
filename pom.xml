@@ -298,6 +298,23 @@
                <url>${site.url}</url>
             </site>
          </distributionManagement>
+         <properties>
+            <!-- Access data -->
+            <database.url>jdbc:h2:mem:jpa_test</database.url>
+            <database.username>sa</database.username>
+            <database.password></database.password>
+            <!-- Spring context -->
+            <spring.profile.database>h2</spring.profile.database>
+         </properties>
+         <dependencies>
+            <dependency>
+               <!-- H2 database -->
+               <groupId>com.h2database</groupId>
+               <artifactId>h2</artifactId>
+               <version>${h2.version}</version>
+               <scope>test</scope>
+            </dependency>
+         </dependencies>
       </profile>
    </profiles>
 
