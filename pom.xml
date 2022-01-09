@@ -303,6 +303,8 @@
             <database.url>jdbc:h2:mem:jpa_test</database.url>
             <database.username>sa</database.username>
             <database.password></database.password>
+            <!-- Provider -->
+            <jpa.provider>hibernate</jpa.provider>
             <!-- Spring context -->
             <spring.profile.database>h2</spring.profile.database>
          </properties>
@@ -312,6 +314,20 @@
                <groupId>com.h2database</groupId>
                <artifactId>h2</artifactId>
                <version>${h2.version}</version>
+               <scope>test</scope>
+            </dependency>
+            <dependency>
+               <!-- Hibernate Core -->
+               <groupId>org.hibernate</groupId>
+               <artifactId>hibernate-core</artifactId>
+               <version>${hibernate.version}</version>
+               <scope>test</scope>
+            </dependency>
+            <dependency>
+               <!-- Hibernate Ehcache -->
+               <groupId>org.hibernate</groupId>
+               <artifactId>hibernate-ehcache</artifactId>
+               <version>${hibernate.version}</version>
                <scope>test</scope>
             </dependency>
          </dependencies>
