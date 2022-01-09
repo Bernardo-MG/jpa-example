@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2019 the the original author or authors.
+ * Copyright (c) 2016-2021 the the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,15 +31,18 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.junit.jupiter.EnabledIf;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import com.bernardomg.example.jpa.model.temporal.DateEntity;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQuery;
+import com.bernardomg.example.jpa.test.config.annotation.PersistenceIntegrationTest;
 
 /**
  * Integration tests for a {@code DateEntity} testing it loads values correctly
@@ -47,9 +50,10 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQue
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@PersistenceIntegrationTest
 @EnabledIf(expression = "#{!'${jpa.adapter.class}'.contains('Hibernate')}",
         reason = "Supports persisted dates", loadContext = true)
-public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
+public class ITDateEntityQueryJpql extends AbstractJUnit4SpringContextTests {
 
     /**
      * Calendar for the test ranges.
@@ -65,6 +69,12 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
      * String to generate the date for the test ranges.
      */
     private final String  dateString = "1991-05-02";
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * The query to acquire all the after a date, using the calendar.
@@ -158,12 +168,12 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
      */
     @Test
     public final void testGetAfterDate_Calendar() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 3;
+        readCount = getAfterDateCalendarQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getAfterDateCalendarQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(3, readCount);
     }
 
     /**
@@ -172,12 +182,12 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
      */
     @Test
     public final void testGetAfterDate_Java() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 3;
+        readCount = getAfterDateJavaQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getAfterDateJavaQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(3, readCount);
     }
 
     /**
@@ -186,12 +196,12 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
      */
     @Test
     public final void testGetAfterDate_Sql() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 3;
+        readCount = getAfterDateSqlQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getAfterDateSqlQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(3, readCount);
     }
 
     /**
@@ -200,12 +210,12 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
      */
     @Test
     public final void testGetBeforeDate_Calendar() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 2;
+        readCount = getBeforeDateCalendarQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getBeforeDateCalendarQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(2, readCount);
     }
 
     /**
@@ -214,12 +224,12 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
      */
     @Test
     public final void testGetBeforeDate_Java() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 2;
+        readCount = getBeforeDateJavaQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getBeforeDateJavaQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(2, readCount);
     }
 
     /**
@@ -228,12 +238,12 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
      */
     @Test
     public final void testGetBeforeDate_Sql() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 2;
+        readCount = getBeforeDateSqlQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getBeforeDateSqlQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(2, readCount);
     }
 
     /**
@@ -242,12 +252,12 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
      */
     @Test
     public final void testGetInDate_Calendar() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 1;
+        readCount = getInDateSqlCalendar().getResultList().size();
 
-        assertResultSizeEquals(count, getInDateSqlCalendar());
+        // Reads the expected number of entities
+        Assertions.assertEquals(1, readCount);
     }
 
     /**
@@ -256,12 +266,12 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
      */
     @Test
     public final void testGetInDate_Java() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 1;
+        readCount = getInDateJavaQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getInDateJavaQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(1, readCount);
     }
 
     /**
@@ -270,12 +280,12 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
      */
     @Test
     public final void testGetInDate_Sql() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 1;
+        readCount = getInDateSqlQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getInDateSqlQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(1, readCount);
     }
 
     /**
@@ -286,7 +296,7 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
     private final Query getAfterDateCalendarQuery() {
         final Query query;
 
-        query = getQuery(findAfterDateCalendar);
+        query = entityManager.createQuery(findAfterDateCalendar);
         query.setParameter("date", calendar);
 
         return query;
@@ -300,7 +310,7 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
     private final Query getAfterDateJavaQuery() {
         final Query query;
 
-        query = getQuery(findAfterDateJava);
+        query = entityManager.createQuery(findAfterDateJava);
         query.setParameter("date", date);
 
         return query;
@@ -314,7 +324,7 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
     private final Query getAfterDateSqlQuery() {
         final Query query;
 
-        query = getQuery(findAfterDateSql);
+        query = entityManager.createQuery(findAfterDateSql);
         query.setParameter("date", sqlDate);
 
         return query;
@@ -328,7 +338,7 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
     private final Query getBeforeDateCalendarQuery() {
         final Query query;
 
-        query = getQuery(findBeforeDateCalendar);
+        query = entityManager.createQuery(findBeforeDateCalendar);
         query.setParameter("date", calendar);
 
         return query;
@@ -342,7 +352,7 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
     private final Query getBeforeDateJavaQuery() {
         final Query query;
 
-        query = getQuery(findBeforeDateJava);
+        query = entityManager.createQuery(findBeforeDateJava);
         query.setParameter("date", date);
 
         return query;
@@ -356,7 +366,7 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
     private final Query getBeforeDateSqlQuery() {
         final Query query;
 
-        query = getQuery(findBeforeDateSql);
+        query = entityManager.createQuery(findBeforeDateSql);
         query.setParameter("date", sqlDate);
 
         return query;
@@ -370,7 +380,7 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
     private final Query getInDateJavaQuery() {
         final Query query;
 
-        query = getQuery(findInDateJava);
+        query = entityManager.createQuery(findInDateJava);
         query.setParameter("date", date);
 
         return query;
@@ -384,7 +394,7 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
     private final Query getInDateSqlCalendar() {
         final Query query;
 
-        query = getQuery(findInDateCalendar);
+        query = entityManager.createQuery(findInDateCalendar);
         query.setParameter("date", calendar);
 
         return query;
@@ -398,7 +408,7 @@ public class ITDateEntityQueryJpql extends AbstractITEntityQuery<DateEntity> {
     private final Query getInDateSqlQuery() {
         final Query query;
 
-        query = getQuery(findInDateSql);
+        query = entityManager.createQuery(findInDateSql);
         query.setParameter("date", sqlDate);
 
         return query;

@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2019 the the original author or authors.
+ * Copyright (c) 2016-2021 the the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,14 +24,17 @@
 
 package com.bernardomg.example.jpa.test.integration.enumeration;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import com.bernardomg.example.jpa.model.enumeration.EnumerationEntity;
 import com.bernardomg.example.jpa.model.enumeration.NumbersEnum;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQuery;
+import com.bernardomg.example.jpa.test.config.annotation.PersistenceIntegrationTest;
 
 /**
  * Integration tests for a {@code EnumerationEntity} testing it loads values
@@ -39,20 +42,27 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQue
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@PersistenceIntegrationTest
 public class ITEnumerationEntityQueryJpql
-        extends AbstractITEntityQuery<EnumerationEntity> {
+        extends AbstractJUnit4SpringContextTests {
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * The query to acquire all the entities by the ordinal value.
      */
     @Value("${query.findAllByEnumOrdinal}")
-    private String findAllByOrdinal;
+    private String        findAllByOrdinal;
 
     /**
      * The query to acquire all the entities by the string value.
      */
     @Value("${query.findAllByEnumString}")
-    private String findAllByString;
+    private String        findAllByString;
 
     /**
      * Default constructor.
@@ -67,13 +77,12 @@ public class ITEnumerationEntityQueryJpql
      */
     @Test
     public final void testGetEntity_Ordinal() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 2;
+        readCount = getOrdinalQuery().getResultList().size();
 
         // Reads the expected number of entities
-        assertResultSizeEquals(count, getOrdinalQuery());
+        Assertions.assertEquals(2, readCount);
     }
 
     /**
@@ -82,13 +91,12 @@ public class ITEnumerationEntityQueryJpql
      */
     @Test
     public final void testGetEntity_String() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 2;
+        readCount = getStringQuery().getResultList().size();
 
         // Reads the expected number of entities
-        assertResultSizeEquals(count, getStringQuery());
+        Assertions.assertEquals(2, readCount);
     }
 
     /**
@@ -103,7 +111,7 @@ public class ITEnumerationEntityQueryJpql
         // Queried value
         value = NumbersEnum.TWO;
 
-        query = getQuery(findAllByOrdinal);
+        query = entityManager.createQuery(findAllByOrdinal);
         query.setParameter("enum", value);
 
         return query;
@@ -121,7 +129,7 @@ public class ITEnumerationEntityQueryJpql
         // Queried value
         value = NumbersEnum.TWO;
 
-        query = getQuery(findAllByString);
+        query = entityManager.createQuery(findAllByString);
         query.setParameter("enum", value);
 
         return query;

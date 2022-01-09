@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2019 the the original author or authors.
+ * Copyright (c) 2016-2021 the the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,13 +24,16 @@
 
 package com.bernardomg.example.jpa.test.integration.converter;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import com.bernardomg.example.jpa.model.converter.BooleanConverterEntity;
-import com.bernardomg.example.jpa.test.util.criteria.converter.BooleanConverterEntityCriteriaFactory;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQuery;
+import com.bernardomg.example.jpa.test.config.annotation.PersistenceIntegrationTest;
+import com.bernardomg.example.jpa.test.config.criteria.converter.BooleanConverterEntityCriteriaFactory;
 
 /**
  * Integration tests for a {@code BooleanConverterEntity} testing it loads
@@ -38,8 +41,15 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQue
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@PersistenceIntegrationTest
 public class ITBooleanConverterEntityQueryCriteriaApi
-        extends AbstractITEntityQuery<BooleanConverterEntity> {
+        extends AbstractJUnit4SpringContextTests {
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * Default constructor.
@@ -54,12 +64,12 @@ public class ITBooleanConverterEntityQueryCriteriaApi
      */
     @Test
     public final void testGetEntity_AllFalse() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 2;
+        readCount = getAllFalseQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getAllFalseQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(2, readCount);
     }
 
     /**
@@ -68,12 +78,12 @@ public class ITBooleanConverterEntityQueryCriteriaApi
      */
     @Test
     public final void testGetEntity_AllTrue() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 3;
+        readCount = getAllTrueQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getAllTrueQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(3, readCount);
     }
 
     /**
@@ -87,8 +97,8 @@ public class ITBooleanConverterEntityQueryCriteriaApi
         // Queried value
         value = false;
 
-        return getQuery(BooleanConverterEntityCriteriaFactory
-                .findAllByFlag(getEntityManager(), value));
+        return entityManager.createQuery(BooleanConverterEntityCriteriaFactory
+                .findAllByFlag(entityManager, value));
     }
 
     /**
@@ -102,8 +112,8 @@ public class ITBooleanConverterEntityQueryCriteriaApi
         // Queried value
         value = true;
 
-        return getQuery(BooleanConverterEntityCriteriaFactory
-                .findAllByFlag(getEntityManager(), value));
+        return entityManager.createQuery(BooleanConverterEntityCriteriaFactory
+                .findAllByFlag(entityManager, value));
     }
 
 }

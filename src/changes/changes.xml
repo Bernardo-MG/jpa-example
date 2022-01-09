@@ -6,6 +6,14 @@
 		<author email="programming@bernardomg.com">Bernardo Martínez Garrido</author>
 	</properties>
 	<body>
+      <release version="1.6.1" date="2022-01-09" description="Updated configuration">
+         <action dev="bmg" type="update">
+            Cleaned up configuration.
+         </action>
+         <action dev="bmg" type="update">
+            Updated CI configuration.
+         </action>
+      </release>
       <release version="1.6.0" date="2021-09-16" description="Updated dependencies">
          <action dev="bmg" type="update">
             Updated dependencies.

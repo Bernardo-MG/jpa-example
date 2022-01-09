@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2019 the original author or authors.
+ * Copyright (c) 2016-2021 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,13 +24,12 @@
 
 package com.bernardomg.example.jpa.model.temporal;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -40,8 +39,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import com.google.common.base.MoreObjects;
 
 /**
  * JPA entity storing time.
@@ -158,7 +155,8 @@ public final class TimeEntity implements Serializable {
      *            the time to set in the entity
      */
     public final void setCalendar(final Calendar value) {
-        calendar = checkNotNull(value, "Received a null pointer as time");
+        calendar = Objects.requireNonNull(value,
+                "Received a null pointer as time");
     }
 
     /**
@@ -168,7 +166,7 @@ public final class TimeEntity implements Serializable {
      *            the time to set in the entity
      */
     public final void setDate(final Date value) {
-        date = checkNotNull(value, "Received a null pointer as time");
+        date = Objects.requireNonNull(value, "Received a null pointer as time");
     }
 
     /**
@@ -178,7 +176,8 @@ public final class TimeEntity implements Serializable {
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        id = checkNotNull(identifier, "Received a null pointer as identifier");
+        id = Objects.requireNonNull(identifier,
+                "Received a null pointer as identifier");
     }
 
     /**
@@ -188,12 +187,14 @@ public final class TimeEntity implements Serializable {
      *            the time to set in the entity
      */
     public final void setSqlTime(final Time value) {
-        sqlTime = checkNotNull(value, "Received a null pointer as time");
+        sqlTime = Objects.requireNonNull(value,
+                "Received a null pointer as time");
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("id", id).toString();
+        return new StringJoiner(" | ", this.getClass().getSimpleName() + "[ ",
+                " ]").add("id=" + id).toString();
     }
 
 }

@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2019 the original author or authors.
+ * Copyright (c) 2016-2021 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,9 +24,8 @@
 
 package com.bernardomg.example.jpa.model.converter;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
@@ -67,7 +66,7 @@ public final class BooleanToStringConverter
     public final String convertToDatabaseColumn(final Boolean value) {
         final String result;
 
-        checkNotNull(value, "Received a null pointer as value");
+        Objects.requireNonNull(value, "Received a null pointer as value");
 
         if (Boolean.TRUE.equals(value)) {
             result = "T";
@@ -87,7 +86,7 @@ public final class BooleanToStringConverter
      */
     @Override
     public final Boolean convertToEntityAttribute(final String value) {
-        checkNotNull(value, "Received a null pointer as value");
+        Objects.requireNonNull(value, "Received a null pointer as value");
 
         return "T".equals(value);
     }

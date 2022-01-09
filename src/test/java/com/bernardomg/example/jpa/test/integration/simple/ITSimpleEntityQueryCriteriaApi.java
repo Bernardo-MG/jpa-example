@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2019 the the original author or authors.
+ * Copyright (c) 2016-2021 the the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,16 +24,18 @@
 
 package com.bernardomg.example.jpa.test.integration.simple;
 
+import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import com.bernardomg.example.jpa.model.simple.DefaultSimpleEntity;
 import com.bernardomg.example.jpa.model.simple.SimpleEntity;
-import com.bernardomg.example.jpa.test.util.criteria.simple.SimpleEntityCriteriaFactory;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQuery;
+import com.bernardomg.example.jpa.test.config.annotation.PersistenceIntegrationTest;
+import com.bernardomg.example.jpa.test.config.criteria.simple.SimpleEntityCriteriaFactory;
 
 /**
  * Integration tests for a {@code SimpleEntity} testing it can be queried
@@ -41,8 +43,15 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQue
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@PersistenceIntegrationTest
 public class ITSimpleEntityQueryCriteriaApi
-        extends AbstractITEntityQuery<DefaultSimpleEntity> {
+        extends AbstractJUnit4SpringContextTests {
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * Default constructor.
@@ -56,12 +65,12 @@ public class ITSimpleEntityQueryCriteriaApi
      */
     @Test
     public final void testFindAll() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 30;
+        readCount = getQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getAllQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(30, readCount);
     }
 
     /**
@@ -77,8 +86,8 @@ public class ITSimpleEntityQueryCriteriaApi
         id = 1;
 
         // Builds the query
-        query = getEntityManager().createQuery(
-                SimpleEntityCriteriaFactory.findById(getEntityManager(), id));
+        query = entityManager.createQuery(
+                SimpleEntityCriteriaFactory.findById(entityManager, id));
 
         // Acquires the entity
         entity = (SimpleEntity) query.getSingleResult();
@@ -99,8 +108,8 @@ public class ITSimpleEntityQueryCriteriaApi
         id = 100;
 
         // Builds the query
-        query = getEntityManager().createQuery(
-                SimpleEntityCriteriaFactory.findById(getEntityManager(), id));
+        query = entityManager.createQuery(
+                SimpleEntityCriteriaFactory.findById(entityManager, id));
 
         Assertions.assertThrows(NoResultException.class, () -> {
             query.getSingleResult();
@@ -112,9 +121,9 @@ public class ITSimpleEntityQueryCriteriaApi
      * 
      * @return the query for the test
      */
-    private final Query getAllQuery() {
-        return getQuery(
-                SimpleEntityCriteriaFactory.findAll(getEntityManager()));
+    private final Query getQuery() {
+        return entityManager.createQuery(
+                SimpleEntityCriteriaFactory.findAll(entityManager));
     }
 
 }

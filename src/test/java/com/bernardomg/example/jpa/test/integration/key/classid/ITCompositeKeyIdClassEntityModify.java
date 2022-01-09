@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2019 the the original author or authors.
+ * Copyright (c) 2016-2021 the the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,14 +24,16 @@
 
 package com.bernardomg.example.jpa.test.integration.key.classid;
 
+import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 
 import org.junit.jupiter.api.Assertions;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bernardomg.example.jpa.model.key.classid.CompositeKey;
 import com.bernardomg.example.jpa.model.key.classid.CompositeKeyIdClassEntity;
-import com.bernardomg.example.jpa.test.util.criteria.key.classid.CompositeKeyIdClassEntityCriteriaFactory;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityModify;
+import com.bernardomg.example.jpa.test.config.criteria.key.classid.CompositeKeyIdClassEntityCriteriaFactory;
+import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityModify;
 
 /**
  * Integration tests for a {@link CompositeKeyIdClassEntity} testing it can be
@@ -54,9 +56,15 @@ public class ITCompositeKeyIdClassEntityModify
     }
 
     /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
+
+    /**
      * Value to set on the name for the tests.
      */
-    private final String name = "ABC";
+    private final String  name = "ABC";
 
     /**
      * Default constructor.
@@ -74,8 +82,8 @@ public class ITCompositeKeyIdClassEntityModify
     @Override
     protected CriteriaQuery<CompositeKeyIdClassEntity>
             getCriteriaQuery(final Object id) {
-        return CompositeKeyIdClassEntityCriteriaFactory.findByIds(
-                getEntityManager(), ((CompositeKey) id).getId(),
+        return CompositeKeyIdClassEntityCriteriaFactory.findByIds(entityManager,
+                ((CompositeKey) id).getId(),
                 ((CompositeKey) id).getSupportId());
     }
 

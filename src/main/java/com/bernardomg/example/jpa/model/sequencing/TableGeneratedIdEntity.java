@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2019 the original author or authors.
+ * Copyright (c) 2016-2021 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,10 +24,9 @@
 
 package com.bernardomg.example.jpa.model.sequencing;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,8 +35,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
-
-import com.google.common.base.MoreObjects;
 
 /**
  * JPA entity using an table-generated id.
@@ -120,12 +117,13 @@ public final class TableGeneratedIdEntity implements Serializable {
      *            the name to set on the entity
      */
     public final void setName(final String value) {
-        name = checkNotNull(value, "Received a null pointer as name");
+        name = Objects.requireNonNull(value, "Received a null pointer as name");
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("id", id).toString();
+        return new StringJoiner(" | ", this.getClass().getSimpleName() + "[ ",
+                " ]").add("id=" + id).toString();
     }
 
 }

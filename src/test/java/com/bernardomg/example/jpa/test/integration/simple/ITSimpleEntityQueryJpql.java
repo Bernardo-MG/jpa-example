@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2019 the the original author or authors.
+ * Copyright (c) 2016-2021 the the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,16 +24,18 @@
 
 package com.bernardomg.example.jpa.test.integration.simple;
 
+import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import com.bernardomg.example.jpa.model.simple.DefaultSimpleEntity;
 import com.bernardomg.example.jpa.model.simple.SimpleEntity;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQuery;
+import com.bernardomg.example.jpa.test.config.annotation.PersistenceIntegrationTest;
 
 /**
  * Integration tests for a {@code SimpleEntity} testing it can be queried
@@ -41,20 +43,26 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQue
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public class ITSimpleEntityQueryJpql
-        extends AbstractITEntityQuery<DefaultSimpleEntity> {
+@PersistenceIntegrationTest
+public class ITSimpleEntityQueryJpql extends AbstractJUnit4SpringContextTests {
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * The query to acquire all the entities.
      */
     @Value("${query.findAll}")
-    private String findAll;
+    private String        findAll;
 
     /**
      * The query to acquire an entity by the id.
      */
     @Value("${query.findById}")
-    private String findById;
+    private String        findById;
 
     /**
      * Default constructor.
@@ -68,12 +76,12 @@ public class ITSimpleEntityQueryJpql
      */
     @Test
     public final void testFindAll() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 30;
+        readCount = getQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getAllQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(30, readCount);
     }
 
     /**
@@ -89,7 +97,7 @@ public class ITSimpleEntityQueryJpql
         id = 1;
 
         // Builds the query
-        query = getEntityManager().createQuery(findById);
+        query = entityManager.createQuery(findById);
         query.setParameter("id", id);
 
         // Acquires the entity
@@ -111,7 +119,7 @@ public class ITSimpleEntityQueryJpql
         id = 100;
 
         // Builds the query
-        query = getEntityManager().createQuery(findById);
+        query = entityManager.createQuery(findById);
         query.setParameter("id", id);
 
         // Tries to acquire the entity
@@ -125,8 +133,8 @@ public class ITSimpleEntityQueryJpql
      * 
      * @return the query for the test
      */
-    private final Query getAllQuery() {
-        return getQuery(findAll);
+    private final Query getQuery() {
+        return entityManager.createQuery(findAll);
     }
 
 }

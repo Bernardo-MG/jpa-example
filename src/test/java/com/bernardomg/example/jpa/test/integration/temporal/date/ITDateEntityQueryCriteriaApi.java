@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2019 the the original author or authors.
+ * Copyright (c) 2016-2021 the the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,15 +31,18 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.EnabledIf;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import com.bernardomg.example.jpa.model.temporal.DateEntity;
-import com.bernardomg.example.jpa.test.util.criteria.temporal.DateEntityCriteriaFactory;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQuery;
+import com.bernardomg.example.jpa.test.config.annotation.PersistenceIntegrationTest;
+import com.bernardomg.example.jpa.test.config.criteria.temporal.DateEntityCriteriaFactory;
 
 /**
  * Integration tests for a {@code DateEntity} testing it loads values correctly
@@ -47,10 +50,11 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQue
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@PersistenceIntegrationTest
 @EnabledIf(expression = "#{!'${jpa.adapter.class}'.contains('Hibernate')}",
         reason = "Supports persisted dates", loadContext = true)
 public class ITDateEntityQueryCriteriaApi
-        extends AbstractITEntityQuery<DateEntity> {
+        extends AbstractJUnit4SpringContextTests {
 
     /**
      * Calendar for the test ranges.
@@ -66,6 +70,12 @@ public class ITDateEntityQueryCriteriaApi
      * String to generate the date for the test ranges.
      */
     private final String  dateString = "1991-05-02";
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * SQL date for the test ranges.
@@ -105,12 +115,12 @@ public class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetAfterDate_Calendar() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 3;
+        readCount = getAfterDateCalendarQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getAfterDateCalendarQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(3, readCount);
     }
 
     /**
@@ -119,12 +129,12 @@ public class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetAfterDate_Java() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 3;
+        readCount = getAfterDateJavaQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getAfterDateJavaQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(3, readCount);
     }
 
     /**
@@ -133,12 +143,12 @@ public class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetAfterDate_Sql() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 3;
+        readCount = getAfterDateSqlQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getAfterDateSqlQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(3, readCount);
     }
 
     /**
@@ -147,12 +157,12 @@ public class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetBeforeDate_Calendar() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 2;
+        readCount = getBeforeDateCalendarQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getBeforeDateCalendarQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(2, readCount);
     }
 
     /**
@@ -161,12 +171,12 @@ public class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetBeforeDate_Java() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 2;
+        readCount = getBeforeDateJavaQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getBeforeDateJavaQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(2, readCount);
     }
 
     /**
@@ -175,12 +185,12 @@ public class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetBeforeDate_Sql() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 2;
+        readCount = getBeforeDateSqlQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getBeforeDateSqlQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(2, readCount);
     }
 
     /**
@@ -189,12 +199,12 @@ public class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetInDate_Calendar() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 1;
+        readCount = getInDateCalendarQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getInDateCalendarQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(1, readCount);
     }
 
     /**
@@ -203,12 +213,12 @@ public class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetInDate_Java() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 1;
+        readCount = getInDateJavaQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getInDateJavaQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(1, readCount);
     }
 
     /**
@@ -217,12 +227,12 @@ public class ITDateEntityQueryCriteriaApi
      */
     @Test
     public final void testGetInDate_Sql() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 1;
+        readCount = getInDateSqlQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getInDateSqlQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(1, readCount);
     }
 
     /**
@@ -231,8 +241,8 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAfterDateCalendarQuery() {
-        return getQuery(DateEntityCriteriaFactory
-                .findAfterDate(getEntityManager(), calendar));
+        return entityManager.createQuery(DateEntityCriteriaFactory
+                .findAfterDate(entityManager, calendar));
     }
 
     /**
@@ -241,8 +251,8 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAfterDateJavaQuery() {
-        return getQuery(DateEntityCriteriaFactory
-                .findAfterDate(getEntityManager(), date));
+        return entityManager.createQuery(
+                DateEntityCriteriaFactory.findAfterDate(entityManager, date));
     }
 
     /**
@@ -251,8 +261,8 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAfterDateSqlQuery() {
-        return getQuery(DateEntityCriteriaFactory
-                .findAfterSqlDate(getEntityManager(), sqlDate));
+        return entityManager.createQuery(DateEntityCriteriaFactory
+                .findAfterSqlDate(entityManager, sqlDate));
     }
 
     /**
@@ -261,8 +271,8 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getBeforeDateCalendarQuery() {
-        return getQuery(DateEntityCriteriaFactory
-                .findBeforeDate(getEntityManager(), calendar));
+        return entityManager.createQuery(DateEntityCriteriaFactory
+                .findBeforeDate(entityManager, calendar));
     }
 
     /**
@@ -271,8 +281,8 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getBeforeDateJavaQuery() {
-        return getQuery(DateEntityCriteriaFactory
-                .findBeforeDate(getEntityManager(), date));
+        return entityManager.createQuery(
+                DateEntityCriteriaFactory.findBeforeDate(entityManager, date));
     }
 
     /**
@@ -281,8 +291,8 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getBeforeDateSqlQuery() {
-        return getQuery(DateEntityCriteriaFactory
-                .findBeforeSqlDate(getEntityManager(), sqlDate));
+        return entityManager.createQuery(DateEntityCriteriaFactory
+                .findBeforeSqlDate(entityManager, sqlDate));
     }
 
     /**
@@ -291,8 +301,8 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getInDateCalendarQuery() {
-        return getQuery(DateEntityCriteriaFactory.findInDate(getEntityManager(),
-                calendar));
+        return entityManager.createQuery(
+                DateEntityCriteriaFactory.findInDate(entityManager, calendar));
     }
 
     /**
@@ -301,8 +311,8 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getInDateJavaQuery() {
-        return getQuery(
-                DateEntityCriteriaFactory.findInDate(getEntityManager(), date));
+        return entityManager.createQuery(
+                DateEntityCriteriaFactory.findInDate(entityManager, date));
     }
 
     /**
@@ -311,8 +321,8 @@ public class ITDateEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getInDateSqlQuery() {
-        return getQuery(DateEntityCriteriaFactory
-                .findInSqlDate(getEntityManager(), sqlDate));
+        return entityManager.createQuery(DateEntityCriteriaFactory
+                .findInSqlDate(entityManager, sqlDate));
     }
 
 }

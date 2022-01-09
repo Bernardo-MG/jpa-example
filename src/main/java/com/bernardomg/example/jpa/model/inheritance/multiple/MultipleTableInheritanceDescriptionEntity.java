@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2019 the original author or authors.
+ * Copyright (c) 2016-2021 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,7 @@
 
 package com.bernardomg.example.jpa.model.inheritance.multiple;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
@@ -76,7 +76,7 @@ public class MultipleTableInheritanceDescriptionEntity
      *            the description to set in the entity
      */
     public void setDescription(final String value) {
-        description = checkNotNull(value,
+        description = Objects.requireNonNull(value,
                 "Received a null pointer as description");
     }
 

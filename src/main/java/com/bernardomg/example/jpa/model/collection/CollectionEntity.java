@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2019 the original author or authors.
+ * Copyright (c) 2016-2021 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,12 +24,11 @@
 
 package com.bernardomg.example.jpa.model.collection;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
@@ -40,8 +39,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
-
-import com.google.common.base.MoreObjects;
 
 /**
  * JPA entity with a collection of simple types.
@@ -149,7 +146,8 @@ public class CollectionEntity implements Serializable {
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        id = checkNotNull(identifier, "Received a null pointer as identifier");
+        id = Objects.requireNonNull(identifier,
+                "Received a null pointer as identifier");
     }
 
     /**
@@ -169,12 +167,14 @@ public class CollectionEntity implements Serializable {
      *            the integer values to set in the entity
      */
     public void setValues(final Collection<Integer> value) {
-        values = checkNotNull(value, "Received a null pointer as value");
+        values = Objects.requireNonNull(value,
+                "Received a null pointer as value");
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("id", id).toString();
+        return new StringJoiner(" | ", this.getClass().getSimpleName() + "[ ",
+                " ]").add("id=" + id).toString();
     }
 
 }

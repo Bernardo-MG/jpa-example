@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2019 the the original author or authors.
+ * Copyright (c) 2016-2021 the the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,15 +32,18 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.EnabledIf;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import com.bernardomg.example.jpa.model.temporal.TimeEntity;
-import com.bernardomg.example.jpa.test.util.criteria.temporal.TimeEntityCriteriaFactory;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQuery;
+import com.bernardomg.example.jpa.test.config.annotation.PersistenceIntegrationTest;
+import com.bernardomg.example.jpa.test.config.criteria.temporal.TimeEntityCriteriaFactory;
 
 /**
  * Integration tests for a {@code TimeEntity} testing it loads values correctly
@@ -48,30 +51,37 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQue
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@PersistenceIntegrationTest
 @EnabledIf(expression = "#{!'${jpa.adapter.class}'.contains('Hibernate')}",
         reason = "Supports persisted time", loadContext = true)
 public class ITTimeEntityQueryCriteriaApi
-        extends AbstractITEntityQuery<TimeEntity> {
+        extends AbstractJUnit4SpringContextTests {
 
     /**
      * Calendar for the test ranges.
      */
-    private Calendar     calendar;
+    private Calendar      calendar;
 
     /**
      * Java date for the test ranges.
      */
-    private Date         date;
+    private Date          date;
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * Time for the test ranges.
      */
-    private Time         time;
+    private Time          time;
 
     /**
      * String to generate the time for the test ranges.
      */
-    private final String timeString = "11:11:11";
+    private final String  timeString = "11:11:11";
 
     /**
      * Default constructor.
@@ -106,12 +116,12 @@ public class ITTimeEntityQueryCriteriaApi
      */
     @Test
     public final void testGetAfterTime_Calendar() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 3;
+        readCount = getAfterTimeCalendarQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getAfterTimeCalendarQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(3, readCount);
     }
 
     /**
@@ -120,12 +130,12 @@ public class ITTimeEntityQueryCriteriaApi
      */
     @Test
     public final void testGetAfterTime_Java() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 3;
+        readCount = getAfterTimeJavaQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getAfterTimeJavaQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(3, readCount);
     }
 
     /**
@@ -134,12 +144,12 @@ public class ITTimeEntityQueryCriteriaApi
      */
     @Test
     public final void testGetAfterTime_Sql() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 3;
+        readCount = getAfterTimeSqlQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getAfterTimeSqlQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(3, readCount);
     }
 
     /**
@@ -148,12 +158,12 @@ public class ITTimeEntityQueryCriteriaApi
      */
     @Test
     public final void testGetBeforeTime_Calendar() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 2;
+        readCount = getBeforeTimeCalendarQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getBeforeTimeCalendarQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(2, readCount);
     }
 
     /**
@@ -162,12 +172,12 @@ public class ITTimeEntityQueryCriteriaApi
      */
     @Test
     public final void testGetBeforeTime_Java() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 2;
+        readCount = getBeforeTimeJavaQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getBeforeTimeJavaQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(2, readCount);
     }
 
     /**
@@ -176,12 +186,12 @@ public class ITTimeEntityQueryCriteriaApi
      */
     @Test
     public final void testGetBeforeTime_Sql() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 2;
+        readCount = getBeforeTimeSqlQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getBeforeTimeSqlQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(2, readCount);
     }
 
     /**
@@ -190,12 +200,12 @@ public class ITTimeEntityQueryCriteriaApi
      */
     @Test
     public final void testGetInTime_Calendar() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 1;
+        readCount = getInTimeCalendarQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getInTimeCalendarQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(1, readCount);
     }
 
     /**
@@ -204,12 +214,12 @@ public class ITTimeEntityQueryCriteriaApi
      */
     @Test
     public final void testGetInTime_Java() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 1;
+        readCount = getInTimeJavaQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getInTimeJavaQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(1, readCount);
     }
 
     /**
@@ -218,12 +228,12 @@ public class ITTimeEntityQueryCriteriaApi
      */
     @Test
     public final void testGetInTime_Sql() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 1;
+        readCount = getInTimeSqlQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getInTimeSqlQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(1, readCount);
     }
 
     /**
@@ -232,8 +242,8 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAfterTimeCalendarQuery() {
-        return getQuery(TimeEntityCriteriaFactory
-                .findAfterTime(getEntityManager(), calendar));
+        return entityManager.createQuery(TimeEntityCriteriaFactory
+                .findAfterTime(entityManager, calendar));
     }
 
     /**
@@ -242,8 +252,8 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAfterTimeJavaQuery() {
-        return getQuery(TimeEntityCriteriaFactory
-                .findAfterTime(getEntityManager(), date));
+        return entityManager.createQuery(
+                TimeEntityCriteriaFactory.findAfterTime(entityManager, date));
     }
 
     /**
@@ -252,8 +262,8 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getAfterTimeSqlQuery() {
-        return getQuery(TimeEntityCriteriaFactory
-                .findAfterSqlTime(getEntityManager(), time));
+        return entityManager.createQuery(TimeEntityCriteriaFactory
+                .findAfterSqlTime(entityManager, time));
     }
 
     /**
@@ -262,8 +272,8 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getBeforeTimeCalendarQuery() {
-        return getQuery(TimeEntityCriteriaFactory
-                .findBeforeTime(getEntityManager(), calendar));
+        return entityManager.createQuery(TimeEntityCriteriaFactory
+                .findBeforeTime(entityManager, calendar));
     }
 
     /**
@@ -272,8 +282,8 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getBeforeTimeJavaQuery() {
-        return getQuery(TimeEntityCriteriaFactory
-                .findBeforeTime(getEntityManager(), date));
+        return entityManager.createQuery(
+                TimeEntityCriteriaFactory.findBeforeTime(entityManager, date));
     }
 
     /**
@@ -282,8 +292,8 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getBeforeTimeSqlQuery() {
-        return getQuery(TimeEntityCriteriaFactory
-                .findBeforeSqlTime(getEntityManager(), time));
+        return entityManager.createQuery(TimeEntityCriteriaFactory
+                .findBeforeSqlTime(entityManager, time));
     }
 
     /**
@@ -292,8 +302,8 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getInTimeCalendarQuery() {
-        return getQuery(TimeEntityCriteriaFactory.findInTime(getEntityManager(),
-                calendar));
+        return entityManager.createQuery(
+                TimeEntityCriteriaFactory.findInTime(entityManager, calendar));
     }
 
     /**
@@ -302,8 +312,8 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getInTimeJavaQuery() {
-        return getQuery(
-                TimeEntityCriteriaFactory.findInTime(getEntityManager(), date));
+        return entityManager.createQuery(
+                TimeEntityCriteriaFactory.findInTime(entityManager, date));
     }
 
     /**
@@ -312,8 +322,8 @@ public class ITTimeEntityQueryCriteriaApi
      * @return the query for the test
      */
     private final Query getInTimeSqlQuery() {
-        return getQuery(TimeEntityCriteriaFactory
-                .findInSqlTime(getEntityManager(), time));
+        return entityManager.createQuery(
+                TimeEntityCriteriaFactory.findInSqlTime(entityManager, time));
     }
 
 }

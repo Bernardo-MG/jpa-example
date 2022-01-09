@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2019 the the original author or authors.
+ * Copyright (c) 2016-2021 the the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,14 +24,17 @@
 
 package com.bernardomg.example.jpa.test.integration.key.composite;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 import com.bernardomg.example.jpa.model.key.composite.CompositeKeyEntity;
-import com.bernardomg.example.jpa.test.util.criteria.key.composite.CompositeKeyEntityCriteriaFactory;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractIntegrationTest;
+import com.bernardomg.example.jpa.test.config.annotation.PersistenceIntegrationTest;
+import com.bernardomg.example.jpa.test.config.criteria.key.composite.CompositeKeyEntityCriteriaFactory;
 
 /**
  * Abstract integration tests for a {@link CompositeKeyEntity} testing it loads
@@ -48,8 +51,15 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractIntegration
  * @author Bernardo Mart&iacute;nez Garrido
  * @see CompositeKeyEntity
  */
+@PersistenceIntegrationTest
 public class ITCompositeKeyEntityQueryCriteriaApi
-        extends AbstractIntegrationTest {
+        extends AbstractJUnit4SpringContextTests {
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * Default constructor.
@@ -68,8 +78,8 @@ public class ITCompositeKeyEntityQueryCriteriaApi
         final CompositeKeyEntity entity; // The entity
 
         // Builds the query
-        query = getEntityManager().createQuery(CompositeKeyEntityCriteriaFactory
-                .findByIds(getEntityManager(), 1, 2l));
+        query = entityManager.createQuery(CompositeKeyEntityCriteriaFactory
+                .findByIds(entityManager, 1, 2l));
 
         // Acquires the entity
         entity = (CompositeKeyEntity) query.getSingleResult();

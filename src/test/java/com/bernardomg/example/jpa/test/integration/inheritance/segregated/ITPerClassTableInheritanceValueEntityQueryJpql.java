@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2019 the the original author or authors.
+ * Copyright (c) 2016-2021 the the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,13 +24,16 @@
 
 package com.bernardomg.example.jpa.test.integration.inheritance.segregated;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import com.bernardomg.example.jpa.model.inheritance.segregated.PerClassTableInheritanceValueEntity;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQuery;
+import com.bernardomg.example.jpa.test.config.annotation.PersistenceIntegrationTest;
 
 /**
  * Integration tests for a {@code PerClassTableInheritanceValueEntity} testing
@@ -38,14 +41,21 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQue
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@PersistenceIntegrationTest
 public class ITPerClassTableInheritanceValueEntityQueryJpql
-        extends AbstractITEntityQuery<PerClassTableInheritanceValueEntity> {
+        extends AbstractJUnit4SpringContextTests {
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * The query to acquire all the entities by the ordinal value.
      */
     @Value("${query.segregatedTable.findAllWithValue}")
-    private String findAllWithValue;
+    private String        findAllWithValue;
 
     /**
      * Default constructor.
@@ -60,12 +70,12 @@ public class ITPerClassTableInheritanceValueEntityQueryJpql
      */
     @Test
     public final void testFindAllWithValue() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 1;
+        readCount = getQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(1, readCount);
     }
 
     /**
@@ -80,7 +90,7 @@ public class ITPerClassTableInheritanceValueEntityQueryJpql
         // Queried value
         value = 11;
 
-        query = getQuery(findAllWithValue);
+        query = entityManager.createQuery(findAllWithValue);
         query.setParameter("value", value);
 
         return query;

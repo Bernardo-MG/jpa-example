@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2019 the the original author or authors.
+ * Copyright (c) 2016-2021 the the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,13 +24,16 @@
 
 package com.bernardomg.example.jpa.test.integration.collection.collection;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import com.bernardomg.example.jpa.model.collection.CollectionEntity;
-import com.bernardomg.example.jpa.test.util.criteria.collection.CollectionEntityCriteriaFactory;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQuery;
+import com.bernardomg.example.jpa.test.config.annotation.PersistenceIntegrationTest;
+import com.bernardomg.example.jpa.test.config.criteria.collection.CollectionEntityCriteriaFactory;
 
 /**
  * Integration tests for a {@code CollectionEntity} testing it loads values
@@ -38,8 +41,15 @@ import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityQue
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@PersistenceIntegrationTest
 public class ITCollectionEntityQueryCriteriaApi
-        extends AbstractITEntityQuery<CollectionEntity> {
+        extends AbstractJUnit4SpringContextTests {
+
+    /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
 
     /**
      * Default constructor.
@@ -54,12 +64,12 @@ public class ITCollectionEntityQueryCriteriaApi
      */
     @Test
     public final void testFindAllWithValue() {
-        final Integer count; // Number of entities expected
+        final Integer readCount;
 
-        // Expected result
-        count = 3;
+        readCount = getQuery().getResultList().size();
 
-        assertResultSizeEquals(count, getQuery());
+        // Reads the expected number of entities
+        Assertions.assertEquals(3, readCount);
     }
 
     /**
@@ -73,8 +83,8 @@ public class ITCollectionEntityQueryCriteriaApi
         // Queried value
         value = 2;
 
-        return getQuery(CollectionEntityCriteriaFactory
-                .findAllWithValue(getEntityManager(), value));
+        return entityManager.createQuery(CollectionEntityCriteriaFactory
+                .findAllWithValue(entityManager, value));
     }
 
 }

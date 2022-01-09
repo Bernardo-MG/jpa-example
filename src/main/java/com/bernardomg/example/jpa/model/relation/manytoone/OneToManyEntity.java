@@ -1,12 +1,11 @@
 
 package com.bernardomg.example.jpa.model.relation.manytoone;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,8 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.google.common.base.MoreObjects;
 
 /**
  * Entity with a one to many relationship.
@@ -119,7 +116,8 @@ public class OneToManyEntity implements Serializable {
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        id = checkNotNull(identifier, "Received a null pointer as identifier");
+        id = Objects.requireNonNull(identifier,
+                "Received a null pointer as identifier");
     }
 
     /**
@@ -129,7 +127,8 @@ public class OneToManyEntity implements Serializable {
      *            the entities to set in the "many" side
      */
     public void setManyToOne(final List<ManyToOneEntity> value) {
-        manyToOne = checkNotNull(value, "Received a null pointer as manyToOne");
+        manyToOne = Objects.requireNonNull(value,
+                "Received a null pointer as manyToOne");
     }
 
     /**
@@ -139,12 +138,13 @@ public class OneToManyEntity implements Serializable {
      *            the name to set in the entity
      */
     public void setName(final String value) {
-        name = checkNotNull(value, "Received a null pointer as name");
+        name = Objects.requireNonNull(value, "Received a null pointer as name");
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("id", id).toString();
+        return new StringJoiner(" | ", this.getClass().getSimpleName() + "[ ",
+                " ]").add("id=" + id).toString();
     }
 
 }

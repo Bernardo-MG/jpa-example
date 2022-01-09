@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2019 the the original author or authors.
+ * Copyright (c) 2016-2021 the the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,14 +24,16 @@
 
 package com.bernardomg.example.jpa.test.integration.key.embedded;
 
+import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 
 import org.junit.jupiter.api.Assertions;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bernardomg.example.jpa.model.key.embedded.EmbeddableCompositeKey;
 import com.bernardomg.example.jpa.model.key.embedded.EmbeddedCompositeKeyEntity;
-import com.bernardomg.example.jpa.test.util.criteria.key.embedded.EmbeddedCompositeKeyEntityCriteriaFactory;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityModify;
+import com.bernardomg.example.jpa.test.config.criteria.key.embedded.EmbeddedCompositeKeyEntityCriteriaFactory;
+import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityModify;
 
 /**
  * Abstract integration tests for a {@link EmbeddedCompositeKeyEntity} testing
@@ -58,9 +60,15 @@ public class ITEmbeddedCompositeKeyEntityModify
     }
 
     /**
+     * The persistence entity manager.
+     */
+    @Autowired
+    private EntityManager entityManager;
+
+    /**
      * Value to set on the name for the tests.
      */
-    private final String name = "ABC";
+    private final String  name = "ABC";
 
     /**
      * Default constructor.
@@ -79,7 +87,7 @@ public class ITEmbeddedCompositeKeyEntityModify
     protected CriteriaQuery<EmbeddedCompositeKeyEntity>
             getCriteriaQuery(final Object id) {
         return EmbeddedCompositeKeyEntityCriteriaFactory.findByIds(
-                getEntityManager(), ((EmbeddableCompositeKey) id).getId(),
+                entityManager, ((EmbeddableCompositeKey) id).getId(),
                 ((EmbeddableCompositeKey) id).getSupportId());
     }
 

@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2019 the the original author or authors.
+ * Copyright (c) 2016-2021 the the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 import com.bernardomg.example.jpa.model.embedded.ElementCollectionEntity;
 import com.bernardomg.example.jpa.model.embedded.EmbeddableData;
-import com.bernardomg.example.jpa.test.util.test.integration.AbstractITEntityModify;
+import com.bernardomg.example.jpa.test.config.test.integration.AbstractITEntityModify;
 
 /**
  * Integration tests for a {@code ElementCollectionEntity} testing it can be

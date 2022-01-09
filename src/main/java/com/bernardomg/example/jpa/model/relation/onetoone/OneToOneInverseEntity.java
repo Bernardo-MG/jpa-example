@@ -1,10 +1,9 @@
 
 package com.bernardomg.example.jpa.model.relation.onetoone;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,8 +13,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.google.common.base.MoreObjects;
 
 /**
  * Entity with a one to one relationship mapped to another class.
@@ -120,7 +117,8 @@ public class OneToOneInverseEntity implements Serializable {
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        id = checkNotNull(identifier, "Received a null pointer as identifier");
+        id = Objects.requireNonNull(identifier,
+                "Received a null pointer as identifier");
     }
 
     /**
@@ -130,7 +128,7 @@ public class OneToOneInverseEntity implements Serializable {
      *            the name to set in the entity
      */
     public void setName(final String value) {
-        name = checkNotNull(value, "Received a null pointer as name");
+        name = Objects.requireNonNull(value, "Received a null pointer as name");
     }
 
     /**
@@ -141,12 +139,14 @@ public class OneToOneInverseEntity implements Serializable {
      *            relationship
      */
     public void setSource(final OneToOneSourceEntity value) {
-        source = checkNotNull(value, "Received a null pointer as source");
+        source = Objects.requireNonNull(value,
+                "Received a null pointer as source");
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("id", id).toString();
+        return new StringJoiner(" | ", this.getClass().getSimpleName() + "[ ",
+                " ]").add("id=" + id).toString();
     }
 
 }

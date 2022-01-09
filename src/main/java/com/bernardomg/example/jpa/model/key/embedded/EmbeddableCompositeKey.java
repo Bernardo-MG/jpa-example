@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2019 the original author or authors.
+ * Copyright (c) 2016-2021 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,15 +24,12 @@
 
 package com.bernardomg.example.jpa.model.key.embedded;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-
-import com.google.common.base.MoreObjects;
 
 /**
  * Embeddable composite key.
@@ -116,7 +113,7 @@ public class EmbeddableCompositeKey implements Serializable {
      *            the first id for the entity
      */
     public final void setId(final Integer identifier) {
-        id = checkNotNull(identifier,
+        id = Objects.requireNonNull(identifier,
                 "Received a null pointer as the identifier");
     }
 
@@ -127,14 +124,14 @@ public class EmbeddableCompositeKey implements Serializable {
      *            the second id for the entity
      */
     public final void setSupportId(final Long identifier) {
-        supportId = checkNotNull(identifier,
+        supportId = Objects.requireNonNull(identifier,
                 "Received a null pointer as the identifier");
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("id1", id)
-                .add("id2", supportId).toString();
+        return new StringJoiner(" | ", this.getClass().getSimpleName() + "[ ",
+                " ]").add("id=" + id).add("supportId=" + supportId).toString();
     }
 
 }

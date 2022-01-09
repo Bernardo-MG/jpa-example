@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016-2019 the original author or authors.
+ * Copyright (c) 2016-2021 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,17 +24,14 @@
 
 package com.bernardomg.example.jpa.model.key.composite;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import com.google.common.base.MoreObjects;
 
 /**
  * Entity with a composite id.
@@ -135,7 +132,8 @@ public class CompositeKeyEntity implements Serializable {
      *            the first id for the entity
      */
     public final void setId(final Integer identifier) {
-        id = checkNotNull(identifier, "Received a null pointer as id 1");
+        id = Objects.requireNonNull(identifier,
+                "Received a null pointer as id 1");
     }
 
     /**
@@ -145,7 +143,7 @@ public class CompositeKeyEntity implements Serializable {
      *            the name to set on the entity
      */
     public void setName(final String value) {
-        name = checkNotNull(value, "Received a null pointer as name");
+        name = Objects.requireNonNull(value, "Received a null pointer as name");
     }
 
     /**
@@ -155,13 +153,14 @@ public class CompositeKeyEntity implements Serializable {
      *            the second id for the entity
      */
     public final void setSupportId(final Long identifier) {
-        supportId = checkNotNull(identifier, "Received a null pointer as id 2");
+        supportId = Objects.requireNonNull(identifier,
+                "Received a null pointer as id 2");
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("id1", id)
-                .add("id2", supportId).toString();
+        return new StringJoiner(" | ", this.getClass().getSimpleName() + "[ ",
+                " ]").add("id=" + id).add("supportId=" + supportId).toString();
     }
 
 }
